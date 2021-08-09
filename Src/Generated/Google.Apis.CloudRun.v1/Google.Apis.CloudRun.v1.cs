@@ -66,14 +66,20 @@ namespace Google.Apis.CloudRun.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run Admin API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run Admin API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -5609,9 +5615,8 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully
-        /// managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run
-        /// for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster
-        /// operator.
+        /// managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for
+        /// Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; }

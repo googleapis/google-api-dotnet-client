@@ -65,14 +65,20 @@ namespace Google.Apis.NetworkServices.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Network Services API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Network Services API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -646,7 +652,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Name of the EndpointPolicy resource. It matches pattern
-                /// `projects/*/locations/global/endpointPolicies/`.
+                /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.EndpointPolicy body, string name)
                 {
@@ -666,7 +672,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. Name of the EndpointPolicy resource. It matches pattern
-                    /// `projects/*/locations/global/endpointPolicies/`.
+                    /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1450,7 +1456,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Required. Name of the EndpointPolicy resource. It matches pattern
-        /// `projects/*/locations/global/endpointPolicies/`.
+        /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

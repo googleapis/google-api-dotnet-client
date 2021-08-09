@@ -65,14 +65,20 @@ namespace Google.Apis.Workflows.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Workflows API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Workflows API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1292,12 +1298,12 @@ namespace Google.Apis.Workflows.v1.Data
         public virtual string RevisionId { get; set; }
 
         /// <summary>
-        /// Name of the service account associated with the latest workflow version. This service account represents the
+        /// The service account associated with the latest workflow version. This service account represents the
         /// identity of the workflow and determines what permissions the workflow has. Format:
-        /// projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the
-        /// project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service
-        /// account. If not provided, workflow will use the project's default service account. Modifying this field for
-        /// an existing workflow results in a new workflow revision.
+        /// projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not
+        /// providing one at all will infer the project from the account. The `{account}` value can be the `email`
+        /// address or the `unique_id` of the service account. If not provided, workflow will use the project's default
+        /// service account. Modifying this field for an existing workflow results in a new workflow revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }

@@ -2825,6 +2825,65 @@ namespace Google.Apis.CloudKMS.v1
                 }
             }
 
+            /// <summary>Generate random bytes using the Cloud KMS randomness source in the provided location.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// The project-specific location in which to generate random bytes. For example,
+            /// "projects/my-project/locations/us-central1".
+            /// </param>
+            public virtual GenerateRandomBytesRequest GenerateRandomBytes(Google.Apis.CloudKMS.v1.Data.GenerateRandomBytesRequest body, string location)
+            {
+                return new GenerateRandomBytesRequest(service, body, location);
+            }
+
+            /// <summary>Generate random bytes using the Cloud KMS randomness source in the provided location.</summary>
+            public class GenerateRandomBytesRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.GenerateRandomBytesResponse>
+            {
+                /// <summary>Constructs a new GenerateRandomBytes request.</summary>
+                public GenerateRandomBytesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.GenerateRandomBytesRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The project-specific location in which to generate random bytes. For example,
+                /// "projects/my-project/locations/us-central1".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudKMS.v1.Data.GenerateRandomBytesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateRandomBytes";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+location}:generateRandomBytes";
+
+                /// <summary>Initializes GenerateRandomBytes parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -3224,6 +3283,17 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Output only. The time at which this CryptoKey was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before
+        /// transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destroyScheduledDuration")]
+        public virtual object DestroyScheduledDuration { get; set; }
+
+        /// <summary>Immutable. Whether this key may contain imported versions only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importOnly")]
+        public virtual System.Nullable<bool> ImportOnly { get; set; }
 
         /// <summary>
         /// Labels with user-defined metadata. For more information, see [Labeling
@@ -3654,6 +3724,46 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The URI for an external resource that this CryptoKeyVersion represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalKeyUri")]
         public virtual string ExternalKeyUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for KeyManagementService.GenerateRandomBytes.</summary>
+    public class GenerateRandomBytesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The length in bytes of the amount of randomness to retrieve. Minimum 8 bytes, maximum 1024 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lengthBytes")]
+        public virtual System.Nullable<int> LengthBytes { get; set; }
+
+        /// <summary>The ProtectionLevel to use when generating the random data. Defaults to SOFTWARE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for KeyManagementService.GenerateRandomBytes.</summary>
+    public class GenerateRandomBytesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generated data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned GenerateRandomBytesResponse.data. An
+        /// integrity check of GenerateRandomBytesResponse.data can be performed by computing the CRC32C checksum of
+        /// GenerateRandomBytesResponse.data and comparing your results to this field. Discard the response in case of
+        /// non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
+        /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
+        /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCrc32c")]
+        public virtual System.Nullable<long> DataCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

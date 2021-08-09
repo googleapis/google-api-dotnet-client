@@ -4569,6 +4569,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; }
 
+        /// <summary>[Optional] An custom string that will represent a NULL value in CSV import data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("null_marker")]
+        public virtual string NullMarker { get; set; }
+
         /// <summary>
         /// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to
         /// ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary
@@ -4682,6 +4686,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>[Optional] Indicates if table names are case insensitive in the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isCaseInsensitive")]
+        public virtual System.Nullable<bool> IsCaseInsensitive { get; set; }
 
         /// <summary>[Output-only] The resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -8159,6 +8167,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] The categories attached to this field, used for field-level access control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual CategoriesData Categories { get; set; }
+
+        /// <summary>Optional. Collation specification of the field. It only can be set on string type field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collationSpec")]
+        public virtual string CollationSpec { get; set; }
 
         /// <summary>[Optional] The field description. The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]

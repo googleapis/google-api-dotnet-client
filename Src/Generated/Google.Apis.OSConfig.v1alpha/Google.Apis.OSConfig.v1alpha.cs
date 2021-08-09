@@ -600,9 +600,8 @@ namespace Google.Apis.OSConfig.v1alpha
                     /// <summary>List inventory data for all VM instances in the specified zone.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource name. Format:
-                    /// `projects/{project}/locations/{location}/instances/{instance}` For `{project}`, either
-                    /// `project-number` or `project-id` can be provided. For `{instance}`, only hyphen or dash
-                    /// character is supported to list inventories across VMs.
+                    /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either `project-number`
+                    /// or `project-id` can be provided.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -621,9 +620,8 @@ namespace Google.Apis.OSConfig.v1alpha
 
                         /// <summary>
                         /// Required. The parent resource name. Format:
-                        /// `projects/{project}/locations/{location}/instances/{instance}` For `{project}`, either
-                        /// `project-number` or `project-id` can be provided. For `{instance}`, only hyphen or dash
-                        /// character is supported to list inventories across VMs.
+                        /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either
+                        /// `project-number` or `project-id` can be provided.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -810,9 +808,8 @@ namespace Google.Apis.OSConfig.v1alpha
                     /// <summary>List vulnerability reports for all VM instances in the specified zone.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource name. Format:
-                    /// `projects/{project}/locations/{location}/instances/{instance}` For `{project}`, either
-                    /// `project-number` or `project-id` can be provided. For `{instance}`, only `-` character is
-                    /// supported to list vulnerability reports across VMs.
+                    /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either `project-number`
+                    /// or `project-id` can be provided.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -831,9 +828,8 @@ namespace Google.Apis.OSConfig.v1alpha
 
                         /// <summary>
                         /// Required. The parent resource name. Format:
-                        /// `projects/{project}/locations/{location}/instances/{instance}` For `{project}`, either
-                        /// `project-number` or `project-id` can be provided. For `{instance}`, only `-` character is
-                        /// supported to list vulnerability reports across VMs.
+                        /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either
+                        /// `project-number` or `project-id` can be provided.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2227,6 +2223,12 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
         /// <summary>Required. Filter to select VMs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
         public virtual OSPolicyAssignmentInstanceFilter InstanceFilter { get; set; }
@@ -2276,12 +2278,12 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         /// <summary>Output only. Server generated unique id for the OS policy assignment resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message to represent the filters to select VMs for an assignment</summary>
+    /// <summary>
+    /// Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will
+    /// be selected if and only if it satisfies all of them.
+    /// </summary>
     public class OSPolicyAssignmentInstanceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Target all VMs in the project. If true, no other criteria is permitted.</summary>
@@ -2290,8 +2292,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
 
         /// <summary>
         /// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any
-        /// of the label sets are applicable for the VM. This filter is applied last in the filtering chain and
-        /// therefore a VM is guaranteed to be excluded if it satisfies one of the below label sets.
+        /// of the label sets are applicable for the VM.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusionLabels")]
         public virtual System.Collections.Generic.IList<OSPolicyAssignmentLabelSet> ExclusionLabels { get; set; }
@@ -2304,10 +2305,36 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         public virtual System.Collections.Generic.IList<OSPolicyAssignmentLabelSet> InclusionLabels { get; set; }
 
         /// <summary>
-        /// A VM is included if it's OS short name matches with any of the values provided in this list.
+        /// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the
+        /// following inventories.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventories")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentInstanceFilterInventory> Inventories { get; set; }
+
+        /// <summary>
+        /// A VM is selected if it's OS short name matches with any of the values provided in this list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osShortNames")]
         public virtual System.Collections.Generic.IList<string> OsShortNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VM inventory details.</summary>
+    public class OSPolicyAssignmentInstanceFilterInventory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The OS short name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osShortName")]
+        public virtual string OsShortName { get; set; }
+
+        /// <summary>
+        /// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example,
+        /// to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty
+        /// string matches all OS versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2386,7 +2413,26 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The `OSFilter` is used to specify the OS filtering criteria for the resource group.</summary>
+    /// <summary>Filtering criteria to select VMs based on inventory details.</summary>
+    public class OSPolicyInventoryFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The OS short name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osShortName")]
+        public virtual string OsShortName { get; set; }
+
+        /// <summary>
+        /// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example,
+        /// to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty
+        /// string matches all OS versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filtering criteria to select VMs based on OS details.</summary>
     public class OSPolicyOSFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2671,6 +2717,16 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     /// </summary>
     public class OSPolicyResourceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// List of inventory filters for the resource group. The resources in this resource group are applied to the
+        /// target VM if it satisfies at least one of the following inventory filters. For example, to apply this
+        /// resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with
+        /// following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos'
+        /// If the list is empty, this resource group will be applied to the target VM unconditionally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryFilters")]
+        public virtual System.Collections.Generic.IList<OSPolicyInventoryFilter> InventoryFilters { get; set; }
+
         /// <summary>Used to specify the OS filter for a resource group</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osFilter")]
         public virtual OSPolicyOSFilter OsFilter { get; set; }
@@ -3146,6 +3202,10 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     /// <summary>A reference for this vulnerability.</summary>
     public class VulnerabilityReportVulnerabilityDetailsReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The source of the reference e.g. NVD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
         /// <summary>The url of the reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }

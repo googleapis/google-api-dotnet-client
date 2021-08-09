@@ -7,5 +7,15 @@
   "Google.Apis.OSConfig.v1.OSConfigBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.OSConfig.v1.ProjectsResource+LocationsResource+InstancesResource+InventoriesResource+GetRequest.ViewEnum": [
+    "INVENTORY_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.OSConfig.v1.ProjectsResource+LocationsResource+InstancesResource+InventoriesResource+ListRequest.ViewEnum": [
+    "INVENTORY_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
   ]
 }

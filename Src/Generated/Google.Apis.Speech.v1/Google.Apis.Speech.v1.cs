@@ -607,6 +607,10 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
 
+        /// <summary>When available, billed audio seconds for the corresponding request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBilledTime")]
+        public virtual object TotalBilledTime { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -885,6 +889,10 @@ namespace Google.Apis.Speech.v1.Data
         /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
+
+        /// <summary>When available, billed audio seconds for the corresponding request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBilledTime")]
+        public virtual object TotalBilledTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

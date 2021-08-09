@@ -317,8 +317,297 @@ namespace Google.Apis.PubsubLite.v1
                 public LocationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Operations = new OperationsResource(service);
                     Subscriptions = new SubscriptionsResource(service);
                     Topics = new TopicsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">The name of the operation resource to be cancelled.</param>
+                    public virtual CancelRequest Cancel(Google.Apis.PubsubLite.v1.Data.CancelOperationRequest body, string name)
+                    {
+                        return new CancelRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    public class CancelRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.PubsubLite.v1.Data.CancelOperationRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be cancelled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.PubsubLite.v1.Data.CancelOperationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    public class DeleteRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
+                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
+                    /// to their service configuration. For backwards compatibility, the default name includes the
+                    /// operations collection id, however overriding users must ensure the name binding is the parent
+                    /// resource, without the operations collection id.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
+                    /// override the binding to use different resource name schemes, such as `users/*/operations`. To
+                    /// override the binding, API services can add a binding such as `"/v1/{name=users/*}/operations"`
+                    /// to their service configuration. For backwards compatibility, the default name includes the
+                    /// operations collection id, however overriding users must ensure the name binding is the parent
+                    /// resource, without the operations collection id.
+                    /// </summary>
+                    public class ListRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.ListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}/operations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Subscriptions resource.</summary>
@@ -667,6 +956,85 @@ namespace Google.Apis.PubsubLite.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Performs an out-of-band seek for a subscription to a specified target, which may be timestamps
+                    /// or named positions within the message backlog. Seek translates these targets to cursors for each
+                    /// partition and orchestrates subscribers to start consuming messages from these seek cursors. If
+                    /// an operation is returned, the seek has been registered and subscribers will eventually receive
+                    /// messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum
+                    /// supported client library version and not a system that tracks cursors independently of Pub/Sub
+                    /// Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients.
+                    /// If clients would like to know when subscribers react to the seek (or not), they can poll the
+                    /// operation. The seek operation will succeed and complete once subscribers are ready to receive
+                    /// messages from the seek cursors for all partitions of the topic. This means that the seek
+                    /// operation will not complete until all subscribers come online. If the previous seek operation
+                    /// has not yet completed, it will be aborted and the new invocation of seek will supersede it.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the subscription to seek.</param>
+                    public virtual SeekRequest Seek(Google.Apis.PubsubLite.v1.Data.SeekSubscriptionRequest body, string name)
+                    {
+                        return new SeekRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Performs an out-of-band seek for a subscription to a specified target, which may be timestamps
+                    /// or named positions within the message backlog. Seek translates these targets to cursors for each
+                    /// partition and orchestrates subscribers to start consuming messages from these seek cursors. If
+                    /// an operation is returned, the seek has been registered and subscribers will eventually receive
+                    /// messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum
+                    /// supported client library version and not a system that tracks cursors independently of Pub/Sub
+                    /// Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients.
+                    /// If clients would like to know when subscribers react to the seek (or not), they can poll the
+                    /// operation. The seek operation will succeed and complete once subscribers are ready to receive
+                    /// messages from the seek cursors for all partitions of the topic. This means that the seek
+                    /// operation will not complete until all subscribers come online. If the previous seek operation
+                    /// has not yet completed, it will be aborted and the new invocation of seek will supersede it.
+                    /// </summary>
+                    public class SeekRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Seek request.</summary>
+                        public SeekRequest(Google.Apis.Services.IClientService service, Google.Apis.PubsubLite.v1.Data.SeekSubscriptionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the subscription to seek.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.PubsubLite.v1.Data.SeekSubscriptionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "seek";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}:seek";
+
+                        /// <summary>Initializes Seek parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
                             });
                         }
                     }
@@ -1623,6 +1991,13 @@ namespace Google.Apis.PubsubLite.v1
 }
 namespace Google.Apis.PubsubLite.v1.Data
 {
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The throughput capacity configuration for each partition.</summary>
     public class Capacity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1801,6 +2176,21 @@ namespace Google.Apis.PubsubLite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListPartitionCursors</summary>
     public class ListPartitionCursorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1877,6 +2267,75 @@ namespace Google.Apis.PubsubLite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for long running operations.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the operation finished running. Not set if the operation has not completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Resource path for the target of the operation. For example, targets of seeks are subscription resources,
+        /// structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The settings for a topic's partitions.</summary>
     public class PartitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1937,6 +2396,60 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
         public virtual object Period { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for SeekSubscription.</summary>
+    public class SeekSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Seek to a named position with respect to the message backlog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedTarget")]
+        public virtual string NamedTarget { get; set; }
+
+        /// <summary>
+        /// Seek to the first message whose publish or event time is greater than or equal to the specified query time.
+        /// If no such message can be located, will seek to the end of the message backlog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeTarget")]
+        public virtual TimeTarget TimeTarget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for SeekSubscription long running operation.</summary>
+    public class SeekSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

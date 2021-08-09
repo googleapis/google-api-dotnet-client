@@ -1262,9 +1262,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
-                            /// <summary>
-                            /// The maximum number of versions to return. Maximum page size is 10,000.
-                            /// </summary>
+                            /// <summary>The maximum number of versions to return. Maximum page size is 1,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1472,7 +1470,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of packages to return. Maximum page size is 10,000.</summary>
+                        /// <summary>The maximum number of packages to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1862,7 +1860,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of repositories to return. Maximum page size is 10,000.</summary>
+                    /// <summary>The maximum number of repositories to return. Maximum page size is 1,000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 

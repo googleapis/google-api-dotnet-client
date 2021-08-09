@@ -425,6 +425,17 @@ namespace Google.Apis.CloudAsset.v1p7beta1
 }
 namespace Google.Apis.CloudAsset.v1p7beta1.Data
 {
+    /// <summary>Represents the metadata of the longrunning operation for the AnalyzeIamPolicyLongrunning rpc.</summary>
+    public class AnalyzeIamPolicyLongrunningMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A response message for AssetService.AnalyzeIamPolicyLongrunning.</summary>
     public class AnalyzeIamPolicyLongrunningResponse : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -380,18 +380,18 @@ namespace Google.Apis.Logging.v2
                     this.service = service;
                 }
 
-                /// <summary>Gets a view.</summary>
+                /// <summary>Gets a view on a log bucket..</summary>
                 /// <param name="name">
                 /// Required. The resource name of the policy:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a view.</summary>
+                /// <summary>Gets a view on a log bucket..</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -403,8 +403,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The resource name of the policy:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -434,21 +434,21 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Gets a bucket.</summary>
+            /// <summary>Gets a log bucket.</summary>
             /// <param name="name">
             /// Required. The resource name of the bucket:
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-            /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+            /// example:"projects/my-project/locations/global/buckets/my-bucket"
             /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a bucket.</summary>
+            /// <summary>Gets a log bucket.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -463,8 +463,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -518,8 +518,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-logging-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
@@ -542,8 +542,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-logging-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -584,8 +584,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -607,8 +607,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -642,8 +642,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -665,8 +665,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -785,8 +785,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
@@ -809,8 +809,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -918,13 +918,13 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The bucket in which to create the view
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                    /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
@@ -932,7 +932,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -946,8 +946,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The bucket in which to create the view
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                        /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                        /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -994,18 +994,18 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -1017,8 +1017,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to delete:
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1047,7 +1047,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     /// <param name="parent">
                     /// Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -1057,7 +1057,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1075,7 +1075,7 @@ namespace Google.Apis.Logging.v2
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of results to return from this request. Non-positive values are
+                        /// Optional. The maximum number of results to return from this request.Non-positive values are
                         /// ignored. The presence of nextPageToken in the response indicates that more results might be
                         /// available.
                         /// </summary>
@@ -1131,14 +1131,14 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The full resource name of the view to update
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
@@ -1146,8 +1146,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -1161,8 +1161,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to update
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1171,8 +1171,8 @@ namespace Google.Apis.Logging.v2
                         /// Optional. Field mask that specifies the fields in view that need an update. A field will be
                         /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                         /// updated.For a detailed FieldMask definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                        /// updateMask=filter.
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                        /// example: updateMask=filter
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -1217,14 +1217,13 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The resource in which to create the bucket:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                /// "projects/my-logging-project/locations/global"
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
@@ -1232,8 +1231,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -1246,9 +1245,9 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource in which to create the bucket:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                    /// "projects/my-logging-project/locations/global"
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1299,16 +1298,16 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The full resource name of the bucket to delete.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1316,8 +1315,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
@@ -1333,8 +1332,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1363,7 +1362,7 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
@@ -1377,7 +1376,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1455,10 +1454,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1466,9 +1466,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                /// "resourcemanager.projects.updateLiens" to set the locked property
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
@@ -1476,10 +1475,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -1496,9 +1496,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                    /// "resourcemanager.projects.updateLiens" to set the locked property
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1506,9 +1505,9 @@ namespace Google.Apis.Logging.v2
                     /// <summary>
                     /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
                     /// will be overwritten if, and only if, it is in the update mask. name and output only fields
-                    /// cannot be updated.For a detailed FieldMask definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                    /// updateMask=retention_days.
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1552,7 +1551,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -1561,8 +1560,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
@@ -1570,7 +1569,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
@@ -1588,8 +1587,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2229,8 +2228,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
@@ -2254,8 +2253,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2263,9 +2262,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
-                /// writer_identity is the same group or service account used by Logging before the addition of writer
-                /// identities to this API. The sink's destination must be in the same project as the sink itself.If
-                /// this field is set to true, or if the sink is owned by a non-project resource such as an
+                /// writer_identity is the same group or service account used by Cloud Logging before the addition of
+                /// writer identities to this API. The sink's destination must be in the same project as the sink
+                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
                 /// organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.
                 /// </summary>
@@ -2316,8 +2315,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to delete, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
@@ -2340,8 +2339,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to delete, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -2374,7 +2373,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
             /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
@@ -2394,8 +2393,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -2516,8 +2515,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -2543,8 +2542,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -2564,11 +2563,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2628,8 +2627,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -2655,8 +2654,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -2676,11 +2675,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2747,14 +2746,14 @@ namespace Google.Apis.Logging.v2
             this.service = service;
         }
 
-        /// <summary>Copies a set of log entries from a logging bucket to a Cloud Storage bucket.</summary>
+        /// <summary>Copies a set of log entries from a log bucket to a Cloud Storage bucket.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CopyRequest Copy(Google.Apis.Logging.v2.Data.CopyLogEntriesRequest body)
         {
             return new CopyRequest(service, body);
         }
 
-        /// <summary>Copies a set of log entries from a logging bucket to a Cloud Storage bucket.</summary>
+        /// <summary>Copies a set of log entries from a log bucket to a Cloud Storage bucket.</summary>
         public class CopyRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
         {
             /// <summary>Constructs a new Copy request.</summary>
@@ -2949,8 +2948,8 @@ namespace Google.Apis.Logging.v2
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
         /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-        /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-        /// "projects/my-logging-project", "organizations/123456789".
+        /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+        /// examples:"projects/my-logging-project" "organizations/123456789"
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
         {
@@ -2973,8 +2972,8 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>
             /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-logging-project" "organizations/123456789"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -3015,8 +3014,7 @@ namespace Google.Apis.Logging.v2
         /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
         /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
         /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-        /// "projects/my-project-id/exclusions/my-exclusion-id".
+        /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion"
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
@@ -3038,8 +3036,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3073,8 +3071,7 @@ namespace Google.Apis.Logging.v2
         /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
         /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
         /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-        /// "projects/my-project-id/exclusions/my-exclusion-id".
+        /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion"
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -3095,8 +3092,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3213,8 +3210,7 @@ namespace Google.Apis.Logging.v2
         /// Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
         /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
         /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-        /// "projects/my-project-id/exclusions/my-exclusion-id".
+        /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion"
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
         {
@@ -3237,8 +3233,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3333,8 +3329,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-logging-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
@@ -3357,8 +3353,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-logging-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3399,8 +3395,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -3422,8 +3418,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3457,8 +3453,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -3480,8 +3476,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3600,8 +3596,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
@@ -3624,8 +3620,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3733,13 +3729,13 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The bucket in which to create the view
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                    /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
@@ -3747,7 +3743,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -3761,8 +3757,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The bucket in which to create the view
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                        /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                        /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -3809,18 +3805,18 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -3832,8 +3828,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to delete:
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -3862,18 +3858,18 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Gets a view.</summary>
+                    /// <summary>Gets a view on a log bucket..</summary>
                     /// <param name="name">
                     /// Required. The resource name of the policy:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a view.</summary>
+                    /// <summary>Gets a view on a log bucket..</summary>
                     public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -3885,8 +3881,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The resource name of the policy:
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -3915,7 +3911,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     /// <param name="parent">
                     /// Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -3925,7 +3921,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3943,7 +3939,7 @@ namespace Google.Apis.Logging.v2
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of results to return from this request. Non-positive values are
+                        /// Optional. The maximum number of results to return from this request.Non-positive values are
                         /// ignored. The presence of nextPageToken in the response indicates that more results might be
                         /// available.
                         /// </summary>
@@ -3999,14 +3995,14 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The full resource name of the view to update
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
@@ -4014,8 +4010,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -4029,8 +4025,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to update
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -4039,8 +4035,8 @@ namespace Google.Apis.Logging.v2
                         /// Optional. Field mask that specifies the fields in view that need an update. A field will be
                         /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                         /// updated.For a detailed FieldMask definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                        /// updateMask=filter.
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                        /// example: updateMask=filter
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -4085,14 +4081,13 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The resource in which to create the bucket:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                /// "projects/my-logging-project/locations/global"
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
@@ -4100,8 +4095,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -4114,9 +4109,9 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource in which to create the bucket:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                    /// "projects/my-logging-project/locations/global"
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4167,16 +4162,16 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The full resource name of the bucket to delete.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -4184,8 +4179,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
@@ -4201,8 +4196,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4231,21 +4226,21 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Gets a bucket.</summary>
+                /// <summary>Gets a log bucket.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a bucket.</summary>
+                /// <summary>Gets a log bucket.</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4260,8 +4255,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4290,7 +4285,7 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
@@ -4304,7 +4299,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -4382,10 +4377,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -4393,9 +4389,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                /// "resourcemanager.projects.updateLiens" to set the locked property
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
@@ -4403,10 +4398,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -4423,9 +4419,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                    /// "resourcemanager.projects.updateLiens" to set the locked property
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4433,9 +4428,9 @@ namespace Google.Apis.Logging.v2
                     /// <summary>
                     /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
                     /// will be overwritten if, and only if, it is in the update mask. name and output only fields
-                    /// cannot be updated.For a detailed FieldMask definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                    /// updateMask=retention_days.
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4479,7 +4474,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -4488,8 +4483,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
@@ -4497,7 +4492,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
@@ -4515,8 +4510,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5138,8 +5133,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
@@ -5163,8 +5158,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5172,9 +5167,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
-                /// writer_identity is the same group or service account used by Logging before the addition of writer
-                /// identities to this API. The sink's destination must be in the same project as the sink itself.If
-                /// this field is set to true, or if the sink is owned by a non-project resource such as an
+                /// writer_identity is the same group or service account used by Cloud Logging before the addition of
+                /// writer identities to this API. The sink's destination must be in the same project as the sink
+                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
                 /// organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.
                 /// </summary>
@@ -5225,8 +5220,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to delete, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
@@ -5249,8 +5244,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to delete, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -5283,7 +5278,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
             /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
@@ -5303,8 +5298,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -5425,8 +5420,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -5452,8 +5447,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -5473,11 +5468,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -5537,8 +5532,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -5564,8 +5559,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -5585,11 +5580,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -5693,19 +5688,23 @@ namespace Google.Apis.Logging.v2
                     this.service = service;
                 }
 
-                /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.</summary>
+                /// <summary>
+                /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The bucket in which to create the view
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.</summary>
+                /// <summary>
+                /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                /// </summary>
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -5718,8 +5717,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The bucket in which to create the view
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                    /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5766,18 +5765,18 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Deletes a view from a bucket.</summary>
+                /// <summary>Deletes a view on a log bucket.</summary>
                 /// <param name="name">
                 /// Required. The full resource name of the view to delete:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a view from a bucket.</summary>
+                /// <summary>Deletes a view on a log bucket.</summary>
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -5789,8 +5788,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The full resource name of the view to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5819,18 +5818,18 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Gets a view.</summary>
+                /// <summary>Gets a view on a log bucket..</summary>
                 /// <param name="name">
                 /// Required. The resource name of the policy:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a view.</summary>
+                /// <summary>Gets a view on a log bucket..</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5842,8 +5841,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The resource name of the policy:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5872,7 +5871,7 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Lists views on a bucket.</summary>
+                /// <summary>Lists views on a log bucket.</summary>
                 /// <param name="parent">
                 /// Required. The bucket whose views are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -5882,7 +5881,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists views on a bucket.</summary>
+                /// <summary>Lists views on a log bucket.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5900,7 +5899,7 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of results to return from this request. Non-positive values are
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
                     /// </summary>
@@ -5956,14 +5955,14 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a view. This method replaces the following fields in the existing view with values from the
-                /// new view: filter.
+                /// Updates a view on a log bucket. This method replaces the following fields in the existing view with
+                /// values from the new view: filter.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The full resource name of the view to update
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                 {
@@ -5971,8 +5970,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a view. This method replaces the following fields in the existing view with values from the
-                /// new view: filter.
+                /// Updates a view on a log bucket. This method replaces the following fields in the existing view with
+                /// values from the new view: filter.
                 /// </summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
@@ -5986,8 +5985,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The full resource name of the view to update
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5996,8 +5995,8 @@ namespace Google.Apis.Logging.v2
                     /// Optional. Field mask that specifies the fields in view that need an update. A field will be
                     /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                     /// updated.For a detailed FieldMask definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                    /// updateMask=filter.
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=filter
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -6042,13 +6041,13 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-            /// cannot be changed.
+            /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+            /// bucket's location cannot be changed.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
-            /// Example: "projects/my-logging-project/locations/global"
+            /// Required. The resource in which to create the log bucket:
+            /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
             {
@@ -6056,8 +6055,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-            /// cannot be changed.
+            /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+            /// bucket's location cannot be changed.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
@@ -6070,9 +6069,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Required. The resource in which to create the bucket:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                /// "projects/my-logging-project/locations/global"
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6123,16 +6121,16 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-            /// purged and all logs in the bucket will be permanently deleted.
+            /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days,
+            /// the bucket will be purged and all log entries in the bucket will be permanently deleted.
             /// </summary>
             /// <param name="name">
             /// Required. The full resource name of the bucket to delete.
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-            /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+            /// example:"projects/my-project/locations/global/buckets/my-bucket"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -6140,8 +6138,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-            /// purged and all logs in the bucket will be permanently deleted.
+            /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days,
+            /// the bucket will be purged and all log entries in the bucket will be permanently deleted.
             /// </summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
@@ -6157,8 +6155,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6187,21 +6185,21 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Gets a bucket.</summary>
+            /// <summary>Gets a log bucket.</summary>
             /// <param name="name">
             /// Required. The resource name of the bucket:
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-            /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+            /// example:"projects/my-project/locations/global/buckets/my-bucket"
             /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a bucket.</summary>
+            /// <summary>Gets a log bucket.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -6216,8 +6214,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6246,7 +6244,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Lists buckets.</summary>
+            /// <summary>Lists log buckets.</summary>
             /// <param name="parent">
             /// Required. The parent resource whose buckets are to be listed:
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
@@ -6260,7 +6258,7 @@ namespace Google.Apis.Logging.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists buckets.</summary>
+            /// <summary>Lists log buckets.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -6338,10 +6336,11 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a bucket. This method replaces the following fields in the existing bucket with values from the
-            /// new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-            /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-            /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+            /// Updates a log bucket. This method replaces the following fields in the existing bucket with values from
+            /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+            /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+            /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be
+            /// changed.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -6349,9 +6348,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-            /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-            /// "resourcemanager.projects.updateLiens" to set the locked property
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+            /// example:"projects/my-project/locations/global/buckets/my-bucket"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
             {
@@ -6359,10 +6357,11 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a bucket. This method replaces the following fields in the existing bucket with values from the
-            /// new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-            /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-            /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+            /// Updates a log bucket. This method replaces the following fields in the existing bucket with values from
+            /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+            /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+            /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be
+            /// changed.
             /// </summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
@@ -6379,9 +6378,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                /// "resourcemanager.projects.updateLiens" to set the locked property
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6389,9 +6387,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
-                /// updated.For a detailed FieldMask definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=retention_days.
+                /// updated.For a detailed FieldMask definition, see:
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=retention_days
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -6435,7 +6433,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.
+            /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
+            /// days.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -6443,8 +6442,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-            /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+            /// example:"projects/my-project/locations/global/buckets/my-bucket"
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
             {
@@ -6452,7 +6451,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.
+            /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
+            /// days.
             /// </summary>
             public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
@@ -6469,8 +6469,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7177,8 +7177,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-logging-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
@@ -7201,8 +7201,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-logging-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -7243,8 +7243,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -7266,8 +7266,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7301,8 +7301,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -7324,8 +7324,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7444,8 +7444,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
@@ -7468,8 +7468,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7577,13 +7577,13 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The bucket in which to create the view
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                    /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
@@ -7591,7 +7591,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -7605,8 +7605,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The bucket in which to create the view
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                        /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                        /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -7653,18 +7653,18 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -7676,8 +7676,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to delete:
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7706,18 +7706,18 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Gets a view.</summary>
+                    /// <summary>Gets a view on a log bucket..</summary>
                     /// <param name="name">
                     /// Required. The resource name of the policy:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a view.</summary>
+                    /// <summary>Gets a view on a log bucket..</summary>
                     public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -7729,8 +7729,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The resource name of the policy:
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7759,7 +7759,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     /// <param name="parent">
                     /// Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -7769,7 +7769,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -7787,7 +7787,7 @@ namespace Google.Apis.Logging.v2
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of results to return from this request. Non-positive values are
+                        /// Optional. The maximum number of results to return from this request.Non-positive values are
                         /// ignored. The presence of nextPageToken in the response indicates that more results might be
                         /// available.
                         /// </summary>
@@ -7843,14 +7843,14 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The full resource name of the view to update
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
@@ -7858,8 +7858,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -7873,8 +7873,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to update
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7883,8 +7883,8 @@ namespace Google.Apis.Logging.v2
                         /// Optional. Field mask that specifies the fields in view that need an update. A field will be
                         /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                         /// updated.For a detailed FieldMask definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                        /// updateMask=filter.
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                        /// example: updateMask=filter
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -7929,14 +7929,13 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The resource in which to create the bucket:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                /// "projects/my-logging-project/locations/global"
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
@@ -7944,8 +7943,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -7958,9 +7957,9 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource in which to create the bucket:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                    /// "projects/my-logging-project/locations/global"
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8011,16 +8010,16 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The full resource name of the bucket to delete.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -8028,8 +8027,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
@@ -8045,8 +8044,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8075,21 +8074,21 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Gets a bucket.</summary>
+                /// <summary>Gets a log bucket.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a bucket.</summary>
+                /// <summary>Gets a log bucket.</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -8104,8 +8103,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8134,7 +8133,7 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
@@ -8148,7 +8147,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -8226,10 +8225,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -8237,9 +8237,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                /// "resourcemanager.projects.updateLiens" to set the locked property
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
@@ -8247,10 +8246,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -8267,9 +8267,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                    /// "resourcemanager.projects.updateLiens" to set the locked property
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8277,9 +8276,9 @@ namespace Google.Apis.Logging.v2
                     /// <summary>
                     /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
                     /// will be overwritten if, and only if, it is in the update mask. name and output only fields
-                    /// cannot be updated.For a detailed FieldMask definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                    /// updateMask=retention_days.
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -8323,7 +8322,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -8332,8 +8331,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
@@ -8341,7 +8340,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
@@ -8359,8 +8358,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8982,8 +8981,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
@@ -9007,8 +9006,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -9016,9 +9015,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
-                /// writer_identity is the same group or service account used by Logging before the addition of writer
-                /// identities to this API. The sink's destination must be in the same project as the sink itself.If
-                /// this field is set to true, or if the sink is owned by a non-project resource such as an
+                /// writer_identity is the same group or service account used by Cloud Logging before the addition of
+                /// writer identities to this API. The sink's destination must be in the same project as the sink
+                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
                 /// organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.
                 /// </summary>
@@ -9069,8 +9068,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to delete, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
@@ -9093,8 +9092,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to delete, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -9127,7 +9126,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
             /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
@@ -9147,8 +9146,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -9269,8 +9268,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -9296,8 +9295,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -9317,11 +9316,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -9381,8 +9380,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -9408,8 +9407,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -9429,11 +9428,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -9494,7 +9493,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="name">
         /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-        /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+        /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
         /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
         /// and folders in the GCP organization.
         /// </param>
@@ -9521,7 +9520,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-            /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+            /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
             /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
             /// projects and folders in the GCP organization.
             /// </summary>
@@ -9564,7 +9563,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="name">
         /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-        /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+        /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
         /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
         /// and folders in the GCP organization.
         /// </param>
@@ -9594,7 +9593,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-            /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+            /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
             /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
             /// projects and folders in the GCP organization.
             /// </summary>
@@ -9604,7 +9603,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Optional. Field mask identifying which fields from cmek_settings should be updated. A field will be
             /// overwritten if and only if it is in the update mask. Output only fields cannot be updated.See FieldMask
-            /// for more information.Example: "updateMask=kmsKeyName"
+            /// for more information.For example: "updateMask=kmsKeyName"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -9691,8 +9690,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-logging-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
@@ -9715,8 +9714,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-logging-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -9757,8 +9756,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -9780,8 +9779,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -9815,8 +9814,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -9838,8 +9837,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -9958,8 +9957,8 @@ namespace Google.Apis.Logging.v2
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-            /// "projects/my-project-id/exclusions/my-exclusion-id".
+            /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+            /// example:"projects/my-project/exclusions/my-exclusion"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
@@ -9982,8 +9981,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
                 /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
-                /// "projects/my-project-id/exclusions/my-exclusion-id".
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For
+                /// example:"projects/my-project/exclusions/my-exclusion"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -10091,13 +10090,13 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The bucket in which to create the view
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                    /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
@@ -10105,7 +10104,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -10119,8 +10118,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The bucket in which to create the view
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                        /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+                        /// `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -10167,18 +10166,18 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <summary>Deletes a view on a log bucket.</summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -10190,8 +10189,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to delete:
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10220,18 +10219,18 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Gets a view.</summary>
+                    /// <summary>Gets a view on a log bucket..</summary>
                     /// <param name="name">
                     /// Required. The resource name of the policy:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a view.</summary>
+                    /// <summary>Gets a view on a log bucket..</summary>
                     public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -10243,8 +10242,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The resource name of the policy:
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10273,7 +10272,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     /// <param name="parent">
                     /// Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -10283,7 +10282,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket.</summary>
+                    /// <summary>Lists views on a log bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -10301,7 +10300,7 @@ namespace Google.Apis.Logging.v2
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of results to return from this request. Non-positive values are
+                        /// Optional. The maximum number of results to return from this request.Non-positive values are
                         /// ignored. The presence of nextPageToken in the response indicates that more results might be
                         /// available.
                         /// </summary>
@@ -10357,14 +10356,14 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The full resource name of the view to update
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
@@ -10372,8 +10371,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view. This method replaces the following fields in the existing view with values from
-                    /// the new view: filter.
+                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
+                    /// with values from the new view: filter.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -10387,8 +10386,8 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The full resource name of the view to update
-                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
-                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10397,8 +10396,8 @@ namespace Google.Apis.Logging.v2
                         /// Optional. Field mask that specifies the fields in view that need an update. A field will be
                         /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                         /// updated.For a detailed FieldMask definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                        /// updateMask=filter.
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                        /// example: updateMask=filter
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -10443,14 +10442,13 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The resource in which to create the bucket:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                /// "projects/my-logging-project/locations/global"
+                /// Required. The resource in which to create the log bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
@@ -10458,8 +10456,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region
-                /// cannot be changed.
+                /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the
+                /// bucket's location cannot be changed.
                 /// </summary>
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -10472,9 +10470,9 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource in which to create the bucket:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
-                    /// "projects/my-logging-project/locations/global"
+                    /// Required. The resource in which to create the log bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -10525,16 +10523,16 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The full resource name of the bucket to delete.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -10542,8 +10540,8 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be
-                /// purged and all logs in the bucket will be permanently deleted.
+                /// Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7
+                /// days, the bucket will be purged and all log entries in the bucket will be permanently deleted.
                 /// </summary>
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
@@ -10559,8 +10557,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -10589,21 +10587,21 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Gets a bucket.</summary>
+                /// <summary>Gets a log bucket.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a bucket.</summary>
+                /// <summary>Gets a log bucket.</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -10618,8 +10616,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -10648,7 +10646,7 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
@@ -10662,7 +10660,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets.</summary>
+                /// <summary>Lists log buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -10740,10 +10738,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -10751,9 +10750,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                /// "resourcemanager.projects.updateLiens" to set the locked property
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
@@ -10761,10 +10759,11 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a bucket. This method replaces the following fields in the existing bucket with values from
-                /// the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
-                /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.
+                /// Updates a log bucket. This method replaces the following fields in the existing bucket with values
+                /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
+                /// FAILED_PRECONDITION will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+                /// FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot
+                /// be changed.
                 /// </summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
@@ -10781,9 +10780,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also requires permission
-                    /// "resourcemanager.projects.updateLiens" to set the locked property
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -10791,9 +10789,9 @@ namespace Google.Apis.Logging.v2
                     /// <summary>
                     /// Required. Field mask that specifies the fields in bucket that need an update. A bucket field
                     /// will be overwritten if, and only if, it is in the update mask. name and output only fields
-                    /// cannot be updated.For a detailed FieldMask definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                    /// updateMask=retention_days.
+                    /// cannot be updated.For a detailed FieldMask definition, see:
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=retention_days
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -10837,7 +10835,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -10846,8 +10844,8 @@ namespace Google.Apis.Logging.v2
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
@@ -10855,7 +10853,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7
+                /// Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7
                 /// days.
                 /// </summary>
                 public class UndeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
@@ -10873,8 +10871,8 @@ namespace Google.Apis.Logging.v2
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
-                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -11813,8 +11811,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-project" "organizations/123456789"
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
@@ -11838,8 +11836,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// Examples: "projects/my-logging-project", "organizations/123456789".
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+                /// examples:"projects/my-project" "organizations/123456789"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -11847,9 +11845,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
-                /// writer_identity is the same group or service account used by Logging before the addition of writer
-                /// identities to this API. The sink's destination must be in the same project as the sink itself.If
-                /// this field is set to true, or if the sink is owned by a non-project resource such as an
+                /// writer_identity is the same group or service account used by Cloud Logging before the addition of
+                /// writer identities to this API. The sink's destination must be in the same project as the sink
+                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
                 /// organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.
                 /// </summary>
@@ -11900,8 +11898,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to delete, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
@@ -11924,8 +11922,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to delete, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -11958,7 +11956,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
             /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
@@ -11978,8 +11976,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>
                 /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -12100,8 +12098,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -12127,8 +12125,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -12148,11 +12146,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -12212,8 +12210,8 @@ namespace Google.Apis.Logging.v2
             /// <param name="sinkName">
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
@@ -12239,8 +12237,8 @@ namespace Google.Apis.Logging.v2
                 /// Required. The full resource name of the sink to update, including the parent resource and the sink
                 /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
                 /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-                /// Example: "projects/my-project-id/sinks/my-sink-id".
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+                /// example:"projects/my-project/sinks/my-sink"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
@@ -12260,11 +12258,11 @@ namespace Google.Apis.Logging.v2
                 /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
                 /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
-                /// compatibility purposes: destination,filter,includeChildren At some point in the future, behavior
-                /// will be removed and specifying an empty updateMask will be an error.For a detailed FieldMask
-                /// definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-                /// updateMask=filter.
+                /// compatibility purposes:destination,filter,includeChildrenAt some point in the future, behavior will
+                /// be removed and specifying an empty updateMask will be an error.For a detailed FieldMask definition,
+                /// see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                /// example: updateMask=filter
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -12339,8 +12337,8 @@ namespace Google.Apis.Logging.v2
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
         /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-        /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-        /// "projects/my-logging-project", "organizations/123456789".
+        /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+        /// examples:"projects/my-project" "organizations/123456789"
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
         {
@@ -12364,8 +12362,8 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>
             /// Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
-            /// "projects/my-logging-project", "organizations/123456789".
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For
+            /// examples:"projects/my-project" "organizations/123456789"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -12373,7 +12371,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value
             /// is omitted or set to false, and if the sink's parent is a project, then the value returned as
-            /// writer_identity is the same group or service account used by Logging before the addition of writer
+            /// writer_identity is the same group or service account used by Cloud Logging before the addition of writer
             /// identities to this API. The sink's destination must be in the same project as the sink itself.If this
             /// field is set to true, or if the sink is owned by a non-project resource such as an organization, then
             /// the value of writer_identity will be a unique service account used only for exports from the new sink.
@@ -12426,8 +12424,8 @@ namespace Google.Apis.Logging.v2
         /// <param name="sinkName">
         /// Required. The full resource name of the sink to delete, including the parent resource and the sink
         /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-        /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-        /// "projects/my-project-id/sinks/my-sink-id".
+        /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        /// example:"projects/my-project/sinks/my-sink"
         /// </param>
         public virtual DeleteRequest Delete(string sinkName)
         {
@@ -12449,8 +12447,8 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Required. The full resource name of the sink to delete, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SinkName { get; private set; }
@@ -12483,7 +12481,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="sinkName">
         /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
         /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-        /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".
+        /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink"
         /// </param>
         public virtual GetRequest Get(string sinkName)
         {
@@ -12503,7 +12501,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
             /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SinkName { get; private set; }
@@ -12623,8 +12621,8 @@ namespace Google.Apis.Logging.v2
         /// <param name="sinkName">
         /// Required. The full resource name of the sink to update, including the parent resource and the sink
         /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-        /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-        /// "projects/my-project-id/sinks/my-sink-id".
+        /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        /// example:"projects/my-project/sinks/my-sink"
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
         {
@@ -12649,8 +12647,8 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Required. The full resource name of the sink to update, including the parent resource and the sink
             /// identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+            /// example:"projects/my-project/sinks/my-sink"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SinkName { get; private set; }
@@ -12670,10 +12668,10 @@ namespace Google.Apis.Logging.v2
             /// Optional. Field mask that specifies the fields in sink that need an update. A sink field will be
             /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be updated.An
             /// empty updateMask is temporarily treated as using the following mask for backwards compatibility
-            /// purposes: destination,filter,includeChildren At some point in the future, behavior will be removed and
+            /// purposes:destination,filter,includeChildrenAt some point in the future, behavior will be removed and
             /// specifying an empty updateMask will be an error.For a detailed FieldMask definition, see
-            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
-            /// updateMask=filter.
+            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+            /// example: updateMask=filter
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -12748,7 +12746,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="name">
         /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-        /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+        /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
         /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
         /// and folders in the GCP organization.
         /// </param>
@@ -12775,7 +12773,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-            /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+            /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
             /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
             /// projects and folders in the GCP organization.
             /// </summary>
@@ -12818,7 +12816,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="name">
         /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-        /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+        /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
         /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
         /// and folders in the GCP organization.
         /// </param>
@@ -12848,7 +12846,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-            /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+            /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
             /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
             /// projects and folders in the GCP organization.
             /// </summary>
@@ -12858,7 +12856,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>
             /// Optional. Field mask identifying which fields from cmek_settings should be updated. A field will be
             /// overwritten if and only if it is in the update mask. Output only fields cannot be updated.See FieldMask
-            /// for more information.Example: "updateMask=kmsKeyName"
+            /// for more information.For example: "updateMask=kmsKeyName"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -12909,17 +12907,17 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>
         /// Optional. Whether to use BigQuery's partition tables
-        /// (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based
-        /// on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer
-        /// present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to
-        /// be used instead. In both cases, tables are sharded based on UTC timezone.
+        /// (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables
+        /// based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no
+        /// longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usePartitionedTables")]
         public virtual System.Nullable<bool> UsePartitionedTables { get; set; }
 
         /// <summary>
         /// Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time
-        /// partitioning is in use. All new sinks will have this field set true and will use timestamp column based
+        /// partitioning is in use.All new sinks will have this field set true and will use timestamp column based
         /// partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks
         /// using partitioned tables will have this field set to false.
         /// </summary>
@@ -12976,9 +12974,9 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>
         /// The resource name for the configured Cloud KMS key.KMS key name format:
-        /// "projects/PROJECT_ID/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY"For example:
-        /// "projects/my-project-id/locations/my-region/keyRings/key-ring-name/cryptoKeys/key-name"To enable CMEK for
-        /// the Logs Router, set this field to a valid kms_key_name for which the associated service account has the
+        /// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For
+        /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To enable CMEK for the
+        /// Logs Router, set this field to a valid kms_key_name for which the associated service account has the
         /// required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The Cloud KMS key used by the
         /// Log Router can be updated by changing the kms_key_name to a new valid key name. Encryption operations that
         /// are in progress will be completed with the key that was in use when they started. Decryption operations will
@@ -13035,8 +13033,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// The IAM identity of a service account that must be granted access to the destination. If the service account
-        /// is not granted permission to the destination within an hour, the operation will be cancelled. Example:
+        /// The IAM identity of a service account that must be granted access to the destination.If the service account
+        /// is not granted permission to the destination within an hour, the operation will be cancelled.For example:
         /// "serviceAccount:foo@bar.com"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
@@ -13049,7 +13047,7 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>The parameters to CopyLogEntries.</summary>
     public class CopyLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Destination to which to copy logs.</summary>
+        /// <summary>Required. Destination to which to copy log entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
 
@@ -13061,8 +13059,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Required. Bucket from which to copy logs. e.g.
-        /// "projects/my-project/locations/my-location/buckets/my-source-bucket
+        /// Required. Log bucket from which to copy log entries.For
+        /// example:"projects/my-project/locations/global/buckets/my-source-bucket"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -13552,7 +13550,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes a repository of logs.</summary>
+    /// <summary>Describes a repository in which log entries are stored.</summary>
     public class LogBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -13570,26 +13568,27 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string LifecycleState { get; set; }
 
         /// <summary>
-        /// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked
-        /// buckets may only be deleted if they are empty.
+        /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may
+        /// only be deleted if they are empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the bucket. For example:
-        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global,
-        /// us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where
-        /// logs are actually stored. Once a bucket has been created, the location can not be changed.
+        /// Output only. The resource name of the bucket.For
+        /// example:projects/my-project/locations/global/buckets/my-bucketFor a list of supported locations, see
+        /// Supported Regions (https://cloud.google.com/logging/docs/region-support)For the location of global it is
+        /// unspecified where log entries are actually stored.After a bucket has been created, the location cannot be
+        /// changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Log entry field paths that are denied access in this bucket. The following fields and their children are
-        /// eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a
-        /// repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block
-        /// foo.bar.baz.
+        /// Log entry field paths that are denied access in this bucket.The following fields and their children are
+        /// eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated
+        /// field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block
+        /// foo.bar.baz)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedFields")]
         public virtual System.Collections.Generic.IList<string> RestrictedFields { get; set; }
@@ -13806,10 +13805,10 @@ namespace Google.Apis.Logging.v2.Data
     }
 
     /// <summary>
-    /// Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large
-    /// volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks,
-    /// so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions
-    /// don't apply to child resources, and that you can't exclude audit log entries.
+    /// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large
+    /// volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log
+    /// sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level
+    /// exclusions don't apply to child resources, and that you can't exclude audit log entries.
     /// </summary>
     public class LogExclusion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13834,8 +13833,8 @@ namespace Google.Apis.Logging.v2.Data
         /// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches
         /// the log entries to be excluded. By using the sample function
         /// (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the
-        /// matching log entries. For example, the following query matches 99% of low-severity log entries from Google
-        /// Cloud Storage buckets:"resource.type=gcs_bucket severity&amp;lt;ERROR sample(insertId, 0.99)"
+        /// matching log entries.For example, the following query matches 99% of low-severity log entries from Google
+        /// Cloud Storage buckets:resource.type=gcs_bucket severity&amp;lt;ERROR sample(insertId, 0.99)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -13997,7 +13996,7 @@ namespace Google.Apis.Logging.v2.Data
 
     /// <summary>
     /// Describes a sink used to export log entries to one of the following destinations in any project: a Cloud Storage
-    /// bucket, a BigQuery dataset, a Cloud Pub/Sub topic or a Cloud Logging Bucket. A logs filter controls which log
+    /// bucket, a BigQuery dataset, a Pub/Sub topic or a Cloud Logging log bucket. A logs filter controls which log
     /// entries are exported. The sink must be created within a project, organization, billing account, or folder.
     /// </summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
@@ -14013,7 +14012,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. A description of this sink. The maximum length of the description is 8000 characters.
+        /// Optional. A description of this sink.The maximum length of the description is 8000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -14030,13 +14029,13 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Destination { get; set; }
 
         /// <summary>
-        /// Optional. If set to True, then this sink is disabled and it does not export any log entries.
+        /// Optional. If set to true, then this sink is disabled and it does not export any log entries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
-        /// Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry is
+        /// Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is
         /// matched by both filter and one of exclusion_filters it will not be exported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
@@ -14044,8 +14043,8 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only
-        /// exported log entries are those that are in the resource owning the sink and that match the filter. For
-        /// example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity&amp;gt;=ERROR
+        /// exported log entries are those that are in the resource owning the sink and that match the filter.For
+        /// example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity&amp;gt;=ERROR
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -14053,18 +14052,18 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>
         /// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the
         /// default, only the logs owned by the sink's parent resource are available for export. If the field is true,
-        /// then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are
-        /// also available for export. Whether a particular log entry from the children is exported depends on the
-        /// sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance
-        /// would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only
-        /// export entries from certain child projects, filter on the project part of the log name:
-        /// logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
+        /// then log entries from all the projects, folders, and billing accounts contained in the sink's parent
+        /// resource are also available for export. Whether a particular log entry from the children is exported depends
+        /// on the sink's filter expression.For example, if this field is true, then the filter
+        /// resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the
+        /// sink's parent.To only export entries from certain child projects, filter on the project part of the log
+        /// name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeChildren")]
         public virtual System.Nullable<bool> IncludeChildren { get; set; }
 
         /// <summary>
-        /// Required. The client-assigned sink identifier, unique within the project. Example:
+        /// Required. The client-assigned sink identifier, unique within the project.For example:
         /// "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the
         /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First
         /// character has to be alphanumeric.
@@ -14083,8 +14082,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
-        /// Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries
-        /// to the sink's destination. This field is set by sinks.create and sinks.update based on the value of
+        /// Output only. An IAM identity—a service account or group—under which Cloud Logging writes the exported log
+        /// entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of
         /// unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log
         /// entry exports from this sink will fail. For more information, see Granting Access for a Resource
         /// (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
@@ -14098,7 +14097,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes a view over logs in a bucket.</summary>
+    /// <summary>Describes a view over log entries in a bucket.</summary>
     public class LogView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The creation timestamp of the view.</summary>
@@ -14110,17 +14109,17 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a
+        /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a
         /// logical AND of ==/!= of any of the following: originating project/folder/organization/billing account.
-        /// resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND
+        /// resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND
         /// LOG_ID("stdout")
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// The resource name of the view. For example
-        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+        /// The resource name of the view.For
+        /// example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

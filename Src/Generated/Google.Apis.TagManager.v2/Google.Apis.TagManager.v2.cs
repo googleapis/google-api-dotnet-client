@@ -7983,6 +7983,13 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blockingTriggerId")]
         public virtual System.Collections.Generic.IList<string> BlockingTriggerId { get; set; }
 
+        /// <summary>
+        /// Consent settings of a tag. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentSettings")]
+        public virtual TagConsentSetting ConsentSettings { get; set; }
+
         /// <summary>GTM Container ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
@@ -8129,6 +8136,26 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>GTM Workspace ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspaceId")]
         public virtual string WorkspaceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TagConsentSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The tag's consent status. If set to NEEDED, the runtime will check that the consent types specified by the
+        /// consent_type field have been granted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentStatus")]
+        public virtual string ConsentStatus { get; set; }
+
+        /// <summary>
+        /// The type of consents to check for during tag firing if in the consent NEEDED state. This parameter must be
+        /// of type LIST where each list item is of type STRING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentType")]
+        public virtual Parameter ConsentType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
