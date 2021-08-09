@@ -13236,7 +13236,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class BusinessDayConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Regular business days. May not be empty.</summary>
+        /// <summary>Regular business days, such as '"monday"'. May not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessDays")]
         public virtual System.Collections.Generic.IList<string> BusinessDays { get; set; }
 
@@ -19557,11 +19557,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The product to insert. Only required if the method is `insert`.</summary>
+        /// <summary>
+        /// The product to insert or update. Only required if the method is `insert` or `update`. If the `update` method
+        /// is used with `updateMask` only to delete a field, then this isn't required. For example, setting `salePrice`
+        /// on the `updateMask` and not providing a `product` will result in an existing sale price on the product
+        /// specified by `productId` being deleted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual Product Product { get; set; }
 
-        /// <summary>The ID of the product to get or delete. Only defined if the method is `get` or `delete`.</summary>
+        /// <summary>
+        /// The ID of the product to mutate. Only defined if the method is `get`, `delete`, or `update`. or `delete`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
 
