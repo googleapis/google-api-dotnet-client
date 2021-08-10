@@ -17,6 +17,7 @@ limitations under the License.
 using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Json;
+using Google.Apis.ManufacturerCenter.v1;
 using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
@@ -32,6 +33,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using static Google.Apis.ManufacturerCenter.v1.AccountsResource.ProductsResource.GetRequest;
 
 namespace Google.Apis.Tests.Apis.Services
 {
@@ -392,6 +394,16 @@ namespace Google.Apis.Tests.Apis.Services
             var initializer = new BaseClientService.Initializer();
             var service1 = new TranslateService(initializer);
             var service2 = new TranslateService(initializer);
+        }
+
+        [Fact]
+        public void RepeatedEnumQueryParameter()
+        {
+            var service = new ManufacturerCenterService();
+            var request = service.Accounts.Products.Get("accounts/abc", "def");
+            request.IncludeList = new[] { IncludeEnum.ATTRIBUTES, IncludeEnum.ISSUES };
+            var uri = request.CreateRequest().RequestUri;
+            Assert.Equal("https://manufacturers.googleapis.com/v1/accounts/abc/products/def?include=ATTRIBUTES&include=ISSUES", uri.ToString());
         }
     }
 }
