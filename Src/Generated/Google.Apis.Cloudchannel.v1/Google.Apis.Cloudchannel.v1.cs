@@ -511,6 +511,81 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
+                /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
+                /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is
+                /// true, it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller
+                /// account making the request is different from the reseller account in the API request. * NOT_FOUND:
+                /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or
+                /// the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has
+                /// conflicting critical fields. Requires an overwrite. Return value: The Customer.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the reseller's account. Parent takes the format:
+                /// accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+                /// </param>
+                public virtual ImportRequest Import(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest body, string parent)
+                {
+                    return new ImportRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
+                /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is
+                /// true, it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller
+                /// account making the request is different from the reseller account in the API request. * NOT_FOUND:
+                /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or
+                /// the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has
+                /// conflicting critical fields. Requires an overwrite. Return value: The Customer.
+                /// </summary>
+                public class ImportRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the reseller's account. Parent takes the format:
+                    /// accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customers:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request
                 /// is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request
                 /// parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no
@@ -2151,6 +2226,81 @@ namespace Google.Apis.Cloudchannel.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+/customers/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
+            /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true,
+            /// it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller account
+            /// making the request is different from the reseller account in the API request. * NOT_FOUND: Cloud
+            /// Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the
+            /// auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has conflicting
+            /// critical fields. Requires an overwrite. Return value: The Customer.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the reseller's account. Parent takes the format: accounts/{account_id} or
+            /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+            /// </param>
+            public virtual ImportRequest Import(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest body, string parent)
+            {
+                return new ImportRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
+            /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true,
+            /// it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller account
+            /// making the request is different from the reseller account in the API request. * NOT_FOUND: Cloud
+            /// Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the
+            /// auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has conflicting
+            /// critical fields. Requires an overwrite. Return value: The Customer.
+            /// </summary>
+            public class ImportRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
+            {
+                /// <summary>Constructs a new Import request.</summary>
+                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the reseller's account. Parent takes the format:
+                /// accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "import";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/customers:import";
+
+                /// <summary>Initializes Import parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
                     });
                 }
             }
@@ -4564,6 +4714,51 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>Type of event which happened on the entitlement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CloudChannelService.ImportCustomer</summary>
+    public class GoogleCloudChannelV1ImportCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The super admin of the resold customer generates this token to authorize a reseller to access
+        /// their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization.
+        /// See https://support.google.com/a/answer/7643790 for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authToken")]
+        public virtual string AuthToken { get; set; }
+
+        /// <summary>
+        /// Optional. Cloud Identity ID of a channel partner who will be the direct reseller for the customer's order.
+        /// This field is required for 2-tier transfer scenarios and can be provided via the request Parent binding as
+        /// well.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerId")]
+        public virtual string ChannelPartnerId { get; set; }
+
+        /// <summary>Required. Customer's Cloud Identity ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudIdentityId")]
+        public virtual string CloudIdentityId { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the customer that will receive imported Cloud Identity information. Format:
+        /// accounts/{account_id}/customers/{customer_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>Required. Customer domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Required. Choose to overwrite an existing customer if found. This must be set to true if there is an
+        /// existing customer with a conflicting region code or domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overwriteIfExists")]
+        public virtual System.Nullable<bool> OverwriteIfExists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

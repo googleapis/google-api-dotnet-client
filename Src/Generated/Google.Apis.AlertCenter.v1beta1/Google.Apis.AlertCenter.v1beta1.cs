@@ -1028,6 +1028,46 @@ namespace Google.Apis.AlertCenter.v1beta1
 }
 namespace Google.Apis.AlertCenter.v1beta1.Data
 {
+    /// <summary>Details about why an account is receiving an account suspension warning.</summary>
+    public class AccountSuspensionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason why this account is receiving an account suspension warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abuseReason")]
+        public virtual string AbuseReason { get; set; }
+
+        /// <summary>
+        /// The name of the product being abused. This is restricted to only the following values: "Gmail" "Payments"
+        /// "Voice" "Workspace" "Other"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productName")]
+        public virtual string ProductName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A warning that the customer's account is about to be suspended.</summary>
+    public class AccountSuspensionWarning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The amount of time remaining to appeal an imminent suspension. After this window has elapsed, the account
+        /// will be suspended. Only populated if the account suspension is in WARNING state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appealWindow")]
+        public virtual object AppealWindow { get; set; }
+
+        /// <summary>Account suspension warning state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Details about why an account is being suspended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionDetails")]
+        public virtual System.Collections.Generic.IList<AccountSuspensionDetails> SuspensionDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Alerts for user account warning events.</summary>
     public class AccountWarning : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1172,7 +1212,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>
         /// Required. A unique identifier for the system that reported the alert. This is output only after alert is
         /// created. Supported sources are any of the following: * Google Operations * Mobile device management * Gmail
-        /// phishing * Data Loss Prevention * Domain wide takeout * State sponsored attack * Google identity
+        /// phishing * Data Loss Prevention * Domain wide takeout * State sponsored attack * Google identity * Apps
+        /// outage
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
@@ -1301,14 +1342,14 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An outage incident reported by Google for a Google Workspace (formerly G Suite) application.</summary>
+    /// <summary>An outage incident reported for a Google Workspace service.</summary>
     public class AppsOutage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Link to the outage event in Google Workspace Status Dashboard</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dashboardUri")]
         public virtual string DashboardUri { get; set; }
 
-        /// <summary>Timestamp by which the next update shall be provided.</summary>
+        /// <summary>Timestamp by which the next update is expected to arrive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextUpdateTime")]
         public virtual object NextUpdateTime { get; set; }
 
@@ -1316,7 +1357,9 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<string> Products { get; set; }
 
-        /// <summary>Timestamp of the outage expected or confirmed resolution. (Used only when known).</summary>
+        /// <summary>
+        /// Timestamp when the outage is expected to be resolved, or has confirmed resolution. Provided only when known.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolutionTime")]
         public virtual object ResolutionTime { get; set; }
 

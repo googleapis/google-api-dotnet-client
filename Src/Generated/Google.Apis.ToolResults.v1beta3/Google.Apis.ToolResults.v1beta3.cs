@@ -65,14 +65,20 @@ namespace Google.Apis.ToolResults.v1beta3
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Tool Results API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Tool Results API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1436,8 +1442,22 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// <summary>
                             /// Specify one or more PerfMetricType values such as CPU to filter the result
                             /// </summary>
+                            /// <remarks>
+                            /// Use this property to set a single value for the parameter, or <see cref="FilterList"/>
+                            /// to set multiple values. Do not set both properties.
+                            /// </remarks>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<FilterEnum> Filter { get; set; }
+
+                            /// <summary>
+                            /// Specify one or more PerfMetricType values such as CPU to filter the result
+                            /// </summary>
+                            /// <remarks>
+                            /// Use this property to set one or more values for the parameter. Do not set both this
+                            /// property and <see cref="Filter"/>.
+                            /// </remarks>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<FilterEnum> FilterList { get; set; }
 
                             /// <summary>
                             /// Specify one or more PerfMetricType values such as CPU to filter the result

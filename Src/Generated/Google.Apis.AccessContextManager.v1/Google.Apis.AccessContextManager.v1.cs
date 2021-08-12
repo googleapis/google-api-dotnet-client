@@ -646,8 +646,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and
-            /// only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The
-            /// maximum length of the `short_name` component is 50 characters.
+            /// only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`.
+            /// The maximum length of the `access_level` component is 50 characters.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.AccessLevel body, string name)
             {
@@ -672,8 +672,8 @@ namespace Google.Apis.AccessContextManager.v1
                 /// <summary>
                 /// Required. Resource name for the Access Level. The `short_name` component must begin with a letter
                 /// and only include alphanumeric and '_'. Format:
-                /// `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name`
-                /// component is 50 characters.
+                /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the
+                /// `access_level` component is 50 characters.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1150,7 +1150,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// <param name="name">
             /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter
             /// and only include alphanumeric and '_'. Format:
-            /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+            /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.ServicePerimeter body, string name)
             {
@@ -1175,7 +1175,7 @@ namespace Google.Apis.AccessContextManager.v1
                 /// <summary>
                 /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a
                 /// letter and only include alphanumeric and '_'. Format:
-                /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+                /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1524,7 +1524,7 @@ namespace Google.Apis.AccessContextManager.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.AccessPolicy body, string name)
         {
@@ -1547,7 +1547,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+            /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2228,6 +2228,13 @@ namespace Google.Apis.AccessContextManager.v1
 }
 namespace Google.Apis.AccessContextManager.v1.Data
 {
+    /// <summary>Metadata of Access Context Manager's Long Running Operations.</summary>
+    public class AccessContextManagerOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An `AccessLevel` is a label that can be applied to requests to Google Cloud services, along with a list of
     /// requirements necessary for the label to be applied.
@@ -2248,8 +2255,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only
-        /// include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum
-        /// length of the `short_name` component is 50 characters.
+        /// include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+        /// maximum length of the `access_level` component is 50 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2278,7 +2285,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`</summary>
+        /// <summary>
+        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2654,6 +2663,16 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
+    /// Currently, a completed operation means nothing. In the future, this metadata and a completed operation may
+    /// indicate that the binding has taken effect and is affecting access decisions for all users.
+    /// </summary>
+    public class GcpUserAccessBindingOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about
     /// the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in
     /// order to match.
@@ -3019,7 +3038,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and
-        /// only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        /// only include alphanumeric and '_'. Format:
+        /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

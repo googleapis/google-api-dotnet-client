@@ -464,8 +464,22 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process statuses.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or
+            /// <see cref="UserProcessFilterStatusesList"/> to set multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<UserProcessFilterStatusesEnum> UserProcessFilterStatuses { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process statuses.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="UserProcessFilterStatuses"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<UserProcessFilterStatusesEnum> UserProcessFilterStatusesList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process statuses.
@@ -512,8 +526,22 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process types.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="UserProcessFilterTypesList"/>
+            /// to set multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<UserProcessFilterTypesEnum> UserProcessFilterTypes { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process types.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="UserProcessFilterTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<UserProcessFilterTypesEnum> UserProcessFilterTypesList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process types.
@@ -564,8 +592,22 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified user access levels.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or
+            /// <see cref="UserProcessFilterUserAccessLevelsList"/> to set multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<UserProcessFilterUserAccessLevelsEnum> UserProcessFilterUserAccessLevels { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified user access levels.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="UserProcessFilterUserAccessLevels"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<UserProcessFilterUserAccessLevelsEnum> UserProcessFilterUserAccessLevelsList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified user access levels.
@@ -762,8 +804,22 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process statuses.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or
+            /// <see cref="ScriptProcessFilterStatusesList"/> to set multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScriptProcessFilterStatusesEnum> ScriptProcessFilterStatuses { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process statuses.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ScriptProcessFilterStatuses"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ScriptProcessFilterStatusesEnum> ScriptProcessFilterStatusesList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process statuses.
@@ -810,8 +866,22 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process types.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="ScriptProcessFilterTypesList"/>
+            /// to set multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScriptProcessFilterTypesEnum> ScriptProcessFilterTypes { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process types.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ScriptProcessFilterTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ScriptProcessFilterTypesEnum> ScriptProcessFilterTypesList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process types.
@@ -862,8 +932,23 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified user access levels.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or
+            /// <see cref="ScriptProcessFilterUserAccessLevelsList"/> to set multiple values. Do not set both
+            /// properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScriptProcessFilterUserAccessLevelsEnum> ScriptProcessFilterUserAccessLevels { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified user access levels.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ScriptProcessFilterUserAccessLevels"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ScriptProcessFilterUserAccessLevelsEnum> ScriptProcessFilterUserAccessLevelsList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified user access levels.

@@ -4677,8 +4677,24 @@ namespace Google.Apis.ShoppingContent.v2
             /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
             /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="StatusesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusesEnum> Statuses { get; set; }
+
+            /// <summary>
+            /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for
+            /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
+            /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Statuses"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusesEnum> StatusesList { get; set; }
 
             /// <summary>
             /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for
@@ -8043,7 +8059,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class BusinessDayConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Regular business days. May not be empty.</summary>
+        /// <summary>Regular business days, such as '"monday"'. May not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessDays")]
         public virtual System.Collections.Generic.IList<string> BusinessDays { get; set; }
 

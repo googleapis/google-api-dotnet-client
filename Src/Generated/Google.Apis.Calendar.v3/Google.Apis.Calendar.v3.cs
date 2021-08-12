@@ -4562,15 +4562,16 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>
         /// The ID of the conference. Can be used by developers to keep track of conferences, should not be displayed to
         /// users. The ID value is formed differently for each conference solution type:   - eventHangout: ID is not
-        /// set. - eventNamedHangout: ID is the name of the Hangout. - hangoutsMeet: ID is the 10-letter meeting code,
-        /// for example aaa-bbbb-ccc. - addOn: ID is defined by the third-party provider.  Optional.
+        /// set. (This conference type is deprecated.) - eventNamedHangout: ID is the name of the Hangout. (This
+        /// conference type is deprecated.) - hangoutsMeet: ID is the 10-letter meeting code, for example aaa-bbbb-ccc.
+        /// - addOn: ID is defined by the third-party provider.  Optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
         public virtual string ConferenceId { get; set; }
 
         /// <summary>
-        /// The conference solution, such as Hangouts or Google Meet. Unset for a conference with a failed create
-        /// request. Either conferenceSolution and at least one entryPoint, or createRequest is required.
+        /// The conference solution, such as Google Meet. Unset for a conference with a failed create request. Either
+        /// conferenceSolution and at least one entryPoint, or createRequest is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolution")]
         public virtual ConferenceSolution ConferenceSolution { get; set; }
@@ -4686,9 +4687,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>
         /// The conference solution type. If a client encounters an unfamiliar or empty type, it should still be able to
         /// display the entry points. However, it should disallow modifications. The possible values are:   -
-        /// "eventHangout" for Hangouts for consumers (http://hangouts.google.com) - "eventNamedHangout" for classic
-        /// Hangouts for Google Workspace users (deprecated; http://hangouts.google.com) - "hangoutsMeet" for Google
-        /// Meet (http://meet.google.com) - "addOn" for 3P conference providers
+        /// "eventHangout" for Hangouts for consumers (deprecated; existing events may show this conference solution
+        /// type but new conferences cannot be created) - "eventNamedHangout" for classic Hangouts for Google Workspace
+        /// users (deprecated; existing events may show this conference solution type but new conferences cannot be
+        /// created) - "hangoutsMeet" for Google Meet (http://meet.google.com) - "addOn" for 3P conference providers
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

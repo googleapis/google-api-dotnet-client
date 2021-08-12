@@ -756,8 +756,20 @@ namespace Google.Apis.SemanticTile.v1
             public virtual System.Nullable<int> MinElevationResolutionCells { get; set; }
 
             /// <summary>Terrain formats that the client understands.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="TerrainFormatsList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("terrainFormats", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TerrainFormatsEnum> TerrainFormats { get; set; }
+
+            /// <summary>Terrain formats that the client understands.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="TerrainFormats"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("terrainFormats", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TerrainFormatsEnum> TerrainFormatsList { get; set; }
 
             /// <summary>Terrain formats that the client understands.</summary>
             public enum TerrainFormatsEnum

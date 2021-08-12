@@ -849,8 +849,23 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             /// Message types to return. If not populated - INFO, WARNING and ERROR messages are
                             /// returned.
                             /// </summary>
+                            /// <remarks>
+                            /// Use this property to set a single value for the parameter, or
+                            /// <see cref="MessageTypesList"/> to set multiple values. Do not set both properties.
+                            /// </remarks>
                             [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<MessageTypesEnum> MessageTypes { get; set; }
+
+                            /// <summary>
+                            /// Message types to return. If not populated - INFO, WARNING and ERROR messages are
+                            /// returned.
+                            /// </summary>
+                            /// <remarks>
+                            /// Use this property to set one or more values for the parameter. Do not set both this
+                            /// property and <see cref="MessageTypes"/>.
+                            /// </remarks>
+                            [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<MessageTypesEnum> MessageTypesList { get; set; }
 
                             /// <summary>
                             /// Message types to return. If not populated - INFO, WARNING and ERROR messages are
@@ -1104,8 +1119,20 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         }
 
                         /// <summary>When specified, only transfer runs with requested states are returned.</summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="StatesList"/> to
+                        /// set multiple values. Do not set both properties.
+                        /// </remarks>
                         [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                        /// <summary>When specified, only transfer runs with requested states are returned.</summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="States"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<StatesEnum> StatesList { get; set; }
 
                         /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                         public enum StatesEnum
@@ -2012,8 +2039,22 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// <summary>
                         /// Message types to return. If not populated - INFO, WARNING and ERROR messages are returned.
                         /// </summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="MessageTypesList"/>
+                        /// to set multiple values. Do not set both properties.
+                        /// </remarks>
                         [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<MessageTypesEnum> MessageTypes { get; set; }
+
+                        /// <summary>
+                        /// Message types to return. If not populated - INFO, WARNING and ERROR messages are returned.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="MessageTypes"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<MessageTypesEnum> MessageTypesList { get; set; }
 
                         /// <summary>
                         /// Message types to return. If not populated - INFO, WARNING and ERROR messages are returned.
@@ -2262,8 +2303,20 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>When specified, only transfer runs with requested states are returned.</summary>
+                    /// <remarks>
+                    /// Use this property to set a single value for the parameter, or <see cref="StatesList"/> to set
+                    /// multiple values. Do not set both properties.
+                    /// </remarks>
                     [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                    /// <summary>When specified, only transfer runs with requested states are returned.</summary>
+                    /// <remarks>
+                    /// Use this property to set one or more values for the parameter. Do not set both this property and
+                    /// <see cref="States"/>.
+                    /// </remarks>
+                    [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<StatesEnum> StatesList { get; set; }
 
                     /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                     public enum StatesEnum

@@ -66,7 +66,10 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// <summary>Available OAuth 2.0 scopes for use with the Service Networking API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google API service configuration</summary>
@@ -76,7 +79,10 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// <summary>Available OAuth 2.0 scope constants for use with the Service Networking API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google API service configuration</summary>
@@ -2640,7 +2646,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// </summary>
     public class PeeredDnsDomain : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The DNS domain name suffix e.g. `example.com.`.</summary>
+        /// <summary>
+        /// The DNS domain name suffix e.g. `example.com.`. Cloud DNS requires that a DNS suffix ends with a trailing
+        /// dot.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
         public virtual string DnsSuffix { get; set; }
 

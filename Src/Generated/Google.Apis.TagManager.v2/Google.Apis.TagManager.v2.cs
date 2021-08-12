@@ -1344,8 +1344,20 @@ namespace Google.Apis.TagManager.v2
                         public virtual string Parent { get; private set; }
 
                         /// <summary>The types of built-in variables to enable.</summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="TypeList"/> to set
+                        /// multiple values. Do not set both properties.
+                        /// </remarks>
                         [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                        /// <summary>The types of built-in variables to enable.</summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="Type"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<TypeEnum> TypeList { get; set; }
 
                         /// <summary>The types of built-in variables to enable.</summary>
                         public enum TypeEnum
@@ -1863,8 +1875,20 @@ namespace Google.Apis.TagManager.v2
                         public virtual string Path { get; private set; }
 
                         /// <summary>The types of built-in variables to delete.</summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="TypeList"/> to set
+                        /// multiple values. Do not set both properties.
+                        /// </remarks>
                         [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                        /// <summary>The types of built-in variables to delete.</summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="Type"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<TypeEnum> TypeList { get; set; }
 
                         /// <summary>The types of built-in variables to delete.</summary>
                         public enum TypeEnum

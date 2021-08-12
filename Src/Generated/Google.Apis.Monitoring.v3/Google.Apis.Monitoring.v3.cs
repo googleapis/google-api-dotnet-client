@@ -8905,7 +8905,9 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>
         /// Required. The monitored resource type. For example, the type "cloudsql_database" represents databases in
-        /// Google Cloud SQL.
+        /// Google Cloud SQL. For a list of types, see Monitoring resource types
+        /// (https://cloud.google.com/monitoring/api/resources) and Logging resource types
+        /// (https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -9906,7 +9908,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance,
-        /// gae_app, aws_ec2_instance, aws_elb_load_balancer
+        /// gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual MonitoredResource MonitoredResource { get; set; }

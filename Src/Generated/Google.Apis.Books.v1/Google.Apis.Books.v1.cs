@@ -2243,8 +2243,20 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; private set; }
 
             /// <summary>List of features supported by the client, i.e., 'RENTALS'</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="FeaturesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("features", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<FeaturesEnum> Features { get; set; }
+
+            /// <summary>List of features supported by the client, i.e., 'RENTALS'</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Features"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("features", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<FeaturesEnum> FeaturesList { get; set; }
 
             /// <summary>List of features supported by the client, i.e., 'RENTALS'</summary>
             public enum FeaturesEnum
@@ -4807,8 +4819,20 @@ namespace Google.Apis.Books.v1
                 }
 
                 /// <summary>How the book was acquired</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="AcquireMethodList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("acquireMethod", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AcquireMethodEnum> AcquireMethod { get; set; }
+
+                /// <summary>How the book was acquired</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="AcquireMethod"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("acquireMethod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<AcquireMethodEnum> AcquireMethodList { get; set; }
 
                 /// <summary>How the book was acquired</summary>
                 public enum AcquireMethodEnum
@@ -4868,8 +4892,23 @@ namespace Google.Apis.Books.v1
                 /// The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is
                 /// specified in the acquireMethod.
                 /// </summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="ProcessingStateList"/> to
+                /// set multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ProcessingStateEnum> ProcessingState { get; set; }
+
+                /// <summary>
+                /// The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is
+                /// specified in the acquireMethod.
+                /// </summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="ProcessingState"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<ProcessingStateEnum> ProcessingStateList { get; set; }
 
                 /// <summary>
                 /// The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is
@@ -5228,8 +5267,20 @@ namespace Google.Apis.Books.v1
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
                 /// <summary>The processing state of the user uploaded volumes to be returned.</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="ProcessingStateList"/> to
+                /// set multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ProcessingStateEnum> ProcessingState { get; set; }
+
+                /// <summary>The processing state of the user uploaded volumes to be returned.</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="ProcessingState"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<ProcessingStateEnum> ProcessingStateList { get; set; }
 
                 /// <summary>The processing state of the user uploaded volumes to be returned.</summary>
                 public enum ProcessingStateEnum

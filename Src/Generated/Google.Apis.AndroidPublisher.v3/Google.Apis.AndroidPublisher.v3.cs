@@ -5165,7 +5165,9 @@ namespace Google.Apis.AndroidPublisher.v3
             this.service = service;
         }
 
-        /// <summary>Refund a user's subscription or in-app purchase order.</summary>
+        /// <summary>
+        /// Refunds a user's subscription or in-app purchase order. Orders older than 1 year cannot be refunded.
+        /// </summary>
         /// <param name="packageName">
         /// The package name of the application for which this subscription or in-app item was purchased (for example,
         /// 'com.some.thing').
@@ -5178,7 +5180,9 @@ namespace Google.Apis.AndroidPublisher.v3
             return new RefundRequest(service, packageName, orderId);
         }
 
-        /// <summary>Refund a user's subscription or in-app purchase order.</summary>
+        /// <summary>
+        /// Refunds a user's subscription or in-app purchase order. Orders older than 1 year cannot be refunded.
+        /// </summary>
         public class RefundRequest : AndroidPublisherBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Refund request.</summary>

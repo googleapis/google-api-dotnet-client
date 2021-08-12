@@ -65,14 +65,20 @@ namespace Google.Apis.PolicyAnalyzer.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Policy Analyzer API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Policy Analyzer API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -329,18 +335,18 @@ namespace Google.Apis.PolicyAnalyzer.v1
                         this.service = service;
                     }
 
-                    /// <summary>Queries policy activities on GCP resources.</summary>
+                    /// <summary>Queries policy activities on Google Cloud resources.</summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats:
                     /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
-                    /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                    /// LOCATION here refers to Google Cloud Locations: https://cloud.google.com/about/locations/
                     /// </param>
                     public virtual QueryRequest Query(string parent)
                     {
                         return new QueryRequest(service, parent);
                     }
 
-                    /// <summary>Queries policy activities on GCP resources.</summary>
+                    /// <summary>Queries policy activities on Google Cloud resources.</summary>
                     public class QueryRequest : PolicyAnalyzerBaseServiceRequest<Google.Apis.PolicyAnalyzer.v1.Data.GoogleCloudPolicyanalyzerV1QueryActivityResponse>
                     {
                         /// <summary>Constructs a new Query request.</summary>
@@ -353,15 +359,15 @@ namespace Google.Apis.PolicyAnalyzer.v1
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats:
                         /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
-                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// LOCATION here refers to Google Cloud Locations: https://cloud.google.com/about/locations/
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Optional filter expression to restrict the activities returned. Supported filters
-                        /// are: - service_account_last_authn.full_resource_name {=} -
-                        /// service_account_key_last_authn.full_resource_name {=}
+                        /// Optional. Filter expression to restrict the activities returned. Supported filters are: -
+                        /// service_account_last_authn.full_resource_name {=} [STRING] -
+                        /// service_account_key_last_authn.full_resource_name {=} [STRING]
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -464,11 +470,11 @@ namespace Google.Apis.PolicyAnalyzer.v1.Data
     /// <summary>Represents data observation period.</summary>
     public class GoogleCloudPolicyanalyzerV1ObservationPeriod : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The observation end time.</summary>
+        /// <summary>The observation end time. The time in this timestamp is always `07:00:00Z`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>The observation start time.</summary>
+        /// <summary>The observation start time. The time in this timestamp is always `07:00:00Z`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 

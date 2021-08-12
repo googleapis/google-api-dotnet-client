@@ -1438,6 +1438,13 @@ namespace Google.Apis.AccessContextManager.v1beta
 }
 namespace Google.Apis.AccessContextManager.v1beta.Data
 {
+    /// <summary>Metadata of Access Context Manager's Long Running Operations.</summary>
+    public class AccessContextManagerOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An `AccessLevel` is a label that can be applied to requests to Google Cloud services, along with a list of
     /// requirements necessary for the label to be applied.

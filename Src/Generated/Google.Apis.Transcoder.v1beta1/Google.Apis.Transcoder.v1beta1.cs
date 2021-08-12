@@ -65,14 +65,20 @@ namespace Google.Apis.Transcoder.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Transcoder API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Transcoder API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1578,45 +1584,6 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the metadata of the long-running operation.</summary>
-    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; }
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The origin URI.</summary>
     public class OriginUri : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1959,7 +1926,10 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bPyramid")]
         public virtual System.Nullable<bool> BPyramid { get; set; }
 
-        /// <summary>Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.</summary>
+        /// <summary>
+        /// Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265
+        /// is 800,000,000. The maximum value for VP9 is 480,000,000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitrateBps")]
         public virtual System.Nullable<int> BitrateBps { get; set; }
 

@@ -1334,8 +1334,20 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
                 /// <summary>History types to be returned by the function</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="HistoryTypesList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("historyTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<HistoryTypesEnum> HistoryTypes { get; set; }
+
+                /// <summary>History types to be returned by the function</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="HistoryTypes"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("historyTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<HistoryTypesEnum> HistoryTypesList { get; set; }
 
                 /// <summary>History types to be returned by the function</summary>
                 public enum HistoryTypesEnum

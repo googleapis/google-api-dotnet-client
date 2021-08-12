@@ -319,8 +319,20 @@ namespace Google.Apis.WebRisk.v1
             public virtual string HashPrefix { get; set; }
 
             /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="ThreatTypesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("threatTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ThreatTypesEnum> ThreatTypes { get; set; }
+
+            /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ThreatTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("threatTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ThreatTypesEnum> ThreatTypesList { get; set; }
 
             /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
             public enum ThreatTypesEnum
@@ -913,8 +925,20 @@ namespace Google.Apis.WebRisk.v1
             public virtual System.Nullable<int> ConstraintsMaxDiffEntries { get; set; }
 
             /// <summary>The compression types supported by the client.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or
+            /// <see cref="ConstraintsSupportedCompressionsList"/> to set multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("constraints.supportedCompressions", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ConstraintsSupportedCompressionsEnum> ConstraintsSupportedCompressions { get; set; }
+
+            /// <summary>The compression types supported by the client.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ConstraintsSupportedCompressions"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("constraints.supportedCompressions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ConstraintsSupportedCompressionsEnum> ConstraintsSupportedCompressionsList { get; set; }
 
             /// <summary>The compression types supported by the client.</summary>
             public enum ConstraintsSupportedCompressionsEnum
@@ -1065,8 +1089,20 @@ namespace Google.Apis.WebRisk.v1
             }
 
             /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="ThreatTypesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("threatTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ThreatTypesEnum> ThreatTypes { get; set; }
+
+            /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ThreatTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("threatTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ThreatTypesEnum> ThreatTypesList { get; set; }
 
             /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
             public enum ThreatTypesEnum

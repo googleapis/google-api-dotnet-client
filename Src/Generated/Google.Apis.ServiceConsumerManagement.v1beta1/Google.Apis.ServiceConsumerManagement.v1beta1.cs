@@ -66,14 +66,20 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Service Consumer Management API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Service Consumer Management API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -456,8 +462,25 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
                         /// set.
                         /// </summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="ForceOnlyList"/> to
+                        /// set multiple values. Do not set both properties.
+                        /// </remarks>
                         [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ForceOnlyEnum> ForceOnly { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="ForceOnly"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
 
                         /// <summary>
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
@@ -573,8 +596,25 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
                         /// set.
                         /// </summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="ForceOnlyList"/> to
+                        /// set multiple values. Do not set both properties.
+                        /// </remarks>
                         [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ForceOnlyEnum> ForceOnly { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="ForceOnly"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
 
                         /// <summary>
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
@@ -765,8 +805,25 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
                         /// set.
                         /// </summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="ForceOnlyList"/> to
+                        /// set multiple values. Do not set both properties.
+                        /// </remarks>
                         [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ForceOnlyEnum> ForceOnly { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="ForceOnly"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
 
                         /// <summary>
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
