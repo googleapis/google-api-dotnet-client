@@ -68,7 +68,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1
             /// <summary>Apply machine learning models to reveal the structure and meaning of text</summary>
             public static string CloudLanguage = "https://www.googleapis.com/auth/cloud-language";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -78,7 +81,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1
             /// <summary>Apply machine learning models to reveal the structure and meaning of text</summary>
             public const string CloudLanguage = "https://www.googleapis.com/auth/cloud-language";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 

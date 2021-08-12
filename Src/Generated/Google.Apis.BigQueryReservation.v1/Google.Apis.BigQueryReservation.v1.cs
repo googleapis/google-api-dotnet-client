@@ -65,20 +65,30 @@ namespace Google.Apis.BigQueryReservation.v1
         /// <summary>Available OAuth 2.0 scopes for use with the BigQuery Reservation API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data in Google BigQuery</summary>
+            /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
             public static string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the BigQuery Reservation API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data in Google BigQuery</summary>
+            /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
             public const string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -439,6 +449,13 @@ namespace Google.Apis.BigQueryReservation.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Can be used to force delete commitments even if assignments exist. Deleting commitments with
+                    /// assignments may cause queries to fail if they no longer have access to slots.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -459,6 +476,14 @@ namespace Google.Apis.BigQueryReservation.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }

@@ -2950,8 +2950,23 @@ namespace Google.Apis.Iam.v1
                     /// Filters the types of keys the user wants to include in the list response. Duplicate key types
                     /// are not allowed. If no key type is provided, all keys are returned.
                     /// </summary>
+                    /// <remarks>
+                    /// Use this property to set a single value for the parameter, or <see cref="KeyTypesList"/> to set
+                    /// multiple values. Do not set both properties.
+                    /// </remarks>
                     [Google.Apis.Util.RequestParameterAttribute("keyTypes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<KeyTypesEnum> KeyTypes { get; set; }
+
+                    /// <summary>
+                    /// Filters the types of keys the user wants to include in the list response. Duplicate key types
+                    /// are not allowed. If no key type is provided, all keys are returned.
+                    /// </summary>
+                    /// <remarks>
+                    /// Use this property to set one or more values for the parameter. Do not set both this property and
+                    /// <see cref="KeyTypes"/>.
+                    /// </remarks>
+                    [Google.Apis.Util.RequestParameterAttribute("keyTypes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<KeyTypesEnum> KeyTypesList { get; set; }
 
                     /// <summary>
                     /// Filters the types of keys the user wants to include in the list response. Duplicate key types

@@ -67,14 +67,20 @@ namespace Google.Apis.Essentialcontacts.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Essential Contacts API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Essential Contacts API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -338,8 +344,23 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
                 /// subscribed to any notification category will be returned.
                 /// </summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or
+                /// <see cref="NotificationCategoriesList"/> to set multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<NotificationCategoriesEnum> NotificationCategories { get; set; }
+
+                /// <summary>
+                /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
+                /// subscribed to any notification category will be returned.
+                /// </summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="NotificationCategories"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<NotificationCategoriesEnum> NotificationCategoriesList { get; set; }
 
                 /// <summary>
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
@@ -922,8 +943,23 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
                 /// subscribed to any notification category will be returned.
                 /// </summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or
+                /// <see cref="NotificationCategoriesList"/> to set multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<NotificationCategoriesEnum> NotificationCategories { get; set; }
+
+                /// <summary>
+                /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
+                /// subscribed to any notification category will be returned.
+                /// </summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="NotificationCategories"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<NotificationCategoriesEnum> NotificationCategoriesList { get; set; }
 
                 /// <summary>
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
@@ -1506,8 +1542,23 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
                 /// subscribed to any notification category will be returned.
                 /// </summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or
+                /// <see cref="NotificationCategoriesList"/> to set multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<NotificationCategoriesEnum> NotificationCategories { get; set; }
+
+                /// <summary>
+                /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
+                /// subscribed to any notification category will be returned.
+                /// </summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="NotificationCategories"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<NotificationCategoriesEnum> NotificationCategoriesList { get; set; }
 
                 /// <summary>
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts

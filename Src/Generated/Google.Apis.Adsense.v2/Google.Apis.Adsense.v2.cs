@@ -1939,8 +1939,20 @@ namespace Google.Apis.Adsense.v2
                 }
 
                 /// <summary>Dimensions to base the report on.</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="DimensionsList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<DimensionsEnum> Dimensions { get; set; }
+
+                /// <summary>Dimensions to base the report on.</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="Dimensions"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<DimensionsEnum> DimensionsList { get; set; }
 
                 /// <summary>Dimensions to base the report on.</summary>
                 public enum DimensionsEnum
@@ -2230,8 +2242,20 @@ namespace Google.Apis.Adsense.v2
                 public virtual System.Nullable<int> Limit { get; set; }
 
                 /// <summary>Required. Reporting metrics.</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="MetricsList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MetricsEnum> Metrics { get; set; }
+
+                /// <summary>Required. Reporting metrics.</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="Metrics"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<MetricsEnum> MetricsList { get; set; }
 
                 /// <summary>Required. Reporting metrics.</summary>
                 public enum MetricsEnum
@@ -2695,8 +2719,20 @@ namespace Google.Apis.Adsense.v2
                 }
 
                 /// <summary>Dimensions to base the report on.</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="DimensionsList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<DimensionsEnum> Dimensions { get; set; }
+
+                /// <summary>Dimensions to base the report on.</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="Dimensions"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<DimensionsEnum> DimensionsList { get; set; }
 
                 /// <summary>Dimensions to base the report on.</summary>
                 public enum DimensionsEnum
@@ -2986,8 +3022,20 @@ namespace Google.Apis.Adsense.v2
                 public virtual System.Nullable<int> Limit { get; set; }
 
                 /// <summary>Required. Reporting metrics.</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="MetricsList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MetricsEnum> Metrics { get; set; }
+
+                /// <summary>Required. Reporting metrics.</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="Metrics"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<MetricsEnum> MetricsList { get; set; }
 
                 /// <summary>Required. Reporting metrics.</summary>
                 public enum MetricsEnum

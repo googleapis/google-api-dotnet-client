@@ -1920,8 +1920,20 @@ namespace Google.Apis.Dfareporting.v3_4
             public virtual System.Nullable<bool> SslRequired { get; set; }
 
             /// <summary>Select only ads with these types.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="TypeList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Select only ads with these types.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Type"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TypeEnum> TypeList { get; set; }
 
             /// <summary>Select only ads with these types.</summary>
             public enum TypeEnum
@@ -7687,8 +7699,20 @@ namespace Google.Apis.Dfareporting.v3_4
             public virtual System.Nullable<long> StudioCreativeId { get; set; }
 
             /// <summary>Select only creatives with these creative types.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="TypesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TypesEnum> Types { get; set; }
+
+            /// <summary>Select only creatives with these creative types.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Types"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TypesEnum> TypesList { get; set; }
 
             /// <summary>Select only creatives with these creative types.</summary>
             public enum TypesEnum
@@ -9114,8 +9138,24 @@ namespace Google.Apis.Dfareporting.v3_4
             /// whether to use a third-party pixel, a third-party JavaScript URL, or a third-party click-through URL for
             /// either impression or click tracking.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="EventTagTypesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("eventTagTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<EventTagTypesEnum> EventTagTypes { get; set; }
+
+            /// <summary>
+            /// Select only event tags with the specified event tag types. Event tag types can be used to specify
+            /// whether to use a third-party pixel, a third-party JavaScript URL, or a third-party click-through URL for
+            /// either impression or click tracking.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="EventTagTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("eventTagTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<EventTagTypesEnum> EventTagTypesList { get; set; }
 
             /// <summary>
             /// Select only event tags with the specified event tag types. Event tag types can be used to specify
@@ -11569,8 +11609,20 @@ namespace Google.Apis.Dfareporting.v3_4
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Select only apps from these directories.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="DirectoriesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("directories", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<DirectoriesEnum> Directories { get; set; }
+
+            /// <summary>Select only apps from these directories.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Directories"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("directories", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<DirectoriesEnum> DirectoriesList { get; set; }
 
             /// <summary>Select only apps from these directories.</summary>
             public enum DirectoriesEnum
@@ -12818,8 +12870,20 @@ namespace Google.Apis.Dfareporting.v3_4
             public virtual Google.Apis.Util.Repeatable<string> PlacementStrategyIds { get; set; }
 
             /// <summary>Select only placement groups with these pricing types.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="PricingTypesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("pricingTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<PricingTypesEnum> PricingTypes { get; set; }
+
+            /// <summary>Select only placement groups with these pricing types.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="PricingTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("pricingTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<PricingTypesEnum> PricingTypesList { get; set; }
 
             /// <summary>Select only placement groups with these pricing types.</summary>
             public enum PricingTypesEnum
@@ -13693,8 +13757,23 @@ namespace Google.Apis.Dfareporting.v3_4
             /// Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for
             /// 1x1 placements.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="TagFormatsList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("tagFormats", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TagFormatsEnum> TagFormats { get; set; }
+
+            /// <summary>
+            /// Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for
+            /// 1x1 placements.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="TagFormats"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("tagFormats", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TagFormatsEnum> TagFormatsList { get; set; }
 
             /// <summary>
             /// Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for
@@ -13981,8 +14060,25 @@ namespace Google.Apis.Dfareporting.v3_4
             /// APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in
             /// in-stream video ads developed with the VAST standard.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="CompatibilitiesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("compatibilities", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CompatibilitiesEnum> Compatibilities { get; set; }
+
+            /// <summary>
+            /// Select only placements that are associated with these compatibilities. DISPLAY and DISPLAY_INTERSTITIAL
+            /// refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively.
+            /// APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in
+            /// in-stream video ads developed with the VAST standard.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Compatibilities"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("compatibilities", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<CompatibilitiesEnum> CompatibilitiesList { get; set; }
 
             /// <summary>
             /// Select only placements that are associated with these compatibilities. DISPLAY and DISPLAY_INTERSTITIAL
@@ -14090,8 +14186,20 @@ namespace Google.Apis.Dfareporting.v3_4
             public virtual Google.Apis.Util.Repeatable<string> PlacementStrategyIds { get; set; }
 
             /// <summary>Select only placements with these pricing types.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="PricingTypesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("pricingTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<PricingTypesEnum> PricingTypes { get; set; }
+
+            /// <summary>Select only placements with these pricing types.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="PricingTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("pricingTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<PricingTypesEnum> PricingTypesList { get; set; }
 
             /// <summary>Select only placements with these pricing types.</summary>
             public enum PricingTypesEnum

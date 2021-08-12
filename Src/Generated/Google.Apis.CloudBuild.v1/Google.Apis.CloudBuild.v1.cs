@@ -437,6 +437,69 @@ namespace Google.Apis.CloudBuild.v1
                 this.service = service;
             }
 
+            /// <summary>
+            /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned
+            /// from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}"
+            /// </param>
+            public virtual ApproveRequest Approve(Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest body, string name)
+            {
+                return new ApproveRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned
+            /// from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+            /// </summary>
+            public class ApproveRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Approve request.</summary>
+                public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "approve";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:approve";
+
+                /// <summary>Initializes Approve parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/builds/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Cancels a build in progress.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project.</param>
@@ -1281,6 +1344,69 @@ namespace Google.Apis.CloudBuild.v1
                 public BuildsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>
+                /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO
+                /// returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}"
+                /// </param>
+                public virtual ApproveRequest Approve(Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest body, string name)
+                {
+                    return new ApproveRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO
+                /// returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+                /// </summary>
+                public class ApproveRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Approve request.</summary>
+                    public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "approve";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:approve";
+
+                    /// <summary>Initializes Approve parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/builds/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>Cancels a build in progress.</summary>
@@ -3856,6 +3982,68 @@ namespace Google.Apis.CloudBuild.v1
 }
 namespace Google.Apis.CloudBuild.v1.Data
 {
+    /// <summary>ApprovalConfig describes configuration for manual approval of a build.</summary>
+    public class ApprovalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will
+        /// need to be explicitly approved to start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalRequired")]
+        public virtual System.Nullable<bool> ApprovalRequired { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+    /// </summary>
+    public class ApprovalResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the approval decision was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalTime")]
+        public virtual object ApprovalTime { get; set; }
+
+        /// <summary>
+        /// Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time
+        /// that the API was called (the user's actual email that is tied to their GAIA ID may have changed). This field
+        /// is not stored, rather, it is calculated on the fly using approver_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approverAccount")]
+        public virtual string ApproverAccount { get; set; }
+
+        /// <summary>Optional. An optional comment for this manual approval result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Required. The decision of this manual approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        /// <summary>
+        /// Optional. An optional URL tied to this manual approval result. This field is essentially the same as
+        /// comment, except that it will be rendered by the UI differently. An example use case is a link to an external
+        /// job that approved this Build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to approve or reject a pending build.</summary>
+    public class ApproveBuildRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Approval decision and metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalResult")]
+        public virtual ApprovalResult ApprovalResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
     /// </summary>
@@ -3939,6 +4127,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// </summary>
     public class Build : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Describes this build's approval configuration, status, and result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approval")]
+        public virtual BuildApproval Approval { get; set; }
+
         /// <summary>
         /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         /// </summary>
@@ -4087,6 +4279,25 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Output only. Non-fatal problems encountered during the execution of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Warning> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BuildApproval describes a build's approval configuration, state, and result.</summary>
+    public class BuildApproval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Configuration for manual approval of this build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual ApprovalConfig Config { get; set; }
+
+        /// <summary>Output only. Result of manual approval for this Build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual ApprovalResult Result { get; set; }
+
+        /// <summary>Output only. The state of this build's approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4251,6 +4462,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual TimeSpan PullTiming { get; set; }
 
         /// <summary>
+        /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
+        /// or args.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual string Script { get; set; }
+
+        /// <summary>
         /// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These
         /// values must be specified in the build's `Secret`.
         /// </summary>
@@ -4298,6 +4516,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Configuration for an automated build in response to source repository changes.</summary>
     public class BuildTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration for manual approval to start a build invocation of this BuildTrigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalConfig")]
+        public virtual ApprovalConfig ApprovalConfig { get; set; }
+
         /// <summary>
         /// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2.
         /// cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
@@ -4325,9 +4547,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; }
 
-        /// <summary>Optional. A Common Expression Language string.</summary>
+        /// <summary>A Common Expression Language string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The file source describing the local or remote Build template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitFileSource")]
+        public virtual GitFileSource GitFileSource { get; set; }
 
         /// <summary>
         /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is
@@ -4382,9 +4608,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ResourceName { get; set; }
 
         /// <summary>
-        /// Optional. The service account used for all user-controlled operations including UpdateBuildTrigger,
-        /// RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build
-        /// service account ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format:
+        /// The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger,
+        /// CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build service account
+        /// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format:
         /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -4600,6 +4826,37 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GitFileSource describes a file within a (possibly remote) code repository.</summary>
+    public class GitFileSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The path of the file, with the repo root as the root of the path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>See RepoType above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoType")]
+        public virtual string RepoType { get; set; }
+
+        /// <summary>
+        /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional).
+        /// This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If
+        /// unspecified, the revision from which the trigger invocation originated is assumed to be the revision from
+        /// which to read the specified path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is
+        /// assumed to be the repo from which to read the specified path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5148,7 +5405,7 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]

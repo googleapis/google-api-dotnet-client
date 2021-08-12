@@ -309,8 +309,22 @@ namespace Google.Apis.PagespeedInsights.v5
             /// <summary>
             /// A Lighthouse category to run; if none are given, only Performance category will be run
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="CategoryList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CategoryEnum> Category { get; set; }
+
+            /// <summary>
+            /// A Lighthouse category to run; if none are given, only Performance category will be run
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Category"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<CategoryEnum> CategoryList { get; set; }
 
             /// <summary>
             /// A Lighthouse category to run; if none are given, only Performance category will be run

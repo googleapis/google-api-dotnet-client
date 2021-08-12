@@ -424,8 +424,22 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// <summary>
                 /// The information to be included in the response. Only sections listed here will be returned.
                 /// </summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="IncludeList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<IncludeEnum> Include { get; set; }
+
+                /// <summary>
+                /// The information to be included in the response. Only sections listed here will be returned.
+                /// </summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="Include"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<IncludeEnum> IncludeList { get; set; }
 
                 /// <summary>
                 /// The information to be included in the response. Only sections listed here will be returned.
@@ -519,8 +533,22 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// <summary>
                 /// The information to be included in the response. Only sections listed here will be returned.
                 /// </summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="IncludeList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<IncludeEnum> Include { get; set; }
+
+                /// <summary>
+                /// The information to be included in the response. Only sections listed here will be returned.
+                /// </summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="Include"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<IncludeEnum> IncludeList { get; set; }
 
                 /// <summary>
                 /// The information to be included in the response. Only sections listed here will be returned.

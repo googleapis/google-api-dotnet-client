@@ -712,6 +712,57 @@ namespace Google.Apis.CloudBuild.v1alpha1
 }
 namespace Google.Apis.CloudBuild.v1alpha1.Data
 {
+    /// <summary>ApprovalConfig describes configuration for manual approval of a build.</summary>
+    public class ApprovalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will
+        /// need to be explicitly approved to start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalRequired")]
+        public virtual System.Nullable<bool> ApprovalRequired { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+    /// </summary>
+    public class ApprovalResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the approval decision was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalTime")]
+        public virtual object ApprovalTime { get; set; }
+
+        /// <summary>
+        /// Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time
+        /// that the API was called (the user's actual email that is tied to their GAIA ID may have changed). This field
+        /// is not stored, rather, it is calculated on the fly using approver_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approverAccount")]
+        public virtual string ApproverAccount { get; set; }
+
+        /// <summary>Optional. An optional comment for this manual approval result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Required. The decision of this manual approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        /// <summary>
+        /// Optional. An optional URL tied to this manual approval result. This field is essentially the same as
+        /// comment, except that it will be rendered by the UI differently. An example use case is a link to an external
+        /// job that approved this Build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
     /// </summary>
@@ -795,6 +846,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// </summary>
     public class Build : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Describes this build's approval configuration, status, and result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approval")]
+        public virtual BuildApproval Approval { get; set; }
+
         /// <summary>
         /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         /// </summary>
@@ -943,6 +998,25 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// <summary>Output only. Non-fatal problems encountered during the execution of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Warning> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BuildApproval describes a build's approval configuration, state, and result.</summary>
+    public class BuildApproval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Configuration for manual approval of this build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual ApprovalConfig Config { get; set; }
+
+        /// <summary>Output only. Result of manual approval for this Build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual ApprovalResult Result { get; set; }
+
+        /// <summary>Output only. The state of this build's approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1105,6 +1179,13 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// <summary>Output only. Stores timing information for pulling this build step's builder image only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual TimeSpan PullTiming { get; set; }
+
+        /// <summary>
+        /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
+        /// or args.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual string Script { get; set; }
 
         /// <summary>
         /// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These
@@ -1613,7 +1694,7 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]

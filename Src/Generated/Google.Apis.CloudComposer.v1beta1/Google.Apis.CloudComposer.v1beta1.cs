@@ -1617,6 +1617,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
+        /// <summary>
+        /// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod
+        /// IP range so IP masquerading is used for all destination addresses, except between pods traffic. See:
+        /// https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIpMasqAgent")]
+        public virtual System.Nullable<bool> EnableIpMasqAgent { get; set; }
+
         /// <summary>Optional. The IPAllocationPolicy fields for the GKE cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAllocationPolicy")]
         public virtual IPAllocationPolicy IpAllocationPolicy { get; set; }
@@ -1851,6 +1859,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEnvironment")]
         public virtual System.Nullable<bool> EnablePrivateEnvironment { get; set; }
+
+        /// <summary>
+        /// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for
+        /// `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivatelyUsedPublicIps")]
+        public virtual System.Nullable<bool> EnablePrivatelyUsedPublicIps { get; set; }
 
         /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.

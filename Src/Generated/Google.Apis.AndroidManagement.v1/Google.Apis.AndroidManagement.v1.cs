@@ -687,8 +687,20 @@ namespace Google.Apis.AndroidManagement.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Optional flags that control the device wiping behavior.</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="WipeDataFlagsList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("wipeDataFlags", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<WipeDataFlagsEnum> WipeDataFlags { get; set; }
+
+                /// <summary>Optional flags that control the device wiping behavior.</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="WipeDataFlags"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("wipeDataFlags", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<WipeDataFlagsEnum> WipeDataFlagsList { get; set; }
 
                 /// <summary>Optional flags that control the device wiping behavior.</summary>
                 public enum WipeDataFlagsEnum

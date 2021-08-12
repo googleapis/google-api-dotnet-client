@@ -1008,8 +1008,22 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
@@ -1349,8 +1363,23 @@ namespace Google.Apis.PeopleService.v1
                 /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
                 /// READ_SOURCE_TYPE_PROFILE if not set.
                 /// </summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
                 [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+                /// <summary>
+                /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+                /// READ_SOURCE_TYPE_PROFILE if not set.
+                /// </summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="Sources"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
                 /// <summary>
                 /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
@@ -1650,8 +1679,23 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
             /// READ_SOURCE_TYPE_PROFILE if not set.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
@@ -1795,8 +1839,23 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
             /// READ_SOURCE_TYPE_PROFILE if not set.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
@@ -1920,8 +1979,23 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and
             /// READ_SOURCE_TYPE_CONTACT if not set.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and
+            /// READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and
@@ -2051,8 +2125,23 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
             /// READ_SOURCE_TYPE_PROFILE if not set.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
@@ -2158,8 +2247,23 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. Additional data to merge into the directory sources if they are connected through verified
             /// join keys such as email addresses or phone numbers.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="MergeSourcesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<MergeSourcesEnum> MergeSources { get; set; }
+
+            /// <summary>
+            /// Optional. Additional data to merge into the directory sources if they are connected through verified
+            /// join keys such as email addresses or phone numbers.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="MergeSources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<MergeSourcesEnum> MergeSourcesList { get; set; }
 
             /// <summary>
             /// Optional. Additional data to merge into the directory sources if they are connected through verified
@@ -2211,8 +2315,20 @@ namespace Google.Apis.PeopleService.v1
             public virtual System.Nullable<bool> RequestSyncToken { get; set; }
 
             /// <summary>Required. Directory sources to return.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>Required. Directory sources to return.</summary>
             public enum SourcesEnum
@@ -2367,8 +2483,22 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
@@ -2465,8 +2595,23 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. Additional data to merge into the directory sources if they are connected through verified
             /// join keys such as email addresses or phone numbers.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="MergeSourcesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<MergeSourcesEnum> MergeSources { get; set; }
+
+            /// <summary>
+            /// Optional. Additional data to merge into the directory sources if they are connected through verified
+            /// join keys such as email addresses or phone numbers.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="MergeSources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<MergeSourcesEnum> MergeSourcesList { get; set; }
 
             /// <summary>
             /// Optional. Additional data to merge into the directory sources if they are connected through verified
@@ -2517,8 +2662,20 @@ namespace Google.Apis.PeopleService.v1
             public virtual object ReadMask { get; set; }
 
             /// <summary>Required. Directory sources to return.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>Required. Directory sources to return.</summary>
             public enum SourcesEnum
@@ -2664,8 +2821,23 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
             /// READ_SOURCE_TYPE_PROFILE if not set.
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Sources"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
@@ -2920,7 +3092,10 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response to a request to create a batch of contacts.</summary>
+    /// <summary>
+    /// If not successful, returns BatchCreateContactsErrorDetails.contacts which contains a list of errors for each
+    /// invalid contact. The response to a request to create a batch of contacts.
+    /// </summary>
     public class BatchCreateContactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contacts that were created, unless the request `read_mask` is empty.</summary>
@@ -2999,7 +3174,10 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response to a request to create a batch of contacts.</summary>
+    /// <summary>
+    /// If not successful, returns BatchUpdateContactsErrorDetails.contacts, a list of errors corresponding to each
+    /// contact. The response to a request to update a batch of contacts.
+    /// </summary>
     public class BatchUpdateContactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

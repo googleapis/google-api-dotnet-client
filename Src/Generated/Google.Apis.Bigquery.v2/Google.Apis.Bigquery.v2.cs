@@ -1334,8 +1334,20 @@ namespace Google.Apis.Bigquery.v2
             }
 
             /// <summary>Filter for job state</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="StateFilterList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StateFilterEnum> StateFilter { get; set; }
+
+            /// <summary>Filter for job state</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="StateFilter"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StateFilterEnum> StateFilterList { get; set; }
 
             /// <summary>Filter for job state</summary>
             public enum StateFilterEnum
