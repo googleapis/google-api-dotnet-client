@@ -3061,6 +3061,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
         public virtual string FallbackText { get; set; }
 
+        /// <summary>
+        /// Output only. The time at which the message was last updated in Hangouts Chat server. If the message was
+        /// never updated, this field will be same as create_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

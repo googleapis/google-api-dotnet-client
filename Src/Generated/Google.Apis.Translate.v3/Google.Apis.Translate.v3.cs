@@ -65,7 +65,10 @@ namespace Google.Apis.Translate.v3
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Translation API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Translate text from one language to another using Google Translate</summary>
@@ -75,7 +78,10 @@ namespace Google.Apis.Translate.v3
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Translation API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Translate text from one language to another using Google Translate</summary>

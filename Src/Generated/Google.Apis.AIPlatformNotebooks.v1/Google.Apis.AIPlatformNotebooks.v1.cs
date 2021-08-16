@@ -3564,6 +3564,20 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Parameters used in Dataproc JobType executions.</summary>
+    public class DataprocParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// URI for cluster used to run Dataproc execution. Format:
+        /// 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An instance-attached disk resource.</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3798,6 +3812,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerImageUri")]
         public virtual string ContainerImageUri { get; set; }
 
+        /// <summary>Parameters used in Dataproc JobType executions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataprocParameters")]
+        public virtual DataprocParameters DataprocParameters { get; set; }
+
         /// <summary>
         /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format:
         /// gs://{project_id}/{folder}/{notebook_file_name} Ex:
@@ -3805,6 +3823,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputNotebookFile")]
         public virtual string InputNotebookFile { get; set; }
+
+        /// <summary>The type of Job to be used on this execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
+        public virtual string JobType { get; set; }
 
         /// <summary>
         /// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is

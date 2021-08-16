@@ -67,7 +67,10 @@ namespace Google.Apis.Monitoring.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Monitoring API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>
@@ -85,7 +88,10 @@ namespace Google.Apis.Monitoring.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Monitoring API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>
@@ -478,7 +484,10 @@ namespace Google.Apis.Monitoring.v1
                     }
                 }
 
-                /// <summary>Returns a specific Metrics Scope.</summary>
+                /// <summary>
+                /// Returns a specific Metrics Scope, including the list of projects monitored by the specified Metrics
+                /// Scope.
+                /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the Metrics Scope. Example:
                 /// locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
@@ -488,7 +497,10 @@ namespace Google.Apis.Monitoring.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Returns a specific Metrics Scope.</summary>
+                /// <summary>
+                /// Returns a specific Metrics Scope, including the list of projects monitored by the specified Metrics
+                /// Scope.
+                /// </summary>
                 public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.MetricsScope>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1266,6 +1278,10 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("plotType")]
         public virtual string PlotType { get; set; }
 
+        /// <summary>Optional. The target axis to use for plotting the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetAxis")]
+        public virtual string TargetAxis { get; set; }
+
         /// <summary>Required. Fields for querying time series data from the Stackdriver metrics API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
         public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
@@ -1847,6 +1863,12 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string Label { get; set; }
 
         /// <summary>
+        /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetAxis")]
+        public virtual string TargetAxis { get; set; }
+
+        /// <summary>
         /// The value of the threshold. The value should be defined in the native scale of the metric.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
@@ -2081,6 +2103,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>The properties applied to the X axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xAxis")]
         public virtual Axis XAxis { get; set; }
+
+        /// <summary>The properties applied to the Y2 axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y2Axis")]
+        public virtual Axis Y2Axis { get; set; }
 
         /// <summary>The properties applied to the Y axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yAxis")]

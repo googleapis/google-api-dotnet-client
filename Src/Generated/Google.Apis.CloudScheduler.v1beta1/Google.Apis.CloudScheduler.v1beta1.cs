@@ -508,6 +508,16 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// `filter` can be used to specify a subset of jobs. If `filter` equals
+                    /// `target_config="HttpConfig"`, then the http target jobs are retrieved. If `filter` equals
+                    /// `target_config="PubSubConfig"`, then the Pub/Sub target jobs are retrieved. If `filter` equals
+                    /// `labels.foo=value1 labels.foo=value2` then only jobs which are labeled with foo=value1 AND
+                    /// foo=value2 will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If
                     /// the field is set to true, the jobs in the __cron queue will be listed instead.
                     /// </summary>
@@ -551,6 +561,14 @@ namespace Google.Apis.CloudScheduler.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("legacyAppEngineCron", new Google.Apis.Discovery.Parameter
                         {

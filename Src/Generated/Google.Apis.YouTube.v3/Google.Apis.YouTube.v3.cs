@@ -12735,6 +12735,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Next ID: 29</summary>
     public class LiveChatMessageSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12742,7 +12743,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that
         /// just became a sponsor messageDeletedEvent - the moderator that took the action messageRetractedEvent - the
         /// author that retracted their message userBannedEvent - the moderator that took the action superChatEvent -
-        /// the user that made the purchase
+        /// the user that made the purchase superStickerEvent - the user that made the purchase
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
         public virtual string AuthorChannelId { get; set; }

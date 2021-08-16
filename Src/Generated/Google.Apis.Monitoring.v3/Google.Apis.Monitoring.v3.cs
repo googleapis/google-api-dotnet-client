@@ -69,7 +69,10 @@ namespace Google.Apis.Monitoring.v3
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Monitoring API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>
@@ -87,7 +90,10 @@ namespace Google.Apis.Monitoring.v3
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Monitoring API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>
@@ -7875,10 +7881,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Range of numerical values within min and max. If the open range "&amp;lt; range.max" is desired, set range.min =
-    /// -infinity. If the open range "&amp;gt;= range.min" is desired, set range.max = infinity.
-    /// </summary>
+    /// <summary>Range of numerical values within min and max.</summary>
     public class GoogleMonitoringV3Range : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Range maximum.</summary>
