@@ -4372,7 +4372,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// Configuration represents the "floating HEAD" of a linear history of Revisions, and optionally how the containers
     /// those revisions reference are built. Users create new Revisions by updating the Configuration's spec. The
     /// "latest created" revision's name is available under status, as is the "latest ready" revision's name. See also:
-    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#configuration
+    /// https://github.com/knative/serving/blob/main/docs/spec/overview.md#configuration
     /// </summary>
     public class Configuration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4855,8 +4855,8 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// type is used to communicate the status of the reconciliation process. See also:
-        /// https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types
-        /// common to all resources include: * "Ready": True when the Resource is ready.
+        /// https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common
+        /// to all resources include: * "Ready": True when the Resource is ready.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5554,7 +5554,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>
     /// Revision is an immutable snapshot of code and configuration. A revision references a container image. Revisions
     /// are created by updates to a Configuration. See also:
-    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#revision
+    /// https://github.com/knative/serving/blob/main/docs/spec/overview.md#revision
     /// </summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5600,7 +5600,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Containers holds the single container that defines the unit of execution for this Revision. In the context
         /// of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud
         /// Run, only a single container may be provided. The runtime contract is documented here:
-        /// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+        /// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<Container> Containers { get; set; }
@@ -5705,7 +5705,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// distributes traffic over may be specified by referencing the Configuration responsible for creating them; in
     /// these cases the Route is additionally responsible for monitoring the Configuration for "latest ready" revision
     /// changes, and smoothly rolling out latest revisions. See also:
-    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#route Cloud Run currently supports
+    /// https://github.com/knative/serving/blob/main/docs/spec/overview.md#route Cloud Run currently supports
     /// referencing a single Configuration to automatically deploy the "latest ready" Revision from that Configuration.
     /// </summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
@@ -5925,7 +5925,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// only as an orchestrator of the underlying Routes and Configurations (much as a kubernetes Deployment
     /// orchestrates ReplicaSets). The Service's controller will track the statuses of its owned Configuration and
     /// Route, reflecting their statuses and conditions as its own. See also:
-    /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
+    /// https://github.com/knative/serving/blob/main/docs/spec/overview.md#service
     /// </summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {

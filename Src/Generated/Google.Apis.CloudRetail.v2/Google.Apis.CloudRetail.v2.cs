@@ -2991,12 +2991,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2CompleteQueryResponseCompletionResult> CompletionResults { get; set; }
 
         /// <summary>
-        /// Matched recent searches of this user. This field is a restricted feature. Contact Retail Search support team
-        /// if you are interested in enabling it. This feature is only available when CompleteQueryRequest.visitor_id
-        /// field is set and UserEvent is imported. The recent searches satisfy the follow rules: * They are ordered
-        /// from latest to oldest. * They are matched with CompleteQueryRequest.query case insensitively. * They are
-        /// transformed to lower cases. * They are UTF-8 safe. Recent searches are deduplicated. More recent searches
-        /// will be reserved when duplication happens.
+        /// Matched recent searches of this user. The maximum number of recent searches is 10. This field is a
+        /// restricted feature. Contact Retail Search support team if you are interested in enabling it. This feature is
+        /// only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent
+        /// searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with
+        /// CompleteQueryRequest.query case insensitively. * They are transformed to lower cases. * They are UTF-8 safe.
+        /// Recent searches are deduplicated. More recent searches will be reserved when duplication happens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentSearchResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult> RecentSearchResults { get; set; }
@@ -3693,8 +3693,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field
         /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200
         /// by default; 100 for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit of 128
-        /// characters. * Max indexable entries count: 200 by default; 40 for Type.VARIANT. * Max searchable entries
-        /// count: 30. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis
+        /// characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis
         /// or KEY_1_LIKE_THIS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
@@ -3843,9 +3842,9 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// The material of the product. For example, "leather", "wooden". A maximum of 5 values are allowed. Each value
-        /// must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error
-        /// is returned. Google Merchant Center property
+        /// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each
+        /// value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        /// error is returned. Google Merchant Center property
         /// [material](https://support.google.com/merchants/answer/6324410). Schema.org property
         /// [Product.material](https://schema.org/material).
         /// </summary>
@@ -4658,6 +4657,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
 
+        /// <summary>
+        /// Whether to pin unexpanded results. If this field is set to true, unexpanded products are always at the top
+        /// of the search results, followed by the expanded results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
+        public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4758,6 +4764,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expandedQuery")]
         public virtual System.Nullable<bool> ExpandedQuery { get; set; }
 
+        /// <summary>
+        /// Number of pinned results. This field will only be set when expansion happens and
+        /// SearchRequest.query_expansion_spec.pin_unexpanded_results is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinnedResultCount")]
+        public virtual System.Nullable<long> PinnedResultCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4801,7 +4814,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// with type google.protobuf.ListValue. For example, if there are two variants with colors "red" and "blue",
         /// the rollup values are { key: "colorFamilies" value { list_value { values { string_value: "red" } values {
         /// string_value: "blue" } } } } For FulfillmentInfo, the rollup values is a double value with type
-        /// google.protobuf.Value. For example, {key: "pickupInStore.store1" value { number_value: 10 }} means a there
+        /// google.protobuf.Value. For example, `{key: "pickupInStore.store1" value { number_value: 10 }}` means a there
         /// are 10 variants in this product are available in the store "store1".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantRollupValues")]

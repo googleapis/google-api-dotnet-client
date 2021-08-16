@@ -1221,7 +1221,7 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
 
         /// <summary>
         /// Required. Type is used to communicate the status of the reconciliation process. See also:
-        /// https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types
+        /// https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types
         /// include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has
         /// successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         /// </summary>
