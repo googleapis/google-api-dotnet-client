@@ -67,14 +67,20 @@ namespace Google.Apis.CloudBuild.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Build API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Build API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1018,7 +1024,7 @@ namespace Google.Apis.CloudBuild.v1
             /// </summary>
             /// <param name="name">
             /// This field should contain the name of the enterprise config resource. For example:
-            /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+            /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1039,7 +1045,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1095,7 +1101,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
             /// <param name="name">
             /// This field should contain the name of the enterprise config resource. For example:
-            /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+            /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1114,7 +1120,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1234,7 +1240,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-            /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+            /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
             {
@@ -1256,7 +1262,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1918,7 +1924,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </summary>
                 /// <param name="name">
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1940,7 +1946,7 @@ namespace Google.Apis.CloudBuild.v1
 
                     /// <summary>
                     /// This field should contain the name of the enterprise config resource. For example:
-                    /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                    /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1996,7 +2002,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
                 /// <param name="name">
                 /// This field should contain the name of the enterprise config resource. For example:
-                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2015,7 +2021,7 @@ namespace Google.Apis.CloudBuild.v1
 
                     /// <summary>
                     /// This field should contain the name of the enterprise config resource. For example:
-                    /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                    /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2136,7 +2142,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
                 {
@@ -2159,7 +2165,7 @@ namespace Google.Apis.CloudBuild.v1
 
                     /// <summary>
                     /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-                    /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                    /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4007,8 +4013,7 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>
         /// Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time
-        /// that the API was called (the user's actual email that is tied to their GAIA ID may have changed). This field
-        /// is not stored, rather, it is calculated on the fly using approver_id.
+        /// that the API was called.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approverAccount")]
         public virtual string ApproverAccount { get; set; }
@@ -4119,11 +4124,11 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to
     /// build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields
     /// can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the
-    /// project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID
-    /// of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name
-    /// specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the
-    /// commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7
-    /// characters of $REVISION_ID or $COMMIT_SHA.
+    /// project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of
+    /// the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by
+    /// RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by
+    /// RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified
+    /// branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
     /// </summary>
     public class Build : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4883,7 +4888,7 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>
         /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
-        /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+        /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4965,7 +4970,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     {
         /// <summary>
         /// Optional. The resource name of the github enterprise config that should be applied to this installation. For
-        /// example: "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+        /// example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfigResourceName")]
         public virtual string EnterpriseConfigResourceName { get; set; }

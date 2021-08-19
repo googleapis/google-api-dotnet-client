@@ -65,14 +65,20 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Container Analysis API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Container Analysis API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -3213,7 +3219,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>
         /// The distro assigned severity for this vulnerability when it is available, and note provider assigned
-        /// severity when distro has not yet assigned a severity for this vulnerability.
+        /// severity when distro has not yet assigned a severity for this vulnerability. When there are multiple
+        /// PackageIssues for this vulnerability, they can have different effective severities because some might be
+        /// provided by the distro while others are provided by the language ecosystem for a language pack. For this
+        /// reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple
+        /// PackageIssues have differing effective severities, this field should be the highest severity for any of the
+        /// PackageIssues.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
@@ -3725,9 +3736,20 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedLocation")]
         public virtual VulnerabilityLocation AffectedLocation { get; set; }
 
+        /// <summary>
+        /// Output only. The distro or language system assigned severity for this vulnerability when that is available
+        /// and note provider assigned severity when it is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
+        public virtual string EffectiveSeverity { get; set; }
+
         /// <summary>The location of the available fix for vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLocation")]
         public virtual VulnerabilityLocation FixedLocation { get; set; }
+
+        /// <summary>The type of package (e.g. OS, MAVEN, GO).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
 
         /// <summary>
         /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this
@@ -3948,8 +3970,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

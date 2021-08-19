@@ -7909,6 +7909,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>Enable or disable gvnic in the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
+        public virtual VirtualNIC Gvnic { get; set; }
+
         /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be
         /// used.
@@ -9499,6 +9503,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
 
+        /// <summary>Enable or disable gvnic on the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
+        public virtual VirtualNIC Gvnic { get; set; }
+
         /// <summary>Required. The desired image type for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
@@ -9727,6 +9735,17 @@ namespace Google.Apis.Container.v1.Data
     public class VerticalPodAutoscaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Enables vertical pod autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of gVNIC feature.</summary>
+    public class VirtualNIC : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether gVNIC features are enabled in the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 

@@ -3093,8 +3093,8 @@ namespace Google.Apis.PeopleService.v1.Data
     }
 
     /// <summary>
-    /// If not successful, returns BatchCreateContactsErrorDetails.contacts which contains a list of errors for each
-    /// invalid contact. The response to a request to create a batch of contacts.
+    /// If not successful, returns BatchCreateContactsErrorDetails which contains a list of errors for each invalid
+    /// contact. The response to a request to create a batch of contacts.
     /// </summary>
     public class BatchCreateContactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3175,8 +3175,8 @@ namespace Google.Apis.PeopleService.v1.Data
     }
 
     /// <summary>
-    /// If not successful, returns BatchUpdateContactsErrorDetails.contacts, a list of errors corresponding to each
-    /// contact. The response to a request to update a batch of contacts.
+    /// If not successful, returns BatchUpdateContactsErrorDetails, a list of errors corresponding to each contact. The
+    /// response to a request to update a batch of contacts.
     /// </summary>
     public class BatchUpdateContactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3655,7 +3655,10 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>Metadata about a field.</summary>
     public class FieldMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the field is the primary field for the person.</summary>
+        /// <summary>
+        /// Output only. True if the field is the primary field for all sources in the person. Each person will have at
+        /// most one field with `primary` set to true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
         public virtual System.Nullable<bool> Primary { get; set; }
 
@@ -3663,7 +3666,10 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
 
-        /// <summary>True if the field is the primary field for the source.</summary>
+        /// <summary>
+        /// True if the field is the primary field for the source. Each source must have at most one field with
+        /// `source_primary` set to true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourcePrimary")]
         public virtual System.Nullable<bool> SourcePrimary { get; set; }
 

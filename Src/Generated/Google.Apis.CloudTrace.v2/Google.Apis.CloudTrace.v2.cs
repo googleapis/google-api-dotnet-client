@@ -65,7 +65,10 @@ namespace Google.Apis.CloudTrace.v2
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Trace API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Write Trace data for a project or application</summary>
@@ -75,7 +78,10 @@ namespace Google.Apis.CloudTrace.v2
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Trace API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Write Trace data for a project or application</summary>

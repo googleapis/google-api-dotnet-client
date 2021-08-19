@@ -170,7 +170,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>View user schemas on your domain</summary>
             public static string AdminDirectoryUserschemaReadonly = "https://www.googleapis.com/auth/admin.directory.userschema.readonly";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -263,7 +266,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>View user schemas on your domain</summary>
             public const string AdminDirectoryUserschemaReadonly = "https://www.googleapis.com/auth/admin.directory.userschema.readonly";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 

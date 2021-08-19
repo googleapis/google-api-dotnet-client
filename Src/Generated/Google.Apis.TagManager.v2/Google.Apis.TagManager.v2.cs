@@ -1291,6 +1291,7 @@ namespace Google.Apis.TagManager.v2
                 {
                     this.service = service;
                     BuiltInVariables = new BuiltInVariablesResource(service);
+                    Clients = new ClientsResource(service);
                     Folders = new FoldersResource(service);
                     Tags = new TagsResource(service);
                     Templates = new TemplatesResource(service);
@@ -2952,6 +2953,386 @@ namespace Google.Apis.TagManager.v2
                             RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "type",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Clients resource.</summary>
+                public virtual ClientsResource Clients { get; }
+
+                /// <summary>The "clients" collection of methods.</summary>
+                public class ClientsResource
+                {
+                    private const string Resource = "clients";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ClientsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a GTM Client.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// GTM Workspace's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Client body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a GTM Client.</summary>
+                    public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Client>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.Client body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// GTM Workspace's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.TagManager.v2.Data.Client Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "tagmanager/v2/{+parent}/clients";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a GTM Client.</summary>
+                    /// <param name="path">
+                    /// GTM Client's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string path)
+                    {
+                        return new DeleteRequest(service, path);
+                    }
+
+                    /// <summary>Deletes a GTM Client.</summary>
+                    public class DeleteRequest : TagManagerBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string path) : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// GTM Client's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "tagmanager/v2/{+path}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "path",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/clients/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a GTM Client.</summary>
+                    /// <param name="path">
+                    /// GTM Client's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                    /// </param>
+                    public virtual GetRequest Get(string path)
+                    {
+                        return new GetRequest(service, path);
+                    }
+
+                    /// <summary>Gets a GTM Client.</summary>
+                    public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Client>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string path) : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// GTM Client's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "tagmanager/v2/{+path}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "path",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/clients/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all GTM Clients of a GTM container workspace.</summary>
+                    /// <param name="parent">
+                    /// GTM Workspace's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all GTM Clients of a GTM container workspace.</summary>
+                    public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.ListClientsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// GTM Workspace's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "tagmanager/v2/{+parent}/clients";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Reverts changes to a GTM Client in a GTM Workspace.</summary>
+                    /// <param name="path">
+                    /// GTM Client's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                    /// </param>
+                    public virtual RevertRequest Revert(string path)
+                    {
+                        return new RevertRequest(service, path);
+                    }
+
+                    /// <summary>Reverts changes to a GTM Client in a GTM Workspace.</summary>
+                    public class RevertRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.RevertClientResponse>
+                    {
+                        /// <summary>Constructs a new Revert request.</summary>
+                        public RevertRequest(Google.Apis.Services.IClientService service, string path) : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// GTM Client's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>
+                        /// When provided, this fingerprint must match the fingerprint of the client in storage.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fingerprint { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "revert";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "tagmanager/v2/{+path}:revert";
+
+                        /// <summary>Initializes Revert parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "path",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/clients/[^/]+$",
+                            });
+                            RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fingerprint",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a GTM Client.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="path">
+                    /// GTM Client's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                    /// </param>
+                    public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Client body, string path)
+                    {
+                        return new UpdateRequest(service, body, path);
+                    }
+
+                    /// <summary>Updates a GTM Client.</summary>
+                    public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Client>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.Client body, string path) : base(service)
+                        {
+                            Path = path;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// GTM Client's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>
+                        /// When provided, this fingerprint must match the fingerprint of the client in storage.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fingerprint { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.TagManager.v2.Data.Client Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "update";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PUT";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "tagmanager/v2/{+path}";
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "path",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/clients/[^/]+$",
+                            });
+                            RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fingerprint",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7531,6 +7912,20 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ListClientsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All GTM Clients of a GTM Container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual System.Collections.Generic.IList<Client> Client { get; set; }
+
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List container versions response.</summary>
     public class ListContainerVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7844,6 +8239,20 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>Whether the built-in variable is enabled after reversion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of reverting a client in a workspace.</summary>
+    public class RevertClientResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Client as it appears in the latest container version since the last workspace synchronization operation. If
+        /// no client is present, that means the client was deleted in the latest container version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual Client Client { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -65,7 +65,10 @@ namespace Google.Apis.CloudKMS.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Key Management Service (KMS) API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage your keys and secrets stored in Cloud Key Management Service</summary>
@@ -77,7 +80,10 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage your keys and secrets stored in Cloud Key Management Service</summary>
@@ -547,10 +553,10 @@ namespace Google.Apis.CloudKMS.v1
 
                         /// <summary>
                         /// Schedule a CryptoKeyVersion for destruction. Upon calling this method,
-                        /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will be set to a
-                        /// time 24 hours in the future, at which point the state will be changed to DESTROYED, and the
-                        /// key material will be irrevocably destroyed. Before the destroy_time is reached,
-                        /// RestoreCryptoKeyVersion may be called to reverse the process.
+                        /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will be set to the
+                        /// time destroy_scheduled_duration in the future. At that time, the state will automatically
+                        /// change to DESTROYED, and the key material will be irrevocably destroyed. Before the
+                        /// destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the process.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Required. The resource name of the CryptoKeyVersion to destroy.</param>
@@ -561,10 +567,10 @@ namespace Google.Apis.CloudKMS.v1
 
                         /// <summary>
                         /// Schedule a CryptoKeyVersion for destruction. Upon calling this method,
-                        /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will be set to a
-                        /// time 24 hours in the future, at which point the state will be changed to DESTROYED, and the
-                        /// key material will be irrevocably destroyed. Before the destroy_time is reached,
-                        /// RestoreCryptoKeyVersion may be called to reverse the process.
+                        /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will be set to the
+                        /// time destroy_scheduled_duration in the future. At that time, the state will automatically
+                        /// change to DESTROYED, and the key material will be irrevocably destroyed. Before the
+                        /// destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the process.
                         /// </summary>
                         public class DestroyRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
                         {
@@ -4250,8 +4256,8 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

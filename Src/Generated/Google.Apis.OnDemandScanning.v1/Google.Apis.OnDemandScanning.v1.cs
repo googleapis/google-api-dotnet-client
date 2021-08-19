@@ -1849,6 +1849,13 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedVersion")]
         public virtual Version AffectedVersion { get; set; }
 
+        /// <summary>
+        /// Output only. The distro or language system assigned severity for this vulnerability when that is available
+        /// and note provider assigned severity when it is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
+        public virtual string EffectiveSeverity { get; set; }
+
         /// <summary>Output only. Whether a fix is available for this package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixAvailable")]
         public virtual System.Nullable<bool> FixAvailable { get; set; }
@@ -1873,6 +1880,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedVersion")]
         public virtual Version FixedVersion { get; set; }
+
+        /// <summary>The type of package (e.g. OS, MAVEN, GO).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2248,7 +2259,11 @@ namespace Google.Apis.OnDemandScanning.v1.Data
 
         /// <summary>
         /// The distro assigned severity for this vulnerability when it is available, otherwise this is the note
-        /// provider assigned severity.
+        /// provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have
+        /// different effective severities because some might be provided by the distro while others are provided by the
+        /// language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the
+        /// PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field
+        /// should be the highest severity for any of the PackageIssues.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }

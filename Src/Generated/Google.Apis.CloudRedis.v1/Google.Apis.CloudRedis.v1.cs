@@ -65,7 +65,10 @@ namespace Google.Apis.CloudRedis.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Memorystore for Redis API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -74,7 +77,10 @@ namespace Google.Apis.CloudRedis.v1
         /// </summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1643,7 +1649,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Google Cloud Redis instance. next id = 30</summary>
+    /// <summary>A Google Cloud Redis instance. next id = 36</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1703,8 +1709,9 @@ namespace Google.Apis.CloudRedis.v1.Data
 
         /// <summary>
         /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone
-        /// for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against
-        /// zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+        /// from the specified region for the instance. For standard tier, instances will be created across two zones
+        /// for protection against zonal failures. If [alternative_location_id] is also provided, it must be different
+        /// from [location_id].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }

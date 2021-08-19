@@ -745,12 +745,13 @@ namespace Google.Apis.SemanticTile.v1
             public virtual System.Nullable<int> MaxElevationResolutionCells { get; set; }
 
             /// <summary>
-            /// The minimum allowed resolution for the returned elevation heightmap. Possible values: between 0 and 1024
-            /// (and not more than max_elevation_resolution_cells). Zero is supported for backward compatibility.
-            /// Under-sized heightmaps will be non-uniformly up-sampled such that each edge is no shorter than this
-            /// value. Non-uniformity is chosen to maximise the amount of preserved data. For example: Original
-            /// resolution: 30px (width) * 10px (height) min_elevation_resolution: 30 New resolution: 30px (width) *
-            /// 30px (height)
+            ///  api-linter: core::0131::request-unknown-fields=disabled aip.dev/not-precedent: Maintaining existing
+            /// request parameter pattern. The minimum allowed resolution for the returned elevation heightmap. Possible
+            /// values: between 0 and 1024 (and not more than max_elevation_resolution_cells). Zero is supported for
+            /// backward compatibility. Under-sized heightmaps will be non-uniformly up-sampled such that each edge is
+            /// no shorter than this value. Non-uniformity is chosen to maximise the amount of preserved data. For
+            /// example: Original resolution: 30px (width) * 10px (height) min_elevation_resolution: 30 New resolution:
+            /// 30px (width) * 30px (height)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("minElevationResolutionCells", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MinElevationResolutionCells { get; set; }
@@ -1112,7 +1113,7 @@ namespace Google.Apis.SemanticTile.v1.Data
     /// S | | | +-----------------+ rows[n].a[0] rows[n].a[m] Rather than storing the altitudes directly, we store the
     /// diffs between them as integers at some requested level of precision to take advantage of integer packing. The
     /// actual altitude values a[] can be reconstructed using the scale and each row's first_altitude and altitude_diff
-    /// fields.
+    /// fields. More details in go/elevation-encoding-options-for-enduro under "Recommended implementation".
     /// </summary>
     public class FirstDerivativeElevationGrid : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1351,7 +1352,9 @@ namespace Google.Apis.SemanticTile.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("coordinates")]
         public virtual TileCoordinates Coordinates { get; set; }
 
-        /// <summary>Terrain elevation data encoded as a FirstDerivativeElevationGrid.</summary>
+        /// <summary>
+        /// Terrain elevation data encoded as a FirstDerivativeElevationGrid. cs/symbol:FirstDerivativeElevationGrid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstDerivative")]
         public virtual FirstDerivativeElevationGrid FirstDerivative { get; set; }
 
@@ -1363,7 +1366,10 @@ namespace Google.Apis.SemanticTile.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Terrain elevation data encoded as a SecondDerivativeElevationGrid. .</summary>
+        /// <summary>
+        /// Terrain elevation data encoded as a SecondDerivativeElevationGrid. cs/symbol:SecondDerivativeElevationGrid.
+        /// See go/byte-encoded-terrain for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondDerivative")]
         public virtual SecondDerivativeElevationGrid SecondDerivative { get; set; }
 

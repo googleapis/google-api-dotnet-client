@@ -66,14 +66,20 @@ namespace Google.Apis.CloudFunctions.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Functions API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Functions API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1457,6 +1463,12 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string BuildId { get; set; }
 
         /// <summary>
+        /// Output only. The Cloud Build Name of the function deployment. projects//locations//builds/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
+
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this
         /// field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are
         /// the project id and region respectively where the worker pool is defined and {workerPool} is the short name
@@ -1509,6 +1521,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
         public virtual System.Nullable<int> MaxInstances { get; set; }
+
+        /// <summary>A lower bound for the number function instances that may coexist at a given time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
+        public virtual System.Nullable<int> MinInstances { get; set; }
 
         /// <summary>
         /// A user-defined name of the function. Function names must be unique globally and match pattern
@@ -1978,8 +1994,8 @@ namespace Google.Apis.CloudFunctions.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

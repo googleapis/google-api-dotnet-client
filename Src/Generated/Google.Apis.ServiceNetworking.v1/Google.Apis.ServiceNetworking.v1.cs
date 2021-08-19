@@ -2260,6 +2260,15 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual System.Nullable<int> IpPrefixLength { get; set; }
 
         /// <summary>
+        /// Optional. The private IPv6 google access type for the VMs in this subnet. For information about the access
+        /// types that can be set using this field, see
+        /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks) in the Compute API
+        /// documentation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
+        public virtual string PrivateIpv6GoogleAccess { get; set; }
+
+        /// <summary>
         /// Required. The name of a [region](/compute/docs/regions-zones) for the subnet, such `europe-west1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
