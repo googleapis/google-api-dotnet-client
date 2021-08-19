@@ -2783,7 +2783,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1ConversationParticipant : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the Dialogflow participant. Format:
+        /// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format:
         /// projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowParticipant")]

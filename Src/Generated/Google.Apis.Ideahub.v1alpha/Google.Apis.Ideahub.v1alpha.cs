@@ -280,30 +280,6 @@ namespace Google.Apis.Ideahub.v1alpha
                 InitParameters();
             }
 
-            /// <summary>Identifies the platform from which this user is accessing Idea Hub.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("creator.platform", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<CreatorPlatformEnum> CreatorPlatform { get; set; }
-
-            /// <summary>Identifies the platform from which this user is accessing Idea Hub.</summary>
-            public enum CreatorPlatformEnum
-            {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                UNKNOWN = 0,
-
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("BLOGGER")]
-                BLOGGER = 1,
-
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("SITEKIT")]
-                SITEKIT = 2,
-            }
-
-            /// <summary>Identifies the platform account (blog/site/etc.) for which to fetch Ideas.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("creator.platformId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CreatorPlatformId { get; set; }
-
             /// <summary>
             /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. *
             /// Restrictions are implicitly combined, as if the `AND` operator was always used. The `OR` operator is
@@ -351,22 +327,6 @@ namespace Google.Apis.Ideahub.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-                RequestParameters.Add("creator.platform", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "creator.platform",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("creator.platformId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "creator.platformId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
@@ -658,30 +618,6 @@ namespace Google.Apis.Ideahub.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Identifies the platform from which this user is accessing Idea Hub.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("creator.platform", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<CreatorPlatformEnum> CreatorPlatform { get; set; }
-
-                    /// <summary>Identifies the platform from which this user is accessing Idea Hub.</summary>
-                    public enum CreatorPlatformEnum
-                    {
-                        /// <summary></summary>
-                        [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                        UNKNOWN = 0,
-
-                        /// <summary></summary>
-                        [Google.Apis.Util.StringValueAttribute("BLOGGER")]
-                        BLOGGER = 1,
-
-                        /// <summary></summary>
-                        [Google.Apis.Util.StringValueAttribute("SITEKIT")]
-                        SITEKIT = 2,
-                    }
-
-                    /// <summary>Identifies the platform account (blog/site/etc.) for which to fetch Ideas.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("creator.platformId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string CreatorPlatformId { get; set; }
-
                     /// <summary>
                     /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
                     /// restrictions. * Restrictions are implicitly combined, as if the `AND` operator was always used.
@@ -730,22 +666,6 @@ namespace Google.Apis.Ideahub.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^platforms/[^/]+/properties/[^/]+$",
-                        });
-                        RequestParameters.Add("creator.platform", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creator.platform",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("creator.platformId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creator.platformId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {

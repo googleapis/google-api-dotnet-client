@@ -65,14 +65,20 @@ namespace Google.Apis.CloudFilestore.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Filestore API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Filestore API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -317,8 +323,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The backup's project and location, in the format
-                /// projects/{project_id}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions,
-                /// for example **us-west1**.
+                /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, backup locations map to GCP
+                /// regions, for example **us-west1**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Backup body, string parent)
                 {
@@ -338,7 +344,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The backup's project and location, in the format
-                    /// projects/{project_id}/locations/{location}. In Cloud Filestore, backup locations map to GCP
+                    /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, backup locations map to GCP
                     /// regions, for example **us-west1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -393,7 +399,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>Deletes a backup.</summary>
                 /// <param name="name">
                 /// Required. The backup resource name, in the format
-                /// projects/{project_id}/locations/{location}/backups/{backup_id}
+                /// `projects/{project_id}/locations/{location}/backups/{backup_id}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -412,7 +418,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The backup resource name, in the format
-                    /// projects/{project_id}/locations/{location}/backups/{backup_id}
+                    /// `projects/{project_id}/locations/{location}/backups/{backup_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -444,7 +450,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>Gets the details of a specific backup.</summary>
                 /// <param name="name">
                 /// Required. The backup resource name, in the format
-                /// projects/{project_id}/locations/{location}/backups/{backup_id}.
+                /// `projects/{project_id}/locations/{location}/backups/{backup_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -463,7 +469,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The backup resource name, in the format
-                    /// projects/{project_id}/locations/{location}/backups/{backup_id}.
+                    /// `projects/{project_id}/locations/{location}/backups/{backup_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -497,9 +503,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve backup information, in the format
-                /// projects/{project_id}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions,
-                /// for example **us-west1**. To retrieve backup information for all locations, use "-" for the
-                /// {location} value.
+                /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, backup locations map to GCP
+                /// regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for the
+                /// `{location}` value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -520,9 +526,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve backup information, in the format
-                    /// projects/{project_id}/locations/{location}. In Cloud Filestore, backup locations map to GCP
+                    /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, backup locations map to GCP
                     /// regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for
-                    /// the {location} value.
+                    /// the `{location}` value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -606,7 +612,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The resource name of the backup, in the format
-                /// projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+                /// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1beta1.Data.Backup body, string name)
                 {
@@ -626,7 +632,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Output only. The resource name of the backup, in the format
-                    /// projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+                    /// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -715,7 +721,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The Filestore Instance to create the snapshots of, in the format
-                    /// projects/{project_id}/locations/{location}/instances/{instance_id}
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Snapshot body, string parent)
                     {
@@ -735,7 +741,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                         /// <summary>
                         /// Required. The Filestore Instance to create the snapshots of, in the format
-                        /// projects/{project_id}/locations/{location}/instances/{instance_id}
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -789,7 +795,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Deletes a snapshot.</summary>
                     /// <param name="name">
                     /// Required. The snapshot resource name, in the format
-                    /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -808,7 +814,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                         /// <summary>
                         /// Required. The snapshot resource name, in the format
-                        /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -840,7 +846,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Gets the details of a specific snapshot.</summary>
                     /// <param name="name">
                     /// Required. The snapshot resource name, in the format
-                    /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -859,7 +865,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                         /// <summary>
                         /// Required. The snapshot resource name, in the format
-                        /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -893,7 +899,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The instance for which to retrieve snapshot information, in the format
-                    /// projects/{project_id}/locations/{location}/instances/{instance_id}.
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -914,7 +920,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                         /// <summary>
                         /// Required. The instance for which to retrieve snapshot information, in the format
-                        /// projects/{project_id}/locations/{location}/instances/{instance_id}.
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -998,7 +1004,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. The resource name of the snapshot, in the format
-                    /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}.
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1beta1.Data.Snapshot body, string name)
                     {
@@ -1018,7 +1024,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                         /// <summary>
                         /// Output only. The resource name of the snapshot, in the format
-                        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}.
+                        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1076,7 +1082,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The instance's project and location, in the format
-                /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
+                /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones, for
                 /// example **us-west1-b**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Instance body, string parent)
@@ -1101,8 +1107,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The instance's project and location, in the format
-                    /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
-                    /// example **us-west1-b**.
+                    /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones,
+                    /// for example **us-west1-b**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1156,7 +1162,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>Deletes an instance.</summary>
                 /// <param name="name">
                 /// Required. The instance resource name, in the format
-                /// projects/{project_id}/locations/{location}/instances/{instance_id}
+                /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1175,7 +1181,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The instance resource name, in the format
-                    /// projects/{project_id}/locations/{location}/instances/{instance_id}
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1207,7 +1213,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>Gets the details of a specific instance.</summary>
                 /// <param name="name">
                 /// Required. The instance resource name, in the format
-                /// projects/{project_id}/locations/{location}/instances/{instance_id}.
+                /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1226,7 +1232,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The instance resource name, in the format
-                    /// projects/{project_id}/locations/{location}/instances/{instance_id}.
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1260,9 +1266,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve instance information, in the format
-                /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
+                /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones, for
                 /// example **us-west1-b**. To retrieve instance information for all locations, use "-" for the
-                /// {location} value.
+                /// `{location}` value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1283,9 +1289,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve instance information, in the format
-                    /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
-                    /// example **us-west1-b**. To retrieve instance information for all locations, use "-" for the
-                    /// {location} value.
+                    /// `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to GCP zones,
+                    /// for example **us-west1-b**. To retrieve instance information for all locations, use "-" for the
+                    /// `{location}` value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1369,7 +1375,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The resource name of the instance, in the format
-                /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1beta1.Data.Instance body, string name)
                 {
@@ -1389,7 +1395,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Output only. The resource name of the instance, in the format
-                    /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1448,7 +1454,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the instance, in the format
-                /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                 /// </param>
                 public virtual RestoreRequest Restore(Google.Apis.CloudFilestore.v1beta1.Data.RestoreInstanceRequest body, string name)
                 {
@@ -1472,7 +1478,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// Required. The resource name of the instance, in the format
-                    /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1972,7 +1978,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Output only. The resource name of the backup, in the format
-        /// projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+        /// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1989,7 +1995,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// The resource name of the source Cloud Filestore instance, in the format
-        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
         public virtual string SourceInstance { get; set; }
@@ -2131,7 +2137,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// The resource name of the backup, in the format
-        /// projects/{project_id}/locations/{location_id}/backups/{backup_id}, that this file share has been restored
+        /// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored
         /// from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
@@ -2510,7 +2516,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Output only. The resource name of the instance, in the format
-        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2542,10 +2548,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of backups in the project for the specified location. If the {location} value in the request is "-",
-        /// the response contains a list of backups from all locations. If any location is unreachable, the response
-        /// will only return backups in reachable locations and the "unreachable" field will be populated with a list of
-        /// unreachable locations.
+        /// A list of backups in the project for the specified location. If the `{location}` value in the request is
+        /// "-", the response contains a list of backups from all locations. If any location is unreachable, the
+        /// response will only return backups in reachable locations and the "unreachable" field will be populated with
+        /// a list of unreachable locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backups")]
         public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
@@ -2569,7 +2575,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of instances in the project for the specified location. If the {location} value in the request is
+        /// A list of instances in the project for the specified location. If the `{location}` value in the request is
         /// "-", the response contains a list of instances from all locations. If any location is unreachable, the
         /// response will only return instances in reachable locations and the "unreachable" field will be populated
         /// with a list of unreachable locations.
@@ -2745,8 +2751,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ConnectMode { get; set; }
 
         /// <summary>
-        /// Output only. IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the
-        /// format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
+        /// Output only. IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the
+        /// format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
@@ -2759,8 +2765,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Modes { get; set; }
 
         /// <summary>
-        /// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which
-        /// the instance is connected.
+        /// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
+        /// instance is connected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -2771,11 +2777,11 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using
         /// PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be
         /// one of the ranges associated with the private service access connection. When specified as a direct CIDR
-        /// value, it must be a /29 CIDR block for Basic tier or a /23 CIDR block for High Scale or Enterprise tier in
-        /// one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies
-        /// the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/23. The range
-        /// you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud
-        /// Filestore instances in the selected VPC network.
+        /// value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in
+        /// one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/)
+        /// that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or
+        /// 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address
+        /// ranges for other Cloud Filestore instances in the selected VPC network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
         public virtual string ReservedIpRange { get; set; }
@@ -2811,8 +2817,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Nullable<long> AnonUid { get; set; }
 
         /// <summary>
-        /// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the
-        /// format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP
+        /// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the
+        /// format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP
         /// ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64
         /// IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
         /// </summary>
@@ -2882,7 +2888,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
@@ -2923,14 +2929,14 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// The resource name of the backup, in the format
-        /// projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+        /// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
         public virtual string SourceBackup { get; set; }
 
         /// <summary>
         /// The resource name of the snapshot, in the format
-        /// projects/{project_id}/locations/{location_id}/snapshots/{snapshot_id}.
+        /// `projects/{project_id}/locations/{location_id}/snapshots/{snapshot_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
@@ -2982,7 +2988,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Output only. The resource name of the snapshot, in the format
-        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}.
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

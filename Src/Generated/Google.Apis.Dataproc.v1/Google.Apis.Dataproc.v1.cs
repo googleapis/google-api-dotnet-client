@@ -65,14 +65,20 @@ namespace Google.Apis.Dataproc.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Dataproc API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Dataproc API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -5853,9 +5859,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Describes the identifying information, config, and status of a cluster of Compute Engine instances.
-    /// </summary>
+    /// <summary>Describes the identifying information, config, and status of a Dataproc cluster</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5873,8 +5877,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ClusterUuid { get; set; }
 
         /// <summary>
-        /// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters
-        /// are updated.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default
+        /// values, and values may change when clusters are updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ClusterConfig Config { get; set; }
@@ -5925,9 +5929,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
         /// output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US,
         /// ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is
-        /// deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket
-        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
-        /// a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        /// deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp
+        /// buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        /// requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; }
@@ -5966,7 +5970,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleConfig")]
         public virtual LifecycleConfig LifecycleConfig { get; set; }
 
-        /// <summary>Optional. The Compute Engine config settings for the master instance in a cluster.</summary>
+        /// <summary>Optional. The Compute Engine config settings for the cluster's master instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual InstanceGroupConfig MasterConfig { get; set; }
 
@@ -5974,9 +5978,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metastoreConfig")]
         public virtual MetastoreConfig MetastoreConfig { get; set; }
 
-        /// <summary>
-        /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
-        /// </summary>
+        /// <summary>Optional. The Compute Engine config settings for a cluster's secondary worker instances</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
         public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; }
 
@@ -5984,7 +5986,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securityConfig")]
         public virtual SecurityConfig SecurityConfig { get; set; }
 
-        /// <summary>Optional. The config settings for software inside the cluster.</summary>
+        /// <summary>Optional. The config settings for cluster software.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
 
@@ -5993,13 +5995,14 @@ namespace Google.Apis.Dataproc.v1.Data
         /// history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US,
         /// ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is
         /// deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL
-        /// of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage
-        /// bucket name, not a URI to a Cloud Storage bucket.
+        /// of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
+        /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempBucket")]
         public virtual string TempBucket { get; set; }
 
-        /// <summary>Optional. The Compute Engine config settings for worker instances in a cluster.</summary>
+        /// <summary>Optional. The Compute Engine config settings for the cluster's worker instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual InstanceGroupConfig WorkerConfig { get; set; }
 
@@ -6443,7 +6446,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The GKE config for this cluster.</summary>
+    /// <summary>The cluster's GKE config.</summary>
     public class GkeClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A target for the deployment.</summary>
@@ -7535,8 +7538,8 @@ namespace Google.Apis.Dataproc.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the IAM documentation (https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the IAM documentation (https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -67,20 +67,30 @@ namespace Google.Apis.Testing.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Testing API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Testing API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
@@ -954,7 +964,7 @@ namespace Google.Apis.Testing.v1.Data
 
     /// <summary>
     /// A test of an android application that explores the application on a virtual or physical Android Device, finding
-    /// culprits and crashes as it goes. Next tag: 30
+    /// culprits and crashes as it goes.
     /// </summary>
     public class AndroidRoboTest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1640,8 +1650,8 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>
         /// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should
-        /// either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside
-        /// the app's filesystem (e.g. /Documents) by specifying the bundle id.
+        /// either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside
+        /// the app's filesystem (such as /Documents) by specifying the bundle ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullDirectories")]
         public virtual System.Collections.Generic.IList<IosDeviceFile> PullDirectories { get; set; }

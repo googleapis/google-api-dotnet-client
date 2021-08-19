@@ -12326,8 +12326,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountAddress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// CLDR country code (e.g. "US"). This value cannot be set for a sub-account of an MCA. All MCA sub-accounts
-        /// inherit the country of their parent MCA.
+        /// CLDR country code (e.g. "US"). All MCA sub-accounts inherit the country of their parent MCA by default,
+        /// however the country can be updated for individual sub-accounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
@@ -19628,7 +19628,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual Product Product { get; set; }
 
         /// <summary>
-        /// The ID of the product to mutate. Only defined if the method is `get`, `delete`, or `update`. or `delete`.
+        /// The ID of the product to get or mutate. Only defined if the method is `get`, `delete`, or `update`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }

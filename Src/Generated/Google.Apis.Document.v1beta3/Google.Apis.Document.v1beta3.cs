@@ -65,14 +65,20 @@ namespace Google.Apis.Document.v1beta3
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Document AI API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Document AI API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -321,9 +327,9 @@ namespace Google.Apis.Document.v1beta3
                 /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
-                public virtual CancelOperationRequest CancelOperation(string name)
+                public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelOperationRequest(service, name);
+                    return new CancelRequest(service, name);
                 }
 
                 /// <summary>
@@ -334,10 +340,10 @@ namespace Google.Apis.Document.v1beta3
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
                 /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
                 /// </summary>
-                public class CancelOperationRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleProtobufEmpty>
+                public class CancelRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleProtobufEmpty>
                 {
-                    /// <summary>Constructs a new CancelOperation request.</summary>
-                    public CancelOperationRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -348,15 +354,15 @@ namespace Google.Apis.Document.v1beta3
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "cancelOperation";
+                    public override string MethodName => "cancel";
 
                     /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
+                    public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta3/{+name}";
+                    public override string RestPath => "v1beta3/{+name}:cancel";
 
-                    /// <summary>Initializes CancelOperation parameter list.</summary>
+                    /// <summary>Initializes Cancel parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();

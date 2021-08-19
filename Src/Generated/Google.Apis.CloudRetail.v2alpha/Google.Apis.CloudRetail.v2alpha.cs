@@ -65,14 +65,20 @@ namespace Google.Apis.CloudRetail.v2alpha
         /// <summary>Available OAuth 2.0 scopes for use with the Retail API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Retail API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -4072,10 +4078,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// brand/maker of a product, or country of a customer. Numerical features. Some examples would be the
         /// height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123",
         /// "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field
-        /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200
-        /// by default; 100 for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit of 128
-        /// characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis
-        /// or KEY_1_LIKE_THIS.
+        /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200.
+        /// * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute,
+        /// the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCustomAttribute> Attributes { get; set; }
@@ -4182,7 +4187,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length
-        /// limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
+        /// limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram.
+        /// Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
         /// [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property
         /// [Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/gtin8) or
         /// [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](https://schema.org/gtin13) or
@@ -4241,7 +4247,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 5
+        /// The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20
         /// values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
         /// [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property
