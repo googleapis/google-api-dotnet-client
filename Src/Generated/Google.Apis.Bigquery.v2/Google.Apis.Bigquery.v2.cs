@@ -72,50 +72,68 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>Available OAuth 2.0 scopes for use with the BigQuery API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data in Google BigQuery</summary>
+            /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
             public static string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
             /// <summary>Insert data into Google BigQuery</summary>
             public static string BigqueryInsertdata = "https://www.googleapis.com/auth/bigquery.insertdata";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
-            /// <summary>Manage your data and permissions in Google Cloud Storage</summary>
+            /// <summary>
+            /// Manage your data and permissions in Cloud Storage and see the email address for your Google Account
+            /// </summary>
             public static string DevstorageFullControl = "https://www.googleapis.com/auth/devstorage.full_control";
 
             /// <summary>View your data in Google Cloud Storage</summary>
             public static string DevstorageReadOnly = "https://www.googleapis.com/auth/devstorage.read_only";
 
-            /// <summary>Manage your data in Google Cloud Storage</summary>
+            /// <summary>Manage your data in Cloud Storage and see the email address of your Google Account</summary>
             public static string DevstorageReadWrite = "https://www.googleapis.com/auth/devstorage.read_write";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the BigQuery API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data in Google BigQuery</summary>
+            /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
             public const string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
             /// <summary>Insert data into Google BigQuery</summary>
             public const string BigqueryInsertdata = "https://www.googleapis.com/auth/bigquery.insertdata";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
-            /// <summary>Manage your data and permissions in Google Cloud Storage</summary>
+            /// <summary>
+            /// Manage your data and permissions in Cloud Storage and see the email address for your Google Account
+            /// </summary>
             public const string DevstorageFullControl = "https://www.googleapis.com/auth/devstorage.full_control";
 
             /// <summary>View your data in Google Cloud Storage</summary>
             public const string DevstorageReadOnly = "https://www.googleapis.com/auth/devstorage.read_only";
 
-            /// <summary>Manage your data in Google Cloud Storage</summary>
+            /// <summary>Manage your data in Cloud Storage and see the email address of your Google Account</summary>
             public const string DevstorageReadWrite = "https://www.googleapis.com/auth/devstorage.read_write";
         }
 
@@ -6986,8 +7004,8 @@ namespace Google.Apis.Bigquery.v2.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7531,11 +7549,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("definitionBody")]
         public virtual string DefinitionBody { get; set; }
 
-        /// <summary>Optional. [Experimental] The description of the routine if defined.</summary>
+        /// <summary>Optional. The description of the routine, if defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. [Experimental] The determinism level of the JavaScript UDF if defined.</summary>
+        /// <summary>Optional. The determinism level of the JavaScript UDF, if defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("determinismLevel")]
         public virtual string DeterminismLevel { get; set; }
 
@@ -7559,20 +7577,26 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
-        /// <summary>Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".</summary>
+        /// <summary>
+        /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is
+        /// inferred from definition_body at query time in each query that references this routine. If present, then the
+        /// columns in the evaluated table result will be cast to match the column types specificed in return table
+        /// type, at query time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnTableType")]
         public virtual StandardSqlTableType ReturnTableType { get; set; }
 
         /// <summary>
-        /// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from
-        /// definition_body at query time in each query that references this routine. If present, then the evaluated
-        /// result will be cast to the specified returned type at query time. For example, for the functions created
-        /// with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` *
-        /// `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS
-        /// FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is
-        /// absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by
-        /// `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment`
-        /// is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        /// Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION".
+        /// If absent, the return type is inferred from definition_body at query time in each query that references this
+        /// routine. If present, then the evaluated result will be cast to the specified returned type at query time.
+        /// For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y
+        /// FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE
+        /// FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}`
+        /// for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the
+        /// function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the
+        /// inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type
+        /// of `Decrement` remains FLOAT64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnType")]
         public virtual StandardSqlDataType ReturnType { get; set; }
