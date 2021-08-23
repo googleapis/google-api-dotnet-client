@@ -65,26 +65,40 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         /// <summary>Available OAuth 2.0 scopes for use with the BigQuery Data Transfer API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data in Google BigQuery</summary>
+            /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
             public static string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the BigQuery Data Transfer API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data in Google BigQuery</summary>
+            /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
             public const string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
@@ -3544,10 +3558,18 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
 
         /// <summary>
         /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config
-        /// finish.
+        /// finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
+
+        /// <summary>
+        /// Output only. Information about the user whose credentials are used to transfer data. Populated only for
+        /// `transferConfigs.get` requests. In case the user information is not available, this field will not be
+        /// populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerInfo")]
+        public virtual UserInfo OwnerInfo { get; set; }
 
         /// <summary>
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data
@@ -3644,7 +3666,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Pub/Sub topic where a notification will be sent after this transfer run finishes
+        /// Output only. Pub/Sub topic where a notification will be sent after this transfer run finishes. The format
+        /// for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -3690,6 +3713,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Deprecated. Unique ID of the user on whose behalf transfer is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual System.Nullable<long> UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a user.</summary>
+    public class UserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>E-mail address of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

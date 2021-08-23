@@ -5391,8 +5391,8 @@ namespace Google.Apis.CloudRun.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6290,13 +6290,13 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Not supported by Cloud Run Volume represents a named volume in a container.</summary>
+    /// <summary>Volume represents a named volume in a container.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("configMap")]
         public virtual ConfigMapVolumeSource ConfigMap { get; set; }
 
-        /// <summary>Volume's name.</summary>
+        /// <summary>Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6307,14 +6307,14 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.</summary>
+    /// <summary>VolumeMount describes a mounting of a Volume within a container.</summary>
     public class VolumeMount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Path within the container at which the volume should be mounted. Must not contain ':'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
         public virtual string MountPath { get; set; }
 
-        /// <summary>This must match the Name of a Volume.</summary>
+        /// <summary>The name of the volume. There must be a corresponding Volume with the same name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

@@ -62,7 +62,7 @@ namespace Google.Apis.GKEHub.v1
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the GKE Hub.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the GKE Hub API.</summary>
         public class Scope
         {
             /// <summary>
@@ -72,7 +72,7 @@ namespace Google.Apis.GKEHub.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the GKE Hub.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the GKE Hub API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -3475,8 +3475,8 @@ namespace Google.Apis.GKEHub.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

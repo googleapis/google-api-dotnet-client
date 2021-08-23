@@ -68,10 +68,15 @@ namespace Google.Apis.Appengine.v1beta
             /// <summary>View and manage your applications deployed on Google App Engine</summary>
             public static string AppengineAdmin = "https://www.googleapis.com/auth/appengine.admin";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
@@ -81,10 +86,15 @@ namespace Google.Apis.Appengine.v1beta
             /// <summary>View and manage your applications deployed on Google App Engine</summary>
             public const string AppengineAdmin = "https://www.googleapis.com/auth/appengine.admin";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
@@ -3731,6 +3741,13 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// <summary>Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The service account associated with the application. This is the app-level default identity. If no identity
+        /// provided during create version, Admin API will fallback to this one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>Serving status of this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
