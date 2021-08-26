@@ -4185,6 +4185,10 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A person's past or current organization. Overlapping date ranges are permitted.</summary>
     public class Organization : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The person's cost center at the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costCenter")]
+        public virtual string CostCenter { get; set; }
+
         /// <summary>
         /// True if the organization is the person's current organization; false if the organization is a past
         /// organization.
@@ -4210,6 +4214,10 @@ namespace Google.Apis.PeopleService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; }
+
+        /// <summary>The person's full-time equivalent millipercent within the organization (100000 = 100%).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullTimeEquivalentMillipercent")]
+        public virtual System.Nullable<int> FullTimeEquivalentMillipercent { get; set; }
 
         /// <summary>The person's job description at the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobDescription")]

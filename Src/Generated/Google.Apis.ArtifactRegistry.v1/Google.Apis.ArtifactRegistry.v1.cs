@@ -474,9 +474,10 @@ namespace Google.Apis.ArtifactRegistry.v1
         /// compatibility, the default name includes the operations collection id, however overriding users must ensure
         /// the name binding is the parent resource, without the operations collection id.
         /// </summary>
-        public virtual ListRequest List()
+        /// <param name="name">The name of the operation's parent resource.</param>
+        public virtual ListRequest List(string name)
         {
-            return new ListRequest(service);
+            return new ListRequest(service, name);
         }
 
         /// <summary>
@@ -490,18 +491,19 @@ namespace Google.Apis.ArtifactRegistry.v1
         public class ListRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
+                Name = name;
                 InitParameters();
             }
+
+            /// <summary>The name of the operation's parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
 
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The name of the operation's parent resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
 
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -518,23 +520,23 @@ namespace Google.Apis.ArtifactRegistry.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/operations";
+            public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

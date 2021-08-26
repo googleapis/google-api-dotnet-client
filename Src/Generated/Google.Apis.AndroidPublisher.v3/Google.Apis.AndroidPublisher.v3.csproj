@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AndroidPublisher.v3 Client Library</Title>
-    <Version>1.54.0.2414</Version>
+    <Version>1.54.0.2428</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

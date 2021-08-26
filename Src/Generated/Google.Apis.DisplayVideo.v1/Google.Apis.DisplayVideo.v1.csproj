@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DisplayVideo.v1 Client Library</Title>
-    <Version>1.54.0.2412</Version>
+    <Version>1.54.0.2422</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

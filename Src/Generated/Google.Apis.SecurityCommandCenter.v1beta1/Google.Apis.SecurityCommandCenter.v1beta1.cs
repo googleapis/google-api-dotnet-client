@@ -2288,6 +2288,94 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CVE stands for Common Vulnerabilities and Exposures. More information: https://cve.mitre.org</summary>
+    public class Cve : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Describe Common Vulnerability Scoring System specified at
+        /// https://www.first.org/cvss/v3.1/specification-document
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssv3")]
+        public virtual Cvssv3 Cvssv3 { get; set; }
+
+        /// <summary>The unique identifier for the vulnerability. e.g. CVE-2021-34527</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Additional information about the CVE. e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<Reference> References { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common Vulnerability Scoring System version 3.</summary>
+    public class Cvssv3 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This metric describes the conditions beyond the attacker's control that must exist in order to exploit the
+        /// vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
+        public virtual string AttackComplexity { get; set; }
+
+        /// <summary>
+        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
+        /// across user environments. This metric reflects the context by which vulnerability exploitation is possible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
+        public virtual string AttackVector { get; set; }
+
+        /// <summary>
+        /// This metric measures the impact to the availability of the impacted component resulting from a successfully
+        /// exploited vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
+        public virtual string AvailabilityImpact { get; set; }
+
+        /// <summary>The base score is a function of the base metric scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
+        public virtual System.Nullable<double> BaseScore { get; set; }
+
+        /// <summary>
+        /// This metric measures the impact to the confidentiality of the information resources managed by a software
+        /// component due to a successfully exploited vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
+        public virtual string ConfidentialityImpact { get; set; }
+
+        /// <summary>This metric measures the impact to integrity of a successfully exploited vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
+        public virtual string IntegrityImpact { get; set; }
+
+        /// <summary>
+        /// This metric describes the level of privileges an attacker must possess before successfully exploiting the
+        /// vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
+        public virtual string PrivilegesRequired { get; set; }
+
+        /// <summary>
+        /// The Scope metric captures whether a vulnerability in one vulnerable component impacts resources in
+        /// components beyond its security scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// This metric captures the requirement for a human user, other than the attacker, to participate in the
+        /// successful compromise of the vulnerable component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
+        public virtual string UserInteraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -2449,6 +2537,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>The state of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Represents vulnerability specific fields like cve, cvss scores etc. CVE stands for Common Vulnerabilities
+        /// and Exposures (https://cve.mitre.org/about/)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerability")]
+        public virtual Vulnerability Vulnerability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3348,6 +3443,23 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Additional Links</summary>
+    public class Reference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source of the reference e.g. NVD</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Uri for the mentioned source e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for running asset discovery for an organization.</summary>
     public class RunAssetDiscoveryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3560,6 +3672,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Refers to common vulnerability fields e.g. cve, cvss, cwe etc.</summary>
+    public class Vulnerability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cve")]
+        public virtual Cve Cve { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

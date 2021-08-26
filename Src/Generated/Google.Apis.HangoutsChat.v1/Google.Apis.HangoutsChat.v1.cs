@@ -1915,6 +1915,73 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Next available ID = 8</summary>
+    public class CommonEventObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The keys are the string IDs associated with the widget and the values are inputs with a widget in the card.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formInputs")]
+        public virtual System.Collections.Generic.IDictionary<string, Inputs> FormInputs { get; set; }
+
+        /// <summary>The hostApp enum which indicates the app the add-on is invoked from</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostApp")]
+        public virtual string HostApp { get; set; }
+
+        /// <summary>
+        /// Name of the invoked function associated with the widget. This field is currently only set for chat.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invokedFunction")]
+        public virtual string InvokedFunction { get; set; }
+
+        /// <summary>Any additional parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>The platform enum which indicates the platform where the add-on is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual TimeZone TimeZone { get; set; }
+
+        /// <summary>
+        /// The full locale.displayName in the format of [ISO 639 language code]-[ISO 3166 country/region code] such as
+        /// "en-US"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLocale")]
+        public virtual string UserLocale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input Parameter for Date Picker widget.</summary>
+    public class DateInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("msSinceEpoch")]
+        public virtual System.Nullable<long> MsSinceEpoch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input Parameter for Date and Time Picker widget.</summary>
+    public class DateTimeInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("hasDate")]
+        public virtual System.Nullable<bool> HasDate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hasTime")]
+        public virtual System.Nullable<bool> HasTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("msSinceEpoch")]
+        public virtual System.Nullable<long> MsSinceEpoch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Chat events.</summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1925,6 +1992,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual FormAction Action { get; set; }
 
+        /// <summary>This will include form information for dialogs such as form inputs, action parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual CommonEventObject Common { get; set; }
+
         /// <summary>
         /// The URL the bot should redirect the user to after they have completed an authorization or configuration flow
         /// outside of Google Chat. See the [Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for more
@@ -1933,9 +2004,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
 
+        /// <summary>The type of dialog event we have received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogEventType")]
+        public virtual string DialogEventType { get; set; }
+
         /// <summary>The timestamp indicating when the event was dispatched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
+
+        /// <summary>
+        /// Whether or not this event is related to dialogs request, submit or cancel. This will be set to true when we
+        /// want a request/submit/cancel event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
+        public virtual System.Nullable<bool> IsDialogEvent { get; set; }
 
         /// <summary>The message that triggered the event, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -2919,6 +3001,25 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The inputs with widgets.</summary>
+    public class Inputs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dateInput")]
+        public virtual DateInput DateInput { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTimeInput")]
+        public virtual DateTimeInput DateTimeInput { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stringInputs")]
+        public virtual StringInputs StringInputs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timeInput")]
+        public virtual TimeInput TimeInput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A UI element contains a key (label) and a value (content). And this element may also contain some actions such
     /// as onclick button.
@@ -3220,6 +3321,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Input parameter for regular widgets. For single-valued widgets, it will be a single value list; for multi-valued
+    /// widgets, such as checkbox, all the values are presented.
+    /// </summary>
+    public class StringInputs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A button with text and onclick action.</summary>
     public class TextButton : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3253,6 +3367,35 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input Parameter for Time Picker widget.</summary>
+    public class TimeInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The timezone id and offset. The id is the tz database time zones such as "America/Toronto". The user timezone
+    /// offset, in milliseconds, from Coordinated Universal Time (UTC).
+    /// </summary>
+    public class TimeZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<int> Offset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1606,6 +1606,40 @@ namespace Google.Apis.Document.v1
 }
 namespace Google.Apis.Document.v1.Data
 {
+    public class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the delete documents operation.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the batch move documents operation.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The common metadata for long running operations.</summary>
     public class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1775,6 +1809,24 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata of the import document operation.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the import document operation.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for set default processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1868,6 +1920,16 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Response message for the undeploy processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2112,7 +2174,8 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// A phrase in the text that is a known entity type, such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
+    /// such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2128,7 +2191,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.</summary>
+        /// <summary>
+        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
+        /// document, this field will be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -2201,6 +2267,14 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datetimeValue")]
         public virtual GoogleTypeDateTime DatetimeValue { get; set; }
 
+        /// <summary>Float value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<float> FloatValue { get; set; }
+
+        /// <summary>Integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
+        public virtual System.Nullable<int> IntegerValue { get; set; }
+
         /// <summary>
         /// Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
         /// </summary>
@@ -2208,10 +2282,12 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleTypeMoney MoneyValue { get; set; }
 
         /// <summary>
-        /// Required. Normalized entity value stored as a string. This field is populated for supported document type
-        /// (e.g. Invoice). For some entity types, one of respective 'structured_value' fields may also be populated. -
-        /// Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO
-        /// 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+        /// Optional. An optional field to store a normalized string. For some entity types, one of respective
+        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
+        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
+        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
+        /// the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -3244,7 +3320,8 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// A phrase in the text that is a known entity type, such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
+    /// such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3260,7 +3337,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.</summary>
+        /// <summary>
+        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
+        /// document, this field will be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -3333,6 +3413,14 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datetimeValue")]
         public virtual GoogleTypeDateTime DatetimeValue { get; set; }
 
+        /// <summary>Float value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<float> FloatValue { get; set; }
+
+        /// <summary>Integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
+        public virtual System.Nullable<int> IntegerValue { get; set; }
+
         /// <summary>
         /// Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
         /// </summary>
@@ -3340,10 +3428,12 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleTypeMoney MoneyValue { get; set; }
 
         /// <summary>
-        /// Required. Normalized entity value stored as a string. This field is populated for supported document type
-        /// (e.g. Invoice). For some entity types, one of respective 'structured_value' fields may also be populated. -
-        /// Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO
-        /// 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+        /// Optional. An optional field to store a normalized string. For some entity types, one of respective
+        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
+        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
+        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
+        /// the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -4313,7 +4403,8 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// A phrase in the text that is a known entity type, such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
+    /// such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4329,7 +4420,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.</summary>
+        /// <summary>
+        /// Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the entity is not present in the
+        /// document, this field will be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -4402,6 +4496,14 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datetimeValue")]
         public virtual GoogleTypeDateTime DatetimeValue { get; set; }
 
+        /// <summary>Float value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<float> FloatValue { get; set; }
+
+        /// <summary>Integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
+        public virtual System.Nullable<int> IntegerValue { get; set; }
+
         /// <summary>
         /// Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
         /// </summary>
@@ -4409,10 +4511,12 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleTypeMoney MoneyValue { get; set; }
 
         /// <summary>
-        /// Required. Normalized entity value stored as a string. This field is populated for supported document type
-        /// (e.g. Invoice). For some entity types, one of respective 'structured_value' fields may also be populated. -
-        /// Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO
-        /// 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+        /// Optional. An optional field to store a normalized string. For some entity types, one of respective
+        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
+        /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
+        /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
+        /// the ISO 8601 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }

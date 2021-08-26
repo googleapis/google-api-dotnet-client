@@ -6497,6 +6497,57 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Returns the singleton data retention settings for this property.</summary>
+        /// <param name="name">
+        /// Required. The name of the settings to lookup. Format: properties/{property}/dataRetentionSettings Example:
+        /// "properties/1000/dataRetentionSettings"
+        /// </param>
+        public virtual GetDataRetentionSettingsRequest GetDataRetentionSettings(string name)
+        {
+            return new GetDataRetentionSettingsRequest(service, name);
+        }
+
+        /// <summary>Returns the singleton data retention settings for this property.</summary>
+        public class GetDataRetentionSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRetentionSettings>
+        {
+            /// <summary>Constructs a new GetDataRetentionSettings request.</summary>
+            public GetDataRetentionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the settings to lookup. Format: properties/{property}/dataRetentionSettings
+            /// Example: "properties/1000/dataRetentionSettings"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getDataRetentionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes GetDataRetentionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+/dataRetentionSettings$",
+                });
+            }
+        }
+
         /// <summary>Lookup for Google Signals settings for a property.</summary>
         /// <param name="name">
         /// Required. The name of the google signals settings to retrieve. Format:
@@ -6714,6 +6765,81 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^properties/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the singleton data retention settings for this property.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. Resource name for this DataRetentionSetting resource. Format:
+        /// properties/{property}/dataRetentionSettings
+        /// </param>
+        public virtual UpdateDataRetentionSettingsRequest UpdateDataRetentionSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRetentionSettings body, string name)
+        {
+            return new UpdateDataRetentionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Updates the singleton data retention settings for this property.</summary>
+        public class UpdateDataRetentionSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRetentionSettings>
+        {
+            /// <summary>Constructs a new UpdateDataRetentionSettings request.</summary>
+            public UpdateDataRetentionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRetentionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. Resource name for this DataRetentionSetting resource. Format:
+            /// properties/{property}/dataRetentionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update").
+            /// Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to
+            /// match all fields.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRetentionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateDataRetentionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes UpdateDataRetentionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+/dataRetentionSettings$",
                 });
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {
@@ -7155,6 +7281,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMetric")]
         public virtual GoogleAnalyticsAdminV1alphaCustomMetric CustomMetric { get; set; }
 
+        /// <summary>A snapshot of a data retention settings resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionSettings")]
+        public virtual GoogleAnalyticsAdminV1alphaDataRetentionSettings DataRetentionSettings { get; set; }
+
         /// <summary>A snapshot of a DisplayVideo360AdvertiserLink resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLink")]
         public virtual GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink DisplayVideo360AdvertiserLink { get; set; }
@@ -7385,6 +7515,30 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Required. Immutable. The scope of this custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings values for data retention. This is a singleton resource.</summary>
+    public class GoogleAnalyticsAdminV1alphaDataRetentionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The length of time that event-level data is retained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventDataRetention")]
+        public virtual string EventDataRetention { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name for this DataRetentionSetting resource. Format:
+        /// properties/{property}/dataRetentionSettings
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// If true, reset the retention period for the user identifier with every event from that user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resetUserDataOnNewActivity")]
+        public virtual System.Nullable<bool> ResetUserDataOnNewActivity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

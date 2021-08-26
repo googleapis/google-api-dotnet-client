@@ -412,6 +412,85 @@ namespace Google.Apis.AnalyticsData.v1beta
         }
 
         /// <summary>
+        /// This compatibility method lists dimensions and metrics that can be added to a report request and maintain
+        /// compatibility. This method fails if the request's dimensions and metrics are incompatible. In Google
+        /// Analytics, reports fail if they request incompatible dimensions and/or metrics; in that case, you will need
+        /// to remove dimensions and/or metrics from the incompatible report until the report is compatible. The
+        /// Realtime and Core reports have different compatibility rules. This method checks compatibility for Core
+        /// reports.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="property">
+        /// A Google Analytics GA4 property identifier whose events are tracked. To learn more, see [where to find your
+        /// Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). `property`
+        /// should be the same value as in your `runReport` request. Example: properties/1234 Set the Property ID to 0
+        /// for compatibility checking on dimensions and metrics common to all properties. In this special mode, this
+        /// method will not return custom dimensions and metrics.
+        /// </param>
+        public virtual CheckCompatibilityRequest CheckCompatibility(Google.Apis.AnalyticsData.v1beta.Data.CheckCompatibilityRequest body, string property)
+        {
+            return new CheckCompatibilityRequest(service, body, property);
+        }
+
+        /// <summary>
+        /// This compatibility method lists dimensions and metrics that can be added to a report request and maintain
+        /// compatibility. This method fails if the request's dimensions and metrics are incompatible. In Google
+        /// Analytics, reports fail if they request incompatible dimensions and/or metrics; in that case, you will need
+        /// to remove dimensions and/or metrics from the incompatible report until the report is compatible. The
+        /// Realtime and Core reports have different compatibility rules. This method checks compatibility for Core
+        /// reports.
+        /// </summary>
+        public class CheckCompatibilityRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.CheckCompatibilityResponse>
+        {
+            /// <summary>Constructs a new CheckCompatibility request.</summary>
+            public CheckCompatibilityRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.CheckCompatibilityRequest body, string property) : base(service)
+            {
+                Property = property;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A Google Analytics GA4 property identifier whose events are tracked. To learn more, see [where to find
+            /// your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).
+            /// `property` should be the same value as in your `runReport` request. Example: properties/1234 Set the
+            /// Property ID to 0 for compatibility checking on dimensions and metrics common to all properties. In this
+            /// special mode, this method will not return custom dimensions and metrics.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Property { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AnalyticsData.v1beta.Data.CheckCompatibilityRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "checkCompatibility";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/{+property}:checkCompatibility";
+
+            /// <summary>Initializes CheckCompatibility parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Returns metadata for dimensions and metrics available in reporting methods. Used to explore the dimensions
         /// and metrics. In this method, a Google Analytics GA4 Property Identifier is specified in the request, and the
         /// metadata response includes Custom dimensions and metrics as well as Universal metadata. For example if a
@@ -799,6 +878,63 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
     }
 
     /// <summary>
+    /// The request for compatibility information for a report's dimensions and metrics. Check compatibility provides a
+    /// preview of the compatibility of a report; fields shared with the `runReport` request should be the same values
+    /// as in your `runReport` request.
+    /// </summary>
+    public class CheckCompatibilityRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Filters the dimensions and metrics in the response to just this compatibility. Commonly used as
+        /// `”compatibilityFilter”: “COMPATIBLE”` to only return compatible dimensions &amp;amp; metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibilityFilter")]
+        public virtual string CompatibilityFilter { get; set; }
+
+        /// <summary>
+        /// The filter clause of dimensions. `dimensionFilter` should be the same value as in your `runReport` request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
+        public virtual FilterExpression DimensionFilter { get; set; }
+
+        /// <summary>
+        /// The dimensions in this report. `dimensions` should be the same value as in your `runReport` request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// The filter clause of metrics. `metricFilter` should be the same value as in your `runReport` request
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricFilter")]
+        public virtual FilterExpression MetricFilter { get; set; }
+
+        /// <summary>
+        /// The metrics in this report. `metrics` should be the same value as in your `runReport` request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The compatibility response with the compatibility of each dimension &amp; metric.</summary>
+    public class CheckCompatibilityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The compatibility of each dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionCompatibilities")]
+        public virtual System.Collections.Generic.IList<DimensionCompatibility> DimensionCompatibilities { get; set; }
+
+        /// <summary>The compatibility of each metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricCompatibilities")]
+        public virtual System.Collections.Generic.IList<MetricCompatibility> MetricCompatibilities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Defines a cohort selection criteria. A cohort is a group of users who share a common characteristic. For
     /// example, users with the same `firstSessionDate` belong to the same cohort.
     /// </summary>
@@ -1008,6 +1144,27 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The compatibility for a single dimension.</summary>
+    public class DimensionCompatibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The compatibility of this dimension. If the compatibility is COMPATIBLE, this dimension can be successfully
+        /// added to the report.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
+        public virtual string Compatibility { get; set; }
+
+        /// <summary>
+        /// The dimension metadata contains the API name for this compatibility information. The dimension metadata also
+        /// contains other helpful information like the UI name and description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionMetadata")]
+        public virtual DimensionMetadata DimensionMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Used to express a dimension which is the result of a formula of multiple dimensions. Example usages: 1)
     /// lower_case(dimension) 2) concatenate(dimension1, symbol, dimension2).
@@ -1056,6 +1213,13 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiName")]
         public virtual string ApiName { get; set; }
+
+        /// <summary>
+        /// The display name of the category that this dimension belongs to. Similar dimensions and metrics are
+        /// categorized together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
 
         /// <summary>True if the dimension is a custom dimension for this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDefinition")]
@@ -1245,6 +1409,27 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The compatibility for a single metric.</summary>
+    public class MetricCompatibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The compatibility of this metric. If the compatibility is COMPATIBLE, this metric can be successfully added
+        /// to the report.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
+        public virtual string Compatibility { get; set; }
+
+        /// <summary>
+        /// The metric metadata contains the API name for this compatibility information. The metric metadata also
+        /// contains other helpful information like the UI name and description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricMetadata")]
+        public virtual MetricMetadata MetricMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Describes a metric column in the report. Visible metrics requested in a report produce column entries within
     /// rows and MetricHeaders. However, metrics used exclusively within filters or expressions do not produce columns
@@ -1270,6 +1455,13 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// <summary>A metric name. Useable in [Metric](#Metric)'s `name`. For example, `eventCount`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiName")]
         public virtual string ApiName { get; set; }
+
+        /// <summary>
+        /// The display name of the category that this metrics belongs to. Similar dimensions and metrics are
+        /// categorized together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
 
         /// <summary>True if the metric is a custom metric for this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDefinition")]

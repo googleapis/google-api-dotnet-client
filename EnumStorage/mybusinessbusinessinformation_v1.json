@@ -1,0 +1,21 @@
+{
+  "Google.Apis.MyBusinessBusinessInformation.v1.CategoriesResource+BatchGetRequest.ViewEnum": [
+    "CATEGORY_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.MyBusinessBusinessInformation.v1.CategoriesResource+ListRequest.ViewEnum": [
+    "CATEGORY_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.MyBusinessBusinessInformation.v1.MyBusinessBusinessInformationBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.MyBusinessBusinessInformation.v1.MyBusinessBusinessInformationBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

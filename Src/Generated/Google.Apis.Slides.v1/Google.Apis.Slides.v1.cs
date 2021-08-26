@@ -1540,6 +1540,14 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageProperties")]
         public virtual ImageProperties ImageProperties { get; set; }
 
+        /// <summary>
+        /// Placeholders are page elements that inherit from corresponding placeholders on layouts and masters. If set,
+        /// the image is a placeholder image and any inherited properties can be resolved by looking at the parent
+        /// placeholder identified by the Placeholder.parent_object_id field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
+        public virtual Placeholder Placeholder { get; set; }
+
         /// <summary>The source URL is the URL used to insert the image. The source URL can be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUrl")]
         public virtual string SourceUrl { get; set; }
