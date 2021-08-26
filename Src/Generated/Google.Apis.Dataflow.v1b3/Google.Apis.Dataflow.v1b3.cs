@@ -65,7 +65,10 @@ namespace Google.Apis.Dataflow.v1b3
         /// <summary>Available OAuth 2.0 scopes for use with the Dataflow API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage your Google Compute Engine resources</summary>
@@ -81,7 +84,10 @@ namespace Google.Apis.Dataflow.v1b3
         /// <summary>Available OAuth 2.0 scope constants for use with the Dataflow API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage your Google Compute Engine resources</summary>
@@ -5062,7 +5068,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a Cloud BigTable connector used by the job.</summary>
+    /// <summary>Metadata for a Cloud Bigtable connector used by the job.</summary>
     public class BigTableIODetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>InstanceId accessed in the connection.</summary>
@@ -5887,9 +5893,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> AdditionalUserLabels { get; set; }
 
+        /// <summary>The algorithm to use for autoscaling</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingAlgorithm")]
+        public virtual string AutoscalingAlgorithm { get; set; }
+
         /// <summary>Worker disk size, in gigabytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// If true, save a heap dump before killing a thread or process which is GC thrashing or out of memory. The
+        /// location of the heap file will either be echoed back to the user, or the user will be given the opportunity
+        /// to download the heap file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dumpHeapOnOom")]
+        public virtual System.Nullable<bool> DumpHeapOnOom { get; set; }
 
         /// <summary>Whether to enable Streaming Engine for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStreamingEngine")]
@@ -5915,10 +5933,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>The maximum number of workers to cap scaling at.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxNumWorkers")]
-        public virtual System.Nullable<int> MaxNumWorkers { get; set; }
-
         /// <summary>
         /// The maximum number of Google Compute Engine instances to be made available to your pipeline during
         /// execution, from 1 to 1000.
@@ -5935,6 +5949,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The initial number of Google Compute Engine instances for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numWorkers")]
         public virtual System.Nullable<int> NumWorkers { get; set; }
+
+        /// <summary>
+        /// Cloud Storage bucket (directory) to upload heap dumps to the given location. Enabling this implies that heap
+        /// dumps should be generated on OOM (dump_heap_on_oom is set to true).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveHeapDumpsToGcsPath")]
+        public virtual string SaveHeapDumpsToGcsPath { get; set; }
 
         /// <summary>
         /// Docker registry location of container image to use for the 'worker harness. Default is the container for the
@@ -6472,7 +6493,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// </summary>
     public class JobMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identification of a Cloud BigTable source used in the Dataflow job.</summary>
+        /// <summary>Identification of a Cloud Bigtable source used in the Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigTableDetails")]
         public virtual System.Collections.Generic.IList<BigTableIODetails> BigTableDetails { get; set; }
 
@@ -6488,7 +6509,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileDetails")]
         public virtual System.Collections.Generic.IList<FileIODetails> FileDetails { get; set; }
 
-        /// <summary>Identification of a PubSub source used in the Dataflow job.</summary>
+        /// <summary>Identification of a Pub/Sub source used in the Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubDetails")]
         public virtual System.Collections.Generic.IList<PubSubIODetails> PubsubDetails { get; set; }
 
@@ -7521,7 +7542,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>The environment values to set at runtime.</summary>
     public class RuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional experiment flags for the job.</summary>
+        /// <summary>Additional experiment flags for the job, specified with the `--experiments` option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalExperiments")]
         public virtual System.Collections.Generic.IList<string> AdditionalExperiments { get; set; }
 
@@ -7887,7 +7908,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>PubSub snapshot metadata.</summary>
+        /// <summary>Pub/Sub snapshot metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubMetadata")]
         public virtual System.Collections.Generic.IList<PubsubSnapshotMetadata> PubsubMetadata { get; set; }
 

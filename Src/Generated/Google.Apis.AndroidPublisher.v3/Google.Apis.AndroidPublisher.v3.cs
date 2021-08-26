@@ -4476,14 +4476,24 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Lists all in-app products - both managed products and subscriptions.</summary>
+        /// <summary>
+        /// Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app
+        /// products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken`
+        /// will be set and the caller should provide its value as a `token` request parameter to retrieve the next
+        /// page.
+        /// </summary>
         /// <param name="packageName">Package name of the app.</param>
         public virtual ListRequest List(string packageName)
         {
             return new ListRequest(service, packageName);
         }
 
-        /// <summary>Lists all in-app products - both managed products and subscriptions.</summary>
+        /// <summary>
+        /// Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app
+        /// products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken`
+        /// will be set and the caller should provide its value as a `token` request parameter to retrieve the next
+        /// page.
+        /// </summary>
         public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InappproductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4497,11 +4507,11 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
 
-            /// <summary>How many results the list operation should return.</summary>
+            /// <summary>Deprecated and ignored. The page size is determined by the server.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>The index of the first element to return.</summary>
+            /// <summary>Deprecated and ignored. Set the `token` parameter to rertieve the next page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> StartIndex { get; set; }
 
@@ -7372,7 +7382,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Information about the current page.</summary>
+        /// <summary>Deprecated and unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
         public virtual PageInfo PageInfo { get; set; }
 

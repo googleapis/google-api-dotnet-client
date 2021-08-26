@@ -80,7 +80,10 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             public static string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -101,7 +104,10 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             public const string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -346,15 +352,15 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <summary>Gets the client state for the device user</summary>
                 /// <param name="name">
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in
-                /// format: `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where
-                /// `device_id` is the unique ID assigned to the Device, `device_user_id` is the unique ID assigned to
-                /// the User and `partner_id` identifies the partner storing the data. To get the client state for
-                /// devices belonging to your own organization, the `partnerId` is in the format:
-                /// `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and `anystring`
-                /// is any suffix. This suffix is used in setting up Custom Access Levels in Context-Aware Access. You
-                /// may use `my_customer` instead of the customer ID for devices managed by your own organization. You
-                /// may specify `-` in place of the `{device_id}`, so the ClientState resource name can be:
-                /// `devices/-/deviceUsers/{device_user_resource_id}/clientStates/{partner_id}`.
+                /// format: `devices/{device}/deviceUsers/{device_user}/clientStates/{partner}`, where `device` is the
+                /// unique ID assigned to the Device, `device_user` is the unique ID assigned to the User and `partner`
+                /// identifies the partner storing the data. To get the client state for devices belonging to your own
+                /// organization, the `partnerId` is in the format: `customerId-*anystring*`. Where the `customerId` is
+                /// your organization's customer ID and `anystring` is any suffix. This suffix is used in setting up
+                /// Custom Access Levels in Context-Aware Access. You may use `my_customer` instead of the customer ID
+                /// for devices managed by your own organization. You may specify `-` in place of the `{device}`, so the
+                /// ClientState resource name can be:
+                /// `devices/-/deviceUsers/{device_user_resource}/clientStates/{partner}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -373,16 +379,15 @@ namespace Google.Apis.CloudIdentity.v1
 
                     /// <summary>
                     /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-                    /// ClientState in format:
-                    /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where `device_id`
-                    /// is the unique ID assigned to the Device, `device_user_id` is the unique ID assigned to the User
-                    /// and `partner_id` identifies the partner storing the data. To get the client state for devices
-                    /// belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`.
-                    /// Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This
-                    /// suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use
-                    /// `my_customer` instead of the customer ID for devices managed by your own organization. You may
-                    /// specify `-` in place of the `{device_id}`, so the ClientState resource name can be:
-                    /// `devices/-/deviceUsers/{device_user_resource_id}/clientStates/{partner_id}`.
+                    /// ClientState in format: `devices/{device}/deviceUsers/{device_user}/clientStates/{partner}`,
+                    /// where `device` is the unique ID assigned to the Device, `device_user` is the unique ID assigned
+                    /// to the User and `partner` identifies the partner storing the data. To get the client state for
+                    /// devices belonging to your own organization, the `partnerId` is in the format:
+                    /// `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and
+                    /// `anystring` is any suffix. This suffix is used in setting up Custom Access Levels in
+                    /// Context-Aware Access. You may use `my_customer` instead of the customer ID for devices managed
+                    /// by your own organization. You may specify `-` in place of the `{device}`, so the ClientState
+                    /// resource name can be: `devices/-/deviceUsers/{device_user_resource}/clientStates/{partner}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -390,7 +395,7 @@ namespace Google.Apis.CloudIdentity.v1
                     /// <summary>
                     /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
                     /// If you're using this API for your own organization, use `customers/my_customer` If you're using
-                    /// this API to manage another organization, use `customers/{customer_id}`, where customer_id is the
+                    /// this API to manage another organization, use `customers/{customer}`, where customer is the
                     /// customer to whom the device belongs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
@@ -460,7 +465,7 @@ namespace Google.Apis.CloudIdentity.v1
                     /// <summary>
                     /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
                     /// If you're using this API for your own organization, use `customers/my_customer` If you're using
-                    /// this API to manage another organization, use `customers/{customer_id}`, where customer_id is the
+                    /// this API to manage another organization, use `customers/{customer}`, where customer is the
                     /// customer to whom the device belongs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
@@ -546,13 +551,13 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState
-                /// in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where
-                /// partner_id corresponds to the partner storing the data. For partners belonging to the "BeyondCorp
-                /// Alliance", this is the partner ID specified to you by Google. For all other callers, this is a
-                /// string of the form: `{customer_id}-suffix`, where `customer_id` is your customer ID. The *suffix* is
-                /// any string the caller specifies. This string will be displayed verbatim in the administration
-                /// console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your
-                /// organization's customer ID can be obtained from the URL: `GET
+                /// in format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where partner
+                /// corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance",
+                /// this is the partner ID specified to you by Google. For all other callers, this is a string of the
+                /// form: `{customer}-suffix`, where `customer` is your customer ID. The *suffix* is any string the
+                /// caller specifies. This string will be displayed verbatim in the administration console. This suffix
+                /// is used in setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID
+                /// can be obtained from the URL: `GET
                 /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response
                 /// contains the customer ID starting with the letter 'C'. The customer ID to be used in this API is the
                 /// string after the letter 'C' (not including 'C')
@@ -579,14 +584,13 @@ namespace Google.Apis.CloudIdentity.v1
 
                     /// <summary>
                     /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-                    /// ClientState in format:
-                    /// `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
-                    /// corresponds to the partner storing the data. For partners belonging to the "BeyondCorp
+                    /// ClientState in format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where
+                    /// partner corresponds to the partner storing the data. For partners belonging to the "BeyondCorp
                     /// Alliance", this is the partner ID specified to you by Google. For all other callers, this is a
-                    /// string of the form: `{customer_id}-suffix`, where `customer_id` is your customer ID. The
-                    /// *suffix* is any string the caller specifies. This string will be displayed verbatim in the
-                    /// administration console. This suffix is used in setting up Custom Access Levels in Context-Aware
-                    /// Access. Your organization's customer ID can be obtained from the URL: `GET
+                    /// string of the form: `{customer}-suffix`, where `customer` is your customer ID. The *suffix* is
+                    /// any string the caller specifies. This string will be displayed verbatim in the administration
+                    /// console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your
+                    /// organization's customer ID can be obtained from the URL: `GET
                     /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the
                     /// response contains the customer ID starting with the letter 'C'. The customer ID to be used in
                     /// this API is the string after the letter 'C' (not including 'C')
@@ -597,7 +601,7 @@ namespace Google.Apis.CloudIdentity.v1
                     /// <summary>
                     /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
                     /// If you're using this API for your own organization, use `customers/my_customer` If you're using
-                    /// this API to manage another organization, use `customers/{customer_id}`, where customer_id is the
+                    /// this API to manage another organization, use `customers/{customer}`, where customer is the
                     /// customer to whom the device belongs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
@@ -661,8 +665,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the
-            /// Device, and device_user_id is the unique ID assigned to the User.
+            /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+            /// device_user is the unique ID assigned to the User.
             /// </param>
             public virtual ApproveRequest Approve(Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest body, string name)
             {
@@ -682,8 +686,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-                /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID
-                /// assigned to the Device, and device_user_id is the unique ID assigned to the User.
+                /// format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the
+                /// Device, and device_user is the unique ID assigned to the User.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -722,8 +726,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the
-            /// Device, and device_user_id is the unique ID assigned to the User.
+            /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+            /// device_user is the unique ID assigned to the User.
             /// </param>
             public virtual BlockRequest Block(Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest body, string name)
             {
@@ -743,8 +747,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-                /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID
-                /// assigned to the Device, and device_user_id is the unique ID assigned to the User.
+                /// format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the
+                /// Device, and device_user is the unique ID assigned to the User.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -786,8 +790,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the
-            /// Device, and device_user_id is the unique ID assigned to the User.
+            /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+            /// device_user is the unique ID assigned to the User.
             /// </param>
             public virtual CancelWipeRequest CancelWipe(Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest body, string name)
             {
@@ -810,8 +814,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-                /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID
-                /// assigned to the Device, and device_user_id is the unique ID assigned to the User.
+                /// format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the
+                /// Device, and device_user is the unique ID assigned to the User.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -849,8 +853,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>Deletes the specified DeviceUser. This also revokes the user's access to device data.</summary>
             /// <param name="name">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the
-            /// Device, and device_user_id is the unique ID assigned to the User.
+            /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+            /// device_user is the unique ID assigned to the User.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -869,8 +873,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-                /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID
-                /// assigned to the Device, and device_user_id is the unique ID assigned to the User.
+                /// format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the
+                /// Device, and device_user is the unique ID assigned to the User.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -878,8 +882,8 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <summary>
                 /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
                 /// you're using this API for your own organization, use `customers/my_customer` If you're using this
-                /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
-                /// to whom the device belongs.
+                /// API to manage another organization, use `customers/{customer}`, where customer is the customer to
+                /// whom the device belongs.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Customer { get; set; }
@@ -919,8 +923,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>Retrieves the specified DeviceUser</summary>
             /// <param name="name">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the
-            /// Device, and device_user_id is the unique ID assigned to the User.
+            /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+            /// device_user is the unique ID assigned to the User.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -939,8 +943,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-                /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID
-                /// assigned to the Device, and device_user_id is the unique ID assigned to the User.
+                /// format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the
+                /// Device, and device_user is the unique ID assigned to the User.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -948,8 +952,8 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <summary>
                 /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
                 /// you're using this API for your own organization, use `customers/my_customer` If you're using this
-                /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
-                /// to whom the device belongs.
+                /// API to manage another organization, use `customers/{customer}`, where customer is the customer to
+                /// whom the device belongs.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Customer { get; set; }
@@ -1016,8 +1020,8 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <summary>
                 /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
                 /// you're using this API for your own organization, use `customers/my_customer` If you're using this
-                /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
-                /// to whom the device belongs.
+                /// API to manage another organization, use `customers/{customer}`, where customer is the customer to
+                /// whom the device belongs.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Customer { get; set; }
@@ -1270,8 +1274,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the
-            /// Device, and device_user_id is the unique ID assigned to the User.
+            /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+            /// device_user is the unique ID assigned to the User.
             /// </param>
             public virtual WipeRequest Wipe(Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest body, string name)
             {
@@ -1297,8 +1301,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-                /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID
-                /// assigned to the Device, and device_user_id is the unique ID assigned to the User.
+                /// format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the
+                /// Device, and device_user is the unique ID assigned to the User.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1344,7 +1348,7 @@ namespace Google.Apis.CloudIdentity.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-        /// `devices/{device_id}`, where device_id is the unique ID assigned to the Device.
+        /// `devices/{device}`, where device is the unique ID assigned to the Device.
         /// </param>
         public virtual CancelWipeRequest CancelWipe(Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest body, string name)
         {
@@ -1370,7 +1374,7 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}`, where device_id is the unique ID assigned to the Device.
+            /// `devices/{device}`, where device is the unique ID assigned to the Device.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1433,8 +1437,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>
             /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
             /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
-            /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
-            /// the device belongs.
+            /// manage another organization, use `customers/{customer}`, where customer is the customer to whom the
+            /// device belongs.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -1472,7 +1476,7 @@ namespace Google.Apis.CloudIdentity.v1
         /// <summary>Deletes the specified device.</summary>
         /// <param name="name">
         /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-        /// `devices/{device_id}`, where device_id is the unique ID assigned to the Device.
+        /// `devices/{device}`, where device is the unique ID assigned to the Device.
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
@@ -1491,7 +1495,7 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}`, where device_id is the unique ID assigned to the Device.
+            /// `devices/{device}`, where device is the unique ID assigned to the Device.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1499,8 +1503,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>
             /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
             /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
-            /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
-            /// the device belongs.
+            /// manage another organization, use `customers/{customer}`, where customer is the customer to whom the
+            /// device belongs.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -1540,7 +1544,7 @@ namespace Google.Apis.CloudIdentity.v1
         /// <summary>Retrieves the specified device.</summary>
         /// <param name="name">
         /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in the format:
-        /// `devices/{device_id}`, where device_id is the unique ID assigned to the Device.
+        /// `devices/{device}`, where device is the unique ID assigned to the Device.
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -1559,17 +1563,17 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in the
-            /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.
+            /// format: `devices/{device}`, where device is the unique ID assigned to the Device.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>
             /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Customer in the
-            /// format: `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. If
-            /// you're using this API for your own organization, use `customers/my_customer`. If you're using this API
-            /// to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
-            /// the device belongs.
+            /// format: `customers/{customer}`, where customer is the customer to whom the device belongs. If you're
+            /// using this API for your own organization, use `customers/my_customer`. If you're using this API to
+            /// manage another organization, use `customers/{customer}`, where customer is the customer to whom the
+            /// device belongs.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -1623,10 +1627,10 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer in the
-            /// format: `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. If
-            /// you're using this API for your own organization, use `customers/my_customer`. If you're using this API
-            /// to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
-            /// the device belongs.
+            /// format: `customers/{customer}`, where customer is the customer to whom the device belongs. If you're
+            /// using this API for your own organization, use `customers/my_customer`. If you're using this API to
+            /// manage another organization, use `customers/{customer}`, where customer is the customer to whom the
+            /// device belongs.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -1758,8 +1762,8 @@ namespace Google.Apis.CloudIdentity.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-        /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device,
-        /// and device_user_id is the unique ID assigned to the User.
+        /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+        /// device_user is the unique ID assigned to the User.
         /// </param>
         public virtual WipeRequest Wipe(Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest body, string name)
         {
@@ -1779,8 +1783,8 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-            /// `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the
-            /// Device, and device_user_id is the unique ID assigned to the User.
+            /// `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and
+            /// device_user is the unique ID assigned to the User.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1858,8 +1862,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             /// <param name="parent">
             /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the
-            /// transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the
-            /// Group to which the Membership belongs to.
+            /// transitive membership in. Format: `groups/{group}`, where `group` is the unique id assigned to the Group
+            /// to which the Membership belongs to.
             /// </param>
             public virtual CheckTransitiveMembershipRequest CheckTransitiveMembership(string parent)
             {
@@ -1885,8 +1889,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the
-                /// transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to
-                /// the Group to which the Membership belongs to.
+                /// transitive membership in. Format: `groups/{group}`, where `group` is the unique id assigned to the
+                /// Group to which the Membership belongs to.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1936,7 +1940,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent `Group` resource under which to create the `Membership`. Must be of the form
-            /// `groups/{group_id}`.
+            /// `groups/{group}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1.Data.Membership body, string parent)
             {
@@ -1956,7 +1960,7 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. The parent `Group` resource under which to create the `Membership`. Must be of the form
-                /// `groups/{group_id}`.
+                /// `groups/{group}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1994,7 +1998,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>Deletes a `Membership`.</summary>
             /// <param name="name">
             /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`
-            /// to delete. Must be of the form `groups/{group_id}/memberships/{membership_id}`
+            /// to delete. Must be of the form `groups/{group}/memberships/{membership}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -2013,7 +2017,7 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-                /// `Membership` to delete. Must be of the form `groups/{group_id}/memberships/{membership_id}`
+                /// `Membership` to delete. Must be of the form `groups/{group}/memberships/{membership}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2045,7 +2049,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>Retrieves a `Membership`.</summary>
             /// <param name="name">
             /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`
-            /// to retrieve. Must be of the form `groups/{group_id}/memberships/{membership_id}`.
+            /// to retrieve. Must be of the form `groups/{group}/memberships/{membership}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2064,7 +2068,7 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
-                /// `Membership` to retrieve. Must be of the form `groups/{group_id}/memberships/{membership_id}`.
+                /// `Membership` to retrieve. Must be of the form `groups/{group}/memberships/{membership}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2103,11 +2107,11 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             /// <param name="parent">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
-            /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to
-            /// the Group to which the Membership belongs to. group_id can be a wildcard collection id "-". When a
-            /// group_id is specified, the membership graph will be constrained to paths between the member (defined in
-            /// the query) and the parent. If a wildcard collection is provided, all membership paths connected to the
-            /// member will be returned.
+            /// transitive memberships in. Format: `groups/{group}`, where `group` is the unique ID assigned to the
+            /// Group to which the Membership belongs to. group can be a wildcard collection id "-". When a group is
+            /// specified, the membership graph will be constrained to paths between the member (defined in the query)
+            /// and the parent. If a wildcard collection is provided, all membership paths connected to the member will
+            /// be returned.
             /// </param>
             public virtual GetMembershipGraphRequest GetMembershipGraph(string parent)
             {
@@ -2133,11 +2137,11 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to
-                /// search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID
-                /// assigned to the Group to which the Membership belongs to. group_id can be a wildcard collection id
-                /// "-". When a group_id is specified, the membership graph will be constrained to paths between the
-                /// member (defined in the query) and the parent. If a wildcard collection is provided, all membership
-                /// paths connected to the member will be returned.
+                /// search transitive memberships in. Format: `groups/{group}`, where `group` is the unique ID assigned
+                /// to the Group to which the Membership belongs to. group can be a wildcard collection id "-". When a
+                /// group is specified, the membership graph will be constrained to paths between the member (defined in
+                /// the query) and the parent. If a wildcard collection is provided, all membership paths connected to
+                /// the member will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2186,7 +2190,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>Lists the `Membership`s within a `Group`.</summary>
             /// <param name="parent">
             /// Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the form
-            /// `groups/{group_id}`.
+            /// `groups/{group}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2205,7 +2209,7 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the
-                /// form `groups/{group_id}`.
+                /// form `groups/{group}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2298,7 +2302,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             /// <param name="parent">
             /// Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the form
-            /// `groups/{group_id}`.
+            /// `groups/{group}`.
             /// </param>
             public virtual LookupRequest Lookup(string parent)
             {
@@ -2320,7 +2324,7 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the
-                /// form `groups/{group_id}`.
+                /// form `groups/{group}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2337,7 +2341,7 @@ namespace Google.Apis.CloudIdentity.v1
                 /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a
                 /// Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey`
                 /// represents an external-identity-mapped group. The namespace must correspond to an identity source
-                /// created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+                /// created in Admin Console and must be in the form of `identitysources/{identity_source}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("memberKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MemberKeyNamespace { get; set; }
@@ -2386,7 +2390,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`
-            /// whose roles are to be modified. Must be of the form `groups/{group_id}/memberships/{membership_id}`.
+            /// whose roles are to be modified. Must be of the form `groups/{group}/memberships/{membership}`.
             /// </param>
             public virtual ModifyMembershipRolesRequest ModifyMembershipRoles(Google.Apis.CloudIdentity.v1.Data.ModifyMembershipRolesRequest body, string name)
             {
@@ -2407,7 +2411,7 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <summary>
                 /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
                 /// `Membership` whose roles are to be modified. Must be of the form
-                /// `groups/{group_id}/memberships/{membership_id}`.
+                /// `groups/{group}/memberships/{membership}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2451,8 +2455,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             /// <param name="parent">
             /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive
-            /// memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API will search
-            /// across all groups for a given member.
+            /// memberships in. Format: `groups/{group}`, where `group` is always '-' as this API will search across all
+            /// groups for a given member.
             /// </param>
             public virtual SearchTransitiveGroupsRequest SearchTransitiveGroups(string parent)
             {
@@ -2477,8 +2481,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
-                /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API
-                /// will search across all groups for a given member.
+                /// transitive memberships in. Format: `groups/{group}`, where `group` is always '-' as this API will
+                /// search across all groups for a given member.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2558,7 +2562,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             /// <param name="parent">
             /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive
-            /// memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.
+            /// memberships in. Format: `groups/{group}`, where `group` is the unique ID assigned to the Group.
             /// </param>
             public virtual SearchTransitiveMembershipsRequest SearchTransitiveMemberships(string parent)
             {
@@ -2583,8 +2587,8 @@ namespace Google.Apis.CloudIdentity.v1
 
                 /// <summary>
                 /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
-                /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned
-                /// to the Group.
+                /// transitive memberships in. Format: `groups/{group}`, where `group` is the unique ID assigned to the
+                /// Group.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2712,7 +2716,7 @@ namespace Google.Apis.CloudIdentity.v1
         /// <summary>Deletes a `Group`.</summary>
         /// <param name="name">
         /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-        /// retrieve. Must be of the form `groups/{group_id}`.
+        /// retrieve. Must be of the form `groups/{group}`.
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
@@ -2731,7 +2735,7 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-            /// retrieve. Must be of the form `groups/{group_id}`.
+            /// retrieve. Must be of the form `groups/{group}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2763,7 +2767,7 @@ namespace Google.Apis.CloudIdentity.v1
         /// <summary>Retrieves a `Group`.</summary>
         /// <param name="name">
         /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-        /// retrieve. Must be of the form `groups/{group_id}`.
+        /// retrieve. Must be of the form `groups/{group}`.
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -2782,7 +2786,7 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-            /// retrieve. Must be of the form `groups/{group_id}`.
+            /// retrieve. Must be of the form `groups/{group}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2842,8 +2846,8 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. The parent resource under which to list all `Group` resources. Must be of the form
-            /// `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}`
-            /// for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+            /// `identitysources/{identity_source}` for external- identity-mapped groups or `customers/{customer}` for
+            /// Google Groups. The `customer` must begin with "C" (for example, 'C046psxkn').
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -2949,7 +2953,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed
             /// entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an
             /// external-identity-mapped group. The namespace must correspond to an identity source created in Admin
-            /// Console and must be in the form of `identitysources/{identity_source_id}`.
+            /// Console and must be in the form of `identitysources/{identity_source}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyNamespace { get; set; }
@@ -2990,7 +2994,7 @@ namespace Google.Apis.CloudIdentity.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall
-        /// be of the form `groups/{group_id}`.
+        /// be of the form `groups/{group}`.
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1.Data.Group body, string name)
         {
@@ -3010,7 +3014,7 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`.
-            /// Shall be of the form `groups/{group_id}`.
+            /// Shall be of the form `groups/{group}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3092,9 +3096,9 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>
             /// Required. The search query. Must be specified in [Common Expression
             /// Language](https://opensource.google/projects/cel). May only contain equality operators on the parent and
-            /// inclusion operators on labels (e.g., `parent == 'customers/{customer_id}' &amp;amp;&amp;amp;
-            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The `customer_id` must begin with
-            /// "C" (for example, 'C046psxkn').
+            /// inclusion operators on labels (e.g., `parent == 'customers/{customer}' &amp;amp;&amp;amp;
+            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The `customer` must begin with "C"
+            /// (for example, 'C046psxkn').
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -3185,6 +3189,34 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for CreateGroup LRO.</summary>
+    public class CreateGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for CreateMembership LRO.</summary>
+    public class CreateMembershipMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for DeleteGroup LRO.</summary>
+    public class DeleteGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for DeleteMembership LRO.</summary>
+    public class DeleteMembershipMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Dynamic group metadata like queries and status.</summary>
     public class DynamicGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3261,7 +3293,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed
         /// entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an
         /// external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console
-        /// and must be in the form of `identitysources/{identity_source_id}`.
+        /// and must be in the form of `identitysources/{identity_source}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
@@ -3277,6 +3309,15 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata of GetMembershipGraphResponse LRO. This is currently empty to permit future extensibility.
+    /// </summary>
+    public class GetMembershipGraphMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3328,14 +3369,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for ApproveDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for approving the device to access user data.</summary>
     public class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
-        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
-        /// belongs.
+        /// another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -3355,14 +3402,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for BlockDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for blocking account on device.</summary>
     public class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
-        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
-        /// belongs.
+        /// another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -3382,14 +3435,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for CancelWipeDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for cancelling an unfinished device wipe.</summary>
     public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
-        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
-        /// belongs.
+        /// another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -3411,14 +3470,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for CancelWipeDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for cancelling an unfinished user account wipe.</summary>
     public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
-        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
-        /// belongs.
+        /// another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -3495,15 +3560,15 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in
-        /// format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
-        /// corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is
-        /// the partner ID specified to you by Google. For all other callers, this is a string of the form:
-        /// `{customer_id}-suffix`, where `customer_id` is your customer ID. The *suffix* is any string the caller
-        /// specifies. This string will be displayed verbatim in the administration console. This suffix is used in
-        /// setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained
-        /// from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in
-        /// the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API
-        /// is the string after the letter 'C' (not including 'C')
+        /// format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where partner corresponds to the
+        /// partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is the partner ID
+        /// specified to you by Google. For all other callers, this is a string of the form: `{customer}-suffix`, where
+        /// `customer` is your customer ID. The *suffix* is any string the caller specifies. This string will be
+        /// displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in
+        /// Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET
+        /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains
+        /// the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the
+        /// letter 'C' (not including 'C')
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3515,6 +3580,13 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// <summary>A descriptive cause of the health score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreReason")]
         public virtual string ScoreReason { get; set; }
+    }
+
+    /// <summary>Metadata for CreateDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Additional custom attribute values may be one of these types</summary>
@@ -3532,6 +3604,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for DeleteDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for DeleteDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3622,7 +3708,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-        /// `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+        /// `devices/{device}`, where device is the unique id assigned to the Device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3700,8 +3786,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in
-        /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where `device_user_id` uniquely identifies a
-        /// user's use of a device.
+        /// format: `devices/{device}/deviceUsers/{device_user}`, where `device_user` uniquely identifies a user's use
+        /// of a device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3767,6 +3853,13 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for ListEndpointApps LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response containing resource names of the DeviceUsers associated with the caller's credentials.
     /// </summary>
@@ -3780,8 +3873,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// [Resource names](https://cloud.google.com/apis/design/resource_names) of the DeviceUsers in the format:
-        /// `devices/{device_id}/deviceUsers/{user_resource_id}`, where device_id is the unique ID assigned to a Device
-        /// and user_resource_id is the unique user ID
+        /// `devices/{device}/deviceUsers/{user_resource}`, where device is the unique ID assigned to a Device and
+        /// user_resource is the unique user ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
@@ -3794,14 +3887,41 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for SignoutDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for UpdateClientState LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for UpdateDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for WipeDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for wiping all data on the device.</summary>
     public class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
-        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
-        /// belongs.
+        /// another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -3823,14 +3943,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for WipeDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for starting an account wipe on device.</summary>
     public class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
-        /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
-        /// belongs.
+        /// another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -3893,15 +4019,15 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall
-        /// be of the form `groups/{group_id}`.
+        /// be of the form `groups/{group}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity
-        /// resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped
-        /// groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example,
+        /// resource hierarchy. Must be of the form `identitysources/{identity_source}` for external- identity-mapped
+        /// groups or `customers/{customer}` for Google Groups. The `customer` must begin with "C" (for example,
         /// 'C046psxkn').
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
@@ -4001,7 +4127,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     {
         /// <summary>
         /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up `Membership`. Must
-        /// be of the form `groups/{group_id}/memberships/{membership_id}`.
+        /// be of the form `groups/{group}/memberships/{membership}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4048,7 +4174,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`.
-        /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+        /// Shall be of the form `groups/{group}/memberships/{membership}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4288,6 +4414,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for UpdateGroup LRO.</summary>
+    public class UpdateGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for UpdateMembership LRO.</summary>
+    public class UpdateMembershipMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

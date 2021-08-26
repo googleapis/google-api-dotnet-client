@@ -8,6 +8,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.ArtifactRegistry.v1beta2.ProjectsResource+LocationsResource+RepositoriesResource+AptartifactsResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ArtifactRegistry.v1beta2.ProjectsResource+LocationsResource+RepositoriesResource+AptartifactsResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.ArtifactRegistry.v1beta2.ProjectsResource+LocationsResource+RepositoriesResource+PackagesResource+VersionsResource+GetRequest.ViewEnum": [
     "VERSION_VIEW_UNSPECIFIED",
     "BASIC",
@@ -17,5 +26,14 @@
     "VERSION_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
+  ],
+  "Google.Apis.ArtifactRegistry.v1beta2.ProjectsResource+LocationsResource+RepositoriesResource+YumartifactsResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ArtifactRegistry.v1beta2.ProjectsResource+LocationsResource+RepositoriesResource+YumartifactsResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
   ]
 }

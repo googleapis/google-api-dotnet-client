@@ -4617,9 +4617,21 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedLocation")]
         public virtual VulnerabilityLocation AffectedLocation { get; set; }
 
+        /// <summary>
+        /// Output only. The distro or language system assigned severity for this vulnerability when that is available
+        /// and note provider assigned severity when distro or language system has not yet assigned a severity for this
+        /// vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
+        public virtual string EffectiveSeverity { get; set; }
+
         /// <summary>The location of the available fix for vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLocation")]
         public virtual VulnerabilityLocation FixedLocation { get; set; }
+
+        /// <summary>The type of package (e.g. OS, MAVEN, GO).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
         public virtual string SeverityName { get; set; }
@@ -5364,7 +5376,12 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 
         /// <summary>
         /// The distro assigned severity for this vulnerability when that is available and note provider assigned
-        /// severity when distro has not yet assigned a severity for this vulnerability.
+        /// severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package
+        /// issues for this vulnerability, they can have different effective severities because some might come from the
+        /// distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason,
+        /// it is advised to use the effective severity on the PackageIssue level, as this field may eventually be
+        /// deprecated. In the case where multiple PackageIssues have different effective severities, the one set here
+        /// will be the highest severity of any of the PackageIssues.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
@@ -5379,7 +5396,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>The type of package; whether native or non native(ruby gems, node.js packages etc)</summary>
+        /// <summary>
+        /// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated
+        /// in the future because we can have multiple PackageIssues with different package types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

@@ -2238,6 +2238,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string GooglePlayProtectVerifyApps { get; set; }
 
         /// <summary>
+        /// Personal apps that can read work profile notifications using a NotificationListenerService
+        /// (https://developer.android.com/reference/android/service/notification/NotificationListenerService). By
+        /// default, no personal apps (aside from system apps) can read work notifications. Each value in the list must
+        /// be a package name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalAppsThatCanReadWorkNotifications")]
+        public virtual System.Collections.Generic.IList<string> PersonalAppsThatCanReadWorkNotifications { get; set; }
+
+        /// <summary>
         /// The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces
         /// install_unknown_sources_allowed (deprecated).
         /// </summary>
@@ -2748,6 +2757,34 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>This feature is not generally available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cross-profile policies applied on the device.</summary>
+    public class CrossProfilePolicies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether text copied from one profile (personal or work) can be pasted in the other profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossProfileCopyPaste")]
+        public virtual string CrossProfileCopyPaste { get; set; }
+
+        /// <summary>
+        /// Whether data from one profile (personal or work) can be shared with apps in the other profile. Specifically
+        /// controls simple data sharing via intents. Management of other cross-profile communication channels, such as
+        /// contact search, copy/paste, or connected work &amp;amp; personal apps, are configured separately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossProfileDataSharing")]
+        public virtual string CrossProfileDataSharing { get; set; }
+
+        /// <summary>
+        /// Whether contacts stored in the work profile can be shown in personal profile contact searches and incoming
+        /// calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showWorkContactsInPersonalProfile")]
+        public virtual string ShowWorkContactsInPersonalProfile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4152,6 +4189,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether configuring user credentials is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credentialsConfigDisabled")]
         public virtual System.Nullable<bool> CredentialsConfigDisabled { get; set; }
+
+        /// <summary>Cross-profile policies applied on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossProfilePolicies")]
+        public virtual CrossProfilePolicies CrossProfilePolicies { get; set; }
 
         /// <summary>Whether roaming data services are disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRoamingDisabled")]

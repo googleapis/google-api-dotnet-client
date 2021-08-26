@@ -4882,8 +4882,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// An expression which specifies a boost condition. The syntax and supported fields are the same as a filter
         /// expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with
-        /// product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) *
-        /// *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        /// product ID "product_1" or "product_2", and color "Red" or "Blue": * (id: ANY("product_1", "product_2")) AND
+        /// (colorFamilies: ANY("Red","Blue"))
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
@@ -4974,26 +4974,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Required. Supported textual and numerical facet keys in Product object, over which the facet values are
         /// computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: *
-        /// textual_field = *# The Product.brands. * | "brands"; *# The Product.categories. * | "categories"; *# The
-        /// Audience.genders. * | "genders"; *# The Audience.age_groups. * | "ageGroups"; *# The Product.availability.
-        /// Value is one of * *# "IN_STOCK", "OUT_OF_STOCK", PREORDER", "BACKORDER". * | "availability"; *# The
-        /// ColorInfo.color_families. * | "colorFamilies"; *# The ColorInfo.colors. * | "colors"; *# The Product.sizes.
-        /// * | "sizes"; *# The Product.materials. * | "materials"; *# The Product.patterns. * | "patterns"; *# The
-        /// Product.conditions. * | "conditions"; *# The textual custom attribute in Product object. Key can * *# be any
-        /// key in the Product.attributes map * *# if the attribute values are textual. * | "attributes.key"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "pickup-in-store". * | "pickupInStore"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "ship-to-store". * | "shipToStore"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "same-day-delivery". * | "sameDayDelivery"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "next-day-delivery". * | "nextDayDelivery"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-1". * | "customFulfillment1"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-2". * | "customFulfillment2"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-3". * | "customFulfillment3"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-4". * | "customFulfillment4"; *# The
-        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-5". * | "customFulfillment5"; *
-        /// numerical_field = *# The PriceInfo.price. * | "price"; *# The discount. Computed by
-        /// (original_price-price)/price * | "discount"; *# The Rating.average_rating. * | "rating"; *# The
-        /// Rating.rating_count. * | "ratingCount"; *# The numerical custom attribute in Product object. Key can * *# be
-        /// any key in the Product.attributes map * *# if the attribute values are numerical. * | "attributes.key";
+        /// textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" *
+        /// "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" *
+        /// "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" *
+        /// "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * numerical_field = * "price" *
+        /// "discount" * "rating" * "ratingCount" * "attributes.key"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }

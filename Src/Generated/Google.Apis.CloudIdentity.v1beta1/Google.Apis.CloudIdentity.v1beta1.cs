@@ -81,7 +81,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </summary>
             public static string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -102,7 +105,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </summary>
             public const string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -3858,6 +3864,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for ApproveDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for approving the device to access user data.</summary>
     public class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3865,6 +3878,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
         public virtual GoogleAppsCloudidentityDevicesV1DeviceUser DeviceUser { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for BlockDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3880,6 +3900,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for CancelWipeDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for cancelling an unfinished device wipe.</summary>
     public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3889,6 +3916,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual GoogleAppsCloudidentityDevicesV1Device Device { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for CancelWipeDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3961,15 +3995,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in
-        /// format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
-        /// corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is
-        /// the partner ID specified to you by Google. For all other callers, this is a string of the form:
-        /// `{customer_id}-suffix`, where `customer_id` is your customer ID. The *suffix* is any string the caller
-        /// specifies. This string will be displayed verbatim in the administration console. This suffix is used in
-        /// setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained
-        /// from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in
-        /// the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API
-        /// is the string after the letter 'C' (not including 'C')
+        /// format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where partner corresponds to the
+        /// partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is the partner ID
+        /// specified to you by Google. For all other callers, this is a string of the form: `{customer}-suffix`, where
+        /// `customer` is your customer ID. The *suffix* is any string the caller specifies. This string will be
+        /// displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in
+        /// Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET
+        /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains
+        /// the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the
+        /// letter 'C' (not including 'C')
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3981,6 +4015,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>A descriptive cause of the health score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreReason")]
         public virtual string ScoreReason { get; set; }
+    }
+
+    /// <summary>Metadata for CreateDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Additional custom attribute values may be one of these types</summary>
@@ -3998,6 +4039,20 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for DeleteDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for DeleteDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4088,7 +4143,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-        /// `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+        /// `devices/{device}`, where device is the unique id assigned to the Device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4166,8 +4221,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in
-        /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where `device_user_id` uniquely identifies a
-        /// user's use of a device.
+        /// format: `devices/{device}/deviceUsers/{device_user}`, where `device_user` uniquely identifies a user's use
+        /// of a device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4188,6 +4243,41 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for ListEndpointApps LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for SignoutDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for UpdateClientState LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for UpdateDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for WipeDevice LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for wiping all data on the device.</summary>
     public class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4197,6 +4287,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual GoogleAppsCloudidentityDevicesV1Device Device { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for WipeDeviceUser LRO.</summary>
+    public class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

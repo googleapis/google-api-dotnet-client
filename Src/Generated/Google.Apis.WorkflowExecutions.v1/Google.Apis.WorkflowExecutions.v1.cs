@@ -717,6 +717,10 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("argument")]
         public virtual string Argument { get; set; }
 
+        /// <summary>The call logging level associated to this execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callLogLevel")]
+        public virtual string CallLogLevel { get; set; }
+
         /// <summary>Output only. Marks the end of execution, successful or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }

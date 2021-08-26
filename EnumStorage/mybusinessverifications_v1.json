@@ -1,0 +1,11 @@
+{
+  "Google.Apis.MyBusinessVerifications.v1.MyBusinessVerificationsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.MyBusinessVerifications.v1.MyBusinessVerificationsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

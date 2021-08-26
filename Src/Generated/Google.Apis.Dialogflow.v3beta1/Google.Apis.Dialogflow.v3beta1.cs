@@ -4240,8 +4240,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         public virtual string LanguageCode { get; set; }
 
                         /// <summary>
-                        /// Required. The mask to control which fields get updated. If `update_mask` is not specified,
-                        /// an error will be returned.
+                        /// The mask to control which fields get updated. If the mask is not present, all fields will be
+                        /// updated.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
