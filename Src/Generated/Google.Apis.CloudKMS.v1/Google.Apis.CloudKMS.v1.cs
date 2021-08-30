@@ -713,21 +713,26 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>
-                        /// Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped key material
-                        /// provided in the request. The version ID will be assigned the next sequential id within the
-                        /// CryptoKey.
+                        /// Import wrapped key material into a CryptoKeyVersion. All requests must specify a CryptoKey.
+                        /// If a CryptoKeyVersion is additionally specified in the request, key material will be
+                        /// reimported into that version. Otherwise, a new version will be created, and will be assigned
+                        /// the next sequential id within the CryptoKey.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Required. The name of the CryptoKey to be imported into.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the CryptoKey to be imported into. The create permission is only
+                        /// required on this key when creating a new CryptoKeyVersion.
+                        /// </param>
                         public virtual ImportRequest Import(Google.Apis.CloudKMS.v1.Data.ImportCryptoKeyVersionRequest body, string parent)
                         {
                             return new ImportRequest(service, body, parent);
                         }
 
                         /// <summary>
-                        /// Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped key material
-                        /// provided in the request. The version ID will be assigned the next sequential id within the
-                        /// CryptoKey.
+                        /// Import wrapped key material into a CryptoKeyVersion. All requests must specify a CryptoKey.
+                        /// If a CryptoKeyVersion is additionally specified in the request, key material will be
+                        /// reimported into that version. Otherwise, a new version will be created, and will be assigned
+                        /// the next sequential id within the CryptoKey.
                         /// </summary>
                         public class ImportRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
                         {
@@ -739,7 +744,10 @@ namespace Google.Apis.CloudKMS.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The name of the CryptoKey to be imported into.</summary>
+                            /// <summary>
+                            /// Required. The name of the CryptoKey to be imported into. The create permission is only
+                            /// required on this key when creating a new CryptoKeyVersion.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -3405,18 +3413,22 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
         public virtual object GenerateTime { get; set; }
 
-        /// <summary>Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.</summary>
+        /// <summary>
+        /// Output only. The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importFailureReason")]
         public virtual string ImportFailureReason { get; set; }
 
         /// <summary>
-        /// Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying
-        /// key material was imported.
+        /// Output only. The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present
+        /// if the underlying key material was imported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importJob")]
         public virtual string ImportJob { get; set; }
 
-        /// <summary>Output only. The time at which this CryptoKeyVersion's key material was imported.</summary>
+        /// <summary>
+        /// Output only. The time at which this CryptoKeyVersion's key material was most recently imported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importTime")]
         public virtual object ImportTime { get; set; }
 
@@ -3432,6 +3444,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
         public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// Output only. Whether or not this key version is eligible for reimport, by being specified as a target in
+        /// ImportCryptoKeyVersionRequest.crypto_key_version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reimportEligible")]
+        public virtual System.Nullable<bool> ReimportEligible { get; set; }
 
         /// <summary>The current state of the CryptoKeyVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3784,6 +3803,18 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; }
+
+        /// <summary>
+        /// Optional. The optional name of an existing CryptoKeyVersion to target for an import operation. If this field
+        /// is not present, a new CryptoKeyVersion containing the supplied key material is created. If this field is
+        /// present, the supplied key material is imported into the existing CryptoKeyVersion. To import into an
+        /// existing CryptoKeyVersion, the CryptoKeyVersion must be a child of ImportCryptoKeyVersionRequest.parent,
+        /// have been previously created via ImportCryptoKeyVersion, and be in DESTROYED or IMPORT_FAILED state. The key
+        /// material and algorithm must match the previous CryptoKeyVersion exactly if the CryptoKeyVersion has ever
+        /// contained key material.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersion")]
+        public virtual string CryptoKeyVersion { get; set; }
 
         /// <summary>Required. The name of the ImportJob that was used to wrap this key material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importJob")]

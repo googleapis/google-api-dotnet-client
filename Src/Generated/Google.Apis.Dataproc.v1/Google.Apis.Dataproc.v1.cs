@@ -2306,6 +2306,28 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. Failure action when primary worker creation fails.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("actionOnFailedPrimaryWorkers", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ActionOnFailedPrimaryWorkersEnum> ActionOnFailedPrimaryWorkers { get; set; }
+
+                    /// <summary>Optional. Failure action when primary worker creation fails.</summary>
+                    public enum ActionOnFailedPrimaryWorkersEnum
+                    {
+                        /// <summary>When FailureAction is unspecified, failure action defaults to NO_ACTION.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FAILURE_ACTION_UNSPECIFIED")]
+                        FAILUREACTIONUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Take no action on failure to create a cluster resource. NO_ACTION is the default.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("NO_ACTION")]
+                        NOACTION = 1,
+
+                        /// <summary>Delete the failed cluster resource.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DELETE")]
+                        DELETE = 2,
+                    }
+
                     /// <summary>
                     /// Optional. A unique ID used to identify the request. If the server receives two
                     /// CreateClusterRequest
@@ -2352,6 +2374,14 @@ namespace Google.Apis.Dataproc.v1
                             Name = "region",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("actionOnFailedPrimaryWorkers", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "actionOnFailedPrimaryWorkers",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });

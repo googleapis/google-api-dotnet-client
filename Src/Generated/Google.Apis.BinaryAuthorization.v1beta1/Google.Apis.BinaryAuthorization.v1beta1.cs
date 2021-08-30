@@ -1669,7 +1669,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A policy for container image binary authorization.</summary>
+    /// <summary>A policy for Binary Authorization.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

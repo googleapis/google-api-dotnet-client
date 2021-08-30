@@ -8,6 +8,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+RegionsResource+ClustersResource+CreateRequest.ActionOnFailedPrimaryWorkersEnum": [
+    "FAILURE_ACTION_UNSPECIFIED",
+    "NO_ACTION",
+    "DELETE"
+  ],
   "Google.Apis.Dataproc.v1.ProjectsResource+RegionsResource+JobsResource+ListRequest.JobStateMatcherEnum": [
     "ALL",
     "ACTIVE",

@@ -455,15 +455,15 @@ namespace Google.Apis.Pubsub.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// The set of fields to return in the response. If not set, returns a Schema with `name` and `type`,
-                /// but not `definition`. Set to `FULL` to retrieve all fields.
+                /// The set of fields to return in the response. If not set, returns a Schema with all fields filled
+                /// out. Set to `BASIC` to omit the `definition`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
                 /// <summary>
-                /// The set of fields to return in the response. If not set, returns a Schema with `name` and `type`,
-                /// but not `definition`. Set to `FULL` to retrieve all fields.
+                /// The set of fields to return in the response. If not set, returns a Schema with all fields filled
+                /// out. Set to `BASIC` to omit the `definition`.
                 /// </summary>
                 public enum ViewEnum
                 {
@@ -3703,8 +3703,8 @@ namespace Google.Apis.Pubsub.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

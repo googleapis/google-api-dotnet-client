@@ -63,7 +63,7 @@ namespace Google.Apis.Vault.v1
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the G Suite Vault API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Vault API.</summary>
         public class Scope
         {
             /// <summary>Manage your eDiscovery data</summary>
@@ -73,7 +73,7 @@ namespace Google.Apis.Vault.v1
             public static string EdiscoveryReadonly = "https://www.googleapis.com/auth/ediscovery.readonly";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the G Suite Vault API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Vault API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Manage your eDiscovery data</summary>

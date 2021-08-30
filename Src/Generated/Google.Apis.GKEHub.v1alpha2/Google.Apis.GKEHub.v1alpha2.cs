@@ -2153,7 +2153,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
     /// </summary>
     public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. GKE-specific information. Only present if this Membership is a GKE cluster.</summary>
+        /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual GkeCluster GkeCluster { get; set; }
 

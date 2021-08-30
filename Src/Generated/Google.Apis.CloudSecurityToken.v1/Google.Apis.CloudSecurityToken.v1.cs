@@ -313,6 +313,110 @@ namespace Google.Apis.CloudSecurityToken.v1
 }
 namespace Google.Apis.CloudSecurityToken.v1.Data
 {
+    /// <summary>Associates `members` with a `role`.</summary>
+    public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual GoogleTypeExpr Condition { get; set; }
+
+        /// <summary>
+        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
+        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
+        /// An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
+        /// domain. For example, `google.com` or `example.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
+
+        /// <summary>
+        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An access boundary defines the upper bound of what a principal may access. It includes a list of access boundary
+    /// rules that each defines the resource that may be allowed as well as permissions that may be used on those
+    /// resources.
+    /// </summary>
+    public class GoogleIdentityStsV1AccessBoundary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of access boundary rules which defines the upper bound of the permission a principal may carry. If
+        /// multiple rules are specified, the effective access boundary is the union of all the access boundary rules
+        /// attached. One access boundary can contain at most 10 rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessBoundaryRules")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityStsV1AccessBoundaryRule> AccessBoundaryRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An access boundary rule defines an upper bound of IAM permissions on a single resource.</summary>
+    public class GoogleIdentityStsV1AccessBoundaryRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The availability condition further constrains the access allowed by the access boundary rule. If the
+        /// condition evaluates to `true`, then this access boundary rule will provide access to the specified resource,
+        /// assuming the principal has the required permissions for the resource. If the condition does not evaluate to
+        /// `true`, then access to the specified resource will not be available. Note that all access boundary rules in
+        /// an access boundary are evaluated together as a union. As such, another access boundary rule may allow access
+        /// to the resource, even if this access boundary rule does not allow access. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). The maximum length of the
+        /// `expression` field is 2048 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityCondition")]
+        public virtual GoogleTypeExpr AvailabilityCondition { get; set; }
+
+        /// <summary>
+        /// A list of permissions that may be allowed for use on the specified resource. The only supported values in
+        /// the list are IAM roles, following the format of google.iam.v1.Binding.role. Example value:
+        /// `inRole:roles/logging.viewer` for predefined roles and
+        /// `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom roles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availablePermissions")]
+        public virtual System.Collections.Generic.IList<string> AvailablePermissions { get; set; }
+
+        /// <summary>
+        /// The full resource name of a Google Cloud resource entity. The format definition is at
+        /// https://cloud.google.com/apis/design/resource_names. Example value:
+        /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableResource")]
+        public virtual string AvailableResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ExchangeToken.</summary>
     public class GoogleIdentityStsV1ExchangeTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -448,6 +552,175 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>The type of access token. Always has the value `Bearer`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
         public virtual string TokenType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An `Options` object configures features that the Security Token Service supports, but that are not supported by
+    /// standard OAuth 2.0 token exchange endpoints, as defined in https://tools.ietf.org/html/rfc8693.
+    /// </summary>
+    public class GoogleIdentityStsV1Options : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An access boundary that defines the upper bound of permissions the credential may have. The value should be
+        /// a JSON object of AccessBoundary. The access boundary can include up to 10 rules. The size of the parameter
+        /// value should not exceed 2048 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessBoundary")]
+        public virtual GoogleIdentityStsV1AccessBoundary AccessBoundary { get; set; }
+
+        /// <summary>
+        /// The intended audience(s) of the credential. The audience value(s) should be the name(s) of services intended
+        /// to receive the credential. Example: `["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]`.
+        /// A maximum of 5 audiences can be included. For each provided audience, the maximum length is 262 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
+        public virtual System.Collections.Generic.IList<string> Audiences { get; set; }
+
+        /// <summary>
+        /// A Google project used for quota and billing purposes when the credential is used to access Google APIs. The
+        /// provided project overrides the project bound to the credential. The value must be a project number or a
+        /// project ID. Example: `my-sample-project-191923`. The maximum length is 32 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProject")]
+        public virtual string UserProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An access boundary defines the upper bound of what a principal may access. It includes a list of access boundary
+    /// rules that each defines the resource that may be allowed as well as permissions that may be used on those
+    /// resources.
+    /// </summary>
+    public class GoogleIdentityStsV1betaAccessBoundary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of access boundary rules which defines the upper bound of the permission a principal may carry. If
+        /// multiple rules are specified, the effective access boundary is the union of all the access boundary rules
+        /// attached. One access boundary can contain at most 10 rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessBoundaryRules")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityStsV1betaAccessBoundaryRule> AccessBoundaryRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An access boundary rule defines an upper bound of IAM permissions on a single resource.</summary>
+    public class GoogleIdentityStsV1betaAccessBoundaryRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The availability condition further constrains the access allowed by the access boundary rule. If the
+        /// condition evaluates to `true`, then this access boundary rule will provide access to the specified resource,
+        /// assuming the principal has the required permissions for the resource. If the condition does not evaluate to
+        /// `true`, then access to the specified resource will not be available. Note that all access boundary rules in
+        /// an access boundary are evaluated together as a union. As such, another access boundary rule may allow access
+        /// to the resource, even if this access boundary rule does not allow access. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). The maximum length of the
+        /// `expression` field is 2048 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityCondition")]
+        public virtual GoogleTypeExpr AvailabilityCondition { get; set; }
+
+        /// <summary>
+        /// A list of permissions that may be allowed for use on the specified resource. The only supported values in
+        /// the list are IAM roles, following the format of google.iam.v1.Binding.role. Example value:
+        /// `inRole:roles/logging.viewer` for predefined roles and
+        /// `inRole:organizations/{ORGANIZATION_ID}/roles/logging.viewer` for custom roles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availablePermissions")]
+        public virtual System.Collections.Generic.IList<string> AvailablePermissions { get; set; }
+
+        /// <summary>
+        /// The full resource name of a Google Cloud resource entity. The format definition is at
+        /// https://cloud.google.com/apis/design/resource_names. Example value:
+        /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableResource")]
+        public virtual string AvailableResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An `Options` object configures features that the Security Token Service supports, but that are not supported by
+    /// standard OAuth 2.0 token exchange endpoints, as defined in https://tools.ietf.org/html/rfc8693.
+    /// </summary>
+    public class GoogleIdentityStsV1betaOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An access boundary that defines the upper bound of permissions the credential may have. The value should be
+        /// a JSON object of AccessBoundary. The access boundary can include up to 10 rules. The size of the parameter
+        /// value should not exceed 2048 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessBoundary")]
+        public virtual GoogleIdentityStsV1betaAccessBoundary AccessBoundary { get; set; }
+
+        /// <summary>
+        /// The intended audience(s) of the credential. The audience value(s) should be the name(s) of services intended
+        /// to receive the credential. Example: `["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]`.
+        /// A maximum of 5 audiences can be included. For each provided audience, the maximum length is 262 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
+        public virtual System.Collections.Generic.IList<string> Audiences { get; set; }
+
+        /// <summary>
+        /// A Google project used for quota and billing purposes when the credential is used to access Google APIs. The
+        /// provided project overrides the project bound to the credential. The value must be a project number or a
+        /// project ID. Example: `my-sample-project-191923`. The maximum length is 32 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProject")]
+        public virtual string UserProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
+    public class GoogleTypeExpr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; }
+
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2510,6 +2510,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileShares")]
         public virtual System.Collections.Generic.IList<FileShareConfig> FileShares { get; set; }
 
+        /// <summary>KMS key name used for data encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -2538,6 +2542,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Output only. Additional information about the instance state, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. field indicates all the reasons the instance is in "SUSPENDED" state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
+        public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
 
         /// <summary>The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]

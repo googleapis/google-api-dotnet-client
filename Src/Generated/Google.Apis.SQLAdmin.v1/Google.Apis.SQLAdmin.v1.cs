@@ -74,7 +74,10 @@ namespace Google.Apis.SQLAdmin.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud SQL Admin API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -84,7 +87,10 @@ namespace Google.Apis.SQLAdmin.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud SQL Admin API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -4298,6 +4304,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ConnectionName { get; set; }
 
         /// <summary>
+        /// Output only. The time when the instance was created in RFC 3339 format
+        /// (https://tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
         /// The current disk usage of the instance in bytes. This property has been deprecated. Use the
         /// "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this
         /// announcement for details.
@@ -4534,6 +4547,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaConfiguration")]
         public virtual DemoteMasterConfiguration ReplicaConfiguration { get; set; }
+
+        /// <summary>Flag to skip replication setup on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipReplicationSetup")]
+        public virtual System.Nullable<bool> SkipReplicationSetup { get; set; }
 
         /// <summary>
         /// Verify GTID consistency for demote operation. Default value: *True*. Setting this flag to false enables you
@@ -4984,6 +5001,30 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Reference to another Cloud SQL instance.</summary>
+    public class InstanceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the
+        /// instance references it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>The region of the Cloud SQL instance being referenced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance clone request.</summary>
     public class InstancesCloneRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5123,7 +5164,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// The name of the allocated ip range for the private ip CloudSQL instance. For example:
         /// "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range
         /// name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63
-        /// characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use.
+        /// characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRange")]
         public virtual string AllocatedIpRange { get; set; }
@@ -5306,6 +5347,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>MySQL-specific external server sync settings.</summary>
     public class MySqlSyncConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Flags to use for the initial dump.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialSyncFlags")]
+        public virtual System.Collections.Generic.IList<SyncFlags> InitialSyncFlags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5343,6 +5388,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>The password for connecting to on-premises instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
+
+        /// <summary>The reference to Cloud SQL instance if the source is Cloud SQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
+        public virtual InstanceReference SourceInstance { get; set; }
 
         /// <summary>The username for connecting to on-premises instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
@@ -6040,6 +6089,23 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>This is always *sql#sslCertsList*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL external server initial dump.
+    /// </summary>
+    public class SyncFlags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The value of the flag. This field must be omitted if the flag doesn't take a value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
