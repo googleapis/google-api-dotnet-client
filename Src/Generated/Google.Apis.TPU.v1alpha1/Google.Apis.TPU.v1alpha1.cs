@@ -830,7 +830,7 @@ namespace Google.Apis.TPU.v1alpha1
                     }
                 }
 
-                /// <summary>Stops a node.</summary>
+                /// <summary>Stops a node. This operation is only available with single TPU nodes.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
                 public virtual StopRequest Stop(Google.Apis.TPU.v1alpha1.Data.StopNodeRequest body, string name)
@@ -838,7 +838,7 @@ namespace Google.Apis.TPU.v1alpha1
                     return new StopRequest(service, body, name);
                 }
 
-                /// <summary>Stops a node.</summary>
+                /// <summary>Stops a node. This operation is only available with single TPU nodes.</summary>
                 public class StopRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
                 {
                     /// <summary>Constructs a new Stop request.</summary>
@@ -1781,7 +1781,7 @@ namespace Google.Apis.TPU.v1alpha1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]

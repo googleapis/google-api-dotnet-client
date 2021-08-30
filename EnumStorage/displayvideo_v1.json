@@ -550,6 +550,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.DisplayVideo.v1.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DisplayVideo.v1.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.DisplayVideo.v1.PartnersResource+TargetingTypesResource+AssignedTargetingOptionsResource+CreateRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
     "TARGETING_TYPE_CHANNEL",

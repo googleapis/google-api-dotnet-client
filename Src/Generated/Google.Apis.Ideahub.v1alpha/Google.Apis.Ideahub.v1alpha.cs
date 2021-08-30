@@ -937,18 +937,18 @@ namespace Google.Apis.Ideahub.v1alpha.Data
     /// <summary>An idea activity entry.</summary>
     public class GoogleSearchIdeahubV1alphaIdeaActivity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Idea IDs for this entry.</summary>
+        /// <summary>The Idea IDs for this entry. If empty, topics should be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ideas")]
         public virtual System.Collections.Generic.IList<string> Ideas { get; set; }
 
         /// <summary>
-        /// Unique identifier for the idea activity. Format:
+        /// Unique identifier for the idea activity. The name is ignored when creating an idea activity. Format:
         /// platforms/{platform}/properties/{property}/ideaActivities/{idea_activity}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The Topic IDs for this entry.</summary>
+        /// <summary>The Topic IDs for this entry. If empty, ideas should be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topics")]
         public virtual System.Collections.Generic.IList<string> Topics { get; set; }
 

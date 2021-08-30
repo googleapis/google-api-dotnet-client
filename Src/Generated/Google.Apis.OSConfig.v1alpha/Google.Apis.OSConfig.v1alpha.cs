@@ -2318,7 +2318,8 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         public virtual System.Collections.Generic.IList<OSPolicyAssignmentInstanceFilterInventory> Inventories { get; set; }
 
         /// <summary>
-        /// A VM is selected if it's OS short name matches with any of the values provided in this list.
+        /// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of
+        /// the values provided in this list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osShortNames")]
         public virtual System.Collections.Generic.IList<string> OsShortNames { get; set; }
@@ -2733,7 +2734,9 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryFilters")]
         public virtual System.Collections.Generic.IList<OSPolicyInventoryFilter> InventoryFilters { get; set; }
 
-        /// <summary>Used to specify the OS filter for a resource group</summary>
+        /// <summary>
+        /// Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osFilter")]
         public virtual OSPolicyOSFilter OsFilter { get; set; }
 

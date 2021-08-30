@@ -75,10 +75,15 @@ namespace Google.Apis.Logging.v2
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Logging API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
             /// <summary>Administrate log data for your projects</summary>
@@ -94,10 +99,15 @@ namespace Google.Apis.Logging.v2
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Logging API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
             /// <summary>Administrate log data for your projects</summary>
@@ -918,7 +928,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -932,7 +942,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -3729,7 +3739,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -3743,7 +3753,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -5689,7 +5699,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -5703,7 +5713,7 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                 /// </summary>
                 public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
@@ -7577,7 +7587,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -7591,7 +7601,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -10090,7 +10100,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -10104,7 +10114,7 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 50 views.
+                    /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
                     /// </summary>
                     public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -14124,6 +14134,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Describes the schema of the logs stored in the bucket that are accessible via this view.This field is only
+        /// populated for views in analytics-enabled buckets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual TableSchema Schema { get; set; }
+
         /// <summary>Output only. The last update timestamp of the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -14341,7 +14358,9 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Required. The monitored resource type. For example, the type "cloudsql_database" represents databases in
-        /// Google Cloud SQL.
+        /// Google Cloud SQL. For a list of types, see Monitoring resource types
+        /// (https://cloud.google.com/monitoring/api/resources) and Logging resource types
+        /// (https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -14667,6 +14686,54 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>A lower bound on the count of entries omitted due to reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suppressedCount")]
         public virtual System.Nullable<int> SuppressedCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A field in TableSchema. The fields describe the static fields in the LogEntry. Any dynamic fields generated by
+    /// the customer in fields like labels and jsonPayload are not listed in the schema as they use a native JSON type
+    /// field.
+    /// </summary>
+    public class TableFieldSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The field description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Describes the nested schema fields if the type property is set to RECORD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
+
+        /// <summary>
+        /// Optional. The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is
+        /// NULLABLE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Required. The field name corresponding to fields in the LogEntry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The field data type. Possible values include: STRING INTEGER (or INT64) FLOAT (or FLOAT64) BOOLEAN
+        /// (or BOOL) TIMESTAMP RECORD (or STRUCT)Use of RECORD/STRUT indicates that the field contains a nested schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Schema of a table containing logs.</summary>
+    public class TableSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes the fields in a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7380,8 +7380,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual TableSchema Schema { get; set; }
 
         /// <summary>[Output-only] [Preview] Information of the session if this job is part of one.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfoTemplate")]
-        public virtual SessionInfo SessionInfoTemplate { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
+        public virtual SessionInfo SessionInfo { get; set; }
 
         /// <summary>
         /// The total number of bytes processed for this query. If this query was a dry run, this is the number of bytes

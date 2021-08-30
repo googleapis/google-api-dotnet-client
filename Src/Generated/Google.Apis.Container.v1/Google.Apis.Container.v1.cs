@@ -6125,6 +6125,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
+        /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user
+        /// guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuPartitionSize")]
+        public virtual string GpuPartitionSize { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7967,10 +7974,10 @@ namespace Google.Apis.Container.v1.Data
         /// "configure-sh" - "containerd-configure-sh" - "enable-os-login" - "gci-ensure-gke-docker" -
         /// "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" -
         /// "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" -
-        /// "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows
-        /// nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by
-        /// the image running in the instance. The only restriction placed on them is that each value's size must be
-        /// less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+        /// "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have
+        /// meaning as interpreted by the image running in the instance. The only restriction placed on them is that
+        /// each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less
+        /// than 512 KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }

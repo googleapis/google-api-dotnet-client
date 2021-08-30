@@ -1933,10 +1933,11 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>
         /// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and
         /// recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make
-        /// aside from the target, which is captured in recipe.entryPoint.
+        /// aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in
+        /// structure, depending on the builder and recipe type, this is of form "Any".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
-        public virtual System.Collections.Generic.IList<string> Arguments { get; set; }
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Arguments { get; set; }
 
         /// <summary>
         /// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the
@@ -1957,10 +1958,11 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
 
         /// <summary>
         /// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for
-        /// reproducing the build but not evaluated as part of policy.
+        /// reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in
+        /// structure, depending on the builder and recipe type, this is of form "Any".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Environment { get; set; }
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Environment { get; set; }
 
         /// <summary>
         /// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint,

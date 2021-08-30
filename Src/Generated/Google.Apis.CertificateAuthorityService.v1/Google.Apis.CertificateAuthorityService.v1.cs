@@ -4158,7 +4158,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and
+        /// Required. Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and
         /// "not_after_time" fields inside an X.509 certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
@@ -5125,8 +5125,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1098,7 +1098,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string InputConstraint { get; set; }
 
         /// <summary>
-        /// Output only. If the field has a set of know values, this field will provide a description for these values.
+        /// Output only. If the field has a set of known values, this field will provide a description for these values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knownValueDescriptions")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription> KnownValueDescriptions { get; set; }

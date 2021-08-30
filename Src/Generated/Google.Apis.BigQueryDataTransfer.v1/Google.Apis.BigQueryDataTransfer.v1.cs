@@ -1833,6 +1833,71 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
             }
 
+            /// <summary>
+            /// Enroll data sources in a user project. This allows users to create transfer configurations for these
+            /// data sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery
+            /// UI 'https://bigquery.cloud.google.com' (and the documents can be found at
+            /// https://cloud.google.com/bigquery/bigquery-web-ui and
+            /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
+            public virtual EnrollDataSourcesRequest EnrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name)
+            {
+                return new EnrollDataSourcesRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Enroll data sources in a user project. This allows users to create transfer configurations for these
+            /// data sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery
+            /// UI 'https://bigquery.cloud.google.com' (and the documents can be found at
+            /// https://cloud.google.com/bigquery/bigquery-web-ui and
+            /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+            /// </summary>
+            public class EnrollDataSourcesRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new EnrollDataSources request.</summary>
+                public EnrollDataSourcesRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "enrollDataSources";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:enrollDataSources";
+
+                /// <summary>Initializes EnrollDataSources parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -3010,6 +3075,71 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
             }
         }
+
+        /// <summary>
+        /// Enroll data sources in a user project. This allows users to create transfer configurations for these data
+        /// sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery UI
+        /// 'https://bigquery.cloud.google.com' (and the documents can be found at
+        /// https://cloud.google.com/bigquery/bigquery-web-ui and
+        /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
+        public virtual EnrollDataSourcesRequest EnrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name)
+        {
+            return new EnrollDataSourcesRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Enroll data sources in a user project. This allows users to create transfer configurations for these data
+        /// sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery UI
+        /// 'https://bigquery.cloud.google.com' (and the documents can be found at
+        /// https://cloud.google.com/bigquery/bigquery-web-ui and
+        /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+        /// </summary>
+        public class EnrollDataSourcesRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new EnrollDataSources request.</summary>
+            public EnrollDataSourcesRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "enrollDataSources";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:enrollDataSources";
+
+            /// <summary>Initializes EnrollDataSources parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.BigQueryDataTransfer.v1.Data
@@ -3234,6 +3364,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A request to enroll a set of data sources so they are visible in the BigQuery UI's `Transfer` tab.
+    /// </summary>
+    public class EnrollDataSourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data sources that are enrolled. It is required to provide at least one data source id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceIds")]
+        public virtual System.Collections.Generic.IList<string> DataSourceIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

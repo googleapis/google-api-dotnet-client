@@ -900,6 +900,19 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
 
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -1220,6 +1233,19 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -3383,6 +3409,19 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
 
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -3672,6 +3711,19 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -4824,6 +4876,19 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
 
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -5106,6 +5171,19 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -5397,6 +5475,19 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
 
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -5682,6 +5773,19 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 39,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 40,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -8781,6 +8885,19 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
 
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -9051,6 +9168,19 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -9330,6 +9460,19 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
 
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -9605,6 +9748,19 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -10503,6 +10659,49 @@ namespace Google.Apis.DisplayVideo.v1
             this.service = service;
         }
 
+        /// <summary>
+        /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
+        /// </summary>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/customBiddingAlgorithms";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
         /// <summary>Gets a custom bidding algorithm.</summary>
         /// <param name="customBiddingAlgorithmId">Required. The ID of the custom bidding algorithm to fetch.</param>
         public virtual GetRequest Get(long customBiddingAlgorithmId)
@@ -10700,6 +10899,77 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customBiddingAlgorithmId">
+        /// Output only. The unique ID of the custom bidding algorithm. Assigned by the system.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId)
+        {
+            return new PatchRequest(service, body, customBiddingAlgorithmId);
+        }
+
+        /// <summary>
+        /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
+        /// </summary>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId) : base(service)
+            {
+                CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Output only. The unique ID of the custom bidding algorithm. Assigned by the system.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+            /// <summary>Required. The mask to control which fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customBiddingAlgorithmId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -12706,6 +12976,211 @@ namespace Google.Apis.DisplayVideo.v1
             }
             #endif
         }
+
+        /// <summary>
+        /// Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.`
+        /// **Note**: Upload requests will not be successful without including `upload_type=media` query string.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">
+        /// Name of the media that is being downloaded. See ReadRequest.resource_name.
+        /// </param>
+        public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName)
+        {
+            return new UploadRequest(service, body, resourceName);
+        }
+
+        /// <summary>
+        /// Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.`
+        /// **Note**: Upload requests will not be successful without including `upload_type=media` query string.
+        /// </summary>
+        public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
+        {
+            /// <summary>Constructs a new Upload request.</summary>
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName) : base(service)
+            {
+                ResourceName = resourceName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "upload";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "media/{+resourceName}";
+
+            /// <summary>Initializes Upload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resourceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resourceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.`
+        /// **Note**: Upload requests will not be successful without including `upload_type=media` query string.
+        /// </summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">
+        /// Name of the media that is being downloaded. See ReadRequest.resource_name.
+        /// </param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadMediaUpload Upload(Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
+        {
+            return new UploadMediaUpload(service, body, resourceName, stream, contentType);
+        }
+
+        /// <summary>Upload media upload which supports resumable upload.</summary>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "media/{+resourceName}"), "POST", stream, contentType)
+            {
+                ResourceName = resourceName;
+                Body = body;
+            }
+        }
     }
 
     /// <summary>The "partners" collection of methods.</summary>
@@ -13819,6 +14294,19 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
 
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -14086,6 +14574,19 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -14362,6 +14863,19 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
 
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -14634,6 +15148,19 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>
+                        /// Target ads around a specific point of interest, such as a notable building, a street
+                        /// address, or latitude/longitude coordinates.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                        TARGETINGTYPEPOI = 39,
+
+                        /// <summary>
+                        /// Target ads around locations of a business chain within a specific geo region.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                        TARGETINGTYPEBUSINESSCHAIN = 40,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -15316,6 +15843,17 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE = 37,
 
+                    /// <summary>
+                    /// Target ads around a specific point of interest, such as a notable building, a street address, or
+                    /// latitude/longitude coordinates.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                    TARGETINGTYPEPOI = 39,
+
+                    /// <summary>Target ads around locations of a business chain within a specific geo region.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                    TARGETINGTYPEBUSINESSCHAIN = 40,
+
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                     TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -15567,6 +16105,17 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE = 37,
 
+                    /// <summary>
+                    /// Target ads around a specific point of interest, such as a notable building, a street address, or
+                    /// latitude/longitude coordinates.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                    TARGETINGTYPEPOI = 39,
+
+                    /// <summary>Target ads around locations of a business chain within a specific geo region.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                    TARGETINGTYPEBUSINESSCHAIN = 40,
+
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                     TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -15687,6 +16236,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="targetingType">
             /// Required. The type of targeting options to retrieve. Accepted values are: * `TARGETING_TYPE_GEO_REGION`
+            /// * `TARGETING_TYPE_POI` * `TARGETING_TYPE_BUSINESS_CHAIN`
             /// </param>
             public virtual SearchRequest Search(Google.Apis.DisplayVideo.v1.Data.SearchTargetingOptionsRequest body, SearchRequest.TargetingTypeEnum targetingType)
             {
@@ -15706,14 +16256,14 @@ namespace Google.Apis.DisplayVideo.v1
 
                 /// <summary>
                 /// Required. The type of targeting options to retrieve. Accepted values are: *
-                /// `TARGETING_TYPE_GEO_REGION`
+                /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_BUSINESS_CHAIN`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual TargetingTypeEnum TargetingType { get; private set; }
 
                 /// <summary>
                 /// Required. The type of targeting options to retrieve. Accepted values are: *
-                /// `TARGETING_TYPE_GEO_REGION`
+                /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_BUSINESS_CHAIN`
                 /// </summary>
                 public enum TargetingTypeEnum
                 {
@@ -15886,6 +16436,17 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE = 37,
+
+                    /// <summary>
+                    /// Target ads around a specific point of interest, such as a notable building, a street address, or
+                    /// latitude/longitude coordinates.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                    TARGETINGTYPEPOI = 39,
+
+                    /// <summary>Target ads around locations of a business chain within a specific geo region.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                    TARGETINGTYPEBUSINESSCHAIN = 40,
 
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
@@ -16833,6 +17394,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual BrowserAssignedTargetingOptionDetails BrowserDetails { get; set; }
 
         /// <summary>
+        /// Business chain details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_BUSINESS_CHAIN`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessChainDetails")]
+        public virtual BusinessChainAssignedTargetingOptionDetails BusinessChainDetails { get; set; }
+
+        /// <summary>
         /// Carrier and ISP details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_CARRIER_AND_ISP`.
         /// </summary>
@@ -17005,6 +17573,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatusDetails")]
         public virtual ParentalStatusAssignedTargetingOptionDetails ParentalStatusDetails { get; set; }
+
+        /// <summary>
+        /// POI details. This field will be populated when the targeting_type is `TARGETING_TYPE_POI`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poiDetails")]
+        public virtual PoiAssignedTargetingOptionDetails PoiDetails { get; set; }
 
         /// <summary>
         /// Proximity location list details. This field will be populated when the targeting_type is
@@ -17732,6 +18306,81 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for assigned Business chain targeting option. This will be populated in the details field of an
+    /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`.
+    /// </summary>
+    public class BusinessChainAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of a business chain, e.g. "KFC", "Chase Bank".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. The radius of the area around the business chain that will be targeted. The units of the radius
+        /// are specified by proximity_radius_unit. Must be 1 to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500
+        /// if unit is `DISTANCE_UNIT_MILES`. The minimum increment for both cases is 0.1. Inputs will be rounded to the
+        /// nearest acceptable value if it is too granular, e.g. 15.57 will become 15.6.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusAmount")]
+        public virtual System.Nullable<double> ProximityRadiusAmount { get; set; }
+
+        /// <summary>Required. The unit of distance by which the targeting radius is measured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusUnit")]
+        public virtual string ProximityRadiusUnit { get; set; }
+
+        /// <summary>
+        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_BUSINESS_CHAIN`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Search terms for Business Chain targeting options. At least one of the field should be populated.
+    /// </summary>
+    public class BusinessChainSearchTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The search query for the desired business chain. The query must be the full name of the business, e.g.
+        /// "KFC", "mercedes-benz".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessChain")]
+        public virtual string BusinessChain { get; set; }
+
+        /// <summary>The search query for the desired geo region, e.g. "Seattle", "United State".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable business chain within a geo region. This will be populated in the business_chain_details
+    /// field when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`.
+    /// </summary>
+    public class BusinessChainTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the business chain, e.g. "KFC", "Chase Bank".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessChain")]
+        public virtual string BusinessChain { get; set; }
+
+        /// <summary>Output only. The display name of the geographic region, e.g. "Ontario, Canada".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoRegion")]
+        public virtual string GeoRegion { get; set; }
+
+        /// <summary>Output only. The type of the geographic region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoRegionType")]
+        public virtual string GeoRegionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18755,6 +19404,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
         public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
 
+        /// <summary>Output only. The status of custom bidding algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmState")]
+        public virtual string CustomBiddingAlgorithmState { get; set; }
+
         /// <summary>Required. Immutable. The type of custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmType")]
         public virtual string CustomBiddingAlgorithmType { get; set; }
@@ -18780,6 +19433,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Immutable. The unique ID of the partner that owns the custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
         public virtual System.Nullable<long> PartnerId { get; set; }
+
+        /// <summary>
+        /// The IDs of the advertisers who have access to this algorithm. This field will not be set if the algorithm
+        /// owner is a partner and is being retrieved using an advertiser accessor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAdvertiserIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22023,6 +22683,89 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details for assigned POI targeting option. This will be populated in the details field of an
+    /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_POI`.
+    /// </summary>
+    public class PoiAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The display name of a POI, e.g. "Times Square", "Space Needle", followed by its full address if
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Latitude of the POI rounding to 6th decimal place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>Output only. Longitude of the POI rounding to 6th decimal place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
+
+        /// <summary>
+        /// Required. The radius of the area around the POI that will be targeted. The units of the radius are specified
+        /// by proximity_radius_unit. Must be 1 to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is
+        /// `DISTANCE_UNIT_MILES`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusAmount")]
+        public virtual System.Nullable<double> ProximityRadiusAmount { get; set; }
+
+        /// <summary>Required. The unit of distance by which the targeting radius is measured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusUnit")]
+        public virtual string ProximityRadiusUnit { get; set; }
+
+        /// <summary>
+        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI` or reuse an existing
+        /// assigned_targeting_option_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search terms for POI targeting options.</summary>
+    public class PoiSearchTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The search query for the desired POI name, street address, or coordinate of the desired POI. The query can
+        /// be a prefix, e.g. "Times squar", "40.7505045,-73.99562", "315 W 44th St", etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poiQuery")]
+        public virtual string PoiQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable point of interest(POI). This will be populated in the poi_details field when
+    /// targeting_type is `TARGETING_TYPE_POI`.
+    /// </summary>
+    public class PoiTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The display name of a POI(e.g. "Times Square", "Space Needle"), followed by its full address if
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Latitude of the POI rounding to 6th decimal place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>Output only. Longitude of the POI rounding to 6th decimal place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings specific to the Mediaocean Prisma tool.</summary>
     public class PrismaConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22298,6 +23041,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>
+        /// Search terms for Business Chain targeting options. Can only be used when targeting_type is
+        /// `TARGETING_TYPE_BUSINESS_CHAIN`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessChainSearchTerms")]
+        public virtual BusinessChainSearchTerms BusinessChainSearchTerms { get; set; }
+
+        /// <summary>
         /// Search terms for geo region targeting options. Can only be used when targeting_type is
         /// `TARGETING_TYPE_GEO_REGION`.
         /// </summary>
@@ -22318,6 +23068,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Search terms for POI targeting options. Can only be used when targeting_type is `TARGETING_TYPE_POI`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poiSearchTerms")]
+        public virtual PoiSearchTerms PoiSearchTerms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22492,6 +23248,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("browserDetails")]
         public virtual BrowserTargetingOptionDetails BrowserDetails { get; set; }
 
+        /// <summary>Business chain resource details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessChainDetails")]
+        public virtual BusinessChainTargetingOptionDetails BusinessChainDetails { get; set; }
+
         /// <summary>Carrier and ISP details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierAndIspDetails")]
         public virtual CarrierAndIspTargetingOptionDetails CarrierAndIspDetails { get; set; }
@@ -22567,6 +23327,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Parental status details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatusDetails")]
         public virtual ParentalStatusTargetingOptionDetails ParentalStatusDetails { get; set; }
+
+        /// <summary>POI resource details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poiDetails")]
+        public virtual PoiTargetingOptionDetails PoiDetails { get; set; }
 
         /// <summary>Sensitive Category details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategoryDetails")]
