@@ -583,7 +583,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1
                 InitParameters();
             }
 
-            /// <summary>Optional. The maximum number of Folders to return in the response.</summary>
+            /// <summary>
+            /// Optional. The maximum number of Folders to return in the response. The server can return fewer folders
+            /// than requested. If unspecified, server picks an appropriate default.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1751,7 +1754,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     /// <summary>The request message for searching folders.</summary>
     public class SearchFoldersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The maximum number of folders to return in the response.</summary>
+        /// <summary>
+        /// Optional. The maximum number of folders to return in the response. The server can return fewer folders than
+        /// requested. If unspecified, server picks an appropriate default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 

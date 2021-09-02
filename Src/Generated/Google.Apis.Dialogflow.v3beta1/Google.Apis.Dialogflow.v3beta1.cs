@@ -1943,7 +1943,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
-                    /// <summary>Creates an Environment in the specified Agent.</summary>
+                    /// <summary>
+                    /// Creates an Environment in the specified Agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: Environment
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The Agent to create an Environment for. Format: `projects//locations//agents/`.
@@ -1953,7 +1959,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates an Environment in the specified Agent.</summary>
+                    /// <summary>
+                    /// Creates an Environment in the specified Agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: Environment
+                    /// </summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -2252,7 +2264,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
-                    /// <summary>Updates the specified Environment.</summary>
+                    /// <summary>
+                    /// Updates the specified Environment. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: Environment
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The name of the environment. Format: `projects//locations//agents//environments/`.
@@ -2262,7 +2280,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified Environment.</summary>
+                    /// <summary>
+                    /// Updates the specified Environment. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: Environment
+                    /// </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -2321,7 +2345,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
-                    /// <summary>Kicks off a continuous test under the specified Environment.</summary>
+                    /// <summary>
+                    /// Kicks off a continuous test under the specified Environment. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// RunContinuousTestMetadata - `response`: RunContinuousTestResponse
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="environment">
                     /// Required. Format: `projects//locations//agents//environments/`.
@@ -2331,7 +2360,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                         return new RunContinuousTestRequest(service, body, environment);
                     }
 
-                    /// <summary>Kicks off a continuous test under the specified Environment.</summary>
+                    /// <summary>
+                    /// Kicks off a continuous test under the specified Environment. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// RunContinuousTestMetadata - `response`: RunContinuousTestResponse
+                    /// </summary>
                     public class RunContinuousTestRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new RunContinuousTest request.</summary>
@@ -3310,7 +3344,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                             this.service = service;
                         }
 
-                        /// <summary>Creates a Version in the specified Flow.</summary>
+                        /// <summary>
+                        /// Creates a Version in the specified Flow. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`:
+                        /// CreateVersionOperationMetadata - `response`: Version
+                        /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The Flow to create an Version for. Format: `projects//locations//agents//flows/`.
@@ -3320,7 +3359,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a Version in the specified Flow.</summary>
+                        /// <summary>
+                        /// Creates a Version in the specified Flow. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`:
+                        /// CreateVersionOperationMetadata - `response`: Version
+                        /// </summary>
                         public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -3545,7 +3589,15 @@ namespace Google.Apis.Dialogflow.v3beta1
                             }
                         }
 
-                        /// <summary>Loads resources in the specified version to the draft flow.</summary>
+                        /// <summary>
+                        /// Loads resources in the specified version to the draft flow. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The Version to be loaded to draft flow. Format:
@@ -3556,7 +3608,15 @@ namespace Google.Apis.Dialogflow.v3beta1
                             return new LoadRequest(service, body, name);
                         }
 
-                        /// <summary>Loads resources in the specified version to the draft flow.</summary>
+                        /// <summary>
+                        /// Loads resources in the specified version to the draft flow. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// </summary>
                         public class LoadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                         {
                             /// <summary>Constructs a new Load request.</summary>
@@ -3833,8 +3893,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
 
                     /// <summary>
-                    /// Exports the specified flow to a binary file. Note that resources (e.g. intents, entities,
-                    /// webhooks) that the flow references will also be exported.
+                    /// Exports the specified flow to a binary file. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: ExportFlowResponse Note that resources (e.g. intents, entities, webhooks) that the
+                    /// flow references will also be exported.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -3846,8 +3910,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
 
                     /// <summary>
-                    /// Exports the specified flow to a binary file. Note that resources (e.g. intents, entities,
-                    /// webhooks) that the flow references will also be exported.
+                    /// Exports the specified flow to a binary file. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: ExportFlowResponse Note that resources (e.g. intents, entities, webhooks) that the
+                    /// flow references will also be exported.
                     /// </summary>
                     public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
@@ -4033,9 +4101,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
 
                     /// <summary>
-                    /// Imports the specified flow to the specified agent from a binary file. Note: You should always
-                    /// train a flow prior to sending it queries. See the [training
-                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// Imports the specified flow to the specified agent from a binary file. This method is a
+                    /// [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: ImportFlowResponse Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -4047,9 +4119,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
 
                     /// <summary>
-                    /// Imports the specified flow to the specified agent from a binary file. Note: You should always
-                    /// train a flow prior to sending it queries. See the [training
-                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// Imports the specified flow to the specified agent from a binary file. This method is a
+                    /// [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: ImportFlowResponse Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                     /// </summary>
                     public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
@@ -4293,8 +4369,14 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
 
                     /// <summary>
-                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained. Note: You
-                    /// should always train a flow prior to sending it queries. See the [training
+                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train a flow prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -4307,8 +4389,14 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
 
                     /// <summary>
-                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained. Note: You
-                    /// should always train a flow prior to sending it queries. See the [training
+                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train a flow prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                     /// </summary>
                     public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
@@ -5704,7 +5792,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
-                    /// <summary>Kicks off a batch run of test cases.</summary>
+                    /// <summary>
+                    /// Kicks off a batch run of test cases. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// BatchRunTestCasesMetadata - `response`: BatchRunTestCasesResponse
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. Agent name. Format: `projects//locations//agents/ `.</param>
                     public virtual BatchRunRequest BatchRun(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest body, string parent)
@@ -5712,7 +5805,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                         return new BatchRunRequest(service, body, parent);
                     }
 
-                    /// <summary>Kicks off a batch run of test cases.</summary>
+                    /// <summary>
+                    /// Kicks off a batch run of test cases. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// BatchRunTestCasesMetadata - `response`: BatchRunTestCasesResponse
+                    /// </summary>
                     public class BatchRunRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchRun request.</summary>
@@ -5897,7 +5995,10 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                     /// <summary>
                     /// Exports the test cases under the agent to a Cloud Storage bucket or a local file. Filter can be
-                    /// applied to export a subset of test cases.
+                    /// applied to export a subset of test cases. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ExportTestCasesMetadata
+                    /// - `response`: ExportTestCasesResponse
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -5910,7 +6011,10 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                     /// <summary>
                     /// Exports the test cases under the agent to a Cloud Storage bucket or a local file. Filter can be
-                    /// applied to export a subset of test cases.
+                    /// applied to export a subset of test cases. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ExportTestCasesMetadata
+                    /// - `response`: ExportTestCasesResponse
                     /// </summary>
                     public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
@@ -6010,7 +6114,10 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// <summary>
                     /// Imports the test cases from a Cloud Storage bucket or a local file. It always creates new test
                     /// cases and won't overwite any existing ones. The provided ID in the imported test case is
-                    /// neglected.
+                    /// neglected. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ImportTestCasesMetadata
+                    /// - `response`: ImportTestCasesResponse
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -6024,7 +6131,10 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// <summary>
                     /// Imports the test cases from a Cloud Storage bucket or a local file. It always creates new test
                     /// cases and won't overwite any existing ones. The provided ID in the imported test case is
-                    /// neglected.
+                    /// neglected. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ImportTestCasesMetadata
+                    /// - `response`: ImportTestCasesResponse
                     /// </summary>
                     public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
@@ -6258,7 +6368,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
-                    /// <summary>Kicks off a test case run.</summary>
+                    /// <summary>
+                    /// Kicks off a test case run. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: RunTestCaseMetadata -
+                    /// `response`: RunTestCaseResponse
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. Format of test case name to run: `projects//locations/ /agents//testCases/`.
@@ -6268,7 +6383,12 @@ namespace Google.Apis.Dialogflow.v3beta1
                         return new RunRequest(service, body, name);
                     }
 
-                    /// <summary>Kicks off a test case run.</summary>
+                    /// <summary>
+                    /// Kicks off a test case run. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: RunTestCaseMetadata -
+                    /// `response`: RunTestCaseResponse
+                    /// </summary>
                     public class RunRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Run request.</summary>
@@ -6771,7 +6891,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
                 }
 
-                /// <summary>Exports the specified agent to a binary file.</summary>
+                /// <summary>
+                /// Exports the specified agent to a binary file. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: ExportAgentResponse
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The name of the agent to export. Format: `projects//locations//agents/`.
@@ -6781,7 +6907,13 @@ namespace Google.Apis.Dialogflow.v3beta1
                     return new ExportRequest(service, body, name);
                 }
 
-                /// <summary>Exports the specified agent to a binary file.</summary>
+                /// <summary>
+                /// Exports the specified agent to a binary file. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: ExportAgentResponse
+                /// </summary>
                 public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Export request.</summary>
@@ -7095,8 +7227,14 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                 /// <summary>
                 /// Restores the specified agent from a binary file. Replaces the current agent with a new one. Note
-                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed. Note: You
-                /// should always train a flow prior to sending it queries. See the [training
+                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed. This
+                /// method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train a flow prior to sending it queries. See the [training
                 /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -7110,8 +7248,14 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                 /// <summary>
                 /// Restores the specified agent from a binary file. Replaces the current agent with a new one. Note
-                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed. Note: You
-                /// should always train a flow prior to sending it queries. See the [training
+                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed. This
+                /// method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train a flow prior to sending it queries. See the [training
                 /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                 /// </summary>
                 public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
@@ -8255,7 +8399,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3Page CurrentPage { get; set; }
 
-        /// <summary>Required. Input only. The diagnostic info output for the turn.</summary>
+        /// <summary>
+        /// Required. Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
@@ -8418,7 +8564,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
+    /// fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -9369,7 +9518,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.RunTestCase long running operation. This message currently has no fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -10155,7 +10306,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; }
 
-        /// <summary>Required. Input only. The diagnostic info output for the turn.</summary>
+        /// <summary>
+        /// Required. Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
@@ -10766,7 +10919,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
+    /// fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -12754,7 +12910,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.RunTestCase long running operation. This message currently has no fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

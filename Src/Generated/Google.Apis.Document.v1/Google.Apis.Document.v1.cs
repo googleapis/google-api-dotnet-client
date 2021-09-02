@@ -2524,6 +2524,20 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiV1DocumentPageFormField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Created for Labeling UI to export key text. If corrections were made to the text identified by the
+        /// `field_name.text_anchor`, this field will contain the correction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedKeyText")]
+        public virtual string CorrectedKeyText { get; set; }
+
+        /// <summary>
+        /// Created for Labeling UI to export value text. If corrections were made to the text identified by the
+        /// `field_value.text_anchor`, this field will contain the correction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedValueText")]
+        public virtual string CorrectedValueText { get; set; }
+
+        /// <summary>
         /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
@@ -3648,6 +3662,20 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiV1beta1DocumentPageFormField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Created for Labeling UI to export key text. If corrections were made to the text identified by the
+        /// `field_name.text_anchor`, this field will contain the correction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedKeyText")]
+        public virtual string CorrectedKeyText { get; set; }
+
+        /// <summary>
+        /// Created for Labeling UI to export value text. If corrections were made to the text identified by the
+        /// `field_value.text_anchor`, this field will contain the correction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedValueText")]
+        public virtual string CorrectedValueText { get; set; }
+
+        /// <summary>
         /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
@@ -4759,6 +4787,20 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>A form field detected on the page.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageFormField : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Created for Labeling UI to export key text. If corrections were made to the text identified by the
+        /// `field_name.text_anchor`, this field will contain the correction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedKeyText")]
+        public virtual string CorrectedKeyText { get; set; }
+
+        /// <summary>
+        /// Created for Labeling UI to export value text. If corrections were made to the text identified by the
+        /// `field_value.text_anchor`, this field will contain the correction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedValueText")]
+        public virtual string CorrectedValueText { get; set; }
+
         /// <summary>
         /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
         /// </summary>

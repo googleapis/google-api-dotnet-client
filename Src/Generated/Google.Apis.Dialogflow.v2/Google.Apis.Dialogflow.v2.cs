@@ -16061,7 +16061,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3Page CurrentPage { get; set; }
 
-        /// <summary>Required. Input only. The diagnostic info output for the turn.</summary>
+        /// <summary>
+        /// Required. Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
@@ -16224,7 +16226,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
+    /// fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -17175,7 +17180,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.RunTestCase long running operation. This message currently has no fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -17768,7 +17775,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; }
 
-        /// <summary>Required. Input only. The diagnostic info output for the turn.</summary>
+        /// <summary>
+        /// Required. Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
@@ -17931,7 +17940,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
+    /// fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -18882,7 +18894,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
+    /// <summary>
+    /// Metadata returned for the TestCases.RunTestCase long running operation. This message currently has no fields.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

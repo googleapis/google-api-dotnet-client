@@ -54,6 +54,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Pos = new PosResource(this);
             Products = new ProductsResource(this);
             Productstatuses = new ProductstatusesResource(this);
+            Promotions = new PromotionsResource(this);
             Pubsubnotificationsettings = new PubsubnotificationsettingsResource(this);
             Regionalinventory = new RegionalinventoryResource(this);
             Regions = new RegionsResource(this);
@@ -166,6 +167,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Productstatuses resource.</summary>
         public virtual ProductstatusesResource Productstatuses { get; }
+
+        /// <summary>Gets the Promotions resource.</summary>
+        public virtual PromotionsResource Promotions { get; }
 
         /// <summary>Gets the Pubsubnotificationsettings resource.</summary>
         public virtual PubsubnotificationsettingsResource Pubsubnotificationsettings { get; }
@@ -6679,6 +6683,89 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
+        /// <summary>
+        /// Capture funds from the customer for the current order total. This method should be called after the merchant
+        /// verifies that they are able and ready to start shipping the order. This method blocks until a response is
+        /// received from the payment processsor. If this method succeeds, the merchant is guaranteed to receive funds
+        /// for the order after shipment. If the request fails, it can be retried or the order may be cancelled. This
+        /// method cannot be called after the entire order is already shipped.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that manages the order. This cannot be a multi-client account.
+        /// </param>
+        /// <param name="orderId">Required. The ID of the Order.</param>
+        public virtual CaptureOrderRequest CaptureOrder(Google.Apis.ShoppingContent.v2_1.Data.CaptureOrderRequest body, long merchantId, string orderId)
+        {
+            return new CaptureOrderRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>
+        /// Capture funds from the customer for the current order total. This method should be called after the merchant
+        /// verifies that they are able and ready to start shipping the order. This method blocks until a response is
+        /// received from the payment processsor. If this method succeeds, the merchant is guaranteed to receive funds
+        /// for the order after shipment. If the request fails, it can be retried or the order may be cancelled. This
+        /// method cannot be called after the entire order is already shipped.
+        /// </summary>
+        public class CaptureOrderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.CaptureOrderResponse>
+        {
+            /// <summary>Constructs a new CaptureOrder request.</summary>
+            public CaptureOrderRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.CaptureOrderRequest body, long merchantId, string orderId) : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the account that manages the order. This cannot be a multi-client account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The ID of the Order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.CaptureOrderRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "captureOrder";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/orders/{orderId}/captureOrder";
+
+            /// <summary>Initializes CaptureOrder parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Sandbox only. Creates a test order.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">
@@ -9325,6 +9412,80 @@ namespace Google.Apis.ShoppingContent.v2_1
                     Name = "pageToken",
                     IsRequired = false,
                     ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "promotions" collection of methods.</summary>
+    public class PromotionsResource
+    {
+        private const string Resource = "promotions";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PromotionsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it will update
+        /// the promotion instead.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account that contains the collection.</param>
+        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.Promotion body, long merchantId)
+        {
+            return new CreateRequest(service, body, merchantId);
+        }
+
+        /// <summary>
+        /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it will update
+        /// the promotion instead.
+        /// </summary>
+        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Promotion>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Promotion body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that contains the collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.Promotion Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/promotions";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -13308,17 +13469,38 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Response message for the GetProgramStatus method.</summary>
     public class BuyOnGoogleProgramStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The customer service pending email.</summary>
+        /// <summary>The customer service pending email. After verification this field becomes empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerServicePendingEmail")]
         public virtual string CustomerServicePendingEmail { get; set; }
 
-        /// <summary>The customer service verified email.</summary>
+        /// <summary>Output only. The customer service verified email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerServiceVerifiedEmail")]
         public virtual string CustomerServiceVerifiedEmail { get; set; }
 
-        /// <summary>The current participation stage for the program.</summary>
+        /// <summary>Output only. The current participation stage for the program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("participationStage")]
         public virtual string ParticipationStage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the CaptureOrder method.</summary>
+    public class CaptureOrderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the CaptureOrder method.</summary>
+    public class CaptureOrderResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The status of the execution. Only defined if the request was successful. Acceptable values are: *
+        /// "duplicate" * "executed"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19133,13 +19315,41 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
         public virtual System.Collections.Generic.IList<ProductProductDetail> ProductDetails { get; set; }
 
+        /// <summary>
+        /// The height of the product in the units provided. The value must be between 0 (exclusive) and 3000
+        /// (inclusive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productHeight")]
+        public virtual ProductDimension ProductHeight { get; set; }
+
         /// <summary>Bullet points describing the most relevant highlights of a product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productHighlights")]
         public virtual System.Collections.Generic.IList<string> ProductHighlights { get; set; }
 
+        /// <summary>
+        /// The length of the product in the units provided. The value must be between 0 (exclusive) and 3000
+        /// (inclusive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLength")]
+        public virtual ProductDimension ProductLength { get; set; }
+
         /// <summary>Categories of the item (formatted as in products data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypes")]
         public virtual System.Collections.Generic.IList<string> ProductTypes { get; set; }
+
+        /// <summary>
+        /// The weight of the product in the units provided. The value must be between 0 (exclusive) and 2000
+        /// (inclusive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productWeight")]
+        public virtual ProductWeight ProductWeight { get; set; }
+
+        /// <summary>
+        /// The width of the product in the units provided. The value must be between 0 (exclusive) and 3000
+        /// (inclusive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productWidth")]
+        public virtual ProductDimension ProductWidth { get; set; }
 
         /// <summary>The unique ID of a promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionIds")]
@@ -19268,6 +19478,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Tax value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
         public virtual Price TaxAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ProductDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The length units. Acceptable values are: - "`in`" - "`cm`" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>
+        /// Required. The length value represented as a number. The value can have a maximum precision of four decimal
+        /// places.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19584,6 +19811,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ProductWeight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The weight unit. Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "`lb`" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>
+        /// Required. The weight represented as a number. The weight can have a maximum precision of four decimal
+        /// places.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ProductsCustomBatchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The request entries to be processed in the batch.</summary>
@@ -19809,6 +20053,149 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<ProductStatus> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a promotion. (1) https://support.google.com/merchants/answer/2906014 (2)
+    /// https://support.google.com/merchants/answer/10146130 (3) https://support.google.com/merchants/answer/9173673
+    /// </summary>
+    public class Promotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Product filter by brand for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual System.Collections.Generic.IList<string> Brand { get; set; }
+
+        /// <summary>Product filter by brand exclusion for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandExclusion")]
+        public virtual System.Collections.Generic.IList<string> BrandExclusion { get; set; }
+
+        /// <summary>Required. The content language used as part of the unique identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
+        public virtual string ContentLanguage { get; set; }
+
+        /// <summary>Required. Coupon value type for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("couponValueType")]
+        public virtual string CouponValueType { get; set; }
+
+        /// <summary>Free gift description for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeGiftDescription")]
+        public virtual string FreeGiftDescription { get; set; }
+
+        /// <summary>Free gift item id for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeGiftItemId")]
+        public virtual string FreeGiftItemId { get; set; }
+
+        /// <summary>Free gift value for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeGiftValue")]
+        public virtual PriceAmount FreeGiftValue { get; set; }
+
+        /// <summary>Generic redemption code for the promotion. To be used with the above field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericRedemptionCode")]
+        public virtual string GenericRedemptionCode { get; set; }
+
+        /// <summary>The number of items discounted in the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("getThisQuantityDiscounted")]
+        public virtual System.Nullable<int> GetThisQuantityDiscounted { get; set; }
+
+        /// <summary>
+        /// Required. Output only. The REST promotion id to uniquely identify the promotion. Content API methods that
+        /// operate on promotions take this as their promotionId parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Product filter by item group id for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
+        public virtual System.Collections.Generic.IList<string> ItemGroupId { get; set; }
+
+        /// <summary>Product filter by item group id exclusion for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemGroupIdExclusion")]
+        public virtual System.Collections.Generic.IList<string> ItemGroupIdExclusion { get; set; }
+
+        /// <summary>Product filter by item id for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual System.Collections.Generic.IList<string> ItemId { get; set; }
+
+        /// <summary>Product filter by item id exclusion for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemIdExclusion")]
+        public virtual System.Collections.Generic.IList<string> ItemIdExclusion { get; set; }
+
+        /// <summary>Maximum purchase quantity for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitQuantity")]
+        public virtual System.Nullable<int> LimitQuantity { get; set; }
+
+        /// <summary>Maximum purchase value for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitValue")]
+        public virtual PriceAmount LimitValue { get; set; }
+
+        /// <summary>Long title for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
+        public virtual string LongTitle { get; set; }
+
+        /// <summary>Minimum purchase amount for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumPurchaseAmount")]
+        public virtual PriceAmount MinimumPurchaseAmount { get; set; }
+
+        /// <summary>Minimum purchase quantity for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumPurchaseQuantity")]
+        public virtual System.Nullable<int> MinimumPurchaseQuantity { get; set; }
+
+        /// <summary>Promotion cost cap of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moneyBudget")]
+        public virtual PriceAmount MoneyBudget { get; set; }
+
+        /// <summary>The money off amount offered in the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moneyOffAmount")]
+        public virtual PriceAmount MoneyOffAmount { get; set; }
+
+        /// <summary>Required. Type of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerType")]
+        public virtual string OfferType { get; set; }
+
+        /// <summary>Order limit for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderLimit")]
+        public virtual System.Nullable<int> OrderLimit { get; set; }
+
+        /// <summary>The percentage discount offered in the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentOff")]
+        public virtual System.Nullable<int> PercentOff { get; set; }
+
+        /// <summary>
+        /// Required. Applicability of the promotion to either all products or only specific products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
+        public virtual string ProductApplicability { get; set; }
+
+        /// <summary>Destination ID for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionDestinationIds")]
+        public virtual System.Collections.Generic.IList<string> PromotionDestinationIds { get; set; }
+
+        /// <summary>String representation of the promotion display dates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionDisplayDates")]
+        public virtual string PromotionDisplayDates { get; set; }
+
+        /// <summary>Required. String representation of the promotion effective dates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionEffectiveDates")]
+        public virtual string PromotionEffectiveDates { get; set; }
+
+        /// <summary>Required. The user provided promotion id to uniquely identify the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
+        public virtual string PromotionId { get; set; }
+
+        /// <summary>Required. Redemption channel for the promotion. At least one channel is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
+        public virtual System.Collections.Generic.IList<string> RedemptionChannel { get; set; }
+
+        /// <summary>Shipping service names for thse promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingServiceNames")]
+        public virtual System.Collections.Generic.IList<string> ShippingServiceNames { get; set; }
+
+        /// <summary>Required. The target country used as part of the unique identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

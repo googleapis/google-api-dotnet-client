@@ -2701,7 +2701,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contact details for LaForge enterprises.</summary>
+    /// <summary>Contact details for managed Google Play enterprises.</summary>
     public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

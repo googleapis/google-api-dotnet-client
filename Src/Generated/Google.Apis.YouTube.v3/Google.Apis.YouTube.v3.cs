@@ -12603,6 +12603,33 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    public class LiveChatMemberMilestoneChatDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the Level at which the viever is a member. The Level names are defined by the YouTube channel
+        /// offering the Membership. In some situations this field isn't filled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberLevelName")]
+        public virtual string MemberLevelName { get; set; }
+
+        /// <summary>
+        /// The total amount of months (rounded up) the viewer has been a member that granted them this Member Milestone
+        /// Chat. This is the same number of months as is being displayed to YouTube users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberMonth")]
+        public virtual System.Nullable<long> MemberMonth { get; set; }
+
+        /// <summary>
+        /// The comment added by the member to this Member Milestone Chat. This field is empty for messages without a
+        /// comment from the member.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
+        public virtual string UserComment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A *liveChatMessage* resource represents a chat message in a YouTube Live Chat.</summary>
     public class LiveChatMessage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12735,15 +12762,16 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 29</summary>
+    /// <summary>Next ID: 31</summary>
     public class LiveChatMessageSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user
         /// that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that
-        /// just became a sponsor messageDeletedEvent - the moderator that took the action messageRetractedEvent - the
-        /// author that retracted their message userBannedEvent - the moderator that took the action superChatEvent -
-        /// the user that made the purchase superStickerEvent - the user that made the purchase
+        /// just became a sponsor memberMilestoneChatEvent - the member that sent the message messageDeletedEvent - the
+        /// moderator that took the action messageRetractedEvent - the author that retracted their message
+        /// userBannedEvent - the moderator that took the action superChatEvent - the user that made the purchase
+        /// superStickerEvent - the user that made the purchase
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
         public virtual string AuthorChannelId { get; set; }
@@ -12766,11 +12794,24 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("liveChatId")]
         public virtual string LiveChatId { get; set; }
 
+        /// <summary>
+        /// Details about the Member Milestone Chat event, this is only set if the type is 'memberMilestoneChatEvent'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberMilestoneChatDetails")]
+        public virtual LiveChatMemberMilestoneChatDetails MemberMilestoneChatDetails { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("messageDeletedDetails")]
         public virtual LiveChatMessageDeletedDetails MessageDeletedDetails { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("messageRetractedDetails")]
         public virtual LiveChatMessageRetractedDetails MessageRetractedDetails { get; set; }
+
+        /// <summary>
+        /// Details about the New Member Announcement event, this is only set if the type is 'newSponsorEvent'. Please
+        /// note that "member" is the new term for "sponsor".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSponsorDetails")]
+        public virtual LiveChatNewSponsorDetails NewSponsorDetails { get; set; }
 
         /// <summary>The date and time when the message was orignally published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
@@ -12892,6 +12933,26 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Details about the moderator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderatorDetails")]
         public virtual ChannelProfileDetails ModeratorDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LiveChatNewSponsorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the viewer just had upgraded from a lower level. For viewers that were not members at the time of
+        /// purchase, this field is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isUpgrade")]
+        public virtual System.Nullable<bool> IsUpgrade { get; set; }
+
+        /// <summary>
+        /// The name of the Level that the viewer just had joined. The Level names are defined by the YouTube channel
+        /// offering the Membership. In some situations this field isn't filled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberLevelName")]
+        public virtual string MemberLevelName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

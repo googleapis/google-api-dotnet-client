@@ -873,9 +873,9 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// The maximum number of conversations to return in the response. If this value is zero, the
-                    /// service will select a default size. A call might return fewer objects than requested. A
-                    /// non-empty `next_page_token` in the response indicates that more data is available.
+                    /// The maximum number of conversations to return in the response. A valid page size ranges from 0
+                    /// to 1,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be
+                    /// chosen. Note that a call might return fewer results than the requested page size.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3352,6 +3352,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Information about the issue.</summary>
     public class GoogleCloudContactcenterinsightsV1IssueAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since
+        /// then.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Resource name of the assigned issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issue")]
         public virtual string Issue { get; set; }
@@ -3494,8 +3501,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Conversation> Conversations { get; set; }
 
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is set, it means there is
+        /// another page available. If it is not set, it means no other pages are available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
