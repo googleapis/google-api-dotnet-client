@@ -597,8 +597,8 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of folders to return in the response. If unspecified, server picks an
-            /// appropriate default.
+            /// Optional. The maximum number of folders to return in the response. The server can return fewer folders
+            /// than requested. If unspecified, server picks an appropriate default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -860,8 +860,8 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of folders to return in the response. If unspecified, server picks an
-            /// appropriate default.
+            /// Optional. The maximum number of folders to return in the response. The server can return fewer folders
+            /// than requested. If unspecified, server picks an appropriate default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -1323,7 +1323,10 @@ namespace Google.Apis.CloudResourceManager.v3
                 InitParameters();
             }
 
-            /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
+            /// <summary>
+            /// The maximum number of items to return. This is a suggestion for the server. The server can return fewer
+            /// liens than requested. If unspecified, server picks an appropriate default.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1606,8 +1609,8 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of organizations to return in the response. If unspecified, server picks an
-            /// appropriate default.
+            /// Optional. The maximum number of organizations to return in the response. The server can return fewer
+            /// organizations than requested. If unspecified, server picks an appropriate default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }

@@ -1794,11 +1794,30 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
     public class ResponseMetaData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The currency code used in this report. Intended to be used in formatting currency metrics like
+        /// `purchaseRevenue` for visualization. If currency_code was specified in the request, this response parameter
+        /// will echo the request parameter; otherwise, this response parameter is the property's current currency_code.
+        /// Currency codes are string encodings of currency types from the ISO 4217 standard
+        /// (https://en.wikipedia.org/wiki/ISO_4217); for example "USD", "EUR", "JPY". To learn more, see
+        /// https://support.google.com/analytics/answer/9796179.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
         /// If true, indicates some buckets of dimension combinations are rolled into "(other)" row. This can happen for
         /// high cardinality reports.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLossFromOtherRow")]
         public virtual System.Nullable<bool> DataLossFromOtherRow { get; set; }
+
+        /// <summary>
+        /// The property's current timezone. Intended to be used to interpret time-based dimensions like `hour` and
+        /// `minute`. Formatted as strings from the IANA Time Zone database (https://www.iana.org/time-zones); for
+        /// example "America/New_York" or "Asia/Tokyo".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -468,8 +468,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 ContextAwareAccess = 18,
 
                 /// <summary>
-                /// The Chrome activity reports return information about unsafe events reported in the context of the
-                /// WebProtect features of BeyondCorp.
+                /// The Chrome activity reports return information about Chrome browser and Chrome OS events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("chrome")]
                 Chrome = 19,
@@ -881,8 +880,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 ContextAwareAccess = 18,
 
                 /// <summary>
-                /// The Chrome activity reports return information about unsafe events reported in the context of the
-                /// WebProtect features of BeyondCorp.
+                /// The Chrome activity reports return information about Chrome browser and Chrome OS events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("chrome")]
                 Chrome = 19,

@@ -3703,8 +3703,8 @@ namespace Google.Apis.PeopleService.v1.Data
     public class Gender : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The type of pronouns that should be used to address the person. The value can be custom or one of these
-        /// predefined values: * `male` * `female` * `other`
+        /// Free form text field for pronouns that should be used to address the person. Common values are: * `he`/`him`
+        /// * `she`/`her` * `they`/`them`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressMeAs")]
         public virtual string AddressMeAs { get; set; }

@@ -842,7 +842,10 @@ namespace Google.Apis.CloudResourceManager.v1
                 InitParameters();
             }
 
-            /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
+            /// <summary>
+            /// The maximum number of items to return. This is a suggestion for the server. The server can return fewer
+            /// liens than requested. If unspecified, server picks an appropriate default.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3890,7 +3893,10 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
-        /// <summary>The maximum number of Organizations to return in the response. This field is optional.</summary>
+        /// <summary>
+        /// The maximum number of Organizations to return in the response. The server can return fewer organizations
+        /// than requested. If unspecified, server picks an appropriate default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 

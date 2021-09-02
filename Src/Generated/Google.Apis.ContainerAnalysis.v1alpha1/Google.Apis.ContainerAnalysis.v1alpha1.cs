@@ -4902,7 +4902,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// aside from the target, which is captured in recipe.entryPoint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
-        public virtual System.Collections.Generic.IList<string> Arguments { get; set; }
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Arguments { get; set; }
 
         /// <summary>
         /// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the
@@ -4926,7 +4926,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// reproducing the build but not evaluated as part of policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Environment { get; set; }
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Environment { get; set; }
 
         /// <summary>
         /// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint,

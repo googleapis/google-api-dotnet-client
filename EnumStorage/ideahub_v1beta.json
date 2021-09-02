@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Ideahub.v1beta.IdeahubBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Ideahub.v1beta.IdeahubBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

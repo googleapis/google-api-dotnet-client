@@ -621,7 +621,7 @@ namespace Google.Apis.DataCatalog.v1
                         }
 
                         /// <summary>Deletes a tag.</summary>
-                        /// <param name="name">Required. The name of the tag to delete. </param>
+                        /// <param name="name">Required. The name of the tag to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
@@ -637,7 +637,7 @@ namespace Google.Apis.DataCatalog.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The name of the tag to delete. </summary>
+                            /// <summary>Required. The name of the tag to delete.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -917,7 +917,7 @@ namespace Google.Apis.DataCatalog.v1
                     /// information, see [Data Catalog resource
                     /// project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
                     /// </summary>
-                    /// <param name="name">Required. The name of the entry to delete. </param>
+                    /// <param name="name">Required. The name of the entry to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -938,7 +938,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the entry to delete. </summary>
+                        /// <summary>Required. The name of the entry to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -967,7 +967,7 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>Gets an entry.</summary>
-                    /// <param name="name">Required. The name of the entry to get. </param>
+                    /// <param name="name">Required. The name of the entry to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -983,7 +983,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the entry to get. </summary>
+                        /// <summary>Required. The name of the entry to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1440,7 +1440,7 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>Deletes a tag.</summary>
-                    /// <param name="name">Required. The name of the tag to delete. </param>
+                    /// <param name="name">Required. The name of the tag to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -1456,7 +1456,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the tag to delete. </summary>
+                        /// <summary>Required. The name of the tag to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1748,7 +1748,7 @@ namespace Google.Apis.DataCatalog.v1
                 /// parameter. For more information, see [Data Catalog resource
                 /// project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
                 /// </summary>
-                /// <param name="name">Required. The name of the entry group to delete. </param>
+                /// <param name="name">Required. The name of the entry group to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -1768,7 +1768,7 @@ namespace Google.Apis.DataCatalog.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the entry group to delete. </summary>
+                    /// <summary>Required. The name of the entry group to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1809,7 +1809,7 @@ namespace Google.Apis.DataCatalog.v1
                 }
 
                 /// <summary>Gets an entry group.</summary>
-                /// <param name="name">Required. The name of the entry group to get. </param>
+                /// <param name="name">Required. The name of the entry group to get.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -1825,7 +1825,7 @@ namespace Google.Apis.DataCatalog.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the entry group to get. </summary>
+                    /// <summary>Required. The name of the entry group to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2306,7 +2306,7 @@ namespace Google.Apis.DataCatalog.v1
                         /// unique.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Required. The name of the enum field value. </param>
+                        /// <param name="name">Required. The name of the enum field value.</param>
                         public virtual RenameRequest Rename(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest body, string name)
                         {
                             return new RenameRequest(service, body, name);
@@ -2326,7 +2326,7 @@ namespace Google.Apis.DataCatalog.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The name of the enum field value. </summary>
+                            /// <summary>Required. The name of the enum field value.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -2452,7 +2452,7 @@ namespace Google.Apis.DataCatalog.v1
                     /// parameter. For more information, see [Data Catalog resource
                     /// project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
                     /// </summary>
-                    /// <param name="name">Required. The name of the tag template field to delete. </param>
+                    /// <param name="name">Required. The name of the tag template field to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -2473,7 +2473,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the tag template field to delete. </summary>
+                        /// <summary>Required. The name of the tag template field to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2523,7 +2523,7 @@ namespace Google.Apis.DataCatalog.v1
                     /// project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The name of the tag template field. </param>
+                    /// <param name="name">Required. The name of the tag template field.</param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1TagTemplateField body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -2545,7 +2545,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the tag template field. </summary>
+                        /// <summary>Required. The name of the tag template field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2606,7 +2606,7 @@ namespace Google.Apis.DataCatalog.v1
                     /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The name of the tag template. </param>
+                    /// <param name="name">Required. The name of the tag template.</param>
                     public virtual RenameRequest Rename(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest body, string name)
                     {
                         return new RenameRequest(service, body, name);
@@ -2627,7 +2627,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the tag template. </summary>
+                        /// <summary>Required. The name of the tag template.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2750,7 +2750,7 @@ namespace Google.Apis.DataCatalog.v1
                 /// identified by the `name` parameter. For more information, see [Data Catalog resource
                 /// project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
                 /// </summary>
-                /// <param name="name">Required. The name of the tag template to delete. </param>
+                /// <param name="name">Required. The name of the tag template to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -2770,7 +2770,7 @@ namespace Google.Apis.DataCatalog.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the tag template to delete. </summary>
+                    /// <summary>Required. The name of the tag template to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2814,7 +2814,7 @@ namespace Google.Apis.DataCatalog.v1
                 }
 
                 /// <summary>Gets a tag template.</summary>
-                /// <param name="name">Required. The name of the tag template to get. </param>
+                /// <param name="name">Required. The name of the tag template to get.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -2830,7 +2830,7 @@ namespace Google.Apis.DataCatalog.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the tag template to get. </summary>
+                    /// <summary>Required. The name of the tag template to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3315,7 +3315,7 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>Gets a policy tag.</summary>
-                    /// <param name="name">Required. Resource name of the policy tag. </param>
+                    /// <param name="name">Required. Resource name of the policy tag.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -3331,7 +3331,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Resource name of the policy tag. </summary>
+                        /// <summary>Required. Resource name of the policy tag.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3419,9 +3419,7 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>Lists all policy tags in a taxonomy.</summary>
-                    /// <param name="parent">
-                    /// Required. Resource name of the taxonomy to list the policy tags of.
-                    /// </param>
+                    /// <param name="parent">Required. Resource name of the taxonomy to list the policy tags of.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -3437,7 +3435,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Resource name of the taxonomy to list the policy tags of. </summary>
+                        /// <summary>Required. Resource name of the taxonomy to list the policy tags of.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3721,7 +3719,7 @@ namespace Google.Apis.DataCatalog.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Resource name of the project that the taxonomy will belong to. </summary>
+                    /// <summary>Required. Resource name of the project that the taxonomy will belong to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3896,7 +3894,7 @@ namespace Google.Apis.DataCatalog.v1
                 }
 
                 /// <summary>Gets a taxonomy.</summary>
-                /// <param name="name">Required. Resource name of the taxonomy to get. </param>
+                /// <param name="name">Required. Resource name of the taxonomy to get.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -3912,7 +3910,7 @@ namespace Google.Apis.DataCatalog.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Resource name of the taxonomy to get. </summary>
+                    /// <summary>Required. Resource name of the taxonomy to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4069,7 +4067,7 @@ namespace Google.Apis.DataCatalog.v1
                 /// <summary>
                 /// Lists all taxonomies in a project in a particular location that you have a permission to view.
                 /// </summary>
-                /// <param name="parent">Required. Resource name of the project to list the taxonomies of. </param>
+                /// <param name="parent">Required. Resource name of the project to list the taxonomies of.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -4087,7 +4085,7 @@ namespace Google.Apis.DataCatalog.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Resource name of the project to list the taxonomies of. </summary>
+                    /// <summary>Required. Resource name of the project to list the taxonomies of.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 

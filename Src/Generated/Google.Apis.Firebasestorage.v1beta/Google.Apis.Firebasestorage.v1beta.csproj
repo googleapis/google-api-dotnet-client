@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Firebasestorage.v1beta Client Library</Title>
-    <Version>1.54.0.2381</Version>
+    <Version>1.54.0.2426</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
