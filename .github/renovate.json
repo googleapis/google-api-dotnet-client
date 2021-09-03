@@ -4,8 +4,8 @@
     ":disableDependencyDashboard"
   ],
   "ignorePaths": [
-    "Src/Generated/**",
+    "Src/Generated/**"
   ],
-  "schedule": ["before 8am"],
+  "schedule": ["before 8am every weekday"],
   "timezone": "Europe/London"
 }
