@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "config:base",
+    ":disableDependencyDashboard"
+  ],
+  "ignorePaths": [
+    "Src/Generated/**",
+  ],
+  "schedule": ["before 8am"],
+  "timezone": "Europe/London"
+}
