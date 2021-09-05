@@ -25,7 +25,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46' or '$(TargetFramework)'=='net461'">
     <Reference Include="System.Net.Http" />
-    <PackageReference Include="BouncyCastle" Version="1.8.2" />
+    <PackageReference Include="BouncyCastle" Version="1.8.9" />
   </ItemGroup>
 
   <ItemGroup>
