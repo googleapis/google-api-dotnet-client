@@ -28,7 +28,7 @@ Supported Platforms:
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
 
     <!-- Does not affect the output packages, and makes testing sourcelink simple -->
-    <DotNetCliToolReference Include="dotnet-sourcelink" Version="2.8.0" />
+    <DotNetCliToolReference Include="dotnet-sourcelink" Version="2.8.3" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
