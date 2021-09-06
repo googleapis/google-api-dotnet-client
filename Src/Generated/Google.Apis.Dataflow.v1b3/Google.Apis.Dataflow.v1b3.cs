@@ -5927,6 +5927,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
+        /// <summary>The machine type to use for launching the job. The default is n1-standard-1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launcherMachineType")]
+        public virtual string LauncherMachineType { get; set; }
+
         /// <summary>
         /// The machine type to use for the job. Defaults to the value from the template if not specified.
         /// </summary>

@@ -1250,7 +1250,7 @@ namespace Google.Apis.SearchConsole.v1.Data
     /// <summary>Information about the various content types in the sitemap.</summary>
     public class WmxSitemapContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of URLs from the sitemap that were indexed (of the content type).</summary>
+        /// <summary>*Deprecated; do not use.*</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexed")]
         public virtual System.Nullable<long> Indexed { get; set; }
 

@@ -3412,7 +3412,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configs for the input data used to create the issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Medium of conversations used in training data.</summary>
+        /// <summary>Required. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 
@@ -4168,7 +4168,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configs for the input data used to create the issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Medium of conversations used in training data.</summary>
+        /// <summary>Required. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 

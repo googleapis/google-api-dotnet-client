@@ -4029,6 +4029,19 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class AvroOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Optional] If set to true will enable interpreting logical types into their corresponding types (ie.
+        /// TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
+        public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class BiEngineReason : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only] High-level BI Engine reason for partial or disabled acceleration.</summary>
@@ -5275,6 +5288,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
         public virtual System.Nullable<bool> Autodetect { get; set; }
+
+        /// <summary>Additional properties to set if sourceFormat is set to Avro.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avroOptions")]
+        public virtual AvroOptions AvroOptions { get; set; }
 
         /// <summary>[Optional] Additional options if sourceFormat is set to BIGTABLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigtableOptions")]
@@ -7608,6 +7625,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Required. The type of routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
         public virtual string RoutineType { get; set; }
+
+        /// <summary>
+        /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the
+        /// creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body
+        /// validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strictMode")]
+        public virtual System.Nullable<bool> StrictMode { get; set; }
     }
 
     public class RoutineReference : Google.Apis.Requests.IDirectResponseSchema
