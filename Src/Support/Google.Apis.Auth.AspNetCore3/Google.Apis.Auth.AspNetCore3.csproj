@@ -29,7 +29,7 @@ Supported Platforms:
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.0.0" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
 
-    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
