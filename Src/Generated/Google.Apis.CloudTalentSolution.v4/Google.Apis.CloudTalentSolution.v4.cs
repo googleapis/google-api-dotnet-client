@@ -65,7 +65,10 @@ namespace Google.Apis.CloudTalentSolution.v4
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Talent Solution API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage job postings</summary>
@@ -75,7 +78,10 @@ namespace Google.Apis.CloudTalentSolution.v4
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Talent Solution API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage job postings</summary>
@@ -2666,7 +2672,7 @@ namespace Google.Apis.CloudTalentSolution.v4.Data
         /// ranking position. The syntax for this expression is a subset of Google SQL syntax. Supported operators are:
         /// +, -, *, /, where the left and right side of the operator is either a numeric Job.custom_attributes key,
         /// integer/double value or an expression that can be evaluated to a number. Parenthesis are supported to adjust
-        /// calculation precedence. The expression must be &amp;lt; 100 characters in length. The expression is
+        /// calculation precedence. The expression must be &amp;lt; 200 characters in length. The expression is
         /// considered invalid for a job if the expression references custom attributes that are not populated on the
         /// job or if the expression results in a divide by zero. If an expression is invalid for a job, that job is
         /// demoted to the end of the results. Sample ranking expression (year + 25) * 0.25 - (freshness / 0.5)
@@ -3777,15 +3783,19 @@ namespace Google.Apis.CloudTalentSolution.v4.Data
         public virtual CustomRankingInfo CustomRankingInfo { get; set; }
 
         /// <summary>
-        /// Controls whether to disable exact keyword match on Job.title, Job.description, Job.company_display_name,
-        /// Job.addresses, Job.qualifications. When disable keyword match is turned off, a keyword match returns jobs
-        /// that do not match given category filters when there are matching keywords. For example, for the query
-        /// "program manager," a result is returned even if the job posting has the title "software developer," which
-        /// doesn't fall into "program manager" ontology, but does have "program manager" appearing in its description.
-        /// For queries like "cloud" that don't contain title or location specific ontology, jobs with "cloud" keyword
-        /// matches are returned regardless of this flag's value. Use Company.keyword_searchable_job_custom_attributes
-        /// if company-specific globally matched custom field/attribute string values are needed. Enabling keyword match
-        /// improves recall of subsequent search requests. Defaults to false.
+        /// This field is deprecated. Please use SearchJobsRequest.keyword_match_mode going forward. To migrate,
+        /// disable_keyword_match set to false maps to KeywordMatchMode.KEYWORD_MATCH_ALL, and disable_keyword_match set
+        /// to true maps to KeywordMatchMode.KEYWORD_MATCH_DISABLED. If SearchJobsRequest.keyword_match_mode is set,
+        /// this field is ignored. Controls whether to disable exact keyword match on Job.title, Job.description,
+        /// Job.company_display_name, Job.addresses, Job.qualifications. When disable keyword match is turned off, a
+        /// keyword match returns jobs that do not match given category filters when there are matching keywords. For
+        /// example, for the query "program manager," a result is returned even if the job posting has the title
+        /// "software developer," which doesn't fall into "program manager" ontology, but does have "program manager"
+        /// appearing in its description. For queries like "cloud" that don't contain title or location specific
+        /// ontology, jobs with "cloud" keyword matches are returned regardless of this flag's value. Use
+        /// Company.keyword_searchable_job_custom_attributes if company-specific globally matched custom field/attribute
+        /// string values are needed. Enabling keyword match improves recall of subsequent search requests. Defaults to
+        /// false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableKeywordMatch")]
         public virtual System.Nullable<bool> DisableKeywordMatch { get; set; }
@@ -3863,6 +3873,14 @@ namespace Google.Apis.CloudTalentSolution.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobView")]
         public virtual string JobView { get; set; }
+
+        /// <summary>
+        /// Controls what keyword match options to use. If both keyword_match_mode and disable_keyword_match are set,
+        /// keyword_match_mode will take precedence. Defaults to KeywordMatchMode.KEYWORD_MATCH_ALL if no value is
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordMatchMode")]
+        public virtual string KeywordMatchMode { get; set; }
 
         /// <summary>
         /// A limit on the number of jobs returned in the search results. Increasing this value above the default value

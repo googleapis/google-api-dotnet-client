@@ -2170,6 +2170,14 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesResource")]
         public virtual KubernetesResource KubernetesResource { get; set; }
 
+        /// <summary>Optional. Specific information for a GKE Multi-Cloud cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiCloudCluster")]
+        public virtual MultiCloudCluster MultiCloudCluster { get; set; }
+
+        /// <summary>Optional. Specific information for a GKE On-Prem cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onPremCluster")]
+        public virtual OnPremCluster OnPremCluster { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2180,6 +2188,54 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         /// <summary>Output only. The current state of the Membership resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.</summary>
+    public class MultiCloudCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for
+        /// this GKE Multi-Cloud cluster no longer exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example:
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OnPremCluster contains information specific to GKE On-Prem clusters.</summary>
+    public class OnPremCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. Whether the cluster is an admin cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminCluster")]
+        public virtual System.Nullable<bool> AdminCluster { get; set; }
+
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this
+        /// GKE On-Prem cluster no longer exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example:
+        /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
+        /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

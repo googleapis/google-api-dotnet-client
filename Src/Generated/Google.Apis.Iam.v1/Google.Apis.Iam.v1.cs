@@ -2834,6 +2834,138 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
+                /// <summary>
+                /// Disable a ServiceAccountKey. A disabled service account key can be enabled through
+                /// EnableServiceAccountKey. The API is currently in preview phase.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the service account key in the following format:
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as a wildcard for the
+                /// `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email` address
+                /// or the `unique_id` of the service account.
+                /// </param>
+                public virtual DisableRequest Disable(Google.Apis.Iam.v1.Data.DisableServiceAccountKeyRequest body, string name)
+                {
+                    return new DisableRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Disable a ServiceAccountKey. A disabled service account key can be enabled through
+                /// EnableServiceAccountKey. The API is currently in preview phase.
+                /// </summary>
+                public class DisableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Disable request.</summary>
+                    public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.DisableServiceAccountKeyRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the service account key in the following format:
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as a wildcard for the
+                    /// `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email`
+                    /// address or the `unique_id` of the service account.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.DisableServiceAccountKeyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:disable";
+
+                    /// <summary>Initializes Disable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enable a ServiceAccountKey. The API is currently in preview phase.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the service account key in the following format:
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as a wildcard for the
+                /// `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email` address
+                /// or the `unique_id` of the service account.
+                /// </param>
+                public virtual EnableRequest Enable(Google.Apis.Iam.v1.Data.EnableServiceAccountKeyRequest body, string name)
+                {
+                    return new EnableRequest(service, body, name);
+                }
+
+                /// <summary>Enable a ServiceAccountKey. The API is currently in preview phase.</summary>
+                public class EnableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Enable request.</summary>
+                    public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.EnableServiceAccountKeyRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the service account key in the following format:
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as a wildcard for the
+                    /// `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email`
+                    /// address or the `unique_id` of the service account.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.EnableServiceAccountKeyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enable";
+
+                    /// <summary>Initializes Enable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets a ServiceAccountKey.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the service account key in the following format:
@@ -4627,6 +4759,13 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The service account key disable request.</summary>
+    public class DisableServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The service account disable request.</summary>
     public class DisableServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4641,6 +4780,13 @@ namespace Google.Apis.Iam.v1.Data
     /// object `{}`.
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The service account key enable request.</summary>
+    public class EnableServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5307,6 +5453,10 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class ServiceAccountKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The key status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
         /// <summary>Specifies the algorithm (and possibly key size) for the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
         public virtual string KeyAlgorithm { get; set; }

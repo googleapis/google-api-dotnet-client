@@ -65,7 +65,10 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Talent Solution API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage job postings</summary>
@@ -75,7 +78,10 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Talent Solution API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage job postings</summary>
@@ -2215,7 +2221,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         /// ranking position. The syntax for this expression is a subset of Google SQL syntax. Supported operators are:
         /// +, -, *, /, where the left and right side of the operator is either a numeric Job.custom_attributes key,
         /// integer/double value or an expression that can be evaluated to a number. Parenthesis are supported to adjust
-        /// calculation precedence. The expression must be &amp;lt; 100 characters in length. The expression is
+        /// calculation precedence. The expression must be &amp;lt; 200 characters in length. The expression is
         /// considered invalid for a job if the expression references custom attributes that are not populated on the
         /// job or if the expression results in a divide by zero. If an expression is invalid for a job, that job is
         /// demoted to the end of the results. Sample ranking expression (year + 25) * 0.25 - (freshness / 0.5)
