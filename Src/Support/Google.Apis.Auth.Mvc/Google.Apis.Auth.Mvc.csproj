@@ -37,11 +37,7 @@ Supported Platforms:
 
   <!-- package references, only on Windows -->
   <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="4.0.40804" />
-    <PackageReference Include="Microsoft.AspNet.Razor" Version="2.0.30506" />
-    <PackageReference Include="Microsoft.AspNet.WebPages" Version="2.0.30506" />
-    <PackageReference Include="Microsoft.Web.Infrastructure" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="4.0.30506" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
     <Reference Include="System.Web" />
 
