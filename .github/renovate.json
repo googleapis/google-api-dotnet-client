@@ -16,6 +16,15 @@
         "Microsoft.AspNetCore."
       ],
       "allowedVersions": "<2.1.0"
+    },
+    {
+      "matchPaths": [
+        "Src/Support/Google.Apis.Auth.AspNetCore3/**"
+      ],
+      "matchPackagePrefixes": [
+        "Microsoft.AspNetCore."
+      ],
+      "allowedVersions": "<3.1.0"
     }
   ],
   "schedule": ["before 8am every weekday"],
