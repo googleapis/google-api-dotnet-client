@@ -25,8 +25,8 @@ Supported Platforms:
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.1.18" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
 
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
