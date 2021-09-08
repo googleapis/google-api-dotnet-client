@@ -7627,6 +7627,9 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("externalChannelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExternalChannelId { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTube.v3.Data.TestItem Body { get; set; }
 
@@ -7650,6 +7653,14 @@ namespace Google.Apis.YouTube.v3
                 {
                     Name = "part",
                     IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("externalChannelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalChannelId",
+                    IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,

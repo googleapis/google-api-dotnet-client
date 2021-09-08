@@ -946,9 +946,7 @@ namespace Google.Apis.CloudBuild.v1
                 this.service = service;
             }
 
-            /// <summary>
-            /// Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
-            /// </summary>
+            /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
@@ -958,9 +956,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>
-            /// Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
-            /// </summary>
+            /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
             public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1019,9 +1015,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>
-            /// Delete an association between a GCP project and a GitHub Enterprise server. This API is experimental.
-            /// </summary>
+            /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="name">
             /// This field should contain the name of the enterprise config resource. For example:
             /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -1031,9 +1025,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>
-            /// Delete an association between a GCP project and a GitHub Enterprise server. This API is experimental.
-            /// </summary>
+            /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
             public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1098,7 +1090,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+            /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
             /// <param name="name">
             /// This field should contain the name of the enterprise config resource. For example:
             /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -1108,7 +1100,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+            /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
             public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1173,7 +1165,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+            /// <summary>List all GitHubEnterpriseConfigs for a given project.</summary>
             /// <param name="parent">
             /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
             /// </param>
@@ -1182,7 +1174,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+            /// <summary>List all GitHubEnterpriseConfigs for a given project.</summary>
             public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGithubEnterpriseConfigsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1234,9 +1226,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>
-            /// Update an association between a GCP project and a GitHub Enterprise server. This API is experimental.
-            /// </summary>
+            /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
@@ -1247,9 +1237,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>
-            /// Update an association between a GCP project and a GitHub Enterprise server. This API is experimental.
-            /// </summary>
+            /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
             public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1843,10 +1831,7 @@ namespace Google.Apis.CloudBuild.v1
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Create an association between a GCP project and a GitHub Enterprise server. This API is
-                /// experimental.
-                /// </summary>
+                /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
@@ -1856,10 +1841,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>
-                /// Create an association between a GCP project and a GitHub Enterprise server. This API is
-                /// experimental.
-                /// </summary>
+                /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
                 public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1918,10 +1900,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>
-                /// Delete an association between a GCP project and a GitHub Enterprise server. This API is
-                /// experimental.
-                /// </summary>
+                /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="name">
                 /// This field should contain the name of the enterprise config resource. For example:
                 /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -1931,10 +1910,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>
-                /// Delete an association between a GCP project and a GitHub Enterprise server. This API is
-                /// experimental.
-                /// </summary>
+                /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
                 public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1999,7 +1975,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+                /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
                 /// <param name="name">
                 /// This field should contain the name of the enterprise config resource. For example:
                 /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -2009,7 +1985,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+                /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
                 public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2074,7 +2050,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+                /// <summary>List all GitHubEnterpriseConfigs for a given project.</summary>
                 /// <param name="parent">
                 /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
                 /// </param>
@@ -2083,7 +2059,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+                /// <summary>List all GitHubEnterpriseConfigs for a given project.</summary>
                 public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGithubEnterpriseConfigsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2135,10 +2111,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>
-                /// Update an association between a GCP project and a GitHub Enterprise server. This API is
-                /// experimental.
-                /// </summary>
+                /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
@@ -2149,10 +2122,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>
-                /// Update an association between a GCP project and a GitHub Enterprise server. This API is
-                /// experimental.
-                /// </summary>
+                /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
                 public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>

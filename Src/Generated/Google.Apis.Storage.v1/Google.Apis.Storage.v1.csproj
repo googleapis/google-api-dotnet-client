@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Storage.v1 Client Library</Title>
-    <Version>1.54.0.2234</Version>
+    <Version>1.55.0.2234</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -58,19 +58,19 @@
 
   <!-- common dependencies -->
   <ItemGroup>
-    <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="1.0.1" PrivateAssets="All" />
-    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
+    <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
   </ItemGroup>
 
   <!-- per-target dependencies -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <PackageReference Include="Google.Apis" Version="1.54.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.54.0" />
+    <PackageReference Include="Google.Apis" Version="1.55.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.55.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="Google.Apis" Version="1.54.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.54.0" />
+    <PackageReference Include="Google.Apis" Version="1.55.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.55.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
@@ -84,8 +84,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
-    <PackageReference Include="Google.Apis" Version="1.54.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.54.0" />
+    <PackageReference Include="Google.Apis" Version="1.55.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.55.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">

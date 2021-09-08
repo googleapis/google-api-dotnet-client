@@ -65,14 +65,20 @@ namespace Google.Apis.CloudHealthcare.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Healthcare API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Healthcare API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -292,6 +298,7 @@ namespace Google.Apis.CloudHealthcare.v1
             {
                 this.service = service;
                 Datasets = new DatasetsResource(service);
+                Services = new ServicesResource(service);
             }
 
             /// <summary>Gets the Datasets resource.</summary>
@@ -9809,6 +9816,108 @@ namespace Google.Apis.CloudHealthcare.v1
                 }
             }
 
+            /// <summary>Gets the Services resource.</summary>
+            public virtual ServicesResource Services { get; }
+
+            /// <summary>The "services" collection of methods.</summary>
+            public class ServicesResource
+            {
+                private const string Resource = "services";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ServicesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Nlp = new NlpResource(service);
+                }
+
+                /// <summary>Gets the Nlp resource.</summary>
+                public virtual NlpResource Nlp { get; }
+
+                /// <summary>The "nlp" collection of methods.</summary>
+                public class NlpResource
+                {
+                    private const string Resource = "nlp";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public NlpResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Analyze heathcare entity in a document. Its response includes the recognized entity mentions and
+                    /// the relationships between them. AnalyzeEntities uses context aware models to detect entities.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="nlpService">
+                    /// The resource name of the service of the form:
+                    /// "projects/{project_id}/locations/{location_id}/services/nlp".
+                    /// </param>
+                    public virtual AnalyzeEntitiesRequest AnalyzeEntities(Google.Apis.CloudHealthcare.v1.Data.AnalyzeEntitiesRequest body, string nlpService)
+                    {
+                        return new AnalyzeEntitiesRequest(service, body, nlpService);
+                    }
+
+                    /// <summary>
+                    /// Analyze heathcare entity in a document. Its response includes the recognized entity mentions and
+                    /// the relationships between them. AnalyzeEntities uses context aware models to detect entities.
+                    /// </summary>
+                    public class AnalyzeEntitiesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.AnalyzeEntitiesResponse>
+                    {
+                        /// <summary>Constructs a new AnalyzeEntities request.</summary>
+                        public AnalyzeEntitiesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.AnalyzeEntitiesRequest body, string nlpService) : base(service)
+                        {
+                            NlpService = nlpService;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The resource name of the service of the form:
+                        /// "projects/{project_id}/locations/{location_id}/services/nlp".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nlpService", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string NlpService { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.AnalyzeEntitiesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "analyzeEntities";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+nlpService}:analyzeEntities";
+
+                        /// <summary>Initializes AnalyzeEntities parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("nlpService", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "nlpService",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/nlp$",
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -9971,6 +10080,50 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The time to live for this Consent from when it is marked as active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to analyze healthcare entities in a document.</summary>
+    public class AnalyzeEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>document_content is a document to be annotated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentContent")]
+        public virtual string DocumentContent { get; set; }
+
+        /// <summary>
+        /// A list of licensed vocabularies to use in the request, in addition to the default unlicensed vocabularies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licensedVocabularies")]
+        public virtual System.Collections.Generic.IList<string> LicensedVocabularies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Includes recognized entity mentions and relationships between them.</summary>
+    public class AnalyzeEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The union of all the candidate entities that the entity_mentions in this response could link to. These are
+        /// UMLS concepts or normalized mention content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
+
+        /// <summary>
+        /// entity_mentions contains all the annotated medical entities that were mentioned in the provided document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityMentions")]
+        public virtual System.Collections.Generic.IList<EntityMention> EntityMentions { get; set; }
+
+        /// <summary>
+        /// relationships contains all the binary relationships that were identified between entity mentions within the
+        /// provided document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationships")]
+        public virtual System.Collections.Generic.IList<EntityMentionRelationship> Relationships { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10674,6 +10827,112 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The candidate entities that an entity mention could link to.</summary>
+    public class Entity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// entity_id is a first class field entity_id uniquely identifies this concept and its meta-vocabulary. For
+        /// example, "UMLS/C0000970".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; }
+
+        /// <summary>
+        /// preferred_term is the preferred term for this concept. For example, "Acetaminophen". For ad hoc entities
+        /// formed by normalization, this is the most popular unnormalized string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredTerm")]
+        public virtual string PreferredTerm { get; set; }
+
+        /// <summary>
+        /// Vocabulary codes are first-class fields and differentiated from the concept unique identifier (entity_id).
+        /// vocabulary_codes contains the representation of this concept in particular vocabularies, such as ICD-10,
+        /// SNOMED-CT and RxNORM. These are prefixed by the name of the vocabulary, followed by the unique code within
+        /// that vocabulary. For example, "RXNORM/A10334543".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vocabularyCodes")]
+        public virtual System.Collections.Generic.IList<string> VocabularyCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An entity mention in the document.</summary>
+    public class EntityMention : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The certainty assessment of the entity mention. Its value is one of: LIKELY, SOMEWHAT_LIKELY, UNCERTAIN,
+        /// SOMEWHAT_UNLIKELY, UNLIKELY, CONDITIONAL
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certaintyAssessment")]
+        public virtual Feature CertaintyAssessment { get; set; }
+
+        /// <summary>The model's confidence in this entity mention annotation. A number between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<double> Confidence { get; set; }
+
+        /// <summary>
+        /// linked_entities are candidate ontological concepts that this entity mention may refer to. They are sorted by
+        /// decreasing confidence.it
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedEntities")]
+        public virtual System.Collections.Generic.IList<LinkedEntity> LinkedEntities { get; set; }
+
+        /// <summary>mention_id uniquely identifies each entity mention in a single response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
+        public virtual string MentionId { get; set; }
+
+        /// <summary>
+        /// The subject this entity mention relates to. Its value is one of: PATIENT, FAMILY_MEMBER, OTHER
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual Feature Subject { get; set; }
+
+        /// <summary>
+        /// How this entity mention relates to the subject temporally. Its value is one of: CURRENT, CLINICAL_HISTORY,
+        /// FAMILY_HISTORY, UPCOMING, ALLERGY
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temporalAssessment")]
+        public virtual Feature TemporalAssessment { get; set; }
+
+        /// <summary>text is the location of the entity mention in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual TextSpan Text { get; set; }
+
+        /// <summary>
+        /// The semantic type of the entity: UNKNOWN_ENTITY_TYPE, ALONE, ANATOMICAL_STRUCTURE, ASSISTED_LIVING,
+        /// BF_RESULT, BM_RESULT, BM_UNIT, BM_VALUE, BODY_FUNCTION, BODY_MEASUREMENT, COMPLIANT, DOESNOT_FOLLOWUP,
+        /// FAMILY, FOLLOWSUP, LABORATORY_DATA, LAB_RESULT, LAB_UNIT, LAB_VALUE, MEDICAL_DEVICE, MEDICINE, MED_DOSE,
+        /// MED_DURATION, MED_FORM, MED_FREQUENCY, MED_ROUTE, MED_STATUS, MED_STRENGTH, MED_TOTALDOSE, MED_UNIT,
+        /// NON_COMPLIANT, OTHER_LIVINGSTATUS, PROBLEM, PROCEDURE, PROCEDURE_RESULT, PROC_METHOD,
+        /// REASON_FOR_NONCOMPLIANCE, SEVERITY, SUBSTANCE_ABUSE, UNCLEAR_FOLLOWUP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines directed relationship from one entity mention to another.</summary>
+    public class EntityMentionRelationship : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The model's confidence in this annotation. A number between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<double> Confidence { get; set; }
+
+        /// <summary>object_id is the id of the object entity mention.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; }
+
+        /// <summary>subject_id is the id of the subject entity mention.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectId")]
+        public virtual string SubjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Evaluate a user's Consents for all matching User data mappings. Note: User data mappings are indexed
     /// asynchronously, causing slight delays between the time mappings are created or updated and when they are
@@ -10851,6 +11110,21 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A feature of an entity mention.</summary>
+    public class Feature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The model's confidence in this feature annotation. A number between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<double> Confidence { get; set; }
+
+        /// <summary>The value of this feature annotation. Its range depends on the type of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11573,6 +11847,24 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// EntityMentions can be linked to multiple entities using a LinkedEntity message lets us add other fields, e.g.
+    /// confidence.
+    /// </summary>
+    public class LinkedEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// entity_id is a concept unique identifier. These are prefixed by a string that identifies the entity coding
+        /// system, followed by the unique identifier within that system. For example, "UMLS/C0000970". This also
+        /// supports ad hoc entities, which are formed by normalizing entity mention content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListAttributeDefinitionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12073,8 +12365,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12600,6 +12892,21 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The transformations to apply to the detected data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformations")]
         public virtual System.Collections.Generic.IList<InfoTypeTransformation> Transformations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A span of text in the provided document.</summary>
+    public class TextSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unicode codepoint index of the beginning of this span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
+        public virtual System.Nullable<int> BeginOffset { get; set; }
+
+        /// <summary>The original text contained in this span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

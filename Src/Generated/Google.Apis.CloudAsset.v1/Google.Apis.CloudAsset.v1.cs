@@ -4758,9 +4758,9 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The Cloud KMS
-        /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys?hl=en)
-        /// name or
-        /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en)
+        /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys) name
+        /// or
+        /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
         /// name. This field is available only when the resource's proto contains it. To search against the `kms_key`: *
         /// use a field query. Example: `kmsKey:key` * use a free text query. Example: `key`
         /// </summary>

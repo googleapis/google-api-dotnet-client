@@ -3158,7 +3158,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Required. The names of fields to update. May only contain the following fields: `display_name`,
+            /// Required. The names of fields to update. May only contain the following field names: `display_name`,
             /// `description`, `labels`, `dynamic_group_metadata`, `posix_groups`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
