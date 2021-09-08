@@ -87,10 +87,15 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <summary>Administer your Cloud Bigtable tables</summary>
             public static string CloudBigtableAdminTable = "https://www.googleapis.com/auth/cloud-bigtable.admin.table";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
@@ -118,10 +123,15 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <summary>Administer your Cloud Bigtable tables</summary>
             public const string CloudBigtableAdminTable = "https://www.googleapis.com/auth/cloud-bigtable.admin.table";
 
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
@@ -4348,6 +4358,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A server-assigned timestamp representing when this Instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but
         /// should be kept globally unique to avoid confusion.
@@ -4733,8 +4747,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

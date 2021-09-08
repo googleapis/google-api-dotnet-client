@@ -1956,7 +1956,7 @@ namespace Google.Apis.Reseller.v1.Data
         /// `ANNUAL_YEARLY_PAY` plans. This property sets the maximum number of licenses assignable to users on a
         /// subscription. The reseller can add more licenses, but once set, the `numberOfSeats` cannot be reduced until
         /// renewal. The reseller is invoiced based on the `numberOfSeats` value regardless of how many of these user
-        /// licenses are assigned. *Note: *G Suite subscriptions automatically assign a license to every user.
+        /// licenses are assigned. *Note: *Google Workspace subscriptions automatically assign a license to every user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfSeats")]
         public virtual System.Nullable<int> NumberOfSeats { get; set; }

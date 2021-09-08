@@ -866,6 +866,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by Android apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set to true, it means allowed_package_names will not be enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAllPackageNames")]
+        public virtual System.Nullable<bool> AllowAllPackageNames { get; set; }
+
         /// <summary>Android package names of apps allowed to use the key. Example: 'com.companyname.appname'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPackageNames")]
         public virtual System.Collections.Generic.IList<string> AllowedPackageNames { get; set; }
@@ -995,6 +999,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by iOS apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1IOSKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set to true, it means allowed_bundle_ids will not be enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAllBundleIds")]
+        public virtual System.Nullable<bool> AllowAllBundleIds { get; set; }
+
         /// <summary>
         /// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         /// </summary>

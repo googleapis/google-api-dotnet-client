@@ -4496,7 +4496,7 @@ namespace Google.Apis.Spanner.v1
             /// instance's new resource levels are readable via the API. The returned long-running operation will have a
             /// name of the format `/operations/` and can be used to track the instance modification. The metadata field
             /// type is UpdateInstanceMetadata. The response field type is Instance, if successful. Authorization
-            /// requires `spanner.instances.update` permission on resource name.
+            /// requires `spanner.instances.update` permission on the resource name.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -4524,7 +4524,7 @@ namespace Google.Apis.Spanner.v1
             /// instance's new resource levels are readable via the API. The returned long-running operation will have a
             /// name of the format `/operations/` and can be used to track the instance modification. The metadata field
             /// type is UpdateInstanceMetadata. The response field type is Instance, if successful. Authorization
-            /// requires `spanner.instances.update` permission on resource name.
+            /// requires `spanner.instances.update` permission on the resource name.
             /// </summary>
             public class PatchRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
             {
@@ -5811,14 +5811,14 @@ namespace Google.Apis.Spanner.v1.Data
         /// reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter
         /// collections of resources. They can be used to control how resource metrics are aggregated. And they can be
         /// used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must
-        /// be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to
-        /// the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a
-        /// given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use
-        /// labels in your own code, please note that additional characters may be allowed in the future. And so you are
-        /// advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters
-        /// being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic
-        /// if we were to allow "_" in a future release.
+        /// be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. *
+        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
+        /// `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See
+        /// https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own
+        /// code, please note that additional characters may be allowed in the future. And so you are advised to use an
+        /// internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed.
+        /// For example, representing labels as the string: name + "_" + value would prove problematic if we were to
+        /// allow "_" in a future release.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5878,7 +5878,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Collections.Generic.IList<string> LeaderOptions { get; set; }
 
         /// <summary>
-        /// A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`
+        /// A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -6217,6 +6217,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcePersistentDiskCsiDriverConfig")]
         public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; }
 
+        /// <summary>Configuration for the GCP Filestore CSI driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpFilestoreCsiDriverConfig")]
+        public virtual GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfig { get; set; }
+
         /// <summary>
         /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica
         /// pods a replication controller has based on the resource usage of the existing pods.
@@ -7446,6 +7450,17 @@ namespace Google.Apis.Container.v1beta1.Data
     public class GcePersistentDiskCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the Compute Engine PD CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the GCP Filestore CSI driver.</summary>
+    public class GcpFilestoreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the GCP Filestore CSI driver is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 

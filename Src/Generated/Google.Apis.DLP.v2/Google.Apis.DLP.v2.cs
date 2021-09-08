@@ -12039,7 +12039,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redactConfig")]
         public virtual GooglePrivacyDlpV2RedactConfig RedactConfig { get; set; }
 
-        /// <summary>Replace</summary>
+        /// <summary>Replace with a specified value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceConfig")]
         public virtual GooglePrivacyDlpV2ReplaceValueConfig ReplaceConfig { get; set; }
 

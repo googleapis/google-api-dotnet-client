@@ -583,6 +583,10 @@ namespace Google.Apis.BigtableAdmin.v1.Data
     /// </summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A server-assigned timestamp representing when this Instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but
         /// should be kept globally unique to avoid confusion.

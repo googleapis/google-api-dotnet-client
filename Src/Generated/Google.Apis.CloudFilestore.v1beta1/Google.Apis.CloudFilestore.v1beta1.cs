@@ -1186,6 +1186,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// If set to true, any snapshots of the instance will also be deleted. (Otherwise, the request will
+                    /// only work if the instance has no snapshots.)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1206,6 +1213,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2326,14 +2341,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// </summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// By default node is eligible if instance is eligible. But individual node might be excluded from SLO by
-        /// adding entry here. For semantic see SloMetadata.exclusions. If both instance and node level exclusions are
-        /// present for time period, the node level's reason will be reported by Eligibility Exporter.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; }
-
         /// <summary>The location of the node, if different from instance location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -2414,56 +2421,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>SloExclusion represents an exclusion in SLI calculation applies to all SLOs.</summary>
-    public class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Exclusion duration. No restrictions on the possible values. When an ongoing operation is taking longer than
-        /// initially expected, an existing entry in the exclusion list can be updated by extending the duration. This
-        /// is supported by the subsystem exporting eligibility data as long as such extension is committed at least 10
-        /// minutes before the original exclusion expiration - otherwise it is possible that there will be "gaps" in the
-        /// exclusion application in the exported timeseries.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; }
-
-        /// <summary>
-        /// Human-readable reason for the exclusion. This should be a static string (e.g. "Disruptive update in
-        /// progress") and should not contain dynamically generated data (e.g. instance name). Can be left empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; }
-
-        /// <summary>
-        /// Name of an SLI that this exclusion applies to. Can be left empty, signaling that the instance should be
-        /// excluded from all SLIs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
-        public virtual string SliName { get; set; }
-
-        /// <summary>Start time of the exclusion. No alignment (e.g. to a full minute) needed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion time-window
-        /// against current time point) the exclusion reason used in the first matching entry will be published. It is
-        /// not needed to include expired exclusion in this list, as only the currently applicable exclusions are taken
-        /// into account by the eligibility exporting subsystem (the historical state of exclusions will be reflected in
-        /// the historically produced timeseries regardless of the current state). This field can be used to mark the
-        /// instance as temporary ineligible for the purpose of SLO calculation. For permanent instance SLO exclusion,
-        /// use of custom instance eligibility is recommended. See 'eligibility' field below.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; }
-
         /// <summary>
         /// Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows
         /// such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and
