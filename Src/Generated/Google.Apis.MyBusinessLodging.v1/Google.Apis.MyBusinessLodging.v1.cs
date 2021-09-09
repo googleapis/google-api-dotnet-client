@@ -830,6 +830,123 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An eco certificate awarded to the hotel.</summary>
+    public class EcoCertification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the eco certificate was awarded or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awarded")]
+        public virtual System.Nullable<bool> Awarded { get; set; }
+
+        /// <summary>Awarded exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awardedException")]
+        public virtual string AwardedException { get; set; }
+
+        /// <summary>Required. The eco certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ecoCertificate")]
+        public virtual string EcoCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Energy efficiency practices implemented at the hotel.</summary>
+    public class EnergyEfficiency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Carbon free energy sources. Property sources carbon-free electricity via at least one of the following
+        /// methods: on-site clean energy generation, power purchase agreement(s) with clean energy generators, green
+        /// power provided by electricity supplier, or purchases of Energy Attribute Certificates (such as Renewable
+        /// Energy Certificates or Guarantees of Origin).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carbonFreeEnergySources")]
+        public virtual System.Nullable<bool> CarbonFreeEnergySources { get; set; }
+
+        /// <summary>Carbon free energy sources exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carbonFreeEnergySourcesException")]
+        public virtual string CarbonFreeEnergySourcesException { get; set; }
+
+        /// <summary>
+        /// Energy conservation program. The property tracks corporate-level Scope 1 and 2 GHG emissions, and Scope 3
+        /// emissions if available. The property has a commitment to implement initiatives that reduce GHG emissions
+        /// year over year. The property has shown an absolute reduction in emissions for at least 2 years. Emissions
+        /// are either verfied by a third-party and/or published in external communications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyConservationProgram")]
+        public virtual System.Nullable<bool> EnergyConservationProgram { get; set; }
+
+        /// <summary>Energy conservation program exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyConservationProgramException")]
+        public virtual string EnergyConservationProgramException { get; set; }
+
+        /// <summary>
+        /// Energy efficient heating and cooling systems. The property doesn't use chlorofluorocarbon (CFC)-based
+        /// refrigerants in heating, ventilating, and air-conditioning systems unless a third-party audit shows it's not
+        /// economically feasible. The CFC-based refrigerants which are used should have a Global Warming Potential
+        /// (GWP) ≤ 10. The property uses occupancy sensors on HVAC systems in back-of-house spaces, meeting rooms, and
+        /// other low-traffic areas.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyEfficientHeatingAndCoolingSystems")]
+        public virtual System.Nullable<bool> EnergyEfficientHeatingAndCoolingSystems { get; set; }
+
+        /// <summary>Energy efficient heating and cooling systems exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyEfficientHeatingAndCoolingSystemsException")]
+        public virtual string EnergyEfficientHeatingAndCoolingSystemsException { get; set; }
+
+        /// <summary>
+        /// Energy efficient lighting. At least 75% of the property's lighting is energy efficient, using lighting that
+        /// is more than 45 lumens per watt – typically LED or CFL lightbulbs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyEfficientLighting")]
+        public virtual System.Nullable<bool> EnergyEfficientLighting { get; set; }
+
+        /// <summary>Energy efficient lighting exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyEfficientLightingException")]
+        public virtual string EnergyEfficientLightingException { get; set; }
+
+        /// <summary>
+        /// Energy saving thermostats. The property installed energy-saving thermostats throughout the building to
+        /// conserve energy when rooms or areas are not in use. Energy-saving thermostats are devices that control
+        /// heating/cooling in the building by learning temperature preferences and automatically adjusting to
+        /// energy-saving temperatures as the default. The thermostats are automatically set to a temperature between
+        /// 68-78 degrees F (20-26 °C), depending on seasonality. In the winter, set the thermostat to 68°F (20°C) when
+        /// the room is occupied, lowering room temperature when unoccupied. In the summer, set the thermostat to 78°F
+        /// (26°C) when the room is occupied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energySavingThermostats")]
+        public virtual System.Nullable<bool> EnergySavingThermostats { get; set; }
+
+        /// <summary>Energy saving thermostats exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energySavingThermostatsException")]
+        public virtual string EnergySavingThermostatsException { get; set; }
+
+        /// <summary>Output only. Green building design. True if BREEAM-* or LEED-* certified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("greenBuildingDesign")]
+        public virtual System.Nullable<bool> GreenBuildingDesign { get; set; }
+
+        /// <summary>Output only. Green building design exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("greenBuildingDesignException")]
+        public virtual string GreenBuildingDesignException { get; set; }
+
+        /// <summary>
+        /// Independent organization audits energy use. The property conducts an energy audit at least every 5 years,
+        /// the results of which are either verified by a third-party and/or published in external communications. An
+        /// energy audit is a detailed assessment of the facility which provides recommendations to existing operations
+        /// and procedures to improve energy efficiency, available incentives or rebates,and opportunities for
+        /// improvements through renovations or upgrades. Examples of organizations that conduct credible third party
+        /// audits include: Engie Impact, DNV GL (EU), Dexma, and local utility providers (they often provide energy and
+        /// water audits).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("independentOrganizationAuditsEnergyUse")]
+        public virtual System.Nullable<bool> IndependentOrganizationAuditsEnergyUse { get; set; }
+
+        /// <summary>Independent organization audits energy use exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("independentOrganizationAuditsEnergyUseException")]
+        public virtual string IndependentOrganizationAuditsEnergyUseException { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Enhanced cleaning measures implemented by the hotel during COVID-19.</summary>
     public class EnhancedCleaning : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2185,6 +2302,10 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("someUnits")]
         public virtual GuestUnitFeatures SomeUnits { get; set; }
 
+        /// <summary>Sustainability practices implemented at the hotel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sustainability")]
+        public virtual Sustainability Sustainability { get; set; }
+
         /// <summary>Vehicles or vehicular services facilitated or owned by the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transportation")]
         public virtual Transportation Transportation { get; set; }
@@ -3003,6 +3124,161 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Sustainability practices implemented at the hotel.</summary>
+    public class Sustainability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Energy efficiency practices implemented at the hotel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyEfficiency")]
+        public virtual EnergyEfficiency EnergyEfficiency { get; set; }
+
+        /// <summary>Sustainability certifications the hotel has been awarded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityCertifications")]
+        public virtual SustainabilityCertifications SustainabilityCertifications { get; set; }
+
+        /// <summary>Sustainable sourcing practices implemented at the hotel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sustainableSourcing")]
+        public virtual SustainableSourcing SustainableSourcing { get; set; }
+
+        /// <summary>Waste reduction practices implemented at the hotel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wasteReduction")]
+        public virtual WasteReduction WasteReduction { get; set; }
+
+        /// <summary>Water conservation practices implemented at the hotel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterConservation")]
+        public virtual WaterConservation WaterConservation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sustainability certifications the hotel has been awarded.</summary>
+    public class SustainabilityCertifications : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>BREEAM certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("breeamCertification")]
+        public virtual string BreeamCertification { get; set; }
+
+        /// <summary>BREEAM certification exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("breeamCertificationException")]
+        public virtual string BreeamCertificationException { get; set; }
+
+        /// <summary>The eco certificates awarded to the hotel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ecoCertifications")]
+        public virtual System.Collections.Generic.IList<EcoCertification> EcoCertifications { get; set; }
+
+        /// <summary>LEED certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leedCertification")]
+        public virtual string LeedCertification { get; set; }
+
+        /// <summary>LEED certification exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leedCertificationException")]
+        public virtual string LeedCertificationException { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sustainable sourcing practices implemented at the hotel.</summary>
+    public class SustainableSourcing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Eco friendly toiletries. Soap, shampoo, lotion, and other toiletries provided for guests have a nationally
+        /// or internationally recognized sustainability certification, such as USDA Organic, EU Organic, or
+        /// cruelty-free.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ecoFriendlyToiletries")]
+        public virtual System.Nullable<bool> EcoFriendlyToiletries { get; set; }
+
+        /// <summary>Eco friendly toiletries exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ecoFriendlyToiletriesException")]
+        public virtual string EcoFriendlyToiletriesException { get; set; }
+
+        /// <summary>
+        /// Locally sourced food and beverages. Property sources locally in order to lower the environmental footprint
+        /// from reduced transportation and to stimulate the local economy. Products produced less than 62 miles from
+        /// the establishment are normally considered as locally produced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locallySourcedFoodAndBeverages")]
+        public virtual System.Nullable<bool> LocallySourcedFoodAndBeverages { get; set; }
+
+        /// <summary>Locally sourced food and beverages exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locallySourcedFoodAndBeveragesException")]
+        public virtual string LocallySourcedFoodAndBeveragesException { get; set; }
+
+        /// <summary>
+        /// Organic cage free eggs. The property sources 100% certified organic and cage-free eggs (shell, liquid, and
+        /// egg products). Cage-free means hens are able to walk, spread their wings and lay their eggs in nests).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organicCageFreeEggs")]
+        public virtual System.Nullable<bool> OrganicCageFreeEggs { get; set; }
+
+        /// <summary>Organic cage free eggs exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organicCageFreeEggsException")]
+        public virtual string OrganicCageFreeEggsException { get; set; }
+
+        /// <summary>
+        /// Organic food and beverages. At least 25% of food and beverages, by spend, are certified organic. Organic
+        /// means products that are certified to one of the organic standard listed in the IFOAM family of standards.
+        /// Qualifying certifications include USDA Organic and EU Organic, among others.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organicFoodAndBeverages")]
+        public virtual System.Nullable<bool> OrganicFoodAndBeverages { get; set; }
+
+        /// <summary>Organic food and beverages exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organicFoodAndBeveragesException")]
+        public virtual string OrganicFoodAndBeveragesException { get; set; }
+
+        /// <summary>
+        /// Responsible purchasing policy. The property has a responsible procurement policy in place. Responsible means
+        /// integration of social, ethical, and/or environmental performance factors into the procurement process when
+        /// selecting suppliers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsiblePurchasingPolicy")]
+        public virtual System.Nullable<bool> ResponsiblePurchasingPolicy { get; set; }
+
+        /// <summary>Responsible purchasing policy exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsiblePurchasingPolicyException")]
+        public virtual string ResponsiblePurchasingPolicyException { get; set; }
+
+        /// <summary>
+        /// Responsibly sources seafood. The property does not source seafood from the Monterey Bay Aquarium Seafood
+        /// Watch "avoid" list, and must sustainably source seafood listed as "good alternative," "eco-certified," and
+        /// "best choice". The property has a policy outlining a commitment to source Marine Stewardship Council (MSC)
+        /// and/or Aquaculture Stewardship Council (ASC) Chain of Custody certified seafood.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsiblySourcesSeafood")]
+        public virtual System.Nullable<bool> ResponsiblySourcesSeafood { get; set; }
+
+        /// <summary>Responsibly sources seafood exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsiblySourcesSeafoodException")]
+        public virtual string ResponsiblySourcesSeafoodException { get; set; }
+
+        /// <summary>
+        /// Vegan meals. The property provides vegan menu options for guests. Vegan food does not contain animal
+        /// products or byproducts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("veganMeals")]
+        public virtual System.Nullable<bool> VeganMeals { get; set; }
+
+        /// <summary>Vegan meals exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("veganMealsException")]
+        public virtual string VeganMealsException { get; set; }
+
+        /// <summary>
+        /// Vegetarian meals. The property provides vegetarian menu options for guests. Vegetarian food does not contain
+        /// animal products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vegetarianMeals")]
+        public virtual System.Nullable<bool> VegetarianMeals { get; set; }
+
+        /// <summary>Vegetarian meals exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vegetarianMealsException")]
+        public virtual string VegetarianMealsException { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
     /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -3196,6 +3472,259 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         /// <summary>Valley view exception.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valleyViewException")]
         public virtual string ValleyViewException { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Waste reduction practices implemented at the hotel.</summary>
+    public class WasteReduction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Compostable food containers and cutlery. 100% of food service containers and to-go cutlery are compostable,
+        /// and reusable utensils are offered wherever possible. Compostable materials are capable of undergoing
+        /// biological decomposition in a compost site, such that material is not visually distinguishable and breaks
+        /// down into carbon dioxide, water, inorganic compounds, and biomass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compostableFoodContainersAndCutlery")]
+        public virtual System.Nullable<bool> CompostableFoodContainersAndCutlery { get; set; }
+
+        /// <summary>Compostable food containers and cutlery exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compostableFoodContainersAndCutleryException")]
+        public virtual string CompostableFoodContainersAndCutleryException { get; set; }
+
+        /// <summary>
+        /// Composts excess food. The property has a program and/or policy for diverting waste from landfill by
+        /// composting food and yard waste, either through compost collection and off-site processing or on-site compost
+        /// processing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compostsExcessFood")]
+        public virtual System.Nullable<bool> CompostsExcessFood { get; set; }
+
+        /// <summary>Composts excess food exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compostsExcessFoodException")]
+        public virtual string CompostsExcessFoodException { get; set; }
+
+        /// <summary>
+        /// Donates excess food. The property has a program and/or policy for diverting waste from landfill that may
+        /// include efforts to donate for human consumption or divert food for animal feed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("donatesExcessFood")]
+        public virtual System.Nullable<bool> DonatesExcessFood { get; set; }
+
+        /// <summary>Donates excess food exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("donatesExcessFoodException")]
+        public virtual string DonatesExcessFoodException { get; set; }
+
+        /// <summary>
+        /// Food waste reduction program. The property has established a food waste reduction and donation program,
+        /// aiming to reduce food waste by half. These programs typically use tools such as the Hotel Kitchen Toolkit
+        /// and others to track waste and measure progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodWasteReductionProgram")]
+        public virtual System.Nullable<bool> FoodWasteReductionProgram { get; set; }
+
+        /// <summary>Food waste reduction program exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodWasteReductionProgramException")]
+        public virtual string FoodWasteReductionProgramException { get; set; }
+
+        /// <summary>No single use plastic straws. The property bans single-use plastic straws.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSingleUsePlasticStraws")]
+        public virtual System.Nullable<bool> NoSingleUsePlasticStraws { get; set; }
+
+        /// <summary>No single use plastic straws exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSingleUsePlasticStrawsException")]
+        public virtual string NoSingleUsePlasticStrawsException { get; set; }
+
+        /// <summary>No single use plastic water bottles. The property bans single-use plastic water bottles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSingleUsePlasticWaterBottles")]
+        public virtual System.Nullable<bool> NoSingleUsePlasticWaterBottles { get; set; }
+
+        /// <summary>No single use plastic water bottles exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSingleUsePlasticWaterBottlesException")]
+        public virtual string NoSingleUsePlasticWaterBottlesException { get; set; }
+
+        /// <summary>
+        /// No styrofoam food containers. The property eliminates the use of Styrofoam in disposable food service items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noStyrofoamFoodContainers")]
+        public virtual System.Nullable<bool> NoStyrofoamFoodContainers { get; set; }
+
+        /// <summary>No styrofoam food containers exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noStyrofoamFoodContainersException")]
+        public virtual string NoStyrofoamFoodContainersException { get; set; }
+
+        /// <summary>
+        /// Recycling program. The property has a recycling program, aligned with LEED waste requirements, and a policy
+        /// outlining efforts to send less than 50% of waste to landfill. The recycling program includes storage
+        /// locations for recyclable materials, including mixed paper, corrugated cardboard, glass, plastics, and
+        /// metals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recyclingProgram")]
+        public virtual System.Nullable<bool> RecyclingProgram { get; set; }
+
+        /// <summary>Recycling program exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recyclingProgramException")]
+        public virtual string RecyclingProgramException { get; set; }
+
+        /// <summary>
+        /// Refillable toiletry containers. The property has replaced miniature individual containers with refillable
+        /// amenity dispensers for shampoo, conditioner, soap, and lotion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refillableToiletryContainers")]
+        public virtual System.Nullable<bool> RefillableToiletryContainers { get; set; }
+
+        /// <summary>Refillable toiletry containers exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refillableToiletryContainersException")]
+        public virtual string RefillableToiletryContainersException { get; set; }
+
+        /// <summary>Safely disposes batteries. The property safely stores and disposes batteries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyDisposesBatteries")]
+        public virtual System.Nullable<bool> SafelyDisposesBatteries { get; set; }
+
+        /// <summary>Safely disposes batteries exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyDisposesBatteriesException")]
+        public virtual string SafelyDisposesBatteriesException { get; set; }
+
+        /// <summary>
+        /// Safely disposes electronics. The property has a reputable recycling program that keeps hazardous electronic
+        /// parts and chemical compounds out of landfills, dumps and other unauthorized abandonment sites, and
+        /// recycles/reuses applicable materials. (e.g. certified electronics recyclers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyDisposesElectronics")]
+        public virtual System.Nullable<bool> SafelyDisposesElectronics { get; set; }
+
+        /// <summary>Safely disposes electronics exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyDisposesElectronicsException")]
+        public virtual string SafelyDisposesElectronicsException { get; set; }
+
+        /// <summary>Safely disposes lightbulbs. The property safely stores and disposes lightbulbs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyDisposesLightbulbs")]
+        public virtual System.Nullable<bool> SafelyDisposesLightbulbs { get; set; }
+
+        /// <summary>Safely disposes lightbulbs exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyDisposesLightbulbsException")]
+        public virtual string SafelyDisposesLightbulbsException { get; set; }
+
+        /// <summary>
+        /// Safely handles hazardous substances. The property has a hazardous waste management program aligned wit
+        /// GreenSeal and LEED requirements, and meets all regulatory requirements for hazardous waste disposal and
+        /// recycling. Hazardous means substances that are classified as "hazardous" by an authoritative body (such as
+        /// OSHA or DOT), are labeled with signal words such as "Danger," "Caution," "Warning," or are flammable,
+        /// corrosive, or ignitable. Requirements include: - The property shall maintain records of the efforts it has
+        /// made to replace the hazardous substances it uses with less hazardous alternatives. - An inventory of the
+        /// hazardous materials stored on-site. - Products intended for cleaning, dishwashing, laundry, and pool
+        /// maintenance shall be stored in clearly labeled containers. These containers shall be checked regularly for
+        /// leaks, and replaced a necessary. - Spill containment devices shall be installed to collect spills, drips, or
+        /// leaching of chemicals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyHandlesHazardousSubstances")]
+        public virtual System.Nullable<bool> SafelyHandlesHazardousSubstances { get; set; }
+
+        /// <summary>Safely handles hazardous substances exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safelyHandlesHazardousSubstancesException")]
+        public virtual string SafelyHandlesHazardousSubstancesException { get; set; }
+
+        /// <summary>
+        /// Soap donation program. The property participates in a soap donation program such as Clean the World or
+        /// something similar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soapDonationProgram")]
+        public virtual System.Nullable<bool> SoapDonationProgram { get; set; }
+
+        /// <summary>Soap donation program exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soapDonationProgramException")]
+        public virtual string SoapDonationProgramException { get; set; }
+
+        /// <summary>
+        /// Toiletry donation program. The property participates in a toiletry donation program such as Clean the World
+        /// or something similar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toiletryDonationProgram")]
+        public virtual System.Nullable<bool> ToiletryDonationProgram { get; set; }
+
+        /// <summary>Toiletry donation program exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toiletryDonationProgramException")]
+        public virtual string ToiletryDonationProgramException { get; set; }
+
+        /// <summary>
+        /// Water bottle filling stations. The property offers water stations throughout the building for guest use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterBottleFillingStations")]
+        public virtual System.Nullable<bool> WaterBottleFillingStations { get; set; }
+
+        /// <summary>Water bottle filling stations exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterBottleFillingStationsException")]
+        public virtual string WaterBottleFillingStationsException { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Water conservation practices implemented at the hotel.</summary>
+    public class WaterConservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Independent organization audits water use. The property conducts a water conservation audit every 5 years,
+        /// the results of which are either verified by a third-party and/or published in external communications. A
+        /// water conservation audit is a detailed assessment of the facility, providing recommendations to existing
+        /// operations and procedures to improve water efficiency, available incentives or rebates, and opportunities
+        /// for improvements through renovations or upgrades. Examples of organizations who conduct credible third party
+        /// audits include: Engie Impact, and local utility providers (they often provide energy and water audits).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("independentOrganizationAuditsWaterUse")]
+        public virtual System.Nullable<bool> IndependentOrganizationAuditsWaterUse { get; set; }
+
+        /// <summary>Independent organization audits water use exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("independentOrganizationAuditsWaterUseException")]
+        public virtual string IndependentOrganizationAuditsWaterUseException { get; set; }
+
+        /// <summary>Linen reuse program. The property offers a linen reuse program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linenReuseProgram")]
+        public virtual System.Nullable<bool> LinenReuseProgram { get; set; }
+
+        /// <summary>Linen reuse program exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linenReuseProgramException")]
+        public virtual string LinenReuseProgramException { get; set; }
+
+        /// <summary>Towel reuse program. The property offers a towel reuse program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("towelReuseProgram")]
+        public virtual System.Nullable<bool> TowelReuseProgram { get; set; }
+
+        /// <summary>Towel reuse program exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("towelReuseProgramException")]
+        public virtual string TowelReuseProgramException { get; set; }
+
+        /// <summary>
+        /// Water saving showers. All of the property's guest rooms have shower heads that use no more than 2.0 gallons
+        /// per minute (gpm).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterSavingShowers")]
+        public virtual System.Nullable<bool> WaterSavingShowers { get; set; }
+
+        /// <summary>Water saving showers exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterSavingShowersException")]
+        public virtual string WaterSavingShowersException { get; set; }
+
+        /// <summary>
+        /// Water saving sinks. All of the property's guest rooms have bathroom faucets that use a maximum of 1.5
+        /// gallons per minute (gpm), public restroom faucets do not exceed 0.5 gpm, and kitchen faucets (excluding
+        /// faucets used exclusively for filling operations) do not exceed 2.2 gpm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterSavingSinks")]
+        public virtual System.Nullable<bool> WaterSavingSinks { get; set; }
+
+        /// <summary>Water saving sinks exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterSavingSinksException")]
+        public virtual string WaterSavingSinksException { get; set; }
+
+        /// <summary>Water saving toilets. All of the property's toilets use 1.6 gallons per flush, or less.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterSavingToilets")]
+        public virtual System.Nullable<bool> WaterSavingToilets { get; set; }
+
+        /// <summary>Water saving toilets exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterSavingToiletsException")]
+        public virtual string WaterSavingToiletsException { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
