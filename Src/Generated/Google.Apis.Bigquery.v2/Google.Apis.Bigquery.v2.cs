@@ -4032,8 +4032,9 @@ namespace Google.Apis.Bigquery.v2.Data
     public class AvroOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// [Optional] If set to true will enable interpreting logical types into their corresponding types (ie.
-        /// TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+        /// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the
+        /// corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example,
+        /// INTEGER).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
         public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
@@ -4681,6 +4682,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] A reference that identifies the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
         public virtual DatasetReference DatasetReference { get; set; }
+
+        /// <summary>[Output-only] The default collation of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultCollation")]
+        public virtual string DefaultCollation { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEncryptionConfiguration")]
         public virtual EncryptionConfiguration DefaultEncryptionConfiguration { get; set; }
@@ -6017,8 +6022,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual TimePartitioning TimePartitioning { get; set; }
 
         /// <summary>
-        /// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into
-        /// their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+        /// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the
+        /// corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example,
+        /// INTEGER).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
         public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
@@ -7947,6 +7953,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] The time when this table was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
+
+        /// <summary>[Output-only] The default collation of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultCollation")]
+        public virtual string DefaultCollation { get; set; }
 
         /// <summary>[Optional] A user-friendly description of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]

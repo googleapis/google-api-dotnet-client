@@ -1500,8 +1500,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     public class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Model to use for shot change detection. Supported values: "builtin/stable" (the default if unset) and
-        /// "builtin/latest".
+        /// Model to use for shot change detection. Supported values: "builtin/stable" (the default if unset),
+        /// "builtin/latest", and "builtin/legacy".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }

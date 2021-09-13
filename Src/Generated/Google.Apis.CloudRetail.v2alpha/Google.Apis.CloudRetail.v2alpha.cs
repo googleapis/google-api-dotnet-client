@@ -3444,8 +3444,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for
-        /// FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string
-        /// with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2".
+        /// FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string
+        /// with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2".
         /// Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeIds")]
@@ -4701,7 +4701,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// Boost specification to boost certain products. See more details at this [user
-        /// guide](/retail/private/docs/boosting).
+        /// guide](https://cloud.google.com/retail/docs/boosting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
         public virtual GoogleCloudRetailV2alphaSearchRequestBoostSpec BoostSpec { get; set; }
@@ -4740,8 +4740,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
         /// the products being filtered. Filter expression is case-sensitive. See more details at this [user
-        /// guide](/retail/private/docs/filter-and-order#filter). If this field is unrecognizable, an INVALID_ARGUMENT
-        /// is returned.
+        /// guide](https://cloud.google.com/retail/docs/filter-and-order#filter). If this field is unrecognizable, an
+        /// INVALID_ARGUMENT is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -4757,8 +4757,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The order in which products are returned. Products can be ordered by a field in an Product object. Leave it
         /// unset if ordered by relevance. OrderBy expression is case-sensitive. See more details at this [user
-        /// guide](/retail/private/docs/filter-and-order#order). If this field is unrecognizable, an INVALID_ARGUMENT is
-        /// returned.
+        /// guide](https://cloud.google.com/retail/docs/filter-and-order#order). If this field is unrecognizable, an
+        /// INVALID_ARGUMENT is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
@@ -4796,7 +4796,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The query expansion specification that specifies the conditions under which query expansion will occur. See
-        /// more details at this [user guide](/retail/private/docs/result-size#query_expansion).
+        /// more details at this [user guide](https://cloud.google.com/retail/docs/result-size#query_expansion).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionSpec")]
         public virtual GoogleCloudRetailV2alphaSearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
@@ -4804,7 +4804,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The relevance threshold of the search results. Defaults to RelevanceThreshold.HIGH, which means only the
         /// most relevant results are shown, and the least number of results are returned. See more details at this
-        /// [user guide](/retail/private/docs/result-size#relevance_thresholding).
+        /// [user guide](https://cloud.google.com/retail/docs/result-size#relevance_thresholding).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
@@ -5146,7 +5146,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Number of pinned results. This field will only be set when expansion happens and
-        /// SearchRequest.query_expansion_spec.pin_unexpanded_results is set to true.
+        /// SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinnedResultCount")]
         public virtual System.Nullable<long> PinnedResultCount { get; set; }
@@ -5322,7 +5322,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string AttributionToken { get; set; }
 
         /// <summary>
-        /// The id or name of the associated shopping cart. This id is used to associate multiple items added or present
+        /// The ID or name of the associated shopping cart. This ID is used to associate multiple items added or present
         /// in the cart before purchase. This can only be set for `add-to-cart`, `purchase-complete`, or
         /// `shopping-cart-page-view` events.
         /// </summary>
@@ -5401,7 +5401,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
 
         /// <summary>
-        /// A unique id of a web page view. This should be kept the same for all user events triggered from the same
+        /// A unique ID of a web page view. This should be kept the same for all user events triggered from the same
         /// pageview. For example, an item detail page view could trigger multiple events as the user is browsing the
         /// page. The `pageViewId` property should be kept the same for all these events so that they can be grouped
         /// together properly. When using the client side event reporting with JavaScript pixel and Google Tag Manager,
@@ -5413,10 +5413,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The main product details related to the event. This field is required for the following event types: *
         /// `add-to-cart` * `detail-page-view` * `purchase-complete` In a `search` event, this field represents the
-        /// products returned to the end user on the current page (the end user may have not finished broswing the whole
+        /// products returned to the end user on the current page (the end user may have not finished browsing the whole
         /// page yet). When a new page is returned to the end user, after pagination/filtering/ordering even for the
         /// same query, a new `search` event with different product_details is desired. The end user may have not
-        /// finished broswing the whole page yet.
+        /// finished browsing the whole page yet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaProductDetail> ProductDetails { get; set; }

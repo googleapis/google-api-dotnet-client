@@ -353,8 +353,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Creates multiple new entities in the specified entity type. Note: You should always train an
-                    /// agent prior to sending it queries. See the [training
+                    /// Creates multiple new entities in the specified entity type. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -368,8 +374,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Creates multiple new entities in the specified entity type. Note: You should always train an
-                    /// agent prior to sending it queries. See the [training
+                    /// Creates multiple new entities in the specified entity type. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -420,8 +432,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Deletes entities in the specified entity type. Note: You should always train an agent prior to
-                    /// sending it queries. See the [training
+                    /// Deletes entities in the specified entity type. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -435,8 +453,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Deletes entities in the specified entity type. Note: You should always train an agent prior to
-                    /// sending it queries. See the [training
+                    /// Deletes entities in the specified entity type. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -488,8 +512,15 @@ namespace Google.Apis.Dialogflow.v2
 
                     /// <summary>
                     /// Updates or creates multiple entities in the specified entity type. This method does not affect
-                    /// entities in the entity type that aren't explicitly specified in the request. Note: You should
-                    /// always train an agent prior to sending it queries. See the [training
+                    /// entities in the entity type that aren't explicitly specified in the request. This method is a
+                    /// [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -504,8 +535,15 @@ namespace Google.Apis.Dialogflow.v2
 
                     /// <summary>
                     /// Updates or creates multiple entities in the specified entity type. This method does not affect
-                    /// entities in the entity type that aren't explicitly specified in the request. Note: You should
-                    /// always train an agent prior to sending it queries. See the [training
+                    /// entities in the entity type that aren't explicitly specified in the request. This method is a
+                    /// [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -557,8 +595,14 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Deletes entity types in the specified agent. Note: You should always train an agent prior to sending
-                /// it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Deletes entity types in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -570,8 +614,14 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Deletes entity types in the specified agent. Note: You should always train an agent prior to sending
-                /// it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Deletes entity types in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -620,9 +670,12 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Updates/Creates multiple entity types in the specified agent. Note: You should always train an agent
-                /// prior to sending it queries. See the [training
-                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Updates/Creates multiple entity types in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: BatchUpdateEntityTypesResponse Note: You should always train an agent prior to sending
+                /// it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -634,9 +687,12 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Updates/Creates multiple entity types in the specified agent. Note: You should always train an agent
-                /// prior to sending it queries. See the [training
-                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Updates/Creates multiple entity types in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: BatchUpdateEntityTypesResponse Note: You should always train an agent prior to sending
+                /// it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -2637,8 +2693,14 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Deletes intents in the specified agent. Note: You should always train an agent prior to sending it
-                /// queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Deletes intents in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2650,8 +2712,14 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Deletes intents in the specified agent. Note: You should always train an agent prior to sending it
-                /// queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Deletes intents in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -2700,9 +2768,12 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Updates/Creates multiple intents in the specified agent. Note: You should always train an agent
-                /// prior to sending it queries. See the [training
-                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Updates/Creates multiple intents in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: BatchUpdateIntentsResponse Note: You should always train an agent prior to sending it
+                /// queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2714,9 +2785,12 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Updates/Creates multiple intents in the specified agent. Note: You should always train an agent
-                /// prior to sending it queries. See the [training
-                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Updates/Creates multiple intents in the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: BatchUpdateIntentsResponse Note: You should always train an agent prior to sending it
+                /// queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -3282,7 +3356,12 @@ namespace Google.Apis.Dialogflow.v2
                         this.service = service;
                     }
 
-                    /// <summary>Creates a new document. Operation </summary>
+                    /// <summary>
+                    /// Creates a new document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The knowledge base to create a document for. Format:
@@ -3293,7 +3372,12 @@ namespace Google.Apis.Dialogflow.v2
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a new document. Operation </summary>
+                    /// <summary>
+                    /// Creates a new document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -3341,7 +3425,13 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
-                    /// <summary>Deletes the specified document. Operation </summary>
+                    /// <summary>
+                    /// Deletes the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The name of the document to delete. Format:
                     /// `projects//locations//knowledgeBases//documents/`.
@@ -3351,7 +3441,13 @@ namespace Google.Apis.Dialogflow.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified document. Operation </summary>
+                    /// <summary>
+                    /// Deletes the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// </summary>
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -3520,7 +3616,12 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
-                    /// <summary>Updates the specified document. Operation </summary>
+                    /// <summary>
+                    /// Updates the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Optional. The document resource name. The name must be empty when creating a document. Format:
@@ -3531,7 +3632,12 @@ namespace Google.Apis.Dialogflow.v2
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified document. Operation </summary>
+                    /// <summary>
+                    /// Updates the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -3597,9 +3703,13 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Reloads the specified document from its specified source, content_uri or content. The previously
                     /// loaded content of the document will be deleted. Note: Even when the content of the document has
-                    /// not changed, there still may be side effects because of internal implementation changes. Note:
-                    /// The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-                    /// `projects.knowledgeBases.documents`. Operation
+                    /// not changed, there still may be side effects because of internal implementation changes. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document Note: The
+                    /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -3614,9 +3724,13 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Reloads the specified document from its specified source, content_uri or content. The previously
                     /// loaded content of the document will be deleted. Note: Even when the content of the document has
-                    /// not changed, there still may be side effects because of internal implementation changes. Note:
-                    /// The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-                    /// `projects.knowledgeBases.documents`. Operation
+                    /// not changed, there still may be side effects because of internal implementation changes. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document Note: The
+                    /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
                     /// </summary>
                     public class ReloadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
@@ -5242,7 +5356,13 @@ namespace Google.Apis.Dialogflow.v2
                 }
             }
 
-            /// <summary>Exports the specified agent to a ZIP file.</summary>
+            /// <summary>
+            /// Exports the specified agent to a ZIP file. This method is a [long-running
+            /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+            /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: ExportAgentResponse
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The project that the agent to export is associated with. Format: `projects/`.
@@ -5252,7 +5372,13 @@ namespace Google.Apis.Dialogflow.v2
                 return new ExportRequest(service, body, parent);
             }
 
-            /// <summary>Exports the specified agent to a ZIP file.</summary>
+            /// <summary>
+            /// Exports the specified agent to a ZIP file. This method is a [long-running
+            /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+            /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: ExportAgentResponse
+            /// </summary>
             public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Export request.</summary>
@@ -5418,9 +5544,14 @@ namespace Google.Apis.Dialogflow.v2
             /// existing ones. Intents and entity types with the same name are replaced with the new versions from
             /// ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless
             /// disabled in agent settings). However, once the import is done, training may not be completed yet. Please
-            /// call TrainAgent and wait for the operation it returns in order to train explicitly. An operation which
-            /// tracks when importing is complete. It only tracks when the draft agent is updated not when it is done
-            /// training. Note: You should always train an agent prior to sending it queries. See the [training
+            /// call TrainAgent and wait for the operation it returns in order to train explicitly. This method is a
+            /// [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+            /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: An [Empty
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+            /// operation only tracks when importing is complete, not when it is done training. Note: You should always
+            /// train an agent prior to sending it queries. See the [training
             /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -5437,9 +5568,14 @@ namespace Google.Apis.Dialogflow.v2
             /// existing ones. Intents and entity types with the same name are replaced with the new versions from
             /// ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless
             /// disabled in agent settings). However, once the import is done, training may not be completed yet. Please
-            /// call TrainAgent and wait for the operation it returns in order to train explicitly. An operation which
-            /// tracks when importing is complete. It only tracks when the draft agent is updated not when it is done
-            /// training. Note: You should always train an agent prior to sending it queries. See the [training
+            /// call TrainAgent and wait for the operation it returns in order to train explicitly. This method is a
+            /// [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+            /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: An [Empty
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+            /// operation only tracks when importing is complete, not when it is done training. Note: You should always
+            /// train an agent prior to sending it queries. See the [training
             /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
             /// </summary>
             public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -5493,9 +5629,15 @@ namespace Google.Apis.Dialogflow.v2
             /// intents and entity types in the older version are deleted. After the restore, the restored draft agent
             /// will be trained automatically (unless disabled in agent settings). However, once the restore is done,
             /// training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order
-            /// to train explicitly. An operation which tracks when restoring is complete. It only tracks when the draft
-            /// agent is updated not when it is done training. Note: You should always train an agent prior to sending
-            /// it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+            /// to train explicitly. This method is a [long-running
+            /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+            /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: An [Empty
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+            /// operation only tracks when restoring is complete, not when it is done training. Note: You should always
+            /// train an agent prior to sending it queries. See the [training
+            /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -5511,9 +5653,15 @@ namespace Google.Apis.Dialogflow.v2
             /// intents and entity types in the older version are deleted. After the restore, the restored draft agent
             /// will be trained automatically (unless disabled in agent settings). However, once the restore is done,
             /// training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order
-            /// to train explicitly. An operation which tracks when restoring is complete. It only tracks when the draft
-            /// agent is updated not when it is done training. Note: You should always train an agent prior to sending
-            /// it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+            /// to train explicitly. This method is a [long-running
+            /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+            /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: An [Empty
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+            /// operation only tracks when restoring is complete, not when it is done training. Note: You should always
+            /// train an agent prior to sending it queries. See the [training
+            /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
             /// </summary>
             public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
@@ -5643,8 +5791,14 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>
-            /// Trains the specified agent. Note: You should always train an agent prior to sending it queries. See the
-            /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+            /// Trains the specified agent. This method is a [long-running
+            /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+            /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: An [Empty
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note: You
+            /// should always train an agent prior to sending it queries. See the [training
+            /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -5656,8 +5810,14 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>
-            /// Trains the specified agent. Note: You should always train an agent prior to sending it queries. See the
-            /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+            /// Trains the specified agent. This method is a [long-running
+            /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+            /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+            /// `response`: An [Empty
+            /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note: You
+            /// should always train an agent prior to sending it queries. See the [training
+            /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
             /// </summary>
             public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
@@ -7280,7 +7440,12 @@ namespace Google.Apis.Dialogflow.v2
                     this.service = service;
                 }
 
-                /// <summary>Creates a new document. Operation </summary>
+                /// <summary>
+                /// Creates a new document. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata
+                /// - `response`: Document
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The knowledge base to create a document for. Format:
@@ -7291,7 +7456,12 @@ namespace Google.Apis.Dialogflow.v2
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new document. Operation </summary>
+                /// <summary>
+                /// Creates a new document. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata
+                /// - `response`: Document
+                /// </summary>
                 public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7339,7 +7509,13 @@ namespace Google.Apis.Dialogflow.v2
                     }
                 }
 
-                /// <summary>Deletes the specified document. Operation </summary>
+                /// <summary>
+                /// Deletes the specified document. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata
+                /// - `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                /// </summary>
                 /// <param name="name">
                 /// Required. The name of the document to delete. Format:
                 /// `projects//locations//knowledgeBases//documents/`.
@@ -7349,7 +7525,13 @@ namespace Google.Apis.Dialogflow.v2
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes the specified document. Operation </summary>
+                /// <summary>
+                /// Deletes the specified document. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata
+                /// - `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                /// </summary>
                 public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -7518,7 +7700,12 @@ namespace Google.Apis.Dialogflow.v2
                     }
                 }
 
-                /// <summary>Updates the specified document. Operation </summary>
+                /// <summary>
+                /// Updates the specified document. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata
+                /// - `response`: Document
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Optional. The document resource name. The name must be empty when creating a document. Format:
@@ -7529,7 +7716,12 @@ namespace Google.Apis.Dialogflow.v2
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the specified document. Operation </summary>
+                /// <summary>
+                /// Updates the specified document. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata
+                /// - `response`: Document
+                /// </summary>
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -7595,9 +7787,12 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>
                 /// Reloads the specified document from its specified source, content_uri or content. The previously
                 /// loaded content of the document will be deleted. Note: Even when the content of the document has not
-                /// changed, there still may be side effects because of internal implementation changes. Note: The
+                /// changed, there still may be side effects because of internal implementation changes. This method is
+                /// a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+                /// The returned `Operation` type has the following method-specific fields: - `metadata`:
+                /// KnowledgeOperationMetadata - `response`: Document Note: The
                 /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-                /// `projects.knowledgeBases.documents`. Operation
+                /// `projects.knowledgeBases.documents`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -7612,9 +7807,12 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>
                 /// Reloads the specified document from its specified source, content_uri or content. The previously
                 /// loaded content of the document will be deleted. Note: Even when the content of the document has not
-                /// changed, there still may be side effects because of internal implementation changes. Note: The
+                /// changed, there still may be side effects because of internal implementation changes. This method is
+                /// a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+                /// The returned `Operation` type has the following method-specific fields: - `metadata`:
+                /// KnowledgeOperationMetadata - `response`: Document Note: The
                 /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-                /// `projects.knowledgeBases.documents`. Operation
+                /// `projects.knowledgeBases.documents`.
                 /// </summary>
                 public class ReloadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -8065,8 +8263,14 @@ namespace Google.Apis.Dialogflow.v2
                         }
 
                         /// <summary>
-                        /// Creates multiple new entities in the specified entity type. Note: You should always train an
-                        /// agent prior to sending it queries. See the [training
+                        /// Creates multiple new entities in the specified entity type. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// Note: You should always train an agent prior to sending it queries. See the [training
                         /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
@@ -8080,8 +8284,14 @@ namespace Google.Apis.Dialogflow.v2
                         }
 
                         /// <summary>
-                        /// Creates multiple new entities in the specified entity type. Note: You should always train an
-                        /// agent prior to sending it queries. See the [training
+                        /// Creates multiple new entities in the specified entity type. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// Note: You should always train an agent prior to sending it queries. See the [training
                         /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                         /// </summary>
                         public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -8132,8 +8342,14 @@ namespace Google.Apis.Dialogflow.v2
                         }
 
                         /// <summary>
-                        /// Deletes entities in the specified entity type. Note: You should always train an agent prior
-                        /// to sending it queries. See the [training
+                        /// Deletes entities in the specified entity type. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// Note: You should always train an agent prior to sending it queries. See the [training
                         /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
@@ -8147,8 +8363,14 @@ namespace Google.Apis.Dialogflow.v2
                         }
 
                         /// <summary>
-                        /// Deletes entities in the specified entity type. Note: You should always train an agent prior
-                        /// to sending it queries. See the [training
+                        /// Deletes entities in the specified entity type. This method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// Note: You should always train an agent prior to sending it queries. See the [training
                         /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                         /// </summary>
                         public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -8200,8 +8422,15 @@ namespace Google.Apis.Dialogflow.v2
 
                         /// <summary>
                         /// Updates or creates multiple entities in the specified entity type. This method does not
-                        /// affect entities in the entity type that aren't explicitly specified in the request. Note:
-                        /// You should always train an agent prior to sending it queries. See the [training
+                        /// affect entities in the entity type that aren't explicitly specified in the request. This
+                        /// method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// Note: You should always train an agent prior to sending it queries. See the [training
                         /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
@@ -8216,8 +8445,15 @@ namespace Google.Apis.Dialogflow.v2
 
                         /// <summary>
                         /// Updates or creates multiple entities in the specified entity type. This method does not
-                        /// affect entities in the entity type that aren't explicitly specified in the request. Note:
-                        /// You should always train an agent prior to sending it queries. See the [training
+                        /// affect entities in the entity type that aren't explicitly specified in the request. This
+                        /// method is a [long-running
+                        /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                        /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                        /// [Struct
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+                        /// - `response`: An [Empty
+                        /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                        /// Note: You should always train an agent prior to sending it queries. See the [training
                         /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                         /// </summary>
                         public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -8269,8 +8505,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Deletes entity types in the specified agent. Note: You should always train an agent prior to
-                    /// sending it queries. See the [training
+                    /// Deletes entity types in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -8283,8 +8525,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Deletes entity types in the specified agent. Note: You should always train an agent prior to
-                    /// sending it queries. See the [training
+                    /// Deletes entity types in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -8334,8 +8582,13 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Updates/Creates multiple entity types in the specified agent. Note: You should always train an
-                    /// agent prior to sending it queries. See the [training
+                    /// Updates/Creates multiple entity types in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: BatchUpdateEntityTypesResponse Note: You should always train an agent prior to
+                    /// sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -8348,8 +8601,13 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Updates/Creates multiple entity types in the specified agent. Note: You should always train an
-                    /// agent prior to sending it queries. See the [training
+                    /// Updates/Creates multiple entity types in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: BatchUpdateEntityTypesResponse Note: You should always train an agent prior to
+                    /// sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -10366,8 +10624,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Deletes intents in the specified agent. Note: You should always train an agent prior to sending
-                    /// it queries. See the [training
+                    /// Deletes intents in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -10380,8 +10644,14 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Deletes intents in the specified agent. Note: You should always train an agent prior to sending
-                    /// it queries. See the [training
+                    /// Deletes intents in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// Note: You should always train an agent prior to sending it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -10431,8 +10701,13 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Updates/Creates multiple intents in the specified agent. Note: You should always train an agent
-                    /// prior to sending it queries. See the [training
+                    /// Updates/Creates multiple intents in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: BatchUpdateIntentsResponse Note: You should always train an agent prior to sending
+                    /// it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -10445,8 +10720,13 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Updates/Creates multiple intents in the specified agent. Note: You should always train an agent
-                    /// prior to sending it queries. See the [training
+                    /// Updates/Creates multiple intents in the specified agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+                    /// returned `Operation` type has the following method-specific fields: - `metadata`: An empty
+                    /// [Struct
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                    /// `response`: BatchUpdateIntentsResponse Note: You should always train an agent prior to sending
+                    /// it queries. See the [training
                     /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                     /// </summary>
                     public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -12256,7 +12536,13 @@ namespace Google.Apis.Dialogflow.v2
                     }
                 }
 
-                /// <summary>Exports the specified agent to a ZIP file.</summary>
+                /// <summary>
+                /// Exports the specified agent to a ZIP file. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: ExportAgentResponse
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The project that the agent to export is associated with. Format: `projects/`.
@@ -12266,7 +12552,13 @@ namespace Google.Apis.Dialogflow.v2
                     return new ExportRequest(service, body, parent);
                 }
 
-                /// <summary>Exports the specified agent to a ZIP file.</summary>
+                /// <summary>
+                /// Exports the specified agent to a ZIP file. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: ExportAgentResponse
+                /// </summary>
                 public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Export request.</summary>
@@ -12435,10 +12727,16 @@ namespace Google.Apis.Dialogflow.v2
                 /// the existing ones. Intents and entity types with the same name are replaced with the new versions
                 /// from ImportAgentRequest. After the import, the imported draft agent will be trained automatically
                 /// (unless disabled in agent settings). However, once the import is done, training may not be completed
-                /// yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. An
-                /// operation which tracks when importing is complete. It only tracks when the draft agent is updated
-                /// not when it is done training. Note: You should always train an agent prior to sending it queries.
-                /// See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. This
+                /// method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+                /// operation only tracks when importing is complete, not when it is done training. Note: You should
+                /// always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -12454,10 +12752,16 @@ namespace Google.Apis.Dialogflow.v2
                 /// the existing ones. Intents and entity types with the same name are replaced with the new versions
                 /// from ImportAgentRequest. After the import, the imported draft agent will be trained automatically
                 /// (unless disabled in agent settings). However, once the import is done, training may not be completed
-                /// yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. An
-                /// operation which tracks when importing is complete. It only tracks when the draft agent is updated
-                /// not when it is done training. Note: You should always train an agent prior to sending it queries.
-                /// See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. This
+                /// method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+                /// operation only tracks when importing is complete, not when it is done training. Note: You should
+                /// always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -12510,9 +12814,14 @@ namespace Google.Apis.Dialogflow.v2
                 /// the intents and entity types in the older version are deleted. After the restore, the restored draft
                 /// agent will be trained automatically (unless disabled in agent settings). However, once the restore
                 /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it
-                /// returns in order to train explicitly. An operation which tracks when restoring is complete. It only
-                /// tracks when the draft agent is updated not when it is done training. Note: You should always train
-                /// an agent prior to sending it queries. See the [training
+                /// returns in order to train explicitly. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+                /// operation only tracks when restoring is complete, not when it is done training. Note: You should
+                /// always train an agent prior to sending it queries. See the [training
                 /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -12529,9 +12838,14 @@ namespace Google.Apis.Dialogflow.v2
                 /// the intents and entity types in the older version are deleted. After the restore, the restored draft
                 /// agent will be trained automatically (unless disabled in agent settings). However, once the restore
                 /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it
-                /// returns in order to train explicitly. An operation which tracks when restoring is complete. It only
-                /// tracks when the draft agent is updated not when it is done training. Note: You should always train
-                /// an agent prior to sending it queries. See the [training
+                /// returns in order to train explicitly. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) The
+                /// operation only tracks when restoring is complete, not when it is done training. Note: You should
+                /// always train an agent prior to sending it queries. See the [training
                 /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -12663,8 +12977,14 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Trains the specified agent. Note: You should always train an agent prior to sending it queries. See
-                /// the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Trains the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -12676,8 +12996,14 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Trains the specified agent. Note: You should always train an agent prior to sending it queries. See
-                /// the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+                /// Trains the specified agent. This method is a [long-running
+                /// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+                /// `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) -
+                /// `response`: An [Empty
+                /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty) Note:
+                /// You should always train an agent prior to sending it queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/es/docs/training).
                 /// </summary>
                 public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
@@ -14310,7 +14636,12 @@ namespace Google.Apis.Dialogflow.v2
                         this.service = service;
                     }
 
-                    /// <summary>Creates a new document. Operation </summary>
+                    /// <summary>
+                    /// Creates a new document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The knowledge base to create a document for. Format:
@@ -14321,7 +14652,12 @@ namespace Google.Apis.Dialogflow.v2
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a new document. Operation </summary>
+                    /// <summary>
+                    /// Creates a new document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -14369,7 +14705,13 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
-                    /// <summary>Deletes the specified document. Operation </summary>
+                    /// <summary>
+                    /// Deletes the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The name of the document to delete. Format:
                     /// `projects//locations//knowledgeBases//documents/`.
@@ -14379,7 +14721,13 @@ namespace Google.Apis.Dialogflow.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified document. Operation </summary>
+                    /// <summary>
+                    /// Deletes the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: An [Empty
+                    /// message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+                    /// </summary>
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -14548,7 +14896,12 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
-                    /// <summary>Updates the specified document. Operation </summary>
+                    /// <summary>
+                    /// Updates the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Optional. The document resource name. The name must be empty when creating a document. Format:
@@ -14559,7 +14912,12 @@ namespace Google.Apis.Dialogflow.v2
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified document. Operation </summary>
+                    /// <summary>
+                    /// Updates the specified document. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -14625,9 +14983,13 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Reloads the specified document from its specified source, content_uri or content. The previously
                     /// loaded content of the document will be deleted. Note: Even when the content of the document has
-                    /// not changed, there still may be side effects because of internal implementation changes. Note:
-                    /// The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-                    /// `projects.knowledgeBases.documents`. Operation
+                    /// not changed, there still may be side effects because of internal implementation changes. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document Note: The
+                    /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -14642,9 +15004,13 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Reloads the specified document from its specified source, content_uri or content. The previously
                     /// loaded content of the document will be deleted. Note: Even when the content of the document has
-                    /// not changed, there still may be side effects because of internal implementation changes. Note:
-                    /// The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-                    /// `projects.knowledgeBases.documents`. Operation
+                    /// not changed, there still may be side effects because of internal implementation changes. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document Note: The
+                    /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
                     /// </summary>
                     public class ReloadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {

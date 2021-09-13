@@ -4215,6 +4215,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>
+        /// The cloud region for the instance. e.g. **us-central1**, **europe-west1**. The region cannot be changed
+        /// after instance creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
         /// <summary>SSL configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaCert")]
         public virtual SslCert ServerCaCert { get; set; }
@@ -4714,6 +4721,27 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Options for exporting data as CSV. **MySQL** and **PostgreSQL** instances only.</summary>
         public class CsvExportOptionsData
         {
+            /// <summary>
+            /// Specifies the character that should appear before a data character that needs to be escaped.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("escapeCharacter")]
+            public virtual string EscapeCharacter { get; set; }
+
+            /// <summary>Specifies the character that separates columns within each row (line) of the file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("fieldsTerminatedBy")]
+            public virtual string FieldsTerminatedBy { get; set; }
+
+            /// <summary>
+            /// This is used to separate lines. If a line does not contain all fields, the rest of the columns are set
+            /// to their default values.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("linesTerminatedBy")]
+            public virtual string LinesTerminatedBy { get; set; }
+
+            /// <summary>Specifies the quoting character to be used when a data value is quoted.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("quoteCharacter")]
+            public virtual string QuoteCharacter { get; set; }
+
             /// <summary>The select query used to extract the data.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("selectQuery")]
             public virtual string SelectQuery { get; set; }
@@ -4959,6 +4987,27 @@ namespace Google.Apis.SQLAdmin.v1.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("columns")]
             public virtual System.Collections.Generic.IList<string> Columns { get; set; }
+
+            /// <summary>
+            /// Specifies the character that should appear before a data character that needs to be escaped.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("escapeCharacter")]
+            public virtual string EscapeCharacter { get; set; }
+
+            /// <summary>Specifies the character that separates columns within each row (line) of the file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("fieldsTerminatedBy")]
+            public virtual string FieldsTerminatedBy { get; set; }
+
+            /// <summary>
+            /// This is used to separate lines. If a line does not contain all fields, the rest of the columns are set
+            /// to their default values.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("linesTerminatedBy")]
+            public virtual string LinesTerminatedBy { get; set; }
+
+            /// <summary>Specifies the quoting character to be used when a data value is quoted.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("quoteCharacter")]
+            public virtual string QuoteCharacter { get; set; }
 
             /// <summary>The table to which CSV data is imported.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("table")]
@@ -5758,6 +5807,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("settingsVersion")]
         public virtual System.Nullable<long> SettingsVersion { get; set; }
 
+        /// <summary>SQL Server specific audit configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerAuditConfig")]
+        public virtual SqlServerAuditConfig SqlServerAuditConfig { get; set; }
+
         /// <summary>Configuration to increase storage size automatically. The default value is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageAutoResize")]
         public virtual System.Nullable<bool> StorageAutoResize { get; set; }
@@ -5862,6 +5915,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verifyConnectionOnly")]
         public virtual System.Nullable<bool> VerifyConnectionOnly { get; set; }
 
+        /// <summary>Optional. Flag to verify settings required by replication setup only</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyReplicationOnly")]
+        public virtual System.Nullable<bool> VerifyReplicationOnly { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5924,6 +5981,21 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>The start time of any upcoming scheduled maintenance for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQL Server specific audit configuration.</summary>
+    public class SqlServerAuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the destination bucket (e.g., gs://mybucket).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>This is always sql#sqlServerAuditConfig</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
