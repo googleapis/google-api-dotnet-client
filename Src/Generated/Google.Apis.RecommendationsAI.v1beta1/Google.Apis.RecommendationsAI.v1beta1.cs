@@ -65,14 +65,20 @@ namespace Google.Apis.RecommendationsAI.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Recommendations AI (Beta).</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Recommendations AI (Beta).</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -2730,7 +2736,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     public class GoogleCloudRecommendationengineV1beta1PredictRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Use dryRun mode for this prediction query. If set to true, a dummy model will be used that returns
+        /// Optional. Use dryRun mode for this prediction query. If set to true, a fake model will be used that returns
         /// arbitrary catalog items. Note that the dryRun mode should only be used for testing the API, or if the model
         /// is not ready.
         /// </summary>

@@ -10659,49 +10659,6 @@ namespace Google.Apis.DisplayVideo.v1
             this.service = service;
         }
 
-        /// <summary>
-        /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body)
-        {
-            return new CreateRequest(service, body);
-        }
-
-        /// <summary>
-        /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
-        /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
-        {
-            /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "create";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customBiddingAlgorithms";
-
-            /// <summary>Initializes Create parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
         /// <summary>Gets a custom bidding algorithm.</summary>
         /// <param name="customBiddingAlgorithmId">Required. The ID of the custom bidding algorithm to fetch.</param>
         public virtual GetRequest Get(long customBiddingAlgorithmId)
@@ -10899,77 +10856,6 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "partnerId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="customBiddingAlgorithmId">
-        /// Output only. The unique ID of the custom bidding algorithm. Assigned by the system.
-        /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId)
-        {
-            return new PatchRequest(service, body, customBiddingAlgorithmId);
-        }
-
-        /// <summary>
-        /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
-        /// </summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
-        {
-            /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId) : base(service)
-            {
-                CustomBiddingAlgorithmId = customBiddingAlgorithmId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Output only. The unique ID of the custom bidding algorithm. Assigned by the system.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long CustomBiddingAlgorithmId { get; private set; }
-
-            /// <summary>Required. The mask to control which fields to update.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "patch";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
-
-            /// <summary>Initializes Patch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "customBiddingAlgorithmId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -18148,12 +18034,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// The search query for the desired business chain. The query must be the full name of the business, e.g.
         /// "KFC", "mercedes-benz".
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("businessChain")]
-        public virtual string BusinessChain { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("businessChainQuery")]
+        public virtual string BusinessChainQuery { get; set; }
 
         /// <summary>The search query for the desired geo region, e.g. "Seattle", "United State".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("regionQuery")]
+        public virtual string RegionQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

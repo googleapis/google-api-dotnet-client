@@ -531,11 +531,11 @@ namespace Google.Apis.CloudProfiler.v2.Data
     /// </summary>
     public class CreateProfileRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deployment details.</summary>
+        /// <summary>Required. Deployment details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual Deployment Deployment { get; set; }
 
-        /// <summary>One or more profile types that the agent is capable of providing.</summary>
+        /// <summary>Required. One or more profile types that the agent is capable of providing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileType")]
         public virtual System.Collections.Generic.IList<string> ProfileType { get; set; }
 
@@ -563,9 +563,9 @@ namespace Google.Apis.CloudProfiler.v2.Data
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// Target is the service name used to group related deployments: * Service name for GAE Flex / Standard. *
-        /// Cluster and container name for GKE. * User-specified string for direct GCE profiling (e.g. Java). * Job name
-        /// for Dataflow. Validation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
+        /// Target is the service name used to group related deployments: * Service name for App Engine Flex / Standard.
+        /// * Cluster and container name for GKE. * User-specified string for direct Compute Engine profiling (e.g.
+        /// Java). * Job name for Dataflow. Validation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }

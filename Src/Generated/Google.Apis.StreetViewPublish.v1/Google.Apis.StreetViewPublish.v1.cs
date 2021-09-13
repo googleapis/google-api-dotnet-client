@@ -881,7 +881,7 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
             /// <summary>
-            /// Required. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter
+            /// Optional. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter
             /// supported at the moment is `placeId`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
