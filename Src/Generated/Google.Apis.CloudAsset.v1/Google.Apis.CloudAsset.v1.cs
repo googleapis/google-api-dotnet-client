@@ -1495,7 +1495,7 @@ namespace Google.Apis.CloudAsset.v1
         /// Exports assets with time and resource types to a given Cloud Storage location/BigQuery table. For Cloud
         /// Storage location destinations, the output format is newline-delimited JSON. Each line represents a
         /// google.cloud.asset.v1.Asset in the JSON format; for BigQuery table destinations, the output table stores the
-        /// fields in asset proto as columns. This API implements the google.longrunning.Operation API , which allows
+        /// fields in asset Protobuf as columns. This API implements the google.longrunning.Operation API, which allows
         /// you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll
         /// the export operation result. For regular-size resource parent, the export operation usually finishes within
         /// 5 minutes.
@@ -1515,7 +1515,7 @@ namespace Google.Apis.CloudAsset.v1
         /// Exports assets with time and resource types to a given Cloud Storage location/BigQuery table. For Cloud
         /// Storage location destinations, the output format is newline-delimited JSON. Each line represents a
         /// google.cloud.asset.v1.Asset in the JSON format; for BigQuery table destinations, the output table stores the
-        /// fields in asset proto as columns. This API implements the google.longrunning.Operation API , which allows
+        /// fields in asset Protobuf as columns. This API implements the google.longrunning.Operation API, which allows
         /// you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll
         /// the export operation result. For regular-size resource parent, the export operation usually finishes within
         /// 5 minutes.
@@ -4409,7 +4409,7 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Destination on BigQuery. The output table stores the fields in asset proto as columns in BigQuery.
+        /// Destination on BigQuery. The output table stores the fields in asset Protobuf as columns in BigQuery.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual BigQueryDestination BigqueryDestination { get; set; }
@@ -4522,7 +4522,7 @@ namespace Google.Apis.CloudAsset.v1.Data
     }
 
     /// <summary>
-    /// An asset identify in Google Cloud which contains its name, type and ancestors. An asset can be any resource in
+    /// An asset identifier in Google Cloud which contains its name, type and ancestors. An asset can be any resource in
     /// the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
     /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
@@ -4722,7 +4722,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The create timestamp of this resource, at which the resource was created. The granularity is in seconds.
-        /// Timestamp.nanos will always be 0. This field is available only when the resource's proto contains it. To
+        /// Timestamp.nanos will always be 0. This field is available only when the resource's Protobuf contains it. To
         /// search against `create_time`: * use a field query. - value in seconds since unix epoch. Example: `createTime
         /// &amp;gt; 1609459200` - value in date string. Example: `createTime &amp;gt; 2021-01-01` - value in date-time
         /// string (must be quoted). Example: `createTime &amp;gt; "2021-01-01T00:00:00"`
@@ -4732,15 +4732,15 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes. This
-        /// field is available only when the resource's proto contains it. To search against the `description`: * use a
-        /// field query. Example: `description:"important instance"` * use a free text query. Example: `"important
+        /// field is available only when the resource's Protobuf contains it. To search against the `description`: * use
+        /// a field query. Example: `description:"important instance"` * use a free text query. Example: `"important
         /// instance"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// The display name of this resource. This field is available only when the resource's proto contains it. To
+        /// The display name of this resource. This field is available only when the resource's Protobuf contains it. To
         /// search against the `display_name`: * use a field query. Example: `displayName:"My Instance"` * use a free
         /// text query. Example: `"My Instance"`
         /// </summary>
@@ -4761,8 +4761,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys) name
         /// or
         /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
-        /// name. This field is available only when the resource's proto contains it. To search against the `kms_key`: *
-        /// use a field query. Example: `kmsKey:key` * use a free text query. Example: `key`
+        /// name. This field is available only when the resource's Protobuf contains it. To search against the
+        /// `kms_key`: * use a field query. Example: `kmsKey:key` * use a free text query. Example: `key`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
@@ -4770,17 +4770,17 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// Labels associated with this resource. See [Labelling and grouping GCP
         /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
-        /// for more information. This field is available only when the resource's proto contains it. To search against
-        /// the `labels`: * use a field query: - query on any label's key or value. Example: `labels:prod` - query by a
-        /// given label. Example: `labels.env:prod` - query by a given label's existence. Example: `labels.env:*` * use
-        /// a free text query. Example: `prod`
+        /// for more information. This field is available only when the resource's Protobuf contains it. To search
+        /// against the `labels`: * use a field query: - query on any label's key or value. Example: `labels:prod` -
+        /// query by a given label. Example: `labels.env:prod` - query by a given label's existence. Example:
+        /// `labels.env:*` * use a free text query. Example: `prod`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`. This field is available only
-        /// when the resource's proto contains it. To search against the `location`: * use a field query. Example:
+        /// when the resource's Protobuf contains it. To search against the `location`: * use a field query. Example:
         /// `location:us-west*` * use a free text query. Example: `us-west*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -4800,9 +4800,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// Network tags associated with this resource. Like labels, network tags are a type of annotations used to
         /// group GCP resources. See [Labelling GCP
         /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
-        /// for more information. This field is available only when the resource's proto contains it. To search against
-        /// the `network_tags`: * use a field query. Example: `networkTags:internal` * use a free text query. Example:
-        /// `internal`
+        /// for more information. This field is available only when the resource's Protobuf contains it. To search
+        /// against the `network_tags`: * use a field query. Example: `networkTags:internal` * use a free text query.
+        /// Example: `internal`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
@@ -4852,14 +4852,15 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The state of this resource. Different resources types have different state definitions that are mapped from
-        /// various fields of different resource types. This field is available only when the resource's proto contains
-        /// it. Example: If the resource is an instance provided by Compute Engine, its state will include PROVISIONING,
-        /// STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. See `status` definition in
-        /// [API Reference](https://cloud.google.com/compute/docs/reference/rest/v1/instances). If the resource is a
-        /// project provided by Cloud Resource Manager, its state will include LIFECYCLE_STATE_UNSPECIFIED, ACTIVE,
-        /// DELETE_REQUESTED and DELETE_IN_PROGRESS. See `lifecycleState` definition in [API
-        /// Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects). To search against the
-        /// `state`: * use a field query. Example: `state:RUNNING` * use a free text query. Example: `RUNNING`
+        /// various fields of different resource types. This field is available only when the resource's Protobuf
+        /// contains it. Example: If the resource is an instance provided by Compute Engine, its state will include
+        /// PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. See `status`
+        /// definition in [API Reference](https://cloud.google.com/compute/docs/reference/rest/v1/instances). If the
+        /// resource is a project provided by Cloud Resource Manager, its state will include
+        /// LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and DELETE_IN_PROGRESS. See `lifecycleState`
+        /// definition in [API Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects). To
+        /// search against the `state`: * use a field query. Example: `state:RUNNING` * use a free text query. Example:
+        /// `RUNNING`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -4867,9 +4868,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// The last update timestamp of this resource, at which the resource was last modified or deleted. The
         /// granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the
-        /// resource's proto contains it. To search against `update_time`: * use a field query. - value in seconds since
-        /// unix epoch. Example: `updateTime &amp;lt; 1609459200` - value in date string. Example: `updateTime &amp;lt;
-        /// 2021-01-01` - value in date-time string (must be quoted). Example: `updateTime &amp;lt;
+        /// resource's Protobuf contains it. To search against `update_time`: * use a field query. - value in seconds
+        /// since unix epoch. Example: `updateTime &amp;lt; 1609459200` - value in date string. Example: `updateTime
+        /// &amp;lt; 2021-01-01` - value in date-time string (must be quoted). Example: `updateTime &amp;lt;
         /// "2021-01-01T00:00:00"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]

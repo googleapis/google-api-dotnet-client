@@ -347,7 +347,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1
                 [Google.Apis.Util.StringValueAttribute("ORG_POLICY")]
                 ORGPOLICY = 3,
 
-                /// <summary>The Cloud Access context mananger Policy set on an asset.</summary>
+                /// <summary>The Cloud Access context manager Policy set on an asset.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACCESS_POLICY")]
                 ACCESSPOLICY = 4,
             }

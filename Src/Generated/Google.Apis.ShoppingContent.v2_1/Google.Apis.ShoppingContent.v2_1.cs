@@ -1907,7 +1907,11 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Validates verification code to verify phone number for the account.</summary>
+        /// <summary>
+        /// Validates verification code to verify phone number for the account. If successful this will overwrite the
+        /// value of `accounts.businessinformation.phoneNumber`. Only verified phone number will replace an existing
+        /// verified phone number.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">
         /// Required. The ID of the managing account. If this parameter is not the same as accountId, then this account
@@ -1919,7 +1923,11 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new VerifyphonenumberRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Validates verification code to verify phone number for the account.</summary>
+        /// <summary>
+        /// Validates verification code to verify phone number for the account. If successful this will overwrite the
+        /// value of `accounts.businessinformation.phoneNumber`. Only verified phone number will replace an existing
+        /// verified phone number.
+        /// </summary>
         public class VerifyphonenumberRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.VerifyPhoneNumberResponse>
         {
             /// <summary>Constructs a new Verifyphonenumber request.</summary>
@@ -2503,8 +2511,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
         /// <param name="regionCode">
-        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
-        /// only US is available.
+        /// Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+        /// Currently only US is available.
         /// </param>
         public virtual ActivateRequest Activate(Google.Apis.ShoppingContent.v2_1.Data.ActivateBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
@@ -2531,8 +2539,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-            /// Currently only US is available.
+            /// Required. The program region code [ISO 3166-1
+            /// alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RegionCode { get; private set; }
@@ -2578,8 +2586,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Retrieves a status of the BoG program for your Merchant Center account.</summary>
         /// <param name="merchantId">Required. The ID of the account.</param>
         /// <param name="regionCode">
-        /// The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
-        /// only US is available.
+        /// Required. The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+        /// Currently only US is available.
         /// </param>
         public virtual GetRequest Get(long merchantId, string regionCode)
         {
@@ -2602,8 +2610,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-            /// Currently only US is available.
+            /// Required. The Program region code [ISO 3166-1
+            /// alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RegionCode { get; private set; }
@@ -2649,8 +2657,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
         /// <param name="regionCode">
-        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
-        /// only US is available.
+        /// Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+        /// Currently only US is available.
         /// </param>
         public virtual OnboardRequest Onboard(Google.Apis.ShoppingContent.v2_1.Data.OnboardBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
@@ -2679,8 +2687,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-            /// Currently only US is available.
+            /// Required. The program region code [ISO 3166-1
+            /// alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RegionCode { get; private set; }
@@ -2723,6 +2731,94 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
+        /// <summary>Updates the status of the BoG program for your Merchant Center account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        /// <param name="regionCode">
+        /// Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+        /// Currently only US is available.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.BuyOnGoogleProgramStatus body, long merchantId, string regionCode)
+        {
+            return new PatchRequest(service, body, merchantId, regionCode);
+        }
+
+        /// <summary>Updates the status of the BoG program for your Merchant Center account.</summary>
+        public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.BuyOnGoogleProgramStatus>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.BuyOnGoogleProgramStatus body, long merchantId, string regionCode) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionCode = regionCode;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Required. The program region code [ISO 3166-1
+            /// alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionCode { get; private set; }
+
+            /// <summary>
+            /// The list of fields to update. If the update mask is not provided, then all the fields set in
+            /// buyOnGoogleProgramStatus will be updated. Clearing fields is only possible if update mask is provided.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.BuyOnGoogleProgramStatus Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/buyongoogleprograms/{regionCode}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Pauses the BoG program in your Merchant Center account. Important: This method is only whitelisted for
         /// selected merchants.
@@ -2730,8 +2826,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
         /// <param name="regionCode">
-        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
-        /// only US is available.
+        /// Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+        /// Currently only US is available.
         /// </param>
         public virtual PauseRequest Pause(Google.Apis.ShoppingContent.v2_1.Data.PauseBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
@@ -2758,8 +2854,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-            /// Currently only US is available.
+            /// Required. The program region code [ISO 3166-1
+            /// alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RegionCode { get; private set; }
@@ -2809,8 +2905,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
         /// <param name="regionCode">
-        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
-        /// only US is available.
+        /// Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+        /// Currently only US is available.
         /// </param>
         public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
@@ -2837,8 +2933,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-            /// Currently only US is available.
+            /// Required. The program region code [ISO 3166-1
+            /// alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RegionCode { get; private set; }
@@ -12551,6 +12647,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerService")]
         public virtual AccountCustomerService CustomerService { get; set; }
 
+        /// <summary>
+        /// The 10-digit [Korean business registration number](https://support.google.com/merchants/answer/9037766)
+        /// separated with dashes in the format: XXX-XX-XXXXX. This field will only be updated if explicitly set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("koreanBusinessRegistrationNumber")]
+        public virtual string KoreanBusinessRegistrationNumber { get; set; }
+
         /// <summary>The phone number of the business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
@@ -13469,13 +13572,54 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Response message for the GetProgramStatus method.</summary>
     public class BuyOnGoogleProgramStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The business models in which merchant participates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessModel")]
+        public virtual System.Collections.Generic.IList<string> BusinessModel { get; set; }
+
         /// <summary>The customer service pending email. After verification this field becomes empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerServicePendingEmail")]
         public virtual string CustomerServicePendingEmail { get; set; }
 
+        /// <summary>
+        /// The pending phone number specified for BuyOnGoogle program. It might be different than account level phone
+        /// number. In order to update this field the customer_service_pending_phone_region_code must also be set. After
+        /// verification this field becomes empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerServicePendingPhoneNumber")]
+        public virtual string CustomerServicePendingPhoneNumber { get; set; }
+
+        /// <summary>
+        /// Two letter country code for the pending phone number, for example `CA` for Canadian numbers. See the [ISO
+        /// 3166-1 alpha-2](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially
+        /// assigned codes. In order to update this field the customer_service_pending_phone_number must also be set.
+        /// After verification this field becomes empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerServicePendingPhoneRegionCode")]
+        public virtual string CustomerServicePendingPhoneRegionCode { get; set; }
+
         /// <summary>Output only. The customer service verified email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerServiceVerifiedEmail")]
         public virtual string CustomerServiceVerifiedEmail { get; set; }
+
+        /// <summary>
+        /// Output only. The verified phone number specified for BuyOnGoogle program. It might be different than account
+        /// level phone number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerServiceVerifiedPhoneNumber")]
+        public virtual string CustomerServiceVerifiedPhoneNumber { get; set; }
+
+        /// <summary>
+        /// Output only. Two letter country code for the verified phone number, for example `CA` for Canadian numbers.
+        /// See the [ISO 3166-1
+        /// alpha-2](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially
+        /// assigned codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerServiceVerifiedPhoneRegionCode")]
+        public virtual string CustomerServiceVerifiedPhoneRegionCode { get; set; }
+
+        /// <summary>The channels through which the merchant is selling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlineSalesChannel")]
+        public virtual string OnlineSalesChannel { get; set; }
 
         /// <summary>Output only. The current participation stage for the program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("participationStage")]
@@ -22906,7 +23050,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Response message for the VerifyPhoneNumber method.</summary>
     public class VerifyPhoneNumberResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Verified phone number if verification is successful.</summary>
+        /// <summary>
+        /// Verified phone number if verification is successful. This phone number can only be replaced by another
+        /// verified phone number.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedPhoneNumber")]
         public virtual string VerifiedPhoneNumber { get; set; }
 

@@ -1235,6 +1235,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uploadReference")]
         public virtual UploadRef UploadReference { get; set; }
 
+        /// <summary>Time when the image was uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
+        public virtual object UploadTime { get; set; }
+
         /// <summary>Output only. View count of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
         public virtual System.Nullable<long> ViewCount { get; set; }

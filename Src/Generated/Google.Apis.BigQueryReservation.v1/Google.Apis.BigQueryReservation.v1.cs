@@ -1684,10 +1684,10 @@ namespace Google.Apis.BigQueryReservation.v1
             }
 
             /// <summary>
-            /// Looks up assignments for a specified resource for a particular region. If the request is about a
-            /// project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments
-            /// created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be
-            /// returned. The same logic applies if the request is about a folder. If the request is about an
+            /// Deprecated: Looks up assignments for a specified resource for a particular region. If the request is
+            /// about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise
+            /// assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will
+            /// all be returned. The same logic applies if the request is about a folder. If the request is about an
             /// organization, then assignments created on the organization will be returned (organization doesn't have
             /// ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the
             /// assignee will be verified in this API. 2. Hierarchy lookup (project-&amp;gt;folder-&amp;gt;organization)
@@ -1704,10 +1704,10 @@ namespace Google.Apis.BigQueryReservation.v1
             }
 
             /// <summary>
-            /// Looks up assignments for a specified resource for a particular region. If the request is about a
-            /// project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments
-            /// created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be
-            /// returned. The same logic applies if the request is about a folder. If the request is about an
+            /// Deprecated: Looks up assignments for a specified resource for a particular region. If the request is
+            /// about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise
+            /// assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will
+            /// all be returned. The same logic applies if the request is about a folder. If the request is about an
             /// organization, then assignments created on the organization will be returned (organization doesn't have
             /// ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the
             /// assignee will be verified in this API. 2. Hierarchy lookup (project-&amp;gt;folder-&amp;gt;organization)
@@ -1877,7 +1877,7 @@ namespace Google.Apis.BigQueryReservation.v1
 namespace Google.Apis.BigQueryReservation.v1.Data
 {
     /// <summary>
-    /// A Assignment allows a project to submit jobs of a certain type using slots from the specified reservation.
+    /// An assignment allows a project to submit jobs of a certain type using slots from the specified reservation.
     /// </summary>
     public class Assignment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2091,7 +2091,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>
         /// If false, any query or pipeline job using this reservation will use idle slots from other reservations
         /// within the same admin project. If true, a query or pipeline job using this reservation will execute with the
-        /// slot capacity specified above at most.
+        /// slot capacity specified in the slot_capacity field at most.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreIdleSlots")]
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; }

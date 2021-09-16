@@ -324,6 +324,7 @@ namespace Google.Apis.PubsubLite.v1
                 {
                     this.service = service;
                     Operations = new OperationsResource(service);
+                    Reservations = new ReservationsResource(service);
                     Subscriptions = new SubscriptionsResource(service);
                     Topics = new TopicsResource(service);
                 }
@@ -607,6 +608,454 @@ namespace Google.Apis.PubsubLite.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Reservations resource.</summary>
+                public virtual ReservationsResource Reservations { get; }
+
+                /// <summary>The "reservations" collection of methods.</summary>
+                public class ReservationsResource
+                {
+                    private const string Resource = "reservations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ReservationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Topics = new TopicsResource(service);
+                    }
+
+                    /// <summary>Gets the Topics resource.</summary>
+                    public virtual TopicsResource Topics { get; }
+
+                    /// <summary>The "topics" collection of methods.</summary>
+                    public class TopicsResource
+                    {
+                        private const string Resource = "topics";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public TopicsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Lists the topics attached to the specified reservation.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the reservation whose topics to list. Structured like:
+                        /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                        /// </param>
+                        public virtual ListRequest List(string name)
+                        {
+                            return new ListRequest(service, name);
+                        }
+
+                        /// <summary>Lists the topics attached to the specified reservation.</summary>
+                        public class ListRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.ListReservationTopicsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the reservation whose topics to list. Structured like:
+                            /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The maximum number of topics to return. The service may return fewer than this value. If
+                            /// unset or zero, all topics for the given reservation will be returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListReservationTopics` call. Provide this to
+                            /// retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListReservationTopics` must match the call that provided the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/admin/{+name}/topics";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Creates a new reservation.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent location in which to create the reservation. Structured like
+                    /// `projects/{project_number}/locations/{location}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.PubsubLite.v1.Data.Reservation body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new reservation.</summary>
+                    public class CreateRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Reservation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.PubsubLite.v1.Data.Reservation body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent location in which to create the reservation. Structured like
+                        /// `projects/{project_number}/locations/{location}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the reservation, which will become the final component of the
+                        /// reservation's name. This value is structured like: `my-reservation-name`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("reservationId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ReservationId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.PubsubLite.v1.Data.Reservation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+parent}/reservations";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                            RequestParameters.Add("reservationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "reservationId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes the specified reservation.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the reservation to delete. Structured like:
+                    /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes the specified reservation.</summary>
+                    public class DeleteRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the reservation to delete. Structured like:
+                        /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the reservation configuration.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the reservation whose configuration to return. Structured like:
+                    /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Returns the reservation configuration.</summary>
+                    public class GetRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Reservation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the reservation whose configuration to return. Structured like:
+                        /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the list of reservations for the given project.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent whose reservations are to be listed. Structured like
+                    /// `projects/{project_number}/locations/{location}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of reservations for the given project.</summary>
+                    public class ListRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.ListReservationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent whose reservations are to be listed. Structured like
+                        /// `projects/{project_number}/locations/{location}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of reservations to return. The service may return fewer than this value.
+                        /// If unset or zero, all reservations for the parent will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListReservations` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListReservations` must
+                        /// match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+parent}/reservations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates properties of the specified reservation.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name of the reservation. Structured like:
+                    /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.PubsubLite.v1.Data.Reservation body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates properties of the specified reservation.</summary>
+                    public class PatchRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.Reservation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.PubsubLite.v1.Data.Reservation body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the reservation. Structured like:
+                        /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. A mask specifying the reservation fields to change.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.PubsubLite.v1.Data.Reservation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/admin/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2215,6 +2664,44 @@ namespace Google.Apis.PubsubLite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListReservationTopics.</summary>
+    public class ListReservationTopicsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The names of topics attached to the reservation. The order of the topics is unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topics")]
+        public virtual System.Collections.Generic.IList<string> Topics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListReservations.</summary>
+    public class ListReservationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The list of reservation in the requested parent. The order of the reservations is unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
+        public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListSubscriptions.</summary>
     public class ListSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2385,6 +2872,42 @@ namespace Google.Apis.PubsubLite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about a reservation resource.</summary>
+    public class Reservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the reservation. Structured like:
+        /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published
+        /// messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a
+        /// Reservation will consume resources from this reservation instead of being charged individually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("throughputCapacity")]
+        public virtual System.Nullable<long> ThroughputCapacity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The settings for this topic's Reservation usage.</summary>
+    public class ReservationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Reservation to use for this topic's throughput capacity. Structured like:
+        /// projects/{project_number}/locations/{location}/reservations/{reservation_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("throughputReservation")]
+        public virtual string ThroughputReservation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The settings for a topic's message retention.</summary>
     public class RetentionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2523,6 +3046,10 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>The settings for this topic's partitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionConfig")]
         public virtual PartitionConfig PartitionConfig { get; set; }
+
+        /// <summary>The settings for this topic's Reservation usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationConfig")]
+        public virtual ReservationConfig ReservationConfig { get; set; }
 
         /// <summary>The settings for this topic's message retention.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionConfig")]

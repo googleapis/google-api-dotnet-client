@@ -7236,6 +7236,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerService")]
         public virtual AccountCustomerService CustomerService { get; set; }
 
+        /// <summary>
+        /// The 10-digit [Korean business registration number](https://support.google.com/merchants/answer/9037766)
+        /// separated with dashes in the format: XXX-XX-XXXXX. This field will only be updated if explicitly set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("koreanBusinessRegistrationNumber")]
+        public virtual string KoreanBusinessRegistrationNumber { get; set; }
+
         /// <summary>The phone number of the business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
