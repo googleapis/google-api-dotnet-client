@@ -788,6 +788,234 @@ namespace Google.Apis.Document.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Deletes the processor version, all artifacts under the processor version will be deleted.
+                    /// </summary>
+                    /// <param name="name">Required. The processor version resource name to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes the processor version, all artifacts under the processor version will be deleted.
+                    /// </summary>
+                    public class DeleteRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The processor version resource name to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deploys the processor version.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The processor version resource name to be deployed.</param>
+                    public virtual DeployRequest Deploy(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DeployProcessorVersionRequest body, string name)
+                    {
+                        return new DeployRequest(service, body, name);
+                    }
+
+                    /// <summary>Deploys the processor version.</summary>
+                    public class DeployRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Deploy request.</summary>
+                        public DeployRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DeployProcessorVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The processor version resource name to be deployed.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DeployProcessorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deploy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:deploy";
+
+                        /// <summary>Initializes Deploy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a processor version detail.</summary>
+                    /// <param name="name">Required. The processor resource name.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a processor version detail.</summary>
+                    public class GetRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ProcessorVersion>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The processor resource name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all versions of a processor.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent (project, location and processor) to list all versions. Format:
+                    /// projects/{project}/locations/{location}/processors/{processor}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all versions of a processor.</summary>
+                    public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ListProcessorVersionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent (project, location and processor) to list all versions. Format:
+                        /// projects/{project}/locations/{location}/processors/{processor}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of processor versions to return. If unspecified, at most 10 processor
+                        /// versions will be returned. The maximum value is 20; values above 20 will be coerced to 20.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// We will return the processor versions sorted by creation time. The page token will point to
+                        /// the next processor version.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/processorVersions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Processes a single document.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -837,6 +1065,59 @@ namespace Google.Apis.Document.v1
                         public override string RestPath => "v1/{+name}:process";
 
                         /// <summary>Initializes Process parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/processorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Undeploys the processor version.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The processor version resource name to be undeployed.</param>
+                    public virtual UndeployRequest Undeploy(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1UndeployProcessorVersionRequest body, string name)
+                    {
+                        return new UndeployRequest(service, body, name);
+                    }
+
+                    /// <summary>Undeploys the processor version.</summary>
+                    public class UndeployRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Undeploy request.</summary>
+                        public UndeployRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1UndeployProcessorVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The processor version resource name to be undeployed.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1UndeployProcessorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "undeploy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:undeploy";
+
+                        /// <summary>Initializes Undeploy parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -919,6 +1200,354 @@ namespace Google.Apis.Document.v1
                     }
                 }
 
+                /// <summary>
+                /// Creates a processor from the type processor that the user chose. The processor will be at "ENABLED"
+                /// state by default after its creation.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent (project and location) under which to create the processor. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1Processor body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a processor from the type processor that the user chose. The processor will be at "ENABLED"
+                /// state by default after its creation.
+                /// </summary>
+                public class CreateRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1Processor>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1Processor body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) under which to create the processor. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1Processor Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/processors";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the processor, unloads all deployed model artifacts if it was enabled and then deletes all
+                /// artifacts associated with this processor.
+                /// </summary>
+                /// <param name="name">Required. The processor resource name to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the processor, unloads all deployed model artifacts if it was enabled and then deletes all
+                /// artifacts associated with this processor.
+                /// </summary>
+                public class DeleteRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The processor resource name to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Disables a processor</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The processor resource name to be disabled.</param>
+                public virtual DisableRequest Disable(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DisableProcessorRequest body, string name)
+                {
+                    return new DisableRequest(service, body, name);
+                }
+
+                /// <summary>Disables a processor</summary>
+                public class DisableRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Disable request.</summary>
+                    public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DisableProcessorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The processor resource name to be disabled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DisableProcessorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:disable";
+
+                    /// <summary>Initializes Disable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enables a processor</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The processor resource name to be enabled.</param>
+                public virtual EnableRequest Enable(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1EnableProcessorRequest body, string name)
+                {
+                    return new EnableRequest(service, body, name);
+                }
+
+                /// <summary>Enables a processor</summary>
+                public class EnableRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Enable request.</summary>
+                    public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1EnableProcessorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The processor resource name to be enabled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1EnableProcessorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enable";
+
+                    /// <summary>Initializes Enable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a processor detail.</summary>
+                /// <param name="name">Required. The processor resource name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a processor detail.</summary>
+                public class GetRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1Processor>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The processor resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all processors which belong to this project.</summary>
+                /// <param name="parent">
+                /// Required. The parent (project and location) which owns this collection of Processors. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all processors which belong to this project.</summary>
+                public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ListProcessorsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) which owns this collection of Processors. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of processors to return. If unspecified, at most 50 processors will be
+                    /// returned. The maximum value is 100; values above 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// We will return the processors sorted by creation time. The page token will point to the next
+                    /// processor.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/processors";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Processes a single document.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -980,6 +1609,118 @@ namespace Google.Apis.Document.v1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
                         });
                     }
+                }
+
+                /// <summary>
+                /// Set the default (active) version of a Processor that will be used in ProcessDocument and
+                /// BatchProcessDocuments.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="processor">
+                /// Required. The resource name of the Processor to change default version.
+                /// </param>
+                public virtual SetDefaultProcessorVersionRequest SetDefaultProcessorVersion(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest body, string processor)
+                {
+                    return new SetDefaultProcessorVersionRequest(service, body, processor);
+                }
+
+                /// <summary>
+                /// Set the default (active) version of a Processor that will be used in ProcessDocument and
+                /// BatchProcessDocuments.
+                /// </summary>
+                public class SetDefaultProcessorVersionRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new SetDefaultProcessorVersion request.</summary>
+                    public SetDefaultProcessorVersionRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest body, string processor) : base(service)
+                    {
+                        Processor = processor;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the Processor to change default version.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("processor", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Processor { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setDefaultProcessorVersion";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+processor}:setDefaultProcessorVersion";
+
+                    /// <summary>Initializes SetDefaultProcessorVersion parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("processor", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "processor",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Fetches processor types.</summary>
+            /// <param name="parent">
+            /// Required. The project of processor type to list. The available processor types may depend on the
+            /// whitelisting on projects. Format: projects/{project}/locations/{location}
+            /// </param>
+            public virtual FetchProcessorTypesRequest FetchProcessorTypes(string parent)
+            {
+                return new FetchProcessorTypesRequest(service, parent);
+            }
+
+            /// <summary>Fetches processor types.</summary>
+            public class FetchProcessorTypesRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1FetchProcessorTypesResponse>
+            {
+                /// <summary>Constructs a new FetchProcessorTypes request.</summary>
+                public FetchProcessorTypesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project of processor type to list. The available processor types may depend on the
+                /// whitelisting on projects. Format: projects/{project}/locations/{location}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "fetchProcessorTypes";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:fetchProcessorTypes";
+
+                /// <summary>Initializes FetchProcessorTypes parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
                 }
             }
 
@@ -2128,6 +2869,13 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the deploy processor version method.</summary>
+    public class GoogleCloudDocumentaiV1DeployProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the deploy processor version method.</summary>
     public class GoogleCloudDocumentaiV1DeployProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2142,6 +2890,13 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the disable processor method.</summary>
+    public class GoogleCloudDocumentaiV1DisableProcessorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3111,11 +3866,91 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the enable processor method.</summary>
+    public class GoogleCloudDocumentaiV1EnableProcessorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response message for the enable processor method. Intentionally empty proto for adding fields in future.
     /// </summary>
     public class GoogleCloudDocumentaiV1EnableProcessorResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
+    public class GoogleCloudDocumentaiV1EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The calculated f1 score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<float> F1Score { get; set; }
+
+        /// <summary>The amount of false negatives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falseNegativesCount")]
+        public virtual System.Nullable<int> FalseNegativesCount { get; set; }
+
+        /// <summary>The amount of false positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositivesCount")]
+        public virtual System.Nullable<int> FalsePositivesCount { get; set; }
+
+        /// <summary>The amount of occurrences in ground truth documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthOccurrencesCount")]
+        public virtual System.Nullable<int> GroundTruthOccurrencesCount { get; set; }
+
+        /// <summary>The calculated precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<float> Precision { get; set; }
+
+        /// <summary>The amount of occurrences in predicted documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedOccurrencesCount")]
+        public virtual System.Nullable<int> PredictedOccurrencesCount { get; set; }
+
+        /// <summary>The calculated recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>The amount of documents that had an occurrence of this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentsCount")]
+        public virtual System.Nullable<int> TotalDocumentsCount { get; set; }
+
+        /// <summary>The amount of true positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truePositivesCount")]
+        public virtual System.Nullable<int> TruePositivesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Gives a short summary of an evaluation, and links to the evaluation itself.</summary>
+    public class GoogleCloudDocumentaiV1EvaluationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An aggregate of the statistics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetrics")]
+        public virtual GoogleCloudDocumentaiV1EvaluationMetrics AggregateMetrics { get; set; }
+
+        /// <summary>The resource name of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual string Evaluation { get; set; }
+
+        /// <summary>The resource name of the Long Running Operation for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for fetch processor types.</summary>
+    public class GoogleCloudDocumentaiV1FetchProcessorTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of processor types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1ProcessorType> ProcessorTypes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3180,6 +4015,36 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for list processors.</summary>
+    public class GoogleCloudDocumentaiV1ListProcessorVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to the next processor, otherwise empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of processors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1ProcessorVersion> ProcessorVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for list processors.</summary>
+    public class GoogleCloudDocumentaiV1ListProcessorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to the next processor, otherwise empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of processors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1Processor> Processors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the
     /// original image and range from 0 to 1.
@@ -3227,6 +4092,147 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The status of human review on the processed document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewStatus")]
         public virtual GoogleCloudDocumentaiV1HumanReviewStatus HumanReviewStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The first-class citizen for DAI. Each processor defines how to extract structural information from a document.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1Processor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the processor was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The default processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultProcessorVersion")]
+        public virtual string DefaultProcessorVersion { get; set; }
+
+        /// <summary>The display name of the processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The KMS key used for encryption/decryption in CMEK scenarios. See
+        /// https://cloud.google.com/security-key-management.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. The resource name of the processor. Format:
+        /// projects/{project}/locations/{location}/processors/{processor}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Immutable. The http endpoint that can be called to invoke processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processEndpoint")]
+        public virtual string ProcessEndpoint { get; set; }
+
+        /// <summary>Output only. The state of the processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A processor type is responsible for performing a certain document understanding task on a certain type of
+    /// document. All processor types are created by the documentai service internally. User will only list all
+    /// available processor types via UI. For different users (projects), the available processor types may be different
+    /// since we'll expose the access of some types via EAP whitelisting. We make the ProcessorType a resource under
+    /// location so we have a unified API and keep the possibility that UI will load different available processor types
+    /// from different regions. But for alpha the behavior is that the user will always get the union of all available
+    /// processor types among all regions no matter which regionalized endpoint is called, and then we use the
+    /// 'available_locations' field to show under which regions a processor type is available. For example, users can
+    /// call either the 'US' or 'EU' endpoint to feach processor types. In the return, we will have an 'invoice parsing'
+    /// processor with 'available_locations' field only containing 'US'. So the user can try to create an 'invoice
+    /// parsing' processor under the location 'US'. Such attempt of creating under the location 'EU' will fail. Next ID:
+    /// 8.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1ProcessorType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the processor type allows creation. If yes, user can create a processor of this processor type.
+        /// Otherwise, user needs to request access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCreation")]
+        public virtual System.Nullable<bool> AllowCreation { get; set; }
+
+        /// <summary>The locations in which this processor is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableLocations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1ProcessorTypeLocationInfo> AvailableLocations { get; set; }
+
+        /// <summary>The processor category, used by UI to group processor types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>
+        /// The resource name of the processor type. Format: projects/{project}/processorTypes/{processor_type}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The type of the processor, e.g, "invoice_parsing".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The location information about where the processor is available.</summary>
+    public class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location id, currently must be one of [us, eu].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
+    /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version
+    /// version. So the processor's behavior (when processing documents) is defined by a default version.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the processor version was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The display name of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The most recently invoked evaluation for the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
+        public virtual GoogleCloudDocumentaiV1EvaluationReference LatestEvaluation { get; set; }
+
+        /// <summary>
+        /// The resource name of the processor version. Format:
+        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The schema of the processor version. Describes the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDocumentaiV1Schema Schema { get; set; }
+
+        /// <summary>The state of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3288,12 +4294,90 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The schema defines the output of the processed document by a processor.</summary>
+    public class GoogleCloudDocumentaiV1Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name to show to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Entity types of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1SchemaEntityType> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
+    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1SchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Type of the entity. It must be one of the following: `document` - the entity represents a classification of
+        /// a logical document. `object` - if the entity has properties it is likely an object (or or a document.)
+        /// `datetime` - the entity is a date or time value. `money` - the entity represents a money value amount.
+        /// `number` - the entity is a number - integer or floating point. `string` - the entity is a string value.
+        /// `boolean` - the entity is a boolean value. `address` - the entity is a location address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
+        public virtual string BaseType { get; set; }
+
+        /// <summary>Description of the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>If specified, lists all the possible values for this entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
+        public virtual System.Collections.Generic.IList<string> EnumValues { get; set; }
+
+        /// <summary>Occurrence type limits the number of times an entity type appears in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
+        public virtual string OccurrenceType { get; set; }
+
+        /// <summary>
+        /// Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For
+        /// example, in a document there can be an EntityType 'ID', which consists of EntityType 'name' and 'address',
+        /// with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1SchemaEntityType> Properties { get; set; }
+
+        /// <summary>Source of this entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Name of the type. It must be unique within the set of same level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for set default processor version method.</summary>
     public class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic metadata of the long running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the set default processor version method.</summary>
+    public class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of child ProcessorVersion to use as default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultProcessorVersion")]
+        public virtual string DefaultProcessorVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3313,6 +4397,13 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the undeploy processor version method.</summary>
+    public class GoogleCloudDocumentaiV1UndeployProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -881,6 +881,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
     /// </summary>
     public class AnalyzePackagesRequestV1 : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether to include OSV data in the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeOsvData")]
+        public virtual System.Nullable<bool> IncludeOsvData { get; set; }
+
         /// <summary>The packages to analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packages")]
         public virtual System.Collections.Generic.IList<PackageData> Packages { get; set; }

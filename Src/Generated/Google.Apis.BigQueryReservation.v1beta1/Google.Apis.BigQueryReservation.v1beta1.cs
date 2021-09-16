@@ -1854,7 +1854,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 namespace Google.Apis.BigQueryReservation.v1beta1.Data
 {
     /// <summary>
-    /// A Assignment allows a project to submit jobs of a certain type using slots from the specified reservation.
+    /// An assignment allows a project to submit jobs of a certain type using slots from the specified reservation.
     /// </summary>
     public class Assignment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2065,9 +2065,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual object CreationTime { get; set; }
 
         /// <summary>
-        /// If false, any query using this reservation will use idle slots from other reservations within the same admin
-        /// project. If true, a query using this reservation will execute with the slot capacity specified above at
-        /// most.
+        /// If false, any query or pipeline job using this reservation will use idle slots from other reservations
+        /// within the same admin project. If true, a query or pipeline job using this reservation will execute with the
+        /// slot capacity specified in the slot_capacity field at most.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreIdleSlots")]
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; }

@@ -1649,7 +1649,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Google Cloud Redis instance. next id = 36</summary>
+    /// <summary>A Google Cloud Redis instance. next id = 37</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

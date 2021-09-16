@@ -12328,6 +12328,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentTerminator")]
         public virtual string SegmentTerminator { get; set; }
 
+        /// <summary>
+        /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This
+        /// field is immutable after store creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12644,6 +12651,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<Hl7TypesConfig> Types { get; set; }
+
+        /// <summary>Determines how unexpected segments (segments not matched to the schema) are handled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSegmentHandling")]
+        public virtual string UnexpectedSegmentHandling { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

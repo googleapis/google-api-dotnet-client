@@ -322,7 +322,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created
+                /// relieves bots and webhooks from having to store the Google Chat thread ID of a thread (created
                 /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
                 /// existing thread, is set in message.
                 /// </summary>
@@ -397,7 +397,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
             /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
             /// message.
             /// </summary>
@@ -471,7 +471,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
             /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
             /// message.
             /// </summary>
@@ -738,7 +738,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created
+                /// relieves bots and webhooks from having to store the Google Chat thread ID of a thread (created
                 /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
                 /// existing thread, is set in message.
                 /// </summary>
@@ -813,7 +813,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
             /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
             /// message.
             /// </summary>
@@ -887,7 +887,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
             /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
             /// message.
             /// </summary>
@@ -1216,7 +1216,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created
+                /// relieves bots and webhooks from having to store the Google Chat thread ID of a thread (created
                 /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
                 /// existing thread, is set in message.
                 /// </summary>
@@ -1567,7 +1567,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
             /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
             /// message.
             /// </summary>
@@ -1710,7 +1710,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An attachment in Hangouts Chat.</summary>
+    /// <summary>An attachment in Google Chat.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2023,7 +2023,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
-        /// <summary>The room or DM in which the event occurred.</summary>
+        /// <summary>The space in which the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
 
@@ -3106,7 +3106,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a membership relation in Hangouts Chat.</summary>
+    /// <summary>Represents a membership relation in Google Chat.</summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3115,7 +3115,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>A User in Hangout Chat</summary>
+        /// <summary>A user in Google Chat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
 
@@ -3130,7 +3130,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A message in Hangouts Chat.</summary>
+    /// <summary>A message in Google Chat.</summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Input only. Parameters that a bot can use to configure how its response is posted.</summary>
@@ -3156,7 +3156,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cards")]
         public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
 
-        /// <summary>Output only. The time at which the message was created in Hangouts Chat server.</summary>
+        /// <summary>Output only. The time at which the message was created in Google Chat server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -3168,8 +3168,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string FallbackText { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the message was last updated in Hangouts Chat server. If the message was
-        /// never updated, this field will be same as create_time.
+        /// Output only. The time at which the message was last updated in Google Chat server. If the message was never
+        /// updated, this field will be same as create_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual object LastUpdateTime { get; set; }
@@ -3291,12 +3291,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A room or DM in Hangouts Chat.</summary>
+    /// <summary>
+    /// A space in Google Chat. Spaces are conversations between two or more users or 1:1 messages between a user and a
+    /// Chat bot.
+    /// </summary>
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The display name (only if the space is a room). Please note that this field might not be
-        /// populated in direct messages between humans.
+        /// Output only. The display name (only if the space is of type `ROOM`). Please note that this field might not
+        /// be populated in direct messages between humans.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -3359,7 +3362,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A thread in Hangouts Chat.</summary>
+    /// <summary>A thread in Google Chat.</summary>
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
