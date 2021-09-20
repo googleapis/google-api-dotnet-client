@@ -4341,7 +4341,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string Action { get; set; }
 
         /// <summary>
-        /// An optional string description of this rule. This field has a maximum length of 100 characters.
+        /// An optional string description of this rule. This field has a maximum length of 400 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }

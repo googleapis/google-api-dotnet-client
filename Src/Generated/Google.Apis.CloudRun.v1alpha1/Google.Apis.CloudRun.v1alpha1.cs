@@ -993,6 +993,35 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.</summary>
     public class HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1029,6 +1058,26 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// <summary>The header field value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of an instance attempt.</summary>
+    public class InstanceAttemptResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with
+        /// a code due to some other failure. See status field for possible failure details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
+        public virtual System.Nullable<int> ExitCode { get; set; }
+
+        /// <summary>
+        /// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1106,6 +1155,10 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// <summary>Required. Index of the instance, unique per Job, and beginning at 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>Optional. Result of the last attempt of this instance. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptResult")]
+        public virtual InstanceAttemptResult LastAttemptResult { get; set; }
 
         /// <summary>Optional. Last exit code seen for this instance. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastExitCode")]

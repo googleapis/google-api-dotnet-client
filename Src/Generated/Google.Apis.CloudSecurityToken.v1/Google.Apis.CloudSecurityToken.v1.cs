@@ -262,6 +262,51 @@ namespace Google.Apis.CloudSecurityToken.v1
         }
 
         /// <summary>
+        /// Gets information about a Google OAuth 2.0 access token issued by the Google Cloud [Security Token Service
+        /// API](https://cloud.google.com/iam/docs/reference/sts/rest).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual IntrospectRequest Introspect(Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1IntrospectTokenRequest body)
+        {
+            return new IntrospectRequest(service, body);
+        }
+
+        /// <summary>
+        /// Gets information about a Google OAuth 2.0 access token issued by the Google Cloud [Security Token Service
+        /// API](https://cloud.google.com/iam/docs/reference/sts/rest).
+        /// </summary>
+        public class IntrospectRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1IntrospectTokenResponse>
+        {
+            /// <summary>Constructs a new Introspect request.</summary>
+            public IntrospectRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1IntrospectTokenRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1IntrospectTokenRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "introspect";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/introspect";
+
+            /// <summary>Initializes Introspect parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within a
         /// workload identity pool, or it applies a Credential Access Boundary to a Google access token. When you call
         /// this method, do not send the `Authorization` HTTP header in the request. This method does not require the
@@ -552,6 +597,77 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>The type of access token. Always has the value `Bearer`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
         public virtual string TokenType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for IntrospectToken.</summary>
+    public class GoogleIdentityStsV1IntrospectTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The OAuth 2.0 security token issued by the Security Token Service API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>
+        /// Optional. The type of the given token. Supported values are `urn:ietf:params:oauth:token-type:access_token`
+        /// and `access_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTypeHint")]
+        public virtual string TokenTypeHint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for IntrospectToken.</summary>
+    public class GoogleIdentityStsV1IntrospectTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean value that indicates whether the provided access token is currently active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
+        /// <summary>The client identifier for the OAuth 2.0 client that requested the provided token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client_id")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>
+        /// The expiration timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this
+        /// token will expire.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exp")]
+        public virtual System.Nullable<long> Exp { get; set; }
+
+        /// <summary>
+        /// The issued timestamp, measured in the number of seconds since January 1 1970 UTC, indicating when this token
+        /// was originally issued.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iat")]
+        public virtual System.Nullable<long> Iat { get; set; }
+
+        /// <summary>The issuer of the provided token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iss")]
+        public virtual string Iss { get; set; }
+
+        /// <summary>A list of scopes associated with the provided token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// The unique user ID associated with the provided token. For Google Accounts, this value is based on the
+        /// Google Account's user ID. For federated identities, this value is based on the identity pool ID and the
+        /// value of the mapped `google.subject` attribute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sub")]
+        public virtual string Sub { get; set; }
+
+        /// <summary>
+        /// The human-readable identifier for the token principal subject. For example, if the provided token is
+        /// associated with a workload identity pool, this field contains a value in the following format:
+        /// `principal://iam.googleapis.com/projects//locations/global/workloadIdentityPools//subject/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
