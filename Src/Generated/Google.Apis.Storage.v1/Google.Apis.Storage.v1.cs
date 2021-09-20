@@ -7658,6 +7658,13 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
         public virtual RetentionPolicyData RetentionPolicy { get; set; }
 
+        /// <summary>
+        /// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a
+        /// bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rpo")]
+        public virtual string Rpo { get; set; }
+
         /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZS")]
         public virtual System.Nullable<bool> SatisfiesPZS { get; set; }

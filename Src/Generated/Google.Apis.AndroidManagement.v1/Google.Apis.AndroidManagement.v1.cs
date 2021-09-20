@@ -2412,6 +2412,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
+        /// <summary>
+        /// Configuration to enable this app as an extension app, with the capability of interacting with Android Device
+        /// Policy offline.This field can be set for at most one app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionConfig")]
+        public virtual ExtensionConfig ExtensionConfig { get; set; }
+
         /// <summary>The type of installation to perform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installType")]
         public virtual string InstallType { get; set; }
@@ -3260,6 +3267,35 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsAndConditions")]
         public virtual System.Collections.Generic.IList<TermsAndConditions> TermsAndConditions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration to enable an app as an extension app, with the capability of interacting with Android Device
+    /// Policy offline.
+    /// </summary>
+    public class ExtensionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Fully qualified class name of the receiver service class for Android Device Policy to notify the extension
+        /// app of any local command status updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationReceiver")]
+        public virtual string NotificationReceiver { get; set; }
+
+        /// <summary>
+        /// Hex-encoded SHA256 hash of the signing certificate of the extension app. Only hexadecimal string
+        /// representations of 64 characters are valid.If not specified, the signature for the corresponding package
+        /// name is obtained from the Play Store instead.If this list is empty, the signature of the extension app on
+        /// the device must match the signature obtained from the Play Store for the app to be able to communicate with
+        /// Android Device Policy.If this list is not empty, the signature of the extension app on the device must match
+        /// one of the entries in this list for the app to be able to communicate with Android Device Policy.In
+        /// production use cases, it is recommended to leave this empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKeyFingerprintsSha256")]
+        public virtual System.Collections.Generic.IList<string> SigningKeyFingerprintsSha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

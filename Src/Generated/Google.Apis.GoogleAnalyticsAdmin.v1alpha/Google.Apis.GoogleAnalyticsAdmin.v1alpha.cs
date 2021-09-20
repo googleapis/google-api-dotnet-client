@@ -8464,9 +8464,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     {
         /// <summary>
         /// Roles directly assigned to this user for this account or property. Valid values: predefinedRoles/read
-        /// predefinedRoles/collaborate predefinedRoles/edit predefinedRoles/manage-users Excludes roles that are
-        /// inherited from a higher-level entity, group, or organization admin role. A UserLink that is updated to have
-        /// an empty list of direct_roles will be deleted.
+        /// predefinedRoles/collaborate predefinedRoles/edit predefinedRoles/admin Excludes roles that are inherited
+        /// from a higher-level entity, group, or organization admin role. A UserLink that is updated to have an empty
+        /// list of direct_roles will be deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
         public virtual System.Collections.Generic.IList<string> DirectRoles { get; set; }

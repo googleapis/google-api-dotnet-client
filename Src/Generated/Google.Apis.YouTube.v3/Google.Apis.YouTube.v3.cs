@@ -7725,6 +7725,10 @@ namespace Google.Apis.YouTube.v3
                 ChannelToStoreLink = 1,
             }
 
+            /// <summary>Channel ID to which changes should be applied, for delegation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalChannelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExternalChannelId { get; set; }
+
             /// <summary>Do not use. Required for compatibility.</summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
@@ -7754,6 +7758,14 @@ namespace Google.Apis.YouTube.v3
                 {
                     Name = "type",
                     IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("externalChannelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalChannelId",
+                    IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -7798,6 +7810,10 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
 
+            /// <summary>Channel ID to which changes should be applied, for delegation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalChannelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExternalChannelId { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTube.v3.Data.ThirdPartyLink Body { get; set; }
 
@@ -7821,6 +7837,14 @@ namespace Google.Apis.YouTube.v3
                 {
                     Name = "part",
                     IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("externalChannelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalChannelId",
+                    IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -7854,6 +7878,10 @@ namespace Google.Apis.YouTube.v3
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
+
+            /// <summary>Channel ID to which changes should be applied, for delegation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalChannelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExternalChannelId { get; set; }
 
             /// <summary>Get a third party link with the given linking token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("linkingToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -7895,6 +7923,14 @@ namespace Google.Apis.YouTube.v3
                 {
                     Name = "part",
                     IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("externalChannelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalChannelId",
+                    IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -7947,6 +7983,10 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
 
+            /// <summary>Channel ID to which changes should be applied, for delegation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalChannelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ExternalChannelId { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTube.v3.Data.ThirdPartyLink Body { get; set; }
 
@@ -7970,6 +8010,14 @@ namespace Google.Apis.YouTube.v3
                 {
                     Name = "part",
                     IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("externalChannelId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalChannelId",
+                    IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,

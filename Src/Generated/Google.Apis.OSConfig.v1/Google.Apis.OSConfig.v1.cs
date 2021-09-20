@@ -300,6 +300,7 @@ namespace Google.Apis.OSConfig.v1
             {
                 this.service = service;
                 Instances = new InstancesResource(service);
+                OsPolicyAssignments = new OsPolicyAssignmentsResource(service);
             }
 
             /// <summary>Gets the Instances resource.</summary>
@@ -734,6 +735,459 @@ namespace Google.Apis.OSConfig.v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+            }
+
+            /// <summary>Gets the OsPolicyAssignments resource.</summary>
+            public virtual OsPolicyAssignmentsResource OsPolicyAssignments { get; }
+
+            /// <summary>The "osPolicyAssignments" collection of methods.</summary>
+            public class OsPolicyAssignmentsResource
+            {
+                private const string Resource = "osPolicyAssignments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OsPolicyAssignmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Create an OS policy assignment. This method also creates the first revision of the OS policy
+                /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
+                /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
+                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name in the form: projects/{project}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OSConfig.v1.Data.OSPolicyAssignment body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Create an OS policy assignment. This method also creates the first revision of the OS policy
+                /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
+                /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
+                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+                /// </summary>
+                public class CreateRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.OSPolicyAssignment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name in the form: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The logical name of the OS policy assignment in the project with the following
+                    /// restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a
+                    /// letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be
+                    /// unique within the project.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("osPolicyAssignmentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OsPolicyAssignmentId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OSConfig.v1.Data.OSPolicyAssignment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/osPolicyAssignments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("osPolicyAssignmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "osPolicyAssignmentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Delete the OS policy assignment. This method creates a new revision of the OS policy assignment.
+                /// This method returns a long running operation (LRO) that contains the rollout details. The rollout
+                /// can be cancelled by cancelling the LRO. If the LRO completes and is not cancelled, all revisions
+                /// associated with the OS policy assignment are deleted. For more information, see [Method:
+                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+                /// </summary>
+                /// <param name="name">Required. The name of the OS policy assignment to be deleted</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Delete the OS policy assignment. This method creates a new revision of the OS policy assignment.
+                /// This method returns a long running operation (LRO) that contains the rollout details. The rollout
+                /// can be cancelled by cancelling the LRO. If the LRO completes and is not cancelled, all revisions
+                /// associated with the OS policy assignment are deleted. For more information, see [Method:
+                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+                /// </summary>
+                public class DeleteRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the OS policy assignment to be deleted</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Retrieve an existing OS policy assignment. This method always returns the latest revision. In order
+                /// to retrieve a previous revision of the assignment, also provide the revision ID in the `name`
+                /// parameter.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of OS policy assignment. Format:
+                /// `projects/{project}/locations/{location}/osPolicyAssignments/{os_policy_assignment}@{revisionId}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Retrieve an existing OS policy assignment. This method always returns the latest revision. In order
+                /// to retrieve a previous revision of the assignment, also provide the revision ID in the `name`
+                /// parameter.
+                /// </summary>
+                public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.OSPolicyAssignment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of OS policy assignment. Format:
+                    /// `projects/{project}/locations/{location}/osPolicyAssignments/{os_policy_assignment}@{revisionId}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// List the OS policy assignments under the parent resource. For each OS policy assignment, the latest
+                /// revision is returned.
+                /// </summary>
+                /// <param name="parent">Required. The parent resource name.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// List the OS policy assignments under the parent resource. For each OS policy assignment, the latest
+                /// revision is returned.
+                /// </summary>
+                public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListOSPolicyAssignmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of assignments to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A pagination token returned from a previous call to `ListOSPolicyAssignments` that indicates
+                    /// where this listing should continue from.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/osPolicyAssignments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List the OS policy assignment revisions for a given OS policy assignment.</summary>
+                /// <param name="name">Required. The name of the OS policy assignment to list revisions for.</param>
+                public virtual ListRevisionsRequest ListRevisions(string name)
+                {
+                    return new ListRevisionsRequest(service, name);
+                }
+
+                /// <summary>List the OS policy assignment revisions for a given OS policy assignment.</summary>
+                public class ListRevisionsRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListOSPolicyAssignmentRevisionsResponse>
+                {
+                    /// <summary>Constructs a new ListRevisions request.</summary>
+                    public ListRevisionsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the OS policy assignment to list revisions for.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The maximum number of revisions to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A pagination token returned from a previous call to `ListOSPolicyAssignmentRevisions` that
+                    /// indicates where this listing should continue from.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listRevisions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:listRevisions";
+
+                    /// <summary>Initializes ListRevisions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Update an existing OS policy assignment. This method creates a new revision of the OS policy
+                /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
+                /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
+                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Resource name. Format:
+                /// `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This
+                /// field is ignored when you create an OS policy assignment.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OSConfig.v1.Data.OSPolicyAssignment body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Update an existing OS policy assignment. This method creates a new revision of the OS policy
+                /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
+                /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
+                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+                /// </summary>
+                public class PatchRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.OSPolicyAssignment body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Resource name. Format:
+                    /// `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}`
+                    /// This field is ignored when you create an OS policy assignment.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask that controls which fields of the assignment should be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OSConfig.v1.Data.OSPolicyAssignment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
             }
@@ -1492,6 +1946,35 @@ namespace Google.Apis.OSConfig.v1.Data
     }
 
     /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
@@ -1774,6 +2257,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qfePackage")]
         public virtual InventoryWindowsQuickFixEngineeringPackage QfePackage { get; set; }
 
+        /// <summary>Details of Windows Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsApplication")]
+        public virtual InventoryWindowsApplication WindowsApplication { get; set; }
+
         /// <summary>
         /// Details of a Windows Update package. See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
         /// information about Windows Update.
@@ -1823,6 +2310,40 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>The version of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains information about a Windows application as retrieved from the Windows Registry. For more information
+    /// about these fields, see [Windows Installer Properties for the Uninstall
+    /// Registry](https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key){: class="external" }
+    /// </summary>
+    public class InventoryWindowsApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the application or product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The version of the product or application in string format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVersion")]
+        public virtual string DisplayVersion { get; set; }
+
+        /// <summary>The internet address for technical support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpLink")]
+        public virtual string HelpLink { get; set; }
+
+        /// <summary>
+        /// The last time this product received service. The value of this property is replaced each time a patch is
+        /// applied or removed from the product or the command-line option is used to repair the product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installDate")]
+        public virtual Date InstallDate { get; set; }
+
+        /// <summary>The name of the manufacturer for the product or application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1957,6 +2478,36 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response message for listing all revisions for a OS policy assignment.</summary>
+    public class ListOSPolicyAssignmentRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pagination token to retrieve the next page of OS policy assignment revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The OS policy assignment revisions</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyAssignments")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignment> OsPolicyAssignments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response message for listing all assignments under given parent.</summary>
+    public class ListOSPolicyAssignmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pagination token to retrieve the next page of OS policy assignments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of assignments</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyAssignments")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignment> OsPolicyAssignments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A response message for listing patch deployments.</summary>
     public class ListPatchDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2041,6 +2592,203 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An OS policy defines the desired state configuration for a VM.</summary>
+    public class OSPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This flag determines the OS policy compliance status when none of the resource groups within the policy are
+        /// applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the
+        /// policy has nothing to validate or enforce.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowNoResourceGroupMatch")]
+        public virtual System.Nullable<bool> AllowNoResourceGroupMatch { get; set; }
+
+        /// <summary>Policy description. Length of the description is limited to 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters,
+        /// numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a
+        /// number or a letter. * Must be unique within the assignment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Policy mode</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the
+        /// order specified and the first resource group that is applicable is selected and the rest are ignored. If
+        /// none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this
+        /// policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroups")]
+        public virtual System.Collections.Generic.IList<OSPolicyResourceGroup> ResourceGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted
+    /// group of Compute Engine VM instances. An OS policy is used to define the desired state configuration for a
+    /// Compute Engine VM instance through a set of configuration resources that provide capabilities such as installing
+    /// or removing software packages, or executing a script. For more information, see [OS policy and OS policy
+    /// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+    /// </summary>
+    public class OSPolicyAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be
+        /// assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a
+        /// value of `true` for this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseline")]
+        public virtual System.Nullable<bool> Baseline { get; set; }
+
+        /// <summary>Output only. Indicates that this revision deletes the OS policy assignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
+        public virtual System.Nullable<bool> Deleted { get; set; }
+
+        /// <summary>
+        /// OS policy assignment description. Length of the description is limited to 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. Filter to select VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
+        public virtual OSPolicyAssignmentInstanceFilter InstanceFilter { get; set; }
+
+        /// <summary>
+        /// Resource name. Format:
+        /// `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is
+        /// ignored when you create an OS policy assignment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. List of OS policies to be applied to the VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicies")]
+        public virtual System.Collections.Generic.IList<OSPolicy> OsPolicies { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
+        /// `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTime")]
+        public virtual object RevisionCreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS
+        /// policy assignment
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>
+        /// Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1)
+        /// OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of
+        /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual OSPolicyAssignmentRollout Rollout { get; set; }
+
+        /// <summary>Output only. OS policy assignment rollout state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutState")]
+        public virtual string RolloutState { get; set; }
+
+        /// <summary>Output only. Server generated unique id for the OS policy assignment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+    }
+
+    /// <summary>
+    /// Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will
+    /// be selected if and only if it satisfies all of them.
+    /// </summary>
+    public class OSPolicyAssignmentInstanceFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Target all VMs in the project. If true, no other criteria is permitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("all")]
+        public virtual System.Nullable<bool> All { get; set; }
+
+        /// <summary>
+        /// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any
+        /// of the label sets are applicable for the VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionLabels")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentLabelSet> ExclusionLabels { get; set; }
+
+        /// <summary>
+        /// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if
+        /// any of the label sets are applicable for the VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inclusionLabels")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentLabelSet> InclusionLabels { get; set; }
+
+        /// <summary>
+        /// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the
+        /// following inventories.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventories")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentInstanceFilterInventory> Inventories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VM inventory details.</summary>
+    public class OSPolicyAssignmentInstanceFilterInventory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The OS short name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osShortName")]
+        public virtual string OsShortName { get; set; }
+
+        /// <summary>
+        /// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example,
+        /// to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty
+        /// string matches all OS versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. *
+    /// Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the
+    /// labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be
+    /// applicable for those VMs with both labels present.
+    /// </summary>
+    public class OSPolicyAssignmentLabelSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified
+        /// in this map to be selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// OS policy assignment operation metadata provided by OS policy assignment API methods that return long running
     /// operations.
@@ -2074,6 +2822,555 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message to configure the rollout at the zonal level for the OS policy assignment.</summary>
+    public class OSPolicyAssignmentRollout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disruptionBudget")]
+        public virtual FixedOrPercent DisruptionBudget { get; set; }
+
+        /// <summary>
+        /// Required. This determines the minimum duration of time to wait after the configuration changes are applied
+        /// through the current rollout. A VM continues to count towards the `disruption_budget` at least until this
+        /// duration of time has passed after configuration changes are applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minWaitDuration")]
+        public virtual object MinWaitDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filtering criteria to select VMs based on inventory details.</summary>
+    public class OSPolicyInventoryFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The OS short name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osShortName")]
+        public virtual string OsShortName { get; set; }
+
+        /// <summary>
+        /// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example,
+        /// to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty
+        /// string matches all OS versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An OS policy resource is used to define the desired state configuration and provides a specific functionality
+    /// like installing/removing packages, executing a script etc. The system ensures that resources are always in their
+    /// desired state by taking necessary actions if they have drifted from their desired state.
+    /// </summary>
+    public class OSPolicyResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exec resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
+        public virtual OSPolicyResourceExecResource Exec { get; set; }
+
+        /// <summary>File resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual OSPolicyResourceFileResource File { get; set; }
+
+        /// <summary>
+        /// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters,
+        /// numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a
+        /// number or a letter. * Must be unique within the OS policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Package resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkg")]
+        public virtual OSPolicyResourcePackageResource Pkg { get; set; }
+
+        /// <summary>Package repository resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual OSPolicyResourceRepositoryResource Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce`
+    /// and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it
+    /// first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is
+    /// already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired
+    /// state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an
+    /// error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the
+    /// agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired
+    /// state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an
+    /// exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered
+    /// an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of
+    /// `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an
+    /// exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being
+    /// explicit, exit codes `100` and `101` were chosen.
+    /// </summary>
+    public class OSPolicyResourceExecResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any
+        /// other exit code indicates a failure running enforce.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforce")]
+        public virtual OSPolicyResourceExecResourceExec Enforce { get; set; }
+
+        /// <summary>
+        /// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in
+        /// desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a
+        /// failure running validate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validate")]
+        public virtual OSPolicyResourceExecResourceExec Validate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A file or script to execute.</summary>
+    public class OSPolicyResourceExecResourceExec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional arguments to pass to the source during execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>A remote or local file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual OSPolicyResourceFile File { get; set; }
+
+        /// <summary>Required. The script interpreter to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpreter")]
+        public virtual string Interpreter { get; set; }
+
+        /// <summary>
+        /// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be
+        /// recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will
+        /// result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputFilePath")]
+        public virtual string OutputFilePath { get; set; }
+
+        /// <summary>An inline script. The size of the script is limited to 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual string Script { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A remote or local file.</summary>
+    public class OSPolicyResourceFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum
+        /// must be specified. Cloud Storage: An object generation number must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowInsecure")]
+        public virtual System.Nullable<bool> AllowInsecure { get; set; }
+
+        /// <summary>A Cloud Storage object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcs")]
+        public virtual OSPolicyResourceFileGcs Gcs { get; set; }
+
+        /// <summary>A local path within the VM to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localPath")]
+        public virtual string LocalPath { get; set; }
+
+        /// <summary>A generic remote file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remote")]
+        public virtual OSPolicyResourceFileRemote Remote { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a file available as a Cloud Storage Object.</summary>
+    public class OSPolicyResourceFileGcs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Bucket of the Cloud Storage object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Generation number of the Cloud Storage object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Required. Name of the Cloud Storage object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a file available via some URI.</summary>
+    public class OSPolicyResourceFileRemote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SHA256 checksum of the remote file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Checksum")]
+        public virtual string Sha256Checksum { get; set; }
+
+        /// <summary>
+        /// Required. URI from which to fetch the object. It should contain both the protocol and path following the
+        /// format `{protocol}://{location}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that manages the state of a file.</summary>
+    public class OSPolicyResourceFileResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A a file with this content. The size of the content is limited to 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>A remote or local source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual OSPolicyResourceFile File { get; set; }
+
+        /// <summary>Required. The absolute path of the file within the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other
+        /// users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a
+        /// three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write
+        /// bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples
+        /// of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write:
+        /// 6 read only: 4
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual string Permissions { get; set; }
+
+        /// <summary>Required. Desired state of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to
+    /// create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is
+    /// applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter`
+    /// specified within the resource group.
+    /// </summary>
+    public class OSPolicyResourceGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of inventory filters for the resource group. The resources in this resource group are applied to the
+        /// target VM if it satisfies at least one of the following inventory filters. For example, to apply this
+        /// resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with
+        /// following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos'
+        /// If the list is empty, this resource group will be applied to the target VM unconditionally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryFilters")]
+        public virtual System.Collections.Generic.IList<OSPolicyInventoryFilter> InventoryFilters { get; set; }
+
+        /// <summary>
+        /// Required. List of resources configured for this resource group. The resources are executed in the exact
+        /// order specified here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<OSPolicyResource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that manages a system package.</summary>
+    public class OSPolicyResourcePackageResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A package managed by Apt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apt")]
+        public virtual OSPolicyResourcePackageResourceAPT Apt { get; set; }
+
+        /// <summary>A deb package file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deb")]
+        public virtual OSPolicyResourcePackageResourceDeb Deb { get; set; }
+
+        /// <summary>Required. The desired state the agent should maintain for this package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredState")]
+        public virtual string DesiredState { get; set; }
+
+        /// <summary>A package managed by GooGet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googet")]
+        public virtual OSPolicyResourcePackageResourceGooGet Googet { get; set; }
+
+        /// <summary>An MSI package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("msi")]
+        public virtual OSPolicyResourcePackageResourceMSI Msi { get; set; }
+
+        /// <summary>An rpm package file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rpm")]
+        public virtual OSPolicyResourcePackageResourceRPM Rpm { get; set; }
+
+        /// <summary>A package managed by YUM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yum")]
+        public virtual OSPolicyResourcePackageResourceYUM Yum { get; set; }
+
+        /// <summary>A package managed by Zypper.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zypper")]
+        public virtual OSPolicyResourcePackageResourceZypper Zypper { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A package managed by APT. - install: `apt-get update &amp;amp;&amp;amp; apt-get -y install [name]` - remove:
+    /// `apt-get -y remove [name]`
+    /// </summary>
+    public class OSPolicyResourcePackageResourceAPT : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Package name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A deb package file. dpkg packages only support INSTALLED state.</summary>
+    public class OSPolicyResourcePackageResourceDeb : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true:
+        /// `apt-get update &amp;amp;&amp;amp; apt-get -y install package.deb`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullDeps")]
+        public virtual System.Nullable<bool> PullDeps { get; set; }
+
+        /// <summary>Required. A deb package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual OSPolicyResourceFile Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove
+    /// package`
+    /// </summary>
+    public class OSPolicyResourcePackageResourceGooGet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Package name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An MSI package. MSI packages only support INSTALLED state.</summary>
+    public class OSPolicyResourcePackageResourceMSI : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional properties to use during installation. This should be in the format of Property=Setting. Appended
+        /// to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<string> Properties { get; set; }
+
+        /// <summary>Required. The MSI package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual OSPolicyResourceFile Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An RPM package file. RPM packages only support INSTALLED state.</summary>
+    public class OSPolicyResourcePackageResourceRPM : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs
+        /// package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullDeps")]
+        public virtual System.Nullable<bool> PullDeps { get; set; }
+
+        /// <summary>Required. An rpm package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual OSPolicyResourceFile Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
+    /// </summary>
+    public class OSPolicyResourcePackageResourceYUM : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Package name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
+    /// </summary>
+    public class OSPolicyResourcePackageResourceZypper : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Package name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that manages a package repository.</summary>
+    public class OSPolicyResourceRepositoryResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An Apt Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apt")]
+        public virtual OSPolicyResourceRepositoryResourceAptRepository Apt { get; set; }
+
+        /// <summary>A Goo Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goo")]
+        public virtual OSPolicyResourceRepositoryResourceGooRepository Goo { get; set; }
+
+        /// <summary>A Yum Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yum")]
+        public virtual OSPolicyResourceRepositoryResourceYumRepository Yum { get; set; }
+
+        /// <summary>A Zypper Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zypper")]
+        public virtual OSPolicyResourceRepositoryResourceZypperRepository Zypper { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single apt package repository. These will be added to a repo file that will be managed at
+    /// `/etc/apt/sources.list.d/google_osconfig.list`.
+    /// </summary>
+    public class OSPolicyResourceRepositoryResourceAptRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of archive files in this repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveType")]
+        public virtual string ArchiveType { get; set; }
+
+        /// <summary>Required. List of components for this repository. Must contain at least one item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("components")]
+        public virtual System.Collections.Generic.IList<string> Components { get; set; }
+
+        /// <summary>Required. Distribution of this repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
+        public virtual string Distribution { get; set; }
+
+        /// <summary>
+        /// URI of the key file for this repository. The agent maintains a keyring at
+        /// `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpgKey")]
+        public virtual string GpgKey { get; set; }
+
+        /// <summary>Required. URI for this repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a Goo package repository. These are added to a repo file that is managed at
+    /// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
+    /// </summary>
+    public class OSPolicyResourceRepositoryResourceGooRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The url of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single yum package repository. These are added to a repo file that is managed at
+    /// `/etc/yum.repos.d/google_osconfig.repo`.
+    /// </summary>
+    public class OSPolicyResourceRepositoryResourceYumRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the repository directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseUrl")]
+        public virtual string BaseUrl { get; set; }
+
+        /// <summary>The display name of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>URIs of GPG keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpgKeys")]
+        public virtual System.Collections.Generic.IList<string> GpgKeys { get; set; }
+
+        /// <summary>
+        /// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also
+        /// the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking
+        /// for resource conflicts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single zypper package repository. These are added to a repo file that is managed at
+    /// `/etc/zypp/repos.d/google_osconfig.repo`.
+    /// </summary>
+    public class OSPolicyResourceRepositoryResourceZypperRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the repository directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseUrl")]
+        public virtual string BaseUrl { get; set; }
+
+        /// <summary>The display name of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>URIs of GPG keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpgKeys")]
+        public virtual System.Collections.Generic.IList<string> GpgKeys { get; set; }
+
+        /// <summary>
+        /// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and
+        /// also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when
+        /// checking for GuestPolicy conflicts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
     /// text format.
@@ -2083,6 +3380,49 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>Required. The desired patch job execution time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executeTime")]
         public virtual object ExecuteTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2522,6 +3862,35 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>Required. Schedule with weekly executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekly")]
         public virtual WeeklySchedule Weekly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
