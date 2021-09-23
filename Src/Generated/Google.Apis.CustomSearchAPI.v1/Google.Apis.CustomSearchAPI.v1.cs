@@ -302,21 +302,21 @@ namespace Google.Apis.CustomSearchAPI.v1
 
                 /// <summary>
                 /// Enables or disables [Simplified and Traditional Chinese
-                /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch). The default
-                /// value for this parameter is 0 (zero), meaning that the feature is enabled. Supported values are: *
-                /// `1`: Disabled * `0`: Enabled (default)
+                /// Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch). The
+                /// default value for this parameter is 0 (zero), meaning that the feature is enabled. Supported values
+                /// are: * `1`: Disabled * `0`: Enabled (default)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("c2coff", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string C2coff { get; set; }
 
                 /// <summary>
                 /// Restricts search results to documents originating in a particular country. You may use [Boolean
-                /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
-                /// in the cr parameter's value. Google Search determines the country of a document by analyzing: * the
+                /// operators](https://developers.google.com/custom-search/docs/json_api_reference#booleanOperators) in
+                /// the cr parameter's value. Google Search determines the country of a document by analyzing: * the
                 /// top-level domain (TLD) of the document's URL * the geographic location of the Web server's IP
                 /// address See the [Country Parameter
-                /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
-                /// page for a list of valid values for this parameter.
+                /// Values](https://developers.google.com/custom-search/docs/json_api_reference#countryCollections) page
+                /// for a list of valid values for this parameter.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Cr { get; set; }
@@ -353,11 +353,11 @@ namespace Google.Apis.CustomSearchAPI.v1
 
                 /// <summary>
                 /// Controls turning on or off the duplicate content filter. * See [Automatic
-                /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-                /// information about Google's search results filters. Note that host crowding filtering applies only to
-                /// multi-site searches. * By default, Google applies filtering to all search results to improve the
-                /// quality of those results. Acceptable values are: * `0`: Turns off duplicate content filter. * `1`:
-                /// Turns on duplicate content filter.
+                /// Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering)
+                /// for more information about Google's search results filters. Note that host crowding filtering
+                /// applies only to multi-site searches. * By default, Google applies filtering to all search results to
+                /// improve the quality of those results. Acceptable values are: * `0`: Turns off duplicate content
+                /// filter. * `1`: Turns on duplicate content filter.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -365,10 +365,10 @@ namespace Google.Apis.CustomSearchAPI.v1
                 /// <summary>
                 /// Geolocation of end user. * The `gl` parameter value is a two-letter country code. The `gl` parameter
                 /// boosts search results whose country of origin matches the parameter value. See the [Country
-                /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes) page
-                /// for a list of valid values. * Specifying a `gl` parameter value should lead to more relevant
-                /// results. This is particularly true for international customers and, even more specifically, for
-                /// customers in English- speaking countries other than the United States.
+                /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) page for a
+                /// list of valid values. * Specifying a `gl` parameter value should lead to more relevant results. This
+                /// is particularly true for international customers and, even more specifically, for customers in
+                /// English- speaking countries other than the United States.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("gl", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Gl { get; set; }
@@ -390,11 +390,11 @@ namespace Google.Apis.CustomSearchAPI.v1
                 /// <summary>
                 /// Sets the user interface language. * Explicitly setting this parameter improves the performance and
                 /// the quality of your search results. * See the [Interface
-                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages)
                 /// section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and (Supported Interface
-                /// Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]
+                /// Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing)
+                /// for more information, and [Supported Interface
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages)
                 /// for a list of supported languages.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
@@ -1049,8 +1049,8 @@ namespace Google.Apis.CustomSearchAPI.v1
 
             /// <summary>
             /// Enables or disables [Simplified and Traditional Chinese
-            /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch). The default value
-            /// for this parameter is 0 (zero), meaning that the feature is enabled. Supported values are: * `1`:
+            /// Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch). The default
+            /// value for this parameter is 0 (zero), meaning that the feature is enabled. Supported values are: * `1`:
             /// Disabled * `0`: Enabled (default)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("c2coff", Google.Apis.Util.RequestParameterType.Query)]
@@ -1058,12 +1058,12 @@ namespace Google.Apis.CustomSearchAPI.v1
 
             /// <summary>
             /// Restricts search results to documents originating in a particular country. You may use [Boolean
-            /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators) in
-            /// the cr parameter's value. Google Search determines the country of a document by analyzing: * the
-            /// top-level domain (TLD) of the document's URL * the geographic location of the Web server's IP address
-            /// See the [Country Parameter
-            /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections) page
-            /// for a list of valid values for this parameter.
+            /// operators](https://developers.google.com/custom-search/docs/json_api_reference#booleanOperators) in the
+            /// cr parameter's value. Google Search determines the country of a document by analyzing: * the top-level
+            /// domain (TLD) of the document's URL * the geographic location of the Web server's IP address See the
+            /// [Country Parameter
+            /// Values](https://developers.google.com/custom-search/docs/json_api_reference#countryCollections) page for
+            /// a list of valid values for this parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Cr { get; set; }
@@ -1100,11 +1100,11 @@ namespace Google.Apis.CustomSearchAPI.v1
 
             /// <summary>
             /// Controls turning on or off the duplicate content filter. * See [Automatic
-            /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-            /// information about Google's search results filters. Note that host crowding filtering applies only to
-            /// multi-site searches. * By default, Google applies filtering to all search results to improve the quality
-            /// of those results. Acceptable values are: * `0`: Turns off duplicate content filter. * `1`: Turns on
-            /// duplicate content filter.
+            /// Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering) for
+            /// more information about Google's search results filters. Note that host crowding filtering applies only
+            /// to multi-site searches. * By default, Google applies filtering to all search results to improve the
+            /// quality of those results. Acceptable values are: * `0`: Turns off duplicate content filter. * `1`: Turns
+            /// on duplicate content filter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1112,8 +1112,8 @@ namespace Google.Apis.CustomSearchAPI.v1
             /// <summary>
             /// Geolocation of end user. * The `gl` parameter value is a two-letter country code. The `gl` parameter
             /// boosts search results whose country of origin matches the parameter value. See the [Country
-            /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes) page for a
-            /// list of valid values. * Specifying a `gl` parameter value should lead to more relevant results. This is
+            /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) page for a list
+            /// of valid values. * Specifying a `gl` parameter value should lead to more relevant results. This is
             /// particularly true for international customers and, even more specifically, for customers in English-
             /// speaking countries other than the United States.
             /// </summary>
@@ -1137,12 +1137,12 @@ namespace Google.Apis.CustomSearchAPI.v1
             /// <summary>
             /// Sets the user interface language. * Explicitly setting this parameter improves the performance and the
             /// quality of your search results. * See the [Interface
-            /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages) section of
-            /// [Internationalizing Queries and Results
-            /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-            /// more information, and (Supported Interface
-            /// Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]
-            /// for a list of supported languages.
+            /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages)
+            /// section of [Internationalizing Queries and Results
+            /// Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing)
+            /// for more information, and [Supported Interface
+            /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages) for a
+            /// list of supported languages.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Hl { get; set; }
@@ -1775,10 +1775,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
     /// <summary>Promotion result.</summary>
     public class Promotion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// An array of block objects for this promotion. See [Google WebSearch Protocol
-        /// reference](https://developers.google.com/custom-search/docs/xml_results) for more information.
-        /// </summary>
+        /// <summary>An array of block objects for this promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyLines")]
         public virtual System.Collections.Generic.IList<BodyLinesData> BodyLines { get; set; }
 
@@ -1805,10 +1802,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
 
-        /// <summary>
-        /// An array of block objects for this promotion. See [Google WebSearch Protocol
-        /// reference](https://developers.google.com/custom-search/docs/xml_results) for more information.
-        /// </summary>
+        /// <summary>An array of block objects for this promotion.</summary>
         public class BodyLinesData
         {
             /// <summary>The block object's text in HTML, if it has text.</summary>
@@ -1886,10 +1880,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>
-        /// Encapsulates all information about [refinement
-        /// labels](https://developers.google.com/custom-search/docs/xml_results).
-        /// </summary>
+        /// <summary>Encapsulates all information about refinement labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelsData> Labels { get; set; }
 
@@ -1951,10 +1942,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
             public virtual System.Nullable<int> Width { get; set; }
         }
 
-        /// <summary>
-        /// Encapsulates all information about [refinement
-        /// labels](https://developers.google.com/custom-search/docs/xml_results).
-        /// </summary>
+        /// <summary>Encapsulates all information about refinement labels.</summary>
         public class LabelsData
         {
             /// <summary>
@@ -2048,12 +2036,12 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Restricts search results to documents originating in a particular country. You may use [Boolean
-                /// operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators) in the
-                /// `cr` parameter's value. Google WebSearch determines the country of a document by analyzing the
+                /// operators](https://developers.google.com/custom-search/docs/json_api_reference#BooleanOrSearch) in
+                /// the `cr` parameter's value. Google WebSearch determines the country of a document by analyzing the
                 /// following: * The top-level domain (TLD) of the document's URL. * The geographic location of the web
                 /// server's IP address. See [Country (cr) Parameter
-                /// Values](https://developers.google.com/custom-search/docs/xml_results#countryCollections) for a list
-                /// of valid values for this parameter.
+                /// Values](https://developers.google.com/custom-search/docs/json_api_reference#countryCollections) for
+                /// a list of valid values for this parameter.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; }
@@ -2077,7 +2065,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Enables or disables the [Simplified and Traditional Chinese
-                /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
+                /// Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch) feature.
                 /// Supported values are: * `0`: enabled (default) * `1`: disabled
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
@@ -2107,9 +2095,9 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Activates or deactivates the automatic filtering of Google search results. See [Automatic
-                /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-                /// information about Google's search results filters. Valid values for this parameter are: * `0`:
-                /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
+                /// Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering)
+                /// for more information about Google's search results filters. Valid values for this parameter are: *
+                /// `0`: Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
                 /// results to improve the quality of those results.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -2117,10 +2105,10 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Boosts search results whose country of origin matches the parameter value. See [Country
-                /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
-                /// valid values. Specifying a `gl` parameter value in WebSearch requests should improve the relevance
-                /// of results. This is particularly true for international customers and, even more specifically, for
-                /// customers in English-speaking countries other than the United States.
+                /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) for a list
+                /// of valid values. Specifying a `gl` parameter value in WebSearch requests should improve the
+                /// relevance of results. This is particularly true for international customers and, even more
+                /// specifically, for customers in English-speaking countries other than the United States.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
                 public virtual string Gl { get; set; }
@@ -2142,11 +2130,11 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// <summary>
                 /// Specifies the interface language (host language) of your user interface. Explicitly setting this
                 /// parameter improves the performance and the quality of your search results. See the [Interface
-                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages)
                 /// section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and [Supported Interface
-                /// Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
+                /// Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing)
+                /// for more information, and [Supported Interface
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages)
                 /// for a list of supported languages.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
@@ -2209,8 +2197,8 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// <summary>
                 /// Provides additional search terms to check for in a document, where each document in the search
                 /// results must contain at least one of the additional search terms. You can also use the [Boolean
-                /// OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt) query term for this
-                /// type of query.
+                /// OR](https://developers.google.com/custom-search/docs/json_api_reference#BooleanOrSearch) query term
+                /// for this type of query.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
                 public virtual string OrTerms { get; set; }
@@ -2235,8 +2223,8 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Specifies the [SafeSearch
-                /// level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels) used for
-                /// filtering out adult results. This is a custom property not defined in the OpenSearch spec. Valid
+                /// level](https://developers.google.com/custom-search/docs/json_api_reference#safeSearchLevels) used
+                /// for filtering out adult results. This is a custom property not defined in the OpenSearch spec. Valid
                 /// parameter values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
@@ -2301,12 +2289,12 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Restricts search results to documents originating in a particular country. You may use [Boolean
-                /// operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators) in the
-                /// `cr` parameter's value. Google WebSearch determines the country of a document by analyzing the
+                /// operators](https://developers.google.com/custom-search/docs/json_api_reference#BooleanOrSearch) in
+                /// the `cr` parameter's value. Google WebSearch determines the country of a document by analyzing the
                 /// following: * The top-level domain (TLD) of the document's URL. * The geographic location of the web
                 /// server's IP address. See [Country (cr) Parameter
-                /// Values](https://developers.google.com/custom-search/docs/xml_results#countryCollections) for a list
-                /// of valid values for this parameter.
+                /// Values](https://developers.google.com/custom-search/docs/json_api_reference#countryCollections) for
+                /// a list of valid values for this parameter.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; }
@@ -2330,7 +2318,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Enables or disables the [Simplified and Traditional Chinese
-                /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
+                /// Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch) feature.
                 /// Supported values are: * `0`: enabled (default) * `1`: disabled
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
@@ -2360,9 +2348,9 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Activates or deactivates the automatic filtering of Google search results. See [Automatic
-                /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-                /// information about Google's search results filters. Valid values for this parameter are: * `0`:
-                /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
+                /// Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering)
+                /// for more information about Google's search results filters. Valid values for this parameter are: *
+                /// `0`: Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
                 /// results to improve the quality of those results.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -2370,10 +2358,10 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Boosts search results whose country of origin matches the parameter value. See [Country
-                /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
-                /// valid values. Specifying a `gl` parameter value in WebSearch requests should improve the relevance
-                /// of results. This is particularly true for international customers and, even more specifically, for
-                /// customers in English-speaking countries other than the United States.
+                /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) for a list
+                /// of valid values. Specifying a `gl` parameter value in WebSearch requests should improve the
+                /// relevance of results. This is particularly true for international customers and, even more
+                /// specifically, for customers in English-speaking countries other than the United States.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
                 public virtual string Gl { get; set; }
@@ -2395,11 +2383,11 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// <summary>
                 /// Specifies the interface language (host language) of your user interface. Explicitly setting this
                 /// parameter improves the performance and the quality of your search results. See the [Interface
-                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages)
                 /// section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and [Supported Interface
-                /// Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
+                /// Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing)
+                /// for more information, and [Supported Interface
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages)
                 /// for a list of supported languages.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
@@ -2462,8 +2450,8 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// <summary>
                 /// Provides additional search terms to check for in a document, where each document in the search
                 /// results must contain at least one of the additional search terms. You can also use the [Boolean
-                /// OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt) query term for this
-                /// type of query.
+                /// OR](https://developers.google.com/custom-search/docs/json_api_reference#BooleanOrSearch) query term
+                /// for this type of query.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
                 public virtual string OrTerms { get; set; }
@@ -2488,8 +2476,8 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Specifies the [SafeSearch
-                /// level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels) used for
-                /// filtering out adult results. This is a custom property not defined in the OpenSearch spec. Valid
+                /// level](https://developers.google.com/custom-search/docs/json_api_reference#safeSearchLevels) used
+                /// for filtering out adult results. This is a custom property not defined in the OpenSearch spec. Valid
                 /// parameter values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
@@ -2554,12 +2542,12 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Restricts search results to documents originating in a particular country. You may use [Boolean
-                /// operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators) in the
-                /// `cr` parameter's value. Google WebSearch determines the country of a document by analyzing the
+                /// operators](https://developers.google.com/custom-search/docs/json_api_reference#BooleanOrSearch) in
+                /// the `cr` parameter's value. Google WebSearch determines the country of a document by analyzing the
                 /// following: * The top-level domain (TLD) of the document's URL. * The geographic location of the web
                 /// server's IP address. See [Country (cr) Parameter
-                /// Values](https://developers.google.com/custom-search/docs/xml_results#countryCollections) for a list
-                /// of valid values for this parameter.
+                /// Values](https://developers.google.com/custom-search/docs/json_api_reference#countryCollections) for
+                /// a list of valid values for this parameter.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
                 public virtual string Cr { get; set; }
@@ -2583,7 +2571,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Enables or disables the [Simplified and Traditional Chinese
-                /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
+                /// Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch) feature.
                 /// Supported values are: * `0`: enabled (default) * `1`: disabled
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
@@ -2613,9 +2601,9 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Activates or deactivates the automatic filtering of Google search results. See [Automatic
-                /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
-                /// information about Google's search results filters. Valid values for this parameter are: * `0`:
-                /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
+                /// Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering)
+                /// for more information about Google's search results filters. Valid values for this parameter are: *
+                /// `0`: Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
                 /// results to improve the quality of those results.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -2623,10 +2611,10 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Boosts search results whose country of origin matches the parameter value. See [Country
-                /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
-                /// valid values. Specifying a `gl` parameter value in WebSearch requests should improve the relevance
-                /// of results. This is particularly true for international customers and, even more specifically, for
-                /// customers in English-speaking countries other than the United States.
+                /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) for a list
+                /// of valid values. Specifying a `gl` parameter value in WebSearch requests should improve the
+                /// relevance of results. This is particularly true for international customers and, even more
+                /// specifically, for customers in English-speaking countries other than the United States.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
                 public virtual string Gl { get; set; }
@@ -2648,11 +2636,11 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// <summary>
                 /// Specifies the interface language (host language) of your user interface. Explicitly setting this
                 /// parameter improves the performance and the quality of your search results. See the [Interface
-                /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages)
                 /// section of [Internationalizing Queries and Results
-                /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing) for
-                /// more information, and [Supported Interface
-                /// Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
+                /// Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing)
+                /// for more information, and [Supported Interface
+                /// Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages)
                 /// for a list of supported languages.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
@@ -2715,8 +2703,8 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// <summary>
                 /// Provides additional search terms to check for in a document, where each document in the search
                 /// results must contain at least one of the additional search terms. You can also use the [Boolean
-                /// OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt) query term for this
-                /// type of query.
+                /// OR](https://developers.google.com/custom-search/docs/json_api_reference#BooleanOrSearch) query term
+                /// for this type of query.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
                 public virtual string OrTerms { get; set; }
@@ -2741,8 +2729,8 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
 
                 /// <summary>
                 /// Specifies the [SafeSearch
-                /// level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels) used for
-                /// filtering out adult results. This is a custom property not defined in the OpenSearch spec. Valid
+                /// level](https://developers.google.com/custom-search/docs/json_api_reference#safeSearchLevels) used
+                /// for filtering out adult results. This is a custom property not defined in the OpenSearch spec. Valid
                 /// parameter values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]

@@ -16493,6 +16493,34 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Environments.DeployFlow long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3DeployFlowMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors of running deployment tests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestError> TestErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.DeployFlow.</summary>
+    public class GoogleCloudDialogflowCxV3DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the flow version Deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>The updated environment where the flow is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual GoogleCloudDialogflowCxV3Environment Environment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the input for dtmf event.</summary>
     public class GoogleCloudDialogflowCxV3DtmfInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16503,6 +16531,90 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The finish digit (if any).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
         public virtual string FinishDigit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an environment for an agent. You can create multiple versions of your agent and publish them to
+    /// separate environments. When you edit an agent, you are editing the draft agent. At any point, you can save the
+    /// draft agent as an agent version, which is an immutable snapshot of your agent. When you save the draft agent, it
+    /// is published to the default environment. When you create agent versions, you can publish them to custom
+    /// environments. You can create a variety of custom environments for testing, development, production, etc.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the
+        /// request is rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The name of the environment. Format: `projects//locations//agents//environments/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The test cases config for continuous tests of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCasesConfig")]
+        public virtual GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig TestCasesConfig { get; set; }
+
+        /// <summary>Output only. Update time of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Required. A list of configurations for flow versions. You should include version configs for all flows that
+        /// are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EnvironmentVersionConfig> VersionConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for continuous tests.</summary>
+    public class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// once a day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]
+        public virtual System.Nullable<bool> EnableContinuousRun { get; set; }
+
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment.
+        /// Default false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePredeploymentRun")]
+        public virtual System.Nullable<bool> EnablePredeploymentRun { get; set; }
+
+        /// <summary>
+        /// A list of test case names to run. They should be under the same agent. Format of each test case name:
+        /// `projects//locations/ /agents//testCases/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the version.</summary>
+    public class GoogleCloudDialogflowCxV3EnvironmentVersionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18207,6 +18319,34 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Environments.DeployFlow long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1DeployFlowMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors of running deployment tests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestError> TestErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.DeployFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the flow version deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>The updated environment where the flow is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual GoogleCloudDialogflowCxV3beta1Environment Environment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the input for dtmf event.</summary>
     public class GoogleCloudDialogflowCxV3beta1DtmfInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18217,6 +18357,90 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The finish digit (if any).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
         public virtual string FinishDigit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an environment for an agent. You can create multiple versions of your agent and publish them to
+    /// separate environments. When you edit an agent, you are editing the draft agent. At any point, you can save the
+    /// draft agent as an agent version, which is an immutable snapshot of your agent. When you save the draft agent, it
+    /// is published to the default environment. When you create agent versions, you can publish them to custom
+    /// environments. You can create a variety of custom environments for testing, development, production, etc.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the
+        /// request is rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The name of the environment. Format: `projects//locations//agents//environments/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The test cases config for continuous tests of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCasesConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig TestCasesConfig { get; set; }
+
+        /// <summary>Output only. Update time of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Required. A list of configurations for flow versions. You should include version configs for all flows that
+        /// are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> VersionConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for continuous tests.</summary>
+    public class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// once a day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]
+        public virtual System.Nullable<bool> EnableContinuousRun { get; set; }
+
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment.
+        /// Default false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePredeploymentRun")]
+        public virtual System.Nullable<bool> EnablePredeploymentRun { get; set; }
+
+        /// <summary>
+        /// A list of test case names to run. They should be under the same agent. Format of each test case name:
+        /// `projects//locations/ /agents//testCases/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the version.</summary>
+    public class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

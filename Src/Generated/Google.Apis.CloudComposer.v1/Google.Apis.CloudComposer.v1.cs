@@ -631,7 +631,10 @@ namespace Google.Apis.CloudComposer.v1
                     /// `config.softwareConfig.envVariables` * Replace all environment variables. If a replacement
                     /// environment variable map is not included in `environment`, all custom environment variables are
                     /// cleared. It is an error to provide both this mask and a mask specifying one or more individual
-                    /// environment variables.
+                    /// environment variables. * `config.softwareConfig.schedulerCount` * Horizontally scale the number
+                    /// of schedulers in Airflow. A positive integer not greater than the number of nodes must be
+                    /// provided in the `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer
+                    /// environments in versions composer-1.*.*-airflow-2.*.*.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1662,6 +1665,13 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in
+        /// versions composer-1.*.*-airflow-2.*.*.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulerCount")]
+        public virtual System.Nullable<int> SchedulerCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

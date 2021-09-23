@@ -777,6 +777,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                     {
                         this.service = service;
                         ContinuousTestResults = new ContinuousTestResultsResource(service);
+                        Deployments = new DeploymentsResource(service);
                         Experiments = new ExperimentsResource(service);
                         Sessions = new SessionsResource(service);
                     }
@@ -843,6 +844,152 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                             /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v3beta1/{+parent}/continuousTestResults";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Deployments resource.</summary>
+                    public virtual DeploymentsResource Deployments { get; }
+
+                    /// <summary>The "deployments" collection of methods.</summary>
+                    public class DeploymentsResource
+                    {
+                        private const string Resource = "deployments";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public DeploymentsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Retrieves the specified Deployment.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the Deployment. Format:
+                        /// `projects//locations//agents//environments//deployments/`.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Retrieves the specified Deployment.</summary>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Deployment>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the Deployment. Format:
+                            /// `projects//locations//agents//environments//deployments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+/deployments/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Returns the list of all deployments in the specified Environment.</summary>
+                        /// <param name="parent">
+                        /// Required. The Environment to list all environments for. Format:
+                        /// `projects//locations//agents//environments/`.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Returns the list of all deployments in the specified Environment.</summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The Environment to list all environments for. Format:
+                            /// `projects//locations//agents//environments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The maximum number of items to return in a single page. By default 20 and at most 100.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The next_page_token value returned from a previous list request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+parent}/deployments";
 
                             /// <summary>Initializes List parameter list.</summary>
                             protected override void InitParameters()
@@ -2055,6 +2202,75 @@ namespace Google.Apis.Dialogflow.v3beta1
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deploys a flow to the specified Environment. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: DeployFlowMetadata -
+                    /// `response`: DeployFlowResponse
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="environment">
+                    /// Required. The environment to deploy the flow to. Format: `projects//locations//agents//
+                    /// environments/`.
+                    /// </param>
+                    public virtual DeployFlowRequest DeployFlow(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1DeployFlowRequest body, string environment)
+                    {
+                        return new DeployFlowRequest(service, body, environment);
+                    }
+
+                    /// <summary>
+                    /// Deploys a flow to the specified Environment. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: DeployFlowMetadata -
+                    /// `response`: DeployFlowResponse
+                    /// </summary>
+                    public class DeployFlowRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new DeployFlow request.</summary>
+                        public DeployFlowRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1DeployFlowRequest body, string environment) : base(service)
+                        {
+                            Environment = environment;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The environment to deploy the flow to. Format: `projects//locations//agents//
+                        /// environments/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Environment { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1DeployFlowRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deployFlow";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+environment}:deployFlow";
+
+                        /// <summary>Initializes DeployFlow parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environment",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -7847,7 +8063,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                 /// <summary>Updates the specified SecuritySettings.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+                /// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings
+                /// method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format:
+                /// `projects//locations//securitySettings/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings body, string name)
                 {
@@ -7866,7 +8084,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+                    /// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings
+                    /// method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format:
+                    /// `projects//locations//securitySettings/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8465,6 +8685,34 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Environments.DeployFlow long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3DeployFlowMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors of running deployment tests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestError> TestErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.DeployFlow.</summary>
+    public class GoogleCloudDialogflowCxV3DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the flow version Deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>The updated environment where the flow is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual GoogleCloudDialogflowCxV3Environment Environment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the input for dtmf event.</summary>
     public class GoogleCloudDialogflowCxV3DtmfInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8475,6 +8723,90 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The finish digit (if any).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
         public virtual string FinishDigit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an environment for an agent. You can create multiple versions of your agent and publish them to
+    /// separate environments. When you edit an agent, you are editing the draft agent. At any point, you can save the
+    /// draft agent as an agent version, which is an immutable snapshot of your agent. When you save the draft agent, it
+    /// is published to the default environment. When you create agent versions, you can publish them to custom
+    /// environments. You can create a variety of custom environments for testing, development, production, etc.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the
+        /// request is rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The name of the environment. Format: `projects//locations//agents//environments/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The test cases config for continuous tests of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCasesConfig")]
+        public virtual GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig TestCasesConfig { get; set; }
+
+        /// <summary>Output only. Update time of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Required. A list of configurations for flow versions. You should include version configs for all flows that
+        /// are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EnvironmentVersionConfig> VersionConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for continuous tests.</summary>
+    public class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// once a day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]
+        public virtual System.Nullable<bool> EnableContinuousRun { get; set; }
+
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment.
+        /// Default false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePredeploymentRun")]
+        public virtual System.Nullable<bool> EnablePredeploymentRun { get; set; }
+
+        /// <summary>
+        /// A list of test case names to run. They should be under the same agent. Format of each test case name:
+        /// `projects//locations/ /agents//testCases/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the version.</summary>
+    public class GoogleCloudDialogflowCxV3EnvironmentVersionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10372,6 +10704,107 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Environments.DeployFlow long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1DeployFlowMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors of running deployment tests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestError> TestErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Environments.DeployFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1DeployFlowRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The flow version to deploy. Format: `projects//locations//agents// flows//versions/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowVersion")]
+        public virtual string FlowVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.DeployFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the flow version deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>The updated environment where the flow is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual GoogleCloudDialogflowCxV3beta1Environment Environment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an deployment in an environment. A deployment happens when a flow version configured to be active in
+    /// the environment. You can configure running pre-deployment steps, e.g. running validation test cases, experiment
+    /// auto-rollout, etc.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1Deployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End time of this deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// The name of the flow version for this deployment. Format: projects//locations//agents//flows//versions/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowVersion")]
+        public virtual string FlowVersion { get; set; }
+
+        /// <summary>
+        /// The name of the deployment. Format: projects//locations//agents//environments//deployments/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Result of the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual GoogleCloudDialogflowCxV3beta1DeploymentResult Result { get; set; }
+
+        /// <summary>Start time of this deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The current state of the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of the deployment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1DeploymentResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Results of test cases running before the deployment. Format:
+        /// `projects//locations//agents//testCases//results/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentTestResults")]
+        public virtual System.Collections.Generic.IList<string> DeploymentTestResults { get; set; }
+
+        /// <summary>
+        /// The name of the experiment triggered by this deployment. Format:
+        /// projects//locations//agents//environments//experiments/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        public virtual string Experiment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to detect user's intent.</summary>
     public class GoogleCloudDialogflowCxV3beta1DetectIntentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10574,6 +11007,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The test cases config for continuous tests of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCasesConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig TestCasesConfig { get; set; }
+
         /// <summary>Output only. Update time of this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -10584,6 +11021,34 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> VersionConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for continuous tests.</summary>
+    public class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// once a day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]
+        public virtual System.Nullable<bool> EnableContinuousRun { get; set; }
+
+        /// <summary>
+        /// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment.
+        /// Default false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePredeploymentRun")]
+        public virtual System.Nullable<bool> EnablePredeploymentRun { get; set; }
+
+        /// <summary>
+        /// A list of test case names to run. They should be under the same agent. Format of each test case name:
+        /// `projects//locations/ /agents//testCases/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11707,6 +12172,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The list of continuous test results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousTestResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ContinuousTestResult> ContinuousTestResults { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Deployments.ListDeployments.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of deployments. There will be a maximum number of items returned based on the page_size field in
+        /// the request. The list may in some cases be empty or contain fewer entries than page_size even if this isn't
+        /// the last page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Deployment> Deployments { get; set; }
 
         /// <summary>
         /// Token to retrieve the next page of results, or empty if there are no more results in the list.
@@ -12981,7 +13467,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string InspectTemplate { get; set; }
 
         /// <summary>
-        /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        /// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method.
+        /// SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format:
+        /// `projects//locations//securitySettings/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

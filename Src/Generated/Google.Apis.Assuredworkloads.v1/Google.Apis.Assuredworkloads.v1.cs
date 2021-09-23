@@ -905,10 +905,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     public class GoogleCloudAssuredworkloadsV1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Input only. The billing account used for the resources which are direct children of workload. This
-        /// billing account is initially associated with the resources created as part of Workload creation. After the
-        /// initial creation of these resources, the customer can change the assigned billing account. The resource name
-        /// has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// Optional. The billing account used for the resources which are direct children of workload. This billing
+        /// account is initially associated with the resources created as part of Workload creation. After the initial
+        /// creation of these resources, the customer can change the assigned billing account. The resource name has the
+        /// form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
         public virtual string BillingAccount { get; set; }

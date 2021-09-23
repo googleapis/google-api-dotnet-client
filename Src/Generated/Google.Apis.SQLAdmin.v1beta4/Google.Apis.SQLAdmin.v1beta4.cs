@@ -3904,12 +3904,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class AclEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The time when this access control entry expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format,
+        /// for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual object ExpirationTime { get; set; }
 
-        /// <summary>This is always *sql#aclEntry*.</summary>
+        /// <summary>This is always **sql#aclEntry**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3962,7 +3963,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>This is always *sql#backupConfiguration*.</summary>
+        /// <summary>This is always **sql#backupConfiguration**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3999,7 +4000,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
         public virtual System.Nullable<long> BackupId { get; set; }
 
-        /// <summary>This is always *sql#backupContext*.</summary>
+        /// <summary>This is always **sql#backupContext**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4047,14 +4048,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; }
 
         /// <summary>
-        /// The time the backup operation completed in UTC timezone in RFC 3339 format, for example
-        /// *2012-11-15T16:19:00.094Z*.
+        /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
         /// <summary>
-        /// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for
+        /// example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enqueuedTime")]
         public virtual object EnqueuedTime { get; set; }
@@ -4086,8 +4088,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string SelfLink { get; set; }
 
         /// <summary>
-        /// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example
-        /// *2012-11-15T16:19:00.094Z*.
+        /// The time the backup operation actually started in UTC timezone in [RFC
+        /// 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
@@ -4104,8 +4106,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for
-        /// example *2012-11-15T16:19:00.094Z*.
+        /// The start time of the backup window during which this the backup was attempted in [RFC
+        /// 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowStartTime")]
         public virtual object WindowStartTime { get; set; }
@@ -4248,7 +4250,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
 
-        /// <summary>This is always *sql#database*.</summary>
+        /// <summary>This is always **sql#database**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4285,8 +4287,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if
-        /// the flag doesn't take a value.
+        /// The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted
+        /// if the flag doesn't take a value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -4310,8 +4312,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ConnectionName { get; set; }
 
         /// <summary>
-        /// Output only. The time when the instance was created in RFC 3339 format
-        /// (https://tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+        /// Output only. The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -4401,8 +4403,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual OnPremisesConfiguration OnPremisesConfiguration { get; set; }
 
         /// <summary>
-        /// This field represents the report generated by the proactive database wellness job for OutOfDisk issues.
-        /// Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
+        /// This field represents the report generated by the proactive database wellness job for OutOfDisk issues. *
+        /// Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outOfDiskReport")]
         public virtual SqlOutOfDiskReport OutOfDiskReport { get; set; }
@@ -4517,7 +4519,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Read-replica configuration for connecting to the on-premises primary instance.</summary>
     public class DemoteMasterConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always *sql#demoteMasterConfiguration*.</summary>
+        /// <summary>This is always **sql#demoteMasterConfiguration**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4525,7 +4527,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication
         /// configuration information such as the username, password, certificates, and keys are not stored in the
         /// instance metadata. The configuration information is used only to set up the replication connection and is
-        /// stored by MySQL in a file named *master.info* in the data directory.
+        /// stored by MySQL in a file named **master.info** in the data directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlReplicaConfiguration")]
         public virtual DemoteMasterMySqlReplicaConfiguration MysqlReplicaConfiguration { get; set; }
@@ -4558,8 +4560,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<bool> SkipReplicationSetup { get; set; }
 
         /// <summary>
-        /// Verify GTID consistency for demote operation. Default value: *True*. Setting this flag to false enables you
-        /// to bypass GTID consistency check between on-premises primary instance and Cloud SQL instance during the
+        /// Verify GTID consistency for demote operation. Default value: **True**. Setting this flag to false enables
+        /// you to bypass GTID consistency check between on-premises primary instance and Cloud SQL instance during the
         /// demotion operation but also exposes you to the risk of future replication failures. Change the value only if
         /// you know the reason for the GTID divergence and are confident that doing so will not cause any replication
         /// issues.
@@ -4589,7 +4591,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
 
-        /// <summary>This is always *sql#demoteMasterMysqlReplicaConfiguration*.</summary>
+        /// <summary>This is always **sql#demoteMasterMysqlReplicaConfiguration**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4640,7 +4642,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Disk encryption configuration for an instance.</summary>
     public class DiskEncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always *sql#diskEncryptionConfiguration*.</summary>
+        /// <summary>This is always **sql#diskEncryptionConfiguration**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4655,7 +4657,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Disk encryption status for an instance.</summary>
     public class DiskEncryptionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always *sql#diskEncryptionStatus*.</summary>
+        /// <summary>This is always **sql#diskEncryptionStatus**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4670,25 +4672,25 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance export context.</summary>
     public class ExportContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.</summary>
+        /// <summary>Options for exporting data as CSV. **MySQL** and **PostgreSQL** instances only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvExportOptions")]
         public virtual CsvExportOptionsData CsvExportOptions { get; set; }
 
         /// <summary>
-        /// Databases to be exported. *MySQL instances:* If *fileType* is *SQL* and no database is specified, all
-        /// databases are exported, except for the *mysql* system database. If *fileType* is *CSV*, you can specify one
-        /// database, either by using this property or by using the *csvExportOptions.selectQuery* property, which takes
-        /// precedence over this property. *PostgreSQL instances:* You must specify one database to be exported. If
-        /// *fileType* is *CSV*, this database must match the one specified in the *csvExportOptions.selectQuery*
-        /// property. *SQL Server instances:* You must specify one database to be exported, and the *fileType* must be
-        /// *BAK*.
+        /// Databases to be exported. * **MySQL instances:** If **fileType** is **SQL** and no database is specified,
+        /// all databases are exported, except for the **mysql** system database. If **fileType** is **CSV**, you can
+        /// specify one database, either by using this property or by using the **csvExportOptions.selectQuery**
+        /// property, which takes precedence over this property. * **PostgreSQL instances:** You must specify one
+        /// database to be exported. If **fileType** is **CSV**, this database must match the one specified in the
+        /// **csvExportOptions.selectQuery** property. * **SQL Server instances:** You must specify one database to be
+        /// exported, and the **fileType** must be **BAK**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databases")]
         public virtual System.Collections.Generic.IList<string> Databases { get; set; }
 
         /// <summary>
-        /// The file type for the specified uri. *SQL*: The file contains SQL statements. *CSV*: The file contains CSV
-        /// data. *BAK*: The file contains backup data for a SQL Server instance.
+        /// The file type for the specified uri. * **SQL**: The file contains SQL statements. * **CSV**: The file
+        /// contains CSV data. * **BAK**: The file contains backup data for a SQL Server instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; }
@@ -4707,8 +4709,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form
-        /// *gs://bucketName/fileName*. If the file already exists, the request succeeds, but the operation fails. If
-        /// *fileType* is *SQL* and the filename ends with .gz, the contents are compressed.
+        /// **gs://bucketName/fileName**. If the file already exists, the request succeeds, but the operation fails. If
+        /// **fileType** is **SQL** and the filename ends with .gz, the contents are compressed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -4716,7 +4718,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
 
-        /// <summary>Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.</summary>
+        /// <summary>Options for exporting data as CSV. **MySQL** and **PostgreSQL** instances only.</summary>
         public class CsvExportOptionsData
         {
             /// <summary>
@@ -4767,10 +4769,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             public class MysqlExportOptionsData
             {
                 /// <summary>
-                /// Option to include SQL statement required to set up replication. If set to *1*, the dump file
+                /// Option to include SQL statement required to set up replication. * If set to **1**, the dump file
                 /// includes a CHANGE MASTER TO statement with the binary log coordinates, and --set-gtid-purged is set
-                /// to ON. If set to *2*, the CHANGE MASTER TO statement is written as a SQL comment and has no effect.
-                /// If set to any value other than *1*, --set-gtid-purged is set to OFF.
+                /// to ON. * If set to **2**, the CHANGE MASTER TO statement is written as a SQL comment and has no
+                /// effect. * If set to any value other than **1**, --set-gtid-purged is set to OFF.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("masterData")]
                 public virtual System.Nullable<int> MasterData { get; set; }
@@ -4806,12 +4808,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedIntValues")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AllowedIntValues { get; set; }
 
-        /// <summary>For *STRING* flags, a list of strings that the value can be set to.</summary>
+        /// <summary>For **STRING** flags, a list of strings that the value can be set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedStringValues")]
         public virtual System.Collections.Generic.IList<string> AllowedStringValues { get; set; }
 
         /// <summary>
-        /// The database version this flag applies to. Can be *MYSQL_8_0*, *MYSQL_5_6*, or *MYSQL_5_7*.
+        /// The database version this flag applies to. Can be **MYSQL_8_0**, **MYSQL_5_6**, or **MYSQL_5_7**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliesTo")]
         public virtual System.Collections.Generic.IList<string> AppliesTo { get; set; }
@@ -4820,32 +4822,35 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inBeta")]
         public virtual System.Nullable<bool> InBeta { get; set; }
 
-        /// <summary>This is always *sql#flag*.</summary>
+        /// <summary>This is always **sql#flag**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>For *INTEGER* flags, the maximum allowed value.</summary>
+        /// <summary>For **INTEGER** flags, the maximum allowed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
         public virtual System.Nullable<long> MaxValue { get; set; }
 
-        /// <summary>For *INTEGER* flags, the minimum allowed value.</summary>
+        /// <summary>For **INTEGER** flags, the minimum allowed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual System.Nullable<long> MinValue { get; set; }
 
         /// <summary>
         /// This is the name of the flag. Flag names always use underscores, not hyphens, for example:
-        /// *max_allowed_packet*
+        /// **max_allowed_packet**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Indicates whether changing this flag will trigger a database restart.</summary>
+        /// <summary>
+        /// Indicates whether changing this flag will trigger a database restart. Only applicable to Second Generation
+        /// instances.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresRestart")]
         public virtual System.Nullable<bool> RequiresRestart { get; set; }
 
         /// <summary>
-        /// The type of the flag. Flags are typed to being *BOOLEAN*, *STRING*, *INTEGER* or *NONE*. *NONE* is used for
-        /// flags which do not take a value, such as *skip_grant_tables*.
+        /// The type of the flag. Flags are typed to being **BOOLEAN**, **STRING**, **INTEGER** or **NONE**. **NONE** is
+        /// used for flags which do not take a value, such as **skip_grant_tables**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4861,7 +4866,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Flag> Items { get; set; }
 
-        /// <summary>This is always *sql#flagsList*.</summary>
+        /// <summary>This is always **sql#flagsList**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4911,16 +4916,16 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual CsvImportOptionsData CsvImportOptions { get; set; }
 
         /// <summary>
-        /// The target database for the import. If *fileType* is *SQL*, this field is required only if the import file
-        /// does not specify a database, and is overridden by any database specification in the import file. If
-        /// *fileType* is *CSV*, one database must be specified.
+        /// The target database for the import. If **fileType** is **SQL**, this field is required only if the import
+        /// file does not specify a database, and is overridden by any database specification in the import file. If
+        /// **fileType** is **CSV**, one database must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
         /// <summary>
-        /// The file type for the specified uri. *SQL*: The file contains SQL statements. *CSV*: The file contains CSV
-        /// data.
+        /// The file type for the specified uri. * **SQL**: The file contains SQL statements. * **CSV**: The file
+        /// contains CSV data. * **BAK**: The file contains backup data for a SQL Server instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; }
@@ -4929,13 +4934,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importUser")]
         public virtual string ImportUser { get; set; }
 
-        /// <summary>This is always *sql#importContext*.</summary>
+        /// <summary>This is always **sql#importContext**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Path to the import file in Cloud Storage, in the form *gs://bucketName/fileName*. Compressed gzip files
-        /// (.gz) are supported when *fileType* is *SQL*. The instance must have write permissions to the bucket and
+        /// Path to the import file in Cloud Storage, in the form **gs://bucketName/fileName**. Compressed gzip files
+        /// (.gz) are supported when **fileType** is **SQL**. The instance must have write permissions to the bucket and
         /// read access to the file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -4953,7 +4958,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             public class EncryptionOptionsData
             {
                 /// <summary>
-                /// Path to the Certificate (.cer) in Cloud Storage, in the form *gs://bucketName/fileName*. The
+                /// Path to the Certificate (.cer) in Cloud Storage, in the form **gs://bucketName/fileName**. The
                 /// instance must have write permissions to the bucket and read access to the file.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("certPath")]
@@ -5214,7 +5219,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation,
-        /// also known as 'slash' notation (for example: *192.168.100.0/24*).
+        /// also known as 'slash' notation (for example: **192.168.100.0/24**).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworks")]
         public virtual System.Collections.Generic.IList<AclEntry> AuthorizedNetworks { get; set; }
@@ -5225,7 +5230,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For
-        /// example, */projects/myProject/global/networks/default*. This setting can be updated, but it cannot be
+        /// example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be
         /// removed after it is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
@@ -5247,16 +5252,16 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string IpAddress { get; set; }
 
         /// <summary>
-        /// The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This
-        /// field is only available when the IP is scheduled to be retired.
+        /// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for
+        /// example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeToRetire")]
         public virtual object TimeToRetire { get; set; }
 
         /// <summary>
-        /// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A
-        /// *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the
-        /// source address of connections originating from the instance, if supported.
+        /// The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections.
+        /// A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is
+        /// the source address of connections originating from the instance, if supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5266,9 +5271,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     }
 
     /// <summary>
-    /// Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine
-    /// zone, or co-located with an App Engine application. Note that if the preferred location is not available, the
-    /// instance will be located as close as possible within the region. Only one location may be specified.
+    /// Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is
+    /// not available, the instance will be located as close as possible within the region. Only one location may be
+    /// specified.
     /// </summary>
     public class LocationPreference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5278,7 +5283,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("followGaeApplication")]
         public virtual string FollowGaeApplication { get; set; }
 
-        /// <summary>This is always *sql#locationPreference*.</summary>
+        /// <summary>This is always **sql#locationPreference**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5310,11 +5315,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
         public virtual System.Nullable<int> Hour { get; set; }
 
-        /// <summary>This is always *sql#maintenanceWindow*.</summary>
+        /// <summary>This is always **sql#maintenanceWindow**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.</summary>
+        /// <summary>
+        /// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn
+        /// more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTrack")]
         public virtual string UpdateTrack { get; set; }
 
@@ -5353,7 +5361,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dumpFilePath")]
         public virtual string DumpFilePath { get; set; }
 
-        /// <summary>This is always *sql#mysqlReplicaConfiguration*.</summary>
+        /// <summary>This is always **sql#mysqlReplicaConfiguration**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5452,7 +5460,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual BackupContext BackupContext { get; set; }
 
         /// <summary>
-        /// The time this operation finished in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The time this operation finished in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format,
+        /// for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
@@ -5470,13 +5479,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual ImportContext ImportContext { get; set; }
 
         /// <summary>
-        /// The time this operation was enqueued in UTC timezone in RFC 3339 format, for example
-        /// *2012-11-15T16:19:00.094Z*.
+        /// The time this operation was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual object InsertTime { get; set; }
 
-        /// <summary>This is always *sql#operation*.</summary>
+        /// <summary>This is always **sql#operation**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5488,8 +5497,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The type of the operation. Valid values are: *CREATE* *DELETE* *UPDATE* *RESTART* *IMPORT* *EXPORT*
-        /// *BACKUP_VOLUME* *RESTORE_VOLUME* *CREATE_USER* *DELETE_USER* *CREATE_DATABASE* *DELETE_DATABASE*
+        /// The type of the operation. Valid values are: * **CREATE** * **DELETE** * **UPDATE** * **RESTART** *
+        /// **IMPORT** * **EXPORT** * **BACKUP_VOLUME** * **RESTORE_VOLUME** * **CREATE_USER** * **DELETE_USER** *
+        /// **CREATE_DATABASE** * **DELETE_DATABASE**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; }
@@ -5499,14 +5509,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string SelfLink { get; set; }
 
         /// <summary>
-        /// The time this operation actually started in UTC timezone in RFC 3339 format, for example
-        /// *2012-11-15T16:19:00.094Z*.
+        /// The time this operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
         /// <summary>
-        /// The status of an operation. Valid values are: *PENDING* *RUNNING* *DONE* *SQL_OPERATION_STATUS_UNSPECIFIED*
+        /// The status of an operation. Valid values are: * **PENDING** * **RUNNING** * **DONE** *
+        /// **SQL_OPERATION_STATUS_UNSPECIFIED**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
@@ -5537,7 +5548,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>This is always *sql#operationError*.</summary>
+        /// <summary>This is always **sql#operationError**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5556,7 +5567,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<OperationError> Errors { get; set; }
 
-        /// <summary>This is always *sql#operationErrors*.</summary>
+        /// <summary>This is always **sql#operationErrors**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5564,7 +5575,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Database instance list operations response.</summary>
+    /// <summary>Operations list response.</summary>
     public class OperationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of operation resources.</summary>
@@ -5606,7 +5617,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication
         /// configuration information such as the username, password, certificates, and keys are not stored in the
         /// instance metadata. The configuration information is used only to set up the replication connection and is
-        /// stored by MySQL in a file named *master.info* in the data directory.
+        /// stored by MySQL in a file named **master.info** in the data directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlReplicaConfiguration")]
         public virtual MySqlReplicaConfiguration MysqlReplicaConfiguration { get; set; }
@@ -5622,8 +5633,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string RescheduleType { get; set; }
 
         /// <summary>
-        /// Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC
-        /// 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in [RFC
+        /// 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; }
@@ -5680,8 +5691,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     {
         /// <summary>
         /// The activation policy specifies when the instance is activated; it is applicable only when the instance
-        /// state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of
-        /// connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request
+        /// state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of
+        /// connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request
         /// arrives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activationPolicy")]
@@ -5699,9 +5710,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Collections.Generic.IList<string> AuthorizedGaeApplications { get; set; }
 
         /// <summary>
-        /// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that
-        /// zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region
-        /// (it is highly available). For more information, see Overview of the High Availability Configuration.
+        /// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in
+        /// that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in
+        /// a region (it is highly available)./ For more information, see [Overview of the High Availability
+        /// Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityType")]
         public virtual string AvailabilityType { get; set; }
@@ -5726,7 +5738,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<long> DataDiskSizeGb { get; set; }
 
         /// <summary>
-        /// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+        /// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiskType")]
         public virtual string DataDiskType { get; set; }
@@ -5751,12 +5763,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external
-        /// networks can connect to the instance. The IPv4 address cannot be disabled.
+        /// networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual IpConfiguration IpConfiguration { get; set; }
 
-        /// <summary>This is always *sql#settings*.</summary>
+        /// <summary>This is always **sql#settings**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5776,15 +5788,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported
-        /// for Second Generation instances.
+        /// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is
+        /// supported for Second Generation instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingPlan")]
         public virtual string PricingPlan { get; set; }
 
         /// <summary>
-        /// The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_
-        /// This property was only applicable to First Generation instances.
+        /// The type of replication this instance uses. This can be either **ASYNCHRONOUS** or **SYNCHRONOUS**.
+        /// (Deprecated) This property was only applicable to First Generation instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationType")]
         public virtual string ReplicationType { get; set; }
@@ -5812,7 +5824,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageAutoResizeLimit")]
         public virtual System.Nullable<long> StorageAutoResizeLimit { get; set; }
 
-        /// <summary>The tier (or machine type) for this instance, for example *db-custom-1-3840* .</summary>
+        /// <summary>The tier (or machine type) for this instance, for example **db-custom-1-3840**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
 
@@ -5934,15 +5946,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class SqlOutOfDiskReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the
-        /// proactive database wellness job for OOD.
+        /// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the
+        /// proactive database wellness job for OOD. * Readers:
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlMinRecommendedIncreaseSizeGb")]
         public virtual System.Nullable<int> SqlMinRecommendedIncreaseSizeGb { get; set; }
 
         /// <summary>
-        /// This field represents the state generated by the proactive database wellness job for OutOfDisk issues.
-        /// Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
+        /// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. *
+        /// Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlOutOfDiskState")]
         public virtual string SqlOutOfDiskState { get; set; }
@@ -6034,13 +6046,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string CommonName { get; set; }
 
         /// <summary>
-        /// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+        /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for
+        /// example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
+        /// **2012-11-15T16:19:00.094Z**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual object ExpirationTime { get; set; }
@@ -6049,7 +6063,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
 
-        /// <summary>This is always *sql#sslCert*.</summary>
+        /// <summary>This is always **sql#sslCert**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
