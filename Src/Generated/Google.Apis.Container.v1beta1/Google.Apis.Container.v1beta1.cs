@@ -8688,13 +8688,15 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>
-        /// Maximum number of nodes in the NodePool. Must be &amp;gt;= min_node_count. There has to be enough quota to
-        /// scale up the cluster.
+        /// Maximum number of nodes for one location in the NodePool. Must be &amp;gt;= min_node_count. There has to be
+        /// enough quota to scale up the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
         public virtual System.Nullable<int> MaxNodeCount { get; set; }
 
-        /// <summary>Minimum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.</summary>
+        /// <summary>
+        /// Minimum number of nodes for one location in the NodePool. Must be &amp;gt;= 1 and &amp;lt;= max_node_count.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
 

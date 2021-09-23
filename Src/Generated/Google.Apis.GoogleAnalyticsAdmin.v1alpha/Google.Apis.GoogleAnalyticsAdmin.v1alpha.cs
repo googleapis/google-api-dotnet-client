@@ -8261,6 +8261,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>A resource message representing a Google Analytics GA4 property.</summary>
     public class GoogleAnalyticsAdminV1alphaProperty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. The resource name of the parent account Format: accounts/{account_id} Example: "accounts/123"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual string Account { get; set; }
+
         /// <summary>Output only. Time when the entity was originally created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

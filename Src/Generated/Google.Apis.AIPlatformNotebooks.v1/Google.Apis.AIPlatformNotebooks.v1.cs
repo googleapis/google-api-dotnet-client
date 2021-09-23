@@ -578,7 +578,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new Scheduled Notebook in a given project and location.</summary>
+                /// <summary>Creates a new Execution in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Execution body, string parent)
@@ -586,7 +586,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new Scheduled Notebook in a given project and location.</summary>
+                /// <summary>Creates a new Execution in a given project and location.</summary>
                 public class CreateRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3627,7 +3627,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is
         /// SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent
         /// disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics
-        /// of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        /// of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; }
@@ -3645,7 +3645,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to
-        /// attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        /// attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -3655,7 +3655,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Source { get; set; }
 
         /// <summary>
-        /// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+        /// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -3777,7 +3777,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the execute. Format:
-        /// `projects/{project_id}/locations/{location}/execution/{execution_id}
+        /// `projects/{project_id}/locations/{location}/executions/{execution_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3818,7 +3818,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format:
-        /// gs://{project_id}/{folder}/{notebook_file_name} Ex:
+        /// gs://{bucket_name}/{folder}/{notebook_file_name} Ex:
         /// gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputNotebookFile")]
@@ -3847,14 +3847,15 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` -
         /// `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for
         /// training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for
-        /// training with TPU.
+        /// training with
+        /// TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
         public virtual string MasterType { get; set; }
 
         /// <summary>
         /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format:
-        /// gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        /// gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputNotebookFolder")]
         public virtual string OutputNotebookFolder { get; set; }
@@ -3885,6 +3886,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Parameters used in Vertex AI JobType executions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiParameters")]
+        public virtual VertexAIParameters VertexAiParameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3958,8 +3963,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     {
         /// <summary>
         /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available
-        /// options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE
-        /// VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        /// options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE *
+        /// VIRTIO_SCSI_MULTIQUEUE * WINDOWS
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4178,7 +4183,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Notebook instance configurations that can be updated.</summary>
     public class InstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Verifies core internal services are running. More info: go/notebooks-health</summary>
+        /// <summary>Verifies core internal services are running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHealthMonitoring")]
         public virtual System.Nullable<bool> EnableHealthMonitoring { get; set; }
 
@@ -4371,7 +4376,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An Local attached disk resource.</summary>
+    /// <summary>A Local attached disk resource.</summary>
     public class LocalDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4424,7 +4429,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is
         /// SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent
         /// disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics
-        /// of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        /// of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; }
@@ -4439,7 +4444,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to
-        /// attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        /// attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -4450,7 +4455,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
-        /// Valid values: PERSISTENT SCRATCH
+        /// Valid values: * PERSISTENT * SCRATCH
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4954,7 +4959,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("idleShutdown")]
         public virtual System.Nullable<bool> IdleShutdown { get; set; }
 
-        /// <summary>Time in minutes to wait before shuting down runtime. Default: 180 minutes</summary>
+        /// <summary>Time in minutes to wait before shutting down runtime. Default: 180 minutes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleShutdownTimeout")]
         public virtual System.Nullable<int> IdleShutdownTimeout { get; set; }
 
@@ -4988,8 +4993,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of
-        /// week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of
+        /// week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
@@ -5045,7 +5050,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
     /// <summary>
     /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check
-    /// GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+    /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not
+    /// supported.
     /// </summary>
     public class SchedulerAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5344,6 +5350,24 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for upgrading a notebook instance</summary>
     public class UpgradeInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters used in Vertex AI JobType executions.</summary>
+    public class VertexAIParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the
+        /// Job should be peered. For example, `projects/12345/global/networks/myVPC`.
+        /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form
+        /// `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and
+        /// {network} is a network name. Private services access must already be configured for the network. If left
+        /// unspecified, the job is not peered with any network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

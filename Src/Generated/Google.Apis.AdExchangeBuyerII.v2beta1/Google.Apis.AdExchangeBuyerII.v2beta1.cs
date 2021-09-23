@@ -6591,7 +6591,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>
         /// Name used to represent this client to publishers. You may have multiple clients that map to the same entity,
         /// but for each client the combination of `clientName` and entity must be unique. You can specify this field as
-        /// empty.
+        /// empty. Maximum length of 255 characters is allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientName")]
         public virtual string ClientName { get; set; }

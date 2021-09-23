@@ -2796,6 +2796,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowParticipantName")]
         public virtual string DialogflowParticipantName { get; set; }
 
+        /// <summary>Obfuscated user ID from Dialogflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalUserId")]
+        public virtual string ObfuscatedExternalUserId { get; set; }
+
         /// <summary>The role of the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -3412,7 +3416,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configs for the input data used to create the issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. </summary>
+        /// <summary>A filter to reduce the conversations used for training the model to a specific subset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be
+        /// used in training a new issue model, set the `medium` field on `filter`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 
@@ -3667,6 +3678,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The type of this phrase matcher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>Output only. The most recent time at which the phrase matcher was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// The customized version tag to use for the phrase matcher. If not specified, it will default to
@@ -4168,7 +4183,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configs for the input data used to create the issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. </summary>
+        /// <summary>A filter to reduce the conversations used for training the model to a specific subset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be
+        /// used in training a new issue model, set the `medium` field on `filter`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 

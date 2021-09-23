@@ -6784,7 +6784,11 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// verifies that they are able and ready to start shipping the order. This method blocks until a response is
         /// received from the payment processsor. If this method succeeds, the merchant is guaranteed to receive funds
         /// for the order after shipment. If the request fails, it can be retried or the order may be cancelled. This
-        /// method cannot be called after the entire order is already shipped.
+        /// method cannot be called after the entire order is already shipped. A rejected error code is returned when
+        /// the payment service provider has declined the charge. This indicates a problem between the PSP and either
+        /// the merchant's or customer's account. Sometimes this error will be resolved by the customer. We recommend
+        /// retrying these errors once per day or cancelling the order with reason `failedToCaptureFunds` if the items
+        /// cannot be held.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">
@@ -6801,7 +6805,11 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// verifies that they are able and ready to start shipping the order. This method blocks until a response is
         /// received from the payment processsor. If this method succeeds, the merchant is guaranteed to receive funds
         /// for the order after shipment. If the request fails, it can be retried or the order may be cancelled. This
-        /// method cannot be called after the entire order is already shipped.
+        /// method cannot be called after the entire order is already shipped. A rejected error code is returned when
+        /// the payment service provider has declined the charge. This indicates a problem between the PSP and either
+        /// the merchant's or customer's account. Sometimes this error will be resolved by the customer. We recommend
+        /// retrying these errors once per day or cancelling the order with reason `failedToCaptureFunds` if the items
+        /// cannot be held.
         /// </summary>
         public class CaptureOrderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.CaptureOrderResponse>
         {
@@ -13246,6 +13254,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
+        /// <summary>Additional information required for `eCommercePlatform` link type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eCommercePlatformLinkInfo")]
+        public virtual ECommercePlatformLinkInfo ECommercePlatformLinkInfo { get; set; }
+
         /// <summary>
         /// Type of the link between the two accounts. Acceptable values are: - "`channelPartner`" -
         /// "`eCommercePlatform`" - "`paymentServiceProvider`"
@@ -14656,6 +14668,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warehouseBasedDeliveryTimes")]
         public virtual System.Collections.Generic.IList<WarehouseBasedDeliveryTime> WarehouseBasedDeliveryTimes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information required for E_COMMERCE_PLATFORM link type.</summary>
+    public class ECommercePlatformLinkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id used by the third party service provider to identify the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16244,7 +16267,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`failToPushOrderToMerchantOutOfStock`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
         /// "`merchantDidNotShipOnTime`" - "`noInventory`" - "`orderTimeout`" - "`other`" - "`paymentAbuse`" -
         /// "`paymentDeclined`" - "`priceError`" - "`returnRefundAbuse`" - "`shippingPriceError`" - "`taxError`" -
-        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+        /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`failedToCaptureFunds`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
@@ -17735,7 +17758,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// The reason for the cancellation. Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" -
         /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" -
-        /// "`taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+        /// "`taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`failedToCaptureFunds`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
@@ -17773,7 +17796,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// The reason for the cancellation. Acceptable values are: - "`customerInitiatedCancel`" - "`invalidCoupon`" -
         /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" -
-        /// "`taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+        /// "`taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`failedToCaptureFunds`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }

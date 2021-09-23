@@ -2954,7 +2954,11 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates a file's metadata and/or content. This method supports patch semantics.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This
+        /// method supports patch semantics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.File body, string fileId)
@@ -2962,7 +2966,11 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(service, body, fileId);
         }
 
-        /// <summary>Updates a file's metadata and/or content. This method supports patch semantics.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This
+        /// method supports patch semantics.
+        /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3123,7 +3131,11 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates a file's metadata and/or content. This method supports patch semantics.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This
+        /// method supports patch semantics.
+        /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">

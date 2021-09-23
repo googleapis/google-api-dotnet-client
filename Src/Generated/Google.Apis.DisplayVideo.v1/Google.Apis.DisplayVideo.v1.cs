@@ -15329,7 +15329,20 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a single targeting option.</summary>
-            /// <param name="targetingType">Required. The type of targeting option to retrieve.</param>
+            /// <param name="targetingType">
+            /// Required. The type of targeting option to retrieve. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY`
+            /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
+            /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` *
+            /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+            /// `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` *
+            /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` *
+            /// `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` *
+            /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` *
+            /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` *
+            /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+            /// `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
+            /// `TARGETING_TYPE_OMID`
+            /// </param>
             /// <param name="targetingOptionId">Required. The ID of the of targeting option to retrieve.</param>
             public virtual GetRequest Get(GetRequest.TargetingTypeEnum targetingType, string targetingOptionId)
             {
@@ -15347,11 +15360,37 @@ namespace Google.Apis.DisplayVideo.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The type of targeting option to retrieve.</summary>
+                /// <summary>
+                /// Required. The type of targeting option to retrieve. Accepted values are: *
+                /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
+                /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+                /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+                /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` *
+                /// `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` *
+                /// `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` *
+                /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE`
+                /// * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+                /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` *
+                /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual TargetingTypeEnum TargetingType { get; private set; }
 
-                /// <summary>Required. The type of targeting option to retrieve.</summary>
+                /// <summary>
+                /// Required. The type of targeting option to retrieve. Accepted values are: *
+                /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
+                /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+                /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+                /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` *
+                /// `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` *
+                /// `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` *
+                /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE`
+                /// * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+                /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` *
+                /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
+                /// </summary>
                 public enum TargetingTypeEnum
                 {
                     /// <summary>Default value when type is not specified or is unknown in this version.</summary>
@@ -15593,7 +15632,20 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Lists targeting options of a given type.</summary>
-            /// <param name="targetingType">Required. The type of targeting option to be listed.</param>
+            /// <param name="targetingType">
+            /// Required. The type of targeting option to be listed. Accepted values are: *
+            /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
+            /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+            /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+            /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` *
+            /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` *
+            /// `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+            /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` *
+            /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` *
+            /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+            /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` *
+            /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
+            /// </param>
             public virtual ListRequest List(ListRequest.TargetingTypeEnum targetingType)
             {
                 return new ListRequest(service, targetingType);
@@ -15609,11 +15661,37 @@ namespace Google.Apis.DisplayVideo.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The type of targeting option to be listed.</summary>
+                /// <summary>
+                /// Required. The type of targeting option to be listed. Accepted values are: *
+                /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
+                /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+                /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+                /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` *
+                /// `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` *
+                /// `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` *
+                /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE`
+                /// * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+                /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` *
+                /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual TargetingTypeEnum TargetingType { get; private set; }
 
-                /// <summary>Required. The type of targeting option to be listed.</summary>
+                /// <summary>
+                /// Required. The type of targeting option to be listed. Accepted values are: *
+                /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
+                /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+                /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+                /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` *
+                /// `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` *
+                /// `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                /// `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` *
+                /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE`
+                /// * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+                /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` *
+                /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
+                /// </summary>
                 public enum TargetingTypeEnum
                 {
                     /// <summary>Default value when type is not specified or is unknown in this version.</summary>
@@ -18016,7 +18094,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ProximityRadiusUnit { get; set; }
 
         /// <summary>
-        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_BUSINESS_CHAIN`.
+        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_BUSINESS_CHAIN`. Accepted
+        /// business chain targeting option IDs can be retrieved using SearchTargetingOptions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
         public virtual string TargetingOptionId { get; set; }
@@ -19116,8 +19195,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>
-        /// The IDs of the advertisers who have access to this algorithm. This field will not be set if the algorithm
-        /// owner is a partner and is being retrieved using an advertiser accessor.
+        /// The IDs of the advertisers who have access to this algorithm. If advertiser_id is set, this field will only
+        /// consist of that value. This field will not be set if the algorithm
+        /// [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner)
+        /// is a partner and is being retrieved using an advertiser
+        /// [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedAdvertiserIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAdvertiserIds { get; set; }
@@ -22398,8 +22480,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ProximityRadiusUnit { get; set; }
 
         /// <summary>
-        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI` or reuse an existing
-        /// assigned_targeting_option_id.
+        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`. Accepted POI targeting
+        /// option IDs can be retrieved using SearchTargetingOptions. If targeting a specific latitude/longitude
+        /// coordinate removed from an address or POI name, you can generate the necessary targeting option ID by
+        /// rounding the desired coordinate values to the 6th decimal place, removing the decimals, and concatenating
+        /// the string values separated by a semicolon. For example, you can target the latitude/longitude pair of
+        /// 40.7414691, -74.003387 using the targeting option ID "40741469;-74003387".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
         public virtual string TargetingOptionId { get; set; }

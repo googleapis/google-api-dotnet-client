@@ -1816,7 +1816,8 @@ namespace Google.Apis.Fitness.v1.Data
 
         /// <summary>
         /// The end of a window of time. Data that intersects with this time window will be aggregated. The time is in
-        /// milliseconds since epoch, inclusive.
+        /// milliseconds since epoch, inclusive. The maximum allowed difference between start_time_millis // and
+        /// end_time_millis is 7776000000 (roughly 90 days).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMillis")]
         public virtual System.Nullable<long> EndTimeMillis { get; set; }

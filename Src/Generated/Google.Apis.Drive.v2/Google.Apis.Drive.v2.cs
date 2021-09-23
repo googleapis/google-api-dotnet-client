@@ -3879,7 +3879,11 @@ namespace Google.Apis.Drive.v2
             }
         }
 
-        /// <summary>Updates file metadata and/or content. This method supports patch semantics.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might might change automatically, such as
+        /// modifiedDate. This method supports patch semantics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Drive.v2.Data.File body, string fileId)
@@ -3887,7 +3891,11 @@ namespace Google.Apis.Drive.v2
             return new PatchRequest(service, body, fileId);
         }
 
-        /// <summary>Updates file metadata and/or content. This method supports patch semantics.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might might change automatically, such as
+        /// modifiedDate. This method supports patch semantics.
+        /// </summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4461,7 +4469,11 @@ namespace Google.Apis.Drive.v2
             }
         }
 
-        /// <summary>Updates file metadata and/or content.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might be changed automatically, such as modifiedDate.
+        /// This method supports patch semantics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to update.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.File body, string fileId)
@@ -4469,7 +4481,11 @@ namespace Google.Apis.Drive.v2
             return new UpdateRequest(service, body, fileId);
         }
 
-        /// <summary>Updates file metadata and/or content.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might be changed automatically, such as modifiedDate.
+        /// This method supports patch semantics.
+        /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -4776,7 +4792,11 @@ namespace Google.Apis.Drive.v2
             }
         }
 
-        /// <summary>Updates file metadata and/or content.</summary>
+        /// <summary>
+        /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
+        /// you want to modify. When updating fields, some fields might be changed automatically, such as modifiedDate.
+        /// This method supports patch semantics.
+        /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
