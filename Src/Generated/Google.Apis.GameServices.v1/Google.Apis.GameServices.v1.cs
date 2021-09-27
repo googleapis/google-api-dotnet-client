@@ -4336,9 +4336,7 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("in")]
         public virtual System.Collections.Generic.IList<string> In__ { get; set; }
 
-        /// <summary>
-        /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
-        /// </summary>
+        /// <summary>The config returned to callers of CheckPolicy for any entries that match the LOG action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
         public virtual System.Collections.Generic.IList<LogConfig> LogConfig { get; set; }
 

@@ -1268,6 +1268,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Indicates that values for the column cannot be set by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readonly")]
+        public virtual System.Nullable<bool> Readonly__ { get; set; }
+
         /// <summary>
         /// Optional. Additional details about a relationship column. Specified when data_type is relationship.
         /// </summary>
