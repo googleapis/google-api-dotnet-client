@@ -2836,7 +2836,7 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>
                 /// Disable a ServiceAccountKey. A disabled service account key can be enabled through
-                /// EnableServiceAccountKey. The API is currently in preview phase.
+                /// EnableServiceAccountKey.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2852,7 +2852,7 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>
                 /// Disable a ServiceAccountKey. A disabled service account key can be enabled through
-                /// EnableServiceAccountKey. The API is currently in preview phase.
+                /// EnableServiceAccountKey.
                 /// </summary>
                 public class DisableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
                 {
@@ -2903,7 +2903,7 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
-                /// <summary>Enable a ServiceAccountKey. The API is currently in preview phase.</summary>
+                /// <summary>Enable a ServiceAccountKey.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the service account key in the following format:
@@ -2916,7 +2916,7 @@ namespace Google.Apis.Iam.v1
                     return new EnableRequest(service, body, name);
                 }
 
-                /// <summary>Enable a ServiceAccountKey. The API is currently in preview phase.</summary>
+                /// <summary>Enable a ServiceAccountKey.</summary>
                 public class EnableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Enable request.</summary>

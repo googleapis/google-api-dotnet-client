@@ -2453,6 +2453,51 @@ namespace Google.Apis.Firestore.v1
                 }
             }
 
+            /// <summary>Gets information about a database.</summary>
+            /// <param name="name">Required. A name of the form `projects/{project_id}/databases/{database_id}`</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets information about a database.</summary>
+            public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. A name of the form `projects/{project_id}/databases/{database_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten.
             /// The import occurs in the background and its progress can be monitored and managed via the Operation
@@ -2518,6 +2563,120 @@ namespace Google.Apis.Firestore.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List all the databases in the project.</summary>
+            /// <param name="parent">Required. A parent name of the form `projects/{project_id}`</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List all the databases in the project.</summary>
+            public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListDatabasesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. A parent name of the form `projects/{project_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/databases";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Updates a database.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// The resource name of the Database. Format: `projects/{project}/databases/{database}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a database.</summary>
+            public class PatchRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The resource name of the Database. Format: `projects/{project}/databases/{database}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3226,6 +3385,42 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Cloud Firestore Database in Native Mode. Currently one database is allowed per cloud project. It is named
+    /// '(default)'
+    /// </summary>
+    public class GoogleFirestoreAdminV1Database : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The concurrency control mode to use for this database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
+        public virtual string ConcurrencyMode { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
+        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// The location of the database. Available databases are listed at
+        /// https://cloud.google.com/firestore/docs/locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; }
+
+        /// <summary>The resource name of the Database. Format: `projects/{project}/databases/{database}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information
+        /// about how to choose.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+    }
+
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.ExportDocuments.</summary>
     public class GoogleFirestoreAdminV1ExportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3568,6 +3763,17 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The state of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The list of databases for a project.</summary>
+    public class GoogleFirestoreAdminV1ListDatabasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The databases in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1Database> Databases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

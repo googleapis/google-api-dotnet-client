@@ -71,8 +71,16 @@ namespace Google.Apis.CloudOSLogin.v1
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
+            public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
             /// <summary>View and manage your Google Compute Engine resources</summary>
             public static string Compute = "https://www.googleapis.com/auth/compute";
+
+            /// <summary>View your Google Compute Engine resources</summary>
+            public static string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud OS Login API.</summary>
@@ -84,8 +92,16 @@ namespace Google.Apis.CloudOSLogin.v1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
+            public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
             /// <summary>View and manage your Google Compute Engine resources</summary>
             public const string Compute = "https://www.googleapis.com/auth/compute";
+
+            /// <summary>View your Google Compute Engine resources</summary>
+            public const string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
         }
 
         /// <summary>Gets the Users resource.</summary>

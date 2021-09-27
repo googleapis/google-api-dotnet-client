@@ -828,13 +828,13 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Requests that a job is deleted. This call will return when the job is deleted. This method is available in
-        /// limited preview.
+        /// Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.
         /// </summary>
-        /// <param name="projectId">Required. Project ID of the job to be deleted.</param>
+        /// <param name="projectId">Required. Project ID of the job for which metadata is to be deleted.</param>
         /// <param name="jobId">
-        /// Required. Job ID of the job to be deleted. If this is a parent job which has child jobs, all child jobs will
-        /// be deleted as well. Deletion of child jobs directly is not allowed.
+        /// Required. Job ID of the job for which metadata is to be deleted. If this is a parent job which has child
+        /// jobs, the metadata from all child jobs will be deleted as well. Direct deletion of the metadata of child
+        /// jobs is not allowed.
         /// </param>
         public virtual DeleteRequest Delete(string projectId, string jobId)
         {
@@ -842,8 +842,7 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Requests that a job is deleted. This call will return when the job is deleted. This method is available in
-        /// limited preview.
+        /// Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.
         /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
@@ -855,13 +854,14 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-            /// <summary>Required. Project ID of the job to be deleted.</summary>
+            /// <summary>Required. Project ID of the job for which metadata is to be deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
             /// <summary>
-            /// Required. Job ID of the job to be deleted. If this is a parent job which has child jobs, all child jobs
-            /// will be deleted as well. Deletion of child jobs directly is not allowed.
+            /// Required. Job ID of the job for which metadata is to be deleted. If this is a parent job which has child
+            /// jobs, the metadata from all child jobs will be deleted as well. Direct deletion of the metadata of child
+            /// jobs is not allowed.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
@@ -8537,9 +8537,29 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<long> BatchSize { get; set; }
 
+        /// <summary>Booster type for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boosterType")]
+        public virtual string BoosterType { get; set; }
+
         /// <summary>If true, clean spikes and dips in the input time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cleanSpikesAndDips")]
         public virtual System.Nullable<bool> CleanSpikesAndDips { get; set; }
+
+        /// <summary>Subsample ratio of columns for each level for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colsampleBylevel")]
+        public virtual System.Nullable<double> ColsampleBylevel { get; set; }
+
+        /// <summary>Subsample ratio of columns for each node(split) for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colsampleBynode")]
+        public virtual System.Nullable<double> ColsampleBynode { get; set; }
+
+        /// <summary>Subsample ratio of columns when constructing each tree for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colsampleBytree")]
+        public virtual System.Nullable<double> ColsampleBytree { get; set; }
+
+        /// <summary>Type of normalization algorithm for boosted tree models using dart booster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dartNormalizeType")]
+        public virtual string DartNormalizeType { get; set; }
 
         /// <summary>The data frequency of a time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFrequency")]
@@ -8680,6 +8700,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minSplitLoss")]
         public virtual System.Nullable<double> MinSplitLoss { get; set; }
 
+        /// <summary>Minimum sum of instance weight needed in a child for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTreeChildWeight")]
+        public virtual System.Nullable<long> MinTreeChildWeight { get; set; }
+
         /// <summary>
         /// Google Cloud Storage URI from which the model was imported. Only applicable for imported models.
         /// </summary>
@@ -8700,6 +8724,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Num factors specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFactors")]
         public virtual System.Nullable<long> NumFactors { get; set; }
+
+        /// <summary>Number of parallel trees constructed during each iteration for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numParallelTree")]
+        public virtual System.Nullable<long> NumParallelTree { get; set; }
 
         /// <summary>Optimization strategy for training linear regression models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationStrategy")]
@@ -8733,6 +8761,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Column to be designated as time series timestamp for ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesTimestampColumn")]
         public virtual string TimeSeriesTimestampColumn { get; set; }
+
+        /// <summary>Tree construction algorithm for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treeMethod")]
+        public virtual string TreeMethod { get; set; }
 
         /// <summary>User column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userColumn")]

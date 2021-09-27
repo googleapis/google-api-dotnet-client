@@ -1832,6 +1832,52 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Groups a time series query definition with table options.</summary>
+    public class TableDataSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum
+        /// alignment period to use in a time series query For example, if the data is published once every 10 minutes,
+        /// the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at
+        /// one minute intervals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAlignmentPeriod")]
+        public virtual object MinAlignmentPeriod { get; set; }
+
+        /// <summary>Optional. Table display options for configuring how the table is rendered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableDisplayOptions")]
+        public virtual TableDisplayOptions TableDisplayOptions { get; set; }
+
+        /// <summary>
+        /// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with
+        /// interpolations of the form ${label_name}, which will resolve to the label's value i.e.
+        /// "${resource.labels.project_id}."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableTemplate")]
+        public virtual string TableTemplate { get; set; }
+
+        /// <summary>Required. Fields for querying time series data from the Stackdriver metrics API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
+        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Table display options that can be reused.</summary>
+    public class TableDisplayOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is
+        /// for future features and is not currently used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shownColumns")]
+        public virtual System.Collections.Generic.IList<string> ShownColumns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A widget that displays textual content.</summary>
     public class Text : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2013,6 +2059,17 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A table that displays time series data.</summary>
+    public class TimeSeriesTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The data displayed in this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSets")]
+        public virtual System.Collections.Generic.IList<TableDataSet> DataSets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A protocol buffer message type.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2064,6 +2121,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>A raw string or markdown displaying textual content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual Text Text { get; set; }
+
+        /// <summary>A widget that displays time series data in a tabular format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesTable")]
+        public virtual TimeSeriesTable TimeSeriesTable { get; set; }
 
         /// <summary>Optional. The title of the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]

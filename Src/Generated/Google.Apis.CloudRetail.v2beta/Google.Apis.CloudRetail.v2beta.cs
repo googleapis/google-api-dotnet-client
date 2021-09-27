@@ -912,7 +912,6 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// <param name="name">
                         /// Immutable. Full resource name of the product, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-                        /// The branch ID must be "default_branch".
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaProduct body, string name)
                         {
@@ -933,7 +932,6 @@ namespace Google.Apis.CloudRetail.v2beta
                             /// <summary>
                             /// Immutable. Full resource name of the product, such as
                             /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-                            /// The branch ID must be "default_branch".
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1104,7 +1102,6 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// <param name="name">
                         /// Immutable. Full resource name of the product, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-                        /// The branch ID must be "default_branch".
                         /// </param>
                         public virtual SetInventoryRequest SetInventory(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSetInventoryRequest body, string name)
                         {
@@ -1143,7 +1140,6 @@ namespace Google.Apis.CloudRetail.v2beta
                             /// <summary>
                             /// Immutable. Full resource name of the product, such as
                             /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-                            /// The branch ID must be "default_branch".
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3035,6 +3031,16 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the EnrollSolution method. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaEnrollSolutionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2alphaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3497,7 +3503,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// The color display names, which may be different from standard color family names, such as the color aliases
         /// used in the website frontend. Normally it is expected to have only 1 color. May consider using single
-        /// "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded
+        /// "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded
         /// string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
         /// Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property
         /// [Product.color](https://schema.org/color).
@@ -4457,8 +4463,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Immutable. Full resource name of the product, such as
-        /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The
-        /// branch ID must be "default_branch".
+        /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
