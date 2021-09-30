@@ -4324,7 +4324,8 @@ namespace Google.Apis.Document.v1.Data
         /// a logical document. `object` - if the entity has properties it is likely an object (or or a document.)
         /// `datetime` - the entity is a date or time value. `money` - the entity represents a money value amount.
         /// `number` - the entity is a number - integer or floating point. `string` - the entity is a string value.
-        /// `boolean` - the entity is a boolean value. `address` - the entity is a location address.
+        /// `boolean` - the entity is a boolean value. `address` - the entity is a location address. `duration` - the
+        /// entity is a duration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
         public virtual string BaseType { get; set; }

@@ -10210,6 +10210,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bootMode")]
         public virtual string BootMode { get; set; }
 
+        /// <summary>Information regarding CPU specs in the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuInfo")]
+        public virtual System.Collections.Generic.IList<CpuInfoData> CpuInfo { get; set; }
+
         /// <summary>Reports of CPU utilization and temperature (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuStatusReports")]
         public virtual System.Collections.Generic.IList<CpuStatusReportsData> CpuStatusReports { get; set; }
@@ -10414,6 +10418,64 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             /// <summary>Date of usage</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("date")]
             public virtual string Date { get; set; }
+        }
+
+        /// <summary>Information regarding CPU specs in the device.</summary>
+        public class CpuInfoData
+        {
+            /// <summary>The CPU architecture.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+            public virtual string Architecture { get; set; }
+
+            /// <summary>Information for the Logical CPUs</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("logicalCpus")]
+            public virtual System.Collections.Generic.IList<LogicalCpusData> LogicalCpus { get; set; }
+
+            /// <summary>The max CPU clock speed in kHz.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("maxClockSpeedKhz")]
+            public virtual System.Nullable<int> MaxClockSpeedKhz { get; set; }
+
+            /// <summary>The CPU model name.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("model")]
+            public virtual string Model { get; set; }
+
+            /// <summary>Information for the Logical CPUs</summary>
+            public class LogicalCpusData
+            {
+                /// <summary>
+                /// C-States indicate the power consumption state of the CPU. For more information look at documentation
+                /// published by the CPU maker.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("cStates")]
+                public virtual System.Collections.Generic.IList<CStatesData> CStates { get; set; }
+
+                /// <summary>Current frequency the CPU is running at.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("currentScalingFrequencyKhz")]
+                public virtual System.Nullable<int> CurrentScalingFrequencyKhz { get; set; }
+
+                /// <summary>Idle time since last boot.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("idleDuration")]
+                public virtual object IdleDuration { get; set; }
+
+                /// <summary>Maximum frequency the CPU is allowed to run at, by policy.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("maxScalingFrequencyKhz")]
+                public virtual System.Nullable<int> MaxScalingFrequencyKhz { get; set; }
+
+                /// <summary>
+                /// C-States indicate the power consumption state of the CPU. For more information look at documentation
+                /// published by the CPU maker.
+                /// </summary>
+                public class CStatesData
+                {
+                    /// <summary>Name of the state.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+                    public virtual string DisplayName { get; set; }
+
+                    /// <summary>Time spent in the state since the last reboot.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("sessionDuration")]
+                    public virtual object SessionDuration { get; set; }
+                }
+            }
         }
 
         /// <summary>Reports of CPU utilization and temperature (Read-only)</summary>
@@ -11928,7 +11990,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaId")]
         public virtual string SchemaId { get; set; }
 
-        /// <summary>The schema's name.</summary>
+        /// <summary>
+        /// The schema's name. Each `schema_name` must be unique within a customer. Reusing a name results in a `409:
+        /// Entity already exists` error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
         public virtual string SchemaName { get; set; }
     }
@@ -12131,7 +12196,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>Custom fields of the user.</summary>
+        /// <summary>
+        /// Custom fields of the user. The key is a `schema_name` and its values are `'field_name': 'field_value'`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customSchemas")]
         public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> CustomSchemas { get; set; }
 

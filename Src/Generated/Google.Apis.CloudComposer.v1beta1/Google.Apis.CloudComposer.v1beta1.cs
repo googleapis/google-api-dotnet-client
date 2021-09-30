@@ -1447,44 +1447,42 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is
-        /// applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions
-        /// composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to
-        /// have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with
-        /// a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation
-        /// (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
-        /// `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or
-        /// `cluster_ipv4_cidr_block` but not both.
+        /// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer
+        /// environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases`
+        /// is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have
+        /// GKE choose a range with a specific netmask. Set to a
+        /// [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the
+        /// RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to
+        /// use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4CidrBlock")]
         public virtual string ClusterIpv4CidrBlock { get; set; }
 
         /// <summary>
         /// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either
-        /// `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when
-        /// `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this
-        /// field is applicable only when `use_ip_aliases` is true.
+        /// `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in
+        /// versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
         public virtual string ClusterSecondaryRangeName { get; set; }
 
         /// <summary>
-        /// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only
-        /// when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-        /// this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with
-        /// the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
-        /// [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the
-        /// RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to
-        /// use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+        /// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments
+        /// in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set
+        /// to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a
+        /// range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
+        /// `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or
+        /// `services_ipv4_cidr_block` but not both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
         public virtual string ServicesIpv4CidrBlock { get; set; }
 
         /// <summary>
         /// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify
-        /// either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable
-        /// only when `use_ip_aliases` is true. For Cloud Composer environments in versions
-        /// composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+        /// either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer
+        /// environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases`
+        /// is true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
         public virtual string ServicesSecondaryRangeName { get; set; }
