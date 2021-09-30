@@ -2287,7 +2287,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-            /// (Firebase Realtime Database)
+            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2309,7 +2309,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-                /// (Firebase Realtime Database)
+                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2435,7 +2435,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-            /// (Firebase Realtime Database)
+            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaService body, string name)
             {
@@ -2458,7 +2458,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-                /// (Firebase Realtime Database)
+                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3042,7 +3042,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// Required. The relative resource name of the service configuration object, in the format: ```
         /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported
         /// service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
-        /// Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database)
+        /// Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
+        /// `firestore.googleapis.com` (Cloud Firestore)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3062,7 +3063,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element
         /// must be a supported service ID. Currently, the following service IDs are supported: *
         /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase
-        /// Realtime Database)
+        /// Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual GoogleFirebaseAppcheckV1betaService Service { get; set; }

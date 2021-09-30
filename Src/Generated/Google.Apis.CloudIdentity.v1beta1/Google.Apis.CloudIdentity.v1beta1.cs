@@ -2953,6 +2953,70 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
         }
 
+        /// <summary>Get Security Settings</summary>
+        /// <param name="name">
+        /// Required. The security settings to retrieve. Format: `groups/{group_id}/securitySettings`
+        /// </param>
+        public virtual GetSecuritySettingsRequest GetSecuritySettings(string name)
+        {
+            return new GetSecuritySettingsRequest(service, name);
+        }
+
+        /// <summary>Get Security Settings</summary>
+        public class GetSecuritySettingsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SecuritySettings>
+        {
+            /// <summary>Constructs a new GetSecuritySettings request.</summary>
+            public GetSecuritySettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The security settings to retrieve. Format: `groups/{group_id}/securitySettings`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Field-level read mask of which fields to return. "*" returns all fields. If not specified, all fields
+            /// will be returned. May only contain the following field: `member_restriction`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSecuritySettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes GetSecuritySettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^groups/[^/]+/securitySettings$",
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Lists the `Group` resources under a customer or namespace.</summary>
         public virtual ListRequest List()
         {
@@ -3297,6 +3361,80 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                 {
                     Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Update Security Settings</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. The resource name of the security settings. Shall be of the form
+        /// `groups/{group_id}/securitySettings`.
+        /// </param>
+        public virtual UpdateSecuritySettingsRequest UpdateSecuritySettings(Google.Apis.CloudIdentity.v1beta1.Data.SecuritySettings body, string name)
+        {
+            return new UpdateSecuritySettingsRequest(service, body, name);
+        }
+
+        /// <summary>Update Security Settings</summary>
+        public class UpdateSecuritySettingsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateSecuritySettings request.</summary>
+            public UpdateSecuritySettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.SecuritySettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. The resource name of the security settings. Shall be of the form
+            /// `groups/{group_id}/securitySettings`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Required. The fully-qualified names of fields to update. May only contain the following field:
+            /// `member_restriction.query`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.SecuritySettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateSecuritySettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes UpdateSecuritySettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^groups/[^/]+/securitySettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4608,6 +4746,30 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The definition of MemberRestriction</summary>
+    public class MemberRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The evaluated state of this restriction on a group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual RestrictionEvaluation Evaluation { get; set; }
+
+        /// <summary>
+        /// Member Restriction as defined by CEL expression. Supported restrictions are: `member.customer_id` and
+        /// `member.type`. Valid values for `member.type` are `1`, `2` and `3`. They correspond to USER,
+        /// SERVICE_ACCOUNT, and GROUP respectively. The value for `member.customer_id` only supports
+        /// `groupCustomerId()` currently which means the customer id of the group will be used for restriction.
+        /// Supported operators are `&amp;amp;&amp;amp;`, `||` and `==`, corresponding to AND, OR, and EQUAL. Examples:
+        /// Allow only service accounts of given customer to be members. `member.type == 2 &amp;amp;&amp;amp;
+        /// member.customer_id == groupCustomerId()` Allow only users or groups to be members. `member.type == 1 ||
+        /// member.type == 3`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and
     /// an entity belonging to that `Group`, referred to as a "member".
@@ -4693,6 +4855,21 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Evaluations of restrictions applied to parent group on this membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictionEvaluations")]
+        public virtual RestrictionEvaluations RestrictionEvaluations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The evaluated state of this restriction.</summary>
+    public class MembershipRoleRestrictionEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The current state of the restriction</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4803,6 +4980,31 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The evaluated state of this restriction.</summary>
+    public class RestrictionEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The current state of the restriction</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluations of restrictions applied to parent group on this membership.</summary>
+    public class RestrictionEvaluations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view
+        /// the restriction evaluation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberRestrictionEvaluation")]
+        public virtual MembershipRoleRestrictionEvaluation MemberRestrictionEvaluation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for GroupsService.SearchGroups.</summary>
     public class SearchGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4847,6 +5049,24 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definiion of security settings.</summary>
+    public class SecuritySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Member Restriction value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberRestriction")]
+        public virtual MemberRestriction MemberRestriction { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the security settings. Shall be of the form
+        /// `groups/{group_id}/securitySettings`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

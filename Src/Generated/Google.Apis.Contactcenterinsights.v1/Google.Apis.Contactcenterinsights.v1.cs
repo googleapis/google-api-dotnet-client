@@ -2538,7 +2538,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// A map associating each issue resource name with its respective number of matches in the set of
-        /// conversations. Key has the format: `projects//locations//issueModels//issues/`
+        /// conversations. Key has the format: `projects//locations//issueModels//issues/` Deprecated, use
+        /// `issue_matches_stats` field instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueMatches")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> IssueMatches { get; set; }
@@ -2841,6 +2842,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
+        /// <summary>CCAI metadata relating to the current transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowSegmentMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata DialogflowSegmentMetadata { get; set; }
+
         /// <summary>
         /// The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
         /// Example: "en-US".
@@ -2848,9 +2853,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
+        /// <summary>The time that the message occurred, if provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageTime")]
+        public virtual object MessageTime { get; set; }
+
         /// <summary>The participant of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentParticipant")]
         public virtual GoogleCloudContactcenterinsightsV1ConversationParticipant SegmentParticipant { get; set; }
+
+        /// <summary>The sentiment for this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual GoogleCloudContactcenterinsightsV1SentimentData Sentiment { get; set; }
 
         /// <summary>The text of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -2859,6 +2872,19 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A list of the word-specific information for each word in the segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo> Words { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata from Dialogflow relating to the current transcript segment.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAllowlistCovered")]
+        public virtual System.Nullable<bool> SmartReplyAllowlistCovered { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

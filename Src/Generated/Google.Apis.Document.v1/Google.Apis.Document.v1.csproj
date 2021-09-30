@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Document.v1 Client Library</Title>
-    <Version>1.55.0.2445</Version>
+    <Version>1.55.0.2460</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

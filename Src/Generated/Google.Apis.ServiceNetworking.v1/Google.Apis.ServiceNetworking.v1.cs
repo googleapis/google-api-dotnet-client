@@ -2260,6 +2260,13 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual System.Nullable<int> IpPrefixLength { get; set; }
 
         /// <summary>
+        /// Optional. Enable outside allocation using public IP addresses. Any public IP range may be specified. If this
+        /// field is provided, we will not use customer reserved ranges for this primary IP range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outsideAllocationPublicIpRange")]
+        public virtual string OutsideAllocationPublicIpRange { get; set; }
+
+        /// <summary>
         /// Optional. The private IPv6 google access type for the VMs in this subnet. For information about the access
         /// types that can be set using this field, see
         /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks) in the Compute API
@@ -4579,6 +4586,13 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
         public virtual System.Nullable<int> IpPrefixLength { get; set; }
+
+        /// <summary>
+        /// Optional. Enable outside allocation using public IP addresses. Any public IP range may be specified. If this
+        /// field is provided, we will not use customer reserved ranges for this secondary IP range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outsideAllocationPublicIpRange")]
+        public virtual string OutsideAllocationPublicIpRange { get; set; }
 
         /// <summary>
         /// Required. A name for the secondary IP range. The name must be 1-63 characters long, and comply with RFC1035.

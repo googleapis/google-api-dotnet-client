@@ -12662,7 +12662,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("koreanBusinessRegistrationNumber")]
         public virtual string KoreanBusinessRegistrationNumber { get; set; }
 
-        /// <summary>The phone number of the business.</summary>
+        /// <summary>
+        /// ! The phone number of the business. This can only be updated if a verified ! phone number is not already
+        /// set. To replace a verified phone number use ! the `Accounts.requestphoneverification` and !
+        /// `Accounts.verifyphonenumber`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
 
@@ -15597,7 +15601,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted
-        /// together with `pickupSla`. For accepted attribute values, see the local product inventory feed //
+        /// together with `pickupSla`. For accepted attribute values, see the local product inventory feed
         /// specification.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
@@ -20335,6 +20339,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
         public virtual string ProductApplicability { get; set; }
+
+        /// <summary>Product filter by product type for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productType")]
+        public virtual System.Collections.Generic.IList<string> ProductType { get; set; }
+
+        /// <summary>Product filter by product type exclusion for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeExclusion")]
+        public virtual System.Collections.Generic.IList<string> ProductTypeExclusion { get; set; }
 
         /// <summary>Destination ID for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDestinationIds")]
