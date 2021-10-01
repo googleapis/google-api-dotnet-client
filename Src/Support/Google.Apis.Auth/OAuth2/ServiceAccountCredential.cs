@@ -297,7 +297,7 @@ namespace Google.Apis.Auth.OAuth2
                 throw new GoogleApiException(TokenServerUrl, "Invalid OAuth scope or ID token audience provided. " +
                     "A valid authUri and/or OAuth scope is required to proceed.");
             }
-            if (HasExplicitScopes && !UseJwtAccessWithScopes)
+            if (User != null || HasExplicitScopes && !UseJwtAccessWithScopes)
             {
                 return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
             }
