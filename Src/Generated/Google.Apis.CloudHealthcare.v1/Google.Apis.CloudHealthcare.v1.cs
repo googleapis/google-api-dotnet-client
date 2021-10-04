@@ -8516,6 +8516,79 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Exports the messages to a destination. To filter messages to be exported, define a filter using
+                    /// the start and end time, relative to the message generation time (MSH.7). This API returns an
+                    /// Operation that can be used to track the status of the job by calling GetOperation. Immediate
+                    /// fatal errors appear in the error field. Otherwise, when the operation finishes, a detailed
+                    /// response of type ExportMessagesResponse is returned in the response field. The metadata field
+                    /// type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name of the source HL7v2 store, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1.Data.ExportMessagesRequest body, string name)
+                    {
+                        return new ExportRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Exports the messages to a destination. To filter messages to be exported, define a filter using
+                    /// the start and end time, relative to the message generation time (MSH.7). This API returns an
+                    /// Operation that can be used to track the status of the job by calling GetOperation. Immediate
+                    /// fatal errors appear in the error field. Otherwise, when the operation finishes, a detailed
+                    /// response of type ExportMessagesResponse is returned in the response field. The metadata field
+                    /// type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ExportMessagesRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the source HL7v2 store, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.ExportMessagesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the specified HL7v2 store.</summary>
                     /// <param name="name">The resource name of the HL7v2 store to get.</param>
                     public virtual GetRequest Get(string name)
@@ -8633,6 +8706,105 @@ namespace Google.Apis.CloudHealthcare.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Import messages to the HL7v2 store by loading data from the specified sources. This method is
+                    /// optimized to load large quantities of data using import semantics that ignore some HL7v2 store
+                    /// configuration options and are not suitable for all use cases. It is primarily intended to load
+                    /// data into an empty HL7v2 store that is not being used by other clients. An existing message will
+                    /// be overwritten if a duplicate message is imported. A duplicate message is a message with the
+                    /// same raw bytes as a message that already exists in this HL7v2 store. When a message is
+                    /// overwritten, its labels will also be overwritten. The import operation is idempotent unless the
+                    /// input data contains multiple valid messages with the same raw bytes but different labels. In
+                    /// that case, after the import completes, the store contains exactly one message with those raw
+                    /// bytes but there is no ordering guarantee on which version of the labels it has. The operation
+                    /// result counters do not count duplicated raw bytes as an error and count one success for each
+                    /// message in the input, which might result in a success count larger than the number of messages
+                    /// in the HL7v2 store. If some messages fail to import, for example due to parsing errors,
+                    /// successfully imported messages are not rolled back. This method returns an Operation that can be
+                    /// used to track the status of the import by calling GetOperation. Immediate fatal errors appear in
+                    /// the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a response of type ImportMessagesResponse is returned in the response field.
+                    /// The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name of the target HL7v2 store, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1.Data.ImportMessagesRequest body, string name)
+                    {
+                        return new ImportRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Import messages to the HL7v2 store by loading data from the specified sources. This method is
+                    /// optimized to load large quantities of data using import semantics that ignore some HL7v2 store
+                    /// configuration options and are not suitable for all use cases. It is primarily intended to load
+                    /// data into an empty HL7v2 store that is not being used by other clients. An existing message will
+                    /// be overwritten if a duplicate message is imported. A duplicate message is a message with the
+                    /// same raw bytes as a message that already exists in this HL7v2 store. When a message is
+                    /// overwritten, its labels will also be overwritten. The import operation is idempotent unless the
+                    /// input data contains multiple valid messages with the same raw bytes but different labels. In
+                    /// that case, after the import completes, the store contains exactly one message with those raw
+                    /// bytes but there is no ordering guarantee on which version of the labels it has. The operation
+                    /// result counters do not count duplicated raw bytes as an error and count one success for each
+                    /// message in the input, which might result in a success count larger than the number of messages
+                    /// in the HL7v2 store. If some messages fail to import, for example due to parsing errors,
+                    /// successfully imported messages are not rolled back. This method returns an Operation that can be
+                    /// used to track the status of the import by calling GetOperation. Immediate fatal errors appear in
+                    /// the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a response of type ImportMessagesResponse is returned in the response field.
+                    /// The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ImportMessagesRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the target HL7v2 store, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.ImportMessagesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
                             });
                         }
                     }
@@ -11036,6 +11208,47 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to schedule an export.</summary>
+    public class ExportMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The end of the range in `send_time` (MSH.7,
+        /// https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm) to
+        /// process. If not specified, the time when the export is scheduled is used. This value has to come after the
+        /// `start_time` defined below. Only messages whose `send_time` lies in the range `start_time` (inclusive) to
+        /// `end_time` (exclusive) are exported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Export to a Cloud Storage destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GcsDestination GcsDestination { get; set; }
+
+        /// <summary>
+        /// The start of the range in `send_time` (MSH.7,
+        /// https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm) to
+        /// process. If not specified, the UNIX epoch (1970-01-01T00:00:00Z) is used. This value has to come before the
+        /// `end_time` defined below. Only messages whose `send_time` lies in the range `start_time` (inclusive) to
+        /// `end_time` (exclusive) are exported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Final response for the export operation. This structure is included in the response to describe the detailed
+    /// outcome.
+    /// </summary>
+    public class ExportMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to export resources.</summary>
     public class ExportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11301,6 +11514,54 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the
+    /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.
+    /// </summary>
+    public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The format of the exported HL7v2 message files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentStructure")]
+        public virtual string ContentStructure { get; set; }
+
+        /// <summary>
+        /// Specifies the parts of the Message resource to include in the export. If not specified, FULL is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageView")]
+        public virtual string MessageView { get; set; }
+
+        /// <summary>
+        /// URI of an existing Cloud Storage directory where the server writes result files, in the format
+        /// `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when
+        /// composing the object path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
+        public virtual string UriPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the configuration for importing data from Cloud Storage.</summary>
+    public class GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format:
+        /// `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple
+        /// files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more
+        /// characters (including separators). Must be used at the end of a path and with no other wildcards in the
+        /// path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension
+        /// in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson`
+        /// imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1
+        /// character Files matching the wildcard are expected to contain content only, no metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11750,6 +12011,30 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
     /// <summary>Returns additional information in regards to a completed DICOM store import.</summary>
     public class ImportDicomDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to import messages.</summary>
+    public class ImportMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the
+        /// `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Final response of importing messages. This structure is included in the response to describe the detailed
+    /// outcome. It is only included when the operation finishes successfully.
+    /// </summary>
+    public class ImportMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

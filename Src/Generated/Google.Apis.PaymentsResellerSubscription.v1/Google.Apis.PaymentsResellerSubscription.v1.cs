@@ -1216,7 +1216,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Output only. Specifies the duration of the free trial of the subscription.</summary>
+        /// <summary>
+        /// Optional. Specifies the duration of the free trial of the subscription when promotion_type is
+        /// PROMOTION_TYPE_FREE_TRIAL
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrialDuration")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration FreeTrialDuration { get; set; }
 

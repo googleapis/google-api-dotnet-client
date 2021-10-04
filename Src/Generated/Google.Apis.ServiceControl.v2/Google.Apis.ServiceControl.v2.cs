@@ -1119,7 +1119,8 @@ namespace Google.Apis.ServiceControl.v2.Data
 
         /// <summary>
         /// The type of the resource. The syntax is platform-specific because different platforms define their resources
-        /// differently. For Google APIs, the type format must be "{service}/{kind}".
+        /// differently. For Google APIs, the type format must be "{service}/{kind}", such as
+        /// "pubsub.googleapis.com/Topic".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

@@ -4659,6 +4659,77 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
+            /// <summary>
+            /// Creates or adds data to one or more service time series. A service time series is a time series for a
+            /// metric from a Google Cloud service. The response is empty if all time series in the request were
+            /// written. If any time series could not be written, a corresponding failure message is included in the
+            /// error response. This endpoint rejects writes to user-defined metrics. This method is only for use by
+            /// Google Cloud services. Use projects.timeSeries.create instead.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// </param>
+            public virtual CreateServiceRequest CreateService(Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name)
+            {
+                return new CreateServiceRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Creates or adds data to one or more service time series. A service time series is a time series for a
+            /// metric from a Google Cloud service. The response is empty if all time series in the request were
+            /// written. If any time series could not be written, a corresponding failure message is included in the
+            /// error response. This endpoint rejects writes to user-defined metrics. This method is only for use by
+            /// Google Cloud services. Use projects.timeSeries.create instead.
+            /// </summary>
+            public class CreateServiceRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
+            {
+                /// <summary>Constructs a new CreateService request.</summary>
+                public CreateServiceRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "createService";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}/timeSeries:createService";
+
+                /// <summary>Initializes CreateService parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder
@@ -7110,7 +7181,7 @@ namespace Google.Apis.Monitoring.v3.Data
     public class AlertStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If an alert policy that was active has no data for this log, any open incidents will close
+        /// If an alert policy that was active has no data for this long, any open incidents will close
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoClose")]
         public virtual object AutoClose { get; set; }

@@ -65,14 +65,20 @@ namespace Google.Apis.CloudDomains.v1alpha2
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Domains API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Domains API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -662,8 +668,12 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Deletes a `Registration` resource. This method only works on resources in one of the following
-                /// states: * `state` is `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED`
+                /// Deletes a `Registration` resource. For `Registration` resources , this method works if: * `state` is
+                /// `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED` When an active domain
+                /// is successfully deleted, you can continue to use the domain in [Google
+                /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
+                /// in Google Domains, and permissions for the domain are subsequently managed there. The domain will
+                /// not renew automatically unless the new owner sets up billing in Google Domains.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The name of the `Registration` to delete, in the format
@@ -675,8 +685,12 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Deletes a `Registration` resource. This method only works on resources in one of the following
-                /// states: * `state` is `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED`
+                /// Deletes a `Registration` resource. For `Registration` resources , this method works if: * `state` is
+                /// `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED` When an active domain
+                /// is successfully deleted, you can continue to use the domain in [Google
+                /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
+                /// in Google Domains, and permissions for the domain are subsequently managed there. The domain will
+                /// not renew automatically unless the new owner sets up billing in Google Domains.
                 /// </summary>
                 public class DeleteRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1alpha2.Data.Operation>
                 {
@@ -719,13 +733,11 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Exports a `Registration` that you no longer want to use with Cloud Domains. You can continue to use
-                /// the domain in [Google Domains](https://domains.google/) until it expires. If the export is
-                /// successful: * The resource's `state` becomes `EXPORTED`, meaning that it is no longer managed by
-                /// Cloud Domains * Because individual users can own domains in Google Domains, the calling user becomes
-                /// the domain's sole owner. Permissions for the domain are subsequently managed in Google Domains. *
-                /// Without further action, the domain does not renew automatically. The new owner can set up billing in
-                /// Google Domains to renew the domain if needed.
+                /// Exports a `Registration` resource, such that it is no longer managed by Cloud Domains. When an
+                /// active domain is successfully exported, you can continue to use the domain in [Google
+                /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
+                /// in Google Domains, and permissions for the domain are subsequently managed there. The domain will
+                /// not renew automatically unless the new owner sets up billing in Google Domains.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -738,13 +750,11 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Exports a `Registration` that you no longer want to use with Cloud Domains. You can continue to use
-                /// the domain in [Google Domains](https://domains.google/) until it expires. If the export is
-                /// successful: * The resource's `state` becomes `EXPORTED`, meaning that it is no longer managed by
-                /// Cloud Domains * Because individual users can own domains in Google Domains, the calling user becomes
-                /// the domain's sole owner. Permissions for the domain are subsequently managed in Google Domains. *
-                /// Without further action, the domain does not renew automatically. The new owner can set up billing in
-                /// Google Domains to renew the domain if needed.
+                /// Exports a `Registration` resource, such that it is no longer managed by Cloud Domains. When an
+                /// active domain is successfully exported, you can continue to use the domain in [Google
+                /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
+                /// in Google Domains, and permissions for the domain are subsequently managed there. The domain will
+                /// not renew automatically unless the new owner sets up billing in Google Domains.
                 /// </summary>
                 public class ExportRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1alpha2.Data.Operation>
                 {
@@ -2343,8 +2353,8 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
