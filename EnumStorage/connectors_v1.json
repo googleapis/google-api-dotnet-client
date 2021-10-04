@@ -1,0 +1,31 @@
+{
+  "Google.Apis.Connectors.v1.ConnectorsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Connectors.v1.ConnectorsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ConnectionsResource+GetRequest.ViewEnum": [
+    "CONNECTION_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ConnectionsResource+ListRequest.ViewEnum": [
+    "CONNECTION_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+GlobalResource+ProvidersResource+ConnectorsResource+VersionsResource+GetRequest.ViewEnum": [
+    "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
+    "CONNECTOR_VERSION_VIEW_BASIC",
+    "CONNECTOR_VERSION_VIEW_FULL"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+GlobalResource+ProvidersResource+ConnectorsResource+VersionsResource+ListRequest.ViewEnum": [
+    "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
+    "CONNECTOR_VERSION_VIEW_BASIC",
+    "CONNECTOR_VERSION_VIEW_FULL"
+  ]
+}

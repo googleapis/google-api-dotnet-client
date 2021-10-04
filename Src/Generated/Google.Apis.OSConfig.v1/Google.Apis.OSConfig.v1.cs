@@ -319,6 +319,7 @@ namespace Google.Apis.OSConfig.v1
                 {
                     this.service = service;
                     Inventories = new InventoriesResource(service);
+                    OsPolicyAssignments = new OsPolicyAssignmentsResource(service);
                     VulnerabilityReports = new VulnerabilityReportsResource(service);
                 }
 
@@ -564,6 +565,228 @@ namespace Google.Apis.OSConfig.v1
                     }
                 }
 
+                /// <summary>Gets the OsPolicyAssignments resource.</summary>
+                public virtual OsPolicyAssignmentsResource OsPolicyAssignments { get; }
+
+                /// <summary>The "osPolicyAssignments" collection of methods.</summary>
+                public class OsPolicyAssignmentsResource
+                {
+                    private const string Resource = "osPolicyAssignments";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OsPolicyAssignmentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Reports = new ReportsResource(service);
+                    }
+
+                    /// <summary>Gets the Reports resource.</summary>
+                    public virtual ReportsResource Reports { get; }
+
+                    /// <summary>The "reports" collection of methods.</summary>
+                    public class ReportsResource
+                    {
+                        private const string Resource = "reports";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ReportsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// List OS policy asssignment reports for all Compute Engine VM instances in the specified
+                        /// zone.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent resource name. Format:
+                        /// `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/reports`
+                        /// For `{project}`, either `project-number` or `project-id` can be provided. For `{instance}`,
+                        /// either `instance-name`, `instance-id`, or `-` can be provided. If '-' is provided, the
+                        /// response will include OSPolicyAssignmentReports for all instances in the project/location.
+                        /// For `{assignment}`, either `assignment-id` or `-` can be provided. If '-' is provided, the
+                        /// response will include OSPolicyAssignmentReports for all OSPolicyAssignments in the
+                        /// project/location. Either {instance} or {assignment} must be `-`. For example:
+                        /// `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/-/reports`
+                        /// returns all reports for the instance
+                        /// `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/{assignment-id}/reports`
+                        /// returns all the reports for the given assignment across all instances.
+                        /// `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/-/reports` returns
+                        /// all the reports for all assignments across all instances.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// List OS policy asssignment reports for all Compute Engine VM instances in the specified
+                        /// zone.
+                        /// </summary>
+                        public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListOSPolicyAssignmentReportsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/reports`
+                            /// For `{project}`, either `project-number` or `project-id` can be provided. For
+                            /// `{instance}`, either `instance-name`, `instance-id`, or `-` can be provided. If '-' is
+                            /// provided, the response will include OSPolicyAssignmentReports for all instances in the
+                            /// project/location. For `{assignment}`, either `assignment-id` or `-` can be provided. If
+                            /// '-' is provided, the response will include OSPolicyAssignmentReports for all
+                            /// OSPolicyAssignments in the project/location. Either {instance} or {assignment} must be
+                            /// `-`. For example:
+                            /// `projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/-/reports`
+                            /// returns all reports for the instance
+                            /// `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/{assignment-id}/reports`
+                            /// returns all the reports for the given assignment across all instances.
+                            /// `projects/{project}/locations/{location}/instances/-/osPolicyAssignments/-/reports`
+                            /// returns all the reports for all assignments across all instances.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// If provided, this field specifies the criteria that must be met by the
+                            /// `OSPolicyAssignmentReport` API resource that is included in the response.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The maximum number of results to return.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A pagination token returned from a previous call to the `ListOSPolicyAssignmentReports`
+                            /// method that indicates where this listing should continue from.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/reports";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/osPolicyAssignments/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>
+                    /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. API resource name for OS policy assignment report. Format:
+                    /// `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report`
+                    /// For `{project}`, either `project-number` or `project-id` can be provided. For `{instance_id}`,
+                    /// either Compute Engine `instance-id` or `instance-name` can be provided. For `{assignment_id}`,
+                    /// the OSPolicyAssignment id must be provided.
+                    /// </param>
+                    public virtual GetReportRequest GetReport(string name)
+                    {
+                        return new GetReportRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
+                    /// </summary>
+                    public class GetReportRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.OSPolicyAssignmentReport>
+                    {
+                        /// <summary>Constructs a new GetReport request.</summary>
+                        public GetReportRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. API resource name for OS policy assignment report. Format:
+                        /// `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report`
+                        /// For `{project}`, either `project-number` or `project-id` can be provided. For
+                        /// `{instance_id}`, either Compute Engine `instance-id` or `instance-name` can be provided. For
+                        /// `{assignment_id}`, the OSPolicyAssignment id must be provided.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getReport";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes GetReport parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/osPolicyAssignments/[^/]+/report$",
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the VulnerabilityReports resource.</summary>
                 public virtual VulnerabilityReportsResource VulnerabilityReports { get; }
 
@@ -754,6 +977,145 @@ namespace Google.Apis.OSConfig.v1
                 public OsPolicyAssignmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">The name of the operation resource to be cancelled.</param>
+                    public virtual CancelRequest Cancel(Google.Apis.OSConfig.v1.Data.CancelOperationRequest body, string name)
+                    {
+                        return new CancelRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    public class CancelRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.CancelOperationRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be cancelled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.OSConfig.v1.Data.CancelOperationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -1938,6 +2300,13 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for canceling a patch job.</summary>
     public class CancelPatchJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2316,9 +2685,8 @@ namespace Google.Apis.OSConfig.v1.Data
     }
 
     /// <summary>
-    /// Contains information about a Windows application as retrieved from the Windows Registry. For more information
-    /// about these fields, see [Windows Installer Properties for the Uninstall
-    /// Registry](https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key){: class="external" }
+    /// Contains information about a Windows application that is retrieved from the Windows Registry. For more
+    /// information about these fields, see Windows Installer Properties for the Uninstall Registry.
     /// </summary>
     public class InventoryWindowsApplication : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2473,6 +2841,23 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>The pagination token to retrieve the next page of inventory objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A response message for listing OS Policy assignment reports including the page of results and page token.
+    /// </summary>
+    public class ListOSPolicyAssignmentReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pagination token to retrieve the next page of OS policy assignment report objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of OS policy assignment reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyAssignmentReports")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentReport> OsPolicyAssignmentReports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2817,6 +3202,149 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>Rollout update time</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutUpdateTime")]
         public virtual object RolloutUpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A report of the OS policy assignment status for a given instance.</summary>
+    public class OSPolicyAssignmentReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Compute Engine VM instance name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the last attempted run to apply the OS policies associated with this assignment on the
+        /// VM. This ID is logged by the OS Config agent while applying the OS policies associated with this assignment
+        /// on the VM. NOTE: If the service is unable to successfully connect to the agent for this run, then this id
+        /// will not be available in the agent logs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRunId")]
+        public virtual string LastRunId { get; set; }
+
+        /// <summary>
+        /// The `OSPolicyAssignmentReport` API resource name. Format:
+        /// `projects/{project_number}/locations/{location}/instances/{instance_id}/osPolicyAssignments/{os_policy_assignment_id}/report`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Reference to the `OSPolicyAssignment` API resource that the `OSPolicy` belongs to. Format:
+        /// `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyAssignment")]
+        public virtual string OsPolicyAssignment { get; set; }
+
+        /// <summary>Compliance data for each `OSPolicy` that is applied to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyCompliances")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentReportOSPolicyCompliance> OsPolicyCompliances { get; set; }
+
+        /// <summary>Timestamp for when the report was last generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compliance data for an OS policy</summary>
+    public class OSPolicyAssignmentReportOSPolicyCompliance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The compliance state of the OS policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceState")]
+        public virtual string ComplianceState { get; set; }
+
+        /// <summary>
+        /// The reason for the OS policy to be in an unknown compliance state. This field is always populated when
+        /// `compliance_state` is `UNKNOWN`. If populated, the field can contain one of the following values: *
+        /// `vm-not-running`: The VM was not running. * `os-policies-not-supported-by-agent`: The version of the OS
+        /// Config agent running on the VM does not support running OS policies. * `no-agent-detected`: The OS Config
+        /// agent is not detected for the VM. * `resource-execution-errors`: The OS Config agent encountered errors
+        /// while executing one or more resources in the policy. See `os_policy_resource_compliances` for details. *
+        /// `task-timeout`: The task sent to the agent to apply the policy timed out. * `unexpected-agent-state`: The OS
+        /// Config agent did not report the final status of the task that attempted to apply the policy. Instead, the
+        /// agent unexpectedly started working on a different task. This mostly happens when the agent or VM
+        /// unexpectedly restarts while applying OS policies. * `internal-service-errors`: Internal service errors were
+        /// encountered while attempting to apply the policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceStateReason")]
+        public virtual string ComplianceStateReason { get; set; }
+
+        /// <summary>The OS policy id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyId")]
+        public virtual string OsPolicyId { get; set; }
+
+        /// <summary>Compliance data for each resource within the policy that is applied to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyResourceCompliances")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance> OsPolicyResourceCompliances { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compliance data for an OS policy resource.</summary>
+    public class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The compliance state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceState")]
+        public virtual string ComplianceState { get; set; }
+
+        /// <summary>
+        /// A reason for the resource to be in the given compliance state. This field is always populated when
+        /// `compliance_state` is `UNKNOWN`. The following values are supported when `compliance_state == UNKNOWN` *
+        /// `execution-errors`: Errors were encountered by the agent while executing the resource and the compliance
+        /// state couldn't be determined. * `execution-skipped-by-agent`: Resource execution was skipped by the agent
+        /// because errors were encountered while executing prior resources in the OS policy. *
+        /// `os-policy-execution-attempt-failed`: The execution of the OS policy containing this resource failed and the
+        /// compliance state couldn't be determined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceStateReason")]
+        public virtual string ComplianceStateReason { get; set; }
+
+        /// <summary>Ordered list of configuration completed by the agent for the OS policy resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configSteps")]
+        public virtual System.Collections.Generic.IList<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep> ConfigSteps { get; set; }
+
+        /// <summary>ExecResource specific output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("execResourceOutput")]
+        public virtual OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput ExecResourceOutput { get; set; }
+
+        /// <summary>The ID of the OS policy resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyResourceId")]
+        public virtual string OsPolicyResourceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExecResource specific output.</summary>
+    public class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output from enforcement phase output file (if run). Output size is limited to 100K bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementOutput")]
+        public virtual string EnforcementOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Step performed by the OS Config agent for configuring an `OSPolicy` resource to its desired state.
+    /// </summary>
+    public class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An error message recorded during the execution of this step. Only populated if errors were encountered
+        /// during this step execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Configuration step type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

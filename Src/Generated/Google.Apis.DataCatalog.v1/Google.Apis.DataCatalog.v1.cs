@@ -1086,7 +1086,10 @@ namespace Google.Apis.DataCatalog.v1
                         }
                     }
 
-                    /// <summary>Lists entries.</summary>
+                    /// <summary>
+                    /// Lists entries. Note: Currently, this method can list only custom entries. To get a list of both
+                    /// custom and automatically created entries, use SearchCatalog.
+                    /// </summary>
                     /// <param name="parent">
                     /// Required. The name of the entry group that contains the entries to list. Can be provided in URL
                     /// format.
@@ -1096,7 +1099,10 @@ namespace Google.Apis.DataCatalog.v1
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists entries.</summary>
+                    /// <summary>
+                    /// Lists entries. Note: Currently, this method can list only custom entries. To get a list of both
+                    /// custom and automatically created entries, use SearchCatalog.
+                    /// </summary>
                     public class ListRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ListEntriesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>

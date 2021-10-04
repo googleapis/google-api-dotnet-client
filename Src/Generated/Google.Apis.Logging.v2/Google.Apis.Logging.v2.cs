@@ -1004,7 +1004,11 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -1015,7 +1019,11 @@ namespace Google.Apis.Logging.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -1142,7 +1150,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -1157,7 +1167,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -3815,7 +3827,11 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -3826,7 +3842,11 @@ namespace Google.Apis.Logging.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -4006,7 +4026,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -4021,7 +4043,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -5775,7 +5799,10 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Deletes a view on a log bucket.</summary>
+                /// <summary>
+                /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system is
+                /// not in a state where it can delete the view. If this occurs, please try again in a few minutes.
+                /// </summary>
                 /// <param name="name">
                 /// Required. The full resource name of the view to delete:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -5786,7 +5813,10 @@ namespace Google.Apis.Logging.v2
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a view on a log bucket.</summary>
+                /// <summary>
+                /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system is
+                /// not in a state where it can delete the view. If this occurs, please try again in a few minutes.
+                /// </summary>
                 public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -5966,7 +5996,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Updates a view on a log bucket. This method replaces the following fields in the existing view with
-                /// values from the new view: filter.
+                /// values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that system is
+                /// not in a state where it can update the view. If this occurs, please try again in a few minutes.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -5981,7 +6012,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Updates a view on a log bucket. This method replaces the following fields in the existing view with
-                /// values from the new view: filter.
+                /// values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that system is
+                /// not in a state where it can update the view. If this occurs, please try again in a few minutes.
                 /// </summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
@@ -7663,7 +7695,11 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -7674,7 +7710,11 @@ namespace Google.Apis.Logging.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -7854,7 +7894,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -7869,7 +7911,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -10176,7 +10220,11 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The full resource name of the view to delete:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -10187,7 +10235,11 @@ namespace Google.Apis.Logging.v2
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a view on a log bucket.</summary>
+                    /// <summary>
+                    /// Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system
+                    /// is not in a state where it can delete the view. If this occurs, please try again in a few
+                    /// minutes.
+                    /// </summary>
                     public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -10367,7 +10419,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -10382,7 +10436,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter.
+                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
+                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
+                    /// minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -14134,13 +14190,6 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Describes the schema of the logs stored in the bucket that are accessible via this view.This field is only
-        /// populated for views in analytics-enabled buckets.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual TableSchema Schema { get; set; }
-
         /// <summary>Output only. The last update timestamp of the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -14686,54 +14735,6 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>A lower bound on the count of entries omitted due to reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suppressedCount")]
         public virtual System.Nullable<int> SuppressedCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A field in TableSchema. The fields describe the static fields in the LogEntry. Any dynamic fields generated by
-    /// the customer in fields like labels and jsonPayload are not listed in the schema as they use a native JSON type
-    /// field.
-    /// </summary>
-    public class TableFieldSchema : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The field description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Optional. Describes the nested schema fields if the type property is set to RECORD.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
-
-        /// <summary>
-        /// Optional. The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is
-        /// NULLABLE.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; }
-
-        /// <summary>Required. The field name corresponding to fields in the LogEntry.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. The field data type. Possible values include: STRING INTEGER (or INT64) FLOAT (or FLOAT64) BOOLEAN
-        /// (or BOOL) TIMESTAMP RECORD (or STRUCT)Use of RECORD/STRUT indicates that the field contains a nested schema.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Schema of a table containing logs.</summary>
-    public class TableSchema : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Describes the fields in a table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

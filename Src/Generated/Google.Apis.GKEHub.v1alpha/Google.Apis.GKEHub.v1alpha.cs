@@ -1049,6 +1049,122 @@ namespace Google.Apis.GKEHub.v1alpha
                 }
 
                 /// <summary>
+                /// Lists Memberships of admin clusters in a given project and location. **This method is only used
+                /// internally**.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Memberships of admin cluster will be listed.
+                /// Specified in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual ListAdminRequest ListAdmin(string parent)
+                {
+                    return new ListAdminRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists Memberships of admin clusters in a given project and location. **This method is only used
+                /// internally**.
+                /// </summary>
+                public class ListAdminRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListAdminClusterMembershipsResponse>
+                {
+                    /// <summary>Constructs a new ListAdmin request.</summary>
+                    public ListAdminRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Memberships of admin cluster will be
+                    /// listed. Specified in the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists Memberships of admin clusters that match the filter expression.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. One or more fields to compare and use to sort the output. See
+                    /// https://google.aip.dev/132#ordering.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to
+                    /// return. If unspecified or set to 0, all resources will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Token returned by previous call to `ListAdminClusterMemberships` which specifies the
+                    /// position in the list from where to continue listing the resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listAdmin";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/memberships:listAdmin";
+
+                    /// <summary>Initializes ListAdmin parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                 /// </summary>
@@ -1658,6 +1774,49 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Authority encodes how Google will recognize identities from this Membership. See the workload identity
+    /// documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+    /// </summary>
+    public class Authority : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. An identity provider that reflects the `issuer` in the workload identity pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityProvider")]
+        public virtual string IdentityProvider { get; set; }
+
+        /// <summary>
+        /// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with
+        /// length &amp;lt;2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to
+        /// authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate
+        /// tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified;
+        /// it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload
+        /// Identity).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>
+        /// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC
+        /// discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcJwks")]
+        public virtual string OidcJwks { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single
+        /// Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub
+        /// hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to
+        /// change in newer versions of this API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPool")]
+        public virtual string WorkloadIdentityPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1798,13 +1957,18 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Configuration for Config Sync</summary>
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
+        /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
+        /// ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the
+        /// presence of git field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
         /// <summary>Git repo configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual ConfigManagementGitConfig Git { get; set; }
-
-        /// <summary>Specifies CPU and memory limits for containers, keyed by container name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceRequirements")]
-        public virtual System.Collections.Generic.IDictionary<string, ConfigManagementContainerResourceRequirements> ResourceRequirements { get; set; }
 
         /// <summary>Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured” mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
@@ -1905,27 +2069,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// ResourceRequirements allows to override the CPU and memory resource requirements of a container.
-    /// </summary>
-    public class ConfigManagementContainerResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
-        public virtual string ContainerName { get; set; }
-
-        /// <summary>Allows to override the CPU limit of a container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cpuLimit")]
-        public virtual ConfigManagementQuantity CpuLimit { get; set; }
-
-        /// <summary>Allows to override the memory limit of a container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memoryLimit")]
-        public virtual ConfigManagementQuantity MemoryLimit { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Model for a config file in the git repo with an associated Sync error</summary>
     public class ConfigManagementErrorResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1979,10 +2122,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpsProxy")]
         public virtual string HttpsProxy { get; set; }
 
-        /// <summary>Enable or disable the SSL certificate verification Default: false.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("noSslVerify")]
-        public virtual System.Nullable<bool> NoSslVerify { get; set; }
-
         /// <summary>
         /// The path within the Git repository that represents the top level of the repo to sync. Default: the root
         /// directory of the repository.
@@ -1997,10 +2136,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>The branch of the repository to sync from. Default: master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncBranch")]
         public virtual string SyncBranch { get; set; }
-
-        /// <summary>The depth of git commits synced by the git-sync container.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("syncDepth")]
-        public virtual System.Nullable<long> SyncDepth { get; set; }
 
         /// <summary>The URL of the Git repository to use as the source of truth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
@@ -2274,20 +2409,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The view model of a single quantity, e.g. "800 MiB". Corresponds to
-    /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/generated.proto
-    /// </summary>
-    public class ConfigManagementQuantity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Stringified version of the quantity, e.g., "800 MiB".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("string")]
-        public virtual string String__ { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>An ACM created error representing a problem syncing configurations</summary>
     public class ConfigManagementSyncError : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2507,6 +2628,28 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GkeCluster contains information specific to GKE clusters.</summary>
+    public class GkeCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE
+        /// Control Plane.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the GKE cluster. For example:
+        /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are
+        /// also supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -2651,6 +2794,71 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
+    /// </summary>
+    public class KubernetesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Kubernetes API server version string as reported by `/version`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesApiServerVersion")]
+        public virtual string KubernetesApiServerVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in
+        /// MB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Output only. Node count as reported by Kubernetes nodes resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>
+        /// Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint.
+        /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and
+        /// the node_provider_id will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeProviderId")]
+        public virtual string NodeProviderId { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which these details were last updated. This update_time is different from the
+        /// Membership-level update_time since EndpointDetails are updated internally for API consumers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>Output only. vCPU count as reported by Kubernetes nodes resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<int> VcpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `GkeHub.ListAdminClusterMemberships` method.</summary>
+    public class ListAdminClusterMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching Memberships of admin clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminClusterMemberships")]
+        public virtual System.Collections.Generic.IList<Membership> AdminClusterMemberships { get; set; }
+
+        /// <summary>
+        /// A token to request the next page of resources from the `ListAdminClusterMemberships` method. The value of an
+        /// empty string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of locations that could not be reached while fetching this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `GkeHub.ListFeatures` method.</summary>
     public class ListFeaturesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2731,6 +2939,111 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Membership contains information about a member cluster.</summary>
+    public class Membership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for
+        /// more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual Authority Authority { get; set; }
+
+        /// <summary>Output only. When the Membership was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. When the Membership was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// Output only. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
+        /// This field is present for legacy purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Endpoint information to reach this member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual MembershipEndpoint Endpoint { get; set; }
+
+        /// <summary>
+        /// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after
+        /// creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership
+        /// represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
+        public virtual string ExternalId { get; set; }
+
+        /// <summary>Optional. GCP labels for this membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. For clusters using Connect, the timestamp of the most recent connection established with Google
+        /// Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE
+        /// Connect, or that have never connected successfully, this field will be unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastConnectionTime")]
+        public virtual object LastConnectionTime { get; set; }
+
+        /// <summary>
+        /// Output only. The full, unique name of this Membership resource in the format
+        /// `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid
+        /// RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case
+        /// alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be
+        /// expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the Membership resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual MembershipState State { get; set; }
+
+        /// <summary>
+        /// Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a
+        /// Membership resource is deleted and another resource with the same name is created, it gets a different
+        /// unique_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; }
+
+        /// <summary>Output only. When the Membership was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional
+    /// Kubernetes metadata.
+    /// </summary>
+    public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
+        public virtual GkeCluster GkeCluster { get; set; }
+
+        /// <summary>Output only. Useful Kubernetes-specific metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesMetadata")]
+        public virtual KubernetesMetadata KubernetesMetadata { get; set; }
+
+        /// <summary>Optional. Specific information for a GKE Multi-Cloud cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiCloudCluster")]
+        public virtual MultiCloudCluster MultiCloudCluster { get; set; }
+
+        /// <summary>Optional. Specific information for a GKE On-Prem cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onPremCluster")]
+        public virtual OnPremCluster OnPremCluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
     public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2773,6 +3086,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MembershipState describes the state of a Membership resource.</summary>
+    public class MembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The current state of the Membership resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Metering**: Per-Membership Feature State.</summary>
     public class MeteringMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2785,6 +3109,28 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preciseLastMeasuredClusterVcpuCapacity")]
         public virtual System.Nullable<float> PreciseLastMeasuredClusterVcpuCapacity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.</summary>
+    public class MultiCloudCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for
+        /// this GKE Multi-Cloud cluster no longer exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example:
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2805,6 +3151,32 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMembership")]
         public virtual string ConfigMembership { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OnPremCluster contains information specific to GKE On-Prem clusters.</summary>
+    public class OnPremCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. Whether the cluster is an admin cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminCluster")]
+        public virtual System.Nullable<bool> AdminCluster { get; set; }
+
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this
+        /// GKE On-Prem cluster no longer exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example:
+        /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
+        /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -875,8 +875,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>
         /// The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version
         /// resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the
-        /// JavaScript Date constructor and keeps the Version timestamps returned via OnePlatform consistent, as JSON
-        /// marshals google.protobuf.Timestamp into an RFC 3339 string.
+        /// JavaScript Date constructor.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildTime")]
         public virtual object BuildTime { get; set; }
