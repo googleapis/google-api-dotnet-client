@@ -4629,6 +4629,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class MultiClusterRoutingUseAny : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left
+        /// empty, all clusters are eligible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterIds")]
+        public virtual System.Collections.Generic.IList<string> ClusterIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

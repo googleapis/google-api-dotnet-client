@@ -5295,15 +5295,15 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     public class RsaKeyType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service
-        /// will not enforce an explicit upper bound on RSA modulus sizes.
+        /// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero,
+        /// the service will not enforce an explicit upper bound on RSA modulus sizes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxModulusSize")]
         public virtual System.Nullable<long> MaxModulusSize { get; set; }
 
         /// <summary>
-        /// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
-        /// service-level min RSA modulus size will continue to apply.
+        /// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero,
+        /// the service-level min RSA modulus size will continue to apply.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minModulusSize")]
         public virtual System.Nullable<long> MinModulusSize { get; set; }

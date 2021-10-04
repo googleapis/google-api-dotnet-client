@@ -2366,10 +2366,6 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual ConfigManagementGitConfig Git { get; set; }
 
-        /// <summary>Specifies CPU and memory limits for containers, keyed by container name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceRequirements")]
-        public virtual System.Collections.Generic.IDictionary<string, ConfigManagementContainerResourceRequirements> ResourceRequirements { get; set; }
-
         /// <summary>Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured” mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
@@ -2469,27 +2465,6 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// ResourceRequirements allows to override the CPU and memory resource requirements of a container.
-    /// </summary>
-    public class ConfigManagementContainerResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
-        public virtual string ContainerName { get; set; }
-
-        /// <summary>Allows to override the CPU limit of a container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cpuLimit")]
-        public virtual ConfigManagementQuantity CpuLimit { get; set; }
-
-        /// <summary>Allows to override the memory limit of a container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memoryLimit")]
-        public virtual ConfigManagementQuantity MemoryLimit { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Model for a config file in the git repo with an associated Sync error</summary>
     public class ConfigManagementErrorResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2539,10 +2514,6 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpsProxy")]
         public virtual string HttpsProxy { get; set; }
 
-        /// <summary>Enable or disable the SSL certificate verification Default: false.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("noSslVerify")]
-        public virtual System.Nullable<bool> NoSslVerify { get; set; }
-
         /// <summary>
         /// The path within the Git repository that represents the top level of the repo to sync. Default: the root
         /// directory of the repository.
@@ -2557,10 +2528,6 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>The branch of the repository to sync from. Default: master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncBranch")]
         public virtual string SyncBranch { get; set; }
-
-        /// <summary>The depth of git commits synced by the git-sync container.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("syncDepth")]
-        public virtual System.Nullable<long> SyncDepth { get; set; }
 
         /// <summary>The URL of the Git repository to use as the source of truth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
@@ -2817,20 +2784,6 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The view model of a single quantity, e.g. "800 MiB". Corresponds to
-    /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/generated.proto
-    /// </summary>
-    public class ConfigManagementQuantity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Stringified version of the quantity, e.g., "800 MiB".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("string")]
-        public virtual string String__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

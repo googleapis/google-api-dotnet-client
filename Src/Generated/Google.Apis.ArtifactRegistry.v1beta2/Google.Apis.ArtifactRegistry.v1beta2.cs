@@ -3051,6 +3051,24 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for
+    /// repositories of the maven format type.
+    /// </summary>
+    public class MavenRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The repository with this flag will allow publishing the same snapshot versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowSnapshotOverwrites")]
+        public virtual System.Nullable<bool> AllowSnapshotOverwrites { get; set; }
+
+        /// <summary>Version policy defines the versions that the registry will accept.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionPolicy")]
+        public virtual string VersionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3212,6 +3230,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Maven repository config contains repository level configuration for the repositories of maven type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mavenConfig")]
+        public virtual MavenRepositoryConfig MavenConfig { get; set; }
 
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
