@@ -973,6 +973,15 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>
+                /// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the
+                /// GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They
+                /// must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They
+                /// must begin and end with an alphanumeric character
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("gheConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string GheConfigId { get; set; }
+
                 /// <summary>ID of the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
@@ -1003,6 +1012,14 @@ namespace Google.Apis.CloudBuild.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("gheConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "gheConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
@@ -1858,6 +1875,15 @@ namespace Google.Apis.CloudBuild.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of
+                    /// the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements:
+                    /// + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long.
+                    /// + They must begin and end with an alphanumeric character
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gheConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GheConfigId { get; set; }
+
                     /// <summary>ID of the project.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
@@ -1888,6 +1914,14 @@ namespace Google.Apis.CloudBuild.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("gheConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "gheConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {

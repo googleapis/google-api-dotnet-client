@@ -37,6 +37,7 @@ namespace Google.Apis.AndroidPublisher.v3
             Edits = new EditsResource(this);
             Inappproducts = new InappproductsResource(this);
             Internalappsharingartifacts = new InternalappsharingartifactsResource(this);
+            Monetization = new MonetizationResource(this);
             Orders = new OrdersResource(this);
             Purchases = new PurchasesResource(this);
             Reviews = new ReviewsResource(this);
@@ -90,6 +91,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Gets the Internalappsharingartifacts resource.</summary>
         public virtual InternalappsharingartifactsResource Internalappsharingartifacts { get; }
+
+        /// <summary>Gets the Monetization resource.</summary>
+        public virtual MonetizationResource Monetization { get; }
 
         /// <summary>Gets the Orders resource.</summary>
         public virtual OrdersResource Orders { get; }
@@ -5161,6 +5165,80 @@ namespace Google.Apis.AndroidPublisher.v3
         }
     }
 
+    /// <summary>The "monetization" collection of methods.</summary>
+    public class MonetizationResource
+    {
+        private const string Resource = "monetization";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MonetizationResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Calculates the region prices, using today's exchange rate and country-specific pricing patterns, based on
+        /// the price in the request for a set of regions.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Required. The app package name.</param>
+        public virtual ConvertRegionPricesRequest ConvertRegionPrices(Google.Apis.AndroidPublisher.v3.Data.ConvertRegionPricesRequest body, string packageName)
+        {
+            return new ConvertRegionPricesRequest(service, body, packageName);
+        }
+
+        /// <summary>
+        /// Calculates the region prices, using today's exchange rate and country-specific pricing patterns, based on
+        /// the price in the request for a set of regions.
+        /// </summary>
+        public class ConvertRegionPricesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ConvertRegionPricesResponse>
+        {
+            /// <summary>Constructs a new ConvertRegionPrices request.</summary>
+            public ConvertRegionPricesRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ConvertRegionPricesRequest body, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The app package name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.ConvertRegionPricesRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "convertRegionPrices";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/pricing:convertRegionPrices";
+
+            /// <summary>Initializes ConvertRegionPrices parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "orders" collection of methods.</summary>
     public class OrdersResource
     {
@@ -6992,6 +7070,69 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ConvertRegionPrices.</summary>
+    public class ConvertRegionPricesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The intital price to convert other regions from. Tax exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Money Price { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConvertRegionPrices.</summary>
+    public class ConvertRegionPricesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Converted other regions prices in USD and EUR, to use for countries where Play doesn't support a country's
+        /// local currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertedOtherRegionsPrice")]
+        public virtual ConvertedOtherRegionsPrice ConvertedOtherRegionsPrice { get; set; }
+
+        /// <summary>Map from region code to converted region price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertedRegionPrices")]
+        public virtual System.Collections.Generic.IDictionary<string, ConvertedRegionPrice> ConvertedRegionPrices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Converted other regions prices.</summary>
+    public class ConvertedOtherRegionsPrice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Price in EUR to use for the "Other regions" location exclusive of taxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eurPrice")]
+        public virtual Money EurPrice { get; set; }
+
+        /// <summary>Price in USD to use for the "Other regions" location exclusive of taxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usdPrice")]
+        public virtual Money UsdPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A converted region price.</summary>
+    public class ConvertedRegionPrice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The converted price tax inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Money Price { get; set; }
+
+        /// <summary>The region code of the region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The tax amount of the converted price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
+        public virtual Money TaxAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Country targeting specification.</summary>
     public class CountryTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7511,6 +7652,32 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The text in the given language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -651,9 +651,9 @@ namespace Google.Apis.CloudIAP.v1
             /// <summary>
             /// Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal
             /// only", meaning that OAuth clients created under it only accept requests from users who belong to the
-            /// same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The
-            /// "internal only" status can be manually changed in the Google Cloud console. Requires that a brand does
-            /// not already exist for the project, and that the specified support email is owned by the caller.
+            /// same Google Workspace organization as the project. The brand is created in an un-reviewed status. NOTE:
+            /// The "internal only" status can be manually changed in the Google Cloud Console. Requires that a brand
+            /// does not already exist for the project, and that the specified support email is owned by the caller.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -668,9 +668,9 @@ namespace Google.Apis.CloudIAP.v1
             /// <summary>
             /// Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal
             /// only", meaning that OAuth clients created under it only accept requests from users who belong to the
-            /// same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The
-            /// "internal only" status can be manually changed in the Google Cloud console. Requires that a brand does
-            /// not already exist for the project, and that the specified support email is owned by the caller.
+            /// same Google Workspace organization as the project. The brand is created in an un-reviewed status. NOTE:
+            /// The "internal only" status can be manually changed in the Google Cloud Console. Requires that a brand
+            /// does not already exist for the project, and that the specified support email is owned by the caller.
             /// </summary>
             public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Brand>
             {
@@ -1204,6 +1204,10 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyDelegationSettings")]
         public virtual PolicyDelegationSettings PolicyDelegationSettings { get; set; }
 
+        /// <summary>Settings to configure reauthentication policies in IAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
+        public virtual ReauthSettings ReauthSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1552,7 +1556,11 @@ namespace Google.Apis.CloudIAP.v1.Data
     {
         /// <summary>
         /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in
+        /// a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each
+        /// occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles
+        /// to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the
+        /// `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
@@ -1646,6 +1654,28 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for IAP reauthentication policies.</summary>
+    public class ReauthSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reauth session lifetime, how long before a user has to reauthenticate again.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
+        public virtual object MaxAge { get; set; }
+
+        /// <summary>Reauth method required by the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>
+        /// How IAP determines the effective policy in cases of hierarchial policies. Policies are merged from higher in
+        /// the hierarchy to lower in the hierarchy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
+        public virtual string PolicyType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
