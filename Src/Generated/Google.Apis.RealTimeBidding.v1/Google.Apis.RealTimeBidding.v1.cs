@@ -363,6 +363,8 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// <summary>
                 /// A token identifying a page of results the server should return. Typically, this is the value of
                 /// ListCreativesResponse.nextPageToken returned from the previous call to the 'ListCreatives' method.
+                /// Page tokens for continued pages are valid for up to five hours, counting from the call to
+                /// 'ListCreatives' for the first page.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1829,6 +1831,8 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// <summary>
                 /// A token identifying a page of results the server should return. Typically, this is the value of
                 /// ListCreativesResponse.nextPageToken returned from the previous call to the 'ListCreatives' method.
+                /// Page tokens for continued pages are valid for up to five hours, counting from the call to
+                /// 'ListCreatives' for the first page.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }

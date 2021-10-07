@@ -529,17 +529,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1180,17 +1183,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1878,17 +1884,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2079,17 +2088,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2292,17 +2304,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2678,17 +2693,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2803,17 +2821,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -3138,17 +3159,20 @@ namespace Google.Apis.DeploymentManager.alpha
 
             /// <summary>
             /// A filter expression that filters resources listed in the response. The expression must specify the field
-            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
-            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
-            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
-            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
-            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
-            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
-            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
-            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
-            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
-            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-            /// (scheduling.automaticRestart = true) ```
+            /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
+            /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
+            /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
+            /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
+            /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
+            /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
+            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
+            /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
+            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true) ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -4263,7 +4287,11 @@ namespace Google.Apis.DeploymentManager.alpha.Data
 
         /// <summary>
         /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in
+        /// a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each
+        /// occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles
+        /// to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the
+        /// `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }

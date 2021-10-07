@@ -300,6 +300,7 @@ namespace Google.Apis.NetworkServices.v1
                 EdgeCacheKeysets = new EdgeCacheKeysetsResource(service);
                 EdgeCacheOrigins = new EdgeCacheOriginsResource(service);
                 EdgeCacheServices = new EdgeCacheServicesResource(service);
+                EndpointPolicies = new EndpointPoliciesResource(service);
                 Operations = new OperationsResource(service);
             }
 
@@ -987,6 +988,564 @@ namespace Google.Apis.NetworkServices.v1
                 }
             }
 
+            /// <summary>Gets the EndpointPolicies resource.</summary>
+            public virtual EndpointPoliciesResource EndpointPolicies { get; }
+
+            /// <summary>The "endpointPolicies" collection of methods.</summary>
+            public class EndpointPoliciesResource
+            {
+                private const string Resource = "endpointPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EndpointPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new EndpointPolicy in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the EndpointPolicy. Must be in the format
+                /// `projects/*/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.EndpointPolicy body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new EndpointPolicy in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.EndpointPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the EndpointPolicy. Must be in the format
+                    /// `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endpointPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndpointPolicyId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.EndpointPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/endpointPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("endpointPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endpointPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single EndpointPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the EndpointPolicy to delete. Must be in the format
+                /// `projects/*/locations/global/endpointPolicies/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single EndpointPolicy.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the EndpointPolicy to delete. Must be in the format
+                    /// `projects/*/locations/global/endpointPolicies/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single EndpointPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the EndpointPolicy to get. Must be in the format
+                /// `projects/*/locations/global/endpointPolicies/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single EndpointPolicy.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.EndpointPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the EndpointPolicy to get. Must be in the format
+                    /// `projects/*/locations/global/endpointPolicies/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
+                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
+                    /// value or leave the field unset. To learn which resources support conditions in their IAM
+                    /// policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists EndpointPolicies in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the EndpointPolicies should be listed, specified in
+                /// the format `projects/*/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists EndpointPolicies in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListEndpointPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the EndpointPolicies should be listed, specified
+                    /// in the format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of EndpointPolicies to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListEndpointPoliciesResponse` Indicates that this is a
+                    /// continuation of a prior `ListEndpointPolicies` call, and that the system should return the next
+                    /// page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/endpointPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single EndpointPolicy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the EndpointPolicy resource. It matches pattern
+                /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.EndpointPolicy body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single EndpointPolicy.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.EndpointPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the EndpointPolicy resource. It matches pattern
+                    /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the EndpointPolicy
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.EndpointPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                    /// documentation for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -1528,6 +2087,141 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A definition of a matcher that selects endpoints to which the policies should be applied.</summary>
+    public class EndpointMatcher : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The matcher is based on node metadata presented by xDS clients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataLabelMatcher")]
+        public virtual EndpointMatcherMetadataLabelMatcher MetadataLabelMatcher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The matcher that is based on node metadata presented by xDS clients.</summary>
+    public class EndpointMatcherMetadataLabelMatcher : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified
+        /// in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the
+        /// xDS client should contain all of the labels specified here. The selection is determined based on the best
+        /// match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the
+        /// matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config
+        /// from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client
+        /// with label connects, the config from P3 will be selected. If there is more than one best match, (for
+        /// example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataLabelMatchCriteria")]
+        public virtual string MetadataLabelMatchCriteria { get; set; }
+
+        /// <summary>
+        /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+        /// This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify
+        /// a wildcard match (i.e this matches any client).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataLabels")]
+        public virtual System.Collections.Generic.IList<EndpointMatcherMetadataLabelMatcherMetadataLabels> MetadataLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a name-pair value for a single label.</summary>
+    public class EndpointMatcherMetadataLabelMatcherMetadataLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Label name presented as key in xDS Node Metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelName")]
+        public virtual string LabelName { get; set; }
+
+        /// <summary>
+        /// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelValue")]
+        public virtual string LabelValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EndpointPolicy is a resource that helps apply desired configuration on the endpoints that match specific
+    /// criteria. For example, this resource can be used to apply "authentication config" an all endpoints that serve on
+    /// port 8080.
+    /// </summary>
+    public class EndpointPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies
+        /// to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified,
+        /// authorization is disabled(no authz checks) for this endpoint. Applicable only when EndpointPolicyType is
+        /// SIDECAR_PROXY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationPolicy")]
+        public virtual string AuthorizationPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the
+        /// authentication for traffic from the proxy to the actual endpoints. More specifically, it is applied to the
+        /// outgoing traffic from the proxy to the endpoint. This is typically used for sidecar model where the proxy
+        /// identifies itself as endpoint to the control plane, with the connection between sidecar and endpoint
+        /// requiring authentication. If this field is not set, authentication is disabled(open). Applicable only when
+        /// EndpointPolicyType is SIDECAR_PROXY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientTlsPolicy")]
+        public virtual string ClientTlsPolicy { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. A matcher that selects endpoints to which the policies should be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointMatcher")]
+        public virtual EndpointMatcher EndpointMatcher { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the EndpointPolicy resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Name of the EndpointPolicy resource. It matches pattern
+        /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the
+        /// authentication policy to be applied to terminate the inbound traffic at the identified backends. If this
+        /// field is not set, authentication is disabled(open) for this endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverTlsPolicy")]
+        public virtual string ServerTlsPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is
+        /// applied to all ports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficPortSelector")]
+        public virtual TrafficPortSelector TrafficPortSelector { get; set; }
+
+        /// <summary>
+        /// Required. The type of endpoint policy. This is primarily used to validate the configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -1567,6 +2261,24 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListEndpointPolicies method.</summary>
+    public class ListEndpointPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of EndpointPolicy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointPolicies")]
+        public virtual System.Collections.Generic.IList<EndpointPolicy> EndpointPolicies { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1852,6 +2564,21 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of a port-based selector.</summary>
+    public class TrafficPortSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80
+        /// to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are
+        /// selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+        public virtual System.Collections.Generic.IList<string> Ports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

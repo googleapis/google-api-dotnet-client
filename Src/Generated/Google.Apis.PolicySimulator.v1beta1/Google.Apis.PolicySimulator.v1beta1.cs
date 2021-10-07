@@ -1384,7 +1384,7 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the member, resource, and permission to check.</summary>
+    /// <summary>Information about the principal, resource, and permission to check.</summary>
     public class GoogleCloudPolicysimulatorV1beta1AccessTuple : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1397,7 +1397,7 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual string FullResourceName { get; set; }
 
         /// <summary>
-        /// Required. The IAM permission to check for the specified member and resource. For a complete list of IAM
+        /// Required. The IAM permission to check for the specified principal and resource. For a complete list of IAM
         /// permissions, see https://cloud.google.com/iam/help/permissions/reference. For a complete list of predefined
         /// IAM roles and the permissions in each role, see https://cloud.google.com/iam/help/roles/reference.
         /// </summary>
@@ -1405,10 +1405,9 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual string Permission { get; set; }
 
         /// <summary>
-        /// Required. The member, or principal, whose access you want to check, in the form of the email address that
-        /// represents that member. For example, `alice@example.com` or
-        /// `my-service-account@my-project.iam.gserviceaccount.com`. The member must be a Google Account or a service
-        /// account. Other types of members are not supported.
+        /// Required. The principal whose access you want to check, in the form of the email address that represents
+        /// that principal. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`.
+        /// The principal must be a Google Account or a service account. Other types of principals are not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual string Principal { get; set; }
@@ -1417,13 +1416,13 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about how a binding in a policy affects a member's ability to use a permission.</summary>
+    /// <summary>Details about how a binding in a policy affects a principal's ability to use a permission.</summary>
     public class GoogleCloudPolicysimulatorV1beta1BindingExplanation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Indicates whether _this binding_ provides the specified permission to the specified member for the
-        /// specified resource. This field does _not_ indicate whether the member actually has the permission for the
-        /// resource. There might be another binding that overrides this binding. To determine whether the member
+        /// Required. Indicates whether _this binding_ provides the specified permission to the specified principal for
+        /// the specified resource. This field does _not_ indicate whether the principal actually has the permission for
+        /// the resource. There might be another binding that overrides this binding. To determine whether the principal
         /// actually has the permission, use the `access` field in the TroubleshootIamPolicyResponse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
@@ -1437,14 +1436,15 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual GoogleTypeExpr Condition { get; set; }
 
         /// <summary>
-        /// Indicates whether each member in the binding includes the member specified in the request, either directly
-        /// or indirectly. Each key identifies a member in the binding, and each value indicates whether the member in
-        /// the binding includes the member in the request. For example, suppose that a binding includes the following
-        /// members: * `user:alice@example.com` * `group:product-eng@example.com` The member in the replayed access
-        /// tuple is `user:bob@example.com`. This user is a member of the group `group:product-eng@example.com`. For the
-        /// first member in the binding, the key is `user:alice@example.com`, and the `membership` field in the value is
-        /// set to `MEMBERSHIP_NOT_INCLUDED`. For the second member in the binding, the key is
-        /// `group:product-eng@example.com`, and the `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
+        /// Indicates whether each principal in the binding includes the principal specified in the request, either
+        /// directly or indirectly. Each key identifies a principal in the binding, and each value indicates whether the
+        /// principal in the binding includes the principal in the request. For example, suppose that a binding includes
+        /// the following principals: * `user:alice@example.com` * `group:product-eng@example.com` The principal in the
+        /// replayed access tuple is `user:bob@example.com`. This user is a principal of the group
+        /// `group:product-eng@example.com`. For the first principal in the binding, the key is
+        /// `user:alice@example.com`, and the `membership` field in the value is set to `MEMBERSHIP_NOT_INCLUDED`. For
+        /// the second principal in the binding, the key is `group:product-eng@example.com`, and the `membership` field
+        /// in the value is set to `MEMBERSHIP_INCLUDED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership> Memberships { get; set; }
@@ -1476,14 +1476,14 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about whether the binding includes the member.</summary>
+    /// <summary>Details about whether the binding includes the principal.</summary>
     public class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether the binding includes the member.</summary>
+        /// <summary>Indicates whether the binding includes the principal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual string Membership { get; set; }
 
-        /// <summary>The relevance of the member's status to the overall determination for the binding.</summary>
+        /// <summary>The relevance of the principal's status to the overall determination for the binding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
         public virtual string Relevance { get; set; }
 
@@ -1526,16 +1526,16 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
     public class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Indicates whether _this policy_ provides the specified permission to the specified member for the specified
-        /// resource. This field does _not_ indicate whether the member actually has the permission for the resource.
-        /// There might be another policy that overrides this policy. To determine whether the member actually has the
-        /// permission, use the `access` field in the TroubleshootIamPolicyResponse.
+        /// Indicates whether _this policy_ provides the specified permission to the specified principal for the
+        /// specified resource. This field does _not_ indicate whether the principal actually has the permission for the
+        /// resource. There might be another policy that overrides this policy. To determine whether the principal
+        /// actually has the permission, use the `access` field in the TroubleshootIamPolicyResponse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual string Access { get; set; }
 
         /// <summary>
-        /// Details about how each binding in the policy affects the member's ability, or inability, to use the
+        /// Details about how each binding in the policy affects the principal's ability, or inability, to use the
         /// permission for the resource. If the user who created the Replay does not have access to the policy, this
         /// field is omitted.
         /// </summary>
@@ -1876,7 +1876,11 @@ namespace Google.Apis.PolicySimulator.v1beta1.Data
 
         /// <summary>
         /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in
+        /// a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each
+        /// occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles
+        /// to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the
+        /// `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; }

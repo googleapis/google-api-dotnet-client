@@ -3386,8 +3386,8 @@ namespace Google.Apis.Firestore.v1.Data
     }
 
     /// <summary>
-    /// A Cloud Firestore Database in Native Mode. Currently one database is allowed per cloud project. It is named
-    /// '(default)'
+    /// A Cloud Firestore Database. Currently only one database is allowed per cloud project; this database must have a
+    /// `database_id` of '(default)'.
     /// </summary>
     public class GoogleFirestoreAdminV1Database : Google.Apis.Requests.IDirectResponseSchema
     {

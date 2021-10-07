@@ -6345,6 +6345,67 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>
+        /// Acknowledges the terms of user data collection for the specified property. This acknowledgement must be
+        /// completed (either in the Google Analytics UI or via this API) before MeasurementProtocolSecret resources may
+        /// be created.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="property">Required. The property for which to acknowledge user data collection.</param>
+        public virtual AcknowledgeUserDataCollectionRequest AcknowledgeUserDataCollection(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest body, string property)
+        {
+            return new AcknowledgeUserDataCollectionRequest(service, body, property);
+        }
+
+        /// <summary>
+        /// Acknowledges the terms of user data collection for the specified property. This acknowledgement must be
+        /// completed (either in the Google Analytics UI or via this API) before MeasurementProtocolSecret resources may
+        /// be created.
+        /// </summary>
+        public class AcknowledgeUserDataCollectionRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse>
+        {
+            /// <summary>Constructs a new AcknowledgeUserDataCollection request.</summary>
+            public AcknowledgeUserDataCollectionRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest body, string property) : base(service)
+            {
+                Property = property;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The property for which to acknowledge user data collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Property { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "acknowledgeUserDataCollection";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+property}:acknowledgeUserDataCollection";
+
+            /// <summary>Initializes AcknowledgeUserDataCollection parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Creates an "GA4" property with the specified location and attributes.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty body)
@@ -6995,6 +7056,29 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for AcknowledgeUserDataCollection RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An acknowledgement that the caller of this method understands the terms of user data collection.
+        /// This field must contain the exact value: "I acknowledge that I have the necessary privacy disclosures and
+        /// rights from my end users for the collection and processing of their data, including the association of such
+        /// data with the visitation information Google Analytics collects from my site and/or app property."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgement")]
+        public virtual string Acknowledgement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AcknowledgeUserDataCollection RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource message representing a Google Analytics Android app stream.</summary>
     public class GoogleAnalyticsAdminV1alphaAndroidAppDataStream : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7074,7 +7158,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaAuditUserLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Roles directly assigned to this user for this entity. Format: predefinedRoles/read Excludes roles that are
+        /// Roles directly assigned to this user for this entity. Format: predefinedRoles/viewer Excludes roles that are
         /// inherited from an account (if this is for a property), group, or organization admin role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
@@ -7082,7 +7166,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Union of all permissions a user has at this account or property (includes direct permissions,
-        /// group-inherited permissions, etc.). Format: predefinedRoles/read
+        /// group-inherited permissions, etc.). Format: predefinedRoles/viewer
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveRoles")]
         public virtual System.Collections.Generic.IList<string> EffectiveRoles { get; set; }
@@ -8469,10 +8553,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaUserLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Roles directly assigned to this user for this account or property. Valid values: predefinedRoles/read
-        /// predefinedRoles/collaborate predefinedRoles/edit predefinedRoles/admin Excludes roles that are inherited
-        /// from a higher-level entity, group, or organization admin role. A UserLink that is updated to have an empty
-        /// list of direct_roles will be deleted.
+        /// Roles directly assigned to this user for this account or property. Valid values: predefinedRoles/viewer
+        /// predefinedRoles/analyst predefinedRoles/editor predefinedRoles/admin predefinedRoles/no-cost-data
+        /// predefinedRoles/no-revenue-data Excludes roles that are inherited from a higher-level entity, group, or
+        /// organization admin role. A UserLink that is updated to have an empty list of direct_roles will be deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
         public virtual System.Collections.Generic.IList<string> DirectRoles { get; set; }

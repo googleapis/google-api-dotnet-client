@@ -2691,7 +2691,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestAnalysis")]
         public virtual GoogleCloudContactcenterinsightsV1Analysis LatestAnalysis { get; set; }
 
-        /// <summary>Immutable. The conversation medium.</summary>
+        /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 

@@ -6129,7 +6129,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// call either the 'US' or 'EU' endpoint to feach processor types. In the return, we will have an 'invoice parsing'
     /// processor with 'available_locations' field only containing 'US'. So the user can try to create an 'invoice
     /// parsing' processor under the location 'US'. Such attempt of creating under the location 'EU' will fail. Next ID:
-    /// 8.
+    /// 9.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6148,13 +6148,17 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>Launch stage of the processor type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
         /// <summary>
         /// The resource name of the processor type. Format: projects/{project}/processorTypes/{processor_type}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The type of the processor, e.g, "invoice_parsing".</summary>
+        /// <summary>The type of the processor, e.g., "invoice_parsing".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

@@ -2803,8 +2803,8 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// If set to true, and the Product is not found, the fulfillment information will still be processed and
-        /// retained for at most 1 day and processed once the Product is created. If set to false, an INVALID_ARGUMENT
-        /// error is returned if the Product is not found.
+        /// retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is
+        /// returned if the Product is not found.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
         public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -3786,7 +3786,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>
         /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is
         /// not available for SearchService.Search after expire_time. However, the product can still be retrieved by
-        /// ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property
+        /// ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and
+        /// publish_time, otherwise an INVALID_ARGUMENT error is thrown. Google Merchant Center property
         /// [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
@@ -4264,8 +4265,8 @@ namespace Google.Apis.CloudRetail.v2.Data
     {
         /// <summary>
         /// If set to true, and the Product is not found, the fulfillment information will still be processed and
-        /// retained for at most 1 day and processed once the Product is created. If set to false, an INVALID_ARGUMENT
-        /// error is returned if the Product is not found.
+        /// retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is
+        /// returned if the Product is not found.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
         public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -4847,8 +4848,8 @@ namespace Google.Apis.CloudRetail.v2.Data
     {
         /// <summary>
         /// If set to true, and the Product with name Product.name is not found, the inventory update will still be
-        /// processed and retained for at most 1 day until the Product is created. If set to false, an INVALID_ARGUMENT
-        /// error is returned if the Product is not found.
+        /// processed and retained for at most 1 day until the Product is created. If set to false, a NOT_FOUND error is
+        /// returned if the Product is not found.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
         public virtual System.Nullable<bool> AllowMissing { get; set; }
