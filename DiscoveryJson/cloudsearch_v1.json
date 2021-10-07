@@ -1916,7 +1916,7 @@
    }
   }
  },
- "revision": "20210920",
+ "revision": "20210927",
  "rootUrl": "https://cloudsearch.googleapis.com/",
  "schemas": {
   "AuditLoggingSettings": {
@@ -2762,9 +2762,11 @@
    "type": "object"
   },
   "GetSearchApplicationQueryStatsResponse": {
+   "description": "Response format for getting query stats at a search application level between given dates.",
    "id": "GetSearchApplicationQueryStatsResponse",
    "properties": {
     "stats": {
+     "description": "Search application level query stats per date",
      "items": {
       "$ref": "SearchApplicationQueryStats"
      },
@@ -4473,6 +4475,7 @@
    "type": "object"
   },
   "SearchApplicationQueryStats": {
+   "description": "Search application level query stats per date",
    "id": "SearchApplicationQueryStats",
    "properties": {
     "date": {

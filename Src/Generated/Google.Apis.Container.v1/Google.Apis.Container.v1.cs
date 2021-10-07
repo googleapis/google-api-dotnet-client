@@ -6621,6 +6621,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
 
+        /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshCertificates")]
+        public virtual MeshCertificates MeshCertificates { get; set; }
+
         /// <summary>Monitoring configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringConfig")]
         public virtual MonitoringConfig MonitoringConfig { get; set; }
@@ -6895,6 +6899,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterVersion")]
         public virtual string DesiredMasterVersion { get; set; }
+
+        /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredMeshCertificates")]
+        public virtual MeshCertificates DesiredMeshCertificates { get; set; }
 
         /// <summary>The desired monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringConfig")]
@@ -7766,6 +7774,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
         public virtual System.Nullable<long> MaxPodsPerNode { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+    public class MeshCertificates : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

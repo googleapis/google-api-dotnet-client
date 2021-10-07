@@ -2207,8 +2207,8 @@ namespace Google.Apis.AndroidManagement.v1
 namespace Google.Apis.AndroidManagement.v1.Data
 {
     /// <summary>
-    /// Security policies set to the most secure values by default. To maintain the security posture of a device, we
-    /// don't recommend overriding any of the default values.
+    /// Security policies set to secure values by default. To maintain the security posture of a device, we don't
+    /// recommend overriding any of the default values.
     /// </summary>
     public class AdvancedSecurityOverrides : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4129,8 +4129,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> AdjustVolumeDisabled { get; set; }
 
         /// <summary>
-        /// Security policies set to the most secure values by default. To maintain the security posture of a device, we
-        /// don't recommend overriding any of the default values.
+        /// Security policies set to secure values by default. To maintain the security posture of a device, we don't
+        /// recommend overriding any of the default values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSecurityOverrides")]
         public virtual AdvancedSecurityOverrides AdvancedSecurityOverrides { get; set; }

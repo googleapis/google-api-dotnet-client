@@ -1365,7 +1365,8 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the operation returned by DeleteOrganization.
+    /// LINT.IfChange A status object which is used as the `metadata` field for the operation returned by
+    /// DeleteOrganization.
     /// </summary>
     public class DeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1691,7 +1692,11 @@ namespace Google.Apis.CloudResourceManager.v2.Data
 
         /// <summary>
         /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in
+        /// a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each
+        /// occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles
+        /// to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the
+        /// `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
@@ -1900,7 +1905,8 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteOrganization.
+    /// LINT.IfChange A status object which is used as the `metadata` field for the Operation returned by
+    /// UndeleteOrganization.
     /// </summary>
     public class UndeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
