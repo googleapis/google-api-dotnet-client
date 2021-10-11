@@ -11145,6 +11145,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
         public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
+        /// <summary>If a DTMF was provided as input, this field will contain a copy of the DTMFInput.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmf")]
+        public virtual GoogleCloudDialogflowCxV3DtmfInput Dtmf { get; set; }
+
         /// <summary>
         /// The Intent that matched the conversational query. Some, not all fields are filled in this message, including
         /// but not limited to: `name` and `display_name`. This field is deprecated, please use QueryResult.match

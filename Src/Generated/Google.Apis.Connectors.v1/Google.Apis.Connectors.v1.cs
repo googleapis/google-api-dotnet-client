@@ -2610,6 +2610,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
 
+        /// <summary>Role grant configuration for the config variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roleGrant")]
+        public virtual RoleGrant RoleGrant { get; set; }
+
         /// <summary>Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationRegex")]
         public virtual string ValidationRegex { get; set; }
@@ -2842,9 +2846,15 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
         public virtual string ReleaseVersion { get; set; }
 
-        /// <summary>Output only. Role grant configuration for this config variable.</summary>
+        /// <summary>
+        /// Output only. Role grant configuration for this config variable. It will be DEPRECATED soon.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleGrant")]
         public virtual RoleGrant RoleGrant { get; set; }
+
+        /// <summary>Output only. Role grant configurations for this connector version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roleGrants")]
+        public virtual System.Collections.Generic.IList<RoleGrant> RoleGrants { get; set; }
 
         /// <summary>Output only. Information about the runtime features supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedRuntimeFeatures")]
@@ -3397,7 +3407,11 @@ namespace Google.Apis.Connectors.v1.Data
 
         /// <summary>
         /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in
+        /// a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each
+        /// occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles
+        /// to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the
+        /// `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }

@@ -668,9 +668,11 @@ namespace Google.Apis.CloudDomains.v1beta1
                 }
 
                 /// <summary>
-                /// Deletes a `Registration` resource. For `Registration` resources , this method works if: * `state` is
-                /// `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED` When an active domain
-                /// is successfully deleted, you can continue to use the domain in [Google
+                /// Deletes a `Registration` resource. For `Registration` resources using usage billing, this method
+                /// works if: * `state` is `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED`
+                /// * `state` is `TRANSFER_FAILED` This method works on any `Registration` resource using subscription
+                /// billing, provided that the resource was created at least 1 day in the past. When an active domain is
+                /// successfully deleted, you can continue to use the domain in [Google
                 /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
                 /// in Google Domains, and permissions for the domain are subsequently managed there. The domain will
                 /// not renew automatically unless the new owner sets up billing in Google Domains.
@@ -685,9 +687,11 @@ namespace Google.Apis.CloudDomains.v1beta1
                 }
 
                 /// <summary>
-                /// Deletes a `Registration` resource. For `Registration` resources , this method works if: * `state` is
-                /// `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED` When an active domain
-                /// is successfully deleted, you can continue to use the domain in [Google
+                /// Deletes a `Registration` resource. For `Registration` resources using usage billing, this method
+                /// works if: * `state` is `EXPORTED` with `expire_time` in the past * `state` is `REGISTRATION_FAILED`
+                /// * `state` is `TRANSFER_FAILED` This method works on any `Registration` resource using subscription
+                /// billing, provided that the resource was created at least 1 day in the past. When an active domain is
+                /// successfully deleted, you can continue to use the domain in [Google
                 /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
                 /// in Google Domains, and permissions for the domain are subsequently managed there. The domain will
                 /// not renew automatically unless the new owner sets up billing in Google Domains.
@@ -1380,6 +1384,75 @@ namespace Google.Apis.CloudDomains.v1beta1
                 }
 
                 /// <summary>
+                /// Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For
+                /// domains managed by Google Domains, transferring to Cloud Domains is not yet supported. Use the
+                /// returned values to call `TransferDomain`.
+                /// </summary>
+                /// <param name="location">
+                /// Required. The location. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual RetrieveTransferParametersRequest RetrieveTransferParameters(string location)
+                {
+                    return new RetrieveTransferParametersRequest(service, location);
+                }
+
+                /// <summary>
+                /// Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For
+                /// domains managed by Google Domains, transferring to Cloud Domains is not yet supported. Use the
+                /// returned values to call `TransferDomain`.
+                /// </summary>
+                public class RetrieveTransferParametersRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.RetrieveTransferParametersResponse>
+                {
+                    /// <summary>Constructs a new RetrieveTransferParameters request.</summary>
+                    public RetrieveTransferParametersRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                    {
+                        Location = location;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The location. Must be in the format `projects/*/locations/*`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+                    /// <summary>
+                    /// Required. The domain name. Unicode domain names must be expressed in Punycode format.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("domainName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DomainName { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "retrieveTransferParameters";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+location}/registrations:retrieveTransferParameters";
+
+                    /// <summary>Initializes RetrieveTransferParameters parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("domainName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "domainName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Searches for available domain names similar to the provided query. Availability results from this
                 /// method are approximate; call `RetrieveRegisterParameters` on a domain before registering to confirm
                 /// availability.
@@ -1576,6 +1649,90 @@ namespace Google.Apis.CloudDomains.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/registrations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Transfers a domain name from another registrar to Cloud Domains. For domains managed by Google
+                /// Domains, transferring to Cloud Domains is not yet supported. Before calling this method, go to the
+                /// domain's current registrar to unlock the domain for transfer and retrieve the domain's transfer
+                /// authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
+                /// and to get values needed to build a call to this method. A successful call creates a `Registration`
+                /// resource in state `TRANSFER_PENDING`. It can take several days to complete the transfer process. The
+                /// registrant can often speed up this process by approving the transfer through the current registrar,
+                /// either by clicking a link in an email from the registrar or by visiting the registrar's website. A
+                /// few minutes after transfer approval, the resource transitions to state `ACTIVE`, indicating that the
+                /// transfer was successful. If the transfer is rejected or the request expires without being approved,
+                /// the resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can safely delete the
+                /// resource and retry the transfer.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `Registration`. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual TransferRequest Transfer(Google.Apis.CloudDomains.v1beta1.Data.TransferDomainRequest body, string parent)
+                {
+                    return new TransferRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Transfers a domain name from another registrar to Cloud Domains. For domains managed by Google
+                /// Domains, transferring to Cloud Domains is not yet supported. Before calling this method, go to the
+                /// domain's current registrar to unlock the domain for transfer and retrieve the domain's transfer
+                /// authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
+                /// and to get values needed to build a call to this method. A successful call creates a `Registration`
+                /// resource in state `TRANSFER_PENDING`. It can take several days to complete the transfer process. The
+                /// registrant can often speed up this process by approving the transfer through the current registrar,
+                /// either by clicking a link in an email from the registrar or by visiting the registrar's website. A
+                /// few minutes after transfer approval, the resource transitions to state `ACTIVE`, indicating that the
+                /// transfer was successful. If the transfer is rejected or the request expires without being approved,
+                /// the resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can safely delete the
+                /// resource and retry the transfer.
+                /// </summary>
+                public class TransferRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Transfer request.</summary>
+                    public TransferRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDomains.v1beta1.Data.TransferDomainRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `Registration`. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDomains.v1beta1.Data.TransferDomainRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "transfer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/registrations:transfer";
+
+                    /// <summary>Initializes Transfer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -2364,7 +2521,11 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
 
         /// <summary>
         /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in
+        /// a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each
+        /// occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles
+        /// to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the
+        /// `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
@@ -2579,10 +2740,14 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
     }
 
     /// <summary>
-    /// The `Registration` resource facilitates managing and configuring domain name registrations. To create a new
-    /// `Registration` resource, find a suitable domain name by calling the `SearchDomains` method with a query to see
-    /// available domain name options. After choosing a name, call `RetrieveRegisterParameters` to ensure availability
-    /// and obtain information like pricing, which is needed to build a call to `RegisterDomain`.
+    /// The `Registration` resource facilitates managing and configuring domain name registrations. There are several
+    /// ways to create a new `Registration` resource: To create a new `Registration` resource, find a suitable domain
+    /// name by calling the `SearchDomains` method with a query to see available domain name options. After choosing a
+    /// name, call `RetrieveRegisterParameters` to ensure availability and obtain information like pricing, which is
+    /// needed to build a call to `RegisterDomain`. Another way to create a new `Registration` is to transfer an
+    /// existing domain from another registrar. First, go to the current registrar to unlock the domain for transfer and
+    /// retrieve the domain's transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the
+    /// domain is unlocked and to get values needed to build a call to `TransferDomain`.
     /// </summary>
     public class Registration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2678,6 +2843,17 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the `RetrieveTransferParameters` method.</summary>
+    public class RetrieveTransferParametersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Parameters to use when calling the `TransferDomain` method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferParameters")]
+        public virtual TransferParameters TransferParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the `SearchDomains` method.</summary>
     public class SearchDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2761,6 +2937,80 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `TransferDomain` method.</summary>
+    public class TransferDomainRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The domain's transfer authorization code. You can obtain this from the domain's current registrar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationCode")]
+        public virtual AuthorizationCode AuthorizationCode { get; set; }
+
+        /// <summary>
+        /// The list of contact notices that you acknowledge. The notices needed here depend on the values specified in
+        /// `registration.contact_settings`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactNotices")]
+        public virtual System.Collections.Generic.IList<string> ContactNotices { get; set; }
+
+        /// <summary>
+        /// Required. The complete `Registration` resource to be created. You can leave `registration.dns_settings`
+        /// unset to import the domain's current DNS configuration from its current registrar. Use this option only if
+        /// you are sure that the domain's current DNS service will not cease upon transfer, as is often the case for
+        /// DNS services provided for free by the registrar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registration")]
+        public virtual Registration Registration { get; set; }
+
+        /// <summary>Validate the request without actually transferring the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>
+        /// Required. Acknowledgement of the price to transfer or renew the domain for one year. Call
+        /// `RetrieveTransferParameters` to obtain the price, which you must acknowledge.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yearlyPrice")]
+        public virtual Money YearlyPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters required to transfer a domain from another registrar.</summary>
+    public class TransferParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The registrar that currently manages the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentRegistrar")]
+        public virtual string CurrentRegistrar { get; set; }
+
+        /// <summary>The domain name. Unicode domain names are expressed in Punycode format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
+        public virtual string DomainName { get; set; }
+
+        /// <summary>The name servers that currently store the configuration of the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
+        public virtual System.Collections.Generic.IList<string> NameServers { get; set; }
+
+        /// <summary>Contact privacy options that the domain supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedPrivacy")]
+        public virtual System.Collections.Generic.IList<string> SupportedPrivacy { get; set; }
+
+        /// <summary>
+        /// Indicates whether the domain is protected by a transfer lock. For a transfer to succeed, this must show
+        /// `UNLOCKED`. To unlock a domain, go to its current registrar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferLockState")]
+        public virtual string TransferLockState { get; set; }
+
+        /// <summary>Price to transfer or renew the domain for one year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yearlyPrice")]
+        public virtual Money YearlyPrice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
