@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.OrgPolicyAPI.v2 Client Library</Title>
-    <Version>1.55.0.2413</Version>
+    <Version>1.55.0.2471</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

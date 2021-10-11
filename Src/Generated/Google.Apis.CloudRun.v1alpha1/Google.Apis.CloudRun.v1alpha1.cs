@@ -710,9 +710,14 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     public class ConfigMapVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to
-        /// 0644. Directories within the path are not affected by this setting. This might be in conflict with other
-        /// options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        /// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between
+        /// 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected
+        /// by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an
+        /// integer representation of the mode bits. So, the octal integer value should look exactly as the chmod
+        /// numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511
+        /// (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx),
+        /// set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file
+        /// mode, like fsGroup, and the result can be other mode bits set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMode")]
         public virtual System.Nullable<int> DefaultMode { get; set; }
@@ -1407,9 +1412,13 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string Key { get; set; }
 
         /// <summary>
-        /// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the
-        /// volume defaultMode will be used. This might be in conflict with other options that affect the file mode,
-        /// like fsGroup, and the result can be other mode bits set.
+        /// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the
+        /// Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero
+        /// value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly
+        /// as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal)
+        /// or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755
+        /// (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that
+        /// affect the file mode, like fsGroup, and the result can be other mode bits set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual System.Nullable<int> Mode { get; set; }
@@ -1862,11 +1871,14 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     public class SecretVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to
-        /// 0644. Directories within the path are not affected by this setting. This might be in conflict with other
-        /// options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an
-        /// integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric
-        /// notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+        /// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777
+        /// (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this
+        /// setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer
+        /// representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric
+        /// notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10).
+        /// For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755
+        /// (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like
+        /// fsGroup, and the result can be other mode bits set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMode")]
         public virtual System.Nullable<int> DefaultMode { get; set; }

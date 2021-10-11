@@ -41,6 +41,7 @@ namespace Google.Apis.CloudSearch.v1
             Query = new QueryResource(this);
             Settings = new SettingsResource(this);
             Stats = new StatsResource(this);
+            V1 = new V1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -150,6 +151,9 @@ namespace Google.Apis.CloudSearch.v1
 
         /// <summary>Gets the Stats resource.</summary>
         public virtual StatsResource Stats { get; }
+
+        /// <summary>Gets the V1 resource.</summary>
+        public virtual V1Resource V1 { get; }
     }
 
     /// <summary>A base abstract class for CloudSearch requests.</summary>
@@ -4524,6 +4528,60 @@ namespace Google.Apis.CloudSearch.v1
             }
         }
     }
+
+    /// <summary>The "v1" collection of methods.</summary>
+    public class V1Resource
+    {
+        private const string Resource = "v1";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V1Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Initializes the customer. **Note:** This API requires an admin account to execute.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual InitializeCustomerRequest InitializeCustomer(Google.Apis.CloudSearch.v1.Data.InitializeCustomerRequest body)
+        {
+            return new InitializeCustomerRequest(service, body);
+        }
+
+        /// <summary>Initializes the customer. **Note:** This API requires an admin account to execute.</summary>
+        public class InitializeCustomerRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new InitializeCustomer request.</summary>
+            public InitializeCustomerRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.InitializeCustomerRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSearch.v1.Data.InitializeCustomerRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "initializeCustomer";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1:initializeCustomer";
+
+            /// <summary>Initializes InitializeCustomer parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
 }
 namespace Google.Apis.CloudSearch.v1.Data
 {
@@ -5528,6 +5586,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `InitializeCustomer` method.</summary>
+    public class InitializeCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
