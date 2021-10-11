@@ -1009,7 +1009,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource representing a policy schema. Next ID: 10</summary>
+    /// <summary>Resource representing a policy schema. Next ID: 11</summary>
     public class GoogleChromePolicyV1PolicySchema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Specific access restrictions related to this policy.</summary>
@@ -1056,6 +1056,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>Output only. URI to related support article for this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportUri")]
         public virtual string SupportUri { get; set; }
+
+        /// <summary>Output only. Information about applicable target resources for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validTargetResources")]
+        public virtual System.Collections.Generic.IList<string> ValidTargetResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

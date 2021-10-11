@@ -1741,6 +1741,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Info per node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<NodeInfo> Nodes { get; set; }
+
         /// <summary>
         /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage.
         /// Format is "serviceAccount:". The value may change over time for a given instance so should be checked before
@@ -1752,6 +1756,25 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. The port number of the exposed Redis endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all
+        /// healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag
+        /// behind the primary. Write requests must target 'host'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readEndpoint")]
+        public virtual string ReadEndpoint { get; set; }
+
+        /// <summary>
+        /// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests
+        /// should target 'port'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readEndpointPort")]
+        public virtual System.Nullable<int> ReadEndpointPort { get; set; }
+
+        /// <summary>Optional. Read replica mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readReplicasMode")]
+        public virtual string ReadReplicasMode { get; set; }
 
         /// <summary>
         /// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only
@@ -1769,6 +1792,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The number of replica nodes. Valid range for standard tier is [1-5] and defaults to 1. Valid value
+        /// for basic tier is 0 and defaults to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
+        public virtual System.Nullable<int> ReplicaCount { get; set; }
 
         /// <summary>
         /// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance.
@@ -1961,6 +1991,21 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. The start time of any upcoming scheduled maintenance for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Node specific properties.</summary>
+    public class NodeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Output Only. Node identifying string. e.g. 'node-0', 'node-1'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. Output Only. Location of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

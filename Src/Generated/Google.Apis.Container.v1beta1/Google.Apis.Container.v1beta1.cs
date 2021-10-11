@@ -6732,6 +6732,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
         public virtual string MasterIpv4CidrBlock { get; set; }
 
+        /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshCertificates")]
+        public virtual MeshCertificates MeshCertificates { get; set; }
+
         /// <summary>Monitoring configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringConfig")]
         public virtual MonitoringConfig MonitoringConfig { get; set; }
@@ -7060,6 +7064,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterVersion")]
         public virtual string DesiredMasterVersion { get; set; }
+
+        /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredMeshCertificates")]
+        public virtual MeshCertificates DesiredMeshCertificates { get; set; }
 
         /// <summary>The desired monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringConfig")]
@@ -8116,6 +8124,22 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+    public class MeshCertificates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity
+        /// Certificates controller and node agent will be deployed in the cluster, which can then be configured by
+        /// creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be
+        /// non-empty).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCertificates")]
+        public virtual System.Nullable<bool> EnableCertificates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Progress metric is (string, int|float|string) pair.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8429,6 +8453,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Shielded Instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
+        /// <summary>Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spot")]
+        public virtual System.Nullable<bool> Spot { get; set; }
 
         /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for

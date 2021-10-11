@@ -613,6 +613,14 @@ namespace Google.Apis.Speech.v1.Data
     /// </summary>
     public class LongRunningRecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Original output config if present in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual TranscriptOutputConfig OutputConfig { get; set; }
+
+        /// <summary>If the transcript output fails this field contains the relevant error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputError")]
+        public virtual Status OutputError { get; set; }
+
         /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }

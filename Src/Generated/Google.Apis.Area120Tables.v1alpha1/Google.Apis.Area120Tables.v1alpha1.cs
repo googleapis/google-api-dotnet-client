@@ -1237,6 +1237,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
 
+        /// <summary>Optional. Additional details about a date column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateDetails")]
+        public virtual DateDetails DateDetails { get; set; }
+
         /// <summary>Internal id for a column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -1296,6 +1300,17 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         /// <summary>Optional. Column key to use for values in the row. Defaults to user entered name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a date column.</summary>
+    public class DateDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the date column includes time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasTime")]
+        public virtual System.Nullable<bool> HasTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1452,7 +1467,7 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single table. NextId: 7</summary>
+    /// <summary>A single table. NextId: 8</summary>
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of columns in this table. Order of columns matches the display order.</summary>
@@ -1474,6 +1489,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         /// <summary>Saved views for this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("savedViews")]
         public virtual System.Collections.Generic.IList<SavedView> SavedViews { get; set; }
+
+        /// <summary>The time zone of the table. IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>Time when the table was last updated excluding updates to individual rows</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
