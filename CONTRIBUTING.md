@@ -34,9 +34,9 @@ These libraries are split into:
 - [Client Generator][client-gen]: The code generator for the above.
 - [Support Libraries][support-libs]: Support code for the client libraries.
 
-[support-libs]: https://github.com/googleapis/google-api-dotnet-client/tree/master/Src/Support
-[client-libs]: https://github.com/googleapis/google-api-dotnet-client/tree/master/Src/Generated
-[client-gen]: https://github.com/googleapis/google-api-dotnet-client/tree/master/ClientGenerator
+[support-libs]: https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Support
+[client-libs]: https://github.com/googleapis/google-api-dotnet-client/tree/main/Src/Generated
+[client-gen]: https://github.com/googleapis/google-api-dotnet-client/tree/main/ClientGenerator
 
 ## Building and .NET Core
 
