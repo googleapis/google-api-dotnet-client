@@ -24,7 +24,7 @@ using System.Runtime.Versioning;
 namespace Google.Apis.Requests
 {
     // Note: this code is copied from GAX:
-    // https://github.com/googleapis/gax-dotnet/blob/master/Google.Api.Gax/VersionHeaderBuilder.cs
+    // https://github.com/googleapis/gax-dotnet/blob/main/Google.Api.Gax/VersionHeaderBuilder.cs
     // The duplication is annoying, but hard to avoid due to dependencies.
     // Any changes should be made in both places.
 
