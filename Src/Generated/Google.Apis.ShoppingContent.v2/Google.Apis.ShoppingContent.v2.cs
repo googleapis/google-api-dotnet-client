@@ -8050,6 +8050,40 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Address : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Top-level administrative subdivision of the country. For example, a state like California ("CA")
+        /// or a province like Quebec ("QC").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; }
+
+        /// <summary>
+        /// Required. City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
+        /// or suburbs).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("city")]
+        public virtual string City { get; set; }
+
+        /// <summary>
+        /// Required. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)(e.g. "US").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>Required. Postal code or ZIP (e.g. "94043"). Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; }
+
+        /// <summary>Street-level part of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
+        public virtual string StreetAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Amount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[required] Value before taxes.</summary>
@@ -14165,6 +14199,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<Service> Services { get; set; }
 
+        /// <summary>Optional. A list of warehouses which can be referred to in `services`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warehouses")]
+        public virtual System.Collections.Generic.IList<Warehouse> Warehouses { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14731,6 +14769,39 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A fulfillment warehouse, which stores and handles inventory.</summary>
+    public class Warehouse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Business days of the warehouse. If not set, will be Monday to Friday by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessDayConfig")]
+        public virtual BusinessDayConfig BusinessDayConfig { get; set; }
+
+        /// <summary>
+        /// Required. The latest time of day that an order can be accepted and begin processing. Later orders will be
+        /// processed in the next day. The time is based on the warehouse postal code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffTime")]
+        public virtual WarehouseCutoffTime CutoffTime { get; set; }
+
+        /// <summary>
+        /// Required. The number of days it takes for this warehouse to pack up and ship an item. This is on the
+        /// warehouse level, but can be overridden on the offer level based on the attributes of an item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingDays")]
+        public virtual System.Nullable<long> HandlingDays { get; set; }
+
+        /// <summary>Required. The name of the warehouse. Must be unique within account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Shipping address of the warehouse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingAddress")]
+        public virtual Address ShippingAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class WarehouseBasedDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -14748,28 +14819,55 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
         public virtual string CarrierService { get; set; }
 
-        /// <summary>Required. Shipping origin's state.</summary>
+        /// <summary>Shipping origin's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originAdministrativeArea")]
         public virtual string OriginAdministrativeArea { get; set; }
 
-        /// <summary>Required. Shipping origin's city.</summary>
+        /// <summary>Shipping origin's city.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originCity")]
         public virtual string OriginCity { get; set; }
 
         /// <summary>
-        /// Required. Shipping origin's country represented as a [CLDR territory
+        /// Shipping origin's country represented as a [CLDR territory
         /// code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originCountry")]
         public virtual string OriginCountry { get; set; }
 
-        /// <summary>Required. Shipping origin.</summary>
+        /// <summary>Shipping origin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
         public virtual string OriginPostalCode { get; set; }
 
         /// <summary>Shipping origin's street address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originStreetAddress")]
         public virtual string OriginStreetAddress { get; set; }
+
+        /// <summary>
+        /// The name of the warehouse. Warehouse name need to be matched with name. If warehouseName is set, the below
+        /// fields will be ignored. The warehouse info will be read from warehouse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warehouseName")]
+        public virtual string WarehouseName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class WarehouseCutoffTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Hour (24-hour clock) of the cutoff time until which an order has to be placed to be processed in
+        /// the same day by the warehouse. Hour is based on the timezone of warehouse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hour")]
+        public virtual System.Nullable<int> Hour { get; set; }
+
+        /// <summary>
+        /// Required. Minute of the cutoff time until which an order has to be placed to be processed in the same day by
+        /// the warehouse. Minute is based on the timezone of warehouse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minute")]
+        public virtual System.Nullable<int> Minute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
