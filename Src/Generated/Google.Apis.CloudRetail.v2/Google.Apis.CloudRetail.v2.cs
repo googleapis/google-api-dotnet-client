@@ -1524,8 +1524,8 @@ namespace Google.Apis.CloudRetail.v2
                     /// <param name="placement">
                     /// Required. The resource name of the search engine placement, such as
                     /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
-                    /// used to identify the set of models that will be used to make the search. We currently support
-                    /// one placement with the following ID: * `default_search`.
+                    /// used to identify the serving configuration name and the set of models that will be used to make
+                    /// the search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2SearchRequest body, string placement)
                     {
@@ -1550,8 +1550,8 @@ namespace Google.Apis.CloudRetail.v2
                         /// <summary>
                         /// Required. The resource name of the search engine placement, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
-                        /// is used to identify the set of models that will be used to make the search. We currently
-                        /// support one placement with the following ID: * `default_search`.
+                        /// is used to identify the serving configuration name and the set of models that will be used
+                        /// to make the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -2835,8 +2835,8 @@ namespace Google.Apis.CloudRetail.v2.Data
     }
 
     /// <summary>
-    /// Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response
-    /// populated from the AddFulfillmentPlaces method.
+    /// Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated
+    /// from the AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2AddFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4316,7 +4316,10 @@ namespace Google.Apis.CloudRetail.v2.Data
     {
         /// <summary>
         /// Boost specification to boost certain products. See more details at this [user
-        /// guide](https://cloud.google.com/retail/docs/boosting).
+        /// guide](https://cloud.google.com/retail/docs/boosting). Notice that if both ServingConfig.boost_control_ids
+        /// and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search
+        /// request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores
+        /// from all matched boost conditions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
         public virtual GoogleCloudRetailV2SearchRequestBoostSpec BoostSpec { get; set; }
@@ -4426,18 +4429,18 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// extra query latency. Maximum number of keys is 10. For FulfillmentInfo, a fulfillment type and a fulfillment
         /// ID must be provided in the format of "fulfillmentType.fulfillmentId". E.g., in "pickupInStore.store123",
         /// "pickupInStore" is fulfillment type and "store123" is the store ID. Supported keys are: * colorFamilies *
-        /// price * originalPrice * discount * attributes.key, where key is any key in the Product.attributes map. *
-        /// pickupInStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
-        /// shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
-        /// sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "same-day-delivery".
-        /// * nextDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type
-        /// "next-day-delivery". * customFulfillment1.id, where id is any FulfillmentInfo.place_ids for
-        /// FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is any FulfillmentInfo.place_ids for
-        /// FulfillmentInfo.type "custom-type-2". * customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
-        /// FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is any FulfillmentInfo.place_ids for
-        /// FulfillmentInfo.type "custom-type-4". * customFulfillment5.id, where id is any FulfillmentInfo.place_ids for
-        /// FulfillmentInfo.type "custom-type-5". If this field is set to an invalid value other than these, an
-        /// INVALID_ARGUMENT error is returned.
+        /// price * originalPrice * discount * inventory(place_id,price) * attributes.key, where key is any key in the
+        /// Product.attributes map. * pickupInStore.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "pickup-in-store". * shipToStore.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "ship-to-store". * sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id, where id is any FulfillmentInfo.place_ids
+        /// for FulfillmentInfo.type "next-day-delivery". * customFulfillment1.id, where id is any
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is any
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". * customFulfillment3.id, where id is any
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is any
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-4". * customFulfillment5.id, where id is any
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-5". If this field is set to an invalid value
+        /// other than these, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantRollupKeys")]
         public virtual System.Collections.Generic.IList<string> VariantRollupKeys { get; set; }
@@ -4585,7 +4588,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" *
         /// "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" *
         /// "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * numerical_field = * "price" *
-        /// "discount" * "rating" * "ratingCount" * "attributes.key"
+        /// "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -5191,20 +5194,10 @@ namespace Google.Apis.CloudRetail.v2.Data
     }
 
     /// <summary>
-    /// Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response
-    /// populated from the AddFulfillmentPlaces method.
+    /// Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated
+    /// from the AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata related to the EnrollSolution method. This will be returned by the
-    /// google.longrunning.Operation.metadata field.
-    /// </summary>
-    public class GoogleCloudRetailV2alphaEnrollSolutionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5500,8 +5493,8 @@ namespace Google.Apis.CloudRetail.v2.Data
     }
 
     /// <summary>
-    /// Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response
-    /// populated from the AddFulfillmentPlaces method.
+    /// Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated
+    /// from the AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {

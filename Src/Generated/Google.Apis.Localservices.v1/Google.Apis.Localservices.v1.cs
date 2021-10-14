@@ -736,6 +736,33 @@ namespace Google.Apis.Localservices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Container for booking lead specific information.</summary>
+    public class GoogleAdsHomeservicesLocalservicesV1BookingLead : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of when service is provided by advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bookingAppointmentTimestamp")]
+        public virtual object BookingAppointmentTimestamp { get; set; }
+
+        /// <summary>Consumer email associated with the booking lead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerEmail")]
+        public virtual string ConsumerEmail { get; set; }
+
+        /// <summary>Consumer phone number associated with the booking lead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerPhoneNumber")]
+        public virtual string ConsumerPhoneNumber { get; set; }
+
+        /// <summary>Name of the customer who created the lead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerName")]
+        public virtual string CustomerName { get; set; }
+
+        /// <summary>The job type of the specified lead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
+        public virtual string JobType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Detailed Lead Report of a lead identified by their lead id and contains consumer, account, monetization, and
     /// lead data.
@@ -749,6 +776,10 @@ namespace Google.Apis.Localservices.v1.Data
         /// <summary>Aggregator specific information related to the lead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregatorInfo")]
         public virtual GoogleAdsHomeservicesLocalservicesV1AggregatorInfo AggregatorInfo { get; set; }
+
+        /// <summary>More information associated to only booking leads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bookingLead")]
+        public virtual GoogleAdsHomeservicesLocalservicesV1BookingLead BookingLead { get; set; }
 
         /// <summary>Business name associated to the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]

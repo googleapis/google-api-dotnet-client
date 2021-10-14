@@ -2276,6 +2276,15 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
+        /// Optional. Defines the purpose field of the subnet, e.g. 'PRIVATE_SERVICE_CONNECT'. For information about the
+        /// purposes that can be set using this field, see
+        /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks) in the Compute API
+        /// documentation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
+
+        /// <summary>
         /// Required. The name of a [region](/compute/docs/regions-zones) for the subnet, such `europe-west1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]

@@ -336,8 +336,8 @@ namespace Google.Apis.ChromePolicy.v1
                 /// Modify multiple policy values that are applied to a specific org unit so that they now inherit the
                 /// value from a parent (if applicable). All targets must have the same target format. That is to say
                 /// that they must point to the same target resource and must have the same keys specified in
-                /// `additionalTargetKeyNames`. On failure the request will return the error details as part of the
-                /// google.rpc.Status.
+                /// `additionalTargetKeyNames`, though the values for those keys may be different. On failure the
+                /// request will return the error details as part of the google.rpc.Status.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="customer">
@@ -352,8 +352,8 @@ namespace Google.Apis.ChromePolicy.v1
                 /// Modify multiple policy values that are applied to a specific org unit so that they now inherit the
                 /// value from a parent (if applicable). All targets must have the same target format. That is to say
                 /// that they must point to the same target resource and must have the same keys specified in
-                /// `additionalTargetKeyNames`. On failure the request will return the error details as part of the
-                /// google.rpc.Status.
+                /// `additionalTargetKeyNames`, though the values for those keys may be different. On failure the
+                /// request will return the error details as part of the google.rpc.Status.
                 /// </summary>
                 public class BatchInheritRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
                 {
@@ -404,8 +404,8 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <summary>
                 /// Modify multiple policy values that are applied to a specific org unit. All targets must have the
                 /// same target format. That is to say that they must point to the same target resource and must have
-                /// the same keys specified in `additionalTargetKeyNames`. On failure the request will return the error
-                /// details as part of the google.rpc.Status.
+                /// the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be
+                /// different. On failure the request will return the error details as part of the google.rpc.Status.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="customer">
@@ -419,8 +419,8 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <summary>
                 /// Modify multiple policy values that are applied to a specific org unit. All targets must have the
                 /// same target format. That is to say that they must point to the same target resource and must have
-                /// the same keys specified in `additionalTargetKeyNames`. On failure the request will return the error
-                /// details as part of the google.rpc.Status.
+                /// the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be
+                /// different. On failure the request will return the error details as part of the google.rpc.Status.
                 /// </summary>
                 public class BatchModifyRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleProtobufEmpty>
                 {
@@ -1048,7 +1048,8 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>
         /// Output only. The full qualified name of the policy schema. This value is used to fill the field
-        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies.
+        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
+        /// BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
         public virtual string SchemaName { get; set; }
@@ -1177,7 +1178,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>
         /// The target resource on which this policy is applied. The following resources are supported: * Organizational
-        /// Unit ("orgunits/{orgunit_id}")
+        /// Unit ("orgunits/{orgunit_id}") * Group ("groups/{group_id}")
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
         public virtual string TargetResource { get; set; }

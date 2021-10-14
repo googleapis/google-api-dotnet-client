@@ -4734,7 +4734,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preferredMemberKey")]
         public virtual System.Collections.Generic.IList<EntityKey> PreferredMemberKey { get; set; }
 
-        /// <summary>The relation between the group and the transitive member.</summary>
+        /// <summary>The relation between the group and the transitive membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationType")]
         public virtual string RelationType { get; set; }
 
@@ -5042,7 +5042,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>The response message for MembershipsService.SearchTransitiveMemberships.</summary>
     public class SearchTransitiveMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of transitive members satisfying the query.</summary>
+        /// <summary>List of transitive memberships satisfying the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<MemberRelation> Memberships { get; set; }
 
