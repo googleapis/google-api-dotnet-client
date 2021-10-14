@@ -4705,15 +4705,6 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class RRSetRoutingPolicyGeoPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If the health check for the primary target for a geo location returns an unhealthy status, the failover
-        /// target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the
-        /// primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of
-        /// whether it is healthy or not.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failovers")]
-        public virtual System.Collections.Generic.IList<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> Failovers { get; set; }
-
-        /// <summary>
         /// The primary geo routing configuration. If there are multiple items with the same location, an error is
         /// returned instead.
         /// </summary>

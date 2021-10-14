@@ -719,8 +719,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to extend a subscription service for their customers. It should be called directly by
-            /// the partner using service accounts.
+            /// Used by partners to extend a subscription service for their customers on an ongoing basis for the
+            /// subscription to remain active and renewable. It should be called directly by the partner using service
+            /// accounts.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -733,8 +734,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to extend a subscription service for their customers. It should be called directly by
-            /// the partner using service accounts.
+            /// Used by partners to extend a subscription service for their customers on an ongoing basis for the
+            /// subscription to remain active and renewable. It should be called directly by the partner using service
+            /// accounts.
             /// </summary>
             public class ExtendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse>
             {
@@ -1000,8 +1002,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     {
         /// <summary>
         /// Optional. If true, the subscription will be cancelled immediately. Otherwise, the subscription will be
-        /// cancelled at the end of the current cycle, and therefore no prorated refund will be issued for the rest of
-        /// the cycle.
+        /// cancelled at renewal_time, and therefore no prorated refund will be issued for the rest of the cycle.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelImmediately")]
         public virtual System.Nullable<bool> CancelImmediately { get; set; }

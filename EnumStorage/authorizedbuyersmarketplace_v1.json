@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AuthorizedBuyersMarketplace.v1.AuthorizedBuyersMarketplaceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AuthorizedBuyersMarketplace.v1.AuthorizedBuyersMarketplaceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

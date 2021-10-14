@@ -1387,7 +1387,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. The field paths to be updated, comma separated if there are multiple. Currently supported
-                /// field paths: * text * cards
+                /// field paths: * text * cards * gsuite_message_integration_render_data * attachment
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }

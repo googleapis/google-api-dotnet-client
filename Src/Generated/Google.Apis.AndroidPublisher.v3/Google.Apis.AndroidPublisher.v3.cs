@@ -35,6 +35,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public AndroidPublisherService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Edits = new EditsResource(this);
+            Grants = new GrantsResource(this);
             Inappproducts = new InappproductsResource(this);
             Internalappsharingartifacts = new InternalappsharingartifactsResource(this);
             Monetization = new MonetizationResource(this);
@@ -42,6 +43,7 @@ namespace Google.Apis.AndroidPublisher.v3
             Purchases = new PurchasesResource(this);
             Reviews = new ReviewsResource(this);
             Systemapks = new SystemapksResource(this);
+            Users = new UsersResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -86,6 +88,9 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <summary>Gets the Edits resource.</summary>
         public virtual EditsResource Edits { get; }
 
+        /// <summary>Gets the Grants resource.</summary>
+        public virtual GrantsResource Grants { get; }
+
         /// <summary>Gets the Inappproducts resource.</summary>
         public virtual InappproductsResource Inappproducts { get; }
 
@@ -106,6 +111,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Gets the Systemapks resource.</summary>
         public virtual SystemapksResource Systemapks { get; }
+
+        /// <summary>Gets the Users resource.</summary>
+        public virtual UsersResource Users { get; }
     }
 
     /// <summary>A base abstract class for AndroidPublisher requests.</summary>
@@ -4279,6 +4287,200 @@ namespace Google.Apis.AndroidPublisher.v3
         }
     }
 
+    /// <summary>The "grants" collection of methods.</summary>
+    public class GrantsResource
+    {
+        private const string Resource = "grants";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GrantsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Grant access for a user to the given package.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The user which needs permission. Format: developers/{developer}/users/{user}
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.Grant body, string parent)
+        {
+            return new CreateRequest(service, body, parent);
+        }
+
+        /// <summary>Grant access for a user to the given package.</summary>
+        public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Grant>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Grant body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The user which needs permission. Format: developers/{developer}/users/{user}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.Grant Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+parent}/grants";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^developers/[^/]+/users/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Removes all access for the user to the given package or developer account.</summary>
+        /// <param name="name">
+        /// Required. The name of the grant to delete. Format:
+        /// developers/{developer}/users/{email}/grants/{package_name}
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Removes all access for the user to the given package or developer account.</summary>
+        public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the grant to delete. Format:
+            /// developers/{developer}/users/{email}/grants/{package_name}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^developers/[^/]+/users/[^/]+/grants/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Updates access for the user to the given package.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. Resource name for this grant, following the pattern
+        /// "developers/{developer}/users/{email}/grants/{package_name}".
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Grant body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>Updates access for the user to the given package.</summary>
+        public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Grant>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Grant body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Resource name for this grant, following the pattern
+            /// "developers/{developer}/users/{email}/grants/{package_name}".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.Grant Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^developers/[^/]+/users/[^/]+/grants/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "inappproducts" collection of methods.</summary>
     public class InappproductsResource
     {
@@ -6898,6 +7100,269 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
     }
+
+    /// <summary>The "users" collection of methods.</summary>
+    public class UsersResource
+    {
+        private const string Resource = "users";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UsersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Grant access for a user to the given developer account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The developer account to add the user to. Format: developers/{developer}
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.User body, string parent)
+        {
+            return new CreateRequest(service, body, parent);
+        }
+
+        /// <summary>Grant access for a user to the given developer account.</summary>
+        public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.User>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.User body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The developer account to add the user to. Format: developers/{developer}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.User Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+parent}/users";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^developers/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Removes all access for the user to the given developer account.</summary>
+        /// <param name="name">
+        /// Required. The name of the user to delete. Format: developers/{developer}/users/{email}
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Removes all access for the user to the given developer account.</summary>
+        public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the user to delete. Format: developers/{developer}/users/{email}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^developers/[^/]+/users/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists all users with access to a developer account.</summary>
+        /// <param name="parent">
+        /// Required. The developer account to fetch users from. Format: developers/{developer}
+        /// </param>
+        public virtual ListRequest List(string parent)
+        {
+            return new ListRequest(service, parent);
+        }
+
+        /// <summary>Lists all users with access to a developer account.</summary>
+        public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListUsersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>Required. The developer account to fetch users from. Format: developers/{developer}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// The maximum number of results to return. This must be set to -1 to disable pagination.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A token received from a previous call to this method, in order to retrieve further results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+parent}/users";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^developers/[^/]+$",
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates access for the user to the developer account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. Resource name for this user, following the pattern "developers/{developer}/users/{email}".
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.User body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>Updates access for the user to the developer account.</summary>
+        public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.User>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.User body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Resource name for this user, following the pattern "developers/{developer}/users/{email}".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.User Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^developers/[^/]+/users/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.AndroidPublisher.v3.Data
 {
@@ -7367,6 +7832,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An access grant resource.</summary>
+    public class Grant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The permissions granted to the user for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLevelPermissions")]
+        public virtual System.Collections.Generic.IList<string> AppLevelPermissions { get; set; }
+
+        /// <summary>
+        /// Required. Resource name for this grant, following the pattern
+        /// "developers/{developer}/users/{email}/grants/{package_name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Immutable. The package name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An uploaded image. The resource for ImagesService.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7591,6 +8078,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricePeriod")]
         public virtual string IntroductoryPricePeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response containing one or more users with access to an account.</summary>
+    public class ListUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to pass to subsequent calls in order to retrieve subsequent results. This will not be set if there
+        /// are no more results to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resulting users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("users")]
+        public virtual System.Collections.Generic.IList<User> Users { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8356,6 +8861,45 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>All tracks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<Track> Tracks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user resource.</summary>
+    public class User : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The state of the user's access to the Play Console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessState")]
+        public virtual string AccessState { get; set; }
+
+        /// <summary>Permissions for the user which apply across the developer account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerAccountPermissions")]
+        public virtual System.Collections.Generic.IList<string> DeveloperAccountPermissions { get; set; }
+
+        /// <summary>Immutable. The user's email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The time at which the user's access expires, if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual object ExpirationTime { get; set; }
+
+        /// <summary>Output only. Per-app permissions for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grants")]
+        public virtual System.Collections.Generic.IList<Grant> Grants { get; set; }
+
+        /// <summary>
+        /// Required. Resource name for this user, following the pattern "developers/{developer}/users/{email}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Whether there are more permissions for the user that are not represented here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partial")]
+        public virtual System.Nullable<bool> Partial { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
