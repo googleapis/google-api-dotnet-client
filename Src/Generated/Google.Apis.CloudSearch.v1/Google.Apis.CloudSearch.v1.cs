@@ -5472,10 +5472,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response format for getting query stats at a search application level between given dates.</summary>
+    /// <summary>Response format for getting query stats for a search application between given dates.</summary>
     public class GetSearchApplicationQueryStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Search application level query stats per date</summary>
+        /// <summary>Query stats per date for a search application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<SearchApplicationQueryStats> Stats { get; set; }
 

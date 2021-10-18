@@ -1,0 +1,21 @@
+{
+  "Google.Apis.VMMigrationService.v1.ProjectsResource+LocationsResource+SourcesResource+UtilizationReportsResource+GetRequest.ViewEnum": [
+    "UTILIZATION_REPORT_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.VMMigrationService.v1.ProjectsResource+LocationsResource+SourcesResource+UtilizationReportsResource+ListRequest.ViewEnum": [
+    "UTILIZATION_REPORT_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.VMMigrationService.v1.VMMigrationServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.VMMigrationService.v1.VMMigrationServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
