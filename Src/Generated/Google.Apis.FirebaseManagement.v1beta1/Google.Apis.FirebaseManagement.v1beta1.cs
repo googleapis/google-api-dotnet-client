@@ -2904,6 +2904,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class AnalyticsProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. The ID of the [Google Analytics account](https://www.google.com/analytics/) for the Google
+        /// Analytics property associated with the specified FirebaseProject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsAccountId")]
+        public virtual string AnalyticsAccountId { get; set; }
+
+        /// <summary>
         /// The display name of the Google Analytics property associated with the specified `FirebaseProject`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -3189,6 +3196,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>The Apple Developer Team ID associated with the App in the App Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamId")]
+        public virtual string TeamId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
