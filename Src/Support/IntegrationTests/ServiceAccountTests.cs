@@ -59,6 +59,34 @@ namespace IntegrationTests
         }
 
         [Fact]
+        public void ServiceCredential_UserDisableJwt()
+        {
+            // This is testing that a service-credential successfully authenticates to a Cloud Service.
+            // If authentication fails, an exception will be thrown, failing the test.
+
+            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl).CreateWithUser("User");
+            ServiceAccountCredential serviceCredential = (ServiceAccountCredential)credential.UnderlyingCredential;
+
+            credential = GoogleCredential.FromServiceAccountCredential(serviceCredential.WithUseJwtAccessWithScopes(true));
+
+            StorageService client = new StorageService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = "IntegrationTest"
+            });
+
+            // Check an access token is available.
+            var ok = credential.UnderlyingCredential.GetAccessTokenForRequestAsync().Result;
+            Assert.NotNull(ok);
+
+            // Following line will throw if authentication fails.
+            Buckets buckets = client.Buckets.List(Helper.GetProjectId()).Execute();
+
+            // A final sanity-check.
+            Assert.NotNull(buckets.Items);
+        }
+
+        [Fact]
         public async Task JwtAccessToken_Http()
         {
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth

@@ -264,7 +264,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         }
 
         [Fact]
-        public async Task FromServiceAccountCredential_FetchesOicdToken()
+        public async Task FromServiceAccountCredential_FetchesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
             var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
