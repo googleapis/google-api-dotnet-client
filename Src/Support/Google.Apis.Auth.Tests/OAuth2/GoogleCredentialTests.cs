@@ -334,28 +334,6 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.Equal(fakeAccessToken, httpHandler.RequestHeaders.Authorization.Parameter);
         }
 
-        /// <summary>
-        /// Returns an access token, we don't care about the token in the following tests,
-        /// but we need token fetching to work because that's a prerequisite for being
-        /// able to perform authenticated requests.
-        /// </summary>
-        private class FetchesTokenMessageHandler : CountableMessageHandler
-        {
-            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
-                Task.FromResult(new HttpResponseMessage()
-                {
-                    Content = new StringContent(
-                        NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
-                        {
-                            AccessToken = "a",
-                            RefreshToken = "r",
-                            ExpiresInSeconds = 100,
-                            Scope = "b"
-                        }),
-                        Encoding.UTF8)
-                });
-        }
-
         public static IEnumerable<object[]> CredentialsForTesting
         {
             get

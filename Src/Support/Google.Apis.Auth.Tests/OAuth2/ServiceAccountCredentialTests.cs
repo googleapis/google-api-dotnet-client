@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
-using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
@@ -24,8 +23,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using static Google.Apis.Auth.JsonWebSignature;
@@ -338,7 +335,6 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var initializer = new ServiceAccountCredential.Initializer("some-id")
             {
                 UseJwtAccessWithScopes = useJwtAccessWithScopes,
-                User = "user1",
                 Clock = clock
             }.FromPrivateKey(PrivateKey);
             var cred = new ServiceAccountCredential(initializer);
@@ -356,6 +352,46 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public async Task JwtScopes_UseScopes()
         {
             var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                UseJwtAccessWithScopes = true,
+                Scopes = new[] { "scope1", "scope2" },
+                Clock = clock
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.True(cred.HasExplicitScopes); // Must be true for the remainder of this test to be valid.
+
+            var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
+            byte[] decoded = TokenEncodingHelpers.Base64UrlDecode(jwt0.Split(new char[] { '.' })[1]);
+            string payload = System.Text.Encoding.UTF8.GetString(decoded);
+            Assert.Contains("\"scope\":\"scope1 scope2\"", payload);
+            Assert.DoesNotContain("aud", payload);
+        }
+        
+        [Theory]
+        [CombinatorialData]
+        public async Task Jwt_WithUser_AccessToken(bool useJwtAccessWithScopes)
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var handler = new FetchesTokenMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                UseJwtAccessWithScopes = useJwtAccessWithScopes,
+                Clock = clock,
+                User = "user1",
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.False(cred.HasExplicitScopes); // Must be false for the remainder of this test to be valid.
+
+            var token = await cred.GetAccessTokenForRequestAsync("uri0");
+            Assert.Equal("a", token);
+        }
+
+        [Fact]
+        public async Task Jwt_WithUserAndScopes_AccessToken()
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var handler = new FetchesTokenMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer("some-id")
             {
@@ -368,34 +404,8 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var cred = new ServiceAccountCredential(initializer);
             Assert.True(cred.HasExplicitScopes); // Must be true for the remainder of this test to be valid.
 
-            var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
-            byte[] decoded = TokenEncodingHelpers.Base64UrlDecode(jwt0.Split(new char[] { '.' })[1]);
-            string payload = System.Text.Encoding.UTF8.GetString(decoded);
-            Assert.Contains("\"scope\":\"scope1 scope2\"", payload);
-            Assert.DoesNotContain("aud", payload);
-        }
-
-
-        /// <summary>
-        /// Returns an access token, we don't care about the token in the following tests,
-        /// but we need token fetching to work because that's a prerequisite for being
-        /// able to perform authenticated requests.
-        /// </summary>
-        private class FetchesTokenMessageHandler : CountableMessageHandler
-        {
-            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
-                Task.FromResult(new HttpResponseMessage()
-                {
-                    Content = new StringContent(
-                        NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
-                        {
-                            AccessToken = "a",
-                            RefreshToken = "r",
-                            ExpiresInSeconds = 100,
-                            Scope = "b"
-                        }),
-                        Encoding.UTF8)
-                });
+            var token = await cred.GetAccessTokenForRequestAsync("uri0");
+            Assert.Equal("a", token);
         }
 
         private class DummyAccessMethod : IAccessMethod
