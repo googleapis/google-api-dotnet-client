@@ -5702,6 +5702,15 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
+        /// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters,
+        /// and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
+        /// present, must contain 1 to 63 characters, and must conform to RFC 1035
+        /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
         /// Output only. The "resource name" of the autoscaling policy, as described in
         /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource
         /// name of the policy has the following format:
@@ -5733,6 +5742,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cooldownPeriod")]
         public virtual object CooldownPeriod { get; set; }
+
+        /// <summary>Optional. Spark Standalone autoscaling configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkStandaloneConfig")]
+        public virtual SparkStandaloneAutoscalingConfig SparkStandaloneConfig { get; set; }
 
         /// <summary>Optional. YARN autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnConfig")]
@@ -5836,21 +5849,21 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Associates members with a role.</summary>
+    /// <summary>Associates members, or principals, with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The condition that is associated with this binding.If the condition evaluates to true, then this binding
         /// applies to the current request.If the condition evaluates to false, then this binding does not apply to the
-        /// current request. However, a different role binding might grant the same role to one or more of the members
-        /// in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation
-        /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// current request. However, a different role binding might grant the same role to one or more of the
+        /// principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM
+        /// documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the identities requesting access for a Cloud Platform resource. members can have the following
+        /// Specifies the principals requesting access for a Cloud Platform resource. members can have the following
         /// values: allUsers: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with
         /// a Google account or a service account. user:{emailid}: An email address that represents a specific Google
@@ -5873,7 +5886,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+        /// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or
+        /// roles/owner.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -7552,15 +7566,16 @@ namespace Google.Apis.Dataproc.v1.Data
 
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A
-    /// Policy is a collection of bindings. A binding binds one or more members to a single role. Members can be user
-    /// accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions;
-    /// each role can be an IAM predefined role or a user-created custom role.For some types of Google Cloud resources,
-    /// a binding can also specify a condition, which is a logical expression that allows access to a resource only if
-    /// the expression evaluates to true. A condition can add constraints based on attributes of the request, the
-    /// resource, or both. To learn which resources support conditions in their IAM policies, see the IAM documentation
-    /// (https://cloud.google.com/iam/help/conditions/resource-policies).JSON example: { "bindings": [ { "role":
-    /// "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+    /// Policy is a collection of bindings. A binding binds one or more members, or principals, to a single role.
+    /// Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a
+    /// named list of permissions; each role can be an IAM predefined role or a user-created custom role.For some types
+    /// of Google Cloud resources, a binding can also specify a condition, which is a logical expression that allows
+    /// access to a resource only if the expression evaluates to true. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).JSON
+    /// example: { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+    /// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
     /// "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title":
     /// "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time &amp;lt;
     /// timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } YAML example: bindings: -
@@ -7574,12 +7589,12 @@ namespace Google.Apis.Dataproc.v1.Data
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Associates a list of members to a role. Optionally, may specify a condition that determines how and when the
-        /// bindings are applied. Each of the bindings must contain at least one member.The bindings in a Policy can
-        /// refer to up to 1,500 members; up to 250 of these members can be Google groups. Each occurrence of a member
-        /// counts towards these limits. For example, if the bindings grant 50 different roles to
-        /// user:alice@example.com, and not to any other member, then you can add another 1,450 members to the bindings
-        /// in the Policy.
+        /// Associates a list of members, or principals, with a role. Optionally, may specify a condition that
+        /// determines how and when the bindings are applied. Each of the bindings must contain at least one
+        /// principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be
+        /// Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings
+        /// grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another
+        /// 1,450 principals to the bindings in the Policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
@@ -8053,6 +8068,57 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> ScriptVariables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Basic autoscaling configurations for Spark Standalone.</summary>
+    public class SparkStandaloneAutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for
+        /// spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to
+        /// downscaling operations.Bounds: 0s, 1d.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
+        public virtual object GracefulDecommissionTimeout { get; set; }
+
+        /// <summary>
+        /// Required. Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of
+        /// 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive
+        /// scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less
+        /// aggressive scaling).Bounds: 0.0, 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleDownFactor")]
+        public virtual System.Nullable<double> ScaleDownFactor { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For
+        /// example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker
+        /// scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any
+        /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleDownMinWorkerFraction")]
+        public virtual System.Nullable<double> ScaleDownMinWorkerFraction { get; set; }
+
+        /// <summary>
+        /// Required. Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will
+        /// result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling).
+        /// A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive
+        /// scaling).Bounds: 0.0, 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleUpFactor")]
+        public virtual System.Nullable<double> ScaleUpFactor { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example,
+        /// in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up
+        /// for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended
+        /// change.Bounds: 0.0, 1.0. Default: 0.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleUpMinWorkerFraction")]
+        public virtual System.Nullable<double> ScaleUpMinWorkerFraction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

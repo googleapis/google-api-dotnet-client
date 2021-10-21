@@ -1811,6 +1811,10 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataLossFromOtherRow")]
         public virtual System.Nullable<bool> DataLossFromOtherRow { get; set; }
 
+        /// <summary>If empty reason is specified, the report is empty for this reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emptyReason")]
+        public virtual string EmptyReason { get; set; }
+
         /// <summary>
         /// The property's current timezone. Intended to be used to interpret time-based dimensions like `hour` and
         /// `minute`. Formatted as strings from the IANA Time Zone database (https://www.iana.org/time-zones); for

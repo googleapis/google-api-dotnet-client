@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Storagetransfer.v1 Client Library</Title>
-    <Version>1.55.0.2452</Version>
+    <Version>1.55.0.2482</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

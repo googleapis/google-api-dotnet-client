@@ -2145,7 +2145,10 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>
                         /// Processes a natural language query and returns structured, actionable data as a result. This
                         /// method is not idempotent, because it may cause contexts and session entity types to be
-                        /// updated, which in turn might affect results of future queries. Note: Always use agent
+                        /// updated, which in turn might affect results of future queries. If you might use [Agent
+                        /// Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now or in the
+                        /// future, consider using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has
+                        /// additional functionality for Agent Assist and other CCAI products. Note: Always use agent
                         /// versions for production traffic. See [Versions and
                         /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                         /// </summary>
@@ -2171,7 +2174,10 @@ namespace Google.Apis.Dialogflow.v2
                         /// <summary>
                         /// Processes a natural language query and returns structured, actionable data as a result. This
                         /// method is not idempotent, because it may cause contexts and session entity types to be
-                        /// updated, which in turn might affect results of future queries. Note: Always use agent
+                        /// updated, which in turn might affect results of future queries. If you might use [Agent
+                        /// Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now or in the
+                        /// future, consider using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has
+                        /// additional functionality for Agent Assist and other CCAI products. Note: Always use agent
                         /// versions for production traffic. See [Versions and
                         /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                         /// </summary>
@@ -4933,8 +4939,12 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>
                 /// Processes a natural language query and returns structured, actionable data as a result. This method
                 /// is not idempotent, because it may cause contexts and session entity types to be updated, which in
-                /// turn might affect results of future queries. Note: Always use agent versions for production traffic.
-                /// See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                /// turn might affect results of future queries. If you might use [Agent
+                /// Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now or in the future,
+                /// consider using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has additional
+                /// functionality for Agent Assist and other CCAI products. Note: Always use agent versions for
+                /// production traffic. See [Versions and
+                /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="session">
@@ -4957,8 +4967,12 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>
                 /// Processes a natural language query and returns structured, actionable data as a result. This method
                 /// is not idempotent, because it may cause contexts and session entity types to be updated, which in
-                /// turn might affect results of future queries. Note: Always use agent versions for production traffic.
-                /// See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                /// turn might affect results of future queries. If you might use [Agent
+                /// Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now or in the future,
+                /// consider using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has additional
+                /// functionality for Agent Assist and other CCAI products. Note: Always use agent versions for
+                /// production traffic. See [Versions and
+                /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                 /// </summary>
                 public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
                 {
@@ -10070,8 +10084,11 @@ namespace Google.Apis.Dialogflow.v2
                             /// <summary>
                             /// Processes a natural language query and returns structured, actionable data as a result.
                             /// This method is not idempotent, because it may cause contexts and session entity types to
-                            /// be updated, which in turn might affect results of future queries. Note: Always use agent
-                            /// versions for production traffic. See [Versions and
+                            /// be updated, which in turn might affect results of future queries. If you might use
+                            /// [Agent Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now
+                            /// or in the future, consider using AnalyzeContent instead of `DetectIntent`.
+                            /// `AnalyzeContent` has additional functionality for Agent Assist and other CCAI products.
+                            /// Note: Always use agent versions for production traffic. See [Versions and
                             /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                             /// </summary>
                             /// <param name="body">The body of the request.</param>
@@ -10096,8 +10113,11 @@ namespace Google.Apis.Dialogflow.v2
                             /// <summary>
                             /// Processes a natural language query and returns structured, actionable data as a result.
                             /// This method is not idempotent, because it may cause contexts and session entity types to
-                            /// be updated, which in turn might affect results of future queries. Note: Always use agent
-                            /// versions for production traffic. See [Versions and
+                            /// be updated, which in turn might affect results of future queries. If you might use
+                            /// [Agent Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now
+                            /// or in the future, consider using AnalyzeContent instead of `DetectIntent`.
+                            /// `AnalyzeContent` has additional functionality for Agent Assist and other CCAI products.
+                            /// Note: Always use agent versions for production traffic. See [Versions and
                             /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                             /// </summary>
                             public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
@@ -12106,7 +12126,10 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Processes a natural language query and returns structured, actionable data as a result. This
                     /// method is not idempotent, because it may cause contexts and session entity types to be updated,
-                    /// which in turn might affect results of future queries. Note: Always use agent versions for
+                    /// which in turn might affect results of future queries. If you might use [Agent
+                    /// Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now or in the
+                    /// future, consider using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has additional
+                    /// functionality for Agent Assist and other CCAI products. Note: Always use agent versions for
                     /// production traffic. See [Versions and
                     /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                     /// </summary>
@@ -12131,7 +12154,10 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Processes a natural language query and returns structured, actionable data as a result. This
                     /// method is not idempotent, because it may cause contexts and session entity types to be updated,
-                    /// which in turn might affect results of future queries. Note: Always use agent versions for
+                    /// which in turn might affect results of future queries. If you might use [Agent
+                    /// Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI products now or in the
+                    /// future, consider using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has additional
+                    /// functionality for Agent Assist and other CCAI products. Note: Always use agent versions for
                     /// production traffic. See [Versions and
                     /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
                     /// </summary>

@@ -3503,6 +3503,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The human readable name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the
         /// deepest nested folder, and the last folder is the folder directly under the Organization.

@@ -1036,8 +1036,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string AbuseReason { get; set; }
 
         /// <summary>
-        /// The name of the product being abused. This is restricted to only the following values: "Gmail" "Payments"
-        /// "Voice" "Workspace" "Other"
+        /// The name of the product being abused. This is restricted to only the following values: "Gmail" "Google
+        /// Workspace" "Payments" "Voice" "YouTube" "Other"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productName")]
         public virtual string ProductName { get; set; }
