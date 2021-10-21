@@ -2288,8 +2288,8 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Exports a Google Doc to the requested MIME type and returns the exported content. Please note that the
-        /// exported content is limited to 10MB.
+        /// Exports a Google Workspace document to the requested MIME type and returns exported byte content. Note that
+        /// the exported content is limited to 10MB.
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="mimeType">The MIME type of the format requested for this export.</param>
@@ -2299,8 +2299,8 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Exports a Google Doc to the requested MIME type and returns the exported content. Please note that the
-        /// exported content is limited to 10MB.
+        /// Exports a Google Workspace document to the requested MIME type and returns exported byte content. Note that
+        /// the exported content is limited to 10MB.
         /// </summary>
         public class ExportRequest : DriveBaseServiceRequest<string>
         {

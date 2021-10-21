@@ -296,9 +296,10 @@ namespace Google.Apis.Reseller.v1
         /// account](/admin-sdk/reseller/v1/how-tos/manage_customers#get_customer).
         /// </summary>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         public virtual GetRequest Get(string customerId)
         {
@@ -321,9 +322,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -440,9 +442,10 @@ namespace Google.Apis.Reseller.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Reseller.v1.Data.Customer body, string customerId)
         {
@@ -466,9 +469,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -510,9 +514,10 @@ namespace Google.Apis.Reseller.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Reseller.v1.Data.Customer body, string customerId)
         {
@@ -535,9 +540,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -725,9 +731,10 @@ namespace Google.Apis.Reseller.v1
         /// call will not reactivate the customer subscription.
         /// </summary>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -756,9 +763,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -812,9 +820,10 @@ namespace Google.Apis.Reseller.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -845,9 +854,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -906,9 +916,10 @@ namespace Google.Apis.Reseller.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -938,9 +949,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -999,9 +1011,10 @@ namespace Google.Apis.Reseller.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -1031,9 +1044,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -1087,9 +1101,10 @@ namespace Google.Apis.Reseller.v1
 
         /// <summary>Cancels, suspends, or transfers a subscription to direct.</summary>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -1118,9 +1133,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -1212,9 +1228,10 @@ namespace Google.Apis.Reseller.v1
         /// subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#get_subscription).
         /// </summary>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -1244,9 +1261,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -1305,9 +1323,10 @@ namespace Google.Apis.Reseller.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Reseller.v1.Data.Subscription body, string customerId)
         {
@@ -1336,9 +1355,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -1425,9 +1445,10 @@ namespace Google.Apis.Reseller.v1
             public virtual string CustomerAuthToken { get; set; }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -1515,9 +1536,10 @@ namespace Google.Apis.Reseller.v1
         /// information, see [manage subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#paid_service).
         /// </summary>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -1546,9 +1568,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -1604,9 +1627,10 @@ namespace Google.Apis.Reseller.v1
         /// may result in the subscription being cancelled.
         /// </summary>
         /// <param name="customerId">
-        /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we
-        /// do not recommend using a `customerId` as a key for persistent data. If the domain name for a `customerId` is
-        /// changed, the Google system automatically updates.
+        /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+        /// name for a customer changes, the old domain name cannot be used to access the customer, but the customer's
+        /// unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in
+        /// your systems where applicable.
         /// </param>
         /// <param name="subscriptionId">
         /// This is a required property. The `subscriptionId` is the subscription identifier and is unique for each
@@ -1639,9 +1663,10 @@ namespace Google.Apis.Reseller.v1
             }
 
             /// <summary>
-            /// Either the customer's primary domain name or the customer's unique identifier. If using the domain name,
-            /// we do not recommend using a `customerId` as a key for persistent data. If the domain name for a
-            /// `customerId` is changed, the Google system automatically updates.
+            /// This can be either the customer's primary domain name or the customer's unique identifier. If the domain
+            /// name for a customer changes, the old domain name cannot be used to access the customer, but the
+            /// customer's unique identifier (as returned by the API) can always be used. We recommend storing the
+            /// unique identifier in your systems where applicable.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }

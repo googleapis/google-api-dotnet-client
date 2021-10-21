@@ -1047,9 +1047,8 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string PolicyDescription { get; set; }
 
         /// <summary>
-        /// Output only. The full qualified name of the policy schema. This value is used to fill the field
-        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
-        /// BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
+        /// Output only. The fully qualified name of the policy schema. This value is used to fill the field
+        /// `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
         public virtual string SchemaName { get; set; }
@@ -1178,7 +1177,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>
         /// The target resource on which this policy is applied. The following resources are supported: * Organizational
-        /// Unit ("orgunits/{orgunit_id}") * Group ("groups/{group_id}")
+        /// Unit ("orgunits/{orgunit_id}")
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
         public virtual string TargetResource { get; set; }

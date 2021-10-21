@@ -558,7 +558,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="id">Required. A unique identifier for a photo.</param>
+        /// <param name="id">A unique identifier for a photo.</param>
         public virtual UpdateRequest Update(Google.Apis.StreetViewPublish.v1.Data.Photo body, string id)
         {
             return new UpdateRequest(service, body, id);
@@ -582,7 +582,7 @@ namespace Google.Apis.StreetViewPublish.v1
                 InitParameters();
             }
 
-            /// <summary>Required. A unique identifier for a photo.</summary>
+            /// <summary>A unique identifier for a photo.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
 
@@ -1250,7 +1250,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Identifier for a Photo.</summary>
     public class PhotoId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A unique identifier for a photo.</summary>
+        /// <summary>A unique identifier for a photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 

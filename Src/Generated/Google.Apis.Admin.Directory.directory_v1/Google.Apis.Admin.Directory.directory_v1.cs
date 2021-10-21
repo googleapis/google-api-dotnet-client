@@ -1008,6 +1008,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
+            /// <summary>
+            /// Return devices from all child orgunits, as well as the specified org unit. If this is set to true
+            /// 'orgUnitPath' must be provided.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeChildOrgunits", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeChildOrgunits { get; set; }
+
             /// <summary>Maximum number of results to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -1129,6 +1136,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     Name = "customerId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeChildOrgunits", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeChildOrgunits",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
