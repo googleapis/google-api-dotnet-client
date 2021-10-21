@@ -324,6 +324,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                 public AgentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Changelogs = new ChangelogsResource(service);
                     EntityTypes = new EntityTypesResource(service);
                     Environments = new EnvironmentsResource(service);
                     Flows = new FlowsResource(service);
@@ -331,6 +332,171 @@ namespace Google.Apis.Dialogflow.v3beta1
                     Sessions = new SessionsResource(service);
                     TestCases = new TestCasesResource(service);
                     Webhooks = new WebhooksResource(service);
+                }
+
+                /// <summary>Gets the Changelogs resource.</summary>
+                public virtual ChangelogsResource Changelogs { get; }
+
+                /// <summary>The "changelogs" collection of methods.</summary>
+                public class ChangelogsResource
+                {
+                    private const string Resource = "changelogs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ChangelogsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Retrieves the specified Changelog.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the changelog to get. Format: `projects//locations//agents//changelogs/`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves the specified Changelog.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Changelog>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the changelog to get. Format:
+                        /// `projects//locations//agents//changelogs/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/changelogs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the list of Changelogs.</summary>
+                    /// <param name="parent">
+                    /// Required. The agent containing the changelogs. Format: `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of Changelogs.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListChangelogsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent containing the changelogs. Format: `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The filter string. Supports filter by user_email, resource, type and create_time. Some
+                        /// examples: 1. By user email: user_email = "someone@google.com" 2. By resource name: resource
+                        /// = "projects/123/locations/global/agents/456/flows/789" 3. By resource display name:
+                        /// display_name = "my agent" 4. By action: action = "Create" 5. By type: type = "flows" 6. By
+                        /// create time. Currently predicates on `create_time` and `create_time_epoch_seconds` are
+                        /// supported: create_time_epoch_seconds &amp;gt; 1551790877 AND create_time &amp;lt;=
+                        /// 2017-01-15T01:30:15.01Z 7. Combination of above filters: resource =
+                        /// "projects/123/locations/global/agents/456/flows/789" AND user_email = "someone@google.com"
+                        /// AND create_time &amp;lt;= 2017-01-15T01:30:15.01Z
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of items to return in a single page. By default 100 and at most 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/changelogs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the EntityTypes resource.</summary>
@@ -3558,6 +3724,67 @@ namespace Google.Apis.Dialogflow.v3beta1
                         public VersionsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                        }
+
+                        /// <summary>Compares the specified base version with target version.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="baseVersion">
+                        /// Required. Name of the base flow version to compare with the target version. Use version ID
+                        /// `0` to indicate the draft version of the specified flow. Format:
+                        /// `projects//locations//agents//flows//versions/`.
+                        /// </param>
+                        public virtual CompareVersionsRequest CompareVersions(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1CompareVersionsRequest body, string baseVersion)
+                        {
+                            return new CompareVersionsRequest(service, body, baseVersion);
+                        }
+
+                        /// <summary>Compares the specified base version with target version.</summary>
+                        public class CompareVersionsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1CompareVersionsResponse>
+                        {
+                            /// <summary>Constructs a new CompareVersions request.</summary>
+                            public CompareVersionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1CompareVersionsRequest body, string baseVersion) : base(service)
+                            {
+                                BaseVersion = baseVersion;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the base flow version to compare with the target version. Use version
+                            /// ID `0` to indicate the draft version of the specified flow. Format:
+                            /// `projects//locations//agents//flows//versions/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("baseVersion", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string BaseVersion { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1CompareVersionsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "compareVersions";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+baseVersion}:compareVersions";
+
+                            /// <summary>Initializes CompareVersions parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("baseVersion", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "baseVersion",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/flows/[^/]+/versions/[^/]+$",
+                                });
+                            }
                         }
 
                         /// <summary>
@@ -10559,6 +10786,84 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Changelogs represents a change made to a given agent.</summary>
+    public class GoogleCloudDialogflowCxV3beta1Changelog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action of the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>The timestamp of the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The affected resource display name of the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the changelog. Format: `projects//locations//agents//changelogs/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The affected resource name of the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The affected resource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Email address of the authenticated user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Versions.CompareVersions.</summary>
+    public class GoogleCloudDialogflowCxV3beta1CompareVersionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The language to compare the flow versions for. If not specified, the agent's default language is used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must
+        /// be enabled in the agent before they can be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. Name of the target flow version to compare with the base version. Use version ID `0` to indicate
+        /// the draft version of the specified flow. Format: `projects//locations//agents//flows//versions/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Versions.CompareVersions.</summary>
+    public class GoogleCloudDialogflowCxV3beta1CompareVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>JSON representation of the base version content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseVersionContentJson")]
+        public virtual string BaseVersionContentJson { get; set; }
+
+        /// <summary>The timestamp when the two version compares.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compareTime")]
+        public virtual object CompareTime { get; set; }
+
+        /// <summary>JSON representation of the target version content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersionContentJson")]
+        public virtual string TargetVersionContentJson { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a result from running a test case in an agent environment.</summary>
     public class GoogleCloudDialogflowCxV3beta1ContinuousTestResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12155,6 +12460,26 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agents")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Agent> Agents { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Changelogs.ListChangelogs.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListChangelogsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of changelogs. There will be a maximum number of items returned based on the page_size field in the
+        /// request. The changelogs will be ordered by timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changelogs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Changelog> Changelogs { get; set; }
 
         /// <summary>
         /// Token to retrieve the next page of results, or empty if there are no more results in the list.

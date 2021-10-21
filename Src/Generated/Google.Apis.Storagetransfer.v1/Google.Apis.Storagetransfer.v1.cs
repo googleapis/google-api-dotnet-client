@@ -35,6 +35,7 @@ namespace Google.Apis.Storagetransfer.v1
         public StoragetransferService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             GoogleServiceAccounts = new GoogleServiceAccountsResource(this);
+            Projects = new ProjectsResource(this);
             TransferJobs = new TransferJobsResource(this);
             TransferOperations = new TransferOperationsResource(this);
         }
@@ -86,6 +87,9 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>Gets the GoogleServiceAccounts resource.</summary>
         public virtual GoogleServiceAccountsResource GoogleServiceAccounts { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the TransferJobs resource.</summary>
         public virtual TransferJobsResource TransferJobs { get; }
@@ -349,6 +353,365 @@ namespace Google.Apis.Storagetransfer.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            AgentPools = new AgentPoolsResource(service);
+        }
+
+        /// <summary>Gets the AgentPools resource.</summary>
+        public virtual AgentPoolsResource AgentPools { get; }
+
+        /// <summary>The "agentPools" collection of methods.</summary>
+        public class AgentPoolsResource
+        {
+            private const string Resource = "agentPools";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AgentPoolsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates an agent pool resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectId">
+            /// Required. The ID of the Google Cloud Platform Console project that owns the agent pool.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Storagetransfer.v1.Data.AgentPool body, string projectId)
+            {
+                return new CreateRequest(service, body, projectId);
+            }
+
+            /// <summary>Creates an agent pool resource.</summary>
+            public class CreateRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.AgentPool>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storagetransfer.v1.Data.AgentPool body, string projectId) : base(service)
+                {
+                    ProjectId = projectId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ID of the Google Cloud Platform Console project that owns the agent pool.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+                /// <summary>
+                /// Required. The id of the agent pool to create. The agent_pool_id must be non-empty, less than or
+                /// equal to 128 characters, and satisfy the following regex: "^[a-z]([a-z0-9-._~]*[a-z0-9])?$". Also,
+                /// agent pool names cannot start with the string "goog".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("agentPoolId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AgentPoolId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Storagetransfer.v1.Data.AgentPool Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/projects/{+projectId}/agentPools";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("agentPoolId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "agentPoolId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes an agent pool.</summary>
+            /// <param name="name">Required. The agent pool name to delete.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an agent pool.</summary>
+            public class DeleteRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The agent pool name to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/agentPools/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets an agent pool.</summary>
+            /// <param name="name">Required. The agent pool to get.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets an agent pool.</summary>
+            public class GetRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.AgentPool>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The agent pool to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/agentPools/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists agent pools.</summary>
+            /// <param name="projectId">
+            /// Required. The ID of the Google Cloud Platform Console project that owns the job.
+            /// </param>
+            public virtual ListRequest List(string projectId)
+            {
+                return new ListRequest(service, projectId);
+            }
+
+            /// <summary>Lists agent pools.</summary>
+            public class ListRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.ListAgentPoolsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
+                {
+                    ProjectId = projectId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+                /// <summary>
+                /// A list of optional query parameters specified as JSON text in the form of:
+                /// `{"agentPoolNames":["agentpool1","agentpool2",...]}` Since `agentPoolNames` support multiple values,
+                /// its values must be specified with array notation. `agentPoolNames` is an optional field. The list
+                /// returns all agent pools for the project when the filter is not provided or empty.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The list page size. The max allowed value is 256.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/projects/{+projectId}/agentPools";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates an existing agent pool resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Specifies a unique string that identifies the agent pool. Format:
+            /// projects/{project_id}/agentPools/{agent_pool_id}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.AgentPool body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates an existing agent pool resource.</summary>
+            public class PatchRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.AgentPool>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Storagetransfer.v1.Data.AgentPool body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Specifies a unique string that identifies the agent pool. Format:
+                /// projects/{project_id}/agentPools/{agent_pool_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// The field mask of the fields in `agentPool` that are to be updated in this request. Fields in
+                /// `agentPool` that can be updated are: display_name, bandwidth_limit,
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Storagetransfer.v1.Data.AgentPool Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/agentPools/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
             }
         }
     }
@@ -1027,6 +1390,34 @@ namespace Google.Apis.Storagetransfer.v1
 }
 namespace Google.Apis.Storagetransfer.v1.Data
 {
+    /// <summary>Represents an On-Premises Agent pool.</summary>
+    public class AgentPool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandwidthLimit")]
+        public virtual BandwidthLimit BandwidthLimit { get; set; }
+
+        /// <summary>Specifies the client-specified AgentPool description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Specifies a unique string that identifies the agent pool. Format:
+        /// projects/{project_id}/agentPools/{agent_pool_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Specifies the state of the AgentPool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AWS access key (see [AWS Security
     /// Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on
@@ -1141,6 +1532,19 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sasToken")]
         public virtual string SasToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+    /// </summary>
+    public class BandwidthLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies bandwidth rate in mbps distributed across all the agents in the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitMbps")]
+        public virtual System.Nullable<long> LimitMbps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1300,6 +1704,21 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUrl")]
         public virtual string ListUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from ListAgentPools.</summary>
+    public class ListAgentPoolsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of agent pools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentPools")]
+        public virtual System.Collections.Generic.IList<AgentPool> AgentPools { get; set; }
+
+        /// <summary>The list next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1722,6 +2141,14 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoriesSuccessfullyListedFromSource")]
         public virtual System.Nullable<long> DirectoriesSuccessfullyListedFromSource { get; set; }
+
+        /// <summary>Number of successfully cleaned up intermediate objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intermediateObjectsCleanedUp")]
+        public virtual System.Nullable<long> IntermediateObjectsCleanedUp { get; set; }
+
+        /// <summary>Number of intermediate objects failed cleaned up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intermediateObjectsFailedCleanedUp")]
+        public virtual System.Nullable<long> IntermediateObjectsFailedCleanedUp { get; set; }
 
         /// <summary>Objects that are copied to the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsCopiedToSink")]

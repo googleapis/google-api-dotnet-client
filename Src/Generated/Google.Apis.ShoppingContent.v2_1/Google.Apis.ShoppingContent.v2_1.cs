@@ -20331,8 +20331,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// Required. Output only. The REST promotion id to uniquely identify the promotion. Content API methods that
         /// operate on promotions take this as their promotionId parameter. The REST ID for a promotion is of the form
-        /// channel:contentLanguage:targetCountry:promotionId The channel field will have a value of "online", "local",
-        /// or "onlinelocal".
+        /// channel:contentLanguage:targetCountry:promotionId The channel field will have a value of "online",
+        /// "in_store", or "online_in_store".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }

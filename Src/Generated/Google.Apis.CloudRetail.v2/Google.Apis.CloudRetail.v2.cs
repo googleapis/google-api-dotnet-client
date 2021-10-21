@@ -4419,6 +4419,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionSpec")]
         public virtual GoogleCloudRetailV2SearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
 
+        /// <summary>
+        /// The search mode of the search request. If not specified, a single search request triggers both product
+        /// search and faceted search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchMode")]
+        public virtual string SearchMode { get; set; }
+
         /// <summary>User information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudRetailV2UserInfo UserInfo { get; set; }

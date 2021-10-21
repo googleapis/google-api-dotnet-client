@@ -4808,6 +4808,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
 
+        /// <summary>
+        /// The search mode of the search request. If not specified, a single search request triggers both product
+        /// search and faceted search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchMode")]
+        public virtual string SearchMode { get; set; }
+
         /// <summary>User information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudRetailV2alphaUserInfo UserInfo { get; set; }

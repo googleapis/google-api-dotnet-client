@@ -20,7 +20,7 @@
   "x16": "http://www.google.com/images/icons/product/search-16.gif",
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
- "id": "containeranalysis:v1beta1",
+ "id": "containeranalysis:v1",
  "kind": "discovery#restDescription",
  "mtlsRootUrl": "https://containeranalysis.mtls.googleapis.com/",
  "name": "containeranalysis",
@@ -105,13 +105,136 @@
  },
  "protocol": "rest",
  "resources": {
+  "operations": {
+   "methods": {
+    "cancel": {
+     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+     "flatPath": "v1/operations/{operationsId}:cancel",
+     "httpMethod": "POST",
+     "id": "containeranalysis.operations.cancel",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "The name of the operation resource to be cancelled.",
+       "location": "path",
+       "pattern": "^operations/.*$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1/{+name}:cancel",
+     "request": {
+      "$ref": "CancelOperationRequest"
+     },
+     "response": {
+      "$ref": "Empty"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+     ]
+    },
+    "delete": {
+     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+     "flatPath": "v1/operations/{operationsId}",
+     "httpMethod": "DELETE",
+     "id": "containeranalysis.operations.delete",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "The name of the operation resource to be deleted.",
+       "location": "path",
+       "pattern": "^operations/.*$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1/{+name}",
+     "response": {
+      "$ref": "Empty"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+     ]
+    },
+    "get": {
+     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+     "flatPath": "v1/operations/{operationsId}",
+     "httpMethod": "GET",
+     "id": "containeranalysis.operations.get",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "The name of the operation resource.",
+       "location": "path",
+       "pattern": "^operations/.*$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1/{+name}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+     ]
+    },
+    "list": {
+     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+     "flatPath": "v1/operations",
+     "httpMethod": "GET",
+     "id": "containeranalysis.operations.list",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "The standard list filter.",
+       "location": "query",
+       "type": "string"
+      },
+      "name": {
+       "description": "The name of the operation's parent resource.",
+       "location": "path",
+       "pattern": "^operations$",
+       "required": true,
+       "type": "string"
+      },
+      "pageSize": {
+       "description": "The standard list page size.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "pageToken": {
+       "description": "The standard list page token.",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "v1/{+name}",
+     "response": {
+      "$ref": "ListOperationsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+     ]
+    }
+   }
+  },
   "projects": {
    "resources": {
     "notes": {
      "methods": {
       "batchCreate": {
        "description": "Creates new notes in batch.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes:batchCreate",
+       "flatPath": "v1/projects/{projectsId}/notes:batchCreate",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.notes.batchCreate",
        "parameterOrder": [
@@ -126,7 +249,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+parent}/notes:batchCreate",
+       "path": "v1/{+parent}/notes:batchCreate",
        "request": {
         "$ref": "BatchCreateNotesRequest"
        },
@@ -139,7 +262,7 @@
       },
       "create": {
        "description": "Creates a new note.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes",
+       "flatPath": "v1/projects/{projectsId}/notes",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.notes.create",
        "parameterOrder": [
@@ -159,7 +282,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+parent}/notes",
+       "path": "v1/{+parent}/notes",
        "request": {
         "$ref": "Note"
        },
@@ -172,7 +295,7 @@
       },
       "delete": {
        "description": "Deletes the specified note.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
+       "flatPath": "v1/projects/{projectsId}/notes/{notesId}",
        "httpMethod": "DELETE",
        "id": "containeranalysis.projects.notes.delete",
        "parameterOrder": [
@@ -187,7 +310,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+name}",
+       "path": "v1/{+name}",
        "response": {
         "$ref": "Empty"
        },
@@ -197,7 +320,7 @@
       },
       "get": {
        "description": "Gets the specified note.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
+       "flatPath": "v1/projects/{projectsId}/notes/{notesId}",
        "httpMethod": "GET",
        "id": "containeranalysis.projects.notes.get",
        "parameterOrder": [
@@ -212,7 +335,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+name}",
+       "path": "v1/{+name}",
        "response": {
         "$ref": "Note"
        },
@@ -222,7 +345,7 @@
       },
       "getIamPolicy": {
        "description": "Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:getIamPolicy",
+       "flatPath": "v1/projects/{projectsId}/notes/{notesId}:getIamPolicy",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.notes.getIamPolicy",
        "parameterOrder": [
@@ -237,7 +360,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+resource}:getIamPolicy",
+       "path": "v1/{+resource}:getIamPolicy",
        "request": {
         "$ref": "GetIamPolicyRequest"
        },
@@ -250,7 +373,7 @@
       },
       "list": {
        "description": "Lists notes for the specified project.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes",
+       "flatPath": "v1/projects/{projectsId}/notes",
        "httpMethod": "GET",
        "id": "containeranalysis.projects.notes.list",
        "parameterOrder": [
@@ -281,7 +404,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+parent}/notes",
+       "path": "v1/{+parent}/notes",
        "response": {
         "$ref": "ListNotesResponse"
        },
@@ -291,7 +414,7 @@
       },
       "patch": {
        "description": "Updates the specified note.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
+       "flatPath": "v1/projects/{projectsId}/notes/{notesId}",
        "httpMethod": "PATCH",
        "id": "containeranalysis.projects.notes.patch",
        "parameterOrder": [
@@ -312,7 +435,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+name}",
+       "path": "v1/{+name}",
        "request": {
         "$ref": "Note"
        },
@@ -325,7 +448,7 @@
       },
       "setIamPolicy": {
        "description": "Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:setIamPolicy",
+       "flatPath": "v1/projects/{projectsId}/notes/{notesId}:setIamPolicy",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.notes.setIamPolicy",
        "parameterOrder": [
@@ -340,7 +463,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+resource}:setIamPolicy",
+       "path": "v1/{+resource}:setIamPolicy",
        "request": {
         "$ref": "SetIamPolicyRequest"
        },
@@ -353,7 +476,7 @@
       },
       "testIamPermissions": {
        "description": "Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
-       "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:testIamPermissions",
+       "flatPath": "v1/projects/{projectsId}/notes/{notesId}:testIamPermissions",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.notes.testIamPermissions",
        "parameterOrder": [
@@ -368,7 +491,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+resource}:testIamPermissions",
+       "path": "v1/{+resource}:testIamPermissions",
        "request": {
         "$ref": "TestIamPermissionsRequest"
        },
@@ -385,7 +508,7 @@
        "methods": {
         "list": {
          "description": "Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note.",
-         "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}/occurrences",
+         "flatPath": "v1/projects/{projectsId}/notes/{notesId}/occurrences",
          "httpMethod": "GET",
          "id": "containeranalysis.projects.notes.occurrences.list",
          "parameterOrder": [
@@ -416,7 +539,7 @@
            "type": "string"
           }
          },
-         "path": "v1beta1/{+name}/occurrences",
+         "path": "v1/{+name}/occurrences",
          "response": {
           "$ref": "ListNoteOccurrencesResponse"
          },
@@ -432,7 +555,7 @@
      "methods": {
       "batchCreate": {
        "description": "Creates new occurrences in batch.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences:batchCreate",
+       "flatPath": "v1/projects/{projectsId}/occurrences:batchCreate",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.occurrences.batchCreate",
        "parameterOrder": [
@@ -447,7 +570,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+parent}/occurrences:batchCreate",
+       "path": "v1/{+parent}/occurrences:batchCreate",
        "request": {
         "$ref": "BatchCreateOccurrencesRequest"
        },
@@ -460,7 +583,7 @@
       },
       "create": {
        "description": "Creates a new occurrence.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences",
+       "flatPath": "v1/projects/{projectsId}/occurrences",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.occurrences.create",
        "parameterOrder": [
@@ -475,7 +598,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+parent}/occurrences",
+       "path": "v1/{+parent}/occurrences",
        "request": {
         "$ref": "Occurrence"
        },
@@ -488,7 +611,7 @@
       },
       "delete": {
        "description": "Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
+       "flatPath": "v1/projects/{projectsId}/occurrences/{occurrencesId}",
        "httpMethod": "DELETE",
        "id": "containeranalysis.projects.occurrences.delete",
        "parameterOrder": [
@@ -503,7 +626,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+name}",
+       "path": "v1/{+name}",
        "response": {
         "$ref": "Empty"
        },
@@ -513,7 +636,7 @@
       },
       "get": {
        "description": "Gets the specified occurrence.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
+       "flatPath": "v1/projects/{projectsId}/occurrences/{occurrencesId}",
        "httpMethod": "GET",
        "id": "containeranalysis.projects.occurrences.get",
        "parameterOrder": [
@@ -528,7 +651,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+name}",
+       "path": "v1/{+name}",
        "response": {
         "$ref": "Occurrence"
        },
@@ -538,7 +661,7 @@
       },
       "getIamPolicy": {
        "description": "Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:getIamPolicy",
+       "flatPath": "v1/projects/{projectsId}/occurrences/{occurrencesId}:getIamPolicy",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.occurrences.getIamPolicy",
        "parameterOrder": [
@@ -553,7 +676,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+resource}:getIamPolicy",
+       "path": "v1/{+resource}:getIamPolicy",
        "request": {
         "$ref": "GetIamPolicyRequest"
        },
@@ -566,7 +689,7 @@
       },
       "getNotes": {
        "description": "Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}/notes",
+       "flatPath": "v1/projects/{projectsId}/occurrences/{occurrencesId}/notes",
        "httpMethod": "GET",
        "id": "containeranalysis.projects.occurrences.getNotes",
        "parameterOrder": [
@@ -581,7 +704,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+name}/notes",
+       "path": "v1/{+name}/notes",
        "response": {
         "$ref": "Note"
        },
@@ -591,7 +714,7 @@
       },
       "getVulnerabilitySummary": {
        "description": "Gets a summary of the number and severity of occurrences.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences:vulnerabilitySummary",
+       "flatPath": "v1/projects/{projectsId}/occurrences:vulnerabilitySummary",
        "httpMethod": "GET",
        "id": "containeranalysis.projects.occurrences.getVulnerabilitySummary",
        "parameterOrder": [
@@ -611,7 +734,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+parent}/occurrences:vulnerabilitySummary",
+       "path": "v1/{+parent}/occurrences:vulnerabilitySummary",
        "response": {
         "$ref": "VulnerabilityOccurrencesSummary"
        },
@@ -621,7 +744,7 @@
       },
       "list": {
        "description": "Lists occurrences for the specified project.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences",
+       "flatPath": "v1/projects/{projectsId}/occurrences",
        "httpMethod": "GET",
        "id": "containeranalysis.projects.occurrences.list",
        "parameterOrder": [
@@ -652,7 +775,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+parent}/occurrences",
+       "path": "v1/{+parent}/occurrences",
        "response": {
         "$ref": "ListOccurrencesResponse"
        },
@@ -662,7 +785,7 @@
       },
       "patch": {
        "description": "Updates the specified occurrence.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
+       "flatPath": "v1/projects/{projectsId}/occurrences/{occurrencesId}",
        "httpMethod": "PATCH",
        "id": "containeranalysis.projects.occurrences.patch",
        "parameterOrder": [
@@ -683,7 +806,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+name}",
+       "path": "v1/{+name}",
        "request": {
         "$ref": "Occurrence"
        },
@@ -696,7 +819,7 @@
       },
       "setIamPolicy": {
        "description": "Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:setIamPolicy",
+       "flatPath": "v1/projects/{projectsId}/occurrences/{occurrencesId}:setIamPolicy",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.occurrences.setIamPolicy",
        "parameterOrder": [
@@ -711,7 +834,7 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+resource}:setIamPolicy",
+       "path": "v1/{+resource}:setIamPolicy",
        "request": {
         "$ref": "SetIamPolicyRequest"
        },
@@ -724,7 +847,7 @@
       },
       "testIamPermissions": {
        "description": "Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
-       "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:testIamPermissions",
+       "flatPath": "v1/projects/{projectsId}/occurrences/{occurrencesId}:testIamPermissions",
        "httpMethod": "POST",
        "id": "containeranalysis.projects.occurrences.testIamPermissions",
        "parameterOrder": [
@@ -739,110 +862,12 @@
          "type": "string"
         }
        },
-       "path": "v1beta1/{+resource}:testIamPermissions",
+       "path": "v1/{+resource}:testIamPermissions",
        "request": {
         "$ref": "TestIamPermissionsRequest"
        },
        "response": {
         "$ref": "TestIamPermissionsResponse"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/cloud-platform"
-       ]
-      }
-     }
-    },
-    "scanConfigs": {
-     "methods": {
-      "get": {
-       "description": "Gets the specified scan configuration.",
-       "flatPath": "v1beta1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
-       "httpMethod": "GET",
-       "id": "containeranalysis.projects.scanConfigs.get",
-       "parameterOrder": [
-        "name"
-       ],
-       "parameters": {
-        "name": {
-         "description": "Required. The name of the scan configuration in the form of `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
-         "location": "path",
-         "pattern": "^projects/[^/]+/scanConfigs/[^/]+$",
-         "required": true,
-         "type": "string"
-        }
-       },
-       "path": "v1beta1/{+name}",
-       "response": {
-        "$ref": "ScanConfig"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/cloud-platform"
-       ]
-      },
-      "list": {
-       "description": "Lists scan configurations for the specified project.",
-       "flatPath": "v1beta1/projects/{projectsId}/scanConfigs",
-       "httpMethod": "GET",
-       "id": "containeranalysis.projects.scanConfigs.list",
-       "parameterOrder": [
-        "parent"
-       ],
-       "parameters": {
-        "filter": {
-         "description": "Required. The filter expression.",
-         "location": "query",
-         "type": "string"
-        },
-        "pageSize": {
-         "description": "The number of scan configs to return in the list.",
-         "format": "int32",
-         "location": "query",
-         "type": "integer"
-        },
-        "pageToken": {
-         "description": "Token to provide to skip to a particular spot in the list.",
-         "location": "query",
-         "type": "string"
-        },
-        "parent": {
-         "description": "Required. The name of the project to list scan configurations for in the form of `projects/[PROJECT_ID]`.",
-         "location": "path",
-         "pattern": "^projects/[^/]+$",
-         "required": true,
-         "type": "string"
-        }
-       },
-       "path": "v1beta1/{+parent}/scanConfigs",
-       "response": {
-        "$ref": "ListScanConfigsResponse"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/cloud-platform"
-       ]
-      },
-      "update": {
-       "description": "Updates the specified scan configuration.",
-       "flatPath": "v1beta1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
-       "httpMethod": "PUT",
-       "id": "containeranalysis.projects.scanConfigs.update",
-       "parameterOrder": [
-        "name"
-       ],
-       "parameters": {
-        "name": {
-         "description": "Required. The name of the scan configuration in the form of `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
-         "location": "path",
-         "pattern": "^projects/[^/]+/scanConfigs/[^/]+$",
-         "required": true,
-         "type": "string"
-        }
-       },
-       "path": "v1beta1/{+name}",
-       "request": {
-        "$ref": "ScanConfig"
-       },
-       "response": {
-        "$ref": "ScanConfig"
        },
        "scopes": [
         "https://www.googleapis.com/auth/cloud-platform"
@@ -905,46 +930,9 @@
    },
    "type": "object"
   },
-  "ArtifactHashes": {
-   "description": "Defines a hash object for use in Materials and Products.",
-   "id": "ArtifactHashes",
-   "properties": {
-    "sha256": {
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "ArtifactRule": {
-   "description": "Defines an object to declare an in-toto artifact rule",
-   "id": "ArtifactRule",
-   "properties": {
-    "artifactRule": {
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    }
-   },
-   "type": "object"
-  },
-  "Attestation": {
-   "description": "Occurrence that represents a single \"attestation\". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for look-up (how to find this attestation if you already know the authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).",
-   "id": "Attestation",
-   "properties": {
-    "genericSignedAttestation": {
-     "$ref": "GenericSignedAttestation"
-    },
-    "pgpSignedAttestation": {
-     "$ref": "PgpSignedAttestation",
-     "description": "A PGP signed attestation."
-    }
-   },
-   "type": "object"
-  },
-  "Authority": {
+  "AttestationNote": {
    "description": "Note kind that represents a logical attestation \"role\" or \"authority\". For example, an organization might have one `Authority` for \"QA\" and one for \"build\". This note is intended to act strictly as a grouping mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in the same project.",
-   "id": "Authority",
+   "id": "AttestationNote",
    "properties": {
     "hint": {
      "$ref": "Hint",
@@ -953,17 +941,28 @@
    },
    "type": "object"
   },
-  "Basis": {
-   "description": "Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.",
-   "id": "Basis",
+  "AttestationOccurrence": {
+   "description": "Occurrence that represents a single \"attestation\". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign.",
+   "id": "AttestationOccurrence",
    "properties": {
-    "fingerprint": {
-     "$ref": "Fingerprint",
-     "description": "Required. Immutable. The fingerprint of the base image."
+    "jwts": {
+     "description": "One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas.",
+     "items": {
+      "$ref": "Jwt"
+     },
+     "type": "array"
     },
-    "resourceUrl": {
-     "description": "Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.",
+    "serializedPayload": {
+     "description": "Required. The serialized payload that is verified by one or more `signatures`.",
+     "format": "byte",
      "type": "string"
+    },
+    "signatures": {
+     "description": "One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.",
+     "items": {
+      "$ref": "Signature"
+     },
+     "type": "array"
     }
    },
    "type": "object"
@@ -976,7 +975,7 @@
      "additionalProperties": {
       "$ref": "Note"
      },
-     "description": "Required. The notes to create, the key is expected to be the note ID. Max allowed length is 1000.",
+     "description": "Required. The notes to create. Max allowed length is 1000.",
      "type": "object"
     }
    },
@@ -1046,17 +1045,32 @@
    },
    "type": "object"
   },
-  "Build": {
+  "BuildNote": {
    "description": "Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.",
-   "id": "Build",
+   "id": "BuildNote",
    "properties": {
     "builderVersion": {
      "description": "Required. Immutable. Version of the builder which produced this build.",
      "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "BuildOccurrence": {
+   "description": "Details of a build occurrence.",
+   "id": "BuildOccurrence",
+   "properties": {
+    "intotoProvenance": {
+     "$ref": "InTotoProvenance",
+     "description": "In-toto Provenance representation as defined in spec."
     },
-    "signature": {
-     "$ref": "BuildSignature",
-     "description": "Signature of the build in occurrences pointing to this build note containing build details."
+    "provenance": {
+     "$ref": "BuildProvenance",
+     "description": "Required. The actual provenance for the build."
+    },
+    "provenanceBytes": {
+     "description": "Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.",
+     "type": "string"
     }
    },
    "type": "object"
@@ -1127,40 +1141,6 @@
     },
     "triggerId": {
      "description": "Trigger identifier if the build was triggered automatically; empty if not.",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "BuildSignature": {
-   "description": "Message encapsulating the signature of the verified build.",
-   "id": "BuildSignature",
-   "properties": {
-    "keyId": {
-     "description": "An ID for the key used to sign. This could be either an ID for the key stored in `public_key` (such as the ID or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).",
-     "type": "string"
-    },
-    "keyType": {
-     "description": "The type of the key, either stored in `public_key` or referenced in `key_id`.",
-     "enum": [
-      "KEY_TYPE_UNSPECIFIED",
-      "PGP_ASCII_ARMORED",
-      "PKIX_PEM"
-     ],
-     "enumDescriptions": [
-      "`KeyType` is not set.",
-      "`PGP ASCII Armored` public key.",
-      "`PKIX PEM` public key."
-     ],
-     "type": "string"
-    },
-    "publicKey": {
-     "description": "Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`",
-     "type": "string"
-    },
-    "signature": {
-     "description": "Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.",
-     "format": "byte",
      "type": "string"
     }
    },
@@ -1272,15 +1252,11 @@
    },
    "type": "object"
   },
-  "ByProducts": {
-   "description": "Defines an object for the byproducts field in in-toto links. The suggested fields are \"stderr\", \"stdout\", and \"return-value\".",
-   "id": "ByProducts",
+  "BuilderConfig": {
+   "id": "BuilderConfig",
    "properties": {
-    "customValues": {
-     "additionalProperties": {
-      "type": "string"
-     },
-     "type": "object"
+    "id": {
+     "type": "string"
     }
    },
    "type": "object"
@@ -1422,6 +1398,57 @@
    },
    "type": "object"
   },
+  "CancelOperationRequest": {
+   "description": "The request message for Operations.CancelOperation.",
+   "id": "CancelOperationRequest",
+   "properties": {},
+   "type": "object"
+  },
+  "Category": {
+   "description": "The category to which the update belongs.",
+   "id": "Category",
+   "properties": {
+    "categoryId": {
+     "description": "The identifier of the category.",
+     "type": "string"
+    },
+    "name": {
+     "description": "The localized name of the category.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CisBenchmark": {
+   "description": "A compliance check that is a CIS benchmark.",
+   "id": "CisBenchmark",
+   "properties": {
+    "profileLevel": {
+     "format": "int32",
+     "type": "integer"
+    },
+    "severity": {
+     "enum": [
+      "SEVERITY_UNSPECIFIED",
+      "MINIMAL",
+      "LOW",
+      "MEDIUM",
+      "HIGH",
+      "CRITICAL"
+     ],
+     "enumDescriptions": [
+      "Unknown.",
+      "Minimal severity.",
+      "Low severity.",
+      "Medium severity.",
+      "High severity.",
+      "Critical severity."
+     ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "CloudRepoSourceContext": {
    "description": "A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.",
    "id": "CloudRepoSourceContext",
@@ -1481,9 +1508,130 @@
    },
    "type": "object"
   },
-  "Deployable": {
+  "Completeness": {
+   "description": "Indicates that the builder claims certain fields in this message to be complete.",
+   "id": "Completeness",
+   "properties": {
+    "arguments": {
+     "description": "If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.",
+     "type": "boolean"
+    },
+    "environment": {
+     "description": "If true, the builder claims that recipe.environment is claimed to be complete.",
+     "type": "boolean"
+    },
+    "materials": {
+     "description": "If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called \"hermetic\".",
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "ComplianceNote": {
+   "id": "ComplianceNote",
+   "properties": {
+    "cisBenchmark": {
+     "$ref": "CisBenchmark"
+    },
+    "description": {
+     "description": "A description about this compliance check.",
+     "type": "string"
+    },
+    "rationale": {
+     "description": "A rationale for the existence of this compliance check.",
+     "type": "string"
+    },
+    "remediation": {
+     "description": "A description of remediation steps if the compliance check fails.",
+     "type": "string"
+    },
+    "scanInstructions": {
+     "description": "Serialized scan instructions with a predefined format.",
+     "format": "byte",
+     "type": "string"
+    },
+    "title": {
+     "description": "The title that identifies this compliance check.",
+     "type": "string"
+    },
+    "version": {
+     "description": "The OS and config versions the benchmark applies to.",
+     "items": {
+      "$ref": "ComplianceVersion"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "ComplianceOccurrence": {
+   "description": "An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.",
+   "id": "ComplianceOccurrence",
+   "properties": {
+    "nonComplianceReason": {
+     "type": "string"
+    },
+    "nonCompliantFiles": {
+     "items": {
+      "$ref": "NonCompliantFile"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "ComplianceVersion": {
+   "description": "Describes the CIS benchmark version that is applicable to a given OS and os version.",
+   "id": "ComplianceVersion",
+   "properties": {
+    "cpeUri": {
+     "description": "The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.",
+     "type": "string"
+    },
+    "version": {
+     "description": "The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DSSEAttestationNote": {
+   "id": "DSSEAttestationNote",
+   "properties": {
+    "hint": {
+     "$ref": "DSSEHint",
+     "description": "DSSEHint hints at the purpose of the attestation authority."
+    }
+   },
+   "type": "object"
+  },
+  "DSSEAttestationOccurrence": {
+   "id": "DSSEAttestationOccurrence",
+   "properties": {
+    "envelope": {
+     "$ref": "Envelope",
+     "description": "If doing something security critical, make sure to verify the signatures in this metadata."
+    },
+    "statement": {
+     "$ref": "InTotoStatement"
+    }
+   },
+   "type": "object"
+  },
+  "DSSEHint": {
+   "description": "This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from \"readable\" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.",
+   "id": "DSSEHint",
+   "properties": {
+    "humanReadableName": {
+     "description": "Required. The human readable name of this attestation authority, for example \"cloudbuild-prod\".",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DeploymentNote": {
    "description": "An artifact that can be deployed in some runtime.",
-   "id": "Deployable",
+   "id": "DeploymentNote",
    "properties": {
     "resourceUri": {
      "description": "Required. Resource URI for the artifact being deployed.",
@@ -1495,9 +1643,9 @@
    },
    "type": "object"
   },
-  "Deployment": {
+  "DeploymentOccurrence": {
    "description": "The period during which some deployable was active in a runtime.",
-   "id": "Deployment",
+   "id": "DeploymentOccurrence",
    "properties": {
     "address": {
      "description": "Address of the runtime element hosting this deployment.",
@@ -1547,71 +1695,52 @@
    },
    "type": "object"
   },
-  "Derived": {
-   "description": "Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .",
-   "id": "Derived",
-   "properties": {
-    "baseResourceUrl": {
-     "description": "Output only. This contains the base image URL for the derived image occurrence.",
-     "type": "string"
-    },
-    "distance": {
-     "description": "Output only. The number of layers by which this image differs from the associated image basis.",
-     "format": "int32",
-     "type": "integer"
-    },
-    "fingerprint": {
-     "$ref": "Fingerprint",
-     "description": "Required. The fingerprint of the derived image."
-    },
-    "layerInfo": {
-     "description": "This contains layer-specific metadata, if populated it has length \"distance\" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.",
-     "items": {
-      "$ref": "Layer"
-     },
-     "type": "array"
-    }
-   },
-   "type": "object"
-  },
   "Detail": {
-   "description": "Identifies all appearances of this vulnerability in the package for a specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2",
+   "description": "A detail for a distro and package affected by this vulnerability and its associated fix (if one is available).",
    "id": "Detail",
    "properties": {
-    "cpeUri": {
-     "description": "Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.",
+    "affectedCpeUri": {
+     "description": "Required. The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.",
      "type": "string"
+    },
+    "affectedPackage": {
+     "description": "Required. The package this vulnerability affects.",
+     "type": "string"
+    },
+    "affectedVersionEnd": {
+     "$ref": "Version",
+     "description": "The version number at the end of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail."
+    },
+    "affectedVersionStart": {
+     "$ref": "Version",
+     "description": "The version number at the start of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail."
     },
     "description": {
-     "description": "A vendor-specific description of this note.",
+     "description": "A vendor-specific description of this vulnerability.",
      "type": "string"
     },
-    "fixedLocation": {
-     "$ref": "VulnerabilityLocation",
-     "description": "The fix for this specific package version."
+    "fixedCpeUri": {
+     "description": "The distro recommended [CPE URI](https://cpe.mitre.org/specification/) to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_cpe_uri.",
+     "type": "string"
+    },
+    "fixedPackage": {
+     "description": "The distro recommended package to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_package.",
+     "type": "string"
+    },
+    "fixedVersion": {
+     "$ref": "Version",
+     "description": "The distro recommended version to update to that contains a fix for this vulnerability. Setting this to VersionKind.MAXIMUM means no such version is yet available."
     },
     "isObsolete": {
      "description": "Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.",
      "type": "boolean"
     },
-    "maxAffectedVersion": {
-     "$ref": "Version",
-     "description": "The max version of the package in which the vulnerability exists."
-    },
-    "minAffectedVersion": {
-     "$ref": "Version",
-     "description": "The min version of the package in which the vulnerability exists."
-    },
-    "package": {
-     "description": "Required. The name of the package where the vulnerability was found.",
-     "type": "string"
-    },
     "packageType": {
-     "description": "The type of package; whether native or non native(ruby gems, node.js packages etc).",
+     "description": "The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).",
      "type": "string"
     },
     "severityName": {
-     "description": "The severity (eg: distro assigned severity) for this vulnerability.",
+     "description": "The distro assigned severity of this vulnerability.",
      "type": "string"
     },
     "source": {
@@ -1630,20 +1759,46 @@
    },
    "type": "object"
   },
-  "Details": {
-   "description": "Details of an attestation occurrence.",
-   "id": "Details",
+  "DiscoveryNote": {
+   "description": "A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.",
+   "id": "DiscoveryNote",
    "properties": {
-    "attestation": {
-     "$ref": "Attestation",
-     "description": "Required. Attestation for the resource."
+    "analysisKind": {
+     "description": "Required. Immutable. The kind of analysis that is handled by this discovery.",
+     "enum": [
+      "NOTE_KIND_UNSPECIFIED",
+      "VULNERABILITY",
+      "BUILD",
+      "IMAGE",
+      "PACKAGE",
+      "DEPLOYMENT",
+      "DISCOVERY",
+      "ATTESTATION",
+      "UPGRADE",
+      "COMPLIANCE",
+      "DSSE_ATTESTATION"
+     ],
+     "enumDescriptions": [
+      "Default value. This value is unused.",
+      "The note and occurrence represent a package vulnerability.",
+      "The note and occurrence assert build provenance.",
+      "This represents an image basis relationship.",
+      "This represents a package installed via a package manager.",
+      "The note and occurrence track deployment events.",
+      "The note and occurrence track the initial discovery status of a resource.",
+      "This represents a logical \"role\" that can attest to artifacts.",
+      "This represents an available package upgrade.",
+      "This represents a Compliance Note",
+      "This represents a DSSE attestation Note"
+     ],
+     "type": "string"
     }
    },
    "type": "object"
   },
-  "Discovered": {
+  "DiscoveryOccurrence": {
    "description": "Provides information about the analysis status of a discovered resource.",
-   "id": "Discovered",
+   "id": "DiscoveryOccurrence",
    "properties": {
     "analysisStatus": {
      "description": "The status of discovery for the resource.",
@@ -1683,50 +1838,13 @@
      ],
      "type": "string"
     },
-    "lastAnalysisTime": {
-     "description": "The last time continuous analysis was done for this resource. Deprecated, do not use.",
-     "format": "google-datetime",
+    "cpe": {
+     "description": "The CPE of the resource being scanned.",
      "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "Discovery": {
-   "description": "A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.",
-   "id": "Discovery",
-   "properties": {
-    "analysisKind": {
-     "description": "Required. Immutable. The kind of analysis that is handled by this discovery.",
-     "enum": [
-      "NOTE_KIND_UNSPECIFIED",
-      "VULNERABILITY",
-      "BUILD",
-      "IMAGE",
-      "PACKAGE",
-      "DEPLOYMENT",
-      "DISCOVERY",
-      "ATTESTATION",
-      "INTOTO",
-      "SBOM",
-      "SPDX_PACKAGE",
-      "SPDX_FILE",
-      "SPDX_RELATIONSHIP"
-     ],
-     "enumDescriptions": [
-      "Default value. This value is unused.",
-      "The note and occurrence represent a package vulnerability.",
-      "The note and occurrence assert build provenance.",
-      "This represents an image basis relationship.",
-      "This represents a package installed via a package manager.",
-      "The note and occurrence track deployment events.",
-      "The note and occurrence track the initial discovery status of a resource.",
-      "This represents a logical \"role\" that can attest to artifacts.",
-      "This represents an in-toto link.",
-      "This represents a software bill of materials.",
-      "This represents an SPDX Package.",
-      "This represents an SPDX File.",
-      "This represents an SPDX Relationship."
-     ],
+    },
+    "lastScanTime": {
+     "description": "The last time this resource was scanned.",
+     "format": "google-datetime",
      "type": "string"
     }
    },
@@ -1773,86 +1891,41 @@
    },
    "type": "object"
   },
-  "DocumentNote": {
-   "description": "DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/",
-   "id": "DocumentNote",
-   "properties": {
-    "dataLicence": {
-     "description": "Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields (\"SPDX-Metadata\")",
-     "type": "string"
-    },
-    "spdxVersion": {
-     "description": "Provide a reference number that can be used to understand how to parse and interpret the rest of the file",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "DocumentOccurrence": {
-   "description": "DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/",
-   "id": "DocumentOccurrence",
-   "properties": {
-    "createTime": {
-     "description": "Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard",
-     "format": "google-datetime",
-     "type": "string"
-    },
-    "creatorComment": {
-     "description": "A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields",
-     "type": "string"
-    },
-    "creators": {
-     "description": "Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    },
-    "documentComment": {
-     "description": "A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document",
-     "type": "string"
-    },
-    "externalDocumentRefs": {
-     "description": "Identify any external SPDX documents referenced within this SPDX document",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    },
-    "id": {
-     "description": "Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally",
-     "type": "string"
-    },
-    "licenseListVersion": {
-     "description": "A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created",
-     "type": "string"
-    },
-    "namespace": {
-     "description": "Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the \u2018#\u2019 delimiter",
-     "type": "string"
-    },
-    "title": {
-     "description": "Identify name of this document as designated by creator",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
   "Empty": {
    "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
    "id": "Empty",
    "properties": {},
    "type": "object"
   },
-  "Environment": {
-   "description": "Defines an object for the environment field in in-toto links. The suggested fields are \"variables\", \"filesystem\", and \"workdir\".",
-   "id": "Environment",
+  "Envelope": {
+   "description": "MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.",
+   "id": "Envelope",
    "properties": {
-    "customValues": {
-     "additionalProperties": {
-      "type": "string"
+    "payload": {
+     "format": "byte",
+     "type": "string"
+    },
+    "payloadType": {
+     "type": "string"
+    },
+    "signatures": {
+     "items": {
+      "$ref": "EnvelopeSignature"
      },
-     "type": "object"
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "EnvelopeSignature": {
+   "id": "EnvelopeSignature",
+   "properties": {
+    "keyid": {
+     "type": "string"
+    },
+    "sig": {
+     "format": "byte",
+     "type": "string"
     }
    },
    "type": "object"
@@ -1880,43 +1953,6 @@
    },
    "type": "object"
   },
-  "ExternalRef": {
-   "description": "An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package",
-   "id": "ExternalRef",
-   "properties": {
-    "category": {
-     "description": "An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package",
-     "enum": [
-      "CATEGORY_UNSPECIFIED",
-      "SECURITY",
-      "PACKAGE_MANAGER",
-      "PERSISTENT_ID",
-      "OTHER"
-     ],
-     "enumDescriptions": [
-      "Unspecified",
-      "Security (e.g. cpe22Type, cpe23Type)",
-      "Package Manager (e.g. maven-central, npm, nuget, bower, purl)",
-      "Persistent-Id (e.g. swh)",
-      "Other"
-     ],
-     "type": "string"
-    },
-    "comment": {
-     "description": "Human-readable information about the purpose and target of the reference",
-     "type": "string"
-    },
-    "locator": {
-     "description": "The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location",
-     "type": "string"
-    },
-    "type": {
-     "description": "Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
   "FileHashes": {
    "description": "Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.",
    "id": "FileHashes",
@@ -1927,104 +1963,6 @@
       "$ref": "Hash"
      },
      "type": "array"
-    }
-   },
-   "type": "object"
-  },
-  "FileNote": {
-   "description": "FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/",
-   "id": "FileNote",
-   "properties": {
-    "checksum": {
-     "description": "Provide a unique identifier to match analysis information on each specific file in a package",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    },
-    "fileType": {
-     "description": "This field provides information about the type of file identified",
-     "enum": [
-      "FILE_TYPE_UNSPECIFIED",
-      "SOURCE",
-      "BINARY",
-      "ARCHIVE",
-      "APPLICATION",
-      "AUDIO",
-      "IMAGE",
-      "TEXT",
-      "VIDEO",
-      "DOCUMENTATION",
-      "SPDX",
-      "OTHER"
-     ],
-     "enumDescriptions": [
-      "Unspecified",
-      "The file is human readable source code (.c, .html, etc.)",
-      "The file is a compiled object, target image or binary executable (.o, .a, etc.)",
-      "The file represents an archive (.tar, .jar, etc.)",
-      "The file is associated with a specific application type (MIME type of application/*)",
-      "The file is associated with an audio file (MIME type of audio/* , e.g. .mp3)",
-      "The file is associated with an picture image file (MIME type of image/*, e.g., .jpg, .gif)",
-      "The file is human readable text file (MIME type of text/*)",
-      "The file is associated with a video file type (MIME type of video/*)",
-      "The file serves as documentation",
-      "The file is an SPDX document",
-      "The file doesn't fit into the above categories (generated artifacts, data files, etc.)"
-     ],
-     "type": "string"
-    },
-    "title": {
-     "description": "Identify the full path and filename that corresponds to the file information in this section",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "FileOccurrence": {
-   "description": "FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/",
-   "id": "FileOccurrence",
-   "properties": {
-    "attributions": {
-     "description": "This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    },
-    "comment": {
-     "description": "This field provides a place for the SPDX file creator to record any general comments about the file",
-     "type": "string"
-    },
-    "contributors": {
-     "description": "This field provides a place for the SPDX file creator to record file contributors",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    },
-    "copyright": {
-     "description": "Identify the copyright holder of the file, as well as any dates present",
-     "type": "string"
-    },
-    "filesLicenseInfo": {
-     "description": "This field contains the license information actually found in the file, if any",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    },
-    "id": {
-     "description": "Uniquely identify any element in an SPDX document which may be referenced by other elements",
-     "type": "string"
-    },
-    "licenseConcluded": {
-     "$ref": "License",
-     "description": "This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined"
-    },
-    "notice": {
-     "description": "This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file",
-     "type": "string"
     }
    },
    "type": "object"
@@ -2060,9 +1998,9 @@
      "format": "int64",
      "type": "string"
     },
-    "resource": {
-     "$ref": "Resource",
-     "description": "The affected resource."
+    "resourceUri": {
+     "description": "The affected resource.",
+     "type": "string"
     },
     "severity": {
      "description": "The severity for this count. SEVERITY_UNSPECIFIED indicates total across all severities.",
@@ -2088,37 +2026,6 @@
      "description": "The total number of vulnerabilities associated with this resource.",
      "format": "int64",
      "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "GenericSignedAttestation": {
-   "description": "An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the `serialized_payload` that the `signatures` verify and any metadata necessary to interpret that plaintext. The signatures should always be over the `serialized_payload` bytestring.",
-   "id": "GenericSignedAttestation",
-   "properties": {
-    "contentType": {
-     "description": "Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).",
-     "enum": [
-      "CONTENT_TYPE_UNSPECIFIED",
-      "SIMPLE_SIGNING_JSON"
-     ],
-     "enumDescriptions": [
-      "`ContentType` is not set.",
-      "Atomic format attestation signature. See https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md The payload extracted in `plaintext` is a JSON blob conforming to the linked schema."
-     ],
-     "type": "string"
-    },
-    "serializedPayload": {
-     "description": "The serialized payload that is verified by one or more `signatures`. The encoding and semantic meaning of this payload must match what is set in `content_type`.",
-     "format": "byte",
-     "type": "string"
-    },
-    "signatures": {
-     "description": "One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.",
-     "items": {
-      "$ref": "Signature"
-     },
-     "type": "array"
     }
    },
    "type": "object"
@@ -2201,198 +2108,12 @@
    },
    "type": "object"
   },
-  "GrafeasV1beta1BuildDetails": {
-   "description": "Details of a build occurrence.",
-   "id": "GrafeasV1beta1BuildDetails",
-   "properties": {
-    "provenance": {
-     "$ref": "BuildProvenance",
-     "description": "Required. The actual provenance for the build."
-    },
-    "provenanceBytes": {
-     "description": "Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1DeploymentDetails": {
-   "description": "Details of a deployment occurrence.",
-   "id": "GrafeasV1beta1DeploymentDetails",
-   "properties": {
-    "deployment": {
-     "$ref": "Deployment",
-     "description": "Required. Deployment history for the resource."
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1DiscoveryDetails": {
-   "description": "Details of a discovery occurrence.",
-   "id": "GrafeasV1beta1DiscoveryDetails",
-   "properties": {
-    "discovered": {
-     "$ref": "Discovered",
-     "description": "Required. Analysis status for the discovered resource."
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1ImageDetails": {
-   "description": "Details of an image occurrence.",
-   "id": "GrafeasV1beta1ImageDetails",
-   "properties": {
-    "derivedImage": {
-     "$ref": "Derived",
-     "description": "Required. Immutable. The child image derived from the base image."
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1IntotoArtifact": {
-   "id": "GrafeasV1beta1IntotoArtifact",
-   "properties": {
-    "hashes": {
-     "$ref": "ArtifactHashes"
-    },
-    "resourceUri": {
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1IntotoDetails": {
-   "description": "This corresponds to a signed in-toto link - it is made up of one or more signatures and the in-toto link itself. This is used for occurrences of a Grafeas in-toto note.",
-   "id": "GrafeasV1beta1IntotoDetails",
-   "properties": {
-    "signatures": {
-     "items": {
-      "$ref": "GrafeasV1beta1IntotoSignature"
-     },
-     "type": "array"
-    },
-    "signed": {
-     "$ref": "Link"
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1IntotoSignature": {
-   "description": "A signature object consists of the KeyID used and the signature itself.",
-   "id": "GrafeasV1beta1IntotoSignature",
-   "properties": {
-    "keyid": {
-     "type": "string"
-    },
-    "sig": {
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1PackageDetails": {
-   "description": "Details of a package occurrence.",
-   "id": "GrafeasV1beta1PackageDetails",
-   "properties": {
-    "installation": {
-     "$ref": "Installation",
-     "description": "Required. Where the package was installed."
-    }
-   },
-   "type": "object"
-  },
-  "GrafeasV1beta1VulnerabilityDetails": {
-   "description": "Details of a vulnerability Occurrence.",
-   "id": "GrafeasV1beta1VulnerabilityDetails",
-   "properties": {
-    "cvssScore": {
-     "description": "Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.",
-     "format": "float",
-     "type": "number"
-    },
-    "effectiveSeverity": {
-     "description": "The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.",
-     "enum": [
-      "SEVERITY_UNSPECIFIED",
-      "MINIMAL",
-      "LOW",
-      "MEDIUM",
-      "HIGH",
-      "CRITICAL"
-     ],
-     "enumDescriptions": [
-      "Unknown.",
-      "Minimal severity.",
-      "Low severity.",
-      "Medium severity.",
-      "High severity.",
-      "Critical severity."
-     ],
-     "type": "string"
-    },
-    "longDescription": {
-     "description": "Output only. A detailed description of this vulnerability.",
-     "type": "string"
-    },
-    "packageIssue": {
-     "description": "Required. The set of affected locations and their fixes (if available) within the associated resource.",
-     "items": {
-      "$ref": "PackageIssue"
-     },
-     "type": "array"
-    },
-    "relatedUrls": {
-     "description": "Output only. URLs related to this vulnerability.",
-     "items": {
-      "$ref": "RelatedUrl"
-     },
-     "type": "array"
-    },
-    "severity": {
-     "description": "Output only. The note provider assigned Severity of the vulnerability.",
-     "enum": [
-      "SEVERITY_UNSPECIFIED",
-      "MINIMAL",
-      "LOW",
-      "MEDIUM",
-      "HIGH",
-      "CRITICAL"
-     ],
-     "enumDescriptions": [
-      "Unknown.",
-      "Minimal severity.",
-      "Low severity.",
-      "Medium severity.",
-      "High severity.",
-      "Critical severity."
-     ],
-     "type": "string"
-    },
-    "shortDescription": {
-     "description": "Output only. A one sentence description of this vulnerability.",
-     "type": "string"
-    },
-    "type": {
-     "description": "The type of package; whether native or non native(ruby gems, node.js packages etc)",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
   "Hash": {
    "description": "Container message for hash values.",
    "id": "Hash",
    "properties": {
     "type": {
-     "description": "Required. The type of hash that was performed.",
-     "enum": [
-      "HASH_TYPE_UNSPECIFIED",
-      "SHA256"
-     ],
-     "enumDescriptions": [
-      "Unknown.",
-      "A SHA-256 hash."
-     ],
+     "description": "Required. The type of hash that was performed, e.g. \"SHA-256\".",
      "type": "string"
     },
     "value": {
@@ -2414,62 +2135,117 @@
    },
    "type": "object"
   },
-  "InToto": {
-   "description": "This contains the fields corresponding to the definition of a software supply chain step in an in-toto layout. This information goes into a Grafeas note.",
-   "id": "InToto",
+  "Identity": {
+   "description": "The unique identifier of the update.",
+   "id": "Identity",
    "properties": {
-    "expectedCommand": {
-     "description": "This field contains the expected command used to perform the step.",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
+    "revision": {
+     "description": "The revision number of the update.",
+     "format": "int32",
+     "type": "integer"
     },
-    "expectedMaterials": {
-     "description": "The following fields contain in-toto artifact rules identifying the artifacts that enter this supply chain step, and exit the supply chain step, i.e. materials and products of the step.",
-     "items": {
-      "$ref": "ArtifactRule"
-     },
-     "type": "array"
-    },
-    "expectedProducts": {
-     "items": {
-      "$ref": "ArtifactRule"
-     },
-     "type": "array"
-    },
-    "signingKeys": {
-     "description": "This field contains the public keys that can be used to verify the signatures on the step metadata.",
-     "items": {
-      "$ref": "SigningKey"
-     },
-     "type": "array"
-    },
-    "stepName": {
-     "description": "This field identifies the name of the step in the supply chain.",
-     "type": "string"
-    },
-    "threshold": {
-     "description": "This field contains a value that indicates the minimum number of keys that need to be used to sign the step's in-toto link.",
-     "format": "int64",
+    "updateId": {
+     "description": "The revision independent identifier of the update.",
      "type": "string"
     }
    },
    "type": "object"
   },
-  "Installation": {
-   "description": "This represents how a particular software package may be installed on a system.",
-   "id": "Installation",
+  "ImageNote": {
+   "description": "Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g., a tag of the resource_url.",
+   "id": "ImageNote",
    "properties": {
-    "location": {
-     "description": "Required. All of the places within the filesystem versions of this package have been found.",
+    "fingerprint": {
+     "$ref": "Fingerprint",
+     "description": "Required. Immutable. The fingerprint of the base image."
+    },
+    "resourceUrl": {
+     "description": "Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "ImageOccurrence": {
+   "description": "Details of the derived image portion of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .",
+   "id": "ImageOccurrence",
+   "properties": {
+    "baseResourceUrl": {
+     "description": "Output only. This contains the base image URL for the derived image occurrence.",
+     "type": "string"
+    },
+    "distance": {
+     "description": "Output only. The number of layers by which this image differs from the associated image basis.",
+     "format": "int32",
+     "type": "integer"
+    },
+    "fingerprint": {
+     "$ref": "Fingerprint",
+     "description": "Required. The fingerprint of the derived image."
+    },
+    "layerInfo": {
+     "description": "This contains layer-specific metadata, if populated it has length \"distance\" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.",
      "items": {
-      "$ref": "Location"
+      "$ref": "Layer"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "InTotoProvenance": {
+   "id": "InTotoProvenance",
+   "properties": {
+    "builderConfig": {
+     "$ref": "BuilderConfig",
+     "description": "required"
+    },
+    "materials": {
+     "description": "The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.",
+     "items": {
+      "type": "string"
      },
      "type": "array"
     },
-    "name": {
-     "description": "Output only. The name of the installed package.",
+    "metadata": {
+     "$ref": "Metadata"
+    },
+    "recipe": {
+     "$ref": "Recipe",
+     "description": "Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required"
+    }
+   },
+   "type": "object"
+  },
+  "InTotoStatement": {
+   "description": "Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always \"application/vnd.in-toto+json\".",
+   "id": "InTotoStatement",
+   "properties": {
+    "predicateType": {
+     "description": "\"https://in-toto.io/Provenance/v0.1\" for InTotoProvenance.",
+     "type": "string"
+    },
+    "provenance": {
+     "$ref": "InTotoProvenance"
+    },
+    "subject": {
+     "items": {
+      "$ref": "Subject"
+     },
+     "type": "array"
+    },
+    "type": {
+     "description": "Always \"https://in-toto.io/Statement/v0.1\".",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "Jwt": {
+   "id": "Jwt",
+   "properties": {
+    "compactJwt": {
+     "description": "The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1",
      "type": "string"
     }
    },
@@ -2479,11 +2255,11 @@
    "id": "KnowledgeBase",
    "properties": {
     "name": {
-     "description": "The KB name (generally of the form KB[0-9]+ i.e. KB123456).",
+     "description": "The KB name (generally of the form KB[0-9]+ (e.g., KB123456)).",
      "type": "string"
     },
     "url": {
-     "description": "A link to the KB in the Windows update catalog - https://www.catalog.update.microsoft.com/",
+     "description": "A link to the KB in the [Windows update catalog] (https://www.catalog.update.microsoft.com/).",
      "type": "string"
     }
    },
@@ -2498,99 +2274,8 @@
      "type": "string"
     },
     "directive": {
-     "description": "Required. The recovered Dockerfile directive used to construct this layer.",
-     "enum": [
-      "DIRECTIVE_UNSPECIFIED",
-      "MAINTAINER",
-      "RUN",
-      "CMD",
-      "LABEL",
-      "EXPOSE",
-      "ENV",
-      "ADD",
-      "COPY",
-      "ENTRYPOINT",
-      "VOLUME",
-      "USER",
-      "WORKDIR",
-      "ARG",
-      "ONBUILD",
-      "STOPSIGNAL",
-      "HEALTHCHECK",
-      "SHELL"
-     ],
-     "enumDescriptions": [
-      "Default value for unsupported/missing directive.",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/",
-      "https://docs.docker.com/engine/reference/builder/"
-     ],
+     "description": "Required. The recovered Dockerfile directive used to construct this layer. See https://docs.docker.com/engine/reference/builder/ for more information.",
      "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "License": {
-   "description": "License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license",
-   "id": "License",
-   "properties": {
-    "comments": {
-     "description": "Comments",
-     "type": "string"
-    },
-    "expression": {
-     "description": "Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "Link": {
-   "description": "This corresponds to an in-toto link.",
-   "id": "Link",
-   "properties": {
-    "byproducts": {
-     "$ref": "ByProducts",
-     "description": "ByProducts are data generated as part of a software supply chain step, but are not the actual result of the step."
-    },
-    "command": {
-     "description": "This field contains the full command executed for the step. This can also be empty if links are generated for operations that aren't directly mapped to a specific command. Each term in the command is an independent string in the list. An example of a command in the in-toto metadata field is: \"command\": [\"git\", \"clone\", \"https://github.com/in-toto/demo-project.git\"]",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
-    },
-    "environment": {
-     "$ref": "Environment",
-     "description": "This is a field that can be used to capture information about the environment. It is suggested for this field to contain information that details environment variables, filesystem information, and the present working directory. The recommended structure of this field is: \"environment\": { \"custom_values\": { \"variables\": \"\", \"filesystem\": \"\", \"workdir\": \"\", \"\": \"...\" } }"
-    },
-    "materials": {
-     "description": "Materials are the supply chain artifacts that go into the step and are used for the operation performed. The key of the map is the path of the artifact and the structure contains the recorded hash information. An example is: \"materials\": [ { \"resource_uri\": \"foo/bar\", \"hashes\": { \"sha256\": \"ebebf...\", : } } ]",
-     "items": {
-      "$ref": "GrafeasV1beta1IntotoArtifact"
-     },
-     "type": "array"
-    },
-    "products": {
-     "description": "Products are the supply chain artifacts generated as a result of the step. The structure is identical to that of materials.",
-     "items": {
-      "$ref": "GrafeasV1beta1IntotoArtifact"
-     },
-     "type": "array"
     }
    },
    "type": "object"
@@ -2649,18 +2334,18 @@
    },
    "type": "object"
   },
-  "ListScanConfigsResponse": {
-   "description": "Response for listing scan configurations.",
-   "id": "ListScanConfigsResponse",
+  "ListOperationsResponse": {
+   "description": "The response message for Operations.ListOperations.",
+   "id": "ListOperationsResponse",
    "properties": {
     "nextPageToken": {
-     "description": "The next pagination token in the list response. It should be used as `page_token` for the following request. An empty value means no more results.",
+     "description": "The standard List next-page token.",
      "type": "string"
     },
-    "scanConfigs": {
-     "description": "The scan configurations requested.",
+    "operations": {
+     "description": "A list of operations that matches the specified filter in the request.",
      "items": {
-      "$ref": "ScanConfig"
+      "$ref": "Operation"
      },
      "type": "array"
     }
@@ -2686,43 +2371,95 @@
    },
    "type": "object"
   },
+  "Metadata": {
+   "description": "Other properties of the build.",
+   "id": "Metadata",
+   "properties": {
+    "buildFinishedOn": {
+     "description": "The timestamp of when the build completed.",
+     "format": "google-datetime",
+     "type": "string"
+    },
+    "buildInvocationId": {
+     "description": "Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.",
+     "type": "string"
+    },
+    "buildStartedOn": {
+     "description": "The timestamp of when the build started.",
+     "format": "google-datetime",
+     "type": "string"
+    },
+    "completeness": {
+     "$ref": "Completeness",
+     "description": "Indicates that the builder claims certain fields in this message to be complete."
+    },
+    "reproducible": {
+     "description": "If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.",
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "NonCompliantFile": {
+   "description": "Details about files that caused a compliance check to fail.",
+   "id": "NonCompliantFile",
+   "properties": {
+    "displayCommand": {
+     "description": "Command to display the non-compliant files.",
+     "type": "string"
+    },
+    "path": {
+     "description": "display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.",
+     "type": "string"
+    },
+    "reason": {
+     "description": "Explains why a file is non compliant for a CIS check.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "Note": {
    "description": "A type of analysis that can be done for a resource.",
    "id": "Note",
    "properties": {
-    "attestationAuthority": {
-     "$ref": "Authority",
+    "attestation": {
+     "$ref": "AttestationNote",
      "description": "A note describing an attestation role."
     },
-    "baseImage": {
-     "$ref": "Basis",
-     "description": "A note describing a base image."
-    },
     "build": {
-     "$ref": "Build",
+     "$ref": "BuildNote",
      "description": "A note describing build provenance for a verifiable build."
+    },
+    "compliance": {
+     "$ref": "ComplianceNote",
+     "description": "A note describing a compliance check."
     },
     "createTime": {
      "description": "Output only. The time this note was created. This field can be used as a filter in list requests.",
      "format": "google-datetime",
      "type": "string"
     },
-    "deployable": {
-     "$ref": "Deployable",
+    "deployment": {
+     "$ref": "DeploymentNote",
      "description": "A note describing something that can be deployed."
     },
     "discovery": {
-     "$ref": "Discovery",
+     "$ref": "DiscoveryNote",
      "description": "A note describing the initial analysis of a resource."
+    },
+    "dsseAttestation": {
+     "$ref": "DSSEAttestationNote",
+     "description": "A note describing a dsse attestation note."
     },
     "expirationTime": {
      "description": "Time of expiration for this note. Empty if note does not expire.",
      "format": "google-datetime",
      "type": "string"
     },
-    "intoto": {
-     "$ref": "InToto",
-     "description": "A note describing an in-toto link."
+    "image": {
+     "$ref": "ImageNote",
+     "description": "A note describing a base image."
     },
     "kind": {
      "description": "Output only. The type of analysis. This field can be used as a filter in list requests.",
@@ -2735,11 +2472,9 @@
       "DEPLOYMENT",
       "DISCOVERY",
       "ATTESTATION",
-      "INTOTO",
-      "SBOM",
-      "SPDX_PACKAGE",
-      "SPDX_FILE",
-      "SPDX_RELATIONSHIP"
+      "UPGRADE",
+      "COMPLIANCE",
+      "DSSE_ATTESTATION"
      ],
      "enumDescriptions": [
       "Default value. This value is unused.",
@@ -2750,11 +2485,9 @@
       "The note and occurrence track deployment events.",
       "The note and occurrence track the initial discovery status of a resource.",
       "This represents a logical \"role\" that can attest to artifacts.",
-      "This represents an in-toto link.",
-      "This represents a software bill of materials.",
-      "This represents an SPDX Package.",
-      "This represents an SPDX File.",
-      "This represents an SPDX Relationship."
+      "This represents an available package upgrade.",
+      "This represents a Compliance Note",
+      "This represents a DSSE attestation Note"
      ],
      "type": "string"
     },
@@ -2767,7 +2500,7 @@
      "type": "string"
     },
     "package": {
-     "$ref": "Package",
+     "$ref": "PackageNote",
      "description": "A note describing a package hosted by various package managers."
     },
     "relatedNoteNames": {
@@ -2784,33 +2517,21 @@
      },
      "type": "array"
     },
-    "sbom": {
-     "$ref": "DocumentNote",
-     "description": "A note describing a software bill of materials."
-    },
     "shortDescription": {
      "description": "A one sentence description of this note.",
      "type": "string"
-    },
-    "spdxFile": {
-     "$ref": "FileNote",
-     "description": "A note describing an SPDX File."
-    },
-    "spdxPackage": {
-     "$ref": "PackageInfoNote",
-     "description": "A note describing an SPDX Package."
-    },
-    "spdxRelationship": {
-     "$ref": "RelationshipNote",
-     "description": "A note describing an SPDX File."
     },
     "updateTime": {
      "description": "Output only. The time this note was last updated. This field can be used as a filter in list requests.",
      "format": "google-datetime",
      "type": "string"
     },
+    "upgrade": {
+     "$ref": "UpgradeNote",
+     "description": "A note describing available package upgrades."
+    },
     "vulnerability": {
-     "$ref": "Vulnerability",
+     "$ref": "VulnerabilityNote",
      "description": "A note describing a package vulnerability."
     }
    },
@@ -2821,12 +2542,16 @@
    "id": "Occurrence",
    "properties": {
     "attestation": {
-     "$ref": "Details",
+     "$ref": "AttestationOccurrence",
      "description": "Describes an attestation of an artifact."
     },
     "build": {
-     "$ref": "GrafeasV1beta1BuildDetails",
+     "$ref": "BuildOccurrence",
      "description": "Describes a verifiable build."
+    },
+    "compliance": {
+     "$ref": "ComplianceOccurrence",
+     "description": "Describes a compliance violation on a linked resource."
     },
     "createTime": {
      "description": "Output only. The time this occurrence was created.",
@@ -2834,24 +2559,24 @@
      "type": "string"
     },
     "deployment": {
-     "$ref": "GrafeasV1beta1DeploymentDetails",
+     "$ref": "DeploymentOccurrence",
      "description": "Describes the deployment of an artifact on a runtime."
     },
-    "derivedImage": {
-     "$ref": "GrafeasV1beta1ImageDetails",
-     "description": "Describes how this resource derives from the basis in the associated note."
-    },
-    "discovered": {
-     "$ref": "GrafeasV1beta1DiscoveryDetails",
+    "discovery": {
+     "$ref": "DiscoveryOccurrence",
      "description": "Describes when a resource was discovered."
     },
-    "installation": {
-     "$ref": "GrafeasV1beta1PackageDetails",
-     "description": "Describes the installation of a package on the linked resource."
+    "dsseAttestation": {
+     "$ref": "DSSEAttestationOccurrence",
+     "description": "Describes an attestation of an artifact using dsse."
     },
-    "intoto": {
-     "$ref": "GrafeasV1beta1IntotoDetails",
-     "description": "Describes a specific in-toto link."
+    "envelope": {
+     "$ref": "Envelope",
+     "description": "https://github.com/secure-systems-lab/dsse"
+    },
+    "image": {
+     "$ref": "ImageOccurrence",
+     "description": "Describes how this resource derives from the basis in the associated note."
     },
     "kind": {
      "description": "Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.",
@@ -2864,11 +2589,9 @@
       "DEPLOYMENT",
       "DISCOVERY",
       "ATTESTATION",
-      "INTOTO",
-      "SBOM",
-      "SPDX_PACKAGE",
-      "SPDX_FILE",
-      "SPDX_RELATIONSHIP"
+      "UPGRADE",
+      "COMPLIANCE",
+      "DSSE_ATTESTATION"
      ],
      "enumDescriptions": [
       "Default value. This value is unused.",
@@ -2879,11 +2602,9 @@
       "The note and occurrence track deployment events.",
       "The note and occurrence track the initial discovery status of a resource.",
       "This represents a logical \"role\" that can attest to artifacts.",
-      "This represents an in-toto link.",
-      "This represents a software bill of materials.",
-      "This represents an SPDX Package.",
-      "This represents an SPDX File.",
-      "This represents an SPDX Relationship."
+      "This represents an available package upgrade.",
+      "This represents a Compliance Note",
+      "This represents a DSSE attestation Note"
      ],
      "type": "string"
     },
@@ -2895,200 +2616,84 @@
      "description": "Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.",
      "type": "string"
     },
+    "package": {
+     "$ref": "PackageOccurrence",
+     "description": "Describes the installation of a package on the linked resource."
+    },
     "remediation": {
      "description": "A description of actions that can be taken to remedy the note.",
      "type": "string"
     },
-    "resource": {
-     "$ref": "Resource",
-     "description": "Required. Immutable. The resource for which the occurrence applies."
-    },
-    "sbom": {
-     "$ref": "DocumentOccurrence",
-     "description": "Describes a specific software bill of materials document."
-    },
-    "spdxFile": {
-     "$ref": "FileOccurrence",
-     "description": "Describes a specific SPDX File."
-    },
-    "spdxPackage": {
-     "$ref": "PackageInfoOccurrence",
-     "description": "Describes a specific SPDX Package."
-    },
-    "spdxRelationship": {
-     "$ref": "RelationshipOccurrence",
-     "description": "Describes a specific SPDX Relationship."
+    "resourceUri": {
+     "description": "Required. Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.",
+     "type": "string"
     },
     "updateTime": {
      "description": "Output only. The time this occurrence was last updated.",
      "format": "google-datetime",
      "type": "string"
     },
+    "upgrade": {
+     "$ref": "UpgradeOccurrence",
+     "description": "Describes an available package upgrade on the linked resource."
+    },
     "vulnerability": {
-     "$ref": "GrafeasV1beta1VulnerabilityDetails",
+     "$ref": "VulnerabilityOccurrence",
      "description": "Describes a security vulnerability."
     }
    },
    "type": "object"
   },
-  "Package": {
-   "description": "This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.",
-   "id": "Package",
+  "Operation": {
+   "description": "This resource represents a long-running operation that is the result of a network API call.",
+   "id": "Operation",
    "properties": {
-    "distribution": {
-     "description": "The various channels by which a package is distributed.",
-     "items": {
-      "$ref": "Distribution"
-     },
-     "type": "array"
-    },
-    "name": {
-     "description": "Required. Immutable. The name of the package.",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "PackageInfoNote": {
-   "description": "PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/",
-   "id": "PackageInfoNote",
-   "properties": {
-    "analyzed": {
-     "description": "Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document",
+    "done": {
+     "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
      "type": "boolean"
     },
-    "attribution": {
-     "description": "A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts",
-     "type": "string"
+    "error": {
+     "$ref": "Status",
+     "description": "The error result of the operation in case of failure or cancellation."
     },
-    "checksum": {
-     "description": "Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file",
-     "type": "string"
-    },
-    "copyright": {
-     "description": "Identify the copyright holders of the package, as well as any dates present",
-     "type": "string"
-    },
-    "detailedDescription": {
-     "description": "A more detailed description of the package",
-     "type": "string"
-    },
-    "downloadLocation": {
-     "description": "This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created",
-     "type": "string"
-    },
-    "externalRefs": {
-     "description": "ExternalRef",
-     "items": {
-      "$ref": "ExternalRef"
+    "metadata": {
+     "additionalProperties": {
+      "description": "Properties of the object. Contains field @type with type URL.",
+      "type": "any"
      },
-     "type": "array"
+     "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+     "type": "object"
     },
-    "filesLicenseInfo": {
-     "description": "Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field \u2013 it is simply a listing of all licenses found",
-     "items": {
-      "type": "string"
+    "name": {
+     "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+     "type": "string"
+    },
+    "response": {
+     "additionalProperties": {
+      "description": "Properties of the object. Contains field @type with type URL.",
+      "type": "any"
      },
-     "type": "array"
-    },
-    "homePage": {
-     "description": "Provide a place for the SPDX file creator to record a web site that serves as the package's home page",
-     "type": "string"
-    },
-    "licenseDeclared": {
-     "$ref": "License",
-     "description": "List the licenses that have been declared by the authors of the package"
-    },
-    "originator": {
-     "description": "If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came",
-     "type": "string"
-    },
-    "packageType": {
-     "description": "The type of package: OS, MAVEN, GO, GO_STDLIB, etc.",
-     "type": "string"
-    },
-    "summaryDescription": {
-     "description": "A short description of the package",
-     "type": "string"
-    },
-    "supplier": {
-     "description": "Identify the actual distribution source for the package/directory identified in the SPDX file",
-     "type": "string"
-    },
-    "title": {
-     "description": "Identify the full name of the package as given by the Package Originator",
-     "type": "string"
-    },
-    "verificationCode": {
-     "description": "This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file",
-     "type": "string"
-    },
-    "version": {
-     "description": "Identify the version of the package",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "PackageInfoOccurrence": {
-   "description": "PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/",
-   "id": "PackageInfoOccurrence",
-   "properties": {
-    "comment": {
-     "description": "A place for the SPDX file creator to record any general comments about the package being described",
-     "type": "string"
-    },
-    "filename": {
-     "description": "Provide the actual file name of the package, or path of the directory being treated as a package",
-     "type": "string"
-    },
-    "homePage": {
-     "description": "Output only. Provide a place for the SPDX file creator to record a web site that serves as the package's home page",
-     "readOnly": true,
-     "type": "string"
-    },
-    "id": {
-     "description": "Uniquely identify any element in an SPDX document which may be referenced by other elements",
-     "type": "string"
-    },
-    "licenseConcluded": {
-     "$ref": "License",
-     "description": "package or alternative values, if the governing license cannot be determined"
-    },
-    "packageType": {
-     "description": "Output only. The type of package: OS, MAVEN, GO, GO_STDLIB, etc.",
-     "readOnly": true,
-     "type": "string"
-    },
-    "sourceInfo": {
-     "description": "Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package",
-     "type": "string"
-    },
-    "summaryDescription": {
-     "description": "Output only. A short description of the package",
-     "readOnly": true,
-     "type": "string"
-    },
-    "title": {
-     "description": "Output only. Identify the full name of the package as given by the Package Originator",
-     "readOnly": true,
-     "type": "string"
-    },
-    "version": {
-     "description": "Output only. Identify the version of the package",
-     "readOnly": true,
-     "type": "string"
+     "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+     "type": "object"
     }
    },
    "type": "object"
   },
   "PackageIssue": {
-   "description": "This message wraps a location affected by a vulnerability and its associated fix (if one is available).",
+   "description": "A detail for a distro and package this vulnerability occurrence was found in and its associated fix (if one is available).",
    "id": "PackageIssue",
    "properties": {
-    "affectedLocation": {
-     "$ref": "VulnerabilityLocation",
-     "description": "Required. The location of the vulnerability."
+    "affectedCpeUri": {
+     "description": "Required. The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in.",
+     "type": "string"
+    },
+    "affectedPackage": {
+     "description": "Required. The package this vulnerability was found in.",
+     "type": "string"
+    },
+    "affectedVersion": {
+     "$ref": "Version",
+     "description": "Required. The version of the package that is installed on the resource affected by this vulnerability."
     },
     "effectiveSeverity": {
      "description": "Output only. The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.",
@@ -3111,43 +2716,60 @@
      "readOnly": true,
      "type": "string"
     },
-    "fixedLocation": {
-     "$ref": "VulnerabilityLocation",
-     "description": "The location of the available fix for vulnerability."
+    "fixAvailable": {
+     "description": "Output only. Whether a fix is available for this package.",
+     "type": "boolean"
+    },
+    "fixedCpeUri": {
+     "description": "The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.",
+     "type": "string"
+    },
+    "fixedPackage": {
+     "description": "The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.",
+     "type": "string"
+    },
+    "fixedVersion": {
+     "$ref": "Version",
+     "description": "Required. The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available."
     },
     "packageType": {
      "description": "The type of package (e.g. OS, MAVEN, GO).",
-     "type": "string"
-    },
-    "severityName": {
-     "description": "Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.",
      "type": "string"
     }
    },
    "type": "object"
   },
-  "PgpSignedAttestation": {
-   "description": "An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.",
-   "id": "PgpSignedAttestation",
+  "PackageNote": {
+   "description": "This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.",
+   "id": "PackageNote",
    "properties": {
-    "contentType": {
-     "description": "Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).",
-     "enum": [
-      "CONTENT_TYPE_UNSPECIFIED",
-      "SIMPLE_SIGNING_JSON"
-     ],
-     "enumDescriptions": [
-      "`ContentType` is not set.",
-      "Atomic format attestation signature. See https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md The payload extracted from `signature` is a JSON blob conforming to the linked schema."
-     ],
-     "type": "string"
+    "distribution": {
+     "description": "The various channels by which a package is distributed.",
+     "items": {
+      "$ref": "Distribution"
+     },
+     "type": "array"
     },
-    "pgpKeyId": {
-     "description": "The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge \"LONG\", \"SHORT\", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \\ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.",
+    "name": {
+     "description": "Required. Immutable. The name of the package.",
      "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "PackageOccurrence": {
+   "description": "Details on how a particular software package was installed on a system.",
+   "id": "PackageOccurrence",
+   "properties": {
+    "location": {
+     "description": "Required. All of the places within the filesystem versions of this package have been found.",
+     "items": {
+      "$ref": "Location"
+     },
+     "type": "array"
     },
-    "signature": {
-     "description": "Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.",
+    "name": {
+     "description": "Output only. The name of the installed package.",
      "type": "string"
     }
    },
@@ -3192,6 +2814,48 @@
    },
    "type": "object"
   },
+  "Recipe": {
+   "description": "Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.",
+   "id": "Recipe",
+   "properties": {
+    "arguments": {
+     "description": "Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were \"make\", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form \"Any\".",
+     "items": {
+      "additionalProperties": {
+       "description": "Properties of the object. Contains field @type with type URL.",
+       "type": "any"
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "definedInMaterial": {
+     "description": "Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were \"make\", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.",
+     "format": "int64",
+     "type": "string"
+    },
+    "entryPoint": {
+     "description": "String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were \"make\", then this would reference the directory in which to run make as well as which target to use.",
+     "type": "string"
+    },
+    "environment": {
+     "description": "Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form \"Any\".",
+     "items": {
+      "additionalProperties": {
+       "description": "Properties of the object. Contains field @type with type URL.",
+       "type": "any"
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "type": {
+     "description": "URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "RelatedUrl": {
    "description": "Metadata for any related URL information.",
    "id": "RelatedUrl",
@@ -3207,225 +2871,6 @@
    },
    "type": "object"
   },
-  "RelationshipNote": {
-   "description": "RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/",
-   "id": "RelationshipNote",
-   "properties": {
-    "type": {
-     "description": "The type of relationship between the source and target SPDX elements",
-     "enum": [
-      "RELATIONSHIP_TYPE_UNSPECIFIED",
-      "DESCRIBES",
-      "DESCRIBED_BY",
-      "CONTAINS",
-      "CONTAINED_BY",
-      "DEPENDS_ON",
-      "DEPENDENCY_OF",
-      "DEPENDENCY_MANIFEST_OF",
-      "BUILD_DEPENDENCY_OF",
-      "DEV_DEPENDENCY_OF",
-      "OPTIONAL_DEPENDENCY_OF",
-      "PROVIDED_DEPENDENCY_OF",
-      "TEST_DEPENDENCY_OF",
-      "RUNTIME_DEPENDENCY_OF",
-      "EXAMPLE_OF",
-      "GENERATES",
-      "GENERATED_FROM",
-      "ANCESTOR_OF",
-      "DESCENDANT_OF",
-      "VARIANT_OF",
-      "DISTRIBUTION_ARTIFACT",
-      "PATCH_FOR",
-      "PATCH_APPLIED",
-      "COPY_OF",
-      "FILE_ADDED",
-      "FILE_DELETED",
-      "FILE_MODIFIED",
-      "EXPANDED_FROM_ARCHIVE",
-      "DYNAMIC_LINK",
-      "STATIC_LINK",
-      "DATA_FILE_OF",
-      "TEST_CASE_OF",
-      "BUILD_TOOL_OF",
-      "DEV_TOOL_OF",
-      "TEST_OF",
-      "TEST_TOOL_OF",
-      "DOCUMENTATION_OF",
-      "OPTIONAL_COMPONENT_OF",
-      "METAFILE_OF",
-      "PACKAGE_OF",
-      "AMENDS",
-      "PREREQUISITE_FOR",
-      "HAS_PREREQUISITE",
-      "OTHER"
-     ],
-     "enumDescriptions": [
-      "Unspecified",
-      "Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A",
-      "Is to be used when SPDXRef-A is described by SPDXREF-Document",
-      "Is to be used when SPDXRef-A contains SPDXRef-B",
-      "Is to be used when SPDXRef-A is contained by SPDXRef-B",
-      "Is to be used when SPDXRef-A depends on SPDXRef-B",
-      "Is to be used when SPDXRef-A is dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a manifest file that lists a set of dependencies for SPDXRef-B",
-      "Is to be used when SPDXRef-A is a build dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a development dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is an optional dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a to be provided dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a test dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a dependency required for the execution of SPDXRef-B",
-      "Is to be used when SPDXRef-A is an example of SPDXRef-B",
-      "Is to be used when SPDXRef-A generates SPDXRef-B",
-      "Is to be used when SPDXRef-A was generated from SPDXRef-B",
-      "Is to be used when SPDXRef-A is an ancestor (same lineage but pre-dates) SPDXRef-B",
-      "Is to be used when SPDXRef-A is a descendant of (same lineage but postdates) SPDXRef-B",
-      "Is to be used when SPDXRef-A is a variant of (same lineage but not clear which came first) SPDXRef-B",
-      "Is to be used when distributing SPDXRef-A requires that SPDXRef-B also be distributed",
-      "Is to be used when SPDXRef-A is a patch file for (to be applied to) SPDXRef-B",
-      "Is to be used when SPDXRef-A is a patch file that has been applied to SPDXRef-B",
-      "Is to be used when SPDXRef-A is an exact copy of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a file that was added to SPDXRef-B",
-      "Is to be used when SPDXRef-A is a file that was deleted from SPDXRef-B",
-      "Is to be used when SPDXRef-A is a file that was modified from SPDXRef-B",
-      "Is to be used when SPDXRef-A is expanded from the archive SPDXRef-B",
-      "Is to be used when SPDXRef-A dynamically links to SPDXRef-B",
-      "Is to be used when SPDXRef-A statically links to SPDXRef-B",
-      "Is to be used when SPDXRef-A is a data file used in SPDXRef-B",
-      "Is to be used when SPDXRef-A is a test case used in testing SPDXRef-B",
-      "Is to be used when SPDXRef-A is used to build SPDXRef-B",
-      "Is to be used when SPDXRef-A is used as a development tool for SPDXRef-B",
-      "Is to be used when SPDXRef-A is used for testing SPDXRef-B",
-      "Is to be used when SPDXRef-A is used as a test tool for SPDXRef-B",
-      "Is to be used when SPDXRef-A provides documentation of SPDXRef-B",
-      "Is to be used when SPDXRef-A is an optional component of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a metafile of SPDXRef-B",
-      "Is to be used when SPDXRef-A is used as a package as part of SPDXRef-B",
-      "Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX information in SPDXRef-B",
-      "Is to be used when SPDXRef-A is a prerequisite for SPDXRef-B",
-      "Is to be used when SPDXRef-A has as a prerequisite SPDXRef-B",
-      "Is to be used for a relationship which has not been defined in the formal SPDX specification. A description of the relationship should be included in the Relationship comments field"
-     ],
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "RelationshipOccurrence": {
-   "description": "RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/",
-   "id": "RelationshipOccurrence",
-   "properties": {
-    "comment": {
-     "description": "A place for the SPDX file creator to record any general comments about the relationship",
-     "type": "string"
-    },
-    "source": {
-     "description": "Also referred to as SPDXRef-A The source SPDX element (file, package, etc)",
-     "type": "string"
-    },
-    "target": {
-     "description": "Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are \"known unknowns\", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it",
-     "type": "string"
-    },
-    "type": {
-     "description": "Output only. The type of relationship between the source and target SPDX elements",
-     "enum": [
-      "RELATIONSHIP_TYPE_UNSPECIFIED",
-      "DESCRIBES",
-      "DESCRIBED_BY",
-      "CONTAINS",
-      "CONTAINED_BY",
-      "DEPENDS_ON",
-      "DEPENDENCY_OF",
-      "DEPENDENCY_MANIFEST_OF",
-      "BUILD_DEPENDENCY_OF",
-      "DEV_DEPENDENCY_OF",
-      "OPTIONAL_DEPENDENCY_OF",
-      "PROVIDED_DEPENDENCY_OF",
-      "TEST_DEPENDENCY_OF",
-      "RUNTIME_DEPENDENCY_OF",
-      "EXAMPLE_OF",
-      "GENERATES",
-      "GENERATED_FROM",
-      "ANCESTOR_OF",
-      "DESCENDANT_OF",
-      "VARIANT_OF",
-      "DISTRIBUTION_ARTIFACT",
-      "PATCH_FOR",
-      "PATCH_APPLIED",
-      "COPY_OF",
-      "FILE_ADDED",
-      "FILE_DELETED",
-      "FILE_MODIFIED",
-      "EXPANDED_FROM_ARCHIVE",
-      "DYNAMIC_LINK",
-      "STATIC_LINK",
-      "DATA_FILE_OF",
-      "TEST_CASE_OF",
-      "BUILD_TOOL_OF",
-      "DEV_TOOL_OF",
-      "TEST_OF",
-      "TEST_TOOL_OF",
-      "DOCUMENTATION_OF",
-      "OPTIONAL_COMPONENT_OF",
-      "METAFILE_OF",
-      "PACKAGE_OF",
-      "AMENDS",
-      "PREREQUISITE_FOR",
-      "HAS_PREREQUISITE",
-      "OTHER"
-     ],
-     "enumDescriptions": [
-      "Unspecified",
-      "Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A",
-      "Is to be used when SPDXRef-A is described by SPDXREF-Document",
-      "Is to be used when SPDXRef-A contains SPDXRef-B",
-      "Is to be used when SPDXRef-A is contained by SPDXRef-B",
-      "Is to be used when SPDXRef-A depends on SPDXRef-B",
-      "Is to be used when SPDXRef-A is dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a manifest file that lists a set of dependencies for SPDXRef-B",
-      "Is to be used when SPDXRef-A is a build dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a development dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is an optional dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a to be provided dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a test dependency of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a dependency required for the execution of SPDXRef-B",
-      "Is to be used when SPDXRef-A is an example of SPDXRef-B",
-      "Is to be used when SPDXRef-A generates SPDXRef-B",
-      "Is to be used when SPDXRef-A was generated from SPDXRef-B",
-      "Is to be used when SPDXRef-A is an ancestor (same lineage but pre-dates) SPDXRef-B",
-      "Is to be used when SPDXRef-A is a descendant of (same lineage but postdates) SPDXRef-B",
-      "Is to be used when SPDXRef-A is a variant of (same lineage but not clear which came first) SPDXRef-B",
-      "Is to be used when distributing SPDXRef-A requires that SPDXRef-B also be distributed",
-      "Is to be used when SPDXRef-A is a patch file for (to be applied to) SPDXRef-B",
-      "Is to be used when SPDXRef-A is a patch file that has been applied to SPDXRef-B",
-      "Is to be used when SPDXRef-A is an exact copy of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a file that was added to SPDXRef-B",
-      "Is to be used when SPDXRef-A is a file that was deleted from SPDXRef-B",
-      "Is to be used when SPDXRef-A is a file that was modified from SPDXRef-B",
-      "Is to be used when SPDXRef-A is expanded from the archive SPDXRef-B",
-      "Is to be used when SPDXRef-A dynamically links to SPDXRef-B",
-      "Is to be used when SPDXRef-A statically links to SPDXRef-B",
-      "Is to be used when SPDXRef-A is a data file used in SPDXRef-B",
-      "Is to be used when SPDXRef-A is a test case used in testing SPDXRef-B",
-      "Is to be used when SPDXRef-A is used to build SPDXRef-B",
-      "Is to be used when SPDXRef-A is used as a development tool for SPDXRef-B",
-      "Is to be used when SPDXRef-A is used for testing SPDXRef-B",
-      "Is to be used when SPDXRef-A is used as a test tool for SPDXRef-B",
-      "Is to be used when SPDXRef-A provides documentation of SPDXRef-B",
-      "Is to be used when SPDXRef-A is an optional component of SPDXRef-B",
-      "Is to be used when SPDXRef-A is a metafile of SPDXRef-B",
-      "Is to be used when SPDXRef-A is used as a package as part of SPDXRef-B",
-      "Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX information in SPDXRef-B",
-      "Is to be used when SPDXRef-A is a prerequisite for SPDXRef-B",
-      "Is to be used when SPDXRef-A has as a prerequisite SPDXRef-B",
-      "Is to be used for a relationship which has not been defined in the formal SPDX specification. A description of the relationship should be included in the Relationship comments field"
-     ],
-     "readOnly": true,
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
   "RepoId": {
    "description": "A unique identifier for a Cloud Repo.",
    "id": "RepoId",
@@ -3436,54 +2881,6 @@
     },
     "uid": {
      "description": "A server-assigned, globally unique identifier.",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "Resource": {
-   "description": "An entity that can have metadata. For example, a Docker image.",
-   "id": "Resource",
-   "properties": {
-    "contentHash": {
-     "$ref": "Hash",
-     "description": "Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest."
-    },
-    "name": {
-     "description": "Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".",
-     "type": "string"
-    },
-    "uri": {
-     "description": "Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "ScanConfig": {
-   "description": "A scan configuration specifies whether Cloud components in a project have a particular type of analysis being run. For example, it can configure whether vulnerability scanning is being done on Docker images or not.",
-   "id": "ScanConfig",
-   "properties": {
-    "createTime": {
-     "description": "Output only. The time this scan config was created.",
-     "format": "google-datetime",
-     "type": "string"
-    },
-    "description": {
-     "description": "Output only. A human-readable description of what the scan configuration does.",
-     "type": "string"
-    },
-    "enabled": {
-     "description": "Whether the scan is enabled.",
-     "type": "boolean"
-    },
-    "name": {
-     "description": "Output only. The name of the scan configuration in the form of `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
-     "type": "string"
-    },
-    "updateTime": {
-     "description": "Output only. The time this scan config was last updated.",
-     "format": "google-datetime",
      "type": "string"
     }
    },
@@ -3511,29 +2908,6 @@
     "signature": {
      "description": "The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be unambiguously provided with the Signature during verification. A wrapper message might provide the payload explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously computed to derive the payload.",
      "format": "byte",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "SigningKey": {
-   "description": "This defines the format used to record keys used in the software supply chain. An in-toto link is attested using one or more keys defined in the in-toto layout. An example of this is: { \"key_id\": \"776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...\", \"key_type\": \"rsa\", \"public_key_value\": \"-----BEGIN PUBLIC KEY-----\\nMIIBojANBgkqhkiG9w0B...\", \"key_scheme\": \"rsassa-pss-sha256\" } The format for in-toto's key definition can be found in section 4.2 of the in-toto specification.",
-   "id": "SigningKey",
-   "properties": {
-    "keyId": {
-     "description": "key_id is an identifier for the signing key.",
-     "type": "string"
-    },
-    "keyScheme": {
-     "description": "This field contains the corresponding signature scheme. Eg: \"rsassa-pss-sha256\".",
-     "type": "string"
-    },
-    "keyType": {
-     "description": "This field identifies the specific signing method. Eg: \"rsa\", \"ed25519\", and \"ecdsa\".",
-     "type": "string"
-    },
-    "publicKeyValue": {
-     "description": "This field contains the actual public key.",
      "type": "string"
     }
    },
@@ -3621,6 +2995,22 @@
    },
    "type": "object"
   },
+  "Subject": {
+   "id": "Subject",
+   "properties": {
+    "digest": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "description": "\"\": \"\"",
+     "type": "object"
+    },
+    "name": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "TestIamPermissionsRequest": {
    "description": "Request message for `TestIamPermissions` method.",
    "id": "TestIamPermissionsRequest",
@@ -3666,6 +3056,81 @@
    },
    "type": "object"
   },
+  "UpgradeDistribution": {
+   "description": "The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.",
+   "id": "UpgradeDistribution",
+   "properties": {
+    "classification": {
+     "description": "The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed. For Windows the classification is one of the category_ids listed at https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)",
+     "type": "string"
+    },
+    "cpeUri": {
+     "description": "Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.",
+     "type": "string"
+    },
+    "cve": {
+     "description": "The cve tied to this Upgrade.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "severity": {
+     "description": "The severity as specified by the upstream operating system.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "UpgradeNote": {
+   "description": "An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be an Upgrade Note. For Windows, windows_update field represents the information related to the update.",
+   "id": "UpgradeNote",
+   "properties": {
+    "distributions": {
+     "description": "Metadata about the upgrade for each specific operating system.",
+     "items": {
+      "$ref": "UpgradeDistribution"
+     },
+     "type": "array"
+    },
+    "package": {
+     "description": "Required for non-Windows OS. The package this Upgrade is for.",
+     "type": "string"
+    },
+    "version": {
+     "$ref": "Version",
+     "description": "Required for non-Windows OS. The version of the package in machine + human readable form."
+    },
+    "windowsUpdate": {
+     "$ref": "WindowsUpdate",
+     "description": "Required for Windows OS. Represents the metadata about the Windows update."
+    }
+   },
+   "type": "object"
+  },
+  "UpgradeOccurrence": {
+   "description": "An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability). For Windows, both distribution and windows_update contain information for the Windows update.",
+   "id": "UpgradeOccurrence",
+   "properties": {
+    "distribution": {
+     "$ref": "UpgradeDistribution",
+     "description": "Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence."
+    },
+    "package": {
+     "description": "Required for non-Windows OS. The package this Upgrade is for.",
+     "type": "string"
+    },
+    "parsedVersion": {
+     "$ref": "Version",
+     "description": "Required for non-Windows OS. The version of the package in a machine + human readable form."
+    },
+    "windowsUpdate": {
+     "$ref": "WindowsUpdate",
+     "description": "Required for Windows OS. Represents the metadata about the Windows update."
+    }
+   },
+   "type": "object"
+  },
   "Version": {
    "description": "Version contains structured information about the version of a package.",
    "id": "Version",
@@ -3674,6 +3139,10 @@
      "description": "Used to correct mistakes in the version numbering scheme.",
      "format": "int32",
      "type": "integer"
+    },
+    "fullName": {
+     "description": "Human readable version string. This string is of the form :- and is only set when kind is NORMAL.",
+     "type": "string"
     },
     "inclusive": {
      "description": "Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.",
@@ -3721,28 +3190,28 @@
    },
    "type": "object"
   },
-  "Vulnerability": {
-   "description": "Vulnerability provides metadata about a security vulnerability in a Note.",
-   "id": "Vulnerability",
+  "VulnerabilityNote": {
+   "description": "A security vulnerability that can be found in resources.",
+   "id": "VulnerabilityNote",
    "properties": {
     "cvssScore": {
-     "description": "The CVSS score for this vulnerability.",
+     "description": "The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.",
      "format": "float",
      "type": "number"
     },
     "cvssV3": {
      "$ref": "CVSSv3",
-     "description": "The full description of the CVSSv3."
+     "description": "The full description of the CVSSv3 for this vulnerability."
     },
     "details": {
-     "description": "All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.",
+     "description": "Details of all known distros and packages affected by this vulnerability.",
      "items": {
       "$ref": "Detail"
      },
      "type": "array"
     },
     "severity": {
-     "description": "Note provider assigned impact of the vulnerability.",
+     "description": "The note provider assigned severity of this vulnerability.",
      "enum": [
       "SEVERITY_UNSPECIFIED",
       "MINIMAL",
@@ -3776,21 +3245,84 @@
    },
    "type": "object"
   },
-  "VulnerabilityLocation": {
-   "description": "The location of the vulnerability.",
-   "id": "VulnerabilityLocation",
+  "VulnerabilityOccurrence": {
+   "description": "An occurrence of a severity vulnerability on a resource.",
+   "id": "VulnerabilityOccurrence",
    "properties": {
-    "cpeUri": {
-     "description": "Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.",
+    "cvssScore": {
+     "description": "Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.",
+     "format": "float",
+     "type": "number"
+    },
+    "effectiveSeverity": {
+     "description": "The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.",
+     "enum": [
+      "SEVERITY_UNSPECIFIED",
+      "MINIMAL",
+      "LOW",
+      "MEDIUM",
+      "HIGH",
+      "CRITICAL"
+     ],
+     "enumDescriptions": [
+      "Unknown.",
+      "Minimal severity.",
+      "Low severity.",
+      "Medium severity.",
+      "High severity.",
+      "Critical severity."
+     ],
      "type": "string"
     },
-    "package": {
-     "description": "Required. The package being described.",
+    "fixAvailable": {
+     "description": "Output only. Whether at least one of the affected packages has a fix available.",
+     "type": "boolean"
+    },
+    "longDescription": {
+     "description": "Output only. A detailed description of this vulnerability.",
      "type": "string"
     },
-    "version": {
-     "$ref": "Version",
-     "description": "Required. The version of the package being described."
+    "packageIssue": {
+     "description": "Required. The set of affected locations and their fixes (if available) within the associated resource.",
+     "items": {
+      "$ref": "PackageIssue"
+     },
+     "type": "array"
+    },
+    "relatedUrls": {
+     "description": "Output only. URLs related to this vulnerability.",
+     "items": {
+      "$ref": "RelatedUrl"
+     },
+     "type": "array"
+    },
+    "severity": {
+     "description": "Output only. The note provider assigned severity of this vulnerability.",
+     "enum": [
+      "SEVERITY_UNSPECIFIED",
+      "MINIMAL",
+      "LOW",
+      "MEDIUM",
+      "HIGH",
+      "CRITICAL"
+     ],
+     "enumDescriptions": [
+      "Unknown.",
+      "Minimal severity.",
+      "Low severity.",
+      "Medium severity.",
+      "High severity.",
+      "Critical severity."
+     ],
+     "type": "string"
+    },
+    "shortDescription": {
+     "description": "Output only. A one sentence description of this vulnerability.",
+     "type": "string"
+    },
+    "type": {
+     "description": "The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).",
+     "type": "string"
     }
    },
    "type": "object"
@@ -3813,22 +3345,64 @@
    "id": "WindowsDetail",
    "properties": {
     "cpeUri": {
-     "description": "Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.",
+     "description": "Required. The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.",
      "type": "string"
     },
     "description": {
-     "description": "The description of the vulnerability.",
+     "description": "The description of this vulnerability.",
      "type": "string"
     },
     "fixingKbs": {
-     "description": "Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.",
+     "description": "Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed KBs presence is considered a fix.",
      "items": {
       "$ref": "KnowledgeBase"
      },
      "type": "array"
     },
     "name": {
-     "description": "Required. The name of the vulnerability.",
+     "description": "Required. The name of this vulnerability.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "WindowsUpdate": {
+   "description": "Windows Update represents the metadata about the update for the Windows operating system. The fields in this message come from the Windows Update API documented at https://docs.microsoft.com/en-us/windows/win32/api/wuapi/nn-wuapi-iupdate.",
+   "id": "WindowsUpdate",
+   "properties": {
+    "categories": {
+     "description": "The list of categories to which the update belongs.",
+     "items": {
+      "$ref": "Category"
+     },
+     "type": "array"
+    },
+    "description": {
+     "description": "The localized description of the update.",
+     "type": "string"
+    },
+    "identity": {
+     "$ref": "Identity",
+     "description": "Required - The unique identifier for the update."
+    },
+    "kbArticleIds": {
+     "description": "The Microsoft Knowledge Base article IDs that are associated with the update.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "lastPublishedTimestamp": {
+     "description": "The last published timestamp of the update.",
+     "format": "google-datetime",
+     "type": "string"
+    },
+    "supportUrl": {
+     "description": "The hyperlink to the support information for the update.",
+     "type": "string"
+    },
+    "title": {
+     "description": "The localized title of the update.",
      "type": "string"
     }
    },
@@ -3837,6 +3411,6 @@
  },
  "servicePath": "",
  "title": "Container Analysis API",
- "version": "v1beta1",
+ "version": "v1",
  "version_module": true
 }

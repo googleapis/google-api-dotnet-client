@@ -7726,7 +7726,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     }
 
     /// <summary>
-    /// A proposal for a link between an GA4 property and a Display &amp;amp; Video 360 advertiser. A proposal is
+    /// A proposal for a link between a GA4 property and a Display &amp;amp; Video 360 advertiser. A proposal is
     /// converted to a DisplayVideo360AdvertiserLink once approved. Google Analytics admins approve inbound proposals
     /// while Display &amp;amp; Video 360 admins approve outbound proposals.
     /// </summary>
@@ -7874,7 +7874,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A link between an GA4 property and a Firebase project.</summary>
+    /// <summary>A link between a GA4 property and a Firebase project.</summary>
     public class GoogleAnalyticsAdminV1alphaFirebaseLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time when this FirebaseLink was originally created.</summary>
@@ -7918,7 +7918,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A link between an GA4 property and a Google Ads account.</summary>
+    /// <summary>A link between a GA4 property and a Google Ads account.</summary>
     public class GoogleAnalyticsAdminV1alphaGoogleAdsLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8421,7 +8421,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A virtual resource representing metadata for an GA4 property.</summary>
+    /// <summary>A virtual resource representing metadata for a GA4 property.</summary>
     public class GoogleAnalyticsAdminV1alphaPropertySummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Display name for the property referred to in this account summary.</summary>

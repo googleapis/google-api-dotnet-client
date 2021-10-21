@@ -1196,6 +1196,10 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataLastRefreshed")]
         public virtual object DataLastRefreshed { get; set; }
 
+        /// <summary>If empty reason is specified, the report is empty for this reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emptyReason")]
+        public virtual string EmptyReason { get; set; }
+
         /// <summary>
         /// Indicates if response to this request is golden or not. Data is golden when the exact same request will not
         /// produce any new results if asked at a later point in time.
