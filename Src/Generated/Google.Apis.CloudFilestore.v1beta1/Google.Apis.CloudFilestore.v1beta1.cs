@@ -1527,6 +1527,65 @@ namespace Google.Apis.CloudFilestore.v1beta1
                         });
                     }
                 }
+
+                /// <summary>Revert an existing instance's file system to a specified snapshot.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. projects/{project_id}/locations/{location_id}/instances/{instance_id}. The resource name
+                /// of the instance, in the format
+                /// </param>
+                public virtual RevertRequest Revert(Google.Apis.CloudFilestore.v1beta1.Data.RevertInstanceRequest body, string name)
+                {
+                    return new RevertRequest(service, body, name);
+                }
+
+                /// <summary>Revert an existing instance's file system to a specified snapshot.</summary>
+                public class RevertRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Revert request.</summary>
+                    public RevertRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.RevertInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. projects/{project_id}/locations/{location_id}/instances/{instance_id}. The resource
+                    /// name of the instance, in the format
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.RevertInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "revert";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:revert";
+
+                    /// <summary>Initializes Revert parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -2886,7 +2945,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RestoreInstanceRequest restores an existing instances's file share from a snapshot or backup.</summary>
+    /// <summary>RestoreInstanceRequest restores an existing instance's file share from a snapshot or backup.</summary>
     public class RestoreInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2908,6 +2967,21 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RevertInstanceRequest reverts the given instance's file share to the specified snapshot.</summary>
+    public class RevertInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The snapshot resource ID, in the format 'my-snapshot', where the specified ID is the {snapshot_id}
+        /// of the fully qualified name like
+        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSnapshotId")]
+        public virtual string TargetSnapshotId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

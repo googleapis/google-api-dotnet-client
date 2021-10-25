@@ -5235,7 +5235,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// resources that belong to it (e.g., versions). The labels can be used to search and group resources, and are
         /// propagated to the usage and billing reports, enabling fine-grain analysis of costs. An example of using
         /// labels is to tag resources belonging to different environments (e.g., "env=prod", "env=qa"). Label keys and
-        /// values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
+        /// values can be no longer than 63 characters and can only contain lowercase letters, numeric characters,
         /// underscores, dashes, and international characters. Label keys must start with a lowercase letter or an
         /// international character. Each service can have at most 32 labels.
         /// </summary>

@@ -764,7 +764,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
 
                     /// <summary>
                     /// Filter applied to resulting executions. Currently only supports filtering executions by a
-                    /// specified schedule_id. Format: "schedule_id="
+                    /// specified schedule_id. Format: `schedule_id=`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -2629,6 +2629,82 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
+                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
+                    /// value or leave the field unset. To learn which resources support conditions in their IAM
+                    /// policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Lists Runtimes in a given project and location.</summary>
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual ListRequest List(string parent)
@@ -2806,6 +2882,71 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AIPlatformNotebooks.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -2993,6 +3134,75 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AIPlatformNotebooks.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                    /// documentation for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -3491,21 +3701,21 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Associates `members` with a `role`.</summary>
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
         /// the current request. However, a different role binding might grant the same role to one or more of the
-        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -3529,7 +3739,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -3569,7 +3780,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     {
         /// <summary>
         /// URI for cluster used to run Dataproc execution. Format:
-        /// 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        /// `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
@@ -3818,8 +4029,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format:
-        /// gs://{bucket_name}/{folder}/{notebook_file_name} Ex:
-        /// gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        /// `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex:
+        /// `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputNotebookFile")]
         public virtual string InputNotebookFile { get; set; }
@@ -3827,6 +4038,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>The type of Job to be used on this execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
         public virtual string JobType { get; set; }
+
+        /// <summary>
+        /// Name of the kernel spec to use. This must be specified if the kernel spec name on the execution target does
+        /// not match the name in the input notebook file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelSpec")]
+        public virtual string KernelSpec { get; set; }
 
         /// <summary>
         /// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is
@@ -3855,7 +4073,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format:
-        /// gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        /// `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputNotebookFolder")]
         public virtual string OutputNotebookFolder { get; set; }
@@ -3868,7 +4086,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// Parameters to be overridden in the notebook during execution. Ref
         /// https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the
         /// input notebook and pass them here in an YAML file. Ex:
-        /// gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+        /// `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paramsYamlFile")]
         public virtual string ParamsYamlFile { get; set; }
@@ -4104,7 +4322,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a
-        /// URL or Cloud Storage path (gs://path-to-file/file-name).
+        /// URL or Cloud Storage path (`gs://path-to-file/file-name`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postStartupScript")]
         public virtual string PostStartupScript { get; set; }
@@ -4140,8 +4358,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
 
         /// <summary>
-        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features]
-        /// (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// Optional. Shielded VM configuration. [Images using supported Shielded VM
+        /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
@@ -4262,9 +4480,9 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// Executions IDs that could not be reached. For example,
+        /// Executions IDs that could not be reached. For example:
         /// ['projects/{project_id}/location/{location}/executions/imagenet_test1',
-        /// 'projects/{project_id}/location/{location}/executions/classifier_train1'].
+        /// 'projects/{project_id}/location/{location}/executions/classifier_train1']
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -4365,9 +4583,9 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; }
 
         /// <summary>
-        /// Schedules that could not be reached. For example,
+        /// Schedules that could not be reached. For example:
         /// ['projects/{project_id}/location/{location}/schedules/monthly_digest',
-        /// 'projects/{project_id}/location/{location}/schedules/weekly_sentiment'].
+        /// 'projects/{project_id}/location/{location}/schedules/weekly_sentiment']
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -4628,14 +4846,15 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
-    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
-    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
-    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
-    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
-    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
-    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
-    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
-    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
+    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
@@ -4650,8 +4869,12 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
@@ -4976,7 +5199,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a
-        /// URL or Cloud Storage path (gs://path-to-file/file-name).
+        /// URL or Cloud Storage path (`gs://path-to-file/file-name`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postStartupScript")]
         public virtual string PostStartupScript { get; set; }
@@ -5357,6 +5580,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Parameters used in Vertex AI JobType executions.</summary>
     public class VertexAIParameters : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Environment variables. At most 100 environment variables can be specified and unique. Example:
+        /// GCP_BUCKET=gs://my-bucket/samples/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
+
         /// <summary>
         /// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the
         /// Job should be peered. For example, `projects/12345/global/networks/myVPC`.

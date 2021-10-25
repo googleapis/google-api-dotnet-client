@@ -708,6 +708,18 @@ namespace Google.Apis.Speech.v1.Data
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags, listing
+        /// possible alternative languages of the supplied audio. See [Language
+        /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
+        /// language codes. If alternative languages are listed, recognition result will contain recognition in the most
+        /// likely language detected including the main language_code. The recognition result will include the language
+        /// tag of the language detected in the audio. Note: This feature is only supported for Voice Command and Voice
+        /// Search use cases and performance may vary for other use cases (e.g., phone call transcription).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; }
+
+        /// <summary>
         /// The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values
         /// for LINEAR16 and FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR,
         /// AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel (mono). Note: We
@@ -743,6 +755,13 @@ namespace Google.Apis.Speech.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSeparateRecognitionPerChannel")]
         public virtual System.Nullable<bool> EnableSeparateRecognitionPerChannel { get; set; }
+
+        /// <summary>
+        /// If `true`, the top result includes a list of words and the confidence for those words. If `false`, no
+        /// word-level confidence information is returned. The default is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableWordConfidence")]
+        public virtual System.Nullable<bool> EnableWordConfidence { get; set; }
 
         /// <summary>
         /// If `true`, the top result includes a list of words and the start and end time offsets (timestamps) for those
@@ -1013,6 +1032,13 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
         public virtual System.Nullable<int> ChannelTag { get; set; }
 
+        /// <summary>
+        /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this
+        /// result. This language code was detected to have the most likelihood of being spoken in the audio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1063,6 +1089,16 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Word-specific information for recognized words.</summary>
     public class WordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that
+        /// the recognized words are correct. This field is set only for the top alternative of a non-streaming result
+        /// or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users
+        /// should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence`
+        /// was not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
         /// <summary>
         /// Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This
         /// field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental

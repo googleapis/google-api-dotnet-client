@@ -1238,6 +1238,10 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gridLayout")]
         public virtual GridLayout GridLayout { get; set; }
 
+        /// <summary>Labels applied to the dashboard</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         /// </summary>

@@ -7559,6 +7559,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acl")]
         public virtual System.Collections.Generic.IList<BucketAccessControl> Acl { get; set; }
 
+        /// <summary>The bucket's Autoclass configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoclass")]
+        public virtual AutoclassData Autoclass { get; set; }
+
         /// <summary>The bucket's billing configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billing")]
         public virtual BillingData Billing { get; set; }
@@ -7721,6 +7725,28 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("website")]
         public virtual WebsiteData Website { get; set; }
+
+        /// <summary>The bucket's Autoclass configuration.</summary>
+        public class AutoclassData
+        {
+            /// <summary>Whether or not Autoclass is enabled on this bucket</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+            public virtual System.Nullable<bool> Enabled { get; set; }
+
+            /// <summary>
+            /// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("toggleTime")]
+            public virtual string ToggleTimeRaw { get; set; }
+
+            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ToggleTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.Nullable<System.DateTime> ToggleTime
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(ToggleTimeRaw);
+                set => ToggleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
 
         /// <summary>The bucket's billing configuration.</summary>
         public class BillingData
