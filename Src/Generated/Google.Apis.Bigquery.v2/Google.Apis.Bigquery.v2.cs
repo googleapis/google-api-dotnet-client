@@ -4289,21 +4289,21 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Associates `members` with a `role`.</summary>
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
         /// the current request. However, a different role binding might grant the same role to one or more of the
-        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -4327,7 +4327,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -4978,15 +4979,23 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it
-        /// will set the table's expiration time (even if there is a dataset level default table expiration time). For
-        /// an existing table, it will update the table's expiration time. If this field is not set: For a new table, if
-        /// dataset level default table expiration time is present, that will be applied. For an existing table, no
-        /// change is made to the table's expiration time. Additionally this field is only applied when data is written
-        /// to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+        /// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the
+        /// table's expiration time (even if there is a dataset level default table expiration time). For an existing
+        /// table, it will update the table's expiration time. If this field is not set: For a new table, if dataset
+        /// level default table expiration time is present, that will be applied. For an existing table, no change is
+        /// made to the table's expiration time. Additionally this field is only applied when data is written to an
+        /// empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expirationTimestampMillis")]
-        public virtual System.Nullable<long> ExpirationTimestampMillis { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual string ExpirationTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ExpirationTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// [Optional] The friendly name for the destination table. This will only be used if the destination table is
@@ -5604,16 +5613,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a single iteration of the training run.</summary>
     public class IterationResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("arimaResult")]
-        public virtual ArimaResult ArimaResult { get; set; }
-
-        /// <summary>Information about top clusters for clustering models.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterInfos")]
-        public virtual System.Collections.Generic.IList<ClusterInfo> ClusterInfos { get; set; }
-
         /// <summary>Time taken to run the iteration in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
         public virtual System.Nullable<long> DurationMs { get; set; }
@@ -6551,6 +6552,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytesProcessed")]
         public virtual System.Nullable<long> EstimatedBytesProcessed { get; set; }
 
+        /// <summary>[Output-only] Statistics of a BigQuery ML training job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mlStatistics")]
+        public virtual MlStatistics MlStatistics { get; set; }
+
         /// <summary>[Output-only, Beta] Information about create model query job progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTraining")]
         public virtual BigQueryModelTraining ModelTraining { get; set; }
@@ -6847,6 +6852,23 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class MlStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results for all completed iterations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iterationResults")]
+        public virtual System.Collections.Generic.IList<IterationResult> IterationResults { get; set; }
+
+        /// <summary>
+        /// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of
+        /// iterations may be less than this number due to early stop.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxIterations")]
+        public virtual System.Nullable<long> MaxIterations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Model : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The best trial_id across all training runs.</summary>
@@ -7022,14 +7044,15 @@ namespace Google.Apis.Bigquery.v2.Data
 
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
-    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
-    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
-    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
-    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
-    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
-    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
-    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
-    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
+    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
@@ -7048,8 +7071,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }

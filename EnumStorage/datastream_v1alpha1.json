@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Datastream.v1alpha1.DatastreamBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Datastream.v1alpha1.DatastreamBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

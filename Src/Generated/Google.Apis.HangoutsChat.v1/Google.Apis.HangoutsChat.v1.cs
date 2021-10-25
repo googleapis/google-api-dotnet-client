@@ -319,6 +319,14 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A unique request ID for this message. If a message has already been created in the space
+                /// with this request ID, the subsequent request will return the existing message and no new message
+                /// will be created.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestId { get; set; }
+
+                /// <summary>
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
@@ -355,6 +363,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^dms/[^/]+/conversations/[^/]+$",
+                    });
+                    RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                     {
@@ -394,6 +410,14 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A unique request ID for this message. If a message has already been created in the space with
+            /// this request ID, the subsequent request will return the existing message and no new message will be
+            /// created.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
@@ -430,6 +454,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^dms/[^/]+$",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                 {
@@ -468,6 +500,14 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A unique request ID for this message. If a message has already been created in the space with
+            /// this request ID, the subsequent request will return the existing message and no new message will be
+            /// created.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
@@ -504,6 +544,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^dms/[^/]+$",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                 {
@@ -735,6 +783,14 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A unique request ID for this message. If a message has already been created in the space
+                /// with this request ID, the subsequent request will return the existing message and no new message
+                /// will be created.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestId { get; set; }
+
+                /// <summary>
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
@@ -771,6 +827,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^rooms/[^/]+/conversations/[^/]+$",
+                    });
+                    RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                     {
@@ -810,6 +874,14 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A unique request ID for this message. If a message has already been created in the space with
+            /// this request ID, the subsequent request will return the existing message and no new message will be
+            /// created.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
@@ -846,6 +918,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^rooms/[^/]+$",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                 {
@@ -884,6 +964,14 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A unique request ID for this message. If a message has already been created in the space with
+            /// this request ID, the subsequent request will return the existing message and no new message will be
+            /// created.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
@@ -920,6 +1008,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^rooms/[^/]+$",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                 {
@@ -1213,6 +1309,14 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A unique request ID for this message. If a message has already been created in the space
+                /// with this request ID, the subsequent request will return the existing message and no new message
+                /// will be created.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestId { get; set; }
+
+                /// <summary>
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
@@ -1249,6 +1353,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^spaces/[^/]+$",
+                    });
+                    RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                     {
@@ -1365,7 +1477,10 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>Updates a message.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name"><c>null</c></param>
+            /// <param name="name">
+            /// Resource name in the form `spaces/*/messages/*`. Example:
+            /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -1382,6 +1497,10 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
+                /// <summary>
+                /// Resource name in the form `spaces/*/messages/*`. Example:
+                /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1433,7 +1552,7 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>Returns a space.</summary>
         /// <param name="name">
-        /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -1451,7 +1570,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1564,6 +1683,14 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A unique request ID for this message. If a message has already been created in the space with
+            /// this request ID, the subsequent request will return the existing message and no new message will be
+            /// created.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
             /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
@@ -1600,6 +1727,14 @@ namespace Google.Apis.HangoutsChat.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^spaces/[^/]+$",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
                 {
@@ -3174,6 +3309,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual object LastUpdateTime { get; set; }
 
+        /// <summary>
+        /// Resource name in the form `spaces/*/messages/*`. Example:
+        /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3304,7 +3443,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Resource name of the space, in the form "spaces/*". Example: spaces/AAAAMpdlehYs</summary>
+        /// <summary>Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

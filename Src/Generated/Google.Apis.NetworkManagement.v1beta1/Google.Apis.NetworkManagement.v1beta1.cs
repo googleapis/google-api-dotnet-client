@@ -1565,6 +1565,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Wrapper for cloud function attributes.</summary>
+    public class CloudFunctionEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A [Cloud function](https://cloud.google.com/functions) name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a Cloud SQL instance.</summary>
     public class CloudSQLInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1728,6 +1739,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Source or destination of the Connectivity Test.</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A [Cloud function](https://cloud.google.com/functions).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
+        public virtual CloudFunctionEndpoint CloudFunction { get; set; }
+
         /// <summary>A [Cloud SQL](https://cloud.google.com/sql) instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
         public virtual string CloudSqlInstance { get; set; }

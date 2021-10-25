@@ -10657,6 +10657,365 @@ namespace Google.Apis.DisplayVideo.v1
         public CustomBiddingAlgorithmsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Scripts = new ScriptsResource(service);
+        }
+
+        /// <summary>Gets the Scripts resource.</summary>
+        public virtual ScriptsResource Scripts { get; }
+
+        /// <summary>The "scripts" collection of methods.</summary>
+        public class ScriptsResource
+        {
+            private const string Resource = "scripts";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ScriptsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a new custom bidding script. Returns the newly created script if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customBiddingAlgorithmId">
+            /// Required. The ID of the custom bidding algorithm that owns the script.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript body, long customBiddingAlgorithmId)
+            {
+                return new CreateRequest(service, body, customBiddingAlgorithmId);
+            }
+
+            /// <summary>Creates a new custom bidding script. Returns the newly created script if successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript body, long customBiddingAlgorithmId) : base(service)
+                {
+                    CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the custom bidding algorithm that owns the script.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>
+                /// The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have
+                /// write access to this custom bidding script.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Gets a custom bidding script.</summary>
+            /// <param name="customBiddingAlgorithmId">
+            /// Required. The ID of the custom bidding algorithm owns the script.
+            /// </param>
+            /// <param name="customBiddingScriptId">Required. The ID of the custom bidding script to fetch.</param>
+            public virtual GetRequest Get(long customBiddingAlgorithmId, long customBiddingScriptId)
+            {
+                return new GetRequest(service, customBiddingAlgorithmId, customBiddingScriptId);
+            }
+
+            /// <summary>Gets a custom bidding script.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId, long customBiddingScriptId) : base(service)
+                {
+                    CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                    CustomBiddingScriptId = customBiddingScriptId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the custom bidding algorithm owns the script.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+                /// <summary>Required. The ID of the custom bidding script to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingScriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingScriptId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>
+                /// The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have
+                /// write access to this custom bidding script.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("customBiddingScriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingScriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists custom bidding scripts that belong to the given algorithm. The order is defined by the order_by
+            /// parameter.
+            /// </summary>
+            /// <param name="customBiddingAlgorithmId">
+            /// Required. The ID of the custom bidding algorithm owns the script.
+            /// </param>
+            public virtual ListRequest List(long customBiddingAlgorithmId)
+            {
+                return new ListRequest(service, customBiddingAlgorithmId);
+            }
+
+            /// <summary>
+            /// Lists custom bidding scripts that belong to the given algorithm. The order is defined by the order_by
+            /// parameter.
+            /// </summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomBiddingScriptsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
+                {
+                    CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the custom bidding algorithm owns the script.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>
+                /// Field by which to sort the list. Acceptable values are: * `createTime desc` (default) The default
+                /// sorting order is descending. To specify ascending order for a field, the suffix "desc" should be
+                /// removed. Example: `createTime`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying a page of results the server should return. Typically, this is the value of
+                /// next_page_token returned from the previous call to `ListCustomBiddingScripts` method. If not
+                /// specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have
+                /// write access to this custom bidding script.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
+        /// </summary>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/customBiddingAlgorithms";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
         }
 
         /// <summary>Gets a custom bidding algorithm.</summary>
@@ -10848,6 +11207,159 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customBiddingAlgorithmId">
+        /// Output only. The unique ID of the custom bidding algorithm. Assigned by the system.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId)
+        {
+            return new PatchRequest(service, body, customBiddingAlgorithmId);
+        }
+
+        /// <summary>
+        /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
+        /// </summary>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId) : base(service)
+            {
+                CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Output only. The unique ID of the custom bidding algorithm. Assigned by the system.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+            /// <summary>Required. The mask to control which fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customBiddingAlgorithmId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Creates a custom bidding script reference object for a script file. The resulting reference object provides
+        /// a resource path to which the script file should be uploaded. This reference object should be included in
+        /// when creating a new custom bidding script object.
+        /// </summary>
+        /// <param name="customBiddingAlgorithmId">
+        /// Required. The ID of the custom bidding algorithm owns the script.
+        /// </param>
+        public virtual UploadScriptRequest UploadScript(long customBiddingAlgorithmId)
+        {
+            return new UploadScriptRequest(service, customBiddingAlgorithmId);
+        }
+
+        /// <summary>
+        /// Creates a custom bidding script reference object for a script file. The resulting reference object provides
+        /// a resource path to which the script file should be uploaded. This reference object should be included in
+        /// when creating a new custom bidding script object.
+        /// </summary>
+        public class UploadScriptRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingScriptRef>
+        {
+            /// <summary>Constructs a new UploadScript request.</summary>
+            public UploadScriptRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
+            {
+                CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the custom bidding algorithm owns the script.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+            /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>
+            /// The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write
+            /// access to this custom bidding script.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "uploadScript";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript";
+
+            /// <summary>Initializes UploadScript parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customBiddingAlgorithmId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -12861,6 +13373,211 @@ namespace Google.Apis.DisplayVideo.v1
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
             #endif
+        }
+
+        /// <summary>
+        /// Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.`
+        /// **Note**: Upload requests will not be successful without including `upload_type=media` query string.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">
+        /// Name of the media that is being downloaded. See ReadRequest.resource_name.
+        /// </param>
+        public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName)
+        {
+            return new UploadRequest(service, body, resourceName);
+        }
+
+        /// <summary>
+        /// Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.`
+        /// **Note**: Upload requests will not be successful without including `upload_type=media` query string.
+        /// </summary>
+        public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
+        {
+            /// <summary>Constructs a new Upload request.</summary>
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName) : base(service)
+            {
+                ResourceName = resourceName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "upload";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "media/{+resourceName}";
+
+            /// <summary>Initializes Upload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resourceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resourceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.`
+        /// **Note**: Upload requests will not be successful without including `upload_type=media` query string.
+        /// </summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">
+        /// Name of the media that is being downloaded. See ReadRequest.resource_name.
+        /// </param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadMediaUpload Upload(Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
+        {
+            return new UploadMediaUpload(service, body, resourceName, stream, contentType);
+        }
+
+        /// <summary>Upload media upload which supports resumable upload.</summary>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "media/{+resourceName}"), "POST", stream, contentType)
+            {
+                ResourceName = resourceName;
+                Body = body;
+            }
         }
     }
 
@@ -19208,6 +19925,65 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single custom bidding script.</summary>
+    public class CustomBiddingScript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether the script is currently being used for scoring by the parent algorithm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
+        /// <summary>Output only. The time when the script was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The unique ID of the custom bidding algorithm the script belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
+
+        /// <summary>Output only. The unique ID of the custom bidding script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingScriptId")]
+        public virtual System.Nullable<long> CustomBiddingScriptId { get; set; }
+
+        /// <summary>
+        /// Output only. Error details of a rejected custom bidding script. This field will only be populated when
+        /// Script.state is REJECTED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ScriptError> Errors { get; set; }
+
+        /// <summary>Output only. The resource name of the custom bidding script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The reference to the uploaded script file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual CustomBiddingScriptRef Script { get; set; }
+
+        /// <summary>Output only. The state of the custom bidding script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reference to the uploaded custom bidding script file.</summary>
+    public class CustomBiddingScriptRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A resource name to be used in media.download to Download the script files. Or media.upload to Upload the
+        /// script files. Resource names have the format
+        /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a custom list entity, such as a custom affinity or custom intent audience list.</summary>
     public class CustomList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21265,6 +22041,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ListCustomBiddingScriptsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of custom bidding scripts. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingScripts")]
+        public virtual System.Collections.Generic.IList<CustomBiddingScript> CustomBiddingScripts { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListCustomBiddingScriptsRequest` method to retrieve the next page of results. If this field is null, it
+        /// means this is the last page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListCustomListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of custom lists. This list will be absent if empty.</summary>
@@ -22746,6 +23540,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Publisher review statuses for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherReviewStatuses")]
         public virtual System.Collections.Generic.IList<PublisherReviewStatus> PublisherReviewStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error message for a custom bidding script.</summary>
+    public class ScriptError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The column number in the script where the error was thrown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual System.Nullable<long> Column { get; set; }
+
+        /// <summary>The type of error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; }
+
+        /// <summary>The detailed error message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The line number in the script where the error was thrown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual System.Nullable<long> Line { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2457,7 +2457,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RestoreInstanceRequest restores an existing instances's file share from a backup.</summary>
+    /// <summary>RestoreInstanceRequest restores an existing instance's file share from a backup.</summary>
     public class RestoreInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

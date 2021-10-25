@@ -5983,65 +5983,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// Returns the singleton enhanced measurement settings for this web stream. Note that the stream must
-            /// enable enhanced measurement for these settings to take effect.
-            /// </summary>
-            /// <param name="name">
-            /// Required. The name of the settings to lookup. Format:
-            /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-            /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-            /// </param>
-            public virtual GetEnhancedMeasurementSettingsRequest GetEnhancedMeasurementSettings(string name)
-            {
-                return new GetEnhancedMeasurementSettingsRequest(service, name);
-            }
-
-            /// <summary>
-            /// Returns the singleton enhanced measurement settings for this web stream. Note that the stream must
-            /// enable enhanced measurement for these settings to take effect.
-            /// </summary>
-            public class GetEnhancedMeasurementSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
-            {
-                /// <summary>Constructs a new GetEnhancedMeasurementSettings request.</summary>
-                public GetEnhancedMeasurementSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the settings to lookup. Format:
-                /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-                /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "getEnhancedMeasurementSettings";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes GetEnhancedMeasurementSettings parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+/webDataStreams/[^/]+/enhancedMeasurementSettings$",
-                    });
-                }
-            }
-
-            /// <summary>
             /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
             /// </summary>
             /// <param name="name">
@@ -6249,89 +6190,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+/webDataStreams/[^/]+$",
-                    });
-                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Updates the singleton enhanced measurement settings for this web stream. Note that the stream must
-            /// enable enhanced measurement for these settings to take effect.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Output only. Resource name of this Data Stream. Format:
-            /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-            /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-            /// </param>
-            public virtual UpdateEnhancedMeasurementSettingsRequest UpdateEnhancedMeasurementSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings body, string name)
-            {
-                return new UpdateEnhancedMeasurementSettingsRequest(service, body, name);
-            }
-
-            /// <summary>
-            /// Updates the singleton enhanced measurement settings for this web stream. Note that the stream must
-            /// enable enhanced measurement for these settings to take effect.
-            /// </summary>
-            public class UpdateEnhancedMeasurementSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
-            {
-                /// <summary>Constructs a new UpdateEnhancedMeasurementSettings request.</summary>
-                public UpdateEnhancedMeasurementSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Output only. Resource name of this Data Stream. Format:
-                /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-                /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>
-                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
-                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
-                /// with the string "*" to match all fields.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "updateEnhancedMeasurementSettings";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes UpdateEnhancedMeasurementSettings parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+/webDataStreams/[^/]+/enhancedMeasurementSettings$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -7706,7 +7564,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Immutable. Enables the import of cost data from Display &amp;amp; Video 360 into the GA4 property. This can
-        /// only be enabled if campaign_data_import_enabled is enabled. After link creation, this can only be updated
+        /// only be enabled if campaign_data_sharing_enabled is enabled. After link creation, this can only be updated
         /// from the Display &amp;amp; Video 360 product. If this field is not set on create, it will be defaulted to
         /// true.
         /// </summary>
@@ -7759,7 +7617,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Immutable. Enables the import of cost data from Display &amp;amp; Video 360. This can only be enabled if
-        /// campaign_data_import_enabled is enabled. If this field is not set on create, it will be defaulted to true.
+        /// campaign_data_sharing_enabled is enabled. If this field is not set on create, it will be defaulted to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costDataSharingEnabled")]
         public virtual System.Nullable<bool> CostDataSharingEnabled { get; set; }
@@ -7785,90 +7643,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationEmail")]
         public virtual string ValidationEmail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Singleton resource under a WebDataStream, configuring measurement of additional site interactions and content.
-    /// </summary>
-    public class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If enabled, capture a file download event each time a link is clicked with a common document, compressed
-        /// file, application, video, or audio extension.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileDownloadsEnabled")]
-        public virtual System.Nullable<bool> FileDownloadsEnabled { get; set; }
-
-        /// <summary>
-        /// Output only. Resource name of this Data Stream. Format:
-        /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-        /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// If enabled, capture an outbound click event each time a visitor clicks a link that leads them away from your
-        /// domain.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outboundClicksEnabled")]
-        public virtual System.Nullable<bool> OutboundClicksEnabled { get; set; }
-
-        /// <summary>
-        /// If enabled, capture a page view event each time the website changes the browser history state.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageChangesEnabled")]
-        public virtual System.Nullable<bool> PageChangesEnabled { get; set; }
-
-        /// <summary>Output only. If enabled, capture a page view event each time a page loads.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageLoadsEnabled")]
-        public virtual System.Nullable<bool> PageLoadsEnabled { get; set; }
-
-        /// <summary>
-        /// Output only. If enabled, capture a page view event each time a page loads or the website changes the browser
-        /// history state.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageViewsEnabled")]
-        public virtual System.Nullable<bool> PageViewsEnabled { get; set; }
-
-        /// <summary>If enabled, capture scroll events each time a visitor gets to the bottom of a page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scrollsEnabled")]
-        public virtual System.Nullable<bool> ScrollsEnabled { get; set; }
-
-        /// <summary>
-        /// Required. URL query parameters to interpret as site search parameters. Max length is 1024 characters. Must
-        /// not be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchQueryParameter")]
-        public virtual string SearchQueryParameter { get; set; }
-
-        /// <summary>
-        /// If enabled, capture a view search results event each time a visitor performs a search on your site (based on
-        /// a query parameter).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("siteSearchEnabled")]
-        public virtual System.Nullable<bool> SiteSearchEnabled { get; set; }
-
-        /// <summary>
-        /// Indicates whether Enhanced Measurement Settings will be used to automatically measure interactions and
-        /// content on this web stream. Changing this value does not affect the settings themselves, but determines
-        /// whether they are respected.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("streamEnabled")]
-        public virtual System.Nullable<bool> StreamEnabled { get; set; }
-
-        /// <summary>Additional URL query parameters. Max length is 1024 characters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uriQueryParameter")]
-        public virtual string UriQueryParameter { get; set; }
-
-        /// <summary>
-        /// If enabled, capture video play, progress, and complete events as visitors view embedded videos on your site.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoEngagementEnabled")]
-        public virtual System.Nullable<bool> VideoEngagementEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

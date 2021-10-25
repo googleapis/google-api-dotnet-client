@@ -785,6 +785,21 @@ namespace Google.Apis.AnalyticsData.v1beta
 }
 namespace Google.Apis.AnalyticsData.v1beta.Data
 {
+    /// <summary>A metric actively restricted in creating the report.</summary>
+    public class ActiveMetricRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the restricted metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricName")]
+        public virtual string MetricName { get; set; }
+
+        /// <summary>The reason for this metric's restriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedMetricTypes")]
+        public virtual System.Collections.Generic.IList<string> RestrictedMetricTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The batch request containing multiple pivot report requests.</summary>
     public class BatchRunPivotReportsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1457,6 +1472,16 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ApiName { get; set; }
 
         /// <summary>
+        /// If reasons are specified, your access is blocked to this metric for this property. API requests from you to
+        /// this property for this metric will succeed; however, the report will contain only zeros for this metric. API
+        /// requests with metric filters on blocked metrics will fail. If reasons are empty, you have access to this
+        /// metric. To learn more, see [Access and data-restriction
+        /// management](https://support.google.com/analytics/answer/10851388).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockedReasons")]
+        public virtual System.Collections.Generic.IList<string> BlockedReasons { get; set; }
+
+        /// <summary>
         /// The display name of the category that this metrics belongs to. Similar dimensions and metrics are
         /// categorized together.
         /// </summary>
@@ -1814,6 +1839,13 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// <summary>If empty reason is specified, the report is empty for this reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emptyReason")]
         public virtual string EmptyReason { get; set; }
+
+        /// <summary>
+        /// Describes the schema restrictions actively enforced in creating this report. To learn more, see [Access and
+        /// data-restriction management](https://support.google.com/analytics/answer/10851388).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaRestrictionResponse")]
+        public virtual SchemaRestrictionResponse SchemaRestrictionResponse { get; set; }
 
         /// <summary>
         /// The property's current timezone. Intended to be used to interpret time-based dimensions like `hour` and
@@ -2289,6 +2321,24 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// <summary>If requested, the totaled values of metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totals")]
         public virtual System.Collections.Generic.IList<Row> Totals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The schema restrictions actively enforced in creating this report. To learn more, see [Access and
+    /// data-restriction management](https://support.google.com/analytics/answer/10851388).
+    /// </summary>
+    public class SchemaRestrictionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// All restrictions actively enforced in creating the report. For example, `purchaseRevenue` always has the
+        /// restriction type `REVENUE_DATA`. However, this active response restriction is only populated if the user's
+        /// custom role disallows access to `REVENUE_DATA`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeMetricRestrictions")]
+        public virtual System.Collections.Generic.IList<ActiveMetricRestriction> ActiveMetricRestrictions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
