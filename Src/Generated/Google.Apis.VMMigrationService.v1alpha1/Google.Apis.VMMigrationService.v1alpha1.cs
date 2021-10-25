@@ -4227,6 +4227,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
 
+        /// <summary>Output only. The VM Boot Option, as set in the source vm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
+        public virtual string BootOption { get; set; }
+
         /// <summary>Compute instance scheduling information (if empty default is used).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
         public virtual ComputeScheduling ComputeScheduling { get; set; }
@@ -4251,6 +4255,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeSeries")]
         public virtual string MachineTypeSeries { get; set; }
 
+        /// <summary>The metadata key/value pairs to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
         /// <summary>List of NICs connected to this VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
@@ -4258,6 +4266,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>A map of network tags to associate with the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is
+        /// EFI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
+        public virtual System.Nullable<bool> SecureBoot { get; set; }
 
         /// <summary>The service account to associate the VM with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -4291,6 +4306,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
 
+        /// <summary>The VM Boot Option, as set in the source vm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
+        public virtual string BootOption { get; set; }
+
         /// <summary>Compute instance scheduling information (if empty default is used).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
         public virtual ComputeScheduling ComputeScheduling { get; set; }
@@ -4315,6 +4334,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeSeries")]
         public virtual string MachineTypeSeries { get; set; }
 
+        /// <summary>The metadata key/value pairs to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
         /// <summary>List of NICs connected to this VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
@@ -4326,6 +4349,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The GCP target project ID or project name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is
+        /// EFI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
+        public virtual System.Nullable<bool> SecureBoot { get; set; }
 
         /// <summary>The service account to associate the VM with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -5296,6 +5326,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
 
+        /// <summary>Output only. The VM Boot Option, as set in the source vm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
+        public virtual string BootOption { get; set; }
+
         /// <summary>Compute instance scheduling information (if empty default is used).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
         public virtual ComputeScheduling ComputeScheduling { get; set; }
@@ -5331,6 +5365,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeSeries")]
         public virtual string MachineTypeSeries { get; set; }
 
+        /// <summary>The metadata key/value pairs to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
         /// <summary>The name of the VM to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5350,6 +5388,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The project in which to create the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is
+        /// EFI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
+        public virtual System.Nullable<bool> SecureBoot { get; set; }
 
         /// <summary>The service account to associate the VM with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]

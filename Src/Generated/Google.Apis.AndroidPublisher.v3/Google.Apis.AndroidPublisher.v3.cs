@@ -7939,6 +7939,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("listings")]
         public virtual System.Collections.Generic.IDictionary<string, InAppProductListing> Listings { get; set; }
 
+        /// <summary>Details about taxes and legal compliance. Only applicable to managed products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedProductTaxesAndComplianceSettings")]
+        public virtual ManagedProductTaxAndComplianceSettings ManagedProductTaxesAndComplianceSettings { get; set; }
+
         /// <summary>Package name of the parent app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
@@ -7968,6 +7972,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionPeriod")]
         public virtual string SubscriptionPeriod { get; set; }
+
+        /// <summary>Details about taxes and legal compliance. Only applicable to subscription products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTaxesAndComplianceSettings")]
+        public virtual SubscriptionTaxAndComplianceSettings SubscriptionTaxesAndComplianceSettings { get; set; }
 
         /// <summary>
         /// Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days) and
@@ -8162,6 +8170,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about taxation and legal compliance for managed products.</summary>
+    public class ManagedProductTaxAndComplianceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Digital content or service classification for products distributed to users in the European Economic Area
+        /// (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help
+        /// Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eeaWithdrawalRightType")]
+        public virtual string EeaWithdrawalRightType { get; set; }
+
+        /// <summary>
+        /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxRateInfoByRegionCode")]
+        public virtual System.Collections.Generic.IDictionary<string, RegionalTaxRateInfo> TaxRateInfoByRegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an amount of money with its currency type.</summary>
     public class Money : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8319,6 +8349,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Payload to attach to the purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specified details about taxation in a given geographical region.</summary>
+    public class RegionalTaxRateInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// You must tell us if your app contains streaming products to correctly charge US state and local sales tax.
+        /// Field only supported in United States.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibleForStreamingServiceTaxRate")]
+        public virtual System.Nullable<bool> EligibleForStreamingServiceTaxRate { get; set; }
+
+        /// <summary>
+        /// Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or
+        /// audiobooks in various regions may be eligible for reduced tax rates. [Learn
+        /// more](https://support.google.com/googleplay/android-developer/answer/10463498).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxTier")]
+        public virtual string TaxTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8713,6 +8765,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The new expiry time for the subscription in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newExpiryTimeMillis")]
         public virtual System.Nullable<long> NewExpiryTimeMillis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about taxation, Google Play policy and legal compliance for subscription products.</summary>
+    public class SubscriptionTaxAndComplianceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Digital content or service classification for products distributed to users in the European Economic Area
+        /// (EEA). The withdrawal regime under EEA consumer laws depends on this classification. Refer to the [Help
+        /// Center article](https://support.google.com/googleplay/android-developer/answer/10463498) for more
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eeaWithdrawalRightType")]
+        public virtual string EeaWithdrawalRightType { get; set; }
+
+        /// <summary>
+        /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxRateInfoByRegionCode")]
+        public virtual System.Collections.Generic.IDictionary<string, RegionalTaxRateInfo> TaxRateInfoByRegionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

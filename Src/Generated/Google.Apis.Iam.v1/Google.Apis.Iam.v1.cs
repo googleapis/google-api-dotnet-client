@@ -35,6 +35,7 @@ namespace Google.Apis.Iam.v1
         public IamService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             IamPolicies = new IamPoliciesResource(this);
+            Locations = new LocationsResource(this);
             Organizations = new OrganizationsResource(this);
             Permissions = new PermissionsResource(this);
             Projects = new ProjectsResource(this);
@@ -90,6 +91,9 @@ namespace Google.Apis.Iam.v1
 
         /// <summary>Gets the IamPolicies resource.</summary>
         public virtual IamPoliciesResource IamPolicies { get; }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
@@ -392,6 +396,199 @@ namespace Google.Apis.Iam.v1
         }
     }
 
+    /// <summary>The "locations" collection of methods.</summary>
+    public class LocationsResource
+    {
+        private const string Resource = "locations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LocationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            WorkforcePools = new WorkforcePoolsResource(service);
+        }
+
+        /// <summary>Gets the WorkforcePools resource.</summary>
+        public virtual WorkforcePoolsResource WorkforcePools { get; }
+
+        /// <summary>The "workforcePools" collection of methods.</summary>
+        public class WorkforcePoolsResource
+        {
+            private const string Resource = "workforcePools";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public WorkforcePoolsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Operations = new OperationsResource(service);
+                Providers = new ProvidersResource(service);
+            }
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^locations/[^/]+/workforcePools/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Providers resource.</summary>
+            public virtual ProvidersResource Providers { get; }
+
+            /// <summary>The "providers" collection of methods.</summary>
+            public class ProvidersResource
+            {
+                private const string Resource = "providers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProvidersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>The "organizations" collection of methods.</summary>
     public class OrganizationsResource
     {
@@ -505,11 +702,11 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
-            /// cannot bind a member to the custom role in an IAM Policy. * Existing bindings to the custom role are not
-            /// changed, but they have no effect. * By default, the response from ListRoles does not include the custom
-            /// role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: * The
-            /// custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to the
-            /// custom role, the binding is permanently removed.
+            /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
+            /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
+            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
+            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
+            /// the custom role, the binding is permanently removed.
             /// </summary>
             /// <param name="name">
             /// The `name` parameter's value depends on the target resource for the request, namely
@@ -532,11 +729,11 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
-            /// cannot bind a member to the custom role in an IAM Policy. * Existing bindings to the custom role are not
-            /// changed, but they have no effect. * By default, the response from ListRoles does not include the custom
-            /// role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: * The
-            /// custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to the
-            /// custom role, the binding is permanently removed.
+            /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
+            /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
+            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
+            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
+            /// the custom role, the binding is permanently removed.
             /// </summary>
             public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Role>
             {
@@ -1027,7 +1224,7 @@ namespace Google.Apis.Iam.v1
 
         /// <summary>
         /// Lists every permission that you can test on a resource. A permission is testable if you can check whether a
-        /// member has that permission on the resource.
+        /// principal has that permission on the resource.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual QueryTestablePermissionsRequest QueryTestablePermissions(Google.Apis.Iam.v1.Data.QueryTestablePermissionsRequest body)
@@ -1037,7 +1234,7 @@ namespace Google.Apis.Iam.v1
 
         /// <summary>
         /// Lists every permission that you can test on a resource. A permission is testable if you can check whether a
-        /// member has that permission on the resource.
+        /// principal has that permission on the resource.
         /// </summary>
         public class QueryTestablePermissionsRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.QueryTestablePermissionsResponse>
         {
@@ -2170,11 +2367,11 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
-            /// cannot bind a member to the custom role in an IAM Policy. * Existing bindings to the custom role are not
-            /// changed, but they have no effect. * By default, the response from ListRoles does not include the custom
-            /// role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: * The
-            /// custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to the
-            /// custom role, the binding is permanently removed.
+            /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
+            /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
+            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
+            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
+            /// the custom role, the binding is permanently removed.
             /// </summary>
             /// <param name="name">
             /// The `name` parameter's value depends on the target resource for the request, namely
@@ -2197,11 +2394,11 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
-            /// cannot bind a member to the custom role in an IAM Policy. * Existing bindings to the custom role are not
-            /// changed, but they have no effect. * By default, the response from ListRoles does not include the custom
-            /// role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: * The
-            /// custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to the
-            /// custom role, the binding is permanently removed.
+            /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
+            /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
+            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
+            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
+            /// the custom role, the binding is permanently removed.
             /// </summary>
             public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Role>
             {
@@ -3566,8 +3763,8 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// Gets the IAM policy that is attached to a ServiceAccount. This IAM policy specifies which members have
-            /// access to the service account. This method does not tell you whether the service account has been
+            /// Gets the IAM policy that is attached to a ServiceAccount. This IAM policy specifies which principals
+            /// have access to the service account. This method does not tell you whether the service account has been
             /// granted any roles on other resources. To check whether a service account has role grants on a resource,
             /// use the `getIamPolicy` method for that resource. For example, to view the role grants for a project,
             /// call the Resource Manager API's
@@ -3584,8 +3781,8 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// Gets the IAM policy that is attached to a ServiceAccount. This IAM policy specifies which members have
-            /// access to the service account. This method does not tell you whether the service account has been
+            /// Gets the IAM policy that is attached to a ServiceAccount. This IAM policy specifies which principals
+            /// have access to the service account. This method does not tell you whether the service account has been
             /// granted any roles on other resources. To check whether a service account has role grants on a resource,
             /// use the `getIamPolicy` method for that resource. For example, to view the role grants for a project,
             /// call the Resource Manager API's
@@ -3804,13 +4001,14 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>
             /// Sets the IAM policy that is attached to a ServiceAccount. Use this method to grant or revoke access to
-            /// the service account. For example, you could grant a member the ability to impersonate the service
+            /// the service account. For example, you could grant a principal the ability to impersonate the service
             /// account. This method does not enable the service account to access other resources. To grant roles to a
             /// service account on a resource, follow these steps: 1. Call the resource's `getIamPolicy` method to get
             /// its current IAM policy. 2. Edit the policy so that it binds the service account to an IAM role for the
             /// resource. 3. Call the resource's `setIamPolicy` method to update its IAM policy. For detailed
-            /// instructions, see [Granting roles to a service account for specific
-            /// resources](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts).
+            /// instructions, see [Manage access to project, folders, and
+            /// organizations](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts)
+            /// or [Manage access to other resources](https://cloud.google.com/iam/help/access/manage-other-resources).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
@@ -3824,13 +4022,14 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>
             /// Sets the IAM policy that is attached to a ServiceAccount. Use this method to grant or revoke access to
-            /// the service account. For example, you could grant a member the ability to impersonate the service
+            /// the service account. For example, you could grant a principal the ability to impersonate the service
             /// account. This method does not enable the service account to access other resources. To grant roles to a
             /// service account on a resource, follow these steps: 1. Call the resource's `getIamPolicy` method to get
             /// its current IAM policy. 2. Edit the policy so that it binds the service account to an IAM role for the
             /// resource. 3. Call the resource's `setIamPolicy` method to update its IAM policy. For detailed
-            /// instructions, see [Granting roles to a service account for specific
-            /// resources](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts).
+            /// instructions, see [Manage access to project, folders, and
+            /// organizations](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts)
+            /// or [Manage access to other resources](https://cloud.google.com/iam/help/access/manage-other-resources).
             /// </summary>
             public class SetIamPolicyRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Policy>
             {
@@ -4620,21 +4819,21 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Associates `members` with a `role`.</summary>
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
         /// the current request. However, a different role binding might grant the same role to one or more of the
-        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -4658,7 +4857,8 @@ namespace Google.Apis.Iam.v1.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -5141,14 +5341,15 @@ namespace Google.Apis.Iam.v1.Data
 
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
-    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
-    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
-    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
-    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
-    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
-    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
-    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
-    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
+    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
@@ -5167,8 +5368,12 @@ namespace Google.Apis.Iam.v1.Data
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }

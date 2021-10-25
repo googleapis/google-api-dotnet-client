@@ -601,6 +601,67 @@ namespace Google.Apis.OSConfig.v1
                         }
 
                         /// <summary>
+                        /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. API resource name for OS policy assignment report. Format:
+                        /// `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report`
+                        /// For `{project}`, either `project-number` or `project-id` can be provided. For
+                        /// `{instance_id}`, either Compute Engine `instance-id` or `instance-name` can be provided. For
+                        /// `{assignment_id}`, the OSPolicyAssignment id must be provided.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
+                        /// </summary>
+                        public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.OSPolicyAssignmentReport>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. API resource name for OS policy assignment report. Format:
+                            /// `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report`
+                            /// For `{project}`, either `project-number` or `project-id` can be provided. For
+                            /// `{instance_id}`, either Compute Engine `instance-id` or `instance-name` can be provided.
+                            /// For `{assignment_id}`, the OSPolicyAssignment id must be provided.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/osPolicyAssignments/[^/]+/report$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// List OS policy asssignment reports for all Compute Engine VM instances in the specified
                         /// zone.
                         /// </summary>
@@ -722,67 +783,6 @@ namespace Google.Apis.OSConfig.v1
                                     Pattern = null,
                                 });
                             }
-                        }
-                    }
-
-                    /// <summary>
-                    /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
-                    /// </summary>
-                    /// <param name="name">
-                    /// Required. API resource name for OS policy assignment report. Format:
-                    /// `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report`
-                    /// For `{project}`, either `project-number` or `project-id` can be provided. For `{instance_id}`,
-                    /// either Compute Engine `instance-id` or `instance-name` can be provided. For `{assignment_id}`,
-                    /// the OSPolicyAssignment id must be provided.
-                    /// </param>
-                    public virtual GetReportRequest GetReport(string name)
-                    {
-                        return new GetReportRequest(service, name);
-                    }
-
-                    /// <summary>
-                    /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
-                    /// </summary>
-                    public class GetReportRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.OSPolicyAssignmentReport>
-                    {
-                        /// <summary>Constructs a new GetReport request.</summary>
-                        public GetReportRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. API resource name for OS policy assignment report. Format:
-                        /// `/projects/{project}/locations/{location}/instances/{instance}/osPolicyAssignments/{assignment}/report`
-                        /// For `{project}`, either `project-number` or `project-id` can be provided. For
-                        /// `{instance_id}`, either Compute Engine `instance-id` or `instance-name` can be provided. For
-                        /// `{assignment_id}`, the OSPolicyAssignment id must be provided.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "getReport";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}";
-
-                        /// <summary>Initializes GetReport parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/osPolicyAssignments/[^/]+/report$",
-                            });
                         }
                     }
                 }
@@ -2761,7 +2761,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
     /// <summary>
     /// Contains information about a Windows application that is retrieved from the Windows Registry. For more
-    /// information about these fields, see Windows Installer Properties for the Uninstall Registry.
+    /// information about these fields, see: https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key
     /// </summary>
     public class InventoryWindowsApplication : Google.Apis.Requests.IDirectResponseSchema
     {

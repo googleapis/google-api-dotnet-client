@@ -34,6 +34,7 @@ namespace Google.Apis.Texttospeech.v1
         /// <param name="initializer">The service initializer.</param>
         public TexttospeechService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Projects = new ProjectsResource(this);
             Text = new TextResource(this);
             Voices = new VoicesResource(this);
         }
@@ -71,6 +72,9 @@ namespace Google.Apis.Texttospeech.v1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View, manage and query your Dialogflow agents</summary>
+            public static string Dialogflow = "https://www.googleapis.com/auth/dialogflow";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Text-to-Speech API.</summary>
@@ -81,7 +85,13 @@ namespace Google.Apis.Texttospeech.v1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View, manage and query your Dialogflow agents</summary>
+            public const string Dialogflow = "https://www.googleapis.com/auth/dialogflow";
         }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the Text resource.</summary>
         public virtual TextResource Text { get; }
@@ -271,6 +281,118 @@ namespace Google.Apis.Texttospeech.v1
         }
     }
 
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Datasets = new DatasetsResource(service);
+            }
+
+            /// <summary>Gets the Datasets resource.</summary>
+            public virtual DatasetsResource Datasets { get; }
+
+            /// <summary>The "datasets" collection of methods.</summary>
+            public class DatasetsResource
+            {
+                private const string Resource = "datasets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DatasetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Imports audio+text data for training custom voice.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The name of the Dataset resource. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                /// </param>
+                public virtual ImportRequest Import(Google.Apis.Texttospeech.v1.Data.ImportDataRequest body, string name)
+                {
+                    return new ImportRequest(service, body, name);
+                }
+
+                /// <summary>Imports audio+text data for training custom voice.</summary>
+                public class ImportRequest : TexttospeechBaseServiceRequest<Google.Apis.Texttospeech.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Texttospeech.v1.Data.ImportDataRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The name of the Dataset resource. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Texttospeech.v1.Data.ImportDataRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>The "text" collection of methods.</summary>
     public class TextResource
     {
@@ -452,12 +574,98 @@ namespace Google.Apis.Texttospeech.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to import data.</summary>
+    public class ImportDataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Customer provide a Cloud Storage link which point to a .csv file which stores all the truth text and Cloud
+        /// Storage link of audio data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvCloudStorageUri")]
+        public virtual string CsvCloudStorageUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The message returned to the client by the `ListVoices` method.</summary>
     public class ListVoicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of voices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voices")]
         public virtual System.Collections.Generic.IList<Voice> Voices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
