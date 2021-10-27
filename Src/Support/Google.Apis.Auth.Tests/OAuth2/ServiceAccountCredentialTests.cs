@@ -368,6 +368,46 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.DoesNotContain("aud", payload);
         }
 
+        [Theory]
+        [CombinatorialData]
+        public async Task Jwt_WithUser_AccessToken(bool useJwtAccessWithScopes)
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var handler = new FetchesTokenMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                UseJwtAccessWithScopes = useJwtAccessWithScopes,
+                Clock = clock,
+                User = "user1",
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.False(cred.HasExplicitScopes); // Must be false for the remainder of this test to be valid.
+
+            var token = await cred.GetAccessTokenForRequestAsync("uri0");
+            Assert.Equal("a", token);
+        }
+
+        [Fact]
+        public async Task Jwt_WithUserAndScopes_AccessToken()
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var handler = new FetchesTokenMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                UseJwtAccessWithScopes = true,
+                Scopes = new[] { "scope1", "scope2" },
+                Clock = clock,
+                User = "user1",
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.True(cred.HasExplicitScopes); // Must be true for the remainder of this test to be valid.
+
+            var token = await cred.GetAccessTokenForRequestAsync("uri0");
+            Assert.Equal("a", token);
+        }
+
         private class DummyAccessMethod : IAccessMethod
         {
             public string GetAccessToken(HttpRequestMessage request) => throw new NotImplementedException();
