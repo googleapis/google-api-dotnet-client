@@ -533,6 +533,109 @@ namespace Google.Apis.ChromeManagement.v1
                     }
                 }
             }
+
+            /// <summary>Generate summary of app installation requests.</summary>
+            /// <param name="customer">
+            /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
+            /// </param>
+            public virtual CountChromeAppRequestsRequest CountChromeAppRequests(string customer)
+            {
+                return new CountChromeAppRequestsRequest(service, customer);
+            }
+
+            /// <summary>Generate summary of app installation requests.</summary>
+            public class CountChromeAppRequestsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountChromeAppRequestsResponse>
+            {
+                /// <summary>Constructs a new CountChromeAppRequests request.</summary>
+                public CountChromeAppRequestsRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                /// request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Field used to order results. Supported fields: * request_count * latest_request_time
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>The ID of the organizational unit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>
+                /// Maximum number of results to return. Maximum and default are 50, anything above will be coerced to
+                /// 50.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token to specify the page of the request to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countChromeAppRequests";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/apps:countChromeAppRequests";
+
+                /// <summary>Initializes CountChromeAppRequests parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Reports resource.</summary>
@@ -1163,12 +1266,69 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of an app installation request.</summary>
+    public class GoogleChromeManagementV1ChromeAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Format: app_details=customers/{customer_id}/apps/chrome/{app_id}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appDetails")]
+        public virtual string AppDetails { get; set; }
+
+        /// <summary>
+        /// Output only. Unique store identifier for the app. Example: "gmbmikajjgmnabiglmofipeabaddhgne" for the Save
+        /// to Google Drive Chrome extension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Output only. The uri for the detail page of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailUri")]
+        public virtual string DetailUri { get; set; }
+
+        /// <summary>Output only. App's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. A link to an image that can be used as an icon for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; }
+
+        /// <summary>Output only. The timestamp of the most recently made request for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestRequestTime")]
+        public virtual object LatestRequestTime { get; set; }
+
+        /// <summary>Output only. Total count of requests for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestCount")]
+        public virtual System.Nullable<long> RequestCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represent one host permission.</summary>
     public class GoogleChromeManagementV1ChromeAppSiteAccess : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. This can contain very specific hosts, or patterns like "*.com" for instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostMatch")]
         public virtual string HostMatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing summary of requested app installations.</summary>
+    public class GoogleChromeManagementV1CountChromeAppRequestsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to specify the next page in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Count of requested apps matching request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedApps")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1ChromeAppRequest> RequestedApps { get; set; }
+
+        /// <summary>Total number of matching app requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

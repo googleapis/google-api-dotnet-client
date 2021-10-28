@@ -711,7 +711,8 @@ namespace Google.Apis.Firestore.v1beta1
                     public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
                     /// <summary>
-                    /// When set, the target document must exist and have been last updated at that time.
+                    /// When set, the target document must exist and have been last updated at that time. Timestamp must
+                    /// be microsecond aligned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CurrentDocumentUpdateTime { get; set; }
@@ -1240,7 +1241,8 @@ namespace Google.Apis.Firestore.v1beta1
                     public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
                     /// <summary>
-                    /// When set, the target document must exist and have been last updated at that time.
+                    /// When set, the target document must exist and have been last updated at that time. Timestamp must
+                    /// be microsecond aligned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CurrentDocumentUpdateTime { get; set; }
@@ -2983,7 +2985,10 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exists")]
         public virtual System.Nullable<bool> Exists { get; set; }
 
-        /// <summary>When set, the target document must exist and have been last updated at that time.</summary>
+        /// <summary>
+        /// When set, the target document must exist and have been last updated at that time. Timestamp must be
+        /// microsecond aligned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

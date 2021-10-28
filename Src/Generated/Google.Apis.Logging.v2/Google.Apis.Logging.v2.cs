@@ -522,8 +522,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -537,8 +537,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
@@ -588,7 +588,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion to delete:
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -602,7 +602,7 @@ namespace Google.Apis.Logging.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -647,7 +647,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
@@ -660,7 +660,7 @@ namespace Google.Apis.Logging.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -705,7 +705,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             /// <param name="parent">
             /// Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
             /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
@@ -715,7 +715,7 @@ namespace Google.Apis.Logging.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -788,7 +788,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the exclusion to update:
@@ -803,7 +803,7 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -2964,8 +2964,8 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be
-        /// excluded. You can have up to 10 exclusions in a resource.
+        /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to
+        /// that resource can be excluded. You can have up to 10 exclusions in a resource.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
@@ -2979,8 +2979,8 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be
-        /// excluded. You can have up to 10 exclusions in a resource.
+        /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to
+        /// that resource can be excluded. You can have up to 10 exclusions in a resource.
         /// </summary>
         public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
         {
@@ -3030,7 +3030,7 @@ namespace Google.Apis.Logging.v2
             }
         }
 
-        /// <summary>Deletes an exclusion.</summary>
+        /// <summary>Deletes an exclusion in the _Default sink.</summary>
         /// <param name="name">
         /// Required. The resource name of an existing exclusion to delete:
         /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -3043,7 +3043,7 @@ namespace Google.Apis.Logging.v2
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Deletes an exclusion.</summary>
+        /// <summary>Deletes an exclusion in the _Default sink.</summary>
         public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -3088,7 +3088,7 @@ namespace Google.Apis.Logging.v2
             }
         }
 
-        /// <summary>Gets the description of an exclusion.</summary>
+        /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
         /// <param name="name">
         /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
         /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
@@ -3100,7 +3100,7 @@ namespace Google.Apis.Logging.v2
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the description of an exclusion.</summary>
+        /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
         public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3144,7 +3144,7 @@ namespace Google.Apis.Logging.v2
             }
         }
 
-        /// <summary>Lists all the exclusions in a parent resource.</summary>
+        /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
         /// <param name="parent">
         /// Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
         /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
@@ -3154,7 +3154,7 @@ namespace Google.Apis.Logging.v2
             return new ListRequest(service, parent);
         }
 
-        /// <summary>Lists all the exclusions in a parent resource.</summary>
+        /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3226,7 +3226,7 @@ namespace Google.Apis.Logging.v2
             }
         }
 
-        /// <summary>Changes one or more properties of an existing exclusion.</summary>
+        /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -3239,7 +3239,7 @@ namespace Google.Apis.Logging.v2
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>Changes one or more properties of an existing exclusion.</summary>
+        /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
         public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3345,8 +3345,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -3360,8 +3360,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
@@ -3411,7 +3411,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion to delete:
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -3425,7 +3425,7 @@ namespace Google.Apis.Logging.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3470,7 +3470,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
@@ -3483,7 +3483,7 @@ namespace Google.Apis.Logging.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3528,7 +3528,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             /// <param name="parent">
             /// Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
             /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
@@ -3538,7 +3538,7 @@ namespace Google.Apis.Logging.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3611,7 +3611,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the exclusion to update:
@@ -3626,7 +3626,7 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -7213,8 +7213,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -7228,8 +7228,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
@@ -7279,7 +7279,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion to delete:
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -7293,7 +7293,7 @@ namespace Google.Apis.Logging.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -7338,7 +7338,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
@@ -7351,7 +7351,7 @@ namespace Google.Apis.Logging.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -7396,7 +7396,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             /// <param name="parent">
             /// Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
             /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
@@ -7406,7 +7406,7 @@ namespace Google.Apis.Logging.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -7479,7 +7479,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the exclusion to update:
@@ -7494,7 +7494,7 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -9540,16 +9540,16 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only
-        /// be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.See Enabling CMEK for Logs Router
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="name">
         /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
         /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-        /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
-        /// and folders in the GCP organization.
+        /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all
+        /// projects and folders in the Google Cloud organization.
         /// </param>
         public virtual GetCmekSettingsRequest GetCmekSettings(string name)
         {
@@ -9558,8 +9558,8 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only
-        /// be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.See Enabling CMEK for Logs Router
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -9575,8 +9575,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
             /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-            /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
-            /// projects and folders in the GCP organization.
+            /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to
+            /// all projects and folders in the Google Cloud organization.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -9607,10 +9607,10 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently
-        /// only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-        /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
+        /// only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders
+        /// in the Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
+        /// associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+        /// assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -9618,8 +9618,8 @@ namespace Google.Apis.Logging.v2
         /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
         /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-        /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
-        /// and folders in the GCP organization.
+        /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all
+        /// projects and folders in the Google Cloud organization.
         /// </param>
         public virtual UpdateCmekSettingsRequest UpdateCmekSettings(Google.Apis.Logging.v2.Data.CmekSettings body, string name)
         {
@@ -9628,10 +9628,10 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently
-        /// only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-        /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
+        /// only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders
+        /// in the Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
+        /// associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+        /// assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class UpdateCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -9648,8 +9648,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
             /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-            /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
-            /// projects and folders in the GCP organization.
+            /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to
+            /// all projects and folders in the Google Cloud organization.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -9738,8 +9738,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -9753,8 +9753,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can
-            /// be excluded. You can have up to 10 exclusions in a resource.
+            /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging
+            /// to that resource can be excluded. You can have up to 10 exclusions in a resource.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
@@ -9804,7 +9804,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion to delete:
             /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -9818,7 +9818,7 @@ namespace Google.Apis.Logging.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an exclusion.</summary>
+            /// <summary>Deletes an exclusion in the _Default sink.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -9863,7 +9863,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             /// <param name="name">
             /// Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
             /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
@@ -9876,7 +9876,7 @@ namespace Google.Apis.Logging.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the description of an exclusion.</summary>
+            /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -9921,7 +9921,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             /// <param name="parent">
             /// Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
             /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
@@ -9931,7 +9931,7 @@ namespace Google.Apis.Logging.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -10004,7 +10004,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the exclusion to update:
@@ -10019,7 +10019,7 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -12805,16 +12805,16 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only
-        /// be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.See Enabling CMEK for Logs Router
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="name">
         /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
         /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-        /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
-        /// and folders in the GCP organization.
+        /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all
+        /// projects and folders in the Google Cloud organization.
         /// </param>
         public virtual GetCmekSettingsRequest GetCmekSettings(string name)
         {
@@ -12823,8 +12823,8 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only
-        /// be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.See Enabling CMEK for Logs Router
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -12840,8 +12840,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
             /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-            /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
-            /// projects and folders in the GCP organization.
+            /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to
+            /// all projects and folders in the Google Cloud organization.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -12872,10 +12872,10 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently
-        /// only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-        /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
+        /// only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders
+        /// in the Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
+        /// associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+        /// assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -12883,8 +12883,8 @@ namespace Google.Apis.Logging.v2
         /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
         /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
         /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-        /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
-        /// and folders in the GCP organization.
+        /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all
+        /// projects and folders in the Google Cloud organization.
         /// </param>
         public virtual UpdateCmekSettingsRequest UpdateCmekSettings(Google.Apis.Logging.v2.Data.CmekSettings body, string name)
         {
@@ -12893,10 +12893,10 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently
-        /// only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP
-        /// organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-        /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
+        /// only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders
+        /// in the Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
+        /// associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+        /// assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class UpdateCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -12913,8 +12913,8 @@ namespace Google.Apis.Logging.v2
             /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
             /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
             /// "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Logs
-            /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
-            /// projects and folders in the GCP organization.
+            /// Router can currently only be configured for Google Cloud organizations. Once configured, it applies to
+            /// all projects and folders in the Google Cloud organization.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -13032,9 +13032,10 @@ namespace Google.Apis.Logging.v2.Data
 
     /// <summary>
     /// Describes the customer-managed encryption key (CMEK) settings associated with a project, folder, organization,
-    /// billing account, or flexible resource.Note: CMEK for the Logs Router can currently only be configured for GCP
-    /// organizations. Once configured, it applies to all projects and folders in the GCP organization.See Enabling CMEK
-    /// for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+    /// billing account, or flexible resource.Note: CMEK for the Logs Router can currently only be configured for Google
+    /// Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud
+    /// organization.See Enabling CMEK for Logs Router
+    /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
     /// </summary>
     public class CmekSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13871,10 +13872,10 @@ namespace Google.Apis.Logging.v2.Data
     }
 
     /// <summary>
-    /// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large
-    /// volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log
-    /// sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level
-    /// exclusions don't apply to child resources, and that you can't exclude audit log entries.
+    /// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large
+    /// volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on
+    /// organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the
+    /// _Required sink or exclude logs from it.
     /// </summary>
     public class LogExclusion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14154,7 +14155,8 @@ namespace Google.Apis.Logging.v2.Data
         /// entry exports from this sink will fail. For more information, see Granting Access for a Resource
         /// (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
         /// Consult the destination service's documentation to determine the appropriate IAM roles to assign to the
-        /// identity.
+        /// identity.Sinks that have a destination that is a log bucket in the same project as the sink do not have a
+        /// writer_identity and no additional permissions are required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
         public virtual string WriterIdentity { get; set; }

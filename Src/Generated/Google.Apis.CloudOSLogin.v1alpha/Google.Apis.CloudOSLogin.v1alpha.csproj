@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudOSLogin.v1alpha Client Library</Title>
-    <Version>1.55.0.2466</Version>
+    <Version>1.55.0.2479</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

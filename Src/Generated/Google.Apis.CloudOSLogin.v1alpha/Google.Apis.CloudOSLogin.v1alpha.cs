@@ -302,6 +302,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
         {
             this.service = service;
             Projects = new ProjectsResource(service);
+            SshPublicKey = new SshPublicKeyResource(service);
             SshPublicKeys = new SshPublicKeysResource(service);
         }
 
@@ -401,6 +402,77 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the SshPublicKey resource.</summary>
+        public virtual SshPublicKeyResource SshPublicKey { get; }
+
+        /// <summary>The "sshPublicKey" collection of methods.</summary>
+        public class SshPublicKeyResource
+        {
+            private const string Resource = "sshPublicKey";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SshPublicKeyResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Create an SSH public key</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The unique ID for the user in format `users/{user}`.</param>
+            public virtual CreateRequest Create(Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Create an SSH public key</summary>
+            public class CreateRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The unique ID for the user in format `users/{user}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/sshPublicKey";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+$",
                     });
                 }
             }

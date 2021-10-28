@@ -18437,7 +18437,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run
         /// once a day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]

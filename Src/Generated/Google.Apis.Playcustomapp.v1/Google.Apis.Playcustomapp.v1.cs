@@ -502,6 +502,16 @@ namespace Google.Apis.Playcustomapp.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
+        /// <summary>
+        /// Organizations to which the custom app should be made available. If the request contains any organizations,
+        /// then the app will be restricted to only these organizations. To support the organization linked to the
+        /// developer account, the organization ID should be provided explicitly together with other organizations. If
+        /// no organizations are provided, then the app is only available to the organization linked to the developer
+        /// account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
+        public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; }
+
         /// <summary>Output only. Package name of the created Android app. Only present in the API response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
@@ -509,6 +519,21 @@ namespace Google.Apis.Playcustomapp.v1.Data
         /// <summary>Title for the Android app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an organization that can access a custom app.</summary>
+    public class Organization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual string OrganizationId { get; set; }
+
+        /// <summary>Optional. A human-readable name of the organization, to help recognize the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationName")]
+        public virtual string OrganizationName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

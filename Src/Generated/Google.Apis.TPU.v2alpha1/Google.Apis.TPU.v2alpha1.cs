@@ -776,7 +776,10 @@ namespace Google.Apis.TPU.v2alpha1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Required. Mask of fields from Node to update. Supported fields: None.</summary>
+                    /// <summary>
+                    /// Required. Mask of fields from Node to update. Supported fields: [description, tags, labels,
+                    /// metadata, network_config.enable_external_ips].
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 

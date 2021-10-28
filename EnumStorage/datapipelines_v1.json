@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Datapipelines.v1.DatapipelinesBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Datapipelines.v1.DatapipelinesBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

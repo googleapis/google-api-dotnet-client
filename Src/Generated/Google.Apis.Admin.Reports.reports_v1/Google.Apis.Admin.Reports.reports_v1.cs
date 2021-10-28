@@ -421,7 +421,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 Login = 11,
 
                 /// <summary>
-                /// The Meet Audit activity report return information about different types of Meet Audit activity
+                /// The Meet Audit activity report returns information about different types of Meet Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("meet")]
@@ -833,7 +833,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 Login = 11,
 
                 /// <summary>
-                /// The Meet Audit activity report return information about different types of Meet Audit activity
+                /// The Meet Audit activity report returns information about different types of Meet Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("meet")]
@@ -1837,8 +1837,8 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             public virtual string Key { get; set; }
 
             /// <summary>
-            /// The unique Google Workspace profile ID of the actor. May be absent if the actor is not a Google
-            /// Workspace user.
+            /// The unique Google Workspace profile ID of the actor. This value might be absent if the actor is not a
+            /// Google Workspace user, or may be the number 105250506097979753968 which acts as a placeholder ID.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
             public virtual string ProfileId { get; set; }

@@ -866,7 +866,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by Android apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set to true, it means allowed_package_names will not be enforced.</summary>
+        /// <summary>If set to true, allowed_package_names are not enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAllPackageNames")]
         public virtual System.Nullable<bool> AllowAllPackageNames { get; set; }
 
@@ -999,7 +999,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by iOS apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1IOSKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set to true, it means allowed_bundle_ids will not be enforced.</summary>
+        /// <summary>If set to true, allowed_bundle_ids are not enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAllBundleIds")]
         public virtual System.Nullable<bool> AllowAllBundleIds { get; set; }
 
@@ -1218,7 +1218,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Nullable<bool> AllowAllDomains { get; set; }
 
         /// <summary>
-        /// Required. Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for
+        /// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for
         /// the SCORE integration type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAmpTraffic")]

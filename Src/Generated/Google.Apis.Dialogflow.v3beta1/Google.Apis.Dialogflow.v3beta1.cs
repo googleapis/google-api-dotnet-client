@@ -3731,7 +3731,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// <param name="baseVersion">
                         /// Required. Name of the base flow version to compare with the target version. Use version ID
                         /// `0` to indicate the draft version of the specified flow. Format:
-                        /// `projects//locations//agents//flows//versions/`.
+                        /// `projects//locations//agents/ /flows//versions/`.
                         /// </param>
                         public virtual CompareVersionsRequest CompareVersions(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1CompareVersionsRequest body, string baseVersion)
                         {
@@ -3752,7 +3752,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// <summary>
                             /// Required. Name of the base flow version to compare with the target version. Use version
                             /// ID `0` to indicate the draft version of the specified flow. Format:
-                            /// `projects//locations//agents//flows//versions/`.
+                            /// `projects//locations//agents/ /flows//versions/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("baseVersion", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string BaseVersion { get; private set; }
@@ -11335,7 +11335,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run
         /// once a day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]
@@ -13767,10 +13767,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>
         /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define
-        /// de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with
-        /// `[redacted]` text. The template name will have one of the following formats:
-        /// `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note:
-        /// `deidentify_template` must be located in the same region as the `SecuritySettings`.
+        /// de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on
+        /// the Dialogflow service identity service account (has the form
+        /// `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty,
+        /// Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following
+        /// formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/`
+        /// Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
         public virtual string DeidentifyTemplate { get; set; }
@@ -13788,7 +13790,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base
-        /// settings. If empty, we use the default DLP inspect config. The template name will have one of the following
+        /// settings. The `DLP Inspect Templates Reader` role is needed on the Dialogflow service identity service
+        /// account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's
+        /// project. If empty, we use the default DLP inspect config. The template name will have one of the following
         /// formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note:
         /// `inspect_template` must be located in the same region as the `SecuritySettings`.
         /// </summary>
@@ -13820,7 +13824,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging,
-        /// which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL.
+        /// which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL.
         /// Setting a value higher than that has no effect. A missing value or setting to 0 also means we use
         /// Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google
         /// representative to check availability for you.

@@ -688,7 +688,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     /// <summary>Error describes why the execution was abnormally terminated.</summary>
     public class Error : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Human readable stack trace string.</summary>
+        /// <summary>Human-readable stack trace string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual string Context { get; set; }
 
@@ -790,10 +790,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual System.Nullable<long> Column { get; set; }
 
-        /// <summary>
-        /// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST
-        /// (abstract syntax tree) node.
-        /// </summary>
+        /// <summary>The number of bytes of source code making up this stack trace element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
         public virtual System.Nullable<long> Length { get; set; }
 
@@ -808,7 +805,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     /// <summary>A collection of stack elements (frames) where an error occurred.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An array of Stack elements.</summary>
+        /// <summary>An array of stack elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elements")]
         public virtual System.Collections.Generic.IList<StackTraceElement> Elements { get; set; }
 
@@ -819,7 +816,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     /// <summary>A single stack element (frame) where an error occurred.</summary>
     public class StackTraceElement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source position information of the stacktrace element.</summary>
+        /// <summary>The source position information of the stack trace element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual Position Position { get; set; }
 
