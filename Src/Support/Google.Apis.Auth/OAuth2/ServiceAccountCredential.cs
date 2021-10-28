@@ -178,7 +178,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Gets the flag indicating whether Self-Signed JWT should be used when OAuth scopes are set.
         /// This flag will be ignored if this credential has <see cref="User"/> set, meaning
-        /// it is used with domain-wide delegation.
+        /// it is used with domain-wide delegation. Self-Signed JWTs won't be used in that case.
         /// </summary>
         public bool UseJwtAccessWithScopes { get; }
 
