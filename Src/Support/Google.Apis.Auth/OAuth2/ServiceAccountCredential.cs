@@ -284,7 +284,7 @@ namespace Google.Apis.Auth.OAuth2
         /// in the following two cases:
         /// 1. If this credential has <see cref="Scopes"/> associated, but <see cref="UseJwtAccessWithScopes"/>
         /// is false; 
-        /// 2. If this credential is used with domain-wide delegation and has <see cref="User"/> set;
+        /// 2. If this credential is used with domain-wide delegation, that is, the <see cref="User"/> is set;
         /// Otherwise, a locally signed JWT will be returned. 
         /// The signed JWT will contain a "scope" claim with the scopes in <see cref="Scopes"/> if there are any,
         /// otherwise it will contain an "aud" claim with <paramref name="authUri"/>.
