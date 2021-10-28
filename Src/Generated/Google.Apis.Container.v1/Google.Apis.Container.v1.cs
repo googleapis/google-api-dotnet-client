@@ -6684,6 +6684,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; }
 
         /// <summary>
+        /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific
+        /// NodePool object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolDefaults")]
+        public virtual NodePoolDefaults NodePoolDefaults { get; set; }
+
+        /// <summary>
         /// The node pools associated with this cluster. This field should not be set if "node_config" or
         /// "initial_node_count" are specified.
         /// </summary>
@@ -6825,10 +6832,6 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAuthenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig DesiredAuthenticatorGroupsConfig { get; set; }
 
-        /// <summary>The desired Autopilot configuration for the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilot")]
-        public virtual Autopilot DesiredAutopilot { get; set; }
-
         /// <summary>The desired configuration options for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBinaryAuthorization")]
         public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; }
@@ -6848,6 +6851,14 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired status of whether to disable default sNAT for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
         public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; }
+
+        /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
+        public virtual DNSConfig DesiredDnsConfig { get; set; }
+
+        /// <summary>The desired GCFS config for the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredGcfsConfig")]
+        public virtual GcfsConfig DesiredGcfsConfig { get; set; }
 
         /// <summary>
         /// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
@@ -7131,6 +7142,25 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DNSConfig contains the desired set of options for configuring clusterDNS.</summary>
+    public class DNSConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>cluster_dns indicates which in-cluster DNS provider should be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterDns")]
+        public virtual string ClusterDns { get; set; }
+
+        /// <summary>cluster_dns_domain is the suffix used for all cluster service records.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterDnsDomain")]
+        public virtual string ClusterDnsDomain { get; set; }
+
+        /// <summary>cluster_dns_scope indicates the scope of access to cluster DNS records.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterDnsScope")]
+        public virtual string ClusterDnsScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Time window specified for daily maintenance operations.</summary>
     public class DailyMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7210,6 +7240,17 @@ namespace Google.Apis.Container.v1.Data
     public class GcePersistentDiskCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the Compute Engine PD CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GcfsConfig contains configurations of Google Container File System (image streaming).</summary>
+    public class GcfsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to use GCFS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -7848,6 +7889,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSnatStatus")]
         public virtual DefaultSnatStatus DefaultSnatStatus { get; set; }
 
+        /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsConfig")]
+        public virtual DNSConfig DnsConfig { get; set; }
+
         /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible
         /// for VPC network.
@@ -7951,6 +7996,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>Google Container File System (image streaming) configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
+        public virtual GcfsConfig GcfsConfig { get; set; }
 
         /// <summary>Enable or disable gvnic in the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
@@ -8088,6 +8137,17 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The workload metadata configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
         public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Subset of NodeConfig message that has defaults.</summary>
+    public class NodeConfigDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GCFS (Google Container File System, a.k.a Riptide) options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
+        public virtual GcfsConfig GcfsConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8316,6 +8376,17 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Subset of Nodepool message that has defaults.</summary>
+    public class NodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subset of NodeConfig message that has defaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeConfigDefaults")]
+        public virtual NodeConfigDefaults NodeConfigDefaults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9547,6 +9618,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
+
+        /// <summary>GCFS config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
+        public virtual GcfsConfig GcfsConfig { get; set; }
 
         /// <summary>Enable or disable gvnic on the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]

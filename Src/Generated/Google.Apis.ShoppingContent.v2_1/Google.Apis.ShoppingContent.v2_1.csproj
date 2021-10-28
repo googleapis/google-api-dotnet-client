@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ShoppingContent.v2_1 Client Library</Title>
-    <Version>1.55.0.2477</Version>
+    <Version>1.55.0.2485</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

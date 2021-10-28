@@ -1303,7 +1303,8 @@ namespace Google.Apis.Firestore.v1
                     public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
                     /// <summary>
-                    /// When set, the target document must exist and have been last updated at that time.
+                    /// When set, the target document must exist and have been last updated at that time. Timestamp must
+                    /// be microsecond aligned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CurrentDocumentUpdateTime { get; set; }
@@ -1832,7 +1833,8 @@ namespace Google.Apis.Firestore.v1
                     public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
                     /// <summary>
-                    /// When set, the target document must exist and have been last updated at that time.
+                    /// When set, the target document must exist and have been last updated at that time. Timestamp must
+                    /// be microsecond aligned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CurrentDocumentUpdateTime { get; set; }
@@ -3396,6 +3398,17 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ConcurrencyMode { get; set; }
 
         /// <summary>
+        /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See
+        /// [version_retention_period] above; this field is populated with `now - version_retention_period`. This value
+        /// is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover
+        /// data, make sure to account for the time from the moment when the value is queried to the moment when you
+        /// initiate the recovery. Note that you should not need to query this field: if you know the
+        /// `version_retention_period` then you can query within that time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earliestVersionTime")]
+        public virtual object EarliestVersionTime { get; set; }
+
+        /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
         /// delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
@@ -4173,7 +4186,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exists")]
         public virtual System.Nullable<bool> Exists { get; set; }
 
-        /// <summary>When set, the target document must exist and have been last updated at that time.</summary>
+        /// <summary>
+        /// When set, the target document must exist and have been last updated at that time. Timestamp must be
+        /// microsecond aligned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

@@ -1108,6 +1108,12 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startRow")]
         public virtual System.Nullable<int> StartRow { get; set; }
 
+        /// <summary>
+        /// Optional. [Optional; Default is \"web\"] Type of report: search type, or either Discover or Gnews.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

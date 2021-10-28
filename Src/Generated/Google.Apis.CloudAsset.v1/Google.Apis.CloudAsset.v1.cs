@@ -5170,7 +5170,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
     /// <summary>
     /// Contains information about a Windows application that is retrieved from the Windows Registry. For more
-    /// information about these fields, see Windows Installer Properties for the Uninstall Registry.
+    /// information about these fields, see: https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key
     /// </summary>
     public class WindowsApplication : Google.Apis.Requests.IDirectResponseSchema
     {

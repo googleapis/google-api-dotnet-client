@@ -9595,6 +9595,65 @@ namespace Google.Apis.ShoppingContent.v2_1
                 });
             }
         }
+
+        /// <summary>Retrieves a promotion from your Merchant Center account.</summary>
+        /// <param name="merchantId">Required. The ID of the account that contains the collection.</param>
+        /// <param name="id">Required. REST ID of the promotion to retrieve.</param>
+        public virtual GetRequest Get(long merchantId, string id)
+        {
+            return new GetRequest(service, merchantId, id);
+        }
+
+        /// <summary>Retrieves a promotion from your Merchant Center account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Promotion>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string id) : base(service)
+            {
+                MerchantId = merchantId;
+                Id = id;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that contains the collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. REST ID of the promotion to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Id { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/promotions/{id}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "pubsubnotificationsettings" collection of methods.</summary>
@@ -12672,7 +12731,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Verification status of the phone number of the business. This status is read only and can be updated only by
-        /// successful phone verification. Acceptable values are: - "`verified`" - "`unverified`" "`unspecified`" -
+        /// successful phone verification. Acceptable values are: - "`verified`" - "`unverified`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneVerificationStatus")]
         public virtual string PhoneVerificationStatus { get; set; }
@@ -17194,6 +17253,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>The line items of the order.</summary>
     public class OrderTrackingSignalLineItemDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Brand of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
         /// <summary>The Global Trade Item Number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual string Gtin { get; set; }
@@ -17206,7 +17269,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; }
 
-        /// <summary>Plain text description of this product.</summary>
+        /// <summary>Plain text description of this product (deprecated: Please use product_title instead).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDescription")]
         public virtual string ProductDescription { get; set; }
 
@@ -17216,15 +17279,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
 
+        /// <summary>Plain text title of this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTitle")]
+        public virtual string ProductTitle { get; set; }
+
         /// <summary>Required. The quantity of the line item in the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
-        /// <summary>Merchant SKU for this item.</summary>
+        /// <summary>Merchant SKU for this item (deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sku")]
         public virtual string Sku { get; set; }
 
-        /// <summary>Universal product code for this item.</summary>
+        /// <summary>Universal product code for this item (deprecated: Please use GTIN instead).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upc")]
         public virtual string Upc { get; set; }
 
