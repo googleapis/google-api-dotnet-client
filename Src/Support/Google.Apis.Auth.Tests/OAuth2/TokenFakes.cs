@@ -21,6 +21,7 @@ using Google.Apis.Tests.Mocks;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -135,5 +136,27 @@ namespace Google.Apis.Auth.Tests.OAuth2
             };
             return response;
         }
+    }
+
+    /// <summary>
+    /// Returns some access token, when we don't care about the token in the following tests,
+    /// but we need token fetching to work because that's a prerequisite for being
+    /// able to perform authenticated requests.
+    /// </summary>
+    internal class FetchesTokenMessageHandler : CountableMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
+            Task.FromResult(new HttpResponseMessage()
+            {
+                Content = new StringContent(
+                    NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
+                    {
+                        AccessToken = "a",
+                        RefreshToken = "r",
+                        ExpiresInSeconds = 100,
+                        Scope = "b"
+                    }),
+                    Encoding.UTF8)
+            });
     }
 }

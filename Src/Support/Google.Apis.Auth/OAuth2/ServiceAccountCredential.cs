@@ -176,7 +176,9 @@ namespace Google.Apis.Auth.OAuth2
         public string KeyId { get; }
 
         /// <summary>
-        /// Gets the flag indicating whether Self-Signed JWT should be used when OAuth scopes are set
+        /// Gets the flag indicating whether Self-Signed JWT should be used when OAuth scopes are set.
+        /// This flag will be ignored if this credential has <see cref="User"/> set, meaning
+        /// it is used with domain-wide delegation. Self-Signed JWTs won't be used in that case.
         /// </summary>
         public bool UseJwtAccessWithScopes { get; }
 
@@ -278,8 +280,11 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>
         /// Gets an access token to authorize a request.
-        /// If this credential has <see cref="Scopes"/> associated, but <see cref="UseJwtAccessWithScopes"/>
-        /// is false, an OAuth2 access token obtained from <see cref="ServiceCredential.TokenServerUrl"/> will be returned.
+        /// An OAuth2 access token obtained from <see cref="ServiceCredential.TokenServerUrl"/> will be returned
+        /// in the following two cases:
+        /// 1. If this credential has <see cref="Scopes"/> associated, but <see cref="UseJwtAccessWithScopes"/>
+        /// is false; 
+        /// 2. If this credential is used with domain-wide delegation, that is, the <see cref="User"/> is set;
         /// Otherwise, a locally signed JWT will be returned. 
         /// The signed JWT will contain a "scope" claim with the scopes in <see cref="Scopes"/> if there are any,
         /// otherwise it will contain an "aud" claim with <paramref name="authUri"/>.
@@ -297,7 +302,7 @@ namespace Google.Apis.Auth.OAuth2
                 throw new GoogleApiException(TokenServerUrl, "Invalid OAuth scope or ID token audience provided. " +
                     "A valid authUri and/or OAuth scope is required to proceed.");
             }
-            if (HasExplicitScopes && !UseJwtAccessWithScopes)
+            if (User != null || (HasExplicitScopes && !UseJwtAccessWithScopes))
             {
                 return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
             }

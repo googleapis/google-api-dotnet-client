@@ -264,7 +264,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         }
 
         [Fact]
-        public async Task FromServiceAccountCredential_FetchesOicdToken()
+        public async Task FromServiceAccountCredential_FetchesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
             var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
@@ -332,28 +332,6 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             await httpClient.GetAsync("http://localhost/TestRequest");
             Assert.Equal("Bearer", httpHandler.RequestHeaders.Authorization.Scheme);
             Assert.Equal(fakeAccessToken, httpHandler.RequestHeaders.Authorization.Parameter);
-        }
-
-        /// <summary>
-        /// Returns an access token, we don't care about the token in the following tests,
-        /// but we need token fetching to work because that's a prerequisite for being
-        /// able to perform authenticated requests.
-        /// </summary>
-        private class FetchesTokenMessageHandler : CountableMessageHandler
-        {
-            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
-                Task.FromResult(new HttpResponseMessage()
-                {
-                    Content = new StringContent(
-                        NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
-                        {
-                            AccessToken = "a",
-                            RefreshToken = "r",
-                            ExpiresInSeconds = 100,
-                            Scope = "b"
-                        }),
-                        Encoding.UTF8)
-                });
         }
 
         public static IEnumerable<object[]> CredentialsForTesting
