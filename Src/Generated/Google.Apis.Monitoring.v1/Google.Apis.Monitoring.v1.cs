@@ -677,6 +677,7 @@ namespace Google.Apis.Monitoring.v1
         {
             this.service = service;
             Dashboards = new DashboardsResource(service);
+            Location = new LocationResource(service);
         }
 
         /// <summary>Gets the Dashboards resource.</summary>
@@ -1057,6 +1058,575 @@ namespace Google.Apis.Monitoring.v1
                 }
             }
         }
+
+        /// <summary>Gets the Location resource.</summary>
+        public virtual LocationResource Location { get; }
+
+        /// <summary>The "location" collection of methods.</summary>
+        public class LocationResource
+        {
+            private const string Resource = "location";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Prometheus = new PrometheusResource(service);
+            }
+
+            /// <summary>Gets the Prometheus resource.</summary>
+            public virtual PrometheusResource Prometheus { get; }
+
+            /// <summary>The "prometheus" collection of methods.</summary>
+            public class PrometheusResource
+            {
+                private const string Resource = "prometheus";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PrometheusResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Api = new ApiResource(service);
+                }
+
+                /// <summary>Gets the Api resource.</summary>
+                public virtual ApiResource Api { get; }
+
+                /// <summary>The "api" collection of methods.</summary>
+                public class ApiResource
+                {
+                    private const string Resource = "api";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ApiResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        V1 = new V1Resource(service);
+                    }
+
+                    /// <summary>Gets the V1 resource.</summary>
+                    public virtual V1Resource V1 { get; }
+
+                    /// <summary>The "v1" collection of methods.</summary>
+                    public class V1Resource
+                    {
+                        private const string Resource = "v1";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public V1Resource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Label = new LabelResource(service);
+                            Metadata = new MetadataResource(service);
+                        }
+
+                        /// <summary>Gets the Label resource.</summary>
+                        public virtual LabelResource Label { get; }
+
+                        /// <summary>The "label" collection of methods.</summary>
+                        public class LabelResource
+                        {
+                            private const string Resource = "label";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public LabelResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Lists possible values for a given label name.</summary>
+                            /// <param name="name">
+                            /// The workspace on which to execute the request. It is not part of the open source API but
+                            /// used as a request path prefix to distinguish different virtual Prometheus instances of
+                            /// Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                            /// </param>
+                            /// <param name="location">
+                            /// Location of the resource information. Has to be "global" now.
+                            /// </param>
+                            /// <param name="label">The label name for which values are queried.</param>
+                            public virtual ValuesRequest Values(string name, string location, string label)
+                            {
+                                return new ValuesRequest(service, name, location, label);
+                            }
+
+                            /// <summary>Lists possible values for a given label name.</summary>
+                            public class ValuesRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new Values request.</summary>
+                                public ValuesRequest(Google.Apis.Services.IClientService service, string name, string location, string label) : base(service)
+                                {
+                                    Name = name;
+                                    Location = location;
+                                    Label = label;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// The workspace on which to execute the request. It is not part of the open source API
+                                /// but used as a request path prefix to distinguish different virtual Prometheus
+                                /// instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Location of the resource information. Has to be "global" now.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Location { get; private set; }
+
+                                /// <summary>The label name for which values are queried.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("label", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Label { get; private set; }
+
+                                /// <summary>
+                                /// The end time to evaluate the query for. Either floating point UNIX seconds or
+                                /// RFC3339 formatted timestamp.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("end", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string End { get; set; }
+
+                                /// <summary>
+                                /// A list of matchers encoded in the Prometheus label matcher format to constrain the
+                                /// values to series that satisfy them.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("match", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Match { get; set; }
+
+                                /// <summary>
+                                /// The start time to evaluate the query for. Either floating point UNIX seconds or
+                                /// RFC3339 formatted timestamp.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Start { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "values";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}/location/{location}/prometheus/api/v1/label/{label}/values";
+
+                                /// <summary>Initializes Values parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+$",
+                                    });
+                                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "location",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("label", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "label",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("end", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "end",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("match", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "match",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("start", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "start",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Gets the Metadata resource.</summary>
+                        public virtual MetadataResource Metadata { get; }
+
+                        /// <summary>The "metadata" collection of methods.</summary>
+                        public class MetadataResource
+                        {
+                            private const string Resource = "metadata";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public MetadataResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Lists metadata for metrics.</summary>
+                            /// <param name="name">
+                            /// Required. The workspace on which to execute the request. It is not part of the open
+                            /// source API but used as a request path prefix to distinguish different virtual Prometheus
+                            /// instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                            /// </param>
+                            /// <param name="location">
+                            /// Location of the resource information. Has to be "global" for now.
+                            /// </param>
+                            public virtual ListRequest List(string name, string location)
+                            {
+                                return new ListRequest(service, name, location);
+                            }
+
+                            /// <summary>Lists metadata for metrics.</summary>
+                            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string name, string location) : base(service)
+                                {
+                                    Name = name;
+                                    Location = location;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The workspace on which to execute the request. It is not part of the open
+                                /// source API but used as a request path prefix to distinguish different virtual
+                                /// Prometheus instances of Google Prometheus Engine. The format is:
+                                /// projects/PROJECT_ID_OR_NUMBER.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Location of the resource information. Has to be "global" for now.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Location { get; private set; }
+
+                                /// <summary>Maximum number of metrics to return.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<long> Limit { get; set; }
+
+                                /// <summary>
+                                /// The metric name for which to query metadata. If unset, all metric metadata is
+                                /// returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("metric", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Metric { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}/location/{location}/prometheus/api/v1/metadata";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+$",
+                                    });
+                                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "location",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "limit",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("metric", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "metric",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Evaluate a PromQL query at a single point in time.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// The project on which to execute the request. Data associcated with the project's workspace
+                        /// stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a
+                        /// request path prefix to distinguish different virtual Prometheus instances of Google
+                        /// Prometheus Engine.
+                        /// </param>
+                        /// <param name="location">Location of the resource information. Has to be "global" now.</param>
+                        public virtual QueryRequest Query(Google.Apis.Monitoring.v1.Data.QueryInstantRequest body, string name, string location)
+                        {
+                            return new QueryRequest(service, body, name, location);
+                        }
+
+                        /// <summary>Evaluate a PromQL query at a single point in time.</summary>
+                        public class QueryRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new Query request.</summary>
+                            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v1.Data.QueryInstantRequest body, string name, string location) : base(service)
+                            {
+                                Name = name;
+                                Location = location;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// The project on which to execute the request. Data associcated with the project's
+                            /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API
+                            /// but used as a request path prefix to distinguish different virtual Prometheus instances
+                            /// of Google Prometheus Engine.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Location of the resource information. Has to be "global" now.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Location { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Monitoring.v1.Data.QueryInstantRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "query";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/location/{location}/prometheus/api/v1/query";
+
+                            /// <summary>Initializes Query parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+$",
+                                });
+                                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "location",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Evaluate a PromQL query with start, end time range.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// The project on which to execute the request. Data associcated with the project's workspace
+                        /// stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a
+                        /// request path prefix to distinguish different virtual Prometheus instances of Google
+                        /// Prometheus Engine.
+                        /// </param>
+                        /// <param name="location">Location of the resource information. Has to be "global" now.</param>
+                        public virtual QueryRangeRequest QueryRange(Google.Apis.Monitoring.v1.Data.QueryRangeRequest body, string name, string location)
+                        {
+                            return new QueryRangeRequest(service, body, name, location);
+                        }
+
+                        /// <summary>Evaluate a PromQL query with start, end time range.</summary>
+                        public class QueryRangeRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new QueryRange request.</summary>
+                            public QueryRangeRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v1.Data.QueryRangeRequest body, string name, string location) : base(service)
+                            {
+                                Name = name;
+                                Location = location;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// The project on which to execute the request. Data associcated with the project's
+                            /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API
+                            /// but used as a request path prefix to distinguish different virtual Prometheus instances
+                            /// of Google Prometheus Engine.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Location of the resource information. Has to be "global" now.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Location { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Monitoring.v1.Data.QueryRangeRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "query_range";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/location/{location}/prometheus/api/v1/query_range";
+
+                            /// <summary>Initializes QueryRange parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+$",
+                                });
+                                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "location",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists metadata for metrics.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The workspace on which to execute the request. It is not part of the open source
+                        /// API but used as a request path prefix to distinguish different virtual Prometheus instances
+                        /// of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                        /// </param>
+                        /// <param name="location">
+                        /// Location of the resource information. Has to be "global" for now.
+                        /// </param>
+                        public virtual SeriesRequest Series(Google.Apis.Monitoring.v1.Data.QuerySeriesRequest body, string name, string location)
+                        {
+                            return new SeriesRequest(service, body, name, location);
+                        }
+
+                        /// <summary>Lists metadata for metrics.</summary>
+                        public class SeriesRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new Series request.</summary>
+                            public SeriesRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v1.Data.QuerySeriesRequest body, string name, string location) : base(service)
+                            {
+                                Name = name;
+                                Location = location;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The workspace on which to execute the request. It is not part of the open
+                            /// source API but used as a request path prefix to distinguish different virtual Prometheus
+                            /// instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Location of the resource information. Has to be "global" for now.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Location { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Monitoring.v1.Data.QuerySeriesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "series";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/location/{location}/prometheus/api/v1/series";
+
+                            /// <summary>Initializes Series parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+$",
+                                });
+                                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "location",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 namespace Google.Apis.Monitoring.v1.Data
@@ -1422,6 +1992,39 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
+    /// represented as JSON, such as raw binary or an HTML page.This message can be used both in streaming and
+    /// non-streaming API methods in the request as well as the response.It can be used as a top-level request field,
+    /// which is convenient if one wants to extract parameters from either the URL or HTTP template into the request
+    /// fields and also want access to the raw HTTP body.Example: message GetResourceRequest { // A unique request id.
+    /// string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+    /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
+    /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.
+    /// </summary>
+    public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>The HTTP request/response body as raw binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ListDashboards request.</summary>
     public class ListDashboardsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1630,6 +2233,104 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
         public virtual string RankingMethod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// QueryInstantRequest holds all parameters of the Prometheus upstream instant query API plus GCM specific
+    /// parameters.
+    /// </summary>
+    public class QueryInstantRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A PromQL query string. Query lanauge documentation:
+        /// https://prometheus.io/docs/prometheus/latest/querying/basics/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// The single point in time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted
+        /// timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual string Time { get; set; }
+
+        /// <summary>
+        /// An upper bound timeout for the query. Either a Prometheus duration string
+        /// (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds.
+        /// This non-standard encoding must be used for compatibility with the open source API. Clients may still
+        /// implement timeouts at the connection level while ignoring this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual string Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// QueryRangeRequest holds all parameters of the Prometheus upstream range query API plus GCM specific parameters.
+    /// </summary>
+    public class QueryRangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual string End { get; set; }
+
+        /// <summary>
+        /// A PromQL query string. Query lanauge documentation:
+        /// https://prometheus.io/docs/prometheus/latest/querying/basics/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual string Start { get; set; }
+
+        /// <summary>
+        /// The resolution of query result. Either a Prometheus duration string
+        /// (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds.
+        /// This non-standard encoding must be used for compatibility with the open source API. Clients may still
+        /// implement timeouts at the connection level while ignoring this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual string Step { get; set; }
+
+        /// <summary>
+        /// An upper bound timeout for the query. Either a Prometheus duration string
+        /// (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds.
+        /// This non-standard encoding must be used for compatibility with the open source API. Clients may still
+        /// implement timeouts at the connection level while ignoring this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual string Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>QuerySeries holds all parameters of the Prometheus upstream API for querying series.</summary>
+    public class QuerySeriesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual string End { get; set; }
+
+        /// <summary>
+        /// The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual string Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

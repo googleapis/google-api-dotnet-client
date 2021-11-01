@@ -722,7 +722,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The name of this connection profile resource in the form of
-                /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
+                /// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1.Data.ConnectionProfile body, string name)
                 {
@@ -742,7 +742,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                     /// <summary>
                     /// The name of this connection profile resource in the form of
-                    /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
+                    /// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1411,7 +1411,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The name (URI) of this migration job resource, in the form of:
-                /// projects/{project}/locations/{location}/instances/{instance}.
+                /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1.Data.MigrationJob body, string name)
                 {
@@ -1431,7 +1431,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                     /// <summary>
                     /// The name (URI) of this migration job resource, in the form of:
-                    /// projects/{project}/locations/{location}/instances/{instance}.
+                    /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2664,7 +2664,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// The name of this connection profile resource in the form of
-        /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
+        /// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2984,7 +2984,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// The name (URI) of this migration job resource, in the form of:
-        /// projects/{project}/locations/{location}/instances/{instance}.
+        /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -2305,6 +2305,24 @@ namespace Google.Apis.GKEHub.v1alpha
 }
 namespace Google.Apis.GKEHub.v1alpha.Data
 {
+    /// <summary>Spec for App Dev Experience Feature.</summary>
+    public class AppDevExperienceFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State for App Dev Exp Feature.</summary>
+    public class AppDevExperienceFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of subcomponent that detects configured Service Mesh resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkingInstallSucceeded")]
+        public virtual Status NetworkingInstallSucceeded { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -2473,6 +2491,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Appdevexperience specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
+        public virtual AppDevExperienceFeatureSpec Appdevexperience { get; set; }
+
         /// <summary>Cloud Audit Logging-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudauditlogging")]
         public virtual CloudAuditLoggingFeatureSpec Cloudauditlogging { get; set; }
@@ -2488,6 +2510,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>CommonFeatureState contains Hub-wide Feature status information.</summary>
     public class CommonFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Appdevexperience specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
+        public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
+
         /// <summary>Service Mesh-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
         public virtual ServiceMeshFeatureState Servicemesh { get; set; }
@@ -3705,6 +3731,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>MembershipFeatureState contains Feature status information for a single Membership.</summary>
     public class MembershipFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Appdevexperience specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
+        public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
+
         /// <summary>Config Management-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipState Configmanagement { get; set; }
@@ -4104,6 +4134,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status specifies state for the subcomponent.</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Code specifies AppDevExperienceFeature's subcomponent ready state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Description is populated if Code is Failed, explaining why it has failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

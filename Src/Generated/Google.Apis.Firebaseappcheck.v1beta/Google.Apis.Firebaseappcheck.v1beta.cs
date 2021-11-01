@@ -384,6 +384,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 DebugTokens = new DebugTokensResource(service);
                 DeviceCheckConfig = new DeviceCheckConfigResource(service);
                 RecaptchaConfig = new RecaptchaConfigResource(service);
+                RecaptchaEnterpriseConfig = new RecaptchaEnterpriseConfigResource(service);
                 SafetyNetConfig = new SafetyNetConfigResource(service);
             }
 
@@ -1440,6 +1441,224 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
             }
 
+            /// <summary>Gets the RecaptchaEnterpriseConfig resource.</summary>
+            public virtual RecaptchaEnterpriseConfigResource RecaptchaEnterpriseConfig { get; }
+
+            /// <summary>The "recaptchaEnterpriseConfig" collection of methods.</summary>
+            public class RecaptchaEnterpriseConfigResource
+            {
+                private const string Resource = "recaptchaEnterpriseConfig";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RecaptchaEnterpriseConfigResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets the RecaptchaEnterpriseConfigs for the specified list of apps atomically.</summary>
+                /// <param name="parent">
+                /// Required. The parent project name shared by all RecaptchaEnterpriseConfigs being retrieved, in the
+                /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any resource
+                /// being retrieved must match this field, or the entire batch fails.
+                /// </param>
+                public virtual BatchGetRequest BatchGet(string parent)
+                {
+                    return new BatchGetRequest(service, parent);
+                }
+
+                /// <summary>Gets the RecaptchaEnterpriseConfigs for the specified list of apps atomically.</summary>
+                public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project name shared by all RecaptchaEnterpriseConfigs being retrieved, in
+                    /// the format ``` projects/{project_number} ``` The parent collection in the `name` field of any
+                    /// resource being retrieved must match this field, or the entire batch fails.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The relative resource names of the RecaptchaEnterpriseConfigs to retrieve, in the
+                    /// format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ``` A maximum of
+                    /// 100 objects can be retrieved in a batch.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchGet";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/apps/-/recaptchaEnterpriseConfig:batchGet";
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "names",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the RecaptchaEnterpriseConfig for the specified app.</summary>
+                /// <param name="name">
+                /// Required. The relative resource name of the RecaptchaEnterpriseConfig, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the RecaptchaEnterpriseConfig for the specified app.</summary>
+                public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the RecaptchaEnterpriseConfig, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/recaptchaEnterpriseConfig$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the RecaptchaEnterpriseConfig for the specified app. While this configuration is incomplete
+                /// or invalid, the app will be unable to exchange reCAPTCHA Enterprise tokens for App Check tokens.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the
+                /// format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the RecaptchaEnterpriseConfig for the specified app. While this configuration is incomplete
+                /// or invalid, the app will be unable to exchange reCAPTCHA Enterprise tokens for App Check tokens.
+                /// </summary>
+                public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the
+                    /// format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A comma-separated list of names of fields in the RecaptchaEnterpriseConfig to update.
+                    /// Example: `site_key`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/recaptchaEnterpriseConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the SafetyNetConfig resource.</summary>
             public virtual SafetyNetConfigResource SafetyNetConfig { get; }
 
@@ -2001,6 +2220,77 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 public override string RestPath => "v1beta/{+app}:exchangeDeviceCheckToken";
 
                 /// <summary>Initializes ExchangeDeviceCheckToken parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Validates a [reCAPTCHA Enterprise response
+            /// token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token). If valid,
+            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The relative resource name of the web app, in the format: ```
+            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </param>
+            public virtual ExchangeRecaptchaEnterpriseTokenRequest ExchangeRecaptchaEnterpriseToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest body, string app)
+            {
+                return new ExchangeRecaptchaEnterpriseTokenRequest(service, body, app);
+            }
+
+            /// <summary>
+            /// Validates a [reCAPTCHA Enterprise response
+            /// token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token). If valid,
+            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// </summary>
+            public class ExchangeRecaptchaEnterpriseTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            {
+                /// <summary>Constructs a new ExchangeRecaptchaEnterpriseToken request.</summary>
+                public ExchangeRecaptchaEnterpriseTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The relative resource name of the web app, in the format: ```
+                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
+                /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exchangeRecaptchaEnterpriseToken";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+app}:exchangeRecaptchaEnterpriseToken";
+
+                /// <summary>Initializes ExchangeRecaptchaEnterpriseToken parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -2640,6 +2930,17 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the BatchGetRecaptchaEnterpriseConfigs method.</summary>
+    public class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>RecaptchaEnterpriseConfigs retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig> Configs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the BatchGetSafetyNetConfigs method.</summary>
     public class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2865,6 +3166,20 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the ExchangeRecaptchaEnterpriseToken method.</summary>
+    public class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The reCAPTCHA token as returned by the [reCAPTCHA Enterprise JavaScript
+        /// API](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recaptchaEnterpriseToken")]
+        public virtual string RecaptchaEnterpriseToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the ExchangeRecaptchaToken method.</summary>
     public class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3023,6 +3338,42 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// <summary>
         /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA tokens will be valid. If unset, a
         /// default value of 1 day is assumed. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An app's reCAPTCHA Enterprise configuration object. This configuration is used by
+    /// ExchangeRecaptchaEnterpriseToken to validate reCAPTCHA tokens issued to apps by reCAPTCHA Enterprise. It also
+    /// controls certain properties of the returned App Check token, such as its ttl.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the format: ```
+        /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The score-based site key [created in reCAPTCHA
+        /// Enterprise](https://cloud.google.com/recaptcha-enterprise/docs/create-key#creating_a_site_key) used to
+        /// [invoke reCAPTCHA and generate the reCAPTCHA
+        /// tokens](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages) for your application.
+        /// Important: This is *not* the `site_secret` (as it is in reCAPTCHA v3), but rather your score-based reCAPTCHA
+        /// Enterprise site key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteKey")]
+        public virtual string SiteKey { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA Enterprise tokens will be valid.
+        /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
         public virtual object TokenTtl { get; set; }
