@@ -3964,6 +3964,10 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     /// </summary>
     public class CaPool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The time at which this CaPool was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuancePolicy")]
         public virtual IssuancePolicy IssuancePolicy { get; set; }
@@ -3988,6 +3992,10 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// <summary>Required. Immutable. The Tier of this CaPool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+
+        /// <summary>Output only. The time at which this CaPool was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

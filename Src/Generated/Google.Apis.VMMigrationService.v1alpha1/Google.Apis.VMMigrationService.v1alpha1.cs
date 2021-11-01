@@ -2295,6 +2295,29 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Optional. The level of details of the migrating VM.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Optional. The level of details of the migrating VM.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. Will fallback to FULL.</summary>
+                            [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_UNSPECIFIED")]
+                            MIGRATINGVMVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Get the migrating VM basic details. The basic details do not include the recent clone
+                            /// jobs and recent cutover jobs lists.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_BASIC")]
+                            MIGRATINGVMVIEWBASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_FULL")]
+                            MIGRATINGVMVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -2315,6 +2338,14 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/migratingVms/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -2364,6 +2395,29 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>Optional. The level of details of each migrating VM.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Optional. The level of details of each migrating VM.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. Will fallback to FULL.</summary>
+                            [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_UNSPECIFIED")]
+                            MIGRATINGVMVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Get the migrating VM basic details. The basic details do not include the recent clone
+                            /// jobs and recent cutover jobs lists.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_BASIC")]
+                            MIGRATINGVMVIEWBASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_FULL")]
+                            MIGRATINGVMVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -2412,6 +2466,14 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4938,14 +5000,16 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
 
         /// <summary>
         /// Output only. The recent clone jobs performed on the migrating VM. This field holds the vm's last completed
-        /// clone job and the vm's running clone job, if one exists.
+        /// clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to
+        /// explicitly request it via the "view" parameter of the Get/List request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentCloneJobs")]
         public virtual System.Collections.Generic.IList<CloneJob> RecentCloneJobs { get; set; }
 
         /// <summary>
         /// Output only. The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed
-        /// cutover job and the vm's running cutover job, if one exists.
+        /// cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to
+        /// explicitly request it via the "view" parameter of the Get/List request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentCutoverJobs")]
         public virtual System.Collections.Generic.IList<CutoverJob> RecentCutoverJobs { get; set; }

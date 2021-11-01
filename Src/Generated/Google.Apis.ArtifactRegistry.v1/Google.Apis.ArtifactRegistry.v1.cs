@@ -646,7 +646,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
     /// <summary>
     /// DockerImage represents a docker artifact. The following fields are returned as untyped metadata in the Version
-    /// resource, using camelcase keys (i.e. metadata.imageSizeBytes): - imageSizeBytes - mediaType - buildTime
+    /// resource, using camelcase keys (i.e. metadata.imageSizeBytes): * imageSizeBytes * mediaType * buildTime
     /// </summary>
     public class DockerImage : Google.Apis.Requests.IDirectResponseSchema
     {

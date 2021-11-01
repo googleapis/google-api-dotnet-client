@@ -9102,6 +9102,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
+        /// <summary>Additional parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
+
         /// <summary>GTM Zone's API relative path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }

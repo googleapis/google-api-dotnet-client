@@ -4179,12 +4179,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual ComputeEngineTargetDetails ComputeEngineTargetDetails { get; set; }
 
         /// <summary>
-        /// Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineVmDetails")]
-        public virtual TargetVMDetails ComputeEngineVmDetails { get; set; }
-
-        /// <summary>
         /// Output only. The time the clone job was created (as an API call, not when it was actually created in the
         /// target).
         /// </summary>
@@ -4411,12 +4405,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>Output only. Details of the target VM in Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTargetDetails")]
         public virtual ComputeEngineTargetDetails ComputeEngineTargetDetails { get; set; }
-
-        /// <summary>
-        /// Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineVmDetails")]
-        public virtual TargetVMDetails ComputeEngineVmDetails { get; set; }
 
         /// <summary>
         /// Output only. The time the cutover job was created (as an API call, not when it was actually created in the
@@ -5256,89 +5244,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>Output only. The last time the target project resource was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
-    /// </summary>
-    public class TargetVMDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The OS license returned from the adaptation module report.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
-        public virtual AppliedLicense AppliedLicense { get; set; }
-
-        /// <summary>Output only. The VM Boot Option, as set in the source vm.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
-        public virtual string BootOption { get; set; }
-
-        /// <summary>Compute instance scheduling information (if empty default is used).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
-        public virtual ComputeScheduling ComputeScheduling { get; set; }
-
-        /// <summary>The disk type to use in the VM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
-        public virtual string DiskType { get; set; }
-
-        /// <summary>A map of labels to associate with the VM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>The license type to use in OS adaptation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
-        public virtual string LicenseType { get; set; }
-
-        /// <summary>The machine type to create the VM with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; }
-
-        /// <summary>The machine type series to create the VM with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("machineTypeSeries")]
-        public virtual string MachineTypeSeries { get; set; }
-
-        /// <summary>The metadata key/value pairs to assign to the VM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
-
-        /// <summary>The name of the VM to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>List of NICs connected to this VM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
-        public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
-
-        /// <summary>A map of network tags to associate with the VM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
-        public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
-
-        /// <summary>The project in which to create the VM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; }
-
-        /// <summary>
-        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is
-        /// EFI.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
-        public virtual System.Nullable<bool> SecureBoot { get; set; }
-
-        /// <summary>The service account to associate the VM with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; }
-
-        /// <summary>
-        /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to
-        /// create this VM.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
-        public virtual string TargetProject { get; set; }
-
-        /// <summary>The zone in which to create the VM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

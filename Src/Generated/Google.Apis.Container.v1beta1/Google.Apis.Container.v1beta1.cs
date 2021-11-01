@@ -6262,6 +6262,20 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies options for controlling advanced machine features.</summary>
+    public class AdvancedMachineFeatures : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If
+        /// unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadsPerCore")]
+        public virtual System.Nullable<long> ThreadsPerCore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for returning group information from authenticators.</summary>
     public class AuthenticatorGroupsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6974,10 +6988,6 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAuthenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig DesiredAuthenticatorGroupsConfig { get; set; }
 
-        /// <summary>The desired Autopilot configuration for the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilot")]
-        public virtual Autopilot DesiredAutopilot { get; set; }
-
         /// <summary>The desired configuration options for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBinaryAuthorization")]
         public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; }
@@ -7005,6 +7015,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
+
+        /// <summary>The desired GCFS config for the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredGcfsConfig")]
+        public virtual GcfsConfig DesiredGcfsConfig { get; set; }
 
         /// <summary>The desired Identity Service component configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredIdentityServiceConfig")]
@@ -7458,6 +7472,17 @@ namespace Google.Apis.Container.v1beta1.Data
     public class GcePersistentDiskCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the Compute Engine PD CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GcfsConfig contains configurations of Google Container File System.</summary>
+    public class GcfsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to use GCFS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -8305,6 +8330,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; }
 
+        /// <summary>Advanced features for the Compute Engine VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedMachineFeatures")]
+        public virtual AdvancedMachineFeatures AdvancedMachineFeatures { get; set; }
+
         /// <summary>
         ///  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         /// This should be of the form
@@ -8335,6 +8364,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralStorageConfig")]
         public virtual EphemeralStorageConfig EphemeralStorageConfig { get; set; }
+
+        /// <summary>GCFS (Google Container File System) configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
+        public virtual GcfsConfig GcfsConfig { get; set; }
 
         /// <summary>Enable or disable gvnic on the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
@@ -8484,6 +8517,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Subset of NodeConfig message that has defaults.</summary>
     public class NodeConfigDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GCFS (Google Container File System, a.k.a Riptide) options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
+        public virtual GcfsConfig GcfsConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10041,6 +10078,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
+
+        /// <summary>GCFS config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
+        public virtual GcfsConfig GcfsConfig { get; set; }
 
         /// <summary>Enable or disable gvnic on the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
