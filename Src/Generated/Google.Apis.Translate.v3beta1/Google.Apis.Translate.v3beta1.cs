@@ -1792,6 +1792,10 @@ namespace Google.Apis.Translate.v3beta1.Data
     /// <summary>The BatchTranslateDocument request.</summary>
     public class BatchTranslateDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formatConversions")]
+        public virtual System.Collections.Generic.IDictionary<string, string> FormatConversions { get; set; }
+
         /// <summary>Optional. Glossaries to be applied. It's keyed by target language code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaries")]
         public virtual System.Collections.Generic.IDictionary<string, TranslateTextGlossaryConfig> Glossaries { get; set; }

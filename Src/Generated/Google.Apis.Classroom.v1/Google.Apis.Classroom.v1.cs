@@ -3793,10 +3793,10 @@ namespace Google.Apis.Classroom.v1
             }
 
             /// <summary>
-            /// Deletes a teacher of a course. This method returns the following error codes: * `PERMISSION_DENIED` if
-            /// the requesting user is not permitted to delete teachers of this course or for access errors. *
-            /// `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist. *
-            /// `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. *
+            /// Removes the specified teacher from the specified course. This method returns the following error codes:
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for
+            /// access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not
+            /// exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. *
             /// `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder. *
             /// `FAILED_PRECONDITION` if the course no longer has an active owner.
             /// </summary>
@@ -3814,10 +3814,10 @@ namespace Google.Apis.Classroom.v1
             }
 
             /// <summary>
-            /// Deletes a teacher of a course. This method returns the following error codes: * `PERMISSION_DENIED` if
-            /// the requesting user is not permitted to delete teachers of this course or for access errors. *
-            /// `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist. *
-            /// `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. *
+            /// Removes the specified teacher from the specified course. This method returns the following error codes:
+            /// * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for
+            /// access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not
+            /// exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. *
             /// `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder. *
             /// `FAILED_PRECONDITION` if the course no longer has an active owner.
             /// </summary>

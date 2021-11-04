@@ -20482,9 +20482,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDisplayDates")]
         public virtual string PromotionDisplayDates { get; set; }
 
+        /// <summary>TimePeriod representation of the promotion display dates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionDisplayTimePeriod")]
+        public virtual TimePeriod PromotionDisplayTimePeriod { get; set; }
+
         /// <summary>Required. String representation of the promotion effective dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionEffectiveDates")]
         public virtual string PromotionEffectiveDates { get; set; }
+
+        /// <summary>Required. TimePeriod representation of the promotion effective dates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionEffectiveTimePeriod")]
+        public virtual TimePeriod PromotionEffectiveTimePeriod { get; set; }
 
         /// <summary>Required. The user provided promotion id to uniquely identify the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
@@ -23021,6 +23029,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. The phone number of the person picking up the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message that represents a time period.</summary>
+    public class TimePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ending timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The starting timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

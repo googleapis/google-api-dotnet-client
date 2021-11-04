@@ -4201,7 +4201,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offer")]
         public virtual string Offer { get; set; }
 
-        /// <summary>Optional. Parameters needed to purchase the Offer.</summary>
+        /// <summary>
+        /// Optional. Parameters needed to purchase the Offer. To view the available Parameters refer to the
+        /// Offer.parameter_definitions from the desired offer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
 
@@ -4227,7 +4230,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Request message for CloudChannelService.ChangeParametersRequest.</summary>
     public class GoogleCloudChannelV1ChangeParametersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Entitlement parameters to update. You can only change editable parameters.</summary>
+        /// <summary>
+        /// Required. Entitlement parameters to update. You can only change editable parameters. To view the available
+        /// Parameters for a request, refer to the Offer.parameter_definitions from the desired offer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
 
@@ -4663,8 +4669,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string Offer { get; set; }
 
         /// <summary>
-        /// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are
-        /// defined in the offer's parameter definitions.
+        /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined
+        /// in the Offer.parameter_definitions. The response may include the following output-only Parameters: -
+        /// assigned_units: The number of licenses assigned to a user. - max_units: The maximum assignable units for a
+        /// flexible offer. - num_units: The total commitment for commitment-based offers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
@@ -5867,8 +5875,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string Offer { get; set; }
 
         /// <summary>
-        /// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are
-        /// defined in the offer's parameter definitions.
+        /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined
+        /// in the Offer.parameter_definitions. The response may include the following output-only Parameters: -
+        /// assigned_units: The number of licenses assigned to a user. - max_units: The maximum assignable units for a
+        /// flexible offer. - num_units: The total commitment for commitment-based offers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1alpha1Parameter> Parameters { get; set; }
