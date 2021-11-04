@@ -2018,9 +2018,9 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// The device type context for completion suggestions. It is useful to apply different suggestions
-                    /// on different device types, e.g. DESKTOP, MOBILE. If it is empty, the suggestions are across all
-                    /// device types. Supported formats: * UNKNOWN_DEVICE_TYPE * DESKTOP * MOBILE * A customized string
-                    /// starts with OTHER_, e.g. OTHER_IPHONE.
+                    /// on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across
+                    /// all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A
+                    /// customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("deviceType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DeviceType { get; set; }
@@ -3031,6 +3031,26 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the AddLocalInventories operation. Currently empty because there is no
+    /// meaningful metadata populated from the AddLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaAddLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the AddLocalInventories API. Currently empty because there is no meaningful response populated from
+    /// the AddLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaAddLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2alphaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3272,6 +3292,26 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the RemoveLocalInventories operation. Currently empty because there is no
+    /// meaningful metadata populated from the RemoveLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the RemoveLocalInventories API. Currently empty because there is no meaningful response populated
+    /// from the RemoveLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the SetInventory operation. Currently empty because there is no meaningful
     /// metadata populated from the SetInventory method.
     /// </summary>
@@ -3342,7 +3382,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Required. The IDs for this type, such as the store IDs for "pickup-in-store" or the region IDs for
         /// "same-day-delivery" to be added for this type. Duplicate IDs will be automatically ignored. At least 1 value
         /// is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10
-        /// characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an
+        /// characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an
         /// INVALID_ARGUMENT error is returned. If the total number of place IDs exceeds 2000 for this type after
         /// adding, then the update will be rejected.
         /// </summary>
@@ -3716,7 +3756,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for
         /// FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string
-        /// with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2".
+        /// with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2".
         /// Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeIds")]
@@ -3934,7 +3974,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// Unique identifier provided by client, within the ancestor dataset scope. Ensures idempotency and used for
         /// request deduplication. Server-generated if unspecified. Up to 128 characters long and must match the
-        /// pattern: "[a-zA-Z0-9_]+". This is returned as Operation.name in ImportMetadata. Only supported when
+        /// pattern: `[a-zA-Z0-9_]+`. This is returned as Operation.name in ImportMetadata. Only supported when
         /// ImportProductsRequest.reconciliation_mode is set to `FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
@@ -4293,7 +4333,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field
         /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200.
         /// * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute,
-        /// the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+        /// the key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2betaCustomAttribute> Attributes { get; set; }
@@ -4689,7 +4729,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length
-        /// limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS.
+        /// limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS.
         /// Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
         /// [promotion](https://support.google.com/merchants/answer/7050148).
         /// </summary>
@@ -4873,7 +4913,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Required. The IDs for this type, such as the store IDs for "pickup-in-store" or the region IDs for
         /// "same-day-delivery", to be removed for this type. At least 1 value is required, and a maximum of 2000 values
         /// are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern
-        /// [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+        /// `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeIds")]
         public virtual System.Collections.Generic.IList<string> PlaceIds { get; set; }

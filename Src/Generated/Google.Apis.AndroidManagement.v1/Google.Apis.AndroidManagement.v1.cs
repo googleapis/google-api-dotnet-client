@@ -3386,6 +3386,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceBasebandVersion")]
         public virtual string DeviceBasebandVersion { get; set; }
 
+        /// <summary>
+        /// Output only. ID that uniquely identifies a personally-owned device in a particular organization. On the same
+        /// physical device when enrolled with the same organization, this ID persists across setups and even factory
+        /// resets. This ID is available on personally-owned devices with a work profile on devices running Android 12
+        /// and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseSpecificId")]
+        public virtual string EnterpriseSpecificId { get; set; }
+
         /// <summary>GPU shutdown temperature thresholds in Celsius for each GPU on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gpuShutdownTemperatures")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> GpuShutdownTemperatures { get; set; }

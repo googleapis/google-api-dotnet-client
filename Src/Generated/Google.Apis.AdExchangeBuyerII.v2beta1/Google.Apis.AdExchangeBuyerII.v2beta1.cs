@@ -8913,7 +8913,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>Optional sub-account ID for the seller.</summary>
+        /// <summary>Output only. Ad manager network code for the seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subAccountId")]
         public virtual string SubAccountId { get; set; }
 

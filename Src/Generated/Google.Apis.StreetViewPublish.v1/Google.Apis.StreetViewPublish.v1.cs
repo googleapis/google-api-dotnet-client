@@ -591,8 +591,8 @@ namespace Google.Apis.StreetViewPublish.v1
             /// metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid
             /// fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields
             /// are valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` *
-            /// `pose.altitude` * `connections` * `places` *Note:* When updateMask contains repeated fields, the entire
-            /// set of repeated values get replaced with the new contents. For example, if updateMask contains
+            /// `pose.altitude` * `connections` * `places` &amp;gt; Note: When updateMask contains repeated fields, the
+            /// entire set of repeated values get replaced with the new contents. For example, if updateMask contains
             /// `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -809,7 +809,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// failures. These failures are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results.
         /// See UpdatePhoto for specific failures that can occur per photo. Only the fields specified in updateMask
         /// field are used. If `updateMask` is not present, the update applies to all fields. The number of
-        /// UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. *Note:* To update
+        /// UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. &amp;gt; Note: To update
         /// Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -825,7 +825,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// failures. These failures are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results.
         /// See UpdatePhoto for specific failures that can occur per photo. Only the fields specified in updateMask
         /// field are used. If `updateMask` is not present, the update applies to all fields. The number of
-        /// UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. *Note:* To update
+        /// UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. &amp;gt; Note: To update
         /// Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         /// </summary>
         public class BatchUpdateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.BatchUpdatePhotosResponse>
@@ -860,8 +860,8 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
         /// <summary>
-        /// Lists all the Photos that belong to the user. *Note:* Recently created photos that are still being indexed
-        /// are not returned in the response.
+        /// Lists all the Photos that belong to the user. &amp;gt; Note: Recently created photos that are still being
+        /// indexed are not returned in the response.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -869,8 +869,8 @@ namespace Google.Apis.StreetViewPublish.v1
         }
 
         /// <summary>
-        /// Lists all the Photos that belong to the user. *Note:* Recently created photos that are still being indexed
-        /// are not returned in the response.
+        /// Lists all the Photos that belong to the user. &amp;gt; Note: Recently created photos that are still being
+        /// indexed are not returned in the response.
         /// </summary>
         public class ListRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.ListPhotosResponse>
         {
@@ -888,7 +888,7 @@ namespace Google.Apis.StreetViewPublish.v1
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+            /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
             /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
             /// user's language preference for Google services is used.
             /// </summary>
@@ -896,14 +896,16 @@ namespace Google.Apis.StreetViewPublish.v1
             public virtual string LanguageCode { get; set; }
 
             /// <summary>
-            /// The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero or is not
-            /// provided, the default page size of 100 is used. The number of photos returned in the response may be
-            /// less than `pageSize` if the number of photos that belong to the user is less than `pageSize`.
+            /// Optional. The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero
+            /// or is not provided, the default page size of 100 is used. The number of photos returned in the response
+            /// may be less than `pageSize` if the number of photos that belong to the user is less than `pageSize`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
+            /// <summary>
+            /// Optional. The nextPageToken value returned from a previous ListPhotos request, if any.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1101,8 +1103,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Floor number, used for ordering. 0 indicates the ground level, 1 indicates the first level above ground
-        /// level, -1 indicates the first level under ground level. Non-integer values are OK.
+        /// Optional. Floor number, used for ordering. 0 indicates the ground level, 1 indicates the first level above
+        /// ground level, -1 indicates the first level under ground level. Non-integer values are OK.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
         public virtual System.Nullable<double> Number { get; set; }
@@ -1177,14 +1179,14 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     public class Photo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Absolute time when the photo was captured. When the photo has no exif timestamp, this is used to set a
-        /// timestamp in the photo metadata.
+        /// Optional. Absolute time when the photo was captured. When the photo has no exif timestamp, this is used to
+        /// set a timestamp in the photo metadata.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("captureTime")]
         public virtual object CaptureTime { get; set; }
 
         /// <summary>
-        /// Connections to other photos. A connection represents the link from this photo to another photo.
+        /// Optional. Connections to other photos. A connection represents the link from this photo to another photo.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
         public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
@@ -1196,24 +1198,22 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; }
 
-        /// <summary>
-        /// Output only. Status in Google Maps, whether this photo was published or rejected. Not currently populated.
-        /// </summary>
+        /// <summary>Output only. Status in Google Maps, whether this photo was published or rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapsPublishStatus")]
         public virtual string MapsPublishStatus { get; set; }
 
         /// <summary>
-        /// Required when updating a photo. Output only when creating a photo. Identifier for the photo, which is unique
-        /// among all photos in Google.
+        /// Required. Output only. Required when updating a photo. Output only when creating a photo. Identifier for the
+        /// photo, which is unique among all photos in Google.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoId")]
         public virtual PhotoId PhotoId { get; set; }
 
-        /// <summary>Places where this photo belongs.</summary>
+        /// <summary>Optional. Places where this photo belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("places")]
         public virtual System.Collections.Generic.IList<Place> Places { get; set; }
 
-        /// <summary>Pose of the photo.</summary>
+        /// <summary>Optional. Pose of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pose")]
         public virtual Pose Pose { get; set; }
 
@@ -1230,12 +1230,13 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string TransferStatus { get; set; }
 
         /// <summary>
-        /// Required when creating a photo. Input only. The resource URL where the photo bytes are uploaded to.
+        /// Input only. Required when creating a photo. Input only. The resource URL where the photo bytes are uploaded
+        /// to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadReference")]
         public virtual UploadRef UploadReference { get; set; }
 
-        /// <summary>Time when the image was uploaded.</summary>
+        /// <summary>Output only. Time when the image was uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
         public virtual object UploadTime { get; set; }
 
@@ -1279,13 +1280,13 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     public class Place : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output-only. The language_code that the name is localized with. This should be the language_code specified
+        /// Output only. The language_code that the name is localized with. This should be the language_code specified
         /// in the request, but may be a fallback.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
-        /// <summary>Output-only. The name of the place, localized to the language_code.</summary>
+        /// <summary>Output only. The name of the place, localized to the language_code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1316,8 +1317,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual System.Nullable<double> Altitude { get; set; }
 
         /// <summary>
-        /// Compass heading, measured at the center of the photo in degrees clockwise from North. Value must be
-        /// &amp;gt;=0 and &amp;lt;360. NaN indicates an unmeasured quantity.
+        /// The following pose parameters pertain to the center of the photo. They match
+        /// https://developers.google.com/streetview/spherical-metadata. Compass heading, measured at the center of the
+        /// photo in degrees clockwise from North. Value must be &amp;gt;=0 and &amp;lt;360. NaN indicates an unmeasured
+        /// quantity.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heading")]
         public virtual System.Nullable<double> Heading { get; set; }
@@ -1395,8 +1398,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid
         /// fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are
         /// valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
-        /// `connections` * `places` *Note:* When updateMask contains repeated fields, the entire set of repeated values
-        /// get replaced with the new contents. For example, if updateMask contains `connections` and
+        /// `connections` * `places` &amp;gt; Note: When updateMask contains repeated fields, the entire set of repeated
+        /// values get replaced with the new contents. For example, if updateMask contains `connections` and
         /// `UpdatePhotoRequest.photo.connections` is empty, all connections are removed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]

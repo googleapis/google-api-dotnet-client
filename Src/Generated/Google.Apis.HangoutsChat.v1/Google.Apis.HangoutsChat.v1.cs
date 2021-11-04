@@ -1065,7 +1065,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Returns a membership.</summary>
             /// <param name="name">
             /// Required. Resource name of the membership to be retrieved, in the form "spaces/*/members/*". Example:
-            /// spaces/AAAAMpdlehY/members/105115627578887013105
+            /// spaces/AAAAAAAAAAAA/members/111111111111111111111
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1084,7 +1084,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. Resource name of the membership to be retrieved, in the form "spaces/*/members/*".
-                /// Example: spaces/AAAAMpdlehY/members/105115627578887013105
+                /// Example: spaces/AAAAAAAAAAAA/members/111111111111111111111
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1116,7 +1116,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Lists human memberships in a space.</summary>
             /// <param name="parent">
             /// Required. The resource name of the space for which membership list is to be fetched, in the form
-            /// "spaces/*". Example: spaces/AAAAMpdlehY
+            /// "spaces/*". Example: spaces/AAAAAAAAAAAA
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1135,7 +1135,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. The resource name of the space for which membership list is to be fetched, in the form
-                /// "spaces/*". Example: spaces/AAAAMpdlehY
+                /// "spaces/*". Example: spaces/AAAAAAAAAAAA
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3245,7 +3245,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The creation time of the membership a.k.a the time at which the member joined the space, if applicable.
+        /// The creation time of the membership a.k.a. the time at which the member joined the space, if applicable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -3437,8 +3437,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The display name (only if the space is of type `ROOM`). Please note that this field might not
-        /// be populated in direct messages between humans.
+        /// The display name (only if the space is of type `ROOM`). Please note that this field might not be populated
+        /// in direct messages between humans.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

@@ -65,14 +65,20 @@ namespace Google.Apis.DataFusion.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Data Fusion API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Data Fusion API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -334,7 +340,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                     /// <summary>Add DNS peering on the given resource.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">The resource on which DNS peering will be created.</param>
+                    /// <param name="parent">Required. The resource on which DNS peering will be created.</param>
                     public virtual AddRequest Add(Google.Apis.DataFusion.v1beta1.Data.AddDnsPeeringRequest body, string parent)
                     {
                         return new AddRequest(service, body, parent);
@@ -351,7 +357,7 @@ namespace Google.Apis.DataFusion.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The resource on which DNS peering will be created.</summary>
+                        /// <summary>Required. The resource on which DNS peering will be created.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -459,7 +465,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                     /// <summary>Remove DNS peering on the given resource.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">The resource on which DNS peering will be removed.</param>
+                    /// <param name="parent">Required. The resource on which DNS peering will be removed.</param>
                     public virtual RemoveRequest Remove(Google.Apis.DataFusion.v1beta1.Data.RemoveDnsPeeringRequest body, string parent)
                     {
                         return new RemoveRequest(service, body, parent);
@@ -476,7 +482,7 @@ namespace Google.Apis.DataFusion.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The resource on which DNS peering will be removed.</summary>
+                        /// <summary>Required. The resource on which DNS peering will be removed.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -850,7 +856,7 @@ namespace Google.Apis.DataFusion.v1beta1
                 /// <summary>Creates a new Data Fusion instance in the specified project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// The instance's project and location in the format projects/{project}/locations/{location}.
+                /// Required. The instance's project and location in the format projects/{project}/locations/{location}.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DataFusion.v1beta1.Data.Instance body, string parent)
                 {
@@ -869,12 +875,13 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// The instance's project and location in the format projects/{project}/locations/{location}.
+                    /// Required. The instance's project and location in the format
+                    /// projects/{project}/locations/{location}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The name of the instance to create.</summary>
+                    /// <summary>Required. The name of the instance to create.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InstanceId { get; set; }
 
@@ -918,7 +925,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                 /// <summary>Deletes a single Data Fusion instance.</summary>
                 /// <param name="name">
-                /// The instance resource name in the format
+                /// Required. The instance resource name in the format
                 /// projects/{project}/locations/{location}/instances/{instance}
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -937,7 +944,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// The instance resource name in the format
+                    /// Required. The instance resource name in the format
                     /// projects/{project}/locations/{location}/instances/{instance}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -969,7 +976,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                 /// <summary>Gets details of a single Data Fusion instance.</summary>
                 /// <param name="name">
-                /// The instance resource name in the format
+                /// Required. The instance resource name in the format
                 /// projects/{project}/locations/{location}/instances/{instance}.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -988,7 +995,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// The instance resource name in the format
+                    /// Required. The instance resource name in the format
                     /// projects/{project}/locations/{location}/instances/{instance}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1096,7 +1103,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                 /// <summary>Lists Data Fusion instances in the specified project and location.</summary>
                 /// <param name="parent">
-                /// The project and location for which to retrieve instance information in the format
+                /// Required. The project and location for which to retrieve instance information in the format
                 /// projects/{project}/locations/{location}. If the location is specified as '-' (wildcard), then all
                 /// regions available to the project are queried, and the results are aggregated.
                 /// </param>
@@ -1116,7 +1123,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// The project and location for which to retrieve instance information in the format
+                    /// Required. The project and location for which to retrieve instance information in the format
                     /// projects/{project}/locations/{location}. If the location is specified as '-' (wildcard), then
                     /// all regions available to the project are queried, and the results are aggregated.
                     /// </summary>
@@ -1279,7 +1286,7 @@ namespace Google.Apis.DataFusion.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the Data Fusion instance which need to be restarted in the form of
+                /// Required. Name of the Data Fusion instance which need to be restarted in the form of
                 /// projects/{project}/locations/{location}/instances/{instance}
                 /// </param>
                 public virtual RestartRequest Restart(Google.Apis.DataFusion.v1beta1.Data.RestartInstanceRequest body, string name)
@@ -1301,7 +1308,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of the Data Fusion instance which need to be restarted in the form of
+                    /// Required. Name of the Data Fusion instance which need to be restarted in the form of
                     /// projects/{project}/locations/{location}/instances/{instance}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1476,7 +1483,7 @@ namespace Google.Apis.DataFusion.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the Data Fusion instance which need to be upgraded in the form of
+                /// Required. Name of the Data Fusion instance which need to be upgraded in the form of
                 /// projects/{project}/locations/{location}/instances/{instance} Instance will be upgraded with the
                 /// latest stable version of the Data Fusion.
                 /// </param>
@@ -1499,7 +1506,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of the Data Fusion instance which need to be upgraded in the form of
+                    /// Required. Name of the Data Fusion instance which need to be upgraded in the form of
                     /// projects/{project}/locations/{location}/instances/{instance} Instance will be upgraded with the
                     /// latest stable version of the Data Fusion.
                     /// </summary>
@@ -2087,7 +2094,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
             /// <summary>Remove IAM policy that is currently set on the given resource.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">The resource on which IAM policy to be removed is attached to.</param>
+            /// <param name="resource">Required. The resource on which IAM policy to be removed is attached to.</param>
             public virtual RemoveIamPolicyRequest RemoveIamPolicy(Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest body, string resource)
             {
                 return new RemoveIamPolicyRequest(service, body, resource);
@@ -2104,7 +2111,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>The resource on which IAM policy to be removed is attached to.</summary>
+                /// <summary>Required. The resource on which IAM policy to be removed is attached to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -2222,21 +2229,21 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Associates `members` with a `role`.</summary>
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
         /// the current request. However, a different role binding might grant the same role to one or more of the
-        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -2260,7 +2267,8 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -2428,6 +2436,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// <summary>A description of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Output only. If the instance state is DISABLED, the reason for disabling the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
+        public virtual System.Collections.Generic.IList<string> DisabledReason { get; set; }
 
         /// <summary>Display name for an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -2788,14 +2800,15 @@ namespace Google.Apis.DataFusion.v1beta1.Data
 
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
-    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
-    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
-    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
-    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
-    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
-    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
-    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
-    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
+    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
@@ -2804,8 +2817,8 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
+    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2814,8 +2827,12 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
@@ -2986,6 +3003,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// <summary>Whether this is currently the default version for Cloud Data Fusion</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
         public virtual System.Nullable<bool> DefaultVersion { get; set; }
+
+        /// <summary>Type represents the release availability of the version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The version number of the Data Fusion instance, such as '6.0.1.0'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionNumber")]

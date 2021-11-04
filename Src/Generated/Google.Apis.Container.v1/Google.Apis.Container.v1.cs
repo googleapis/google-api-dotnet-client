@@ -6200,6 +6200,20 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies options for controlling advanced machine features.</summary>
+    public class AdvancedMachineFeatures : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If
+        /// unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadsPerCore")]
+        public virtual System.Nullable<long> ThreadsPerCore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for returning group information from authenticators.</summary>
     public class AuthenticatorGroupsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7822,6 +7836,15 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
     public class MeshCertificates : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity
+        /// Certificates controller and node agent will be deployed in the cluster, which can then be configured by
+        /// creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be
+        /// non-empty).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCertificates")]
+        public virtual System.Nullable<bool> EnableCertificates { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7972,6 +7995,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; }
+
+        /// <summary>Advanced features for the Compute Engine VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedMachineFeatures")]
+        public virtual AdvancedMachineFeatures AdvancedMachineFeatures { get; set; }
 
         /// <summary>
         ///  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.

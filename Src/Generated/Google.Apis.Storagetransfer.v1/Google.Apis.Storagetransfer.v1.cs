@@ -2380,6 +2380,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
         public virtual ObjectConditions ObjectConditions { get; set; }
 
+        /// <summary>A POSIX Filesystem data sink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posixDataSink")]
+        public virtual PosixFilesystem PosixDataSink { get; set; }
+
         /// <summary>A POSIX Filesystem data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixDataSource")]
         public virtual PosixFilesystem PosixDataSource { get; set; }

@@ -3556,6 +3556,71 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stores information about a certificate.</summary>
+    public class CertificateInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The X.509 extension for CertificateTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateTemplate")]
+        public virtual CertificateTemplate CertificateTemplate { get; set; }
+
+        /// <summary>The encoded certificate fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; }
+
+        /// <summary>The name of the issuer of this certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>Serial number of the certificate, Example: "123456789".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>The subject name of this certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>The certificate thumbprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbprint")]
+        public virtual string Thumbprint { get; set; }
+
+        /// <summary>Validation state of this certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationState")]
+        public virtual string ValidationState { get; set; }
+
+        /// <summary>Certificate not valid at or after this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validityExpirationTime")]
+        public virtual object ValidityExpirationTime { get; set; }
+
+        /// <summary>Certificate not valid before this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validityStartTime")]
+        public virtual object ValidityStartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CertificateTemplate (v3 Extension in X.509).</summary>
+    public class CertificateTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The template id of the template. Example:
+        /// "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The Major version of the template. Example: 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
+        public virtual System.Nullable<int> MajorVersion { get; set; }
+
+        /// <summary>The minor version of the template. Example: 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
+        public virtual System.Nullable<int> MinorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for MembershipsService.CheckTransitiveMembership.</summary>
     public class CheckTransitiveMembershipResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3729,6 +3794,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. Device encryption state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
         public virtual string EncryptionState { get; set; }
+
+        /// <summary>Output only. Attributes specific to Endpoint Verification devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointVerificationSpecificAttributes")]
+        public virtual EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributes { get; set; }
 
         /// <summary>Output only. IMEI number of device if GSM device; empty otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
@@ -3918,6 +3987,17 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Resource representing the Endpoint Verification-specific attributes of a Device.</summary>
+    public class EndpointVerificationSpecificAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of certificates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateInfo")]
+        public virtual System.Collections.Generic.IList<CertificateInfo> CertificateInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with
     /// an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique;
@@ -3952,6 +4032,21 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>The time at which the `MembershipRole` will expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing first admin invitation info for customers</summary>
+    public class FirstAdminInvitationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. To enable First Admin Invitation for Domained Customer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFirstAdmin")]
+        public virtual System.Nullable<bool> IsFirstAdmin { get; set; }
+
+        /// <summary>Optional. Domain information of first admin invited</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryDomain")]
+        public virtual string PrimaryDomain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5075,6 +5170,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>A request to send email for inviting target user corresponding to the UserInvitation.</summary>
     public class SendUserInvitationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. First admin invitation info for customers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstAdminInvitationInfo")]
+        public virtual FirstAdminInvitationInfo FirstAdminInvitationInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

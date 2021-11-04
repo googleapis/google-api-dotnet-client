@@ -885,6 +885,81 @@ namespace Google.Apis.OSConfig.v1beta
                     });
                 }
             }
+
+            /// <summary>Update an OS Config patch deployment.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
+            /// `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a
+            /// new patch deployment.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.OSConfig.v1beta.Data.PatchDeployment body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Update an OS Config patch deployment.</summary>
+            public class PatchRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1beta.Data.PatchDeployment>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1beta.Data.PatchDeployment body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Unique name for the patch deployment resource in a project. The patch deployment name is in the
+                /// form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you
+                /// create a new patch deployment.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Field mask that controls which fields of the patch deployment should be updated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.OSConfig.v1beta.Data.PatchDeployment Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/patchDeployments/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the PatchJobs resource.</summary>

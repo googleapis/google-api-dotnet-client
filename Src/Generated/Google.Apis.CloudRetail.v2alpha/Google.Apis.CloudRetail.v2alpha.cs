@@ -509,6 +509,91 @@ namespace Google.Apis.CloudRetail.v2alpha
                             }
                         }
 
+                        /// <summary>
+                        /// Updates local inventory information for a Product at a list of places, while respecting the
+                        /// last update timestamps of each inventory field. This process is asynchronous and does not
+                        /// require the Product to exist before updating inventory information. If the request is valid,
+                        /// the update will be enqueued and processed downstream. As a consequence, when a response is
+                        /// returned, updates are not immediately manifested in the Product queried by GetProduct or
+                        /// ListProducts. Store inventory information can only be modified using this method.
+                        /// CreateProduct and UpdateProduct has no effect on local inventories. This feature is only
+                        /// available for users who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact Cloud sales if you are interested in
+                        /// using Retail Search.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="product">
+                        /// Required. Full resource name of Product, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
+                        /// If the caller does not have permission to access the Product, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned.
+                        /// </param>
+                        public virtual AddLocalInventoriesRequest AddLocalInventories(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAddLocalInventoriesRequest body, string product)
+                        {
+                            return new AddLocalInventoriesRequest(service, body, product);
+                        }
+
+                        /// <summary>
+                        /// Updates local inventory information for a Product at a list of places, while respecting the
+                        /// last update timestamps of each inventory field. This process is asynchronous and does not
+                        /// require the Product to exist before updating inventory information. If the request is valid,
+                        /// the update will be enqueued and processed downstream. As a consequence, when a response is
+                        /// returned, updates are not immediately manifested in the Product queried by GetProduct or
+                        /// ListProducts. Store inventory information can only be modified using this method.
+                        /// CreateProduct and UpdateProduct has no effect on local inventories. This feature is only
+                        /// available for users who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact Cloud sales if you are interested in
+                        /// using Retail Search.
+                        /// </summary>
+                        public class AddLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new AddLocalInventories request.</summary>
+                            public AddLocalInventoriesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAddLocalInventoriesRequest body, string product) : base(service)
+                            {
+                                Product = product;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of Product, such as
+                            /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
+                            /// If the caller does not have permission to access the Product, regardless of whether or
+                            /// not it exists, a PERMISSION_DENIED error is returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("product", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Product { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAddLocalInventoriesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "addLocalInventories";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2alpha/{+product}:addLocalInventories";
+
+                            /// <summary>Initializes AddLocalInventories parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("product", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "product",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+/products/.*$",
+                                });
+                            }
+                        }
+
                         /// <summary>Creates a Product.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -1081,6 +1166,87 @@ namespace Google.Apis.CloudRetail.v2alpha
                             public override string RestPath => "v2alpha/{+product}:removeFulfillmentPlaces";
 
                             /// <summary>Initializes RemoveFulfillmentPlaces parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("product", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "product",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+/products/.*$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Remove local inventory information for a Product at a list of places at a removal timestamp.
+                        /// This process is asynchronous. If the request is valid, the removal will be enqueued and
+                        /// processed downstream. As a consequence, when a response is returned, removals are not
+                        /// immediately manifested in the Product queried by GetProduct or ListProducts. Store inventory
+                        /// information can only be removed using this method. CreateProduct and UpdateProduct has no
+                        /// effect on local inventories. This feature is only available for users who have Retail Search
+                        /// enabled. Please submit a form [here](https://cloud.google.com/contact) to contact Cloud
+                        /// sales if you are interested in using Retail Search.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="product">
+                        /// Required. Full resource name of Product, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
+                        /// If the caller does not have permission to access the Product, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned.
+                        /// </param>
+                        public virtual RemoveLocalInventoriesRequest RemoveLocalInventories(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest body, string product)
+                        {
+                            return new RemoveLocalInventoriesRequest(service, body, product);
+                        }
+
+                        /// <summary>
+                        /// Remove local inventory information for a Product at a list of places at a removal timestamp.
+                        /// This process is asynchronous. If the request is valid, the removal will be enqueued and
+                        /// processed downstream. As a consequence, when a response is returned, removals are not
+                        /// immediately manifested in the Product queried by GetProduct or ListProducts. Store inventory
+                        /// information can only be removed using this method. CreateProduct and UpdateProduct has no
+                        /// effect on local inventories. This feature is only available for users who have Retail Search
+                        /// enabled. Please submit a form [here](https://cloud.google.com/contact) to contact Cloud
+                        /// sales if you are interested in using Retail Search.
+                        /// </summary>
+                        public class RemoveLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new RemoveLocalInventories request.</summary>
+                            public RemoveLocalInventoriesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest body, string product) : base(service)
+                            {
+                                Product = product;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of Product, such as
+                            /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
+                            /// If the caller does not have permission to access the Product, regardless of whether or
+                            /// not it exists, a PERMISSION_DENIED error is returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("product", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Product { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "removeLocalInventories";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2alpha/{+product}:removeLocalInventories";
+
+                            /// <summary>Initializes RemoveLocalInventories parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -2034,9 +2200,9 @@ namespace Google.Apis.CloudRetail.v2alpha
 
                     /// <summary>
                     /// The device type context for completion suggestions. It is useful to apply different suggestions
-                    /// on different device types, e.g. DESKTOP, MOBILE. If it is empty, the suggestions are across all
-                    /// device types. Supported formats: * UNKNOWN_DEVICE_TYPE * DESKTOP * MOBILE * A customized string
-                    /// starts with OTHER_, e.g. OTHER_IPHONE.
+                    /// on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across
+                    /// all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A
+                    /// customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("deviceType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DeviceType { get; set; }
@@ -3059,7 +3225,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Required. The IDs for this type, such as the store IDs for "pickup-in-store" or the region IDs for
         /// "same-day-delivery" to be added for this type. Duplicate IDs will be automatically ignored. At least 1 value
         /// is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10
-        /// characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an
+        /// characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an
         /// INVALID_ARGUMENT error is returned. If the total number of place IDs exceeds 2000 for this type after
         /// adding, then the update will be rejected.
         /// </summary>
@@ -3085,6 +3251,66 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// from the AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the AddLocalInventories operation. Currently empty because there is no
+    /// meaningful metadata populated from the AddLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaAddLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AddLocalInventories method.</summary>
+    public class GoogleCloudRetailV2alphaAddLocalInventoriesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates which inventory fields in the provided list of LocalInventory to update. The field is updated to
+        /// the provided value. If a field is set while the place does not have a previous local inventory, the local
+        /// inventory at that store is created. If a field is set while the value of that field is not provided, the
+        /// original field value, if it exists, is deleted. If the mask is not set or set with empty paths, all
+        /// inventory fields will be updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
+        /// is returned and the entire update will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addMask")]
+        public virtual object AddMask { get; set; }
+
+        /// <summary>
+        /// The time when the inventory updates are issued. Used to prevent out-of-order updates on local inventory
+        /// fields. If not provided, the internal system time will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addTime")]
+        public virtual object AddTime { get; set; }
+
+        /// <summary>
+        /// If set to true, and the Product is not found, the local inventory will still be processed and retained for
+        /// at most 1 day and processed once the Product is created. If set to false, an INVALID_ARGUMENT error is
+        /// returned if the Product is not found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Required. A list of inventory information at difference places. Each place is identified by its place ID. At
+        /// most 1000 inventories are allowed per request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localInventories")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaLocalInventory> LocalInventories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the AddLocalInventories API. Currently empty because there is no meaningful response populated from
+    /// the AddLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaAddLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3441,7 +3667,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for
         /// FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string
-        /// with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2".
+        /// with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2".
         /// Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeIds")]
@@ -3659,7 +3885,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Unique identifier provided by client, within the ancestor dataset scope. Ensures idempotency and used for
         /// request deduplication. Server-generated if unspecified. Up to 128 characters long and must match the
-        /// pattern: "[a-zA-Z0-9_]+". This is returned as Operation.name in ImportMetadata. Only supported when
+        /// pattern: `[a-zA-Z0-9_]+`. This is returned as Operation.name in ImportMetadata. Only supported when
         /// ImportProductsRequest.reconciliation_mode is set to `FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
@@ -3795,6 +4021,34 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inventory information at a place (e.g. a store) identified by a place ID.</summary>
+    public class GoogleCloudRetailV2alphaLocalInventory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional local inventory attributes, for example, store name, promotion tags, etc. * At most 5 values are
+        /// allowed. Otherwise, an INVALID_ARGUMENT error is returned. * The key must be a UTF-8 encoded string with a
+        /// length limit of 10 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or
+        /// KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * The max number of
+        /// values per attribute is 10. * For text values, the length limit is 10 UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCustomAttribute> Attributes { get; set; }
+
+        /// <summary>The place ID for the current set of inventory information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
+
+        /// <summary>
+        /// Product price and cost information. Google Merchant Center property
+        /// [price](https://support.google.com/merchants/answer/6324371).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceInfo")]
+        public virtual GoogleCloudRetailV2alphaPriceInfo PriceInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4076,7 +4330,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field
         /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200.
         /// * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute,
-        /// the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+        /// the key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCustomAttribute> Attributes { get; set; }
@@ -4472,7 +4726,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length
-        /// limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS.
+        /// limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS.
         /// Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
         /// [promotion](https://support.google.com/merchants/answer/7050148).
         /// </summary>
@@ -4656,7 +4910,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Required. The IDs for this type, such as the store IDs for "pickup-in-store" or the region IDs for
         /// "same-day-delivery", to be removed for this type. At least 1 value is required, and a maximum of 2000 values
         /// are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern
-        /// [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+        /// `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeIds")]
         public virtual System.Collections.Generic.IList<string> PlaceIds { get; set; }
@@ -4687,6 +4941,55 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// populated from the RemoveFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the RemoveLocalInventories operation. Currently empty because there is no
+    /// meaningful metadata populated from the RemoveLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for RemoveLocalInventories method.</summary>
+    public class GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set to true, and the Product is not found, the local inventory removal request will still be processed
+        /// and retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error
+        /// is returned if the Product is not found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Required. A list of place IDs to have their inventory deleted. At most 1000 place IDs are allowed per
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeIds")]
+        public virtual System.Collections.Generic.IList<string> PlaceIds { get; set; }
+
+        /// <summary>
+        /// The time when the inventory deletions are issued. Used to prevent out-of-order updates and deletions on
+        /// local inventory fields. If not provided, the internal system time will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeTime")]
+        public virtual object RemoveTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the RemoveLocalInventories API. Currently empty because there is no meaningful response populated
+    /// from the RemoveLocalInventories method.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

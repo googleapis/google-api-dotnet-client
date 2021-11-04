@@ -3331,8 +3331,9 @@ namespace Google.Apis.Vault.v1.Data
         public virtual System.Nullable<long> MatchingAccountsCount { get; set; }
 
         /// <summary>
-        /// When **DataScope** is **HELD_DATA**, the number of accounts in the request that are not queried because they
-        /// are not on hold. For other data scopes, this field is not set.
+        /// When **DataScope** is **HELD_DATA** and when account emails are passed in explicitly, the list of accounts
+        /// in the request that are not queried because they are not on hold in the matter. For other data scopes, this
+        /// field is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonQueryableAccounts")]
         public virtual System.Collections.Generic.IList<string> NonQueryableAccounts { get; set; }

@@ -3322,7 +3322,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
 
         /// <summary>
         /// State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the
-        /// regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.
+        /// regex `/^a-z0-9{0,62}$/`. Values must match the regex `/^[a-zA-Z0-9_./-]{0,255}$/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
@@ -3337,7 +3337,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
 
         /// <summary>
         /// State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the
-        /// regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.
+        /// regex `/^a-z0-9{0,62}$/`. Values must match the regex `/^[a-zA-Z0-9_./-]{0,255}$/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
@@ -3352,7 +3352,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
 
         /// <summary>
         /// State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the
-        /// regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.
+        /// regex `/^a-z0-9{0,62}$/`. Values must match the regex `/^[a-zA-Z0-9_./-]{0,255}$/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
@@ -3383,11 +3383,11 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>
         /// Set of filters to apply if `path` refers to array elements or nested array elements in order to narrow down
         /// to a single unique element that is being tested/modified. This is intended to be an exact match per filter.
-        /// To perform advanced matching, use path_value_matchers. * Example: { "/versions/*/name" : "it-123"
-        /// "/versions/*/targetSize/percent": 20 } * Example: { "/bindings/*/role": "roles/owner"
-        /// "/bindings/*/condition" : null } * Example: { "/bindings/*/role": "roles/owner" "/bindings/*/members/*" :
-        /// ["x@example.com", "y@example.com"] } When both path_filters and path_value_matchers are set, an implicit AND
-        /// must be performed.
+        /// To perform advanced matching, use path_value_matchers. * Example: ``` { "/versions/*/name" : "it-123"
+        /// "/versions/*/targetSize/percent": 20 } ``` * Example: ``` { "/bindings/*/role": "roles/owner"
+        /// "/bindings/*/condition" : null } ``` * Example: ``` { "/bindings/*/role": "roles/owner"
+        /// "/bindings/*/members/*" : ["x@example.com", "y@example.com"] } ``` When both path_filters and
+        /// path_value_matchers are set, an implicit AND must be performed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
         public virtual System.Collections.Generic.IDictionary<string, object> PathFilters { get; set; }
@@ -3523,6 +3523,14 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Information for state. Contains state and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
         public virtual GoogleCloudRecommenderV1beta1RecommendationStateInfo StateInfo { get; set; }
+
+        /// <summary>
+        /// Corresponds to a mutually exclusive group ID within a recommender. A non-empty ID indicates that the
+        /// recommendation belongs to a mutually exclusive group. This means that only one recommendation within the
+        /// group is suggested to be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xorGroupId")]
+        public virtual string XorGroupId { get; set; }
     }
 
     /// <summary>Contains what resources are changing and how they are changing.</summary>

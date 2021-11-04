@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Admin.Directory.directory_v1 Client Library</Title>
-    <Version>1.55.0.2490</Version>
+    <Version>1.55.0.2497</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

@@ -1240,6 +1240,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Output Only. Specifies the type of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionType")]
+        public virtual string PromotionType { get; set; }
+
         /// <summary>
         /// Output only. 2-letter ISO region code where the promotion is available in. Ex. "US" Please refers to:
         /// https://en.wikipedia.org/wiki/ISO_3166-1
