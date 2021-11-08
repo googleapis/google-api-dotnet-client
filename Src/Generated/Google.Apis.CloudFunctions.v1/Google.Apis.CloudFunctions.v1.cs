@@ -1447,7 +1447,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
 
     /// <summary>
     /// Describes a Cloud Function that contains user computation executed in response to an event. It encapsulate
-    /// function and triggers configurations. Next tag: 35
+    /// function and triggers configurations. Next tag: 36
     /// </summary>
     public class CloudFunction : Google.Apis.Requests.IDirectResponseSchema
     {

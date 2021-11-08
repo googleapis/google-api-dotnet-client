@@ -4915,7 +4915,7 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>
         /// Specific type of the event. Read-only. Possible values are:   - "default" - A regular event or not further
-        /// specified.  - "outOfOffice" - An out-of-office event.  - "focusTime" - A focus-time event.
+        /// specified.  - "outOfOffice" - An out-of-office event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }

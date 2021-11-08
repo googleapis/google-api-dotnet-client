@@ -3495,6 +3495,13 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>
+        /// Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left
+        /// blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryptionKey")]
+        public virtual string CustomerManagedEncryptionKey { get; set; }
+
         /// <summary>Required. Destination connection profile configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConfig")]
         public virtual DestinationConfig DestinationConfig { get; set; }
