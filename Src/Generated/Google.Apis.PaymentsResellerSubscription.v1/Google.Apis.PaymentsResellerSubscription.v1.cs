@@ -1234,6 +1234,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration FreeTrialDuration { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the introductory pricing details when the promotion_type is
+        /// PROMOTION_TYPE_INTRODUCTORY_PRICING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricingDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails IntroductoryPricingDetails { get; set; }
+
+        /// <summary>
         /// Output only. Response only. Resource name of the subscription promotion. It will have the format of
         /// "partners/{partner_id}/promotion/{promotion_id}"
         /// </summary>
@@ -1260,6 +1267,28 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. Localized human readable name of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titles")]
         public virtual System.Collections.Generic.IList<GoogleTypeLocalizedText> Titles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of a introductory pricing promotion.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the introductory pricing periods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricingSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec> IntroductoryPricingSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The duration of an introductory pricing promotion.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Output Only. The duration of an introductory offer in billing cycles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrenceCount")]
+        public virtual System.Nullable<int> RecurrenceCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

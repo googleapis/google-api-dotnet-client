@@ -2616,6 +2616,122 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                 }
             }
         }
+
+        /// <summary>Retrieves the Settings for the Project</summary>
+        /// <param name="name">Required. The name of the projectSettings resource.</param>
+        public virtual GetProjectSettingsRequest GetProjectSettings(string name)
+        {
+            return new GetProjectSettingsRequest(service, name);
+        }
+
+        /// <summary>Retrieves the Settings for the Project</summary>
+        public class GetProjectSettingsRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta2.Data.ProjectSettings>
+        {
+            /// <summary>Constructs a new GetProjectSettings request.</summary>
+            public GetProjectSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the projectSettings resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getProjectSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetProjectSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/projectSettings$",
+                });
+            }
+        }
+
+        /// <summary>Retrieves the Settings for the Project</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update
+        /// request: never set In response: always set
+        /// </param>
+        public virtual UpdateProjectSettingsRequest UpdateProjectSettings(Google.Apis.ArtifactRegistry.v1beta2.Data.ProjectSettings body, string name)
+        {
+            return new UpdateProjectSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Retrieves the Settings for the Project</summary>
+        public class UpdateProjectSettingsRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta2.Data.ProjectSettings>
+        {
+            /// <summary>Constructs a new UpdateProjectSettings request.</summary>
+            public UpdateProjectSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1beta2.Data.ProjectSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update
+            /// request: never set In response: always set
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Field mask to support partial updates.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ArtifactRegistry.v1beta2.Data.ProjectSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateProjectSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes UpdateProjectSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/projectSettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.ArtifactRegistry.v1beta2.Data
@@ -3204,6 +3320,24 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>The Artifact Registry settings that apply to a Project.</summary>
+    public class ProjectSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The redirection state of the legacy repositories in this project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyRedirectionState")]
+        public virtual string LegacyRedirectionState { get; set; }
+
+        /// <summary>
+        /// The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update
+        /// request: never set In response: always set
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>A Repository for storing artifacts with a specific format.</summary>

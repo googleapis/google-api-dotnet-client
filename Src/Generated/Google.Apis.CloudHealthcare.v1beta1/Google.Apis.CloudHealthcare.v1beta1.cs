@@ -16136,11 +16136,38 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class ValidationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming
+        /// resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only
+        /// affects resource types that do not have profiles configured for them, any rules in enabled implementation
+        /// guides will still be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableFhirpathValidation")]
+        public virtual System.Nullable<bool> DisableFhirpathValidation { get; set; }
+
+        /// <summary>
         /// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming
         /// resources for conformance against StructureDefinitions in this FHIR store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableProfileValidation")]
         public virtual System.Nullable<bool> DisableProfileValidation { get; set; }
+
+        /// <summary>
+        /// Whether to disable reference type validation for incoming resources. Set this to true to disable checking
+        /// incoming resources for conformance against reference type requirement defined in the FHIR specification.
+        /// This property only affects resource types that do not have profiles configured for them, any rules in
+        /// enabled implementation guides will still be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableReferenceTypeValidation")]
+        public virtual System.Nullable<bool> DisableReferenceTypeValidation { get; set; }
+
+        /// <summary>
+        /// Whether to disable required fields validation for incoming resources. Set this to true to disable checking
+        /// incoming resources for conformance against required fields requirement defined in the FHIR specification.
+        /// This property only affects resource types that do not have profiles configured for them, any rules in
+        /// enabled implementation guides will still be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableRequiredFieldValidation")]
+        public virtual System.Nullable<bool> DisableRequiredFieldValidation { get; set; }
 
         /// <summary>
         /// A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for

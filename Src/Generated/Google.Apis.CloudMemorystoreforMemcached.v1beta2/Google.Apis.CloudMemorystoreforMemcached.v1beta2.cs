@@ -1849,7 +1849,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
-        /// <summary>Optional: User defined parameters to apply to the memcached process on each node.</summary>
+        /// <summary>User defined parameters to apply to the memcached process on each node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual MemcacheParameters Parameters { get; set; }
 
@@ -2054,14 +2054,13 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters
-    /// associated with the instance differ from the parameters associated with the nodes. A discrepancy between
-    /// parameter ids can inform users that they may need to take action to apply parameters on nodes.
-    /// </summary>
     public class MemcacheParameters : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only.</summary>
+        /// <summary>
+        /// Output only. The unique ID associated with this set of parameters. Users can use this id to determine if the
+        /// parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy
+        /// between parameter ids can inform users that they may need to take action to apply parameters on nodes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
