@@ -6378,6 +6378,12 @@ namespace Google.Apis.Drive.v3.Data
         public class CapabilitiesData
         {
             /// <summary>
+            /// Whether the current user is the pending owner of the file. Not populated for shared drive files.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAcceptOwnership")]
+            public virtual System.Nullable<bool> CanAcceptOwnership { get; set; }
+
+            /// <summary>
             /// Whether the current user can add children to this folder. This is always false when the item is not a
             /// folder.
             /// </summary>
@@ -6882,6 +6888,13 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#permission".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Whether the account associated with this permission is a pending owner. Only populated for user type
+        /// permissions for files that are not in a shared drive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingOwner")]
+        public virtual System.Nullable<bool> PendingOwner { get; set; }
 
         /// <summary>
         /// Details of whether the permissions on this shared drive item are inherited or directly on this item. This is

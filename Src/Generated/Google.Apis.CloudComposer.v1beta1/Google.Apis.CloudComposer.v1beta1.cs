@@ -1221,6 +1221,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CidrBlock contains an optional name and one CIDR block.</summary>
+    public class CidrBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>cidr_block must be specified in CIDR notation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrBlock")]
+        public virtual string CidrBlockValue { get; set; }
+
+        /// <summary>display_name is a field for users to identify CIDR blocks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud
     /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1396,6 +1411,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration options for GKE clusters master authorized networks. By default master
+        /// authorized networks feature is: - in case of private environment: enabled with no external networks
+        /// allowlisted. - in case of public environment: disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
+        public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>The configuration used for the Kubernetes Engine cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
@@ -1579,8 +1602,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     }
 
     /// <summary>
-    /// The configuration settings for Cloud Composer maintenance window. The following example: {
-    /// "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }
+    /// The configuration settings for Cloud Composer maintenance window. The following example: ``` {
+    /// "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ```
     /// would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
     /// </summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
@@ -1603,6 +1626,27 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Required. Start time of the first recurrence of the maintenance window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration options for the master authorized networks feature. Enabled master authorized networks will
+    /// disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR
+    /// blocks, Google Compute Engine Public IPs and Google Prod IPs.
+    /// </summary>
+    public class MasterAuthorizedNetworksConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrBlocks")]
+        public virtual System.Collections.Generic.IList<CidrBlock> CidrBlocks { get; set; }
+
+        /// <summary>Whether or not master authorized networks is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

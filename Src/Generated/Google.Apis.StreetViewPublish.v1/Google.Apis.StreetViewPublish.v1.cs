@@ -726,7 +726,7 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
             /// <summary>
-            /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+            /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
             /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
             /// user's language preference for Google services is used.
             /// </summary>

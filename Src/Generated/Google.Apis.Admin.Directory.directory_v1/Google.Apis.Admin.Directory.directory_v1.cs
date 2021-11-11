@@ -1093,7 +1093,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>
-            /// Search string in the format given at http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
+            /// Search string in the format given at
+            /// https://developers.google.com/admin-sdk/directory/v1/list-query-operators
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }

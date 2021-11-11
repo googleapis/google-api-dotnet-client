@@ -878,12 +878,12 @@ namespace Google.Apis.CloudResourceManager.v3
             /// all accessible folders will be returned. Query expressions can be used to restrict results based upon
             /// displayName, state and parent, where the operators `=` (`:`) `NOT`, `AND` and `OR` can be used along
             /// with the suffix wildcard symbol `*`. The `displayName` field in a query expression should use escaped
-            /// quotes for values that include whitespace to prevent unexpected behavior. | Field | Description |
+            /// quotes for values that include whitespace to prevent unexpected behavior. ``` | Field | Description |
             /// |-------------------------|----------------------------------------| | displayName | Filters by
             /// displayName. | | parent | Filters by parent (for example: folders/123). | | state, lifecycleState |
-            /// Filters by state. | Some example queries are: * Query `displayName=Test*` returns Folder resources whose
-            /// display name starts with "Test". * Query `state=ACTIVE` returns Folder resources with `state` set to
-            /// `ACTIVE`. * Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent
+            /// Filters by state. | ``` Some example queries are: * Query `displayName=Test*` returns Folder resources
+            /// whose display name starts with "Test". * Query `state=ACTIVE` returns Folder resources with `state` set
+            /// to `ACTIVE`. * Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent
             /// resource. * Query `parent=folders/123 AND state=ACTIVE` returns active Folder resources that have
             /// `folders/123` as a parent resource. * Query `displayName=\\"Test String\\"` returns Folder resources
             /// with display names that include both "Test" and "String".
@@ -1624,9 +1624,9 @@ namespace Google.Apis.CloudResourceManager.v3
 
             /// <summary>
             /// Optional. An optional query string used to filter the Organizations to return in the response. Query
-            /// rules are case-insensitive. | Field | Description |
+            /// rules are case-insensitive. ``` | Field | Description |
             /// |------------------|--------------------------------------------| | directoryCustomerId,
-            /// owner.directoryCustomerId | Filters by directory customer id. | | domain | Filters by domain. |
+            /// owner.directoryCustomerId | Filters by directory customer id. | | domain | Filters by domain. | ```
             /// Organizations may be queried by `directoryCustomerId` or by `domain`, where the domain is a G Suite
             /// domain, for example: * Query `directorycustomerid:123456789` returns Organization resources with
             /// `owner.directory_customer_id` equal to `123456789`. * Query `domain:google.com` returns Organization
@@ -2345,20 +2345,20 @@ namespace Google.Apis.CloudResourceManager.v3
             /// <summary>
             /// Optional. A query string for searching for projects that the caller has `resourcemanager.projects.get`
             /// permission to. If multiple fields are included in the query, the it will return results that match any
-            /// of the fields. Some eligible fields are: | Field | Description |
+            /// of the fields. Some eligible fields are: ``` | Field | Description |
             /// |-------------------------|----------------------------------------------| | displayName, name | Filters
             /// by displayName. | | parent | Project's parent (for example: folders/123, organizations/*). Prefer parent
             /// field over parent.type and parent.id.| | parent.type | Parent's type: `folder` or `organization`. | |
             /// parent.id | Parent's id number (for example: 123) | | id, projectId | Filters by projectId. | | state,
             /// lifecycleState | Filters by state. | | labels | Filters by label name or value. | | labels.\ (where
-            /// *key* is the name of a label) | Filters by label name.| Search expressions are case insensitive. Some
-            /// examples queries: | Query | Description |
+            /// *key* is the name of a label) | Filters by label name.| ``` Search expressions are case insensitive.
+            /// Some examples queries: ``` | Query | Description |
             /// |------------------|-----------------------------------------------------| | name:how* | The project's
             /// name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL |
             /// Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label
             /// `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red
             /// labels.size:big | The project's label `color` has the value `red` and its label `size` has the value
-            /// `big`.| If no query is specified, the call will return projects for which the user has the
+            /// `big`.| ``` If no query is specified, the call will return projects for which the user has the
             /// `resourcemanager.projects.get` permission.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
@@ -4204,8 +4204,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// LINT.IfChange A status object which is used as the `metadata` field for the operation returned by
-    /// DeleteOrganization.
+    /// A status object which is used as the `metadata` field for the operation returned by DeleteOrganization.
     /// </summary>
     public class DeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4408,11 +4407,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
-        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
-        /// which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+        /// Requests specifying an invalid value will be rejected. Requests for policies with any conditional role
+        /// bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or
+        /// leave the field unset. The policy in the response might use the policy version that you specified, or it
+        /// might use a lower policy version. For example, if you specify version 3, but the policy has no conditional
+        /// role bindings, the response uses version 1. To learn which resources support conditions in their IAM
+        /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
@@ -5184,8 +5185,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// LINT.IfChange A status object which is used as the `metadata` field for the Operation returned by
-    /// UndeleteOrganization.
+    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteOrganization.
     /// </summary>
     public class UndeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

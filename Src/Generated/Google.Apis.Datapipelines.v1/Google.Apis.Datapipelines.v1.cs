@@ -1212,6 +1212,13 @@ namespace Google.Apis.Datapipelines.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Immutable. The sources of the pipeline (for example, Dataplex). The keys and values are set by the
+        /// corresponding sources during pipeline creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineSources")]
+        public virtual System.Collections.Generic.IDictionary<string, string> PipelineSources { get; set; }
+
+        /// <summary>
         /// Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be
         /// created per the schedule. If not, users are responsible for creating jobs externally.
         /// </summary>

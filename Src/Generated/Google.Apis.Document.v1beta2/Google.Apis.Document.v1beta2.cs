@@ -757,6 +757,29 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The destination dataset split type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destDatasetType")]
+        public virtual string DestDatasetType { get; set; }
+
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualBatchMoveStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus> IndividualBatchMoveStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the batch move process.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The document id of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
+
+        /// <summary>The status of moving the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -877,6 +900,35 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Document Identifier.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
+
+        /// <summary>Points to a specific revision of the document if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionReference")]
+        public virtual GoogleCloudDocumentaiUiv1beta3RevisionReference RevisionReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a document uniquely within the scope of a dataset in the GCS-based option.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Id of the document (indexed) managed by Content Warehouse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
+        public virtual string CwDocId { get; set; }
+
+        /// <summary>Required. The Cloud Storage uri where the actual document is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for enable processor method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -948,6 +1000,31 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualImportStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus> IndividualImportStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the import process.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source Cloud Storage URI of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
+        public virtual string InputGcsSource { get; set; }
+
+        /// <summary>
+        /// The output_gcs_destination of the processed document if it was successful, otherwise empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
+        public virtual string OutputGcsDestination { get; set; }
+
+        /// <summary>The status of the importing of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -955,6 +1032,25 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Response of the import document operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The revision reference specifies which revision on the document to read.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3RevisionReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Read the revision generated by the processor version, returns error if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestProcessorVersion")]
+        public virtual string LatestProcessorVersion { get; set; }
+
+        /// <summary>Read the revision by the predefined case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionCase")]
+        public virtual string RevisionCase { get; set; }
+
+        /// <summary>Read the revision given by the id, returns error if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

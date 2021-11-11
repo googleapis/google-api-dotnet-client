@@ -20348,10 +20348,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>
         /// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as
         /// the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow
-        /// API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment
-        /// is not specified, the default `draft` environment is used. Refer to
+        /// API Service Agent` role in this project. - For ES agents, use format:
+        /// `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment
+        /// is used. Refer to
         /// [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest)
-        /// for more details.
+        /// for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment
+        /// is not specified, the default `draft` environment is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
@@ -20727,8 +20729,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfig HumanAgentHandoffConfig { get; set; }
 
         /// <summary>
-        /// Language which represents the conversationProfile. If unspecified, the default language code en-us applies.
-        /// Users need to create a ConversationProfile for each language they want to support.
+        /// Language code for the conversation profile. If not specified, the language is en-US. Language at
+        /// ConversationProfile should be set for all non en-US languages. This should be a
+        /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -20753,9 +20756,22 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual GoogleCloudDialogflowV2NotificationConfig NotificationConfig { get; set; }
 
+        /// <summary>
+        /// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securitySettings")]
+        public virtual string SecuritySettings { get; set; }
+
         /// <summary>Settings for speech transcription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sttConfig")]
         public virtual GoogleCloudDialogflowV2SpeechToTextConfig SttConfig { get; set; }
+
+        /// <summary>
+        /// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones),
+        /// e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>Output only. Update time of the conversation profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -21456,7 +21472,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by
         /// starting from a very low value and slowly increasing until you have desired results. If this field is not
         /// set, it defaults to 0.0, which means that all suggestions are returned. Supported features:
-        /// ARTICLE_SUGGESTION.
+        /// ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
         public virtual System.Nullable<float> ConfidenceThreshold { get; set; }

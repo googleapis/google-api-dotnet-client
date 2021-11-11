@@ -1366,8 +1366,7 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     }
 
     /// <summary>
-    /// LINT.IfChange A status object which is used as the `metadata` field for the operation returned by
-    /// DeleteOrganization.
+    /// A status object which is used as the `metadata` field for the operation returned by DeleteOrganization.
     /// </summary>
     public class DeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1546,11 +1545,13 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
-        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
-        /// which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+        /// Requests specifying an invalid value will be rejected. Requests for policies with any conditional role
+        /// bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or
+        /// leave the field unset. The policy in the response might use the policy version that you specified, or it
+        /// might use a lower policy version. For example, if you specify version 3, but the policy has no conditional
+        /// role bindings, the response uses version 1. To learn which resources support conditions in their IAM
+        /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
@@ -1907,8 +1908,7 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     }
 
     /// <summary>
-    /// LINT.IfChange A status object which is used as the `metadata` field for the Operation returned by
-    /// UndeleteOrganization.
+    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteOrganization.
     /// </summary>
     public class UndeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

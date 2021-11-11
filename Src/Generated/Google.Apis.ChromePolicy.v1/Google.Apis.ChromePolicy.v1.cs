@@ -894,6 +894,24 @@ namespace Google.Apis.ChromePolicy.v1
 }
 namespace Google.Apis.ChromePolicy.v1.Data
 {
+    public class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description about current life cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>End supporting date for current policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endSupport")]
+        public virtual GoogleTypeDate EndSupport { get; set; }
+
+        /// <summary>Indicate current life cycle stage of the policy API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycleStage")]
+        public virtual string PolicyApiLifecycleStage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Additional key names that will be used to identify the target of the policy value.</summary>
     public class GoogleChromePolicyV1AdditionalTargetKeyName : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1009,7 +1027,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource representing a policy schema. Next ID: 11</summary>
+    /// <summary>Resource representing a policy schema. Next ID: 12</summary>
     public class GoogleChromePolicyV1PolicySchema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Specific access restrictions related to this policy.</summary>
@@ -1041,6 +1059,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notices")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaNoticeDescription> Notices { get; set; }
+
+        /// <summary>Output only. Current life cycle information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifeycle")]
+        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifeycle { get; set; }
 
         /// <summary>Output only. Description about the policy schema for user consumption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDescription")]
@@ -1305,6 +1327,35 @@ namespace Google.Apis.ChromePolicy.v1.Data
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

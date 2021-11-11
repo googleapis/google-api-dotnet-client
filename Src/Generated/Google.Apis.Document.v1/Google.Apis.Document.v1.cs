@@ -2370,6 +2370,29 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The destination dataset split type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destDatasetType")]
+        public virtual string DestDatasetType { get; set; }
+
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualBatchMoveStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus> IndividualBatchMoveStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the batch move process.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The document id of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
+
+        /// <summary>The status of moving the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2490,6 +2513,35 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Document Identifier.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
+
+        /// <summary>Points to a specific revision of the document if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionReference")]
+        public virtual GoogleCloudDocumentaiUiv1beta3RevisionReference RevisionReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a document uniquely within the scope of a dataset in the GCS-based option.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Id of the document (indexed) managed by Content Warehouse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
+        public virtual string CwDocId { get; set; }
+
+        /// <summary>Required. The Cloud Storage uri where the actual document is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for enable processor method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2561,6 +2613,31 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualImportStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus> IndividualImportStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the import process.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source Cloud Storage URI of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
+        public virtual string InputGcsSource { get; set; }
+
+        /// <summary>
+        /// The output_gcs_destination of the processed document if it was successful, otherwise empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
+        public virtual string OutputGcsDestination { get; set; }
+
+        /// <summary>The status of the importing of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2568,6 +2645,25 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Response of the import document operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The revision reference specifies which revision on the document to read.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3RevisionReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Read the revision generated by the processor version, returns error if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestProcessorVersion")]
+        public virtual string LatestProcessorVersion { get; set; }
+
+        /// <summary>Read the revision by the predefined case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionCase")]
+        public virtual string RevisionCase { get; set; }
+
+        /// <summary>Read the revision given by the id, returns error if it does not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3890,68 +3986,6 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
-    public class GoogleCloudDocumentaiV1EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The calculated f1 score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
-        public virtual System.Nullable<float> F1Score { get; set; }
-
-        /// <summary>The amount of false negatives.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("falseNegativesCount")]
-        public virtual System.Nullable<int> FalseNegativesCount { get; set; }
-
-        /// <summary>The amount of false positives.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("falsePositivesCount")]
-        public virtual System.Nullable<int> FalsePositivesCount { get; set; }
-
-        /// <summary>The amount of occurrences in ground truth documents.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthOccurrencesCount")]
-        public virtual System.Nullable<int> GroundTruthOccurrencesCount { get; set; }
-
-        /// <summary>The calculated precision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
-        public virtual System.Nullable<float> Precision { get; set; }
-
-        /// <summary>The amount of occurrences in predicted documents.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("predictedOccurrencesCount")]
-        public virtual System.Nullable<int> PredictedOccurrencesCount { get; set; }
-
-        /// <summary>The calculated recall.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
-        public virtual System.Nullable<float> Recall { get; set; }
-
-        /// <summary>The amount of documents that had an occurrence of this label.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentsCount")]
-        public virtual System.Nullable<int> TotalDocumentsCount { get; set; }
-
-        /// <summary>The amount of true positives.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("truePositivesCount")]
-        public virtual System.Nullable<int> TruePositivesCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Gives a short summary of an evaluation, and links to the evaluation itself.</summary>
-    public class GoogleCloudDocumentaiV1EvaluationReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An aggregate of the statistics for the evaluation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetrics")]
-        public virtual GoogleCloudDocumentaiV1EvaluationMetrics AggregateMetrics { get; set; }
-
-        /// <summary>The resource name of the evaluation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
-        public virtual string Evaluation { get; set; }
-
-        /// <summary>The resource name of the Long Running Operation for the evaluation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual string Operation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message for fetch processor types.</summary>
     public class GoogleCloudDocumentaiV1FetchProcessorTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4227,20 +4261,12 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The most recently invoked evaluation for the processor version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
-        public virtual GoogleCloudDocumentaiV1EvaluationReference LatestEvaluation { get; set; }
-
         /// <summary>
         /// The resource name of the processor version. Format:
         /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The schema of the processor version. Describes the output.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual GoogleCloudDocumentaiV1Schema Schema { get; set; }
 
         /// <summary>The state of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -4301,84 +4327,6 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual string GcsDestination { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The schema defines the output of the processed document by a processor.</summary>
-    public class GoogleCloudDocumentaiV1Schema : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of the schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Display name to show to users.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Entity types of the schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1SchemaEntityType> EntityTypes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
-    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
-    /// </summary>
-    public class GoogleCloudDocumentaiV1SchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Type of the entity. It must be one of the following: `document` - the entity represents a classification of
-        /// a logical document. `object` - if the entity has properties it is likely an object (or or a document.)
-        /// `datetime` - the entity is a date or time value. `money` - the entity represents a money value amount.
-        /// `number` - the entity is a number - integer or floating point. `string` - the entity is a string value.
-        /// `boolean` - the entity is a boolean value. `address` - the entity is a location address. `duration` - the
-        /// entity is a duration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
-        public virtual string BaseType { get; set; }
-
-        /// <summary>Description of the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>If specified, lists all the possible values for this entity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
-        public virtual System.Collections.Generic.IList<string> EnumValues { get; set; }
-
-        /// <summary>Occurrence type limits the number of times an entity type appears in the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
-        public virtual string OccurrenceType { get; set; }
-
-        /// <summary>
-        /// Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For
-        /// example, in a document there can be an EntityType 'ID', which consists of EntityType 'name' and 'address',
-        /// with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1SchemaEntityType> Properties { get; set; }
-
-        /// <summary>Source of this entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>
-        /// Name of the type. It must satisfy the following constraints: 1. Must be unique within the set of same level
-        /// types (with case-insensitive match). 2. Maximum 50 characters. 3. Must start with a letter. 4. Allowed
-        /// characters: ASCII letters [a-zA-Z], ASCII digits [0-9], or one of the following punctuation characters: *
-        /// underscore '_' (recommended) * hyphen '-' (allowed, not recommended) * colon ':' (allowed, not recommended)
-        /// NOTE: Whitespace characters are not allowed. 5. Cannot end with a punctuation character. 6. Cannot contain
-        /// the following restricted strings: "google", "DocumentAI" (case-insensitive match). 7. A slash character '/'
-        /// is reserved as a separator in flattened representations of nested entity types (e.g., "line_item/amount") in
-        /// which case each part (e.g., "line_item", "amount") must comply with the rules defined above. We recommend
-        /// using the snake case ("snake_case") in entity type names.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
