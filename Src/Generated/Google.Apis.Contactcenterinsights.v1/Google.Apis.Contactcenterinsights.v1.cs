@@ -664,7 +664,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                     /// <summary>
                     /// A unique ID for the new conversation. This ID will become the final component of the
                     /// conversation's resource name. If no ID is specified, a server-generated ID will be used. This
-                    /// value should be 4-32 characters and must match the regular expression /^[a-z0-9-]{4,32}$/. Valid
+                    /// value should be 4-64 characters and must match the regular expression /^[a-z0-9-]{4,64}$/. Valid
                     /// characters are /a-z-/
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("conversationId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2616,6 +2616,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> IssueMatches { get; set; }
 
         /// <summary>
+        /// A map associating each issue resource name with its respective number of matches in the set of
+        /// conversations. Key has the format: `projects//locations//issueModels//issues/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueMatchesStats")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats> IssueMatchesStats { get; set; }
+
+        /// <summary>
         /// A map associating each smart highlighter display name with its respective number of matches in the set of
         /// conversations.
         /// </summary>
@@ -3554,6 +3561,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Aggregated statistics about an issue.</summary>
     public class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Display name of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
         /// </summary>
@@ -4321,6 +4332,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Aggregated statistics about an issue.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Display name of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
         /// </summary>

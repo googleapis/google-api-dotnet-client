@@ -37,6 +37,7 @@ namespace Google.Apis.CloudAsset.v1
             Assets = new AssetsResource(this);
             Feeds = new FeedsResource(this);
             Operations = new OperationsResource(this);
+            SavedQueries = new SavedQueriesResource(this);
             V1 = new V1Resource(this);
         }
 
@@ -93,6 +94,9 @@ namespace Google.Apis.CloudAsset.v1
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
+
+        /// <summary>Gets the SavedQueries resource.</summary>
+        public virtual SavedQueriesResource SavedQueries { get; }
 
         /// <summary>Gets the V1 resource.</summary>
         public virtual V1Resource V1 { get; }
@@ -843,6 +847,381 @@ namespace Google.Apis.CloudAsset.v1
         }
     }
 
+    /// <summary>The "savedQueries" collection of methods.</summary>
+    public class SavedQueriesResource
+    {
+        private const string Resource = "savedQueries";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SavedQueriesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a saved query in a parent project/folder/organization.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The name of the project/folder/organization where this saved_query should be created in. It can
+        /// only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a
+        /// project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.CloudAsset.v1.Data.SavedQuery body, string parent)
+        {
+            return new CreateRequest(service, body, parent);
+        }
+
+        /// <summary>Creates a saved query in a parent project/folder/organization.</summary>
+        public class CreateRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.SavedQuery>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.SavedQuery body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the project/folder/organization where this saved_query should be created in. It
+            /// can only be an organization number (such as "organizations/123"), a folder number (such as
+            /// "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as
+            /// "projects/12345").
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Required. The ID to use for the saved query, which must be unique in the specified parent. It will
+            /// become the final component of the saved query's resource name. This value should be 4-63 characters, and
+            /// valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the
+            /// `name` field of the `saved_query` will be ignored.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SavedQueryId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1.Data.SavedQuery Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}/savedQueries";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("savedQueryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "savedQueryId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Deletes a saved query.</summary>
+        /// <param name="name">
+        /// Required. The name of the saved query to delete. It must be in the format of: *
+        /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id *
+        /// organizations/organization_number/savedQueries/saved_query_id
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Deletes a saved query.</summary>
+        public class DeleteRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the saved query to delete. It must be in the format of: *
+            /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id
+            /// * organizations/organization_number/savedQueries/saved_query_id
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/savedQueries/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Gets details about a saved query.</summary>
+        /// <param name="name">
+        /// Required. The name of the saved query and it must be in the format of: *
+        /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id *
+        /// organizations/organization_number/savedQueries/saved_query_id
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets details about a saved query.</summary>
+        public class GetRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.SavedQuery>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the saved query and it must be in the format of: *
+            /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id
+            /// * organizations/organization_number/savedQueries/saved_query_id
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/savedQueries/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists all saved queries in a parent project/folder/organization.</summary>
+        /// <param name="parent">
+        /// Required. The parent project/folder/organization whose savedQueries are to be listed. It can only be using
+        /// project/folder/organization number (such as "folders/12345")", or a project ID (such as
+        /// "projects/my-project-id").
+        /// </param>
+        public virtual ListRequest List(string parent)
+        {
+            return new ListRequest(service, parent);
+        }
+
+        /// <summary>Lists all saved queries in a parent project/folder/organization.</summary>
+        public class ListRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.ListSavedQueriesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The parent project/folder/organization whose savedQueries are to be listed. It can only be
+            /// using project/folder/organization number (such as "folders/12345")", or a project ID (such as
+            /// "projects/my-project-id").
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Optional. The expression to filter resources. The expression is a list of zero or more restrictions
+            /// combined via logical operators `AND` and `OR`. When `AND` and `OR` are both used in the expression,
+            /// parentheses must be appropriately used to group the combinations. The expression may also contain
+            /// regular expressions. See https://google.aip.dev/160 for more information on the grammar.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Optional. The maximum number of saved queries to return per page. The service may return fewer than this
+            /// value. If unspecified, at most 50 will be returned. The maximum value is 1000; values above 1000 will be
+            /// coerced to 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous `ListSavedQueries` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListSavedQueries` must match the
+            /// call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}/savedQueries";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates a saved query.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The resource name of the saved query. The format must be: *
+        /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id *
+        /// organizations/organization_number/savedQueries/saved_query_id
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.CloudAsset.v1.Data.SavedQuery body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>Updates a saved query.</summary>
+        public class PatchRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.SavedQuery>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.SavedQuery body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The resource name of the saved query. The format must be: *
+            /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id
+            /// * organizations/organization_number/savedQueries/saved_query_id
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. The list of fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1.Data.SavedQuery Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/savedQueries/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "v1" collection of methods.</summary>
     public class V1Resource
     {
@@ -1001,6 +1380,19 @@ namespace Google.Apis.CloudAsset.v1
             [Google.Apis.Util.RequestParameterAttribute("executionTimeout", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ExecutionTimeout { get; set; }
 
+            /// <summary>
+            /// Optional. The name of a saved query, which must be in the format of: *
+            /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id
+            /// * organizations/organization_number/savedQueries/saved_query_id If both `analysis_query` and
+            /// `saved_analysis_query` are provided, they will be merged together with the `saved_analysis_query` as
+            /// base and the `analysis_query` as overrides. For more details of the merge behavior, please refer to the
+            /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
+            /// page. Note that you cannot override primitive fields with default value, such as 0 or empty string,
+            /// etc., because we use proto3, which doesn't support field presence yet.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("savedAnalysisQuery", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SavedAnalysisQuery { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "analyzeIamPolicy";
 
@@ -1113,6 +1505,14 @@ namespace Google.Apis.CloudAsset.v1
                 RequestParameters.Add("executionTimeout", new Google.Apis.Discovery.Parameter
                 {
                     Name = "executionTimeout",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("savedAnalysisQuery", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "savedAnalysisQuery",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1983,6 +2383,19 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>Required. Output configuration indicating where the results will be output to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual IamPolicyAnalysisOutputConfig OutputConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The name of a saved query, which must be in the format of: *
+        /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id *
+        /// organizations/organization_number/savedQueries/saved_query_id If both `analysis_query` and
+        /// `saved_analysis_query` are provided, they will be merged together with the `saved_analysis_query` as base
+        /// and the `analysis_query` as overrides. For more details of the merge behavior, please refer to the
+        /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
+        /// doc. Note that you cannot override primitive fields with default value, such as 0 or empty string, etc.,
+        /// because we use proto3, which doesn't support field presence yet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedAnalysisQuery")]
+        public virtual string SavedAnalysisQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4199,6 +4612,24 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response of listing saved queries.</summary>
+    public class ListSavedQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of savedQueries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedQueries")]
+        public virtual System.Collections.Generic.IList<SavedQuery> SavedQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A message to group the analysis information.</summary>
     public class MoveAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4522,6 +4953,20 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The query content.</summary>
+    public class QueryContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the
+        /// AssetService.AnalyzeIamPolicyLongrunning rpc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyAnalysisQuery")]
+        public virtual IamPolicyAnalysisQuery IamPolicyAnalysisQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4908,6 +5353,52 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A saved query which can be shared with others or used later.</summary>
+    public class SavedQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The query content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual QueryContent Content { get; set; }
+
+        /// <summary>Output only. The create time of this saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The account's email address who has created this saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
+
+        /// <summary>The description of this saved query. This value should be fewer than 255 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Labels applied on the resource. This value should not contain more than 10 entries. The key and value of
+        /// each entry must be non-empty and fewer than 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The last update time of this saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; }
+
+        /// <summary>Output only. The account's email address who has updated this saved query most recently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdater")]
+        public virtual string LastUpdater { get; set; }
+
+        /// <summary>
+        /// The resource name of the saved query. The format must be: *
+        /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id *
+        /// organizations/organization_number/savedQueries/saved_query_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

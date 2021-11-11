@@ -8362,7 +8362,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string DefaultUri { get; set; }
 
         /// <summary>
-        /// Required. Human-readable display name for the Data Stream. The max allowed display name length is 100 UTF-16
+        /// Required. Human-readable display name for the Data Stream. The max allowed display name length is 255 UTF-16
         /// code units.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]

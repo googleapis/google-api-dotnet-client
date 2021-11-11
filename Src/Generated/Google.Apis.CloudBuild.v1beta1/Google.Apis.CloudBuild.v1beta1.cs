@@ -565,6 +565,13 @@ namespace Google.Apis.CloudBuild.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If this is provided, it must match the server's etag on the workerpool for the request
+                    /// to be processed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -585,6 +592,14 @@ namespace Google.Apis.CloudBuild.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2292,6 +2307,13 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
     /// </summary>
     public class WorkerPool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and
+        /// size limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
         /// <summary>Output only. Time at which the request to create the `WorkerPool` was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -2299,6 +2321,19 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         /// <summary>Output only. Time at which the request to delete the `WorkerPool` was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Checksum computed by the server. May be sent on update and delete requests to ensure that the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the `WorkerPool`, with format
@@ -2317,6 +2352,10 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. A unique identifier for the `WorkerPool`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
         /// <summary>Output only. Time at which the request to update the `WorkerPool` was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -2324,8 +2363,5 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         /// <summary>Worker configuration for the `WorkerPool`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual WorkerConfig WorkerConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 }

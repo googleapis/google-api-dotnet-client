@@ -3071,8 +3071,8 @@ namespace Google.Apis.CloudBuild.v1
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                     /// <summary>
-                    /// Optional. If this is provided, it must match the server's etag on the workerpool for the request
-                    /// to be processed.
+                    /// Optional. If provided, it must match the server's etag on the workerpool for the request to be
+                    /// processed.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -4551,6 +4551,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>If true, the trigger will never automatically execute a build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>
+        /// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should
+        /// respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
 
         /// <summary>Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]

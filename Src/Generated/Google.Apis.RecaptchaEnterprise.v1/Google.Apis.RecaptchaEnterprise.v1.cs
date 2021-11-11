@@ -281,6 +281,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             this.service = service;
             Assessments = new AssessmentsResource(service);
             Keys = new KeysResource(service);
+            Relatedaccountgroupmemberships = new RelatedaccountgroupmembershipsResource(service);
+            Relatedaccountgroups = new RelatedaccountgroupsResource(service);
         }
 
         /// <summary>Gets the Assessments resource.</summary>
@@ -859,10 +861,301 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
             }
         }
+
+        /// <summary>Gets the Relatedaccountgroupmemberships resource.</summary>
+        public virtual RelatedaccountgroupmembershipsResource Relatedaccountgroupmemberships { get; }
+
+        /// <summary>The "relatedaccountgroupmemberships" collection of methods.</summary>
+        public class RelatedaccountgroupmembershipsResource
+        {
+            private const string Resource = "relatedaccountgroupmemberships";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RelatedaccountgroupmembershipsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Search group memberships related to a given account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the project to search related account group memberships from, in the format
+            /// "projects/{project}".
+            /// </param>
+            public virtual SearchRequest Search(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string parent)
+            {
+                return new SearchRequest(service, body, parent);
+            }
+
+            /// <summary>Search group memberships related to a given account.</summary>
+            public class SearchRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>
+            {
+                /// <summary>Constructs a new Search request.</summary>
+                public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project to search related account group memberships from, in the format
+                /// "projects/{project}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "search";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/relatedaccountgroupmemberships:search";
+
+                /// <summary>Initializes Search parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Relatedaccountgroups resource.</summary>
+        public virtual RelatedaccountgroupsResource Relatedaccountgroups { get; }
+
+        /// <summary>The "relatedaccountgroups" collection of methods.</summary>
+        public class RelatedaccountgroupsResource
+        {
+            private const string Resource = "relatedaccountgroups";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RelatedaccountgroupsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Memberships = new MembershipsResource(service);
+            }
+
+            /// <summary>Gets the Memberships resource.</summary>
+            public virtual MembershipsResource Memberships { get; }
+
+            /// <summary>The "memberships" collection of methods.</summary>
+            public class MembershipsResource
+            {
+                private const string Resource = "memberships";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MembershipsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Get the memberships in a group of related accounts.</summary>
+                /// <param name="parent">
+                /// Required. The resource name for the related account group in the format
+                /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Get the memberships in a group of related accounts.</summary>
+                public class ListRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name for the related account group in the format
+                    /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of accounts to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 accounts will be returned. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListRelatedAccountGroupMemberships` call. When
+                    /// paginating, all other parameters provided to `ListRelatedAccountGroupMemberships` must match the
+                    /// call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/memberships";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/relatedaccountgroups/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>List groups of related accounts.</summary>
+            /// <param name="parent">
+            /// Required. The name of the project to list related account groups from, in the format
+            /// "projects/{project}".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List groups of related accounts.</summary>
+            public class ListRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project to list related account groups from, in the format
+                /// "projects/{project}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of groups to return. The service may return fewer than this value. If
+                /// unspecified, at most 50 groups will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListRelatedAccountGroups` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListRelatedAccountGroups` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/relatedaccountgroups";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
     }
 }
 namespace Google.Apis.RecaptchaEnterprise.v1.Data
 {
+    /// <summary>Account Defender risk assessment.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Labels for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings specific to keys that can be used by Android apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -888,6 +1181,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
         public virtual string Annotation { get; set; }
 
+        /// <summary>
+        /// Optional. Optional unique stable hashed user identifier to apply to the assessment. This is an alternative
+        /// to setting the hashed_account_id in CreateAssessment, for example when the account identifier is not yet
+        /// known in the initial request. It is recommended that the identifier is hashed using hmac-sha256 with stable
+        /// secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
+        public virtual string HashedAccountId { get; set; }
+
         /// <summary>Optional. Optional reasons for the annotation that will be assigned to the Event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
@@ -906,6 +1208,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>A recaptcha assessment resource.</summary>
     public class GoogleCloudRecaptchaenterpriseV1Assessment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Assessment returned by Account Defender when a hashed_account_id is provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountDefenderAssessment")]
+        public virtual GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment AccountDefenderAssessment { get; set; }
+
         /// <summary>The event being assessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual GoogleCloudRecaptchaenterpriseV1Event Event__ { get; set; }
@@ -1071,6 +1377,42 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response to a `ListRelatedAccountGroupMemberships` call.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The memberships listed by the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedAccountGroupMemberships")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership> RelatedAccountGroupMemberships { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to a `ListRelatedAccountGroups` call.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The groups of related accounts listed by the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedAccountGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup> RelatedAccountGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metrics for a single Key.</summary>
     public class GoogleCloudRecaptchaenterpriseV1Metrics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1105,6 +1447,41 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>The migrate key request message.</summary>
     public class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A group of related accounts.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name for the related account group in the format
+        /// `projects/{project}/relatedaccountgroups/{related_account_group}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A membership in a group of related accounts.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique stable hashed user identifier of the member. The identifier corresponds to a `hashed_account_id`
+        /// provided in a previous CreateAssessment or AnnotateAssessment call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
+        public virtual string HashedAccountId { get; set; }
+
+        /// <summary>
+        /// Required. The resource name for this membership in the format
+        /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}/memberships/{membership}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1154,6 +1531,54 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Aggregated score metrics for all traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overallMetrics")]
         public virtual GoogleCloudRecaptchaenterpriseV1ScoreDistribution OverallMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message to search related account group memberships.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The unique stable hashed user identifier we should search connections to. The identifier should
+        /// correspond to a `hashed_account_id` provided in a previous CreateAssessment or AnnotateAssessment call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
+        public virtual string HashedAccountId { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of groups to return. The service may return fewer than this value. If
+        /// unspecified, at most 50 groups will be returned. The maximum value is 1000; values above 1000 will be
+        /// coerced to 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. A page token, received from a previous `SearchRelatedAccountGroupMemberships` call. Provide this
+        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+        /// `SearchRelatedAccountGroupMemberships` must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to a `SearchRelatedAccountGroupMemberships` call.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The queried memberships.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedAccountGroupMemberships")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership> RelatedAccountGroupMemberships { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

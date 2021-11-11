@@ -1609,6 +1609,25 @@ namespace Google.Apis.Datastore.v1.Data
     }
 
     /// <summary>
+    /// Metadata for Datastore to Firestore migration operations. The DatastoreFirestoreMigration operation is not
+    /// started by the end-user via an explicit "creation" method. This is an intentional deviation from the LRO design
+    /// pattern. This singleton resource can be accessed at: "projects/{project_id}/datastore-firestore-migration"
+    /// </summary>
+    public class GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current state of migration from Cloud Datastore to Cloud Firestore in Datastore mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationState")]
+        public virtual string MigrationState { get; set; }
+
+        /// <summary>The current step of migration from Cloud Datastore to Cloud Firestore in Datastore mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationStep")]
+        public virtual string MigrationStep { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces (either
     /// or both of which may be all, as described in the following examples). Example usage: Entire project: kinds=[],
     /// namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar

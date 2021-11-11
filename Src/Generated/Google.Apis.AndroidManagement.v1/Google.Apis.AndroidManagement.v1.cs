@@ -4437,6 +4437,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<PolicyEnforcementRule> PolicyEnforcementRules { get; set; }
 
         /// <summary>
+        /// Controls whether preferential network service is enabled on the work profile. For example, an organization
+        /// may have an agreement with a carrier that all of the work data from its employees' devices will be sent via
+        /// a network service dedicated for enterprise use. An example of a supported preferential network service is
+        /// the enterprise slice on 5G networks. This has no effect on fully managed devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkService")]
+        public virtual string PreferentialNetworkService { get; set; }
+
+        /// <summary>
         /// Allows showing UI on a device for a user to choose a private key alias if there are no matching rules in
         /// ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys vulnerable.
         /// </summary>

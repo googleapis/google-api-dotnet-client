@@ -2904,6 +2904,9 @@ namespace Google.Apis.Dns.v1.Data
     /// </summary>
     public class ManagedZone : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudLoggingConfig")]
+        public virtual ManagedZoneCloudLoggingConfig CloudLoggingConfig { get; set; }
+
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         /// </summary>
@@ -2999,6 +3002,22 @@ namespace Google.Apis.Dns.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud Logging configurations for publicly visible zones.</summary>
+    public class ManagedZoneCloudLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
+        public virtual System.Nullable<bool> EnableLogging { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
