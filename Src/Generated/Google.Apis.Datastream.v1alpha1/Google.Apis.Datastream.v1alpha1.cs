@@ -1758,6 +1758,244 @@ namespace Google.Apis.Datastream.v1alpha1
                 public StreamsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Objects = new ObjectsResource(service);
+                }
+
+                /// <summary>Gets the Objects resource.</summary>
+                public virtual ObjectsResource Objects { get; }
+
+                /// <summary>The "objects" collection of methods.</summary>
+                public class ObjectsResource
+                {
+                    private const string Resource = "objects";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ObjectsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Use this method to get details about a stream object.</summary>
+                    /// <param name="name">Required. The name of the stream object resource to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Use this method to get details about a stream object.</summary>
+                    public class GetRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1alpha1.Data.StreamObject>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the stream object resource to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/streams/[^/]+/objects/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Use this method to list the objects of a specific stream.</summary>
+                    /// <param name="parent">Required. The parent stream that owns the collection of objects.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Use this method to list the objects of a specific stream.</summary>
+                    public class ListRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1alpha1.Data.ListStreamObjectsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent stream that owns the collection of objects.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Maximum number of objects to return. Default is 50. The maximum value is 1000; values above
+                        /// 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Page token received from a previous `ListStreamObjectsRequest` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListStreamObjectsRequest` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/objects";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/streams/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Starts backfill job for the specified stream object.</summary>
+                    /// <param name="datastreamObject">
+                    /// Required. The name of the stream object resource to start a backfill job for.
+                    /// </param>
+                    public virtual StartBackfillJobRequest StartBackfillJob(string datastreamObject)
+                    {
+                        return new StartBackfillJobRequest(service, datastreamObject);
+                    }
+
+                    /// <summary>Starts backfill job for the specified stream object.</summary>
+                    public class StartBackfillJobRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1alpha1.Data.StartBackfillJobResponse>
+                    {
+                        /// <summary>Constructs a new StartBackfillJob request.</summary>
+                        public StartBackfillJobRequest(Google.Apis.Services.IClientService service, string datastreamObject) : base(service)
+                        {
+                            Object = datastreamObject;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the stream object resource to start a backfill job for.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Object { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "startBackfillJob";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+object}:startBackfillJob";
+
+                        /// <summary>Initializes StartBackfillJob parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "object",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/streams/[^/]+/objects/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Stops the backfill job for the specified stream object.</summary>
+                    /// <param name="datastreamObject">
+                    /// Required. The name of the stream object resource to stop the backfill job for.
+                    /// </param>
+                    public virtual StopBackfillJobRequest StopBackfillJob(string datastreamObject)
+                    {
+                        return new StopBackfillJobRequest(service, datastreamObject);
+                    }
+
+                    /// <summary>Stops the backfill job for the specified stream object.</summary>
+                    public class StopBackfillJobRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1alpha1.Data.StopBackfillJobResponse>
+                    {
+                        /// <summary>Constructs a new StopBackfillJob request.</summary>
+                        public StopBackfillJobRequest(Google.Apis.Services.IClientService service, string datastreamObject) : base(service)
+                        {
+                            Object = datastreamObject;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the stream object resource to stop the backfill job for.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Object { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "stopBackfillJob";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+object}:stopBackfillJob";
+
+                        /// <summary>Initializes StopBackfillJob parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "object",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/streams/[^/]+/objects/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Use this method to create a stream.</summary>
@@ -2498,6 +2736,33 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a backfill job on a specific stream object.</summary>
+    public class BackfillJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Errors which caused the backfill job to fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Error> Errors { get; set; }
+
+        /// <summary>Output only. Backfill job's end time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEndTime")]
+        public virtual object LastEndTime { get; set; }
+
+        /// <summary>Output only. Backfill job's start time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStartTime")]
+        public virtual object LastStartTime { get; set; }
+
+        /// <summary>Backfill job state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Backfill job's triggering reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual string Trigger { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Backfill strategy to disable automatic backfill for the Stream's objects.</summary>
     public class BackfillNoneStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2891,6 +3156,21 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response containing the objects for a stream.</summary>
+    public class ListStreamObjectsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of stream objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamObjects")]
+        public virtual System.Collections.Generic.IList<StreamObject> StreamObjects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListStreamsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2992,6 +3272,21 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         /// <summary>Tables in the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlTables")]
         public virtual System.Collections.Generic.IList<MysqlTable> MysqlTables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mysql data source object identifier.</summary>
+    public class MysqlObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The database name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3243,6 +3538,21 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Oracle data source object identifier.</summary>
+    public class OracleObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The schema name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>The table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Oracle database profile.</summary>
     public class OracleProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3442,6 +3752,32 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an identifier of an object in the data source.</summary>
+    public class SourceObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mysql data source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlIdentifier")]
+        public virtual MysqlObjectIdentifier MysqlIdentifier { get; set; }
+
+        /// <summary>Oracle data source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleIdentifier")]
+        public virtual OracleObjectIdentifier OracleIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for manually initiating a backfill job for a specific stream object.</summary>
+    public class StartBackfillJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The stream object resource a backfill job was started for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual StreamObject Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Static IP address connectivity.</summary>
     public class StaticServiceIpConnectivity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3473,6 +3809,17 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for manually stop a backfill job for a specific stream object.</summary>
+    public class StopBackfillJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The stream object resource the backfill job was stopped for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual StreamObject Object__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3531,6 +3878,41 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         public virtual string State { get; set; }
 
         /// <summary>Output only. The last update time of the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specific stream object (e.g a specific DB table).</summary>
+    public class StreamObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latest backfill job that was initiated for the stream object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backfillJob")]
+        public virtual BackfillJob BackfillJob { get; set; }
+
+        /// <summary>Output only. The creation time of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Required. Display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Active errors on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Error> Errors { get; set; }
+
+        /// <summary>Output only. The object's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The object identifier in the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceObject")]
+        public virtual SourceObjectIdentifier SourceObject { get; set; }
+
+        /// <summary>Output only. The last update time of the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

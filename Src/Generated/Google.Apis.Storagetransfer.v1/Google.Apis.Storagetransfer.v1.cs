@@ -1764,6 +1764,20 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableOnpremGcsTransferLogs")]
         public virtual System.Nullable<bool> EnableOnpremGcsTransferLogs { get; set; }
 
+        /// <summary>
+        /// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for
+        /// transfers with PosixFilesystem data sources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logActionStates")]
+        public virtual System.Collections.Generic.IList<string> LogActionStates { get; set; }
+
+        /// <summary>
+        /// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with
+        /// PosixFilesystem data sources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logActions")]
+        public virtual System.Collections.Generic.IList<string> LogActions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2274,6 +2288,22 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies where the manifest is located.</summary>
+    public class TransferManifest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in
+        /// GCS. For data_source and data_sink, the manifest location is relative to the path specified by that
+        /// data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use
+        /// format "source://". If manifest is in data_sink, use format "sink://".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A description of the execution of a transfer.</summary>
     public class TransferOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2401,6 +2431,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceAgentPoolName")]
         public virtual string SourceAgentPoolName { get; set; }
+
+        /// <summary>
+        /// A manifest file provides a list of objects to be transferred from the data source. This field points to the
+        /// location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferManifest")]
+        public virtual TransferManifest TransferManifest { get; set; }
 
         /// <summary>
         /// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last

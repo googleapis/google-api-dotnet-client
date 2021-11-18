@@ -2472,6 +2472,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual object EventTime { get; set; }
 
         /// <summary>
+        /// Output only. Third party SIEM/SOAR fields within SCC, contains external system information and external
+        /// system finding fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSystems")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSecuritycenterV1ExternalSystem> ExternalSystems { get; set; }
+
+        /// <summary>
         /// The URI that, if available, points to a web page outside of Security Command Center where additional
         /// information about the finding can be found. This field is guaranteed to be either empty or a well formed
         /// URL.
@@ -2490,6 +2497,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
+
+        /// <summary>Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mute")]
+        public virtual string Mute { get; set; }
+
+        /// <summary>
+        /// First known as mute_annotation. Records additional information about the mute operation e.g. mute config
+        /// that muted the finding, user who muted the finding, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteInitiator")]
+        public virtual string MuteInitiator { get; set; }
+
+        /// <summary>Output only. The most recent time this finding was muted or unmuted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteUpdateTime")]
+        public virtual object MuteUpdateTime { get; set; }
 
         /// <summary>
         /// The relative resource name of this finding. See:
@@ -2593,6 +2615,99 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of third party SIEM/SOAR fields within SCC.</summary>
+    public class GoogleCloudSecuritycenterV1ExternalSystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>References primary/secondary etc assignees in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignees")]
+        public virtual System.Collections.Generic.IList<string> Assignees { get; set; }
+
+        /// <summary>
+        /// The most recent time when the corresponding finding's ticket/tracker was updated in the external system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSystemUpdateTime")]
+        public virtual object ExternalSystemUpdateTime { get; set; }
+
+        /// <summary>Identifier that's used to track the given finding in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalUid")]
+        public virtual string ExternalUid { get; set; }
+
+        /// <summary>
+        /// External System Name e.g. jira, demisto, etc. e.g.:
+        /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+        /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+        /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Most recent status of the corresponding finding's ticket/tracker in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mute config is a Cloud SCC resource that contains the configuration to mute create/update events of findings.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1MuteConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time at which the mute config was created. This field is set by the server and will be
+        /// ignored if provided on config creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>A description of the mute config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The human readable name to be displayed for the mute config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. An expression that defines the filter to apply across create/update events of findings. While
+        /// creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If
+        /// a filter contains project = X but is created under the project = Y scope, it might not match any findings.
+        /// The following field and operator combinations are supported: * severity: `=`, `:` * category: `=`, `:` *
+        /// resource.name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` *
+        /// resource.folders.resource_folder: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name:
+        /// `=`, `:` * resource.type: `=`, `:` * finding_class: `=`, `:` * indicator.ip_addresses: `=`, `:` *
+        /// indicator.domains: `=`, `:`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Output only. Email address of the user who last edited the mute config. This field is set by the server and
+        /// will be ignored if provided on config creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostRecentEditor")]
+        public virtual string MostRecentEditor { get; set; }
+
+        /// <summary>
+        /// This field will be ignored if provided on config creation. Format
+        /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
+        /// "projects/{project}/muteConfigs/{mute_config}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The most recent time at which the mute config was updated. This field is set by the server and
+        /// will be ignored if provided on config creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

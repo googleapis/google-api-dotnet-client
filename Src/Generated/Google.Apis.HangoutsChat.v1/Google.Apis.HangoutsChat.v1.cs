@@ -2143,7 +2143,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dialogEventType")]
         public virtual string DialogEventType { get; set; }
 
-        /// <summary>The timestamp indicating when the event was dispatched.</summary>
+        /// <summary>The timestamp indicating when the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
 

@@ -20120,6 +20120,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for Participants.AnalyzeContent.</summary>
     public class GoogleCloudDialogflowV2AnalyzeContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Parameters for a human assist query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
+        public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
+
         /// <summary>An input event to send to Dialogflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventInput")]
         public virtual GoogleCloudDialogflowV2EventInput EventInput { get; set; }
@@ -20337,6 +20341,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The article URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the parameters of human assist query.</summary>
+    public class GoogleCloudDialogflowV2AssistQueryParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Key-value filters on the metadata of documents returned by article suggestion. If specified, article
+        /// suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple
+        /// values for a metadata key should be concatenated by comma. For example, filters to match all documents that
+        /// have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```
+        /// documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value:
+        /// "agent" } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadataFilters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DocumentsMetadataFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23091,6 +23113,17 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2Participant : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified,
+        /// article suggestion only returns suggested documents that match all filters in their Document.metadata.
+        /// Multiple values for a metadata key should be concatenated by comma. For example, filters to match all
+        /// documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values
+        /// will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key:
+        /// "user" value: "agent" } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadataFilters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DocumentsMetadataFilters { get; set; }
+
+        /// <summary>
         /// Optional. The unique identifier of this participant. Format:
         /// `projects//locations//conversations//participants/`.
         /// </summary>
@@ -23506,6 +23539,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for Participants.SuggestArticles.</summary>
     public class GoogleCloudDialogflowV2SuggestArticlesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Parameters for a human assist query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
+        public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
+
         /// <summary>
         /// Max number of messages prior to and including latest_message to use as context when compiling the
         /// suggestion. By default 20 and at most 50.
@@ -23553,6 +23590,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for Participants.SuggestFaqAnswers.</summary>
     public class GoogleCloudDialogflowV2SuggestFaqAnswersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Parameters for a human assist query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
+        public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
+
         /// <summary>
         /// Max number of messages prior to and including [latest_message] to use as context when compiling the
         /// suggestion. By default 20 and at most 50.

@@ -1121,10 +1121,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     /// </summary>
     public class GooglePlayAnalytics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// [AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en); used to measure
-        /// Google AdWords ads. This value is generated dynamically and should never be modified.
-        /// </summary>
+        /// <summary>Deprecated; FDL SDK does not process nor log it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
         public virtual string Gclid { get; set; }
 

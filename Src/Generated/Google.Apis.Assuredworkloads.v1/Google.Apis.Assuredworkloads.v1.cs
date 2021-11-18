@@ -1274,6 +1274,239 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainCreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
+        public virtual string ComplianceRegime { get; set; }
+
+        /// <summary>Optional. Time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. The display name of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The parent of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. Resource properties in the input that are used for creating/customizing workload resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings> ResourceSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. The billing account used for the resources which are direct children of workload. This billing
+        /// account is initially associated with the resources created as part of Workload creation. After the initial
+        /// creation of these resources, the customer can change the assigned billing account. The resource name has the
+        /// form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
+
+        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for CJIS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cjisSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCJISSettings CjisSettings { get; set; }
+
+        /// <summary>Required. Immutable. Compliance Regime associated with this workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
+        public virtual string ComplianceRegime { get; set; }
+
+        /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
+        /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example:
+        /// My Workload
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
+        /// Update &amp;amp; Delete operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP High.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fedrampHighSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings FedrampHighSettings { get; set; }
+
+        /// <summary>
+        /// Required. Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fedrampModerateSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampModerateSettings FedrampModerateSettings { get; set; }
+
+        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIL4Settings Il4Settings { get; set; }
+
+        /// <summary>
+        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
+        /// provisioned. This field is mandatory for a subset of Compliance Regimes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
+
+        /// <summary>Optional. Labels applied to the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the workload. Format:
+        /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
+        /// folder resource which is a child of the Workload parent. If not specified all resources are created under
+        /// the parent organization. Format: folders/{folder_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
+        public virtual string ProvisionedResourcesParent { get; set; }
+
+        /// <summary>
+        /// Input only. Resource properties that are used to customize workload resources. These properties (such as
+        /// custom project id) will be used to create workload resources if possible. This field is optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings> ResourceSettings { get; set; }
+
+        /// <summary>
+        /// Output only. The resources associated with this workload. These resources will be created when creating the
+        /// workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo> Resources { get; set; }
+    }
+
+    /// <summary>Settings specific to resources needed for CJIS.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCJISSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings specific to resources needed for FedRAMP High.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings specific to resources needed for FedRAMP Moderate.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampModerateSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings specific to resources needed for IL4.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIL4Settings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings specific to the Key Management Service.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a
+        /// new version of the crypto key and mark it as the primary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
+        public virtual object NextRotationTime { get; set; }
+
+        /// <summary>
+        /// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
+        /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
+        public virtual object RotationPeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent the resources that are children of this Workload.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource identifier. For a project this represents project_number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual System.Nullable<long> ResourceId { get; set; }
+
+        /// <summary>Indicates the type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent the custom settings for the resources to be created.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User-assigned resource display name. If not empty it will be used to create a resource with the specified
+        /// name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload
+        /// creation will fail.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>
+        /// Indicates the type of resource. This field should be specified to correspond the id to the right project
+        /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {

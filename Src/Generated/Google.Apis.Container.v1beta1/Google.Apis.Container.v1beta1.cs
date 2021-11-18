@@ -8058,6 +8058,19 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+    /// </summary>
+    public class ManagedPrometheusConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable Managed Collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Master is the configuration for components on master.</summary>
     public class Master : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8205,6 +8218,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Monitoring components configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("componentConfig")]
         public virtual MonitoringComponentConfig ComponentConfig { get; set; }
+
+        /// <summary>Enable Google Cloud Managed Service for Prometheus in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedPrometheusConfig")]
+        public virtual ManagedPrometheusConfig ManagedPrometheusConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

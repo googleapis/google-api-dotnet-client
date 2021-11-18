@@ -3954,7 +3954,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     public class PauseFinalizedDealRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The reason to pause the finalized deal, will be displayed to the seller. Maximum length is 1000 characters.
+        /// Required. The reason to pause the finalized deal, will be displayed to the seller. Maximum length is 1000
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }

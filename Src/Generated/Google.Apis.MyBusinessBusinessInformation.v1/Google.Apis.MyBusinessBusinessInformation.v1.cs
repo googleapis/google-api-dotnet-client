@@ -2333,6 +2333,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
         public virtual System.Nullable<bool> CanDelete { get; set; }
 
+        /// <summary>Output only. Indicates if the listing is eligible for business calls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canHaveBusinessCalls")]
+        public virtual System.Nullable<bool> CanHaveBusinessCalls { get; set; }
+
         /// <summary>Output only. Indicates if the listing is eligible for food menu.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canHaveFoodMenus")]
         public virtual System.Nullable<bool> CanHaveFoodMenus { get; set; }

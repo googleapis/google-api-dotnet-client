@@ -1653,7 +1653,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Google Cloud Redis instance. next id = 38</summary>
+    /// <summary>A Google Cloud Redis instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1780,7 +1780,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readEndpointPort")]
         public virtual System.Nullable<int> ReadEndpointPort { get; set; }
 
-        /// <summary>Optional. Read replica mode.</summary>
+        /// <summary>Optional. Read replica mode. Can only be specified when trying to create the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readReplicasMode")]
         public virtual string ReadReplicasMode { get; set; }
 
@@ -1802,8 +1802,9 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string RedisVersion { get; set; }
 
         /// <summary>
-        /// Optional. The number of replica nodes. Valid range for standard tier is [1-5] and defaults to 2. Valid value
-        /// for basic tier is 0 and defaults to 0.
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is
+        /// [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value
+        /// is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
         public virtual System.Nullable<int> ReplicaCount { get; set; }

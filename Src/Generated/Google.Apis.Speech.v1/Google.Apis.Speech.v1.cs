@@ -35,6 +35,7 @@ namespace Google.Apis.Speech.v1
         public SpeechService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Operations = new OperationsResource(this);
+            Projects = new ProjectsResource(this);
             Speech = new SpeechResource(this);
         }
 
@@ -85,6 +86,9 @@ namespace Google.Apis.Speech.v1
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the Speech resource.</summary>
         public virtual SpeechResource Speech { get; }
@@ -430,6 +434,704 @@ namespace Google.Apis.Speech.v1
         }
     }
 
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                CustomClasses = new CustomClassesResource(service);
+                PhraseSets = new PhraseSetsResource(service);
+            }
+
+            /// <summary>Gets the CustomClasses resource.</summary>
+            public virtual CustomClassesResource CustomClasses { get; }
+
+            /// <summary>The "customClasses" collection of methods.</summary>
+            public class CustomClassesResource
+            {
+                private const string Resource = "customClasses";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomClassesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a custom class.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this custom class will be created. Format:
+                /// {api_version}/projects/{project}/locations/{location}/customClasses
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Speech.v1.Data.CreateCustomClassRequest body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create a custom class.</summary>
+                public class CreateRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.CustomClass>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1.Data.CreateCustomClassRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this custom class will be created. Format:
+                    /// {api_version}/projects/{project}/locations/{location}/customClasses
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Speech.v1.Data.CreateCustomClassRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customClasses";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Delete a custom class.</summary>
+                /// <param name="name">
+                /// Required. The name of the custom class to delete. Format:
+                /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Delete a custom class.</summary>
+                public class DeleteRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the custom class to delete. Format:
+                    /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/customClasses/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get a custom class.</summary>
+                /// <param name="name">
+                /// Required. The name of the custom class to retrieve. Format:
+                /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get a custom class.</summary>
+                public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.CustomClass>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the custom class to retrieve. Format:
+                    /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/customClasses/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List custom classes.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of custom classes. Format:
+                /// {api_version}/projects/{project}/locations/{location}/customClasses
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List custom classes.</summary>
+                public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.ListCustomClassesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of custom classes. Format:
+                    /// {api_version}/projects/{project}/locations/{location}/customClasses
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of custom classes to return. The service may return fewer than this value. If
+                    /// unspecified, at most 50 custom classes will be returned. The maximum value is 1000; values above
+                    /// 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListCustomClass` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListCustomClass` must match
+                    /// the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customClasses";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a custom class.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name of the custom class.</param>
+                public virtual PatchRequest Patch(Google.Apis.Speech.v1.Data.CustomClass body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Update a custom class.</summary>
+                public class PatchRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.CustomClass>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1.Data.CustomClass body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The resource name of the custom class.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Speech.v1.Data.CustomClass Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/customClasses/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the PhraseSets resource.</summary>
+            public virtual PhraseSetsResource PhraseSets { get; }
+
+            /// <summary>The "phraseSets" collection of methods.</summary>
+            public class PhraseSetsResource
+            {
+                private const string Resource = "phraseSets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PhraseSetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Create a set of phrase hints. Each item in the set can be a single word or a multi-word phrase. The
+                /// items in the PhraseSet are favored by the recognition model when you send a call that includes the
+                /// PhraseSet.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this phrase set will be created. Format:
+                /// {api_version}/projects/{project}/locations/{location}/phraseSets
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Speech.v1.Data.CreatePhraseSetRequest body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Create a set of phrase hints. Each item in the set can be a single word or a multi-word phrase. The
+                /// items in the PhraseSet are favored by the recognition model when you send a call that includes the
+                /// PhraseSet.
+                /// </summary>
+                public class CreateRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.PhraseSet>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1.Data.CreatePhraseSetRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this phrase set will be created. Format:
+                    /// {api_version}/projects/{project}/locations/{location}/phraseSets
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Speech.v1.Data.CreatePhraseSetRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/phraseSets";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Delete a phrase set.</summary>
+                /// <param name="name">
+                /// Required. The name of the phrase set to delete. Format:
+                /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Delete a phrase set.</summary>
+                public class DeleteRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the phrase set to delete. Format:
+                    /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/phraseSets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get a phrase set.</summary>
+                /// <param name="name">
+                /// Required. The name of the phrase set to retrieve. Format:
+                /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get a phrase set.</summary>
+                public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.PhraseSet>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the phrase set to retrieve. Format:
+                    /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/phraseSets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List phrase sets.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of phrase set. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List phrase sets.</summary>
+                public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.ListPhraseSetResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of phrase set. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of phrase sets to return. The service may return fewer than this value. If
+                    /// unspecified, at most 50 phrase sets will be returned. The maximum value is 1000; values above
+                    /// 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListPhraseSet` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListPhraseSet` must match
+                    /// the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/phraseSets";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a phrase set.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name of the phrase set.</param>
+                public virtual PatchRequest Patch(Google.Apis.Speech.v1.Data.PhraseSet body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Update a phrase set.</summary>
+                public class PatchRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1.Data.PhraseSet>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1.Data.PhraseSet body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The resource name of the phrase set.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Speech.v1.Data.PhraseSet Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/phraseSets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>The "speech" collection of methods.</summary>
     public class SpeechResource
     {
@@ -539,6 +1241,108 @@ namespace Google.Apis.Speech.v1
 }
 namespace Google.Apis.Speech.v1.Data
 {
+    /// <summary>An item of the class.</summary>
+    public class ClassItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The class item's value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message sent by the client for the `CreateCustomClass` method.</summary>
+    public class CreateCustomClassRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The custom class to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customClass")]
+        public virtual CustomClass CustomClass { get; set; }
+
+        /// <summary>
+        /// Required. The ID to use for the custom class, which will become the final component of the custom class'
+        /// resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customClassId")]
+        public virtual string CustomClassId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message sent by the client for the `CreatePhraseSet` method.</summary>
+    public class CreatePhraseSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The phrase set to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSet")]
+        public virtual PhraseSet PhraseSet { get; set; }
+
+        /// <summary>
+        /// Required. The ID to use for the phrase set, which will become the final component of the phrase set's
+        /// resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSetId")]
+        public virtual string PhraseSetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of words or phrases that represents a common concept likely to appear in your audio, for example a list of
+    /// passenger ship names. CustomClass items can be substituted into placeholders that you set in PhraseSet phrases.
+    /// </summary>
+    public class CustomClass : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case
+        /// sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customClassId")]
+        public virtual string CustomClassId { get; set; }
+
+        /// <summary>A collection of class items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ClassItem> Items { get; set; }
+
+        /// <summary>The resource name of the custom class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message returned to the client by the `ListCustomClasses` method.</summary>
+    public class ListCustomClassesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The custom classes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customClasses")]
+        public virtual System.Collections.Generic.IList<CustomClass> CustomClasses { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -549,6 +1353,24 @@ namespace Google.Apis.Speech.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message returned to the client by the `ListPhraseSet` method.</summary>
+    public class ListPhraseSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The phrase set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
+        public virtual System.Collections.Generic.IList<PhraseSet> PhraseSets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -677,6 +1499,67 @@ namespace Google.Apis.Speech.v1.Data
     }
 
     /// <summary>
+    /// A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them.
+    /// This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are
+    /// typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer.
+    /// See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include
+    /// pre-built or custom classes containing groups of words that represent common concepts that occur in natural
+    /// language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in
+    /// january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly
+    /// transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the
+    /// class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the
+    /// request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then
+    /// use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class'
+    /// id wrapped in `${}` (e.g. `${my-months}`).
+    /// </summary>
+    public class Phrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability
+        /// that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the
+        /// higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though
+        /// `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and
+        /// 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech
+        /// recognition will skip PhraseSets with a boost value of 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>The phrase itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides "hints" to the speech recognizer to favor specific words and phrases in the results.</summary>
+    public class PhraseSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over
+        /// other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as
+        /// well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost
+        /// will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best
+        /// served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the
+        /// optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>The resource name of the phrase set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>A list of word and phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
+        public virtual System.Collections.Generic.IList<Phrase> Phrases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Contains audio data in the encoding specified in the `RecognitionConfig`. Either `content` or `uri` must be
     /// supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [content
     /// limits](https://cloud.google.com/speech-to-text/quotas#content).
@@ -707,6 +1590,14 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Speech adaptation configuration improves the accuracy of speech recognition. For more information, see the
+        /// [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation) documentation. When speech
+        /// adaptation is set it supersedes the `speech_contexts` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptation")]
+        public virtual SpeechAdaptation Adaptation { get; set; }
+
         /// <summary>
         /// A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags, listing
         /// possible alternative languages of the supplied audio. See [Language
@@ -985,9 +1876,46 @@ namespace Google.Apis.Speech.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Speech adaptation configuration.</summary>
+    public class SpeechAdaptation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A collection of custom classes. To specify the classes inline, leave the class' `name` blank and fill in the
+        /// rest of its fields, giving it a unique `custom_class_id`. Refer to the inline defined class in phrase hints
+        /// by its `custom_class_id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customClasses")]
+        public virtual System.Collections.Generic.IList<CustomClass> CustomClasses { get; set; }
+
+        /// <summary>A collection of phrase set resource names to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSetReferences")]
+        public virtual System.Collections.Generic.IList<string> PhraseSetReferences { get; set; }
+
+        /// <summary>
+        /// A collection of phrase sets. To specify the hints inline, leave the phrase set's `name` blank and fill in
+        /// the rest of its fields. Any phrase set can use any custom class.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
+        public virtual System.Collections.Generic.IList<PhraseSet> PhraseSets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Provides "hints" to the speech recognizer to favor specific words and phrases in the results.</summary>
     public class SpeechContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over
+        /// other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as
+        /// well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost
+        /// will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best
+        /// served with values between 0 and 20. We recommend using a binary search approach to finding the optimal
+        /// value for your use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
         /// <summary>
         /// A list of strings containing words and phrases "hints" so that the speech recognition is more likely to
         /// recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if
@@ -1056,6 +1984,10 @@ namespace Google.Apis.Speech.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>Time offset of the end of this result relative to the beginning of the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultEndTime")]
+        public virtual object ResultEndTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

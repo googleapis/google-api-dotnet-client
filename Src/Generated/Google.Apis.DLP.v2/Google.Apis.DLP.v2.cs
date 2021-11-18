@@ -12047,6 +12047,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replaceConfig")]
         public virtual GooglePrivacyDlpV2ReplaceValueConfig ReplaceConfig { get; set; }
 
+        /// <summary>Replace with a value randomly drawn (with replacement) from a dictionary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replaceDictionaryConfig")]
+        public virtual GooglePrivacyDlpV2ReplaceDictionaryConfig ReplaceDictionaryConfig { get; set; }
+
         /// <summary>Replace with infotype</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceWithInfoTypeConfig")]
         public virtual GooglePrivacyDlpV2ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfig { get; set; }
@@ -12485,6 +12489,20 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>An overview of the changes that were made to the `item`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
         public virtual GooglePrivacyDlpV2TransformationOverview Overview { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Replace each input value with a value randomly selected from the dictionary.</summary>
+    public class GooglePrivacyDlpV2ReplaceDictionaryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits)
+        /// page contains details about the size limits of dictionaries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
+        public virtual GooglePrivacyDlpV2WordList WordList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

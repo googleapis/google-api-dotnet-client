@@ -1370,6 +1370,15 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
 
+        /// <summary>
+        /// Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be
+        /// incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this
+        /// time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061
+        /// format. For example: "2019-08-31T17:28:54.564Z"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renewalTime")]
+        public virtual object RenewalTime { get; set; }
+
         /// <summary>Required. The location that the service is provided as indicated by the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLocation")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Location ServiceLocation { get; set; }

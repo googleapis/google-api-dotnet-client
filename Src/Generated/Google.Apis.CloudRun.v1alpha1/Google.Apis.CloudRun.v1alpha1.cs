@@ -1790,7 +1790,7 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Limits { get; set; }
 
         /// <summary>
-        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'.
+        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'.
         /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container,
         /// it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The
         /// values of the map is string form of the 'quantity' k8s type:

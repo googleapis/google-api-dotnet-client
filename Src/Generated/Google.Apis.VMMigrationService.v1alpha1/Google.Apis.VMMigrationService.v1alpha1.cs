@@ -2302,7 +2302,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         /// <summary>Optional. The level of details of the migrating VM.</summary>
                         public enum ViewEnum
                         {
-                            /// <summary>The default / unset value. Will fallback to FULL.</summary>
+                            /// <summary>View is unspecified. The API will fallback to the default value.</summary>
                             [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_UNSPECIFIED")]
                             MIGRATINGVMVIEWUNSPECIFIED = 0,
 
@@ -2402,7 +2402,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         /// <summary>Optional. The level of details of each migrating VM.</summary>
                         public enum ViewEnum
                         {
-                            /// <summary>The default / unset value. Will fallback to FULL.</summary>
+                            /// <summary>View is unspecified. The API will fallback to the default value.</summary>
                             [Google.Apis.Util.StringValueAttribute("MIGRATING_VM_VIEW_UNSPECIFIED")]
                             MIGRATINGVMVIEWUNSPECIFIED = 0,
 

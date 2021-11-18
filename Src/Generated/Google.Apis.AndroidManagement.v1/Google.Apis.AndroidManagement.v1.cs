@@ -2638,7 +2638,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resetPasswordFlags")]
         public virtual System.Collections.Generic.IList<string> ResetPasswordFlags { get; set; }
 
-        /// <summary>The type of the command.</summary>
+        /// <summary>The type of the command. See also params</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

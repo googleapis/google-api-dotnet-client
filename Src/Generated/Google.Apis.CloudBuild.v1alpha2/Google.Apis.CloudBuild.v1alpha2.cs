@@ -874,6 +874,28 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.</summary>
+    public class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>
+        /// The name of the `BitbucketServerConfig` that added connected repositories. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual string Config { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to
     /// build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields

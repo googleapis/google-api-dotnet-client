@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudBuild.v1alpha2 Client Library</Title>
-    <Version>1.55.0.2493</Version>
+    <Version>1.55.0.2510</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

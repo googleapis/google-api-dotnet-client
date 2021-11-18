@@ -2963,9 +2963,18 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Message encapsulating build provenance details.</summary>
     public class BuildDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>In-toto Provenance representation as defined in spec.</summary>
+        /// <summary>
+        /// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intotoProvenance")]
         public virtual InTotoProvenance IntotoProvenance { get; set; }
+
+        /// <summary>
+        /// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of
+        /// provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intotoStatement")]
+        public virtual InTotoStatement IntotoStatement { get; set; }
 
         /// <summary>The actual provenance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]

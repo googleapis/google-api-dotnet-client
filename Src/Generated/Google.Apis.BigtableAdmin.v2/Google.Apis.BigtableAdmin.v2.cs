@@ -3741,6 +3741,35 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Limits for the number of nodes a Cluster can autoscale up/down to.</summary>
+    public class AutoscalingLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Maximum number of nodes to scale up to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxServeNodes")]
+        public virtual System.Nullable<int> MaxServeNodes { get; set; }
+
+        /// <summary>Required. Minimum number of nodes to scale down to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minServeNodes")]
+        public virtual System.Nullable<int> MinServeNodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Autoscaling targets for a Cluster. These determine the recommended nodes.</summary>
+    public class AutoscalingTargets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no
+        /// utilization) to 100 (total utilization).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationPercent")]
+        public virtual System.Nullable<int> CpuUtilizationPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A backup of a Cloud Bigtable table.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3828,21 +3857,21 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Associates `members` with a `role`.</summary>
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
         /// the current request. However, a different role binding might grant the same role to one or more of the
-        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -3866,7 +3895,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -3905,6 +3935,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterConfig")]
+        public virtual ClusterConfig ClusterConfig { get; set; }
+
         /// <summary>
         /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly
         /// overridden.
@@ -3941,6 +3975,36 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Output only. The current state of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Autoscaling config for a cluster.</summary>
+    public class ClusterAutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Autoscaling limits for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingLimits")]
+        public virtual AutoscalingLimits AutoscalingLimits { get; set; }
+
+        /// <summary>Required. Autoscaling targets for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTargets")]
+        public virtual AutoscalingTargets AutoscalingTargets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a cluster.</summary>
+    public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of
+        /// serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and
+        /// autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterAutoscalingConfig")]
+        public virtual ClusterAutoscalingConfig ClusterAutoscalingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4358,7 +4422,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. A server-assigned timestamp representing when this Instance was created.</summary>
+        /// <summary>
+        /// Output only. A server-assigned timestamp representing when this Instance was created. For instances created
+        /// before this field was added (August 2021), this value is `seconds: 0, nanos: 1`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -4721,6 +4788,41 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for the Operation returned by PartialUpdateCluster.</summary>
+    public class PartialUpdateClusterMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
+        public virtual object FinishTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
+        public virtual PartialUpdateClusterRequest OriginalRequest { get; set; }
+
+        /// <summary>The time at which the original request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual object RequestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BigtableInstanceAdmin.PartialUpdateCluster.</summary>
+    public class PartialUpdateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Cluster which contains the partial updates to be applied, subject to the update_mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual Cluster Cluster { get; set; }
+
+        /// <summary>Required. The subset of Cluster fields which should be replaced. Must be explicitly set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for BigtableInstanceAdmin.PartialUpdateInstance.</summary>
     public class PartialUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4738,14 +4840,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
-    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
-    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
-    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
-    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
-    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
-    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
-    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
-    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
+    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
@@ -4764,8 +4867,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
-        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }

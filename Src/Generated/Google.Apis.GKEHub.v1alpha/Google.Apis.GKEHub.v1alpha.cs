@@ -576,11 +576,13 @@ namespace Google.Apis.GKEHub.v1alpha
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -1384,11 +1386,13 @@ namespace Google.Apis.GKEHub.v1alpha
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -2579,6 +2583,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual ConfigManagementGitConfig Git { get; set; }
 
+        /// <summary>
+        /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the
+        /// Config Sync admission webhook and does not prevent drifts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preventDrift")]
+        public virtual System.Nullable<bool> PreventDrift { get; set; }
+
         /// <summary>Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured” mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
@@ -2738,7 +2749,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyDir")]
         public virtual string PolicyDir { get; set; }
 
-        /// <summary>Type of secret configured for access to the Git repo.</summary>
+        /// <summary>
+        /// Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token,
+        /// gcpserviceaccount or none. The validation of this is case-sensitive. Required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
 
@@ -3477,6 +3491,48 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the
+    /// cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+    /// </summary>
+    public class KubernetesResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The Kubernetes resources for installing the GKE Connect agent This field is only populated in
+        /// the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership.
+        /// It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest
+        /// after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectResources")]
+        public virtual System.Collections.Generic.IList<ResourceManifest> ConnectResources { get; set; }
+
+        /// <summary>
+        /// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub
+        /// can read the CR directly. Callers should provide the CR that is currently present in the cluster during
+        /// CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to
+        /// validate the cluster has not been registered with another Membership.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipCrManifest")]
+        public virtual string MembershipCrManifest { get; set; }
+
+        /// <summary>
+        /// Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership
+        /// creation, and after every update. This field is only populated in the Membership returned from a successful
+        /// long-running operation from CreateMembership or UpdateMembership. It is not populated during normal
+        /// GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the
+        /// caller should make a UpdateMembership call with an empty field mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipResources")]
+        public virtual System.Collections.Generic.IList<ResourceManifest> MembershipResources { get; set; }
+
+        /// <summary>Optional. Options for Kubernetes resource generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceOptions")]
+        public virtual ResourceOptions ResourceOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `GkeHub.ListAdminClusterMemberships` method.</summary>
     public class ListAdminClusterMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3693,6 +3749,15 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. Useful Kubernetes-specific metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesMetadata")]
         public virtual KubernetesMetadata KubernetesMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in
+        /// the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one
+        /// Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure
+        /// proper initial configuration of default Hub Features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesResource")]
+        public virtual KubernetesResource KubernetesResource { get; set; }
 
         /// <summary>Optional. Specific information for a GKE Multi-Cloud cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiCloudCluster")]
@@ -4004,6 +4069,45 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>ResourceManifest represents a single Kubernetes resource to be applied to the cluster.</summary>
+    public class ResourceManifest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be
+        /// namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterScoped")]
+        public virtual System.Nullable<bool> ClusterScoped { get; set; }
+
+        /// <summary>YAML manifest of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
+        public virtual string Manifest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceOptions represent options for Kubernetes resource generation.</summary>
+    public class ResourceOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect
+        /// version. The version must be a currently supported version, obsolete versions will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectVersion")]
+        public virtual string ConnectVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources.
+        /// This option should be set for clusters with Kubernetes apiserver versions &amp;lt;1.16.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("v1beta1Crd")]
+        public virtual System.Nullable<bool> V1beta1Crd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
