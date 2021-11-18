@@ -1,4 +1,14 @@
 {
+  "Google.Apis.VMMigrationService.v1.ProjectsResource+LocationsResource+SourcesResource+MigratingVmsResource+GetRequest.ViewEnum": [
+    "MIGRATING_VM_VIEW_UNSPECIFIED",
+    "MIGRATING_VM_VIEW_BASIC",
+    "MIGRATING_VM_VIEW_FULL"
+  ],
+  "Google.Apis.VMMigrationService.v1.ProjectsResource+LocationsResource+SourcesResource+MigratingVmsResource+ListRequest.ViewEnum": [
+    "MIGRATING_VM_VIEW_UNSPECIFIED",
+    "MIGRATING_VM_VIEW_BASIC",
+    "MIGRATING_VM_VIEW_FULL"
+  ],
   "Google.Apis.VMMigrationService.v1.ProjectsResource+LocationsResource+SourcesResource+UtilizationReportsResource+GetRequest.ViewEnum": [
     "UTILIZATION_REPORT_VIEW_UNSPECIFIED",
     "BASIC",

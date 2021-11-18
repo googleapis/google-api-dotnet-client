@@ -361,7 +361,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. A unique identifier for the hub.</summary>
+                        /// <summary>Required. A unique identifier for the hub.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("hubId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string HubId { get; set; }
 
@@ -571,11 +571,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -990,11 +993,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -1508,7 +1514,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
-                    /// <summary>Optional. Unique id for the spoke to create.</summary>
+                    /// <summary>Required. Unique id for the spoke to create.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("spokeId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SpokeId { get; set; }
 
@@ -1704,11 +1710,13 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -2669,6 +2677,17 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about locations</summary>
+    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of supported features</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationFeatures")]
+        public virtual System.Collections.Generic.IList<string> LocationFeatures { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

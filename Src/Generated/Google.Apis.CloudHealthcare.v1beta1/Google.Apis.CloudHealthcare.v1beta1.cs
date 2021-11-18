@@ -13860,6 +13860,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class FhirConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true,
+        /// all extensions are preserved during de-identification by default. If false or unspecified, all extensions
+        /// are removed during de-identification by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultKeepExtensions")]
+        public virtual System.Nullable<bool> DefaultKeepExtensions { get; set; }
+
+        /// <summary>
         /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is
         /// passed through to the output dataset unmodified. All extensions will be processed according to
         /// `default_keep_extensions`. If a field can be matched by more than one FieldMetadata, the first

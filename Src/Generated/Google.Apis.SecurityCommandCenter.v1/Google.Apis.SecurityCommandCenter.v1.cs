@@ -288,6 +288,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
         {
             this.service = service;
             Assets = new AssetsResource(service);
+            Findings = new FindingsResource(service);
+            MuteConfigs = new MuteConfigsResource(service);
             Sources = new SourcesResource(service);
         }
 
@@ -661,6 +663,444 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
         }
 
+        /// <summary>Gets the Findings resource.</summary>
+        public virtual FindingsResource Findings { get; }
+
+        /// <summary>The "findings" collection of methods.</summary>
+        public class FindingsResource
+        {
+            private const string Resource = "findings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FindingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an
+            /// organization, folder or project. The findings matched by the filter will be muted after the LRO is done.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent, at which bulk action needs to be applied. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
+            {
+                return new BulkMuteRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an
+            /// organization, folder or project. The findings matched by the filter will be muted after the LRO is done.
+            /// </summary>
+            public class BulkMuteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new BulkMute request.</summary>
+                public BulkMuteRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, at which bulk action needs to be applied. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkMute";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/findings:bulkMute";
+
+                /// <summary>Initializes BulkMute parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the MuteConfigs resource.</summary>
+        public virtual MuteConfigsResource MuteConfigs { get; }
+
+        /// <summary>The "muteConfigs" collection of methods.</summary>
+        public class MuteConfigsResource
+        {
+            private const string Resource = "muteConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MuteConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a mute config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the new mute configs's parent. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a mute config.</summary>
+            public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the new mute configs's parent. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower
+                /// case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number,
+                /// and a 63 character maximum.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("muteConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MuteConfigId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/muteConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("muteConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "muteConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes an existing mute config.</summary>
+            /// <param name="name">
+            /// Required. Name of the mute config to delete. Its format is
+            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+            /// projects/{project}/muteConfigs/{config_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an existing mute config.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the mute config to delete. Its format is
+                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+                /// projects/{project}/muteConfigs/{config_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/muteConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a mute config.</summary>
+            /// <param name="name">
+            /// Required. Name of the mute config to retrieve. Its format is
+            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+            /// projects/{project}/muteConfigs/{config_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a mute config.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the mute config to retrieve. Its format is
+                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+                /// projects/{project}/muteConfigs/{config_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/muteConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists mute configs.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns the collection of mute configs. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists mute configs.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListMuteConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns the collection of mute configs. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of configs to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 configs will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListMuteConfigs` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListMuteConfigs` must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/muteConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a mute config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// This field will be ignored if provided on config creation. Format
+            /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
+            /// "projects/{project}/muteConfigs/{mute_config}"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a mute config.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// This field will be ignored if provided on config creation. Format
+                /// "organizations/{organization}/muteConfigs/{mute_config}"
+                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated. If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/muteConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the Sources resource.</summary>
         public virtual SourcesResource Sources { get; }
 
@@ -694,6 +1134,103 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 public FindingsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ExternalSystems = new ExternalSystemsResource(service);
+                }
+
+                /// <summary>Gets the ExternalSystems resource.</summary>
+                public virtual ExternalSystemsResource ExternalSystems { get; }
+
+                /// <summary>The "externalSystems" collection of methods.</summary>
+                public class ExternalSystemsResource
+                {
+                    private const string Resource = "externalSystems";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ExternalSystemsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Updates external system. This is for a given finding.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// External System Name e.g. jira, demisto, etc. e.g.:
+                    /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates external system. This is for a given finding.</summary>
+                    public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// External System Name e.g. jira, demisto, etc. e.g.:
+                        /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The FieldMask to use when updating the external system resource. If empty all mutable fields
+                        /// will be updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/sources/[^/]+/findings/[^/]+/externalSystems/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -1061,6 +1598,71 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
                 }
 
+                /// <summary>Updates the mute state of a finding.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the finding. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                /// </param>
+                public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
+                {
+                    return new SetMuteRequest(service, body, name);
+                }
+
+                /// <summary>Updates the mute state of a finding.</summary>
+                public class SetMuteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Finding>
+                {
+                    /// <summary>Constructs a new SetMute request.</summary>
+                    public SetMuteRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the finding. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setMute";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:setMute";
+
+                    /// <summary>Initializes SetMute parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1313,6 +1915,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
         {
             this.service = service;
             Assets = new AssetsResource(service);
+            Findings = new FindingsResource(service);
+            MuteConfigs = new MuteConfigsResource(service);
             NotificationConfigs = new NotificationConfigsResource(service);
             Operations = new OperationsResource(service);
             Sources = new SourcesResource(service);
@@ -1742,6 +2346,444 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Findings resource.</summary>
+        public virtual FindingsResource Findings { get; }
+
+        /// <summary>The "findings" collection of methods.</summary>
+        public class FindingsResource
+        {
+            private const string Resource = "findings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FindingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an
+            /// organization, folder or project. The findings matched by the filter will be muted after the LRO is done.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent, at which bulk action needs to be applied. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
+            {
+                return new BulkMuteRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an
+            /// organization, folder or project. The findings matched by the filter will be muted after the LRO is done.
+            /// </summary>
+            public class BulkMuteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new BulkMute request.</summary>
+                public BulkMuteRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, at which bulk action needs to be applied. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkMute";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/findings:bulkMute";
+
+                /// <summary>Initializes BulkMute parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the MuteConfigs resource.</summary>
+        public virtual MuteConfigsResource MuteConfigs { get; }
+
+        /// <summary>The "muteConfigs" collection of methods.</summary>
+        public class MuteConfigsResource
+        {
+            private const string Resource = "muteConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MuteConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a mute config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the new mute configs's parent. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a mute config.</summary>
+            public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the new mute configs's parent. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower
+                /// case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number,
+                /// and a 63 character maximum.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("muteConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MuteConfigId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/muteConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("muteConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "muteConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes an existing mute config.</summary>
+            /// <param name="name">
+            /// Required. Name of the mute config to delete. Its format is
+            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+            /// projects/{project}/muteConfigs/{config_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an existing mute config.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the mute config to delete. Its format is
+                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+                /// projects/{project}/muteConfigs/{config_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/muteConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a mute config.</summary>
+            /// <param name="name">
+            /// Required. Name of the mute config to retrieve. Its format is
+            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+            /// projects/{project}/muteConfigs/{config_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a mute config.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the mute config to retrieve. Its format is
+                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+                /// projects/{project}/muteConfigs/{config_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/muteConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists mute configs.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns the collection of mute configs. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists mute configs.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListMuteConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns the collection of mute configs. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of configs to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 configs will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListMuteConfigs` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListMuteConfigs` must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/muteConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a mute config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// This field will be ignored if provided on config creation. Format
+            /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
+            /// "projects/{project}/muteConfigs/{mute_config}"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a mute config.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// This field will be ignored if provided on config creation. Format
+                /// "organizations/{organization}/muteConfigs/{mute_config}"
+                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated. If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/muteConfigs/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -2422,6 +3464,103 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 public FindingsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ExternalSystems = new ExternalSystemsResource(service);
+                }
+
+                /// <summary>Gets the ExternalSystems resource.</summary>
+                public virtual ExternalSystemsResource ExternalSystems { get; }
+
+                /// <summary>The "externalSystems" collection of methods.</summary>
+                public class ExternalSystemsResource
+                {
+                    private const string Resource = "externalSystems";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ExternalSystemsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Updates external system. This is for a given finding.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// External System Name e.g. jira, demisto, etc. e.g.:
+                    /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates external system. This is for a given finding.</summary>
+                    public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// External System Name e.g. jira, demisto, etc. e.g.:
+                        /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The FieldMask to use when updating the external system resource. If empty all mutable fields
+                        /// will be updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/sources/[^/]+/findings/[^/]+/externalSystems/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -2863,6 +4002,71 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the mute state of a finding.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the finding. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                /// </param>
+                public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
+                {
+                    return new SetMuteRequest(service, body, name);
+                }
+
+                /// <summary>Updates the mute state of a finding.</summary>
+                public class SetMuteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Finding>
+                {
+                    /// <summary>Constructs a new SetMute request.</summary>
+                    public SetMuteRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the finding. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setMute";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:setMute";
+
+                    /// <summary>Initializes SetMute parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
                         });
                     }
                 }
@@ -3607,6 +4811,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
         {
             this.service = service;
             Assets = new AssetsResource(service);
+            Findings = new FindingsResource(service);
+            MuteConfigs = new MuteConfigsResource(service);
             Sources = new SourcesResource(service);
         }
 
@@ -3980,6 +5186,444 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
         }
 
+        /// <summary>Gets the Findings resource.</summary>
+        public virtual FindingsResource Findings { get; }
+
+        /// <summary>The "findings" collection of methods.</summary>
+        public class FindingsResource
+        {
+            private const string Resource = "findings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FindingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an
+            /// organization, folder or project. The findings matched by the filter will be muted after the LRO is done.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent, at which bulk action needs to be applied. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
+            {
+                return new BulkMuteRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an
+            /// organization, folder or project. The findings matched by the filter will be muted after the LRO is done.
+            /// </summary>
+            public class BulkMuteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new BulkMute request.</summary>
+                public BulkMuteRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, at which bulk action needs to be applied. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkMute";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/findings:bulkMute";
+
+                /// <summary>Initializes BulkMute parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the MuteConfigs resource.</summary>
+        public virtual MuteConfigsResource MuteConfigs { get; }
+
+        /// <summary>The "muteConfigs" collection of methods.</summary>
+        public class MuteConfigsResource
+        {
+            private const string Resource = "muteConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MuteConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a mute config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the new mute configs's parent. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a mute config.</summary>
+            public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the new mute configs's parent. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower
+                /// case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number,
+                /// and a 63 character maximum.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("muteConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MuteConfigId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/muteConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("muteConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "muteConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes an existing mute config.</summary>
+            /// <param name="name">
+            /// Required. Name of the mute config to delete. Its format is
+            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+            /// projects/{project}/muteConfigs/{config_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an existing mute config.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the mute config to delete. Its format is
+                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+                /// projects/{project}/muteConfigs/{config_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/muteConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a mute config.</summary>
+            /// <param name="name">
+            /// Required. Name of the mute config to retrieve. Its format is
+            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+            /// projects/{project}/muteConfigs/{config_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a mute config.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the mute config to retrieve. Its format is
+                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id}, or
+                /// projects/{project}/muteConfigs/{config_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/muteConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists mute configs.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns the collection of mute configs. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists mute configs.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListMuteConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns the collection of mute configs. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of configs to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 configs will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListMuteConfigs` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListMuteConfigs` must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/muteConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a mute config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// This field will be ignored if provided on config creation. Format
+            /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
+            /// "projects/{project}/muteConfigs/{mute_config}"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a mute config.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// This field will be ignored if provided on config creation. Format
+                /// "organizations/{organization}/muteConfigs/{mute_config}"
+                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated. If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/muteConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the Sources resource.</summary>
         public virtual SourcesResource Sources { get; }
 
@@ -4013,6 +5657,103 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 public FindingsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ExternalSystems = new ExternalSystemsResource(service);
+                }
+
+                /// <summary>Gets the ExternalSystems resource.</summary>
+                public virtual ExternalSystemsResource ExternalSystems { get; }
+
+                /// <summary>The "externalSystems" collection of methods.</summary>
+                public class ExternalSystemsResource
+                {
+                    private const string Resource = "externalSystems";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ExternalSystemsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Updates external system. This is for a given finding.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// External System Name e.g. jira, demisto, etc. e.g.:
+                    /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates external system. This is for a given finding.</summary>
+                    public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// External System Name e.g. jira, demisto, etc. e.g.:
+                        /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The FieldMask to use when updating the external system resource. If empty all mutable fields
+                        /// will be updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/sources/[^/]+/findings/[^/]+/externalSystems/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -4376,6 +6117,71 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the mute state of a finding.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the finding. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
+                /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
+                /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                /// </param>
+                public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
+                {
+                    return new SetMuteRequest(service, body, name);
+                }
+
+                /// <summary>Updates the mute state of a finding.</summary>
+                public class SetMuteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Finding>
+                {
+                    /// <summary>Constructs a new SetMute request.</summary>
+                    public SetMuteRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the finding. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
+                    /// "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
+                    /// "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setMute";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:setMute";
+
+                    /// <summary>Initializes SetMute parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
                         });
                     }
                 }
@@ -4805,6 +6611,35 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Request message for bulk findings update. Note: 1. If multiple bulk update requests match the same resource, the
+    /// order in which they get executed is not defined. 2. Once a bulk operation is started, there is no way to stop
+    /// it.
+    /// </summary>
+    public class BulkMuteFindingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Expression that identifies findings that should be updated. The expression is a list of zero or more
+        /// restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+        /// precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to
+        /// indicate negation. The fields map to those defined in the corresponding resource. The supported operators
+        /// are: * `=` for all value types. * `&amp;gt;`, `&amp;lt;`, `&amp;gt;=`, `&amp;lt;=` for integer values. *
+        /// `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. *
+        /// integer literals without quotes. * boolean literals `true` and `false` without quotes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// This can be a mute configuration name or any identifier for mute/unmute of findings based on the filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteAnnotation")]
+        public virtual string MuteAnnotation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CVE stands for Common Vulnerabilities and Exposures. More information: https://cve.mitre.org</summary>
     public class Cve : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4988,6 +6823,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual object EventTime { get; set; }
 
         /// <summary>
+        /// Output only. Third party SIEM/SOAR fields within SCC, contains external system information and external
+        /// system finding fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSystems")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSecuritycenterV1ExternalSystem> ExternalSystems { get; set; }
+
+        /// <summary>
         /// The URI that, if available, points to a web page outside of Security Command Center where additional
         /// information about the finding can be found. This field is guaranteed to be either empty or a well formed
         /// URL.
@@ -5006,6 +6848,21 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
+
+        /// <summary>Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mute")]
+        public virtual string Mute { get; set; }
+
+        /// <summary>
+        /// First known as mute_annotation. Records additional information about the mute operation e.g. mute config
+        /// that muted the finding, user who muted the finding, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteInitiator")]
+        public virtual string MuteInitiator { get; set; }
+
+        /// <summary>Output only. The most recent time this finding was muted or unmuted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteUpdateTime")]
+        public virtual object MuteUpdateTime { get; set; }
 
         /// <summary>
         /// The relative resource name of this finding. See:
@@ -5109,6 +6966,99 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of third party SIEM/SOAR fields within SCC.</summary>
+    public class GoogleCloudSecuritycenterV1ExternalSystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>References primary/secondary etc assignees in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignees")]
+        public virtual System.Collections.Generic.IList<string> Assignees { get; set; }
+
+        /// <summary>
+        /// The most recent time when the corresponding finding's ticket/tracker was updated in the external system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSystemUpdateTime")]
+        public virtual object ExternalSystemUpdateTime { get; set; }
+
+        /// <summary>Identifier that's used to track the given finding in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalUid")]
+        public virtual string ExternalUid { get; set; }
+
+        /// <summary>
+        /// External System Name e.g. jira, demisto, etc. e.g.:
+        /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
+        /// folders/1234/sources/5678/findings/123456/externalSystems/jira
+        /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Most recent status of the corresponding finding's ticket/tracker in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mute config is a Cloud SCC resource that contains the configuration to mute create/update events of findings.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1MuteConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time at which the mute config was created. This field is set by the server and will be
+        /// ignored if provided on config creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>A description of the mute config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The human readable name to be displayed for the mute config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. An expression that defines the filter to apply across create/update events of findings. While
+        /// creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If
+        /// a filter contains project = X but is created under the project = Y scope, it might not match any findings.
+        /// The following field and operator combinations are supported: * severity: `=`, `:` * category: `=`, `:` *
+        /// resource.name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` *
+        /// resource.folders.resource_folder: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name:
+        /// `=`, `:` * resource.type: `=`, `:` * finding_class: `=`, `:` * indicator.ip_addresses: `=`, `:` *
+        /// indicator.domains: `=`, `:`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Output only. Email address of the user who last edited the mute config. This field is set by the server and
+        /// will be ignored if provided on config creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostRecentEditor")]
+        public virtual string MostRecentEditor { get; set; }
+
+        /// <summary>
+        /// This field will be ignored if provided on config creation. Format
+        /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
+        /// "projects/{project}/muteConfigs/{mute_config}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The most recent time at which the mute config was updated. This field is set by the server and
+        /// will be ignored if provided on config creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5785,6 +7735,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing mute configs.</summary>
+    public class ListMuteConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The mute configs from the specified parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1MuteConfig> MuteConfigs { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing notification configs.</summary>
     public class ListNotificationConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6211,6 +8179,17 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for updating a finding's mute status.</summary>
+    public class SetMuteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The desired state of the Mute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mute")]
+        public virtual string Mute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

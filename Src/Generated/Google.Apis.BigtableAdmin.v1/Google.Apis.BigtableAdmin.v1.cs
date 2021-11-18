@@ -245,6 +245,35 @@ namespace Google.Apis.BigtableAdmin.v1
 }
 namespace Google.Apis.BigtableAdmin.v1.Data
 {
+    /// <summary>Limits for the number of nodes a Cluster can autoscale up/down to.</summary>
+    public class AutoscalingLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Maximum number of nodes to scale up to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxServeNodes")]
+        public virtual System.Nullable<int> MaxServeNodes { get; set; }
+
+        /// <summary>Required. Minimum number of nodes to scale down to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minServeNodes")]
+        public virtual System.Nullable<int> MinServeNodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Autoscaling targets for a Cluster. These determine the recommended nodes.</summary>
+    public class AutoscalingTargets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no
+        /// utilization) to 100 (total utilization).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationPercent")]
+        public virtual System.Nullable<int> CpuUtilizationPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A backup of a Cloud Bigtable table.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -337,6 +366,10 @@ namespace Google.Apis.BigtableAdmin.v1.Data
     /// </summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterConfig")]
+        public virtual ClusterConfig ClusterConfig { get; set; }
+
         /// <summary>
         /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly
         /// overridden.
@@ -373,6 +406,36 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         /// <summary>Output only. The current state of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Autoscaling config for a cluster.</summary>
+    public class ClusterAutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Autoscaling limits for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingLimits")]
+        public virtual AutoscalingLimits AutoscalingLimits { get; set; }
+
+        /// <summary>Required. Autoscaling targets for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTargets")]
+        public virtual AutoscalingTargets AutoscalingTargets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a cluster.</summary>
+    public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of
+        /// serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and
+        /// autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterAutoscalingConfig")]
+        public virtual ClusterAutoscalingConfig ClusterAutoscalingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -583,7 +646,10 @@ namespace Google.Apis.BigtableAdmin.v1.Data
     /// </summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. A server-assigned timestamp representing when this Instance was created.</summary>
+        /// <summary>
+        /// Output only. A server-assigned timestamp representing when this Instance was created. For instances created
+        /// before this field was added (August 2021), this value is `seconds: 0, nanos: 1`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -656,6 +722,41 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         /// <summary>The progress of the post-restore optimizations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual OperationProgress Progress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for the Operation returned by PartialUpdateCluster.</summary>
+    public class PartialUpdateClusterMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
+        public virtual object FinishTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
+        public virtual PartialUpdateClusterRequest OriginalRequest { get; set; }
+
+        /// <summary>The time at which the original request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual object RequestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BigtableInstanceAdmin.PartialUpdateCluster.</summary>
+    public class PartialUpdateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Cluster which contains the partial updates to be applied, subject to the update_mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual Cluster Cluster { get; set; }
+
+        /// <summary>Required. The subset of Cluster fields which should be replaced. Must be explicitly set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

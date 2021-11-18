@@ -4635,6 +4635,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installedInventoryItemIds")]
         public virtual System.Collections.Generic.IList<string> InstalledInventoryItemIds { get; set; }
 
+        /// <summary>List of items affected by the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<VulnerabilityReportVulnerabilityItem> Items { get; set; }
+
         /// <summary>The timestamp for when the vulnerability was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -4698,12 +4702,59 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// OS inventory item that is affected by a vulnerability or fixed as a result of a vulnerability.
+    /// </summary>
+    public class VulnerabilityReportVulnerabilityItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the vulnerability report was not updated
+        /// after the VM inventory update, these values might not display in VM inventory. If there is no available fix,
+        /// the field is empty. The `inventory_item` value specifies the latest `SoftwarePackage` available to the VM
+        /// that fixes the vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableInventoryItemId")]
+        public virtual string AvailableInventoryItemId { get; set; }
+
+        /// <summary>
+        /// The recommended [CPE URI](https://cpe.mitre.org/specification/) update that contains a fix for this
+        /// vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedCpeUri")]
+        public virtual string FixedCpeUri { get; set; }
+
+        /// <summary>
+        /// Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field displays the inventory items
+        /// affected by this vulnerability. If the vulnerability report was not updated after the VM inventory update,
+        /// these values might not display in VM inventory. For some operating systems, this field might be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedInventoryItemId")]
+        public virtual string InstalledInventoryItemId { get; set; }
+
+        /// <summary>The upstream OS patch, packages or KB that fixes the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreamFix")]
+        public virtual string UpstreamFix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents one week day in a month. An example is "the 4th Sunday".</summary>
     public class WeekDayOfMonth : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. A day of the week.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
         public virtual string DayOfWeek { get; set; }
+
+        /// <summary>
+        /// Optional. Represents the number of days before or after the given week day of month that the patch
+        /// deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day
+        /// of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after
+        /// the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five
+        /// days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOffset")]
+        public virtual System.Nullable<int> DayOffset { get; set; }
 
         /// <summary>
         /// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week

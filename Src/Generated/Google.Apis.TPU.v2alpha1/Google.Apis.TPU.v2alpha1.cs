@@ -1827,6 +1827,13 @@ namespace Google.Apis.TPU.v2alpha1.Data
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is
+        /// required if you plan to use the TPU workers to forward routes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
+        public virtual System.Nullable<bool> CanIpForward { get; set; }
+
+        /// <summary>
         /// Indicates that external IP addresses would be associated with the TPU workers. If set to false, the
         /// specified subnetwork or network should have Private Google Access enabled.
         /// </summary>

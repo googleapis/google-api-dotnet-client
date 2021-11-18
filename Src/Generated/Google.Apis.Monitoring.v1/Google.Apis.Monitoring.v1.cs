@@ -2054,6 +2054,28 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A widget that displays a stream of log.</summary>
+    public class LogsPanel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filter that chooses which log entries to return. See Advanced Logs Queries
+        /// (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are
+        /// returned. An empty filter matches all log entries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// The names of logging resources to collect logs for. Does not implicitly include the current host project.
+        /// Currently only projects are supported. There must be at least one resource_name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a Metrics Scope (https://cloud.google.com/monitoring/settings#concept-scope) in Cloud Monitoring,
     /// which specifies one or more Google projects and zero or more AWS accounts to monitor together.
@@ -2818,6 +2840,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>A blank space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blank")]
         public virtual Empty Blank { get; set; }
+
+        /// <summary>A widget that shows a stream of logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logsPanel")]
+        public virtual LogsPanel LogsPanel { get; set; }
 
         /// <summary>A scorecard summarizing time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scorecard")]

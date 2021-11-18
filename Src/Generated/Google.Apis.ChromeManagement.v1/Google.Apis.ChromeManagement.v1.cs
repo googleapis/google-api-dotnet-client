@@ -73,6 +73,12 @@ namespace Google.Apis.ChromeManagement.v1
 
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public static string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
+
+            /// <summary>
+            /// See basic device and telemetry information collected from Chrome OS devices or users managed within your
+            /// organization
+            /// </summary>
+            public static string ChromeManagementTelemetryReadonly = "https://www.googleapis.com/auth/chrome.management.telemetry.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Chrome Management API.</summary>
@@ -86,6 +92,12 @@ namespace Google.Apis.ChromeManagement.v1
 
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public const string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
+
+            /// <summary>
+            /// See basic device and telemetry information collected from Chrome OS devices or users managed within your
+            /// organization
+            /// </summary>
+            public const string ChromeManagementTelemetryReadonly = "https://www.googleapis.com/auth/chrome.management.telemetry.readonly";
         }
 
         /// <summary>Gets the Customers resource.</summary>
@@ -287,6 +299,7 @@ namespace Google.Apis.ChromeManagement.v1
             this.service = service;
             Apps = new AppsResource(service);
             Reports = new ReportsResource(service);
+            Telemetry = new TelemetryResource(service);
         }
 
         /// <summary>Gets the Apps resource.</summary>
@@ -1041,6 +1054,145 @@ namespace Google.Apis.ChromeManagement.v1
                 }
             }
         }
+
+        /// <summary>Gets the Telemetry resource.</summary>
+        public virtual TelemetryResource Telemetry { get; }
+
+        /// <summary>The "telemetry" collection of methods.</summary>
+        public class TelemetryResource
+        {
+            private const string Resource = "telemetry";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TelemetryResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Devices = new DevicesResource(service);
+            }
+
+            /// <summary>Gets the Devices resource.</summary>
+            public virtual DevicesResource Devices { get; }
+
+            /// <summary>The "devices" collection of methods.</summary>
+            public class DevicesResource
+            {
+                private const string Resource = "devices";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DevicesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>List all telemetry devices.</summary>
+                /// <param name="parent">
+                /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                /// request.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List all telemetry devices.</summary>
+                public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1ListTelemetryDevicesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                    /// request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Only include resources that match the filter. Supported filter fields: - org_unit_id -
+                    /// serial_number
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Maximum number of results to return. Maximum and default are 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Token to specify next page in the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. Read mask to specify which fields to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/telemetry/devices";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+        }
     }
 }
 namespace Google.Apis.ChromeManagement.v1.Data
@@ -1161,6 +1313,110 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. App type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Battery info</summary>
+    public class GoogleChromeManagementV1BatteryInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Design capacity (mAmpere-hours).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("designCapacity")]
+        public virtual System.Nullable<long> DesignCapacity { get; set; }
+
+        /// <summary>Output only. Designed minimum output voltage (mV)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("designMinVoltage")]
+        public virtual System.Nullable<int> DesignMinVoltage { get; set; }
+
+        /// <summary>Output only. The date the battery was manufactured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufactureDate")]
+        public virtual GoogleTypeDate ManufactureDate { get; set; }
+
+        /// <summary>Output only. Battery manufacturer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; }
+
+        /// <summary>Output only. Battery serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>Output only. Technology of the battery. Example: Li-ion</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technology")]
+        public virtual string Technology { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sampling data for battery.</summary>
+    public class GoogleChromeManagementV1BatterySampleReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Battery charge percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chargeRate")]
+        public virtual System.Nullable<int> ChargeRate { get; set; }
+
+        /// <summary>Output only. Battery current (mA).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("current")]
+        public virtual System.Nullable<long> Current { get; set; }
+
+        /// <summary>
+        /// Output only. The battery discharge rate measured in mW. Positive if the battery is being discharged,
+        /// negative if it's being charged.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dischargeRate")]
+        public virtual System.Nullable<int> DischargeRate { get; set; }
+
+        /// <summary>Output only. Battery remaining capacity (mAmpere-hours).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remainingCapacity")]
+        public virtual System.Nullable<long> RemainingCapacity { get; set; }
+
+        /// <summary>Output only. Timestamp of when the sample was collected on device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Output only. Battery status read from sysfs. Example: Discharging</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Output only. Temperature in Celsius degrees.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<int> Temperature { get; set; }
+
+        /// <summary>Output only. Battery voltage (millivolt).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voltage")]
+        public virtual System.Nullable<long> Voltage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status data for battery.</summary>
+    public class GoogleChromeManagementV1BatteryStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Battery health.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batteryHealth")]
+        public virtual string BatteryHealth { get; set; }
+
+        /// <summary>Output only. Cycle count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cycleCount")]
+        public virtual System.Nullable<int> CycleCount { get; set; }
+
+        /// <summary>Output only. Full charge capacity (mAmpere-hours).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullChargeCapacity")]
+        public virtual System.Nullable<long> FullChargeCapacity { get; set; }
+
+        /// <summary>Output only. Timestamp of when the sample was collected on device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Output only. Sampling data for the battery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sample")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BatterySampleReport> Sample { get; set; }
+
+        /// <summary>Output only. Battery serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1372,6 +1628,65 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CPU specs for a CPU.</summary>
+    public class GoogleChromeManagementV1CpuInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The CPU architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Output only. The max CPU clock speed in kHz.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxClockSpeed")]
+        public virtual System.Nullable<int> MaxClockSpeed { get; set; }
+
+        /// <summary>Output only. The CPU model name. Example: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains samples of the cpu status reports.</summary>
+    public class GoogleChromeManagementV1CpuStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CPU temperature sample info per CPU core in Celsius</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuTemperatureInfo")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1CpuTemperatureInfo> CpuTemperatureInfo { get; set; }
+
+        /// <summary>Output only. Sample of CPU utilization (0-100 percent).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationPct")]
+        public virtual System.Nullable<int> CpuUtilizationPct { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp in milliseconds representing time at which this report was sampled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Output only. Frequency the report is sampled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleFrequency")]
+        public virtual object SampleFrequency { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CPU temperature of a device. Sampled per CPU core in Celsius</summary>
+    public class GoogleChromeManagementV1CpuTemperatureInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CPU label. Example: Core 0</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Output only. CPU temperature in Celsius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsius")]
+        public virtual System.Nullable<int> TemperatureCelsius { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a device reporting Chrome browser information.</summary>
     public class GoogleChromeManagementV1Device : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1382,6 +1697,98 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The name of the machine within its local network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machine")]
         public virtual string Machine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of the single storage device.</summary>
+    public class GoogleChromeManagementV1DiskInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of bytes read since last boot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesReadThisSession")]
+        public virtual System.Nullable<long> BytesReadThisSession { get; set; }
+
+        /// <summary>Output only. Number of bytes written since last boot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesWrittenThisSession")]
+        public virtual System.Nullable<long> BytesWrittenThisSession { get; set; }
+
+        /// <summary>
+        /// Output only. Time spent discarding since last boot. Discarding is writing to clear blocks which are no
+        /// longer in use. Supported on kernels 4.18+.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discardTimeThisSession")]
+        public virtual object DiscardTimeThisSession { get; set; }
+
+        /// <summary>Output only. Disk health.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("health")]
+        public virtual string Health { get; set; }
+
+        /// <summary>
+        /// Output only. Counts the time the disk and queue were busy, so unlike the fields above, parallel requests are
+        /// not counted multiple times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ioTimeThisSession")]
+        public virtual object IoTimeThisSession { get; set; }
+
+        /// <summary>Output only. Disk manufacturer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; }
+
+        /// <summary>Output only. Disk model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>Output only. Time spent reading from disk since last boot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTimeThisSession")]
+        public virtual object ReadTimeThisSession { get; set; }
+
+        /// <summary>Output only. Disk serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>Output only. Disk size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>Output only. Disk type: eMMC / NVMe / ATA / SCSI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Disk volumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeIds")]
+        public virtual System.Collections.Generic.IList<string> VolumeIds { get; set; }
+
+        /// <summary>Output only. Time spent writing to disk since last boot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeTimeThisSession")]
+        public virtual object WriteTimeThisSession { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for a display.</summary>
+    public class GoogleChromeManagementV1DisplayInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Represents the graphics card device id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual System.Nullable<long> DeviceId { get; set; }
+
+        /// <summary>Output only. Indicates if display is internal or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
+        public virtual System.Nullable<bool> IsInternal { get; set; }
+
+        /// <summary>Output only. Refresh rate in Hz.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshRate")]
+        public virtual System.Nullable<int> RefreshRate { get; set; }
+
+        /// <summary>Output only. Resolution height in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolutionHeight")]
+        public virtual System.Nullable<int> ResolutionHeight { get; set; }
+
+        /// <summary>Output only. Resolution width in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolutionWidth")]
+        public virtual System.Nullable<int> ResolutionWidth { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1404,6 +1811,51 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Total number of devices matching request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information of a graphics adapter (GPU).</summary>
+    public class GoogleChromeManagementV1GraphicsAdapterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Adapter name. Example: Mesa DRI Intel(R) UHD Graphics 620 (Kabylake GT2).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapter")]
+        public virtual string Adapter { get; set; }
+
+        /// <summary>Output only. Represents the graphics card device id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual System.Nullable<long> DeviceId { get; set; }
+
+        /// <summary>Output only. Version of the GPU driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driverVersion")]
+        public virtual string DriverVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information of the graphics subsystem.</summary>
+    public class GoogleChromeManagementV1GraphicsInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information about the graphics adapter (GPU).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterInfo")]
+        public virtual GoogleChromeManagementV1GraphicsAdapterInfo AdapterInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information of the graphics subsystem.</summary>
+    public class GoogleChromeManagementV1GraphicsStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information about the displays for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displays")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DisplayInfo> Displays { get; set; }
+
+        /// <summary>Output only. Time at which the graphics data was reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1463,6 +1915,256 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleChromeManagementV1ListTelemetryDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Telemetry devices returned in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TelemetryDevice> Devices { get; set; }
+
+        /// <summary>Token to specify next page in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Memory information of a device.</summary>
+    public class GoogleChromeManagementV1MemoryInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Amount of available RAM in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableRamBytes")]
+        public virtual System.Nullable<long> AvailableRamBytes { get; set; }
+
+        /// <summary>Output only. Total RAM in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRamBytes")]
+        public virtual System.Nullable<long> TotalRamBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains samples of memory status reports.</summary>
+    public class GoogleChromeManagementV1MemoryStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of page faults during this collection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageFaults")]
+        public virtual System.Nullable<int> PageFaults { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp in milliseconds representing time at which this report was sampled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Output only. Frequency the report is sampled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleFrequency")]
+        public virtual object SampleFrequency { get; set; }
+
+        /// <summary>Output only. Amount of free RAM in bytes (unreliable due to Garbage Collection).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemRamFreeBytes")]
+        public virtual System.Nullable<long> SystemRamFreeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State of visible/configured networks.</summary>
+    public class GoogleChromeManagementV1NetworkStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Gateway IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayIpAddress")]
+        public virtual string GatewayIpAddress { get; set; }
+
+        /// <summary>Output only. LAN IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lanIpAddress")]
+        public virtual string LanIpAddress { get; set; }
+
+        /// <summary>Output only. Time at which the network state was reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>Output only. Frequency the report is sampled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleFrequency")]
+        public virtual object SampleFrequency { get; set; }
+
+        /// <summary>Output only. Signal strength for wireless networks measured in decibels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalStrengthDbm")]
+        public virtual System.Nullable<int> SignalStrengthDbm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information regarding the current OS update status.</summary>
+    public class GoogleChromeManagementV1OsUpdateStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp of the last reboot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRebootTime")]
+        public virtual object LastRebootTime { get; set; }
+
+        /// <summary>Output only. Timestamp of the last update check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateCheckTime")]
+        public virtual object LastUpdateCheckTime { get; set; }
+
+        /// <summary>Output only. Timestamp of the last successful update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. New platform version of the os image being downloaded and applied. It is only set when update
+        /// status is OS_IMAGE_DOWNLOAD_IN_PROGRESS or OS_UPDATE_NEED_REBOOT. Note this could be a dummy "0.0.0.0" for
+        /// OS_UPDATE_NEED_REBOOT status for some edge cases, e.g. update engine is restarted without a reboot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newPlatformVersion")]
+        public virtual string NewPlatformVersion { get; set; }
+
+        /// <summary>Output only. New requested platform version from the pending updated kiosk app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newRequestedPlatformVersion")]
+        public virtual string NewRequestedPlatformVersion { get; set; }
+
+        /// <summary>Output only. Current state of the os update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateState")]
+        public virtual string UpdateState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status data for storage.</summary>
+    public class GoogleChromeManagementV1StorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The available space for user data storage in the device in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableDiskBytes")]
+        public virtual System.Nullable<long> AvailableDiskBytes { get; set; }
+
+        /// <summary>The total space for user data storage in the device in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDiskBytes")]
+        public virtual System.Nullable<long> TotalDiskBytes { get; set; }
+
+        /// <summary>Information for disk volumes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1StorageInfoDiskVolume> Volume { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for disk volumes</summary>
+    public class GoogleChromeManagementV1StorageInfoDiskVolume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Free storage space in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageFreeBytes")]
+        public virtual System.Nullable<long> StorageFreeBytes { get; set; }
+
+        /// <summary>Total storage space in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageTotalBytes")]
+        public virtual System.Nullable<long> StorageTotalBytes { get; set; }
+
+        /// <summary>Disk volume id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
+        public virtual string VolumeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status data for storage.</summary>
+    public class GoogleChromeManagementV1StorageStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Reports on disk</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disk")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DiskInfo> Disk { get; set; }
+
+        /// <summary>Output only. Timestamp of when the sample was collected on device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Telemetry data collected from a managed device.</summary>
+    public class GoogleChromeManagementV1TelemetryDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information on battery specs for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batteryInfo")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BatteryInfo> BatteryInfo { get; set; }
+
+        /// <summary>Output only. Battery reports collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batteryStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BatteryStatusReport> BatteryStatusReport { get; set; }
+
+        /// <summary>Output only. Information regarding CPU specs for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuInfo")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1CpuInfo> CpuInfo { get; set; }
+
+        /// <summary>Output only. CPU status reports collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1CpuStatusReport> CpuStatusReport { get; set; }
+
+        /// <summary>Output only. Google Workspace Customer whose enterprise enrolled the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>
+        /// Output only. The unique Directory API ID of the device. This value is the same as the Admin Console's
+        /// Directory API ID in the Chrome OS Devices tab
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>Output only. Contains information regarding Graphic peripherals for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graphicsInfo")]
+        public virtual GoogleChromeManagementV1GraphicsInfo GraphicsInfo { get; set; }
+
+        /// <summary>Output only. Graphics reports collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graphicsStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1GraphicsStatusReport> GraphicsStatusReport { get; set; }
+
+        /// <summary>Output only. Information regarding memory specs for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryInfo")]
+        public virtual GoogleChromeManagementV1MemoryInfo MemoryInfo { get; set; }
+
+        /// <summary>Output only. Memory status reports collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1MemoryStatusReport> MemoryStatusReport { get; set; }
+
+        /// <summary>Output only. Resource name of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Network specs collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1NetworkStatusReport> NetworkStatusReport { get; set; }
+
+        /// <summary>Output only. Organization unit ID of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>Output only. Contains relevant information regarding ChromeOS update status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osUpdateStatus")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1OsUpdateStatus> OsUpdateStatus { get; set; }
+
+        /// <summary>
+        /// Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the Chrome
+        /// OS Devices tab.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>Output only. Information of storage specs for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageInfo")]
+        public virtual GoogleChromeManagementV1StorageInfo StorageInfo { get; set; }
+
+        /// <summary>Output only. Storage reports collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1StorageStatusReport> StorageStatusReport { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1487,6 +2189,35 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
