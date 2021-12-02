@@ -298,6 +298,7 @@ namespace Google.Apis.GKEHub.v1alpha
             {
                 this.service = service;
                 Features = new FeaturesResource(service);
+                Fleets = new FleetsResource(service);
                 Memberships = new MembershipsResource(service);
                 Operations = new OperationsResource(service);
             }
@@ -952,6 +953,254 @@ namespace Google.Apis.GKEHub.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/features/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Fleets resource.</summary>
+            public virtual FleetsResource Fleets { get; }
+
+            /// <summary>The "fleets" collection of methods.</summary>
+            public class FleetsResource
+            {
+                private const string Resource = "fleets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FleetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a fleet.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Fleet will be created. Specified in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Fleet body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a fleet.</summary>
+                public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Fleet>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.Fleet body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Fleet will be created. Specified in the
+                    /// format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.Fleet Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/fleets";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Removes a Fleet. There must be no memberships remaining in the Fleet.</summary>
+                /// <param name="name">
+                /// Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Removes a Fleet. There must be no memberships remaining in the Fleet.</summary>
+                public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/fleets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns the details of a fleet.</summary>
+                /// <param name="name">
+                /// Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Returns the details of a fleet.</summary>
+                public class GetRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Fleet>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/fleets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates a fleet.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The full, unique resource name of this fleet in the format of
+                /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one
+                /// fleet resource, named "default".
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Fleet body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a fleet.</summary>
+                public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Fleet>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.Fleet body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The full, unique resource name of this fleet in the format of
+                    /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one
+                    /// fleet resource, named "default".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. The fields to be updated;</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.Fleet Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/fleets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -3259,6 +3508,57 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string Description { get; set; }
 
         /// <summary>The time this status and any related Feature-specific details were updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fleet contains the Fleet-wide metadata and configuration.</summary>
+    public class Fleet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. When the Fleet was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. When the Fleet was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
+        /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space,
+        /// and exclamation point. Example: `Production Fleet`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique
+        /// within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the
+        /// name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492).
+        /// Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetName")]
+        public virtual string FleetName { get; set; }
+
+        /// <summary>
+        /// Output only. The full, unique resource name of this fleet in the format of
+        /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet
+        /// resource, named "default".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet
+        /// resource is deleted and another resource with the same name is created, it gets a different uid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. When the Fleet was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

@@ -296,13 +296,12 @@ namespace Google.Apis.Storagetransfer.v1
         /// <summary>
         /// Returns the Google service account that is used by Storage Transfer Service to access buckets in the project
         /// where transfers run or in other projects. Each Google service account is associated with one Google Cloud
-        /// Platform Console project. Users should add this service account to the Google Cloud Storage bucket ACLs to
-        /// grant access to Storage Transfer Service. This service account is created and owned by Storage Transfer
-        /// Service and can only be used by Storage Transfer Service.
+        /// project. Users should add this service account to the Google Cloud Storage bucket ACLs to grant access to
+        /// Storage Transfer Service. This service account is created and owned by Storage Transfer Service and can only
+        /// be used by Storage Transfer Service.
         /// </summary>
         /// <param name="projectId">
-        /// Required. The ID of the Google Cloud Platform Console project that the Google service account is associated
-        /// with.
+        /// Required. The ID of the Google Cloud project that the Google service account is associated with.
         /// </param>
         public virtual GetRequest Get(string projectId)
         {
@@ -312,9 +311,9 @@ namespace Google.Apis.Storagetransfer.v1
         /// <summary>
         /// Returns the Google service account that is used by Storage Transfer Service to access buckets in the project
         /// where transfers run or in other projects. Each Google service account is associated with one Google Cloud
-        /// Platform Console project. Users should add this service account to the Google Cloud Storage bucket ACLs to
-        /// grant access to Storage Transfer Service. This service account is created and owned by Storage Transfer
-        /// Service and can only be used by Storage Transfer Service.
+        /// project. Users should add this service account to the Google Cloud Storage bucket ACLs to grant access to
+        /// Storage Transfer Service. This service account is created and owned by Storage Transfer Service and can only
+        /// be used by Storage Transfer Service.
         /// </summary>
         public class GetRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.GoogleServiceAccount>
         {
@@ -326,8 +325,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
             /// <summary>
-            /// Required. The ID of the Google Cloud Platform Console project that the Google service account is
-            /// associated with.
+            /// Required. The ID of the Google Cloud project that the Google service account is associated with.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -391,9 +389,7 @@ namespace Google.Apis.Storagetransfer.v1
 
             /// <summary>Creates an agent pool resource.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">
-            /// Required. The ID of the Google Cloud Platform Console project that owns the agent pool.
-            /// </param>
+            /// <param name="projectId">Required. The ID of the Google Cloud project that owns the agent pool.</param>
             public virtual CreateRequest Create(Google.Apis.Storagetransfer.v1.Data.AgentPool body, string projectId)
             {
                 return new CreateRequest(service, body, projectId);
@@ -410,16 +406,17 @@ namespace Google.Apis.Storagetransfer.v1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Required. The ID of the Google Cloud Platform Console project that owns the agent pool.
-                /// </summary>
+                /// <summary>Required. The ID of the Google Cloud project that owns the agent pool.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
                 /// <summary>
-                /// Required. The id of the agent pool to create. The agent_pool_id must be non-empty, less than or
-                /// equal to 128 characters, and satisfy the following regex: "^[a-z]([a-z0-9-._~]*[a-z0-9])?$". Also,
-                /// agent pool names cannot start with the string "goog".
+                /// Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following
+                /// requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a
+                /// lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters,
+                /// numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals
+                /// or lowercase ASCII characters. As expressed by the regular expression:
+                /// `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("agentPoolId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AgentPoolId { get; set; }
@@ -463,7 +460,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
             /// <summary>Deletes an agent pool.</summary>
-            /// <param name="name">Required. The agent pool name to delete.</param>
+            /// <param name="name">Required. The name of the agent pool to delete.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -479,7 +476,7 @@ namespace Google.Apis.Storagetransfer.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The agent pool name to delete.</summary>
+                /// <summary>Required. The name of the agent pool to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -508,7 +505,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
             /// <summary>Gets an agent pool.</summary>
-            /// <param name="name">Required. The agent pool to get.</param>
+            /// <param name="name">Required. The name of the agent pool to get.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -524,7 +521,7 @@ namespace Google.Apis.Storagetransfer.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The agent pool to get.</summary>
+                /// <summary>Required. The name of the agent pool to get.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -553,9 +550,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
             /// <summary>Lists agent pools.</summary>
-            /// <param name="projectId">
-            /// Required. The ID of the Google Cloud Platform Console project that owns the job.
-            /// </param>
+            /// <param name="projectId">Required. The ID of the Google Cloud project that owns the job.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
@@ -571,20 +566,20 @@ namespace Google.Apis.Storagetransfer.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
+                /// <summary>Required. The ID of the Google Cloud project that owns the job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
                 /// <summary>
-                /// A list of optional query parameters specified as JSON text in the form of:
+                /// An optional list of query parameters specified as JSON text in the form of:
                 /// `{"agentPoolNames":["agentpool1","agentpool2",...]}` Since `agentPoolNames` support multiple values,
-                /// its values must be specified with array notation. `agentPoolNames` is an optional field. The list
-                /// returns all agent pools for the project when the filter is not provided or empty.
+                /// its values must be specified with array notation. When the filter is either empty or not provided,
+                /// the list returns all agent pools for the project.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The list page size. The max allowed value is 256.</summary>
+                /// <summary>The list page size. The max allowed value is `256`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -644,7 +639,7 @@ namespace Google.Apis.Storagetransfer.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. Specifies a unique string that identifies the agent pool. Format:
-            /// projects/{project_id}/agentPools/{agent_pool_id}
+            /// `projects/{project_id}/agentPools/{agent_pool_id}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.AgentPool body, string name)
             {
@@ -664,14 +659,15 @@ namespace Google.Apis.Storagetransfer.v1
 
                 /// <summary>
                 /// Required. Specifies a unique string that identifies the agent pool. Format:
-                /// projects/{project_id}/agentPools/{agent_pool_id}
+                /// `projects/{project_id}/agentPools/{agent_pool_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// The field mask of the fields in `agentPool` that are to be updated in this request. Fields in
-                /// `agentPool` that can be updated are: display_name, bandwidth_limit,
+                /// The [field mask] (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf) of
+                /// the fields in `agentPool` to update in this request. The following `agentPool` fields can be
+                /// updated: * display_name * bandwidth_limit
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -771,9 +767,7 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>Gets a transfer job.</summary>
         /// <param name="jobName">Required. The job to get.</param>
-        /// <param name="projectId">
-        /// Required. The ID of the Google Cloud Platform Console project that owns the job.
-        /// </param>
+        /// <param name="projectId">Required. The ID of the Google Cloud project that owns the job.</param>
         public virtual GetRequest Get(string jobName, string projectId)
         {
             return new GetRequest(service, jobName, projectId);
@@ -794,7 +788,7 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobName { get; private set; }
 
-            /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
+            /// <summary>Required. The ID of the Google Cloud project that owns the job.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; private set; }
 
@@ -1405,7 +1399,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Required. Specifies a unique string that identifies the agent pool. Format:
-        /// projects/{project_id}/agentPools/{agent_pool_id}
+        /// `projects/{project_id}/agentPools/{agent_pool_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1537,12 +1531,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
-    /// </summary>
+    /// <summary>Specifies a bandwidth limit for an agent pool.</summary>
     public class BandwidthLimit : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies bandwidth rate in mbps distributed across all the agents in the pool.</summary>
+        /// <summary>Bandwidth rate in megabytes per second, distributed across all the agents in the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limitMbps")]
         public virtual System.Nullable<long> LimitMbps { get; set; }
 
@@ -1964,7 +1956,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Request passed to RunTransferJob.</summary>
     public class RunTransferJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the transfer job.</summary>
+        /// <summary>Required. The ID of the Google Cloud project that owns the transfer job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -2260,7 +2252,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 
-        /// <summary>The ID of the Google Cloud Platform Project that owns the job.</summary>
+        /// <summary>The ID of the Google Cloud project that owns the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -2292,10 +2284,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class TransferManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in
-        /// GCS. For data_source and data_sink, the manifest location is relative to the path specified by that
-        /// data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use
-        /// format "source://". If manifest is in data_sink, use format "sink://".
+        /// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer
+        /// must have `storage.objects.get` permission for this object. An example path is
+        /// `gs://bucket_name/path/manifest.csv`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -2327,7 +2318,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 
-        /// <summary>The ID of the Google Cloud Platform Project that owns the operation.</summary>
+        /// <summary>The ID of the Google Cloud project that owns the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -2453,7 +2444,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Request passed to UpdateTransferJob.</summary>
     public class UpdateTransferJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
+        /// <summary>Required. The ID of the Google Cloud project that owns the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 

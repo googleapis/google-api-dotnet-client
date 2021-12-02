@@ -683,8 +683,7 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// greater than or equal to 3 must be provided in the `config.nodeCount` field. Supported for Cloud
                     /// Composer environments in versions composer-1.*.*-airflow-*.*.*. *
                     /// `config.webServerNetworkAccessControl` * Replace the environment's current
-                    /// WebServerNetworkAccessControl. Supported for Cloud Composer environments in versions
-                    /// composer-1.*.*-airflow-*.*.*. * `config.softwareConfig.airflowConfigOverrides` * Replace all
+                    /// WebServerNetworkAccessControl. * `config.softwareConfig.airflowConfigOverrides` * Replace all
                     /// Apache Airflow config overrides. If a replacement config overrides map is not included in
                     /// `environment`, all config overrides are cleared. It is an error to provide both this mask and a
                     /// mask specifying one or more individual config overrides. *
@@ -1448,8 +1447,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no
-        /// network-level access restrictions will be applied. This field is supported for Cloud Composer environments
-        /// in versions composer-1.*.*-airflow-*.*.*.
+        /// network-level access restrictions will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerNetworkAccessControl")]
         public virtual WebServerNetworkAccessControl WebServerNetworkAccessControl { get; set; }
@@ -1597,6 +1595,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Load environment state response.</summary>
+    public class LoadEnvironmentStateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1879,6 +1884,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     public class PrivateEnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to
+        /// connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP
+        /// address from this subnetwork.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudComposerConnectionSubnetwork")]
+        public virtual string CloudComposerConnectionSubnetwork { get; set; }
+
+        /// <summary>
         /// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved.
         /// Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This
         /// field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -2072,6 +2085,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Store environment state response.</summary>
+    public class StoreEnvironmentStateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-resolved Cloud Storage location of the created snapshot, e.g.:
+        /// "gs://my-bucket/snapshots/project_id/location/environment_uuid/timestamp". This field is populated only if
+        /// the snapshot creation was successful.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotLocation")]
+        public virtual string SnapshotLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer
     /// environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2091,10 +2119,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in
-    /// versions composer-1.*.*-airflow-*.*.*.
-    /// </summary>
+    /// <summary>Network-level access control policy for the Airflow web server.</summary>
     public class WebServerNetworkAccessControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A collection of allowed IP ranges with descriptions.</summary>

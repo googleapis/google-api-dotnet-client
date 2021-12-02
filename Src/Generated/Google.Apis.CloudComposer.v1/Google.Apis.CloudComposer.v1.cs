@@ -1258,8 +1258,7 @@ namespace Google.Apis.CloudComposer.v1.Data
 
         /// <summary>
         /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no
-        /// network-level access restrictions will be applied. This field is supported for Cloud Composer environments
-        /// in versions composer-1.*.*-airflow-*.*.*.
+        /// network-level access restrictions will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerNetworkAccessControl")]
         public virtual WebServerNetworkAccessControl WebServerNetworkAccessControl { get; set; }
@@ -1817,10 +1816,7 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in
-    /// versions composer-1.*.*-airflow-*.*.*.
-    /// </summary>
+    /// <summary>Network-level access control policy for the Airflow web server.</summary>
     public class WebServerNetworkAccessControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A collection of allowed IP ranges with descriptions.</summary>

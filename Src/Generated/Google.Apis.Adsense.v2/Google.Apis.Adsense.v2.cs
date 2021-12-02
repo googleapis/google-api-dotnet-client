@@ -326,7 +326,7 @@ namespace Google.Apis.Adsense.v2
                 /// <summary>Gets an ad unit from a specified account and ad client.</summary>
                 /// <param name="name">
                 /// Required. AdUnit to get information about. Format:
-                /// accounts/{account_id}/adclient/{adclient_id}/adunit/{adunit_id}
+                /// accounts/{account}/adclients/{adclient}/adunits/{adunit}
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -345,7 +345,7 @@ namespace Google.Apis.Adsense.v2
 
                     /// <summary>
                     /// Required. AdUnit to get information about. Format:
-                    /// accounts/{account_id}/adclient/{adclient_id}/adunit/{adunit_id}
+                    /// accounts/{account}/adclients/{adclient}/adunits/{adunit}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3563,7 +3563,7 @@ namespace Google.Apis.Adsense.v2
         }
 
         /// <summary>Gets information about the selected AdSense account.</summary>
-        /// <param name="name">Required. Account to get information about. Format: accounts/{account_id}</param>
+        /// <param name="name">Required. Account to get information about. Format: accounts/{account}</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -3579,7 +3579,7 @@ namespace Google.Apis.Adsense.v2
                 InitParameters();
             }
 
-            /// <summary>Required. Account to get information about. Format: accounts/{account_id}</summary>
+            /// <summary>Required. Account to get information about. Format: accounts/{account}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -3796,7 +3796,7 @@ namespace Google.Apis.Adsense.v2.Data
     /// </summary>
     public class AdClient : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name of the ad client. Format: accounts/{account}/adclient/{adclient}</summary>
+        /// <summary>Resource name of the ad client. Format: accounts/{account}/adclients/{adclient}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3852,7 +3852,7 @@ namespace Google.Apis.Adsense.v2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of the ad unit. Format: accounts/{account}/adclient/{adclient}/adunits/{adunit}
+        /// Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4408,7 +4408,7 @@ namespace Google.Apis.Adsense.v2.Data
     public class UrlChannel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Resource name of the URL channel. Format: accounts/{account}/adclient/{adclient}/urlchannels/{urlchannel}
+        /// Resource name of the URL channel. Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

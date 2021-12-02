@@ -1444,6 +1444,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             ConversionEvents = new ConversionEventsResource(service);
             CustomDimensions = new CustomDimensionsResource(service);
             CustomMetrics = new CustomMetricsResource(service);
+            DataStreams = new DataStreamsResource(service);
             DisplayVideo360AdvertiserLinkProposals = new DisplayVideo360AdvertiserLinkProposalsResource(service);
             DisplayVideo360AdvertiserLinks = new DisplayVideo360AdvertiserLinksResource(service);
             FirebaseLinks = new FirebaseLinksResource(service);
@@ -2998,6 +2999,325 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+/customMetrics/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the DataStreams resource.</summary>
+        public virtual DataStreamsResource DataStreams { get; }
+
+        /// <summary>The "dataStreams" collection of methods.</summary>
+        public class DataStreamsResource
+        {
+            private const string Resource = "dataStreams";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DataStreamsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a DataStream.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a DataStream.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/dataStreams";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a DataStream on a property.</summary>
+            /// <param name="name">
+            /// Required. The name of the DataStream to delete. Example format: properties/1234/dataStreams/5678
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a DataStream on a property.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DataStream to delete. Example format: properties/1234/dataStreams/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lookup for a single DataStream.</summary>
+            /// <param name="name">
+            /// Required. The name of the DataStream to get. Example format: properties/1234/dataStreams/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Lookup for a single DataStream.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DataStream to get. Example format: properties/1234/dataStreams/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists DataStreams on a property.</summary>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists DataStreams on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListDataStreamsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListDataStreams` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListDataStreams` must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/dataStreams";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a DataStream on a property.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id}
+            /// Example: "properties/1000/dataStreams/2000"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a DataStream on a property.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Resource name of this Data Stream. Format:
+                /// properties/{property_id}/dataStreams/{stream_id} Example: "properties/1000/dataStreams/2000"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -7525,6 +7845,121 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A resource message representing a data stream.</summary>
+    public class GoogleAnalyticsAdminV1alphaDataStream : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Data specific to Android app streams. Must be populated if type is ANDROID_APP_DATA_STREAM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidAppStreamData")]
+        public virtual GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData AndroidAppStreamData { get; set; }
+
+        /// <summary>Output only. Time when this stream was originally created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Human-readable display name for the Data Stream. Required for web data streams. The max allowed display name
+        /// length is 255 UTF-16 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Data specific to iOS app streams. Must be populated if type is IOS_APP_DATA_STREAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosAppStreamData")]
+        public virtual GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData IosAppStreamData { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id}
+        /// Example: "properties/1000/dataStreams/2000"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Immutable. The type of this DataStream resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Time when stream payload fields were last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>Data specific to web streams. Must be populated if type is WEB_DATA_STREAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webStreamData")]
+        public virtual GoogleAnalyticsAdminV1alphaDataStreamWebStreamData WebStreamData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data specific to Android app streams.</summary>
+    public class GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app
+        /// is deleted and recreated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firebaseAppId")]
+        public virtual string FirebaseAppId { get; set; }
+
+        /// <summary>
+        /// Immutable. The package name for the app being measured. Example: "com.example.myandroidapp"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data specific to iOS app streams.</summary>
+    public class GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The Apple App Store Bundle ID for the app Example: "com.example.myiosapp"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
+        public virtual string BundleId { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is
+        /// deleted and recreated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firebaseAppId")]
+        public virtual string FirebaseAppId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data specific to web streams.</summary>
+    public class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Domain name of the web app being measured, or empty. Example: "http://www.google.com",
+        /// "https://www.google.com"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultUri")]
+        public virtual string DefaultUri { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app is
+        /// deleted and recreated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firebaseAppId")]
+        public virtual string FirebaseAppId { get; set; }
+
+        /// <summary>
+        /// Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-1A2BCD345E" would just be
+        /// "1A2BCD345E"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
+        public virtual string MeasurementId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for DeleteUserLink RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7928,6 +8363,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListDataStreams RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListDataStreamsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of DataStreams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStreams")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaDataStream> DataStreams { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListDisplayVideo360AdvertiserLinkProposals RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8198,7 +8651,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>A virtual resource representing metadata for a GA4 property.</summary>
     public class GoogleAnalyticsAdminV1alphaPropertySummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Display name for the property referred to in this account summary.</summary>
+        /// <summary>Display name for the property referred to in this property summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
