@@ -4337,6 +4337,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual System.Nullable<long> CurrentDiskSize { get; set; }
 
         /// <summary>
+        /// Output only. The databaseInstalledVersion stores the current fully resolved database version running on the
+        /// instance including minor version such as MYSQL_5_6_50
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseInstalledVersion")]
+        public virtual string DatabaseInstalledVersion { get; set; }
+
+        /// <summary>
         /// The database engine type and version. The **databaseVersion** field cannot be changed after instance
         /// creation.
         /// </summary>
@@ -4369,11 +4376,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
         public virtual string GceZone { get; set; }
 
-        /// <summary>
-        /// The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is
-        /// not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's
-        /// premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
-        /// </summary>
+        /// <summary>The instance type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
 
@@ -4677,21 +4680,18 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual CsvExportOptionsData CsvExportOptions { get; set; }
 
         /// <summary>
-        /// Databases to be exported. * **MySQL instances:** If **fileType** is **SQL** and no database is specified,
-        /// all databases are exported, except for the **mysql** system database. If **fileType** is **CSV**, you can
+        /// Databases to be exported. **MySQL instances:** If **fileType** is **SQL** and no database is specified, all
+        /// databases are exported, except for the **mysql** system database. If **fileType** is **CSV**, you can
         /// specify one database, either by using this property or by using the **csvExportOptions.selectQuery**
-        /// property, which takes precedence over this property. * **PostgreSQL instances:** You must specify one
-        /// database to be exported. If **fileType** is **CSV**, this database must match the one specified in the
-        /// **csvExportOptions.selectQuery** property. * **SQL Server instances:** You must specify one database to be
+        /// property, which takes precedence over this property. **PostgreSQL instances:** You must specify one database
+        /// to be exported. If **fileType** is **CSV**, this database must match the one specified in the
+        /// **csvExportOptions.selectQuery** property. **SQL Server instances:** You must specify one database to be
         /// exported, and the **fileType** must be **BAK**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databases")]
         public virtual System.Collections.Generic.IList<string> Databases { get; set; }
 
-        /// <summary>
-        /// The file type for the specified uri. * **SQL**: The file contains SQL statements. * **CSV**: The file
-        /// contains CSV data. * **BAK**: The file contains backup data for a SQL Server instance.
-        /// </summary>
+        /// <summary>The file type for the specified uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; }
 
@@ -4769,10 +4769,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
             public class MysqlExportOptionsData
             {
                 /// <summary>
-                /// Option to include SQL statement required to set up replication. * If set to **1**, the dump file
+                /// Option to include SQL statement required to set up replication. If set to **1**, the dump file
                 /// includes a CHANGE MASTER TO statement with the binary log coordinates, and --set-gtid-purged is set
-                /// to ON. * If set to **2**, the CHANGE MASTER TO statement is written as a SQL comment and has no
-                /// effect. * If set to any value other than **1**, --set-gtid-purged is set to OFF.
+                /// to ON. If set to **2**, the CHANGE MASTER TO statement is written as a SQL comment and has no
+                /// effect. If set to any value other than **1**, --set-gtid-purged is set to OFF.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("masterData")]
                 public virtual System.Nullable<int> MasterData { get; set; }
@@ -5217,7 +5217,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// The name of the allocated ip range for the private ip CloudSQL instance. For example:
         /// "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range
         /// name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63
-        /// characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+        /// characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRange")]
         public virtual string AllocatedIpRange { get; set; }
@@ -5520,10 +5520,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>
-        /// The status of an operation. Valid values are: * **PENDING** * **RUNNING** * **DONE** *
-        /// **SQL_OPERATION_STATUS_UNSPECIFIED**
-        /// </summary>
+        /// <summary>The status of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -5597,6 +5594,48 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Read-only password status.</summary>
+    public class PasswordStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, user does not have login privileges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locked")]
+        public virtual System.Nullable<bool> Locked { get; set; }
+
+        /// <summary>The expiration time of the current password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordExpirationTime")]
+        public virtual object PasswordExpirationTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Database instance local user password validation policy</summary>
+    public class PasswordValidationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The complexity of the password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complexity")]
+        public virtual string Complexity { get; set; }
+
+        /// <summary>Disallow username as a part of the password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disallowUsernameSubstring")]
+        public virtual System.Nullable<bool> DisallowUsernameSubstring { get; set; }
+
+        /// <summary>Minimum number of characters allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
+        public virtual System.Nullable<int> MinLength { get; set; }
+
+        /// <summary>Minimum interval after which the password can be changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordChangeInterval")]
+        public virtual object PasswordChangeInterval { get; set; }
+
+        /// <summary>Number of previous passwords that cannot be reused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reuseInterval")]
+        public virtual System.Nullable<int> ReuseInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5791,6 +5830,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
+
+        /// <summary>The local user password validation policy of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordValidationPolicy")]
+        public virtual PasswordValidationPolicy PasswordValidationPolicy { get; set; }
 
         /// <summary>
         /// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is
@@ -6259,9 +6302,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// The host name from which the user can connect. For **insert** operations, host defaults to an empty string.
-        /// For **update** operations, host is specified as part of the request URL. The host name cannot be updated
-        /// after insertion.
+        /// Optional. The host name from which the user can connect. For **insert** operations, host defaults to an
+        /// empty string. For **update** operations, host is specified as part of the request URL. The host name cannot
+        /// be updated after insertion. For a MySQL instance, it's required; for a PostgreSQL or SQL Server instance,
+        /// it's optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -6288,6 +6332,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
+        /// <summary>User level password validation policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordPolicy")]
+        public virtual UserPasswordValidationPolicy PasswordPolicy { get; set; }
+
         /// <summary>
         /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if
         /// applicable. Can be omitted for **update** since it is already specified on the URL.
@@ -6304,6 +6352,29 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+    }
+
+    /// <summary>User level password validation policy.</summary>
+    public class UserPasswordValidationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of failed login attempts allowed before user get locked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedFailedAttempts")]
+        public virtual System.Nullable<int> AllowedFailedAttempts { get; set; }
+
+        /// <summary>If true, failed login attempts check will be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFailedAttemptsCheck")]
+        public virtual System.Nullable<bool> EnableFailedAttemptsCheck { get; set; }
+
+        /// <summary>Expiration duration after password is updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordExpirationDuration")]
+        public virtual object PasswordExpirationDuration { get; set; }
+
+        /// <summary>Output only. Read-only password status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual PasswordStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>User list response.</summary>

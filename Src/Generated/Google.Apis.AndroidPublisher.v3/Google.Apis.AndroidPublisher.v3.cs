@@ -35,6 +35,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public AndroidPublisherService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Edits = new EditsResource(this);
+            Generatedapks = new GeneratedapksResource(this);
             Grants = new GrantsResource(this);
             Inappproducts = new InappproductsResource(this);
             Internalappsharingartifacts = new InternalappsharingartifactsResource(this);
@@ -87,6 +88,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Gets the Edits resource.</summary>
         public virtual EditsResource Edits { get; }
+
+        /// <summary>Gets the Generatedapks resource.</summary>
+        public virtual GeneratedapksResource Generatedapks { get; }
 
         /// <summary>Gets the Grants resource.</summary>
         public virtual GrantsResource Grants { get; }
@@ -311,6 +315,7 @@ namespace Google.Apis.AndroidPublisher.v3
             this.service = service;
             Apks = new ApksResource(service);
             Bundles = new BundlesResource(service);
+            Countryavailability = new CountryavailabilityResource(service);
             Deobfuscationfiles = new DeobfuscationfilesResource(service);
             Details = new DetailsResource(service);
             Expansionfiles = new ExpansionfilesResource(service);
@@ -997,6 +1002,97 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     PackageName = packageName;
                     EditId = editId;
+                }
+            }
+        }
+
+        /// <summary>Gets the Countryavailability resource.</summary>
+        public virtual CountryavailabilityResource Countryavailability { get; }
+
+        /// <summary>The "countryavailability" collection of methods.</summary>
+        public class CountryavailabilityResource
+        {
+            private const string Resource = "countryavailability";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CountryavailabilityResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets country availability.</summary>
+            /// <param name="packageName">Package name of the app.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="track">The track to read from.</param>
+            public virtual GetRequest Get(string packageName, string editId, string track)
+            {
+                return new GetRequest(service, packageName, editId, track);
+            }
+
+            /// <summary>Gets country availability.</summary>
+            public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.TrackCountryAvailability>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string track) : base(service)
+                {
+                    PackageName = packageName;
+                    EditId = editId;
+                    Track = track;
+                    InitParameters();
+                }
+
+                /// <summary>Package name of the app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Identifier of the edit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string EditId { get; private set; }
+
+                /// <summary>The track to read from.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Track { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/countryAvailability/{track}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("track", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "track",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
         }
@@ -4278,6 +4374,255 @@ namespace Google.Apis.AndroidPublisher.v3
                 RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "editId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "generatedapks" collection of methods.</summary>
+    public class GeneratedapksResource
+    {
+        private const string Resource = "generatedapks";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GeneratedapksResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Downloads a single signed APK generated from an app bundle.</summary>
+        /// <param name="packageName">Package name of the app.</param>
+        /// <param name="versionCode">Version code of the app bundle.</param>
+        /// <param name="downloadId">
+        /// Download ID, which uniquely identifies the APK to download. Can be obtained from the response of
+        /// `generatedapks.list` method.
+        /// </param>
+        public virtual DownloadRequest Download(string packageName, int versionCode, string downloadId)
+        {
+            return new DownloadRequest(service, packageName, versionCode, downloadId);
+        }
+
+        /// <summary>Downloads a single signed APK generated from an app bundle.</summary>
+        public class DownloadRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Download request.</summary>
+            public DownloadRequest(Google.Apis.Services.IClientService service, string packageName, int versionCode, string downloadId) : base(service)
+            {
+                PackageName = packageName;
+                VersionCode = versionCode;
+                DownloadId = downloadId;
+                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                InitParameters();
+            }
+
+            /// <summary>Package name of the app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Version code of the app bundle.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual int VersionCode { get; private set; }
+
+            /// <summary>
+            /// Download ID, which uniquely identifies the APK to download. Can be obtained from the response of
+            /// `generatedapks.list` method.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("downloadId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DownloadId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "download";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download";
+
+            /// <summary>Initializes Download parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "versionCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("downloadId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "downloadId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <summary>Gets the media downloader.</summary>
+            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+            /// <summary>
+            /// <para>Synchronously download the media into the given stream.</para>
+            /// <para>
+            /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+            /// instead.
+            /// </para>
+            /// </summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual void Download(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Synchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+
+            #if !NET40
+            /// <summary>Synchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                System.Net.Http.Headers.RangeHeaderValue range,
+                System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+            #endif
+        }
+
+        /// <summary>Returns download metadata for all APKs that were generated from a given app bundle.</summary>
+        /// <param name="packageName">Package name of the app.</param>
+        /// <param name="versionCode">Version code of the app bundle.</param>
+        public virtual ListRequest List(string packageName, int versionCode)
+        {
+            return new ListRequest(service, packageName, versionCode);
+        }
+
+        /// <summary>Returns download metadata for all APKs that were generated from a given app bundle.</summary>
+        public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.GeneratedApksListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string packageName, int versionCode) : base(service)
+            {
+                PackageName = packageName;
+                VersionCode = versionCode;
+                InitParameters();
+            }
+
+            /// <summary>Package name of the app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Version code of the app bundle.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual int VersionCode { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "versionCode",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -7832,6 +8177,139 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to list generated APKs.</summary>
+    public class GeneratedApksListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All generated APKs, grouped by the APK signing key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedApks")]
+        public virtual System.Collections.Generic.IList<GeneratedApksPerSigningKey> GeneratedApks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Download metadata for split, standalone and universal APKs, as well as asset pack slices, signed with a given
+    /// key.
+    /// </summary>
+    public class GeneratedApksPerSigningKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SHA256 hash of the APK signing public key certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateSha256Hash")]
+        public virtual string CertificateSha256Hash { get; set; }
+
+        /// <summary>
+        /// List of asset pack slices which will be served for this app bundle, signed with a key corresponding to
+        /// certificate_sha256_hash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedAssetPackSlices")]
+        public virtual System.Collections.Generic.IList<GeneratedAssetPackSlice> GeneratedAssetPackSlices { get; set; }
+
+        /// <summary>List of generated split APKs, signed with a key corresponding to certificate_sha256_hash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSplitApks")]
+        public virtual System.Collections.Generic.IList<GeneratedSplitApk> GeneratedSplitApks { get; set; }
+
+        /// <summary>
+        /// List of generated standalone APKs, signed with a key corresponding to certificate_sha256_hash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedStandaloneApks")]
+        public virtual System.Collections.Generic.IList<GeneratedStandaloneApk> GeneratedStandaloneApks { get; set; }
+
+        /// <summary>
+        /// Generated universal APK, signed with a key corresponding to certificate_sha256_hash. This field is not set
+        /// if no universal APK was generated for this signing key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedUniversalApk")]
+        public virtual GeneratedUniversalApk GeneratedUniversalApk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Download metadata for an asset pack slice.</summary>
+    public class GeneratedAssetPackSlice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download`
+        /// method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadId")]
+        public virtual string DownloadId { get; set; }
+
+        /// <summary>Name of the module that this asset slice belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleName")]
+        public virtual string ModuleName { get; set; }
+
+        /// <summary>Asset slice ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sliceId")]
+        public virtual string SliceId { get; set; }
+
+        /// <summary>Asset module version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<long> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Download metadata for a split APK.</summary>
+    public class GeneratedSplitApk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download`
+        /// method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadId")]
+        public virtual string DownloadId { get; set; }
+
+        /// <summary>Name of the module that this APK belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleName")]
+        public virtual string ModuleName { get; set; }
+
+        /// <summary>Split ID. Empty for the main split of the base module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitId")]
+        public virtual string SplitId { get; set; }
+
+        /// <summary>ID of the generated variant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantId")]
+        public virtual System.Nullable<int> VariantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Download metadata for a standalone APK.</summary>
+    public class GeneratedStandaloneApk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download`
+        /// method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadId")]
+        public virtual string DownloadId { get; set; }
+
+        /// <summary>ID of the generated variant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantId")]
+        public virtual System.Nullable<int> VariantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Download metadata for a universal APK.</summary>
+    public class GeneratedUniversalApk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download`
+        /// method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadId")]
+        public virtual string DownloadId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An access grant resource.</summary>
     public class Grant : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8877,6 +9355,33 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Resource for per-track country availability information.</summary>
+    public class TrackCountryAvailability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of one or more countries where artifacts in this track are available. This list includes all
+        /// countries that are targeted by the track, even if only specific carriers are targeted in that country.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countries")]
+        public virtual System.Collections.Generic.IList<TrackTargetedCountry> Countries { get; set; }
+
+        /// <summary>Whether artifacts in this track are available to "rest of the world" countries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restOfWorld")]
+        public virtual System.Nullable<bool> RestOfWorld { get; set; }
+
+        /// <summary>
+        /// Whether this track's availability is synced with the default production track. See
+        /// https://support.google.com/googleplay/android-developer/answer/7550024 for more information on syncing
+        /// country availability with production. Note that if this is true, the returned "countries" and
+        /// "rest_of_world" fields will reflect the values for the default production track.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncWithProduction")]
+        public virtual System.Nullable<bool> SyncWithProduction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A release within a track.</summary>
     public class TrackRelease : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8920,6 +9425,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a single country where the contents of a track are available.</summary>
+    public class TrackTargetedCountry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The country to target, as a two-letter CLDR code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

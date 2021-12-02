@@ -4581,20 +4581,18 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Retrieves the list of accessible Google My Business accounts.</summary>
+        /// <summary>Retrieves the list of accessible Business Profiles.</summary>
         /// <param name="merchantId">
         /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
         /// multi-client account and `accountId` must be the ID of a sub-account of this account.
         /// </param>
-        /// <param name="accountId">
-        /// The ID of the account for which to retrieve accessible Google My Business accounts.
-        /// </param>
+        /// <param name="accountId">The ID of the account for which to retrieve accessible Business Profiles.</param>
         public virtual GetaccessiblegmbaccountsRequest Getaccessiblegmbaccounts(ulong merchantId, ulong accountId)
         {
             return new GetaccessiblegmbaccountsRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the list of accessible Google My Business accounts.</summary>
+        /// <summary>Retrieves the list of accessible Business Profiles.</summary>
         public class GetaccessiblegmbaccountsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsGetAccessibleGmbAccountsResponse>
         {
             /// <summary>Constructs a new Getaccessiblegmbaccounts request.</summary>
@@ -4612,7 +4610,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the account for which to retrieve accessible Google My Business accounts.</summary>
+            /// <summary>The ID of the account for which to retrieve accessible Business Profiles.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
@@ -4752,19 +4750,19 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Requests access to a specified Google My Business account.</summary>
+        /// <summary>Requests access to a specified Business Profile.</summary>
         /// <param name="merchantId">
         /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
         /// multi-client account and `accountId` must be the ID of a sub-account of this account.
         /// </param>
-        /// <param name="accountId">The ID of the account for which GMB access is requested.</param>
-        /// <param name="gmbEmail">The email of the Google My Business account.</param>
+        /// <param name="accountId">The ID of the account for which Business Profile access is requested.</param>
+        /// <param name="gmbEmail">The email of the Business Profile.</param>
         public virtual RequestgmbaccessRequest Requestgmbaccess(ulong merchantId, ulong accountId, string gmbEmail)
         {
             return new RequestgmbaccessRequest(service, merchantId, accountId, gmbEmail);
         }
 
-        /// <summary>Requests access to a specified Google My Business account.</summary>
+        /// <summary>Requests access to a specified Business Profile.</summary>
         public class RequestgmbaccessRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsRequestGmbAccessResponse>
         {
             /// <summary>Constructs a new Requestgmbaccess request.</summary>
@@ -4783,11 +4781,11 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the account for which GMB access is requested.</summary>
+            /// <summary>The ID of the account for which Business Profile access is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>The email of the Google My Business account.</summary>
+            /// <summary>The email of the Business Profile.</summary>
             [Google.Apis.Util.RequestParameterAttribute("gmbEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GmbEmail { get; private set; }
 
@@ -5040,9 +5038,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
         /// multi-client account and `accountId` must be the ID of a sub-account of this account.
         /// </param>
-        /// <param name="accountId">
-        /// The ID of the account for which to retrieve accessible Google My Business accounts.
-        /// </param>
+        /// <param name="accountId">The ID of the account for which to retrieve accessible Business Profiles.</param>
         /// <param name="country">The country for which the POS data provider is selected.</param>
         public virtual SetposdataproviderRequest Setposdataprovider(ulong merchantId, ulong accountId, string country)
         {
@@ -5068,7 +5064,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the account for which to retrieve accessible Google My Business accounts.</summary>
+            /// <summary>The ID of the account for which to retrieve accessible Business Profiles.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
@@ -12600,7 +12596,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<ulong> CssId { get; set; }
 
         /// <summary>
-        /// The GMB account which is linked or in the process of being linked with the Merchant Center account.
+        /// The Business Profile which is linked or in the process of being linked with the Merchant Center account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMyBusinessLink")]
         public virtual AccountGoogleMyBusinessLink GoogleMyBusinessLink { get; set; }
@@ -12780,21 +12776,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountGoogleMyBusinessLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ID of the GMB account. If this is provided, then `gmbEmail` is ignored. The value of this field should
-        /// match the `accountId` used by the GMB API.
+        /// The ID of the Business Profile. If this is provided, then `gmbEmail` is ignored. The value of this field
+        /// should match the `accountId` used by the Business Profile API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccountId")]
         public virtual string GmbAccountId { get; set; }
 
         /// <summary>
-        /// The GMB email address of which a specific account within a GMB account. A sample account within a GMB
-        /// account could be a business account with set of locations, managed under the GMB account.
+        /// The Business Profile email address of a specific account within a Business Profile. A sample account within
+        /// a Business Profile could be a business account with set of locations, managed under the Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbEmail")]
         public virtual string GmbEmail { get; set; }
 
         /// <summary>
-        /// Status of the link between this Merchant Center account and the GMB account. Acceptable values are: -
+        /// Status of the link between this Merchant Center account and the Business Profile. Acceptable values are: -
         /// "`active`" - "`pending`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -14899,7 +14895,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; }
 
-        /// <summary>A list of GMB accounts which are available to the merchant.</summary>
+        /// <summary>A list of Business Profiles which are available to the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
         public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccountsValue { get; set; }
 
@@ -14909,7 +14905,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class GmbAccountsGmbAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The email which identifies the GMB account.</summary>
+        /// <summary>The email which identifies the Business Profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
@@ -14917,11 +14913,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("listingCount")]
         public virtual System.Nullable<ulong> ListingCount { get; set; }
 
-        /// <summary>The name of the GMB account.</summary>
+        /// <summary>The name of the Business Profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The type of the GMB account (User or Business).</summary>
+        /// <summary>The type of the Business Profile (User or Business).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -15296,7 +15292,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
-        /// <summary>The GMB account. Required only for RequestGmbAccess.</summary>
+        /// <summary>The Business Profile. Required only for RequestGmbAccess.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbEmail")]
         public virtual string GmbEmail { get; set; }
 
@@ -15354,7 +15350,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual Errors Errors { get; set; }
 
-        /// <summary>The list of accessible GMB accounts.</summary>
+        /// <summary>The list of accessible Business Profiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
         public virtual GmbAccounts GmbAccounts { get; set; }
 
@@ -15383,7 +15379,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; }
 
-        /// <summary>A list of GMB accounts which are available to the merchant.</summary>
+        /// <summary>A list of Business Profiles which are available to the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
         public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccounts { get; set; }
 
@@ -17283,7 +17279,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productTitle")]
         public virtual string ProductTitle { get; set; }
 
-        /// <summary>Required. The quantity of the line item in the order.</summary>
+        /// <summary>The quantity of the line item in the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
@@ -17306,7 +17302,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; }
 
-        /// <summary>Required. The line item quantity in the shipment.</summary>
+        /// <summary>The line item quantity in the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
@@ -18957,7 +18953,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in Google My Business.
+        /// the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -18998,7 +18994,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in Google My Business.
+        /// the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19045,7 +19041,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in Google My Business.
+        /// the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19110,7 +19106,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in Google My Business.
+        /// the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19155,7 +19151,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in Google My Business.
+        /// the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19206,7 +19202,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in Google My Business.
+        /// the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }

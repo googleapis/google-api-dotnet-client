@@ -4543,14 +4543,20 @@ namespace Google.Apis.CloudSearch.v1
             this.service = service;
         }
 
-        /// <summary>Initializes the customer. **Note:** This API requires an admin account to execute.</summary>
+        /// <summary>
+        /// Enables `third party` support in Google Cloud Search. **Note:** This API requires an admin account to
+        /// execute.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InitializeCustomerRequest InitializeCustomer(Google.Apis.CloudSearch.v1.Data.InitializeCustomerRequest body)
         {
             return new InitializeCustomerRequest(service, body);
         }
 
-        /// <summary>Initializes the customer. **Note:** This API requires an admin account to execute.</summary>
+        /// <summary>
+        /// Enables `third party` support in Google Cloud Search. **Note:** This API requires an admin account to
+        /// execute.
+        /// </summary>
         public class InitializeCustomerRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
         {
             /// <summary>Constructs a new InitializeCustomer request.</summary>

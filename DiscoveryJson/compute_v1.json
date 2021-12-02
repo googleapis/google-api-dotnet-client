@@ -28278,7 +28278,7 @@
    }
   }
  },
- "revision": "20211004",
+ "revision": "20211116",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -31649,10 +31649,12 @@
       "GENERAL_PURPOSE_E2",
       "GENERAL_PURPOSE_N2",
       "GENERAL_PURPOSE_N2D",
+      "GENERAL_PURPOSE_T2D",
       "MEMORY_OPTIMIZED",
       "TYPE_UNSPECIFIED"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",

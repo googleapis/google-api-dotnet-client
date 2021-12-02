@@ -1279,11 +1279,13 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -2304,11 +2306,13 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -3151,9 +3155,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: Each resource is limited to 64 labels. Keys must conform to the regexp:
-        /// `a-zA-Z{0,62}`. Values must conform to the regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are
-        /// additionally constrained to be &amp;lt;= 128 bytes in size.
+        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3669,9 +3674,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: Each resource is limited to 64 labels. Keys must conform to the regexp:
-        /// `a-zA-Z{0,62}`. Values must conform to the regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are
-        /// additionally constrained to be &amp;lt;= 128 bytes in size.
+        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3791,9 +3797,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: Each resource is limited to 64 labels. Keys must conform to the regexp:
-        /// `a-zA-Z{0,62}`. Values must conform to the regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are
-        /// additionally constrained to be &amp;lt;= 128 bytes in size.
+        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3960,9 +3967,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels
-        /// must meet the following constraints: Each resource is limited to 64 labels. Keys must conform to the regexp:
-        /// `a-zA-Z{0,62}`. Values must conform to the regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are
-        /// additionally constrained to be &amp;lt;= 128 bytes in size.
+        /// must meet the following constraints: * Keys and values can contain only lowercase letters, numeric
+        /// characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters
+        /// are allowed. * Keys must start with a lowercase letter or international character. * Each resource is
+        /// limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128
+        /// bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

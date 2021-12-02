@@ -294,7 +294,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
             /// </param>
             public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
@@ -313,7 +313,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -387,7 +387,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
         /// </param>
         public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -405,7 +405,7 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -477,7 +477,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
         /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -495,7 +495,7 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -758,7 +758,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
             /// </param>
             public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
@@ -777,7 +777,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -851,7 +851,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
         /// </param>
         public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -869,7 +869,7 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -941,7 +941,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
         /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -959,7 +959,7 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -1284,7 +1284,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Creates a message.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
             /// </param>
             public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
@@ -1303,7 +1303,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1376,7 +1376,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Deletes a message.</summary>
             /// <param name="name">
             /// Required. Resource name of the message to be deleted, in the form "spaces/*/messages/*" Example:
-            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+            /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1395,7 +1395,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. Resource name of the message to be deleted, in the form "spaces/*/messages/*" Example:
-                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+                /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1427,7 +1427,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Returns a message.</summary>
             /// <param name="name">
             /// Required. Resource name of the message to be retrieved, in the form "spaces/*/messages/*". Example:
-            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+            /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1446,7 +1446,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. Resource name of the message to be retrieved, in the form "spaces/*/messages/*". Example:
-                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+                /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1479,7 +1479,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Resource name in the form `spaces/*/messages/*`. Example:
-            /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+            /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
             {
@@ -1499,7 +1499,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Resource name in the form `spaces/*/messages/*`. Example:
-                /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+                /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1660,7 +1660,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
         /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
@@ -1678,7 +1678,7 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -2231,6 +2231,31 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The id for the drive file, for use with the Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFileId")]
         public virtual string DriveFileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// JSON payload of error messages. If the Cloud Logging API is enabled, these error messages are logged to [Google
+    /// Cloud Logging](https://cloud.google.com/logging/docs).
+    /// </summary>
+    public class DynamiteIntegrationLogEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The deployment that caused the error. For Chat bots built in Apps Script, this is the deployment ID defined
+        /// by Apps Script.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>The unencrypted `callback_method` name that was running when the error was encountered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentFunction")]
+        public virtual string DeploymentFunction { get; set; }
+
+        /// <summary>The error code and message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3245,7 +3270,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The creation time of the membership a.k.a. the time at which the member joined the space, if applicable.
+        /// Output only. The creation time of the membership a.k.a. the time at which the member joined the space, if
+        /// applicable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -3257,7 +3283,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>State of the membership.</summary>
+        /// <summary>State of the membership. Required for `CreateMembership`. Read-only for other usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -3311,7 +3337,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Resource name in the form `spaces/*/messages/*`. Example:
-        /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+        /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3436,10 +3462,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The display name (only if the space is of type `ROOM`). Please note that this field might not be populated
-        /// in direct messages between humans.
-        /// </summary>
+        /// <summary>The space's display name. For direct messages between humans, this field might be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -3447,17 +3470,46 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Whether the space is a DM between a bot and a single human.</summary>
+        /// <summary>Output only. Whether the space is a DM between a bot and a single human.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
         public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 
-        /// <summary>Whether the messages are threaded in this space.</summary>
+        /// <summary>Output only. Whether the messages are threaded in this space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threaded")]
         public virtual System.Nullable<bool> Threaded { get; set; }
 
-        /// <summary>Output only. The type of a space. This is deprecated. Use `single_user_bot_dm` instead.</summary>
+        /// <summary>Deprecated. Use `single_user_bot_dm` instead. Output only. The type of a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3505,7 +3557,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
+        /// Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAAAAAAAA/threads/TTTTTTTTTTT
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
