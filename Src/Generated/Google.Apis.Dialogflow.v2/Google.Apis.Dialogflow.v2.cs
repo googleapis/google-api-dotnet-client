@@ -17499,6 +17499,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("playAudio")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessagePlayAudio PlayAudio { get; set; }
 
+        /// <summary>
+        /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telephonyTransferCall")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall TelephonyTransferCall { get; set; }
+
         /// <summary>Returns a text response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageText Text { get; set; }
@@ -17639,6 +17645,22 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
         public virtual string AudioUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party
+    /// endpoint.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19325,6 +19347,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("playAudio")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio PlayAudio { get; set; }
 
+        /// <summary>
+        /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telephonyTransferCall")]
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall TelephonyTransferCall { get; set; }
+
         /// <summary>Returns a text response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageText Text { get; set; }
@@ -19465,6 +19493,22 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
         public virtual string AudioUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party
+    /// endpoint.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -4190,6 +4190,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for 'AddGroupMigration' request.</summary>
+    public class AddGroupMigrationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AppliedLicense holds the license data returned by adaptation module report.</summary>
     public class AppliedLicense : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4212,8 +4219,22 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for 'CancelCloneJob' request.</summary>
+    public class CancelCloneJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'CancelCutoverJob' request.</summary>
     public class CancelCutoverJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'CancelCutoverJob' request.</summary>
+    public class CancelCutoverJobResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4595,6 +4616,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
     /// <summary>Request message for 'FinalizeMigration' request.</summary>
     public class FinalizeMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'FinalizeMigration' request.</summary>
+    public class FinalizeMigrationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5143,6 +5171,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for 'PauseMigration' request.</summary>
+    public class PauseMigrationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'RemoveMigration' request.</summary>
     public class RemoveGroupMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5150,6 +5185,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("migratingVm")]
         public virtual string MigratingVm { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'RemoveMigration' request.</summary>
+    public class RemoveGroupMigrationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5182,6 +5224,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
     /// <summary>Request message for 'ResumeMigration' request.</summary>
     public class ResumeMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'ResumeMigration' request.</summary>
+    public class ResumeMigrationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5263,6 +5312,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
     /// <summary>Request message for 'StartMigrationRequest' request.</summary>
     public class StartMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'StartMigration' request.</summary>
+    public class StartMigrationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

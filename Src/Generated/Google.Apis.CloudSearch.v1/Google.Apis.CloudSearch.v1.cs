@@ -4737,8 +4737,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class CustomerSessionStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which session stats were calculated. Stats calculated on the next day close to midnight are
-        /// returned.
+        /// Date for which session stats were calculated. Stats are calculated on the following day, close to midnight
+        /// PST, and then returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -7203,8 +7203,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SearchApplicationSessionStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which session stats were calculated. Stats calculated on the next day close to midnight are
-        /// returned.
+        /// Date for which session stats were calculated. Stats are calculated on the following day, close to midnight
+        /// PST, and then returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
