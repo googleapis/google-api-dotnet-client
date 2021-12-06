@@ -7819,7 +7819,7 @@ namespace Google.Apis.Storage.v1.Data
             public virtual BucketPolicyOnlyData BucketPolicyOnly { get; set; }
 
             /// <summary>
-            /// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are
+            /// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are
             /// supported.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("publicAccessPrevention")]

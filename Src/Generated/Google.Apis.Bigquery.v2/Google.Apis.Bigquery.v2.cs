@@ -3410,6 +3410,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
 
+            /// <summary>When true will autodetect schema, else will keep original schema</summary>
+            [Google.Apis.Util.RequestParameterAttribute("autodetect_schema", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AutodetectSchema { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
 
@@ -3450,6 +3454,14 @@ namespace Google.Apis.Bigquery.v2
                     Name = "tableId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("autodetect_schema", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "autodetect_schema",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3631,6 +3643,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
 
+            /// <summary>When true will autodetect schema, else will keep original schema</summary>
+            [Google.Apis.Util.RequestParameterAttribute("autodetect_schema", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AutodetectSchema { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
 
@@ -3671,6 +3687,14 @@ namespace Google.Apis.Bigquery.v2
                     Name = "tableId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("autodetect_schema", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "autodetect_schema",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4978,14 +5002,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the
-        /// table's expiration time (even if there is a dataset level default table expiration time). For an existing
-        /// table, it will update the table's expiration time. If this field is not set: For a new table, if dataset
-        /// level default table expiration time is present, that will be applied. For an existing table, no change is
-        /// made to the table's expiration time. Additionally this field is only applied when data is written to an
-        /// empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-        /// </summary>
+        /// <summary>[Internal] This field is for Google internal use only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw { get; set; }
 
@@ -5450,11 +5467,13 @@ namespace Google.Apis.Bigquery.v2.Data
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
-        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
-        /// which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+        /// Requests specifying an invalid value will be rejected. Requests for policies with any conditional role
+        /// bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or
+        /// leave the field unset. The policy in the response might use the policy version that you specified, or it
+        /// might use a lower policy version. For example, if you specify version 3, but the policy has no conditional
+        /// role bindings, the response uses version 1. To learn which resources support conditions in their IAM
+        /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }

@@ -5449,7 +5449,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
 
-        /// <summary>The project in which to create the VM.</summary>
+        /// <summary>Output only. The project in which to create the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
