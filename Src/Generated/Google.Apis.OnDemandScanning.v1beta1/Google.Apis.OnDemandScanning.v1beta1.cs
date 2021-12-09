@@ -1092,6 +1092,59 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is
+    /// a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of
+    /// CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version
+    /// of the score.
+    /// </summary>
+    public class CVSS : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
+        public virtual string AttackComplexity { get; set; }
+
+        /// <summary>
+        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
+        /// across user environments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
+        public virtual string AttackVector { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual string Authentication { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
+        public virtual string AvailabilityImpact { get; set; }
+
+        /// <summary>The base score is a function of the base metric scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
+        public virtual System.Nullable<float> BaseScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
+        public virtual string ConfidentialityImpact { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitabilityScore")]
+        public virtual System.Nullable<float> ExploitabilityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
+        public virtual System.Nullable<float> ImpactScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
+        public virtual string IntegrityImpact { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
+        public virtual string PrivilegesRequired { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
+        public virtual string UserInteraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The category to which the update belongs.</summary>
     public class Category : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2434,6 +2487,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
+
+        /// <summary>The cvss v3 score for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssv3")]
+        public virtual CVSS Cvssv3 { get; set; }
 
         /// <summary>
         /// The distro assigned severity for this vulnerability when it is available, otherwise this is the note

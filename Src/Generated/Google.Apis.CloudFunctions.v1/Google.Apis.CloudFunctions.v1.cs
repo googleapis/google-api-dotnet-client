@@ -1051,7 +1051,7 @@ namespace Google.Apis.CloudFunctions.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Required list of fields to be updated in this request.</summary>
+                    /// <summary>Required. The list of fields in `CloudFunction` that have to be updated.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 

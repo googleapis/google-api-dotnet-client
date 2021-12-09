@@ -543,8 +543,8 @@ namespace Google.Apis.DataCatalog.v1
 
                         /// <summary>
                         /// Creates a tag and assigns it to: * An Entry if the method name is
-                        /// ``projects.locations.entryGroups.entries.tags.create``. * Or EntryGroupif the method name is
-                        /// ``projects.locations.entryGroups.tags.create``. Note: The project identified by the `parent`
+                        /// `projects.locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name is
+                        /// `projects.locations.entryGroups.tags.create`. Note: The project identified by the `parent`
                         /// parameter for the [tag]
                         /// (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
                         /// and the [tag template]
@@ -564,8 +564,8 @@ namespace Google.Apis.DataCatalog.v1
 
                         /// <summary>
                         /// Creates a tag and assigns it to: * An Entry if the method name is
-                        /// ``projects.locations.entryGroups.entries.tags.create``. * Or EntryGroupif the method name is
-                        /// ``projects.locations.entryGroups.tags.create``. Note: The project identified by the `parent`
+                        /// `projects.locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name is
+                        /// `projects.locations.entryGroups.tags.create`. Note: The project identified by the `parent`
                         /// parameter for the [tag]
                         /// (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
                         /// and the [tag template]
@@ -1278,6 +1278,63 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>
+                    /// Marks an Entry as starred by the current user. Starring information is private to each user.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the entry to mark as starred.</param>
+                    public virtual StarRequest Star(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1StarEntryRequest body, string name)
+                    {
+                        return new StarRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Marks an Entry as starred by the current user. Starring information is private to each user.
+                    /// </summary>
+                    public class StarRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1StarEntryResponse>
+                    {
+                        /// <summary>Constructs a new Star request.</summary>
+                        public StarRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1StarEntryRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the entry to mark as starred.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1StarEntryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "star";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:star";
+
+                        /// <summary>Initializes Star parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't
                     /// exist. Supported resources are: - Tag templates - Entry groups Note: This method gets policies
                     /// only within Data Catalog and can't be used to get policies from BigQuery, Pub/Sub, Dataproc
@@ -1347,6 +1404,63 @@ namespace Google.Apis.DataCatalog.v1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Marks an Entry as NOT starred by the current user. Starring information is private to each user.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the entry to mark as **not** starred.</param>
+                    public virtual UnstarRequest Unstar(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1UnstarEntryRequest body, string name)
+                    {
+                        return new UnstarRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Marks an Entry as NOT starred by the current user. Starring information is private to each user.
+                    /// </summary>
+                    public class UnstarRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1UnstarEntryResponse>
+                    {
+                        /// <summary>Constructs a new Unstar request.</summary>
+                        public UnstarRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1UnstarEntryRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the entry to mark as **not** starred.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1UnstarEntryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "unstar";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:unstar";
+
+                        /// <summary>Initializes Unstar parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Tags resource.</summary>
@@ -1368,8 +1482,8 @@ namespace Google.Apis.DataCatalog.v1
 
                     /// <summary>
                     /// Creates a tag and assigns it to: * An Entry if the method name is
-                    /// ``projects.locations.entryGroups.entries.tags.create``. * Or EntryGroupif the method name is
-                    /// ``projects.locations.entryGroups.tags.create``. Note: The project identified by the `parent`
+                    /// `projects.locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name is
+                    /// `projects.locations.entryGroups.tags.create`. Note: The project identified by the `parent`
                     /// parameter for the [tag]
                     /// (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
                     /// and the [tag template]
@@ -1389,8 +1503,8 @@ namespace Google.Apis.DataCatalog.v1
 
                     /// <summary>
                     /// Creates a tag and assigns it to: * An Entry if the method name is
-                    /// ``projects.locations.entryGroups.entries.tags.create``. * Or EntryGroupif the method name is
-                    /// ``projects.locations.entryGroups.tags.create``. Note: The project identified by the `parent`
+                    /// `projects.locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name is
+                    /// `projects.locations.entryGroups.tags.create`. Note: The project identified by the `parent`
                     /// parameter for the [tag]
                     /// (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
                     /// and the [tag template]
@@ -2612,7 +2726,7 @@ namespace Google.Apis.DataCatalog.v1
                     /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The name of the tag template.</param>
+                    /// <param name="name">Required. The name of the tag template field.</param>
                     public virtual RenameRequest Rename(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest body, string name)
                     {
                         return new RenameRequest(service, body, name);
@@ -2633,7 +2747,7 @@ namespace Google.Apis.DataCatalog.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the tag template.</summary>
+                        /// <summary>Required. The name of the tag template field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2982,9 +3096,9 @@ namespace Google.Apis.DataCatalog.v1
                     /// Names of fields whose values to overwrite on a tag template. Currently, only `display_name` and
                     /// `is_publicly_readable` can be overwritten. If this parameter is absent or empty, all modifiable
                     /// fields are overwritten. If such fields are non-required and omitted in the request body, their
-                    /// values are emptied. Note: Updating the ``is_publicly_readable`` field may require up to 12 hours
-                    /// to take effect in search results. Additionally, it also requires the
-                    /// ``tagTemplates.getIamPolicy`` and ``tagTemplates.setIamPolicy`` permissions.
+                    /// values are emptied. Note: Updating the `is_publicly_readable` field may require up to 12 hours
+                    /// to take effect in search results. Additionally, it also requires the `tagTemplates.getIamPolicy`
+                    /// and `tagTemplates.setIamPolicy` permissions.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4540,11 +4654,13 @@ namespace Google.Apis.DataCatalog.v1.Data
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
-        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
-        /// which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+        /// Requests specifying an invalid value will be rejected. Requests for policies with any conditional role
+        /// bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or
+        /// leave the field unset. The policy in the response might use the policy version that you specified, or it
+        /// might use a lower policy version. For example, if you specify version 3, but the policy has no conditional
+        /// role bindings, the response uses version 1. To learn which resources support conditions in their IAM
+        /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
@@ -4851,6 +4967,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Additional information related to the entry. Private to the current user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalDetails")]
+        public virtual GoogleCloudDatacatalogV1PersonalDetails PersonalDetails { get; set; }
 
         /// <summary>
         /// Specification that applies to a user-defined function or procedure. Valid only for entries with the
@@ -5163,6 +5283,21 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Entry metadata relevant only to the user and private to them.</summary>
+    public class GoogleCloudDatacatalogV1PersonalDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set if the entry is starred; unset otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starTime")]
+        public virtual object StarTime { get; set; }
+
+        /// <summary>True if the entry is starred by the user; false otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Denotes one policy tag in a taxonomy, for example, SSN. Policy tags can be defined in a hierarchy. For example:
     /// ``` + Geolocation + LatLong + City + ZipCode ``` Where the "Geolocation" policy tag contains three children.
@@ -5315,8 +5450,8 @@ namespace Google.Apis.DataCatalog.v1.Data
     {
         /// <summary>
         /// Specifies the order of results. Currently supported case-sensitive values are: * `relevance` that can only
-        /// be descending * `last_modified_timestamp [asc|desc]` with descending (`desc`) as default If this parameter
-        /// is omitted, it defaults to the descending `relevance`.
+        /// be descending * `last_modified_timestamp [asc|desc]` with descending (`desc`) as default * `default` that
+        /// can only be descending If this parameter is omitted, it defaults to the descending `relevance`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
@@ -5338,9 +5473,9 @@ namespace Google.Apis.DataCatalog.v1.Data
 
         /// <summary>
         /// Optional. The query string with a minimum of 3 characters and specific syntax. For more information, see
-        /// [Data Catalog search syntax](/data-catalog/docs/how-to/search-reference). An empty query string returns all
-        /// data assets (in the specified scope) that you have access to. A query string can be a simple `xyz` or
-        /// qualified by predicates: * `name:x` * `column:y` * `description:z`
+        /// [Data Catalog search syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference). An empty
+        /// query string returns all data assets (in the specified scope) that you have access to. A query string can be
+        /// a simple `xyz` or qualified by predicates: * `name:x` * `column:y` * `description:z`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -5384,8 +5519,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>
         /// Optional. If `true`, include public tag templates in the search results. By default, they are included only
         /// if you have explicit permissions on them to view them. For example, if you are the owner. Other scope
-        /// fields, for example, ``include_org_ids``, still restrict the returned public tag templates and at least one
-        /// of them is required.
+        /// fields, for example, `include_org_ids`, still restrict the returned public tag templates and at least one of
+        /// them is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includePublicTagTemplates")]
         public virtual System.Nullable<bool> IncludePublicTagTemplates { get; set; }
@@ -5400,6 +5535,13 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedLocations")]
         public virtual System.Collections.Generic.IList<string> RestrictedLocations { get; set; }
+
+        /// <summary>
+        /// Optional. If `true`, search only among starred entries. By default, all results are returned, starred or
+        /// not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starredOnly")]
+        public virtual System.Nullable<bool> StarredOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5554,6 +5696,20 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyTags")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1SerializedPolicyTag> PolicyTags { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for StarEntry.</summary>
+    public class GoogleCloudDatacatalogV1StarEntryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for StarEntry. Empty for now</summary>
+    public class GoogleCloudDatacatalogV1StarEntryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5852,6 +6008,20 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taxonomyTimestamps")]
         public virtual GoogleCloudDatacatalogV1SystemTimestamps TaxonomyTimestamps { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UnstarEntry.</summary>
+    public class GoogleCloudDatacatalogV1UnstarEntryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UnstarEntry. Empty for now</summary>
+    public class GoogleCloudDatacatalogV1UnstarEntryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

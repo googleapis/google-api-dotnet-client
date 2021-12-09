@@ -10356,6 +10356,16 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string OrderNumber { get; set; }
 
         /// <summary>
+        /// The unique ID of the organizational unit. orgUnitPath is the human readable version of orgUnitId. While
+        /// orgUnitPath may change by renaming an organizational unit within the path, orgUnitId is unchangeable for one
+        /// organizational unit. This property can be
+        /// [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#update_chrome_device) using the API, and this
+        /// will be supported in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>
         /// The full parent path with the organizational unit's name associated with the device. Path names are case
         /// insensitive. If the parent organizational unit is the top-level organization, it is represented as a forward
         /// slash, `/`. This property can be
@@ -12676,18 +12686,28 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class UserLanguage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Other language. User can provide own language name if there is no corresponding Google III language code. If
-        /// this is set LanguageCode can't be set
+        /// Other language. User can provide own language name if there is no corresponding ISO 639 language code. If
+        /// this is set `languageCode` can't be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLanguage")]
         public virtual string CustomLanguage { get; set; }
 
         /// <summary>
-        /// Language Code. Should be used for storing Google III LanguageCode string representation for language.
-        /// Illegal values cause SchemaException.
+        /// Language Code. Should be used for storing ISO 639 LanguageCode string representation for language. See the
+        /// [Language Codes](/admin-sdk/directory/v1/languages) page for the list of supported codes. Valid language
+        /// codes outside the supported set will be accepted by the API but may lead to unexpected behavior. Illegal
+        /// values cause SchemaException. If this is set `customLanguage` can't be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Preference. Optional field, which if present, controls whether the specified `languageCode` is stored as the
+        /// user's preferred language. If `customLanguage` is set, this can't be set. Allowed values are `preferred` and
+        /// `not_preferred`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preference")]
+        public virtual string Preference { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

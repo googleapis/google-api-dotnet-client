@@ -9082,6 +9082,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; }
 
+        /// <summary>Limit scanning only to these fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedFields")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IncludedFields { get; set; }
+
         /// <summary>
         /// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If
         /// not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be

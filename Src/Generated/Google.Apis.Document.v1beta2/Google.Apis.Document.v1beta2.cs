@@ -2175,8 +2175,8 @@ namespace Google.Apis.Document.v1beta2.Data
     }
 
     /// <summary>
-    /// Structure for referencing parent provenances. When an element replaces one of more other elements parent
-    /// references identify the elements that are replaced.
+    /// The parent element the current element is based on. Used for referencing/aligning, removal and replacement
+    /// operations.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2191,7 +2191,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
 
-        /// <summary>The index of the [Document.revisions] identifying the parent revision.</summary>
+        /// <summary>The index of the index into current revision's parent_ids list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual System.Nullable<int> Revision { get; set; }
 
@@ -2224,6 +2224,13 @@ namespace Google.Apis.Document.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Parent { get; set; }
+
+        /// <summary>
+        /// The revisions that this revision is based on. Must include all the ids that have anything to do with this
+        /// revision - eg. there are `provenance.parent.revision` fields that index into this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentIds")]
+        public virtual System.Collections.Generic.IList<string> ParentIds { get; set; }
 
         /// <summary>If the annotation was made by processor identify the processor by its resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processor")]
@@ -3329,8 +3336,8 @@ namespace Google.Apis.Document.v1beta2.Data
     }
 
     /// <summary>
-    /// Structure for referencing parent provenances. When an element replaces one of more other elements parent
-    /// references identify the elements that are replaced.
+    /// The parent element the current element is based on. Used for referencing/aligning, removal and replacement
+    /// operations.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3345,7 +3352,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
 
-        /// <summary>The index of the [Document.revisions] identifying the parent revision.</summary>
+        /// <summary>The index of the index into current revision's parent_ids list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual System.Nullable<int> Revision { get; set; }
 
@@ -3378,6 +3385,13 @@ namespace Google.Apis.Document.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Parent { get; set; }
+
+        /// <summary>
+        /// The revisions that this revision is based on. Must include all the ids that have anything to do with this
+        /// revision - eg. there are `provenance.parent.revision` fields that index into this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentIds")]
+        public virtual System.Collections.Generic.IList<string> ParentIds { get; set; }
 
         /// <summary>If the annotation was made by processor identify the processor by its resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processor")]

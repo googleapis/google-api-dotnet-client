@@ -428,20 +428,20 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 Meet = 12,
 
                 /// <summary>
-                /// The Mobile Audit activity report return information about different types of Mobile Audit activity
+                /// The Device Audit activity report returns information about different types of Device Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("mobile")]
                 Mobile = 13,
 
                 /// <summary>
-                /// The Rules activity report return information about different types of Rules activity events.
+                /// The Rules activity report returns information about different types of Rules activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("rules")]
                 Rules = 14,
 
                 /// <summary>
-                /// The SAML activity report return information about different types of SAML activity events.
+                /// The SAML activity report returns information about different types of SAML activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("saml")]
                 Saml = 15,
@@ -840,20 +840,20 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 Meet = 12,
 
                 /// <summary>
-                /// The Mobile Audit activity report return information about different types of Mobile Audit activity
+                /// The Device Audit activity report returns information about different types of Device Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("mobile")]
                 Mobile = 13,
 
                 /// <summary>
-                /// The Rules activity report return information about different types of Rules activity events.
+                /// The Rules activity report returns information about different types of Rules activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("rules")]
                 Rules = 14,
 
                 /// <summary>
-                /// The SAML activity report return information about different types of SAML activity events.
+                /// The SAML activity report returns information about different types of SAML activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("saml")]
                 Saml = 15,
@@ -1330,12 +1330,16 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// report's parameters, see the Entities Usage parameters reference guides.
         /// </summary>
         /// <param name="entityType">Represents the type of entity for the report.</param>
-        /// <param name="entityKey">Represents the key of the object to filter the data with.</param>
+        /// <param name="entityKey">
+        /// Represents the key of the object to filter the data with. It is a string which can take the value `all` to
+        /// get activity events for all users, or any other value for an app-specific entity. For details on how to
+        /// obtain the `entityKey` for a particular `entityType`, see the Entities Usage parameters reference guides.
+        /// </param>
         /// <param name="date">
         /// Represents the date the usage occurred. The timestamp is in the ISO 8601 format, yyyy-mm-dd. We recommend
         /// you use your account's time zone for this.
         /// </param>
-        public virtual GetRequest Get(GetRequest.EntityTypeEnum entityType, GetRequest.EntityKeyEnum entityKey, string date)
+        public virtual GetRequest Get(GetRequest.EntityTypeEnum entityType, string entityKey, string date)
         {
             return new GetRequest(service, entityType, entityKey, date);
         }
@@ -1348,7 +1352,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, EntityTypeEnum entityType, EntityKeyEnum entityKey, string date) : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, EntityTypeEnum entityType, string entityKey, string date) : base(service)
             {
                 EntityType = entityType;
                 EntityKey = entityKey;
@@ -1368,24 +1372,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 GplusCommunities = 1,
             }
 
-            /// <summary>Represents the key of the object to filter the data with.</summary>
+            /// <summary>
+            /// Represents the key of the object to filter the data with. It is a string which can take the value `all`
+            /// to get activity events for all users, or any other value for an app-specific entity. For details on how
+            /// to obtain the `entityKey` for a particular `entityType`, see the Entities Usage parameters reference
+            /// guides.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("entityKey", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual EntityKeyEnum EntityKey { get; private set; }
-
-            /// <summary>Represents the key of the object to filter the data with.</summary>
-            public enum EntityKeyEnum
-            {
-                /// <summary>Returns activity events for all users.</summary>
-                [Google.Apis.Util.StringValueAttribute("all")]
-                All = 1,
-
-                /// <summary>
-                /// Represents an app-specific identifier for the entity. For details on how to obtain the `entityKey`
-                /// for a particular `entityType`, see the Entities Usage parameters reference guides.
-                /// </summary>
-                [Google.Apis.Util.StringValueAttribute("entityKey")]
-                EntityKey = 2,
-            }
+            public virtual string EntityKey { get; private set; }
 
             /// <summary>
             /// Represents the date the usage occurred. The timestamp is in the ISO 8601 format, yyyy-mm-dd. We

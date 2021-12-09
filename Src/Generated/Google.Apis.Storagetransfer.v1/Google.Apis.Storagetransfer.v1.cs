@@ -1867,19 +1867,21 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual object LastModifiedSince { get; set; }
 
         /// <summary>
-        /// If specified, only objects with a "last modification time" on or after `NOW` -
-        /// `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are
-        /// transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
-        /// `TransferOperation`.
+        /// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification
+        /// time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the
+        /// elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object
+        /// is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last
+        /// modification time" are also transferred.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeElapsedSinceLastModification")]
         public virtual object MaxTimeElapsedSinceLastModification { get; set; }
 
         /// <summary>
-        /// If specified, only objects with a "last modification time" before `NOW` -
-        /// `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are
-        /// transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
-        /// `TransferOperation`.
+        /// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last
+        /// modification time". When a TransferOperation begins, objects with a "last modification time" are transferred
+        /// only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time"
+        /// of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects
+        /// that do not have a "last modification time" are also transferred.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
         public virtual object MinTimeElapsedSinceLastModification { get; set; }

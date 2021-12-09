@@ -302,7 +302,6 @@ namespace Google.Apis.CloudOSLogin.v1
         {
             this.service = service;
             Projects = new ProjectsResource(service);
-            SshPublicKey = new SshPublicKeyResource(service);
             SshPublicKeys = new SshPublicKeysResource(service);
         }
 
@@ -377,19 +376,19 @@ namespace Google.Apis.CloudOSLogin.v1
             }
         }
 
-        /// <summary>Gets the SshPublicKey resource.</summary>
-        public virtual SshPublicKeyResource SshPublicKey { get; }
+        /// <summary>Gets the SshPublicKeys resource.</summary>
+        public virtual SshPublicKeysResource SshPublicKeys { get; }
 
-        /// <summary>The "sshPublicKey" collection of methods.</summary>
-        public class SshPublicKeyResource
+        /// <summary>The "sshPublicKeys" collection of methods.</summary>
+        public class SshPublicKeysResource
         {
-            private const string Resource = "sshPublicKey";
+            private const string Resource = "sshPublicKeys";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public SshPublicKeyResource(Google.Apis.Services.IClientService service)
+            public SshPublicKeysResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
             }
@@ -430,7 +429,7 @@ namespace Google.Apis.CloudOSLogin.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+parent}/sshPublicKey";
+                public override string RestPath => "v1/{+parent}/sshPublicKeys";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -445,24 +444,6 @@ namespace Google.Apis.CloudOSLogin.v1
                         Pattern = @"^users/[^/]+$",
                     });
                 }
-            }
-        }
-
-        /// <summary>Gets the SshPublicKeys resource.</summary>
-        public virtual SshPublicKeysResource SshPublicKeys { get; }
-
-        /// <summary>The "sshPublicKeys" collection of methods.</summary>
-        public class SshPublicKeysResource
-        {
-            private const string Resource = "sshPublicKeys";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public SshPublicKeysResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
             }
 
             /// <summary>Deletes an SSH public key.</summary>

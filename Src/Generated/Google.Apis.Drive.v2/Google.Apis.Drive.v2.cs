@@ -3881,8 +3881,8 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
-        /// you want to modify. When updating fields, some fields might might change automatically, such as
-        /// modifiedDate. This method supports patch semantics.
+        /// you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This
+        /// method supports patch semantics.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to update.</param>
@@ -3893,8 +3893,8 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         /// Updates a file's metadata and/or content. When calling this method, only populate fields in the request that
-        /// you want to modify. When updating fields, some fields might might change automatically, such as
-        /// modifiedDate. This method supports patch semantics.
+        /// you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This
+        /// method supports patch semantics.
         /// </summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {

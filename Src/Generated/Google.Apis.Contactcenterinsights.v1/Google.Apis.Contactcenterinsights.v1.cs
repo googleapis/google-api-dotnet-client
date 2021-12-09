@@ -664,8 +664,8 @@ namespace Google.Apis.Contactcenterinsights.v1
                     /// <summary>
                     /// A unique ID for the new conversation. This ID will become the final component of the
                     /// conversation's resource name. If no ID is specified, a server-generated ID will be used. This
-                    /// value should be 4-64 characters and must match the regular expression /^[a-z0-9-]{4,64}$/. Valid
-                    /// characters are /a-z-/
+                    /// value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid
+                    /// characters are `a-z-`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("conversationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ConversationId { get; set; }
@@ -3289,6 +3289,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>Options for what to do if the destination table already exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4210,6 +4214,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The parent resource to export data from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>Options for what to do if the destination table already exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

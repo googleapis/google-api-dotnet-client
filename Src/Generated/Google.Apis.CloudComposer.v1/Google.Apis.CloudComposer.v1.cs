@@ -1217,7 +1217,6 @@ namespace Google.Apis.CloudComposer.v1.Data
 
         /// <summary>
         /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-        /// This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -1232,6 +1231,17 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>Output only. The Kubernetes Engine cluster used to run this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual string GkeCluster { get; set; }
+
+        /// <summary>
+        /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is
+        /// defined so that maintenance is not executed during peak hours or critical time periods. The system will not
+        /// be under maintenance for every occurrence of this window, but when maintenance is planned, it will be
+        /// scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This
+        /// may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the
+        /// default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
+        public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
         /// <summary>The configuration used for the Kubernetes Engine cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
@@ -1406,6 +1416,36 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The configuration settings for Cloud Composer maintenance window. The following example: ``` {
+    /// "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ```
+    /// would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+    /// </summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+        /// The value for end-time must be in the future, relative to `start_time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Required. Maintenance window recurrence. Format is a subset of
+        /// [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are
+        /// `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
+        public virtual string Recurrence { get; set; }
+
+        /// <summary>Required. Start time of the first recurrence of the maintenance window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
