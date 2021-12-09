@@ -50,7 +50,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+CampaignsResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -94,7 +95,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+InsertionOrdersResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -138,7 +140,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+InsertionOrdersResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -182,7 +185,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+InvoicesResource+ListRequest.LoiSapinInvoiceTypeEnum": [
     "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED",
@@ -231,7 +235,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+LineItemsResource+TargetingTypesResource+AssignedTargetingOptionsResource+DeleteRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -275,7 +280,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+LineItemsResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -319,7 +325,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+LineItemsResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -363,7 +370,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+CreateRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -407,7 +415,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+DeleteRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -451,7 +460,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -495,7 +505,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -539,7 +550,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.DisplayVideoBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
@@ -601,7 +613,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.PartnersResource+TargetingTypesResource+AssignedTargetingOptionsResource+DeleteRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -645,7 +658,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.PartnersResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -689,7 +703,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.PartnersResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -733,7 +748,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.TargetingTypesResource+TargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -777,7 +793,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.TargetingTypesResource+TargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -821,7 +838,8 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ],
   "Google.Apis.DisplayVideo.v1.TargetingTypesResource+TargetingOptionsResource+SearchRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -865,6 +883,7 @@
     "TARGETING_TYPE_NATIVE_CONTENT_POSITION",
     "TARGETING_TYPE_POI",
     "TARGETING_TYPE_BUSINESS_CHAIN",
-    "TARGETING_TYPE_OMID"
+    "TARGETING_TYPE_OMID",
+    "TARGETING_TYPE_AUDIO_CONTENT_TYPE"
   ]
 }

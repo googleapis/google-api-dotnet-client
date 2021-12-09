@@ -3557,7 +3557,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     }
 
     /// <summary>Stores information about a certificate.</summary>
-    public class CertificateInfo : Google.Apis.Requests.IDirectResponseSchema
+    public class CertificateAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The X.509 extension for CertificateTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateTemplate")]
@@ -3987,12 +3987,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource representing the Endpoint Verification-specific attributes of a Device.</summary>
+    /// <summary>
+    /// Resource representing the Endpoint Verification-specific attributes of a Device.
+    /// https://cloud.google.com/endpoint-verification/docs/overview
+    /// </summary>
     public class EndpointVerificationSpecificAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Details of certificates.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("certificateInfo")]
-        public virtual System.Collections.Generic.IList<CertificateInfo> CertificateInfo { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAttributes")]
+        public virtual System.Collections.Generic.IList<CertificateAttributes> CertificateAttributes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

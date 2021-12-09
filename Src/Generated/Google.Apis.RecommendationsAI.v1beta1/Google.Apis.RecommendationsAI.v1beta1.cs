@@ -594,7 +594,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. A filter to apply on the list results.</summary>
+                        /// <summary>Optional. Use of this field is not supported by version v1beta1.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 

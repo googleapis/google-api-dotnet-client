@@ -920,6 +920,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>
@@ -1254,6 +1258,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>
@@ -3429,6 +3437,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>
@@ -3732,6 +3744,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>
@@ -4648,6 +4664,9 @@ namespace Google.Apis.DisplayVideo.v1
 
                     /// <summary>
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
+                    /// Requests to this endpoint cannot be made concurrently with the following requests updating the
+                    /// same line item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
@@ -4664,6 +4683,9 @@ namespace Google.Apis.DisplayVideo.v1
 
                     /// <summary>
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
+                    /// Requests to this endpoint cannot be made concurrently with the following requests updating the
+                    /// same line item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
                     /// </summary>
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                     {
@@ -4896,6 +4918,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -4944,7 +4970,12 @@ namespace Google.Apis.DisplayVideo.v1
                         }
                     }
 
-                    /// <summary>Deletes an assigned targeting option from a line item.</summary>
+                    /// <summary>
+                    /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
+                    /// concurrently with the following requests updating the same line item: *
+                    /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+                    /// </summary>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
                     /// <param name="lineItemId">
                     /// Required. The ID of the line item the assigned targeting option belongs to.
@@ -4960,7 +4991,12 @@ namespace Google.Apis.DisplayVideo.v1
                         return new DeleteRequest(service, advertiserId, lineItemId, targetingType, assignedTargetingOptionId);
                     }
 
-                    /// <summary>Deletes an assigned targeting option from a line item.</summary>
+                    /// <summary>
+                    /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
+                    /// concurrently with the following requests updating the same line item: *
+                    /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+                    /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+                    /// </summary>
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -5192,6 +5228,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -5495,6 +5535,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>
@@ -5794,6 +5838,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                             TARGETINGTYPEOMID = 41,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                         }
 
                         /// <summary>
@@ -5910,7 +5958,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Bulk edits targeting options under a single line item. The operation will delete the assigned targeting
             /// options provided in BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then create the
-            /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests .
+            /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests.
+            /// Requests to this endpoint cannot be made concurrently with the following requests updating the same line
+            /// item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+            /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
@@ -5925,7 +5976,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Bulk edits targeting options under a single line item. The operation will delete the assigned targeting
             /// options provided in BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then create the
-            /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests .
+            /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests.
+            /// Requests to this endpoint cannot be made concurrently with the following requests updating the same line
+            /// item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+            /// CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
             /// </summary>
             public class BulkEditLineItemAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsResponse>
             {
@@ -6493,7 +6547,12 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
-            /// <summary>Updates an existing line item. Returns the updated line item if successful.</summary>
+            /// <summary>
+            /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
+            /// cannot be made concurrently with the following requests updating the same line item: *
+            /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem * CreateLineItemAssignedTargetingOption *
+            /// DeleteLineItemAssignedTargetingOption
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
             /// Output only. The unique ID of the advertiser the line item belongs to.
@@ -6504,7 +6563,12 @@ namespace Google.Apis.DisplayVideo.v1
                 return new PatchRequest(service, body, advertiserId, lineItemId);
             }
 
-            /// <summary>Updates an existing line item. Returns the updated line item if successful.</summary>
+            /// <summary>
+            /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
+            /// cannot be made concurrently with the following requests updating the same line item: *
+            /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem * CreateLineItemAssignedTargetingOption *
+            /// DeleteLineItemAssignedTargetingOption
+            /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -8905,6 +8969,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -9189,6 +9257,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -9480,6 +9552,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>
@@ -9769,6 +9845,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>
@@ -14712,6 +14792,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -14993,6 +15077,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -15281,6 +15369,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>
@@ -15567,6 +15659,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                         TARGETINGTYPEOMID = 41,
+
+                        /// <summary>Target ads to a specific audio content type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                     }
 
                     /// <summary>
@@ -16298,6 +16394,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                     TARGETINGTYPEOMID = 41,
+
+                    /// <summary>Target ads to a specific audio content type.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                    TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                 }
 
                 /// <summary>Required. The ID of the of targeting option to retrieve.</summary>
@@ -16599,6 +16699,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                     TARGETINGTYPEOMID = 41,
+
+                    /// <summary>Target ads to a specific audio content type.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                    TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                 }
 
                 /// <summary>Required. The Advertiser this request is being made in the context of.</summary>
@@ -16931,6 +17035,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
                     TARGETINGTYPEOMID = 41,
+
+                    /// <summary>Target ads to a specific audio content type.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                    TARGETINGTYPEAUDIOCONTENTTYPE = 42,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -17855,6 +17963,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual AudienceGroupAssignedTargetingOptionDetails AudienceGroupDetails { get; set; }
 
         /// <summary>
+        /// Audio content type details. This field will be populated when the targeting_type is
+        /// 'TARGETING_TYPE_AUDIO_CONTENT_TYPE'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioContentTypeDetails")]
+        public virtual AudioContentTypeAssignedTargetingOptionDetails AudioContentTypeDetails { get; set; }
+
+        /// <summary>
         /// Authorized seller status details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one authorized seller status option per
         /// resource. If a resource doesn't have an authorized seller status option, all authorized sellers indicated as
@@ -18201,6 +18316,41 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedGoogleAudienceGroup")]
         public virtual GoogleAudienceGroup IncludedGoogleAudienceGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for audio content type assigned targeting option. This will be populated in the
+    /// audio_content_type_details field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly
+    /// targeting all options is not supported. Remove all audio content type targeting options to achieve this effect.
+    /// </summary>
+    public class AudioContentTypeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The audio content type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioContentType")]
+        public virtual string AudioContentType { get; set; }
+
+        /// <summary>
+        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable audio content type. This will be populated in the audio_content_type_details field when
+    /// targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
+    /// </summary>
+    public class AudioContentTypeTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The audio content type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioContentType")]
+        public virtual string AudioContentType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23823,6 +23973,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>App category details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCategoryDetails")]
         public virtual AppCategoryTargetingOptionDetails AppCategoryDetails { get; set; }
+
+        /// <summary>Audio content type details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioContentTypeDetails")]
+        public virtual AudioContentTypeTargetingOptionDetails AudioContentTypeDetails { get; set; }
 
         /// <summary>Authorized seller status resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedSellerStatusDetails")]

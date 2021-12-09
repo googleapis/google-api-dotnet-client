@@ -2106,11 +2106,13 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
-        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
-        /// which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+        /// Requests specifying an invalid value will be rejected. Requests for policies with any conditional role
+        /// bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or
+        /// leave the field unset. The policy in the response might use the policy version that you specified, or it
+        /// might use a lower policy version. For example, if you specify version 3, but the policy has no conditional
+        /// role bindings, the response uses version 1. To learn which resources support conditions in their IAM
+        /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
@@ -2148,7 +2150,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or
         /// replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. *
         /// Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to
-        /// `"Google-Cloud-Tasks"`. * X-Google-*: Google use only. * X-AppEngine-*: Google use only. `Content-Type`
+        /// `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type`
         /// won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created.
         /// For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers
         /// which can have multiple values (according to RFC2616) can be specified using comma-separated values. The

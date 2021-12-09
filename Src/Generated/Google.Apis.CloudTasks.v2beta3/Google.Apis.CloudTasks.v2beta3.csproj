@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudTasks.v2beta3 Client Library</Title>
-    <Version>1.55.0.2479</Version>
+    <Version>1.55.0.2525</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

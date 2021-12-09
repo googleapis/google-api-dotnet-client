@@ -6427,6 +6427,42 @@ namespace Google.Apis.SecurityCommandCenter.v1
 }
 namespace Google.Apis.SecurityCommandCenter.v1.Data
 {
+    /// <summary>Represents an access event.</summary>
+    public class Access : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Caller's IP address, such as "1.1.1.1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerIp")]
+        public virtual string CallerIp { get; set; }
+
+        /// <summary>The caller IP's geolocation, which identifies where the call came from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerIpGeo")]
+        public virtual Geolocation CallerIpGeo { get; set; }
+
+        /// <summary>The method that the service account called, e.g. "SetIamPolicy".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
+        public virtual string MethodName { get; set; }
+
+        /// <summary>Associated email, such as "foo@google.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; }
+
+        /// <summary>
+        /// This is the API service that the service account made a call to, e.g. "iam.googleapis.com"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>
+        /// What kind of user agent is associated, e.g. operating system shells, embedded or stand-alone applications,
+        /// etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgentFamily")]
+        public virtual string UserAgentFamily { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Security Command Center representation of a Google Cloud resource. The Asset is a Security Command Center
     /// resource that captures information about a single Google Cloud resource. All modifications to an Asset are only
@@ -6793,6 +6829,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Access details associated to the Finding, such as more information on the caller, which method was accessed,
+        /// from where, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access")]
+        public virtual Access Access { get; set; }
+
+        /// <summary>
         /// The canonical name of the finding. It's either
         /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
         /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or
@@ -6848,6 +6891,12 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
+
+        /// <summary>
+        /// MITRE ATT&amp;amp;CK tactics and techniques related to this finding. See: https://attack.mitre.org
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mitreAttack")]
+        public virtual MitreAttack MitreAttack { get; set; }
 
         /// <summary>Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mute")]
@@ -6941,6 +6990,17 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a geographical location for a given access.</summary>
+    public class Geolocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A CLDR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6967,6 +7027,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to a BulkMute request. Contains the LRO information.</summary>
+    public class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7793,6 +7860,43 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>Sources belonging to the requested parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MITRE ATT&amp;amp;CK tactics and techniques related to this finding. See: https://attack.mitre.org
+    /// </summary>
+    public class MitreAttack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional MITRE ATT&amp;CK tactics related to this finding, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTactics")]
+        public virtual System.Collections.Generic.IList<string> AdditionalTactics { get; set; }
+
+        /// <summary>
+        /// Additional MITRE ATT&amp;amp;CK techniques related to this finding, if any, along with any of their
+        /// respective parent techniques.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTechniques")]
+        public virtual System.Collections.Generic.IList<string> AdditionalTechniques { get; set; }
+
+        /// <summary>The MITRE ATT&amp;CK tactic most closely represented by this finding, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryTactic")]
+        public virtual string PrimaryTactic { get; set; }
+
+        /// <summary>
+        /// The MITRE ATT&amp;amp;CK technique most closely represented by this finding, if any. primary_techniques is a
+        /// repeated field because there are multiple levels of MITRE ATT&amp;amp;CK techniques. If the technique most
+        /// closely represented by this finding is a sub-technique (e.g. SCANNING_IP_BLOCKS), both the sub-technique and
+        /// its parent technique(s) will be listed (e.g. SCANNING_IP_BLOCKS, ACTIVE_SCANNING).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryTechniques")]
+        public virtual System.Collections.Generic.IList<string> PrimaryTechniques { get; set; }
+
+        /// <summary>The MITRE ATT&amp;CK version referenced by the above fields. E.g. "8".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

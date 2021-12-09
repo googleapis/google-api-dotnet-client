@@ -1403,6 +1403,10 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("xss")]
         public virtual Xss Xss { get; set; }
 
+        /// <summary>Output only. An addon containing information reported for an XXE, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xxe")]
+        public virtual Xxe Xxe { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1907,6 +1911,23 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>The reproduction url for the seeding POST request of a Stored XSS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedXssSeedingUrl")]
         public virtual string StoredXssSeedingUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information reported for an XXE.</summary>
+    public class Xxe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Location within the request where the payload was placed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadLocation")]
+        public virtual string PayloadLocation { get; set; }
+
+        /// <summary>
+        /// The XML string that triggered the XXE vulnerability. Non-payload values might be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadValue")]
+        public virtual string PayloadValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

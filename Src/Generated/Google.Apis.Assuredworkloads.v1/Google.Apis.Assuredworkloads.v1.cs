@@ -930,11 +930,22 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by
+        /// Europe/Canada customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSovereignControls")]
+        public virtual System.Nullable<bool> EnableSovereignControls { get; set; }
+
+        /// <summary>
         /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
         /// Update &amp;amp; Delete operations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Represents the KAJ enrollment state of the given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kajEnrollmentState")]
+        public virtual string KajEnrollmentState { get; set; }
 
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
@@ -975,6 +986,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo> Resources { get; set; }
+
+        /// <summary>
+        /// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is
+        /// queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saaEnrollmentResponse")]
+        public virtual GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse SaaEnrollmentResponse { get; set; }
     }
 
     /// <summary>Settings specific to the Key Management Service.</summary>
@@ -1036,6 +1054,21 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Signed Access Approvals (SAA) enrollment response.</summary>
+    public class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates SAA enrollment setup error if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setupErrors")]
+        public virtual System.Collections.Generic.IList<string> SetupErrors { get; set; }
+
+        /// <summary>Indicates SAA enrollment status of a given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
+        public virtual string SetupStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1105,6 +1138,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by
+        /// Europe/Canada customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSovereignControls")]
+        public virtual System.Nullable<bool> EnableSovereignControls { get; set; }
+
+        /// <summary>
         /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
         /// Update &amp;amp; Delete operations.
         /// </summary>
@@ -1124,6 +1164,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings Il4Settings { get; set; }
+
+        /// <summary>Output only. Represents the KAJ enrollment state of the given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kajEnrollmentState")]
+        public virtual string KajEnrollmentState { get; set; }
 
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
@@ -1164,6 +1208,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo> Resources { get; set; }
+
+        /// <summary>
+        /// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is
+        /// queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saaEnrollmentResponse")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse SaaEnrollmentResponse { get; set; }
     }
 
     /// <summary>Settings specific to resources needed for CJIS.</summary>
@@ -1274,6 +1325,21 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Signed Access Approvals (SAA) enrollment response.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates SAA enrollment setup error if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setupErrors")]
+        public virtual System.Collections.Generic.IList<string> SetupErrors { get; set; }
+
+        /// <summary>Indicates SAA enrollment status of a given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
+        public virtual string SetupStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
     public class GoogleCloudAssuredworkloadsVersioningV1mainCreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1338,6 +1404,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by
+        /// Europe/Canada customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSovereignControls")]
+        public virtual System.Nullable<bool> EnableSovereignControls { get; set; }
+
+        /// <summary>
         /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
         /// Update &amp;amp; Delete operations.
         /// </summary>
@@ -1357,6 +1430,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIL4Settings Il4Settings { get; set; }
+
+        /// <summary>Output only. Represents the KAJ enrollment state of the given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kajEnrollmentState")]
+        public virtual string KajEnrollmentState { get; set; }
 
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
@@ -1397,6 +1474,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo> Resources { get; set; }
+
+        /// <summary>
+        /// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is
+        /// queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saaEnrollmentResponse")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse SaaEnrollmentResponse { get; set; }
     }
 
     /// <summary>Settings specific to resources needed for CJIS.</summary>
@@ -1502,6 +1586,21 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Signed Access Approvals (SAA) enrollment response.</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates SAA enrollment setup error if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setupErrors")]
+        public virtual System.Collections.Generic.IList<string> SetupErrors { get; set; }
+
+        /// <summary>Indicates SAA enrollment status of a given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
+        public virtual string SetupStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1189,7 +1189,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     /// Deletes a package and all of its versions and tags. The returned operation will complete once
                     /// the package has been deleted.
                     /// </summary>
-                    /// <param name="name">The name of the package to delete.</param>
+                    /// <param name="name">Required. The name of the package to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -1208,7 +1208,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the package to delete.</summary>
+                        /// <summary>Required. The name of the package to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1237,7 +1237,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     }
 
                     /// <summary>Gets a package.</summary>
-                    /// <param name="name">The name of the package to retrieve.</param>
+                    /// <param name="name">Required. The name of the package to retrieve.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -1253,7 +1253,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the package to retrieve.</summary>
+                        /// <summary>Required. The name of the package to retrieve.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1282,7 +1282,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     }
 
                     /// <summary>Lists packages.</summary>
-                    /// <param name="parent">The name of the parent resource whose packages will be listed.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the parent resource whose packages will be listed.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -1298,7 +1300,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the parent resource whose packages will be listed.</summary>
+                        /// <summary>Required. The name of the parent resource whose packages will be listed.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -1356,7 +1358,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 /// response will be the created Repository.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The name of the parent resource where the repository will be created.</param>
+                /// <param name="parent">
+                /// Required. The name of the parent resource where the repository will be created.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.ArtifactRegistry.v1beta1.Data.Repository body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -1376,7 +1380,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>The name of the parent resource where the repository will be created.</summary>
+                    /// <summary>
+                    /// Required. The name of the parent resource where the repository will be created.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1427,7 +1433,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 /// has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty
                 /// response.
                 /// </summary>
-                /// <param name="name">The name of the repository to delete.</param>
+                /// <param name="name">Required. The name of the repository to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -1447,7 +1453,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>The name of the repository to delete.</summary>
+                    /// <summary>Required. The name of the repository to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1476,7 +1482,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 }
 
                 /// <summary>Gets a repository.</summary>
-                /// <param name="name">The name of the repository to retrieve.</param>
+                /// <param name="name">Required. The name of the repository to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -1492,7 +1498,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>The name of the repository to retrieve.</summary>
+                    /// <summary>Required. The name of the repository to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1593,7 +1599,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 }
 
                 /// <summary>Lists repositories.</summary>
-                /// <param name="parent">The name of the parent resource whose repositories will be listed.</param>
+                /// <param name="parent">
+                /// Required. The name of the parent resource whose repositories will be listed.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1609,7 +1617,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>The name of the parent resource whose repositories will be listed.</summary>
+                    /// <summary>Required. The name of the parent resource whose repositories will be listed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
