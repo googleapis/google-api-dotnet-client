@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -397,8 +397,8 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more
-        /// consistent performance.
+        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent
+        /// performance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serveNodes")]
         public virtual System.Nullable<int> ServeNodes { get; set; }
@@ -429,11 +429,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
     /// <summary>Configuration for a cluster.</summary>
     public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of
-        /// serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and
-        /// autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
-        /// </summary>
+        /// <summary>Autoscaling configuration for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterAutoscalingConfig")]
         public virtual ClusterAutoscalingConfig ClusterAutoscalingConfig { get; set; }
 
@@ -734,6 +730,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
         public virtual object FinishTime { get; set; }
 
+        /// <summary>The original request for PartialUpdateCluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
         public virtual PartialUpdateClusterRequest OriginalRequest { get; set; }
 
@@ -754,7 +751,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual Cluster Cluster { get; set; }
 
-        /// <summary>Required. The subset of Cluster fields which should be replaced. Must be explicitly set.</summary>
+        /// <summary>Required. The subset of Cluster fields which should be replaced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
 
@@ -855,6 +852,27 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata type for the operation returned by google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable.
+    /// </summary>
+    public class UndeleteTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation finished or was cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The name of the table being restored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The time at which this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

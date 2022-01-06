@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudRun.v2.CloudRunBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudRun.v2.CloudRunBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

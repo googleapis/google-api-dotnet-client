@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3255,6 +3255,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A matched url in a Chat message. Chat bots can unfurl matched URLs. For more information, refer to [Unfurl
+    /// links](/chat/how-tos/link-unfurling).
+    /// </summary>
+    public class MatchedUrl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The url that was matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Media resource.</summary>
     public class Media : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3276,7 +3290,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>A user in Google Chat.</summary>
+        /// <summary>
+        /// A user in Google Chat. Represents a person in the People API. Formatted as `users/person_id` where
+        /// `person_id` is available from the [People API](https://developers.google.com/people/api/rest/v1/people).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
 
@@ -3334,6 +3351,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual object LastUpdateTime { get; set; }
+
+        /// <summary>
+        /// A URL in `spaces.messages.text` that matches a link unfurling pattern. For more information, refer to
+        /// [Unfurl links](/chat/how-tos/link-unfurling).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedUrl")]
+        public virtual MatchedUrl MatchedUrl { get; set; }
 
         /// <summary>
         /// Resource name in the form `spaces/*/messages/*`. Example:
@@ -3602,7 +3626,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Obfuscated domain information.</summary>
+        /// <summary>Unique identifier of the user's Google Workspace domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual string DomainId { get; set; }
 
@@ -3610,7 +3634,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 
-        /// <summary>Resource name, in the format "users/*".</summary>
+        /// <summary>
+        /// Resource name for a Google Chat user. Formatted as `users/AAAAAAAAAAA`. Represents a
+        /// [person](https://developers.google.com/people/api/rest/v1/people#Person) in the People API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

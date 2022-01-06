@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1355,6 +1355,81 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A globally unique identifier associated with each feature. We use 128-bit identifiers so that we have lots of
+    /// bits available to distinguish between features. The feature id currently consists of a 64-bit "cell id" that
+    /// **sometimes** corresponds to the approximate centroid of the feature, plus a 64-bit fingerprint of other
+    /// identifying information. See more on each respective field in its comments. Feature ids are first assigned when
+    /// the data is created in MapFacts. After initial creation of the feature, they are immutable. This means that the
+    /// only properties that you should rely on are that they are unique, and that cell_ids often - but not always -
+    /// preserve spatial locality. The degree of locality varies as the feature undergoes geometry changes, and should
+    /// not in general be considered a firm guarantee of the location of any particular feature. In fact, some
+    /// locationless features have randomized cell IDs! Consumers of FeatureProtos from Mapfacts are guaranteed that
+    /// fprints in the id field of features will be globally unique. Using the fprint allows consumers who don't need
+    /// the spatial benefit of cell ids to uniquely identify features in a 64-bit address space. This property is not
+    /// guaranteed for other sources of FeatureProtos.
+    /// </summary>
+    public class FeatureIdProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The S2CellId corresponding to the approximate location of this feature as of when it was first created. This
+        /// can be of variable accuracy, ranging from the exact centroid of the feature at creation, a very large S2
+        /// Cell, or even being completely randomized for locationless features. Cell ids have the nice property that
+        /// they follow a space-filling curve over the surface of the earth. (See s2cellid.h for details.) WARNING:
+        /// Clients should only use cell IDs to perform spatial locality optimizations. There is no strict guarantee
+        /// that the cell ID of a feature is related to the current geometry of the feature in any way.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellId")]
+        public virtual System.Nullable<ulong> CellId { get; set; }
+
+        /// <summary>
+        /// A 64-bit fingerprint used to identify features. Most clients should rely on MapFacts or OneRing to choose
+        /// fingerprints. If creating new fprints, the strategy should be chosen so that the chance of collision is
+        /// remote or non-existent, and the distribution should be reasonably uniform. For example, if the source data
+        /// assigns unique ids to features, then a fingerprint of the provider name, version, and source id is
+        /// sufficient.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fprint")]
+        public virtual System.Nullable<ulong> Fprint { get; set; }
+
+        /// <summary>A place for clients to attach arbitrary data to a feature ID. Never set in MapFacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temporaryData")]
+        public virtual MessageSet TemporaryData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed summary of the result from geocoding an address</summary>
+    public class GeocodingSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Represents the best estimate of whether or not the input address was fully understood and the address is
+        /// correctly componentized. Mirrors the same-name field in geostore.staging.AddressLinkupScoringProto.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressUnderstood")]
+        public virtual System.Nullable<bool> AddressUnderstood { get; set; }
+
+        /// <summary>The ID of the FeatureProto returned by the geocoder</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureId")]
+        public virtual FeatureIdProto FeatureId { get; set; }
+
+        /// <summary>The feature type for the FeatureProto returned by the geocoder</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureType")]
+        public virtual string FeatureType { get; set; }
+
+        /// <summary>Precision of the center point (lat/long) of the geocoded FeatureProto</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positionPrecisionMeters")]
+        public virtual System.Nullable<double> PositionPrecisionMeters { get; set; }
+
+        /// <summary>The query sent to the geocoder</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryString")]
+        public virtual string QueryString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a political geography.</summary>
     public class GeographicDivision : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1380,6 +1455,13 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("officeIndices")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> OfficeIndices { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This is proto2's version of MessageSet.</summary>
+    public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1441,6 +1523,10 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>The direct email addresses for the official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
         public virtual System.Collections.Generic.IList<string> Emails { get; set; }
+
+        /// <summary>Detailed summary about the official's address's geocoding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geocodingSummaries")]
+        public virtual System.Collections.Generic.IList<GeocodingSummary> GeocodingSummaries { get; set; }
 
         /// <summary>The official's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

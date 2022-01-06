@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -665,7 +665,9 @@ namespace Google.Apis.DataCatalog.v1
                             }
                         }
 
-                        /// <summary>Lists tags assigned to an Entry.</summary>
+                        /// <summary>
+                        /// Lists tags assigned to an Entry. The columns in the response are lowercased.
+                        /// </summary>
                         /// <param name="parent">
                         /// Required. The name of the Data Catalog resource to list the tags of. The resource can be an
                         /// Entry or an EntryGroup (without `/entries/{entries}` at the end).
@@ -675,7 +677,9 @@ namespace Google.Apis.DataCatalog.v1
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Lists tags assigned to an Entry.</summary>
+                        /// <summary>
+                        /// Lists tags assigned to an Entry. The columns in the response are lowercased.
+                        /// </summary>
                         public class ListRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ListTagsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1190,6 +1194,124 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>
+                    /// Modifies contacts, part of the business context of an Entry. To call this method, you must have
+                    /// the `datacatalog.entries.updateContacts` IAM permission on the corresponding project.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The full resource name of the entry.</param>
+                    public virtual ModifyEntryContactsRequest ModifyEntryContacts(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ModifyEntryContactsRequest body, string name)
+                    {
+                        return new ModifyEntryContactsRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Modifies contacts, part of the business context of an Entry. To call this method, you must have
+                    /// the `datacatalog.entries.updateContacts` IAM permission on the corresponding project.
+                    /// </summary>
+                    public class ModifyEntryContactsRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1Contacts>
+                    {
+                        /// <summary>Constructs a new ModifyEntryContacts request.</summary>
+                        public ModifyEntryContactsRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ModifyEntryContactsRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The full resource name of the entry.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ModifyEntryContactsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "modifyEntryContacts";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:modifyEntryContacts";
+
+                        /// <summary>Initializes ModifyEntryContacts parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Modifies entry overview, part of the business context of an Entry. To call this method, you must
+                    /// have the `datacatalog.entries.updateOverview` IAM permission on the corresponding project.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The full resource name of the entry.</param>
+                    public virtual ModifyEntryOverviewRequest ModifyEntryOverview(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ModifyEntryOverviewRequest body, string name)
+                    {
+                        return new ModifyEntryOverviewRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Modifies entry overview, part of the business context of an Entry. To call this method, you must
+                    /// have the `datacatalog.entries.updateOverview` IAM permission on the corresponding project.
+                    /// </summary>
+                    public class ModifyEntryOverviewRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1EntryOverview>
+                    {
+                        /// <summary>Constructs a new ModifyEntryOverview request.</summary>
+                        public ModifyEntryOverviewRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ModifyEntryOverviewRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The full resource name of the entry.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ModifyEntryOverviewRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "modifyEntryOverview";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:modifyEntryOverview";
+
+                        /// <summary>Initializes ModifyEntryOverview parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Updates an existing entry. You must enable the Data Catalog API in the project identified by the
                     /// `entry.name` parameter. For more information, see [Data Catalog resource
                     /// project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
@@ -1604,7 +1726,7 @@ namespace Google.Apis.DataCatalog.v1
                         }
                     }
 
-                    /// <summary>Lists tags assigned to an Entry.</summary>
+                    /// <summary>Lists tags assigned to an Entry. The columns in the response are lowercased.</summary>
                     /// <param name="parent">
                     /// Required. The name of the Data Catalog resource to list the tags of. The resource can be an
                     /// Entry or an EntryGroup (without `/entries/{entries}` at the end).
@@ -1614,7 +1736,7 @@ namespace Google.Apis.DataCatalog.v1
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists tags assigned to an Entry.</summary>
+                    /// <summary>Lists tags assigned to an Entry. The columns in the response are lowercased.</summary>
                     public class ListRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1ListTagsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -4753,6 +4875,21 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Business Context of the entry.</summary>
+    public class GoogleCloudDatacatalogV1BusinessContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contact people for the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
+        public virtual GoogleCloudDatacatalogV1Contacts Contacts { get; set; }
+
+        /// <summary>Entry overview fields for rich text descriptions of entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryOverview")]
+        public virtual GoogleCloudDatacatalogV1EntryOverview EntryOverview { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification for the BigQuery connection to a Cloud SQL instance.</summary>
     public class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4802,6 +4939,32 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Required. Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contact people for the entry.</summary>
+    public class GoogleCloudDatacatalogV1Contacts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of contact people for the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("people")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1ContactsPerson> People { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A contact person for the entry.</summary>
+    public class GoogleCloudDatacatalogV1ContactsPerson : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Designation of the person, for example, Data Steward.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("designation")]
+        public virtual string Designation { get; set; }
+
+        /// <summary>Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4882,6 +5045,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryTableSpec")]
         public virtual GoogleCloudDatacatalogV1BigQueryTableSpec BigqueryTableSpec { get; set; }
+
+        /// <summary>Business Context of the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessContext")]
+        public virtual GoogleCloudDatacatalogV1BusinessContext BusinessContext { get; set; }
 
         /// <summary>Output only. Physical location of the entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
@@ -5056,6 +5223,21 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Entry overview fields for rich text descriptions of entries.</summary>
+    public class GoogleCloudDatacatalogV1EntryOverview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be
+        /// formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded
+        /// images. The maximum length of the text without images is 100 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5278,6 +5460,28 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Taxonomies that the project contains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxonomies")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1Taxonomy> Taxonomies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ModifyEntryContacts.</summary>
+    public class GoogleCloudDatacatalogV1ModifyEntryContactsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new value for the Contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
+        public virtual GoogleCloudDatacatalogV1Contacts Contacts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ModifyEntryOverview.</summary>
+    public class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new value for the Entry Overview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryOverview")]
+        public virtual GoogleCloudDatacatalogV1EntryOverview EntryOverview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1371,14 +1371,18 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     }
 
     /// <summary>
-    /// Selects and configures the service controller used by the service. The service controller handles features like
-    /// abuse, quota, billing, logging, monitoring, etc.
+    /// Selects and configures the service controller used by the service. The service controller handles two things: -
+    /// **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status,
+    /// billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. -
+    /// **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing,
+    /// billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated
+    /// with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
     /// </summary>
     public class Control : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The service control environment to use. If empty, no control plane feature (like quota and billing) will be
-        /// enabled.
+        /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will
+        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }

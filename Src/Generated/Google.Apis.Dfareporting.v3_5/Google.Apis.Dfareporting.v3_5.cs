@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13784,6 +13784,10 @@ namespace Google.Apis.Dfareporting.v3_5
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4")]
                 PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST4 = 18,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT")]
+                PLACEMENTTAGTRACKINGTHIRDPARTYMEASUREMENT = 19,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -21001,7 +21005,10 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("childDirectedTreatment")]
         public virtual System.Nullable<bool> ChildDirectedTreatment { get; set; }
 
-        /// <summary>Custom floodlight variables.</summary>
+        /// <summary>
+        /// Custom floodlight variables. This field may only be used when calling batchinsert; it is not supported by
+        /// batchupdate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
         public virtual System.Collections.Generic.IList<CustomFloodlightVariable> CustomVariables { get; set; }
 
@@ -22772,7 +22779,10 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A custom floodlight variable.</summary>
+    /// <summary>
+    /// A custom floodlight variable. This field may only be used when calling batchinsert; it is not supported by
+    /// batchupdate.
+    /// </summary>
     public class CustomFloodlightVariable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

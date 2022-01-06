@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1349,6 +1349,16 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dashboardUri")]
         public virtual string DashboardUri { get; set; }
 
+        /// <summary>Incident tracking ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incidentTrackingId")]
+        public virtual string IncidentTrackingId { get; set; }
+
+        /// <summary>
+        /// Indicates new alert details under which the outage is communicated. Only populated when Status is MERGED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeInfo")]
+        public virtual MergeInfo MergeInfo { get; set; }
+
         /// <summary>Timestamp by which the next update is expected to arrive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextUpdateTime")]
         public virtual object NextUpdateTime { get; set; }
@@ -1817,6 +1827,23 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>For matched detector defined by administrators.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedDetector")]
         public virtual UserDefinedDetectorInfo UserDefinedDetector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>New alert tracking numbers.</summary>
+    public class MergeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// New alert ID. Reference the [google.apps.alertcenter.Alert] with this ID for the current state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newAlertId")]
+        public virtual string NewAlertId { get; set; }
+
+        /// <summary>The new tracking ID from the parent incident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newIncidentTrackingId")]
+        public virtual string NewIncidentTrackingId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

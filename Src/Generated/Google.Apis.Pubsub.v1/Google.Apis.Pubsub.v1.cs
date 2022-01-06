@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4177,8 +4177,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig`
-        /// signifies that the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. At most one of
+        /// `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack
+        /// messages using API methods.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; }
@@ -4201,6 +4202,12 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
         public virtual RetryPolicy RetryPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field indicating whether or not the subscription can receive messages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>
         /// Required. The name of the topic from which this subscription is receiving messages. Format is

@@ -5,7 +5,7 @@
     <Title>Google.Apis.Classroom.v1 Client Library</Title>
     <Version>1.55.0.2493</Version>
     <Authors>Google LLC</Authors>
-    <Copyright>Copyright 2021 Google LLC</Copyright>
+    <Copyright>Copyright 2022 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
     <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>

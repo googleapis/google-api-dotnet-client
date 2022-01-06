@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1063,7 +1063,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 SupportEndDate = 6,
             }
 
-            /// <summary>The full path of the organizational unit or its unique ID.</summary>
+            /// <summary>The full path of the organizational unit (minus the leading `/`) or its unique ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrgUnitPath { get; set; }
 
@@ -4394,7 +4394,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Retrieves a paginated list of all mobile devices for an account.</summary>
+        /// <summary>
+        /// Retrieves a paginated list of all user-owned mobile devices for an account. To retrieve a list that includes
+        /// company-owned devices, use the Cloud Identity [Devices
+        /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead.
+        /// </summary>
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
@@ -4405,7 +4409,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new ListRequest(service, customerId);
         }
 
-        /// <summary>Retrieves a paginated list of all mobile devices for an account.</summary>
+        /// <summary>
+        /// Retrieves a paginated list of all user-owned mobile devices for an account. To retrieve a list that includes
+        /// company-owned devices, use the Cloud Identity [Devices
+        /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead.
+        /// </summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MobileDevices>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4612,7 +4620,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
         /// the [Users resource](/admin-sdk/directory/v1/reference/users).
         /// </param>
-        /// <param name="orgUnitPath">The full path of the organizational unit or its unique ID.</param>
+        /// <param name="orgUnitPath">
+        /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
+        /// </param>
         public virtual DeleteRequest Delete(string customerId, string orgUnitPath)
         {
             return new DeleteRequest(service, customerId, orgUnitPath);
@@ -4637,7 +4647,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>The full path of the organizational unit or its unique ID.</summary>
+            /// <summary>The full path of the organizational unit (minus the leading `/`) or its unique ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string OrgUnitPath { get; private set; }
 
@@ -4679,7 +4689,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
         /// the [Users resource](/admin-sdk/directory/v1/reference/users).
         /// </param>
-        /// <param name="orgUnitPath">The full path of the organizational unit or its unique ID.</param>
+        /// <param name="orgUnitPath">
+        /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
+        /// </param>
         public virtual GetRequest Get(string customerId, string orgUnitPath)
         {
             return new GetRequest(service, customerId, orgUnitPath);
@@ -4704,7 +4716,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>The full path of the organizational unit or its unique ID.</summary>
+            /// <summary>The full path of the organizational unit (minus the leading `/`) or its unique ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string OrgUnitPath { get; private set; }
 
@@ -4903,7 +4915,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
         /// the [Users resource](/admin-sdk/directory/v1/reference/users).
         /// </param>
-        /// <param name="orgUnitPath">The full path of the organizational unit or its unique ID.</param>
+        /// <param name="orgUnitPath">
+        /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
+        /// </param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
         {
             return new PatchRequest(service, body, customerId, orgUnitPath);
@@ -4932,7 +4946,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>The full path of the organizational unit or its unique ID.</summary>
+            /// <summary>The full path of the organizational unit (minus the leading `/`) or its unique ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string OrgUnitPath { get; private set; }
 
@@ -4981,7 +4995,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
         /// the [Users resource](/admin-sdk/directory/v1/reference/users).
         /// </param>
-        /// <param name="orgUnitPath">The full path of the organizational unit or its unique ID.</param>
+        /// <param name="orgUnitPath">
+        /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
+        /// </param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
         {
             return new UpdateRequest(service, body, customerId, orgUnitPath);
@@ -5007,7 +5023,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>The full path of the organizational unit or its unique ID.</summary>
+            /// <summary>The full path of the organizational unit (minus the leading `/`) or its unique ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string OrgUnitPath { get; private set; }
 
@@ -12686,25 +12702,24 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class UserLanguage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Other language. User can provide own language name if there is no corresponding ISO 639 language code. If
-        /// this is set `languageCode` can't be set.
+        /// Other language. User can provide their own language name if there is no corresponding ISO 639 language code.
+        /// If this is set, `languageCode` can't be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLanguage")]
         public virtual string CustomLanguage { get; set; }
 
         /// <summary>
-        /// Language Code. Should be used for storing ISO 639 LanguageCode string representation for language. See the
-        /// [Language Codes](/admin-sdk/directory/v1/languages) page for the list of supported codes. Valid language
-        /// codes outside the supported set will be accepted by the API but may lead to unexpected behavior. Illegal
-        /// values cause SchemaException. If this is set `customLanguage` can't be set.
+        /// ISO 639 string representation of a language. See [Language Codes](/admin-sdk/directory/v1/languages) for the
+        /// list of supported codes. Valid language codes outside the supported set will be accepted by the API but may
+        /// lead to unexpected behavior. Illegal values cause `SchemaException`. If this is set, `customLanguage` can't
+        /// be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// Preference. Optional field, which if present, controls whether the specified `languageCode` is stored as the
-        /// user's preferred language. If `customLanguage` is set, this can't be set. Allowed values are `preferred` and
-        /// `not_preferred`.
+        /// Optional. If present, controls whether the specified `languageCode` is the user's preferred language. If
+        /// `customLanguage` is set, this can't be set. Allowed values are `preferred` and `not_preferred`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preference")]
         public virtual string Preference { get; set; }

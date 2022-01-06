@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -302,6 +302,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 IssueModels = new IssueModelsResource(service);
                 Operations = new OperationsResource(service);
                 PhraseMatchers = new PhraseMatchersResource(service);
+                Views = new ViewsResource(service);
             }
 
             /// <summary>Gets the Conversations resource.</summary>
@@ -803,11 +804,13 @@ namespace Google.Apis.Contactcenterinsights.v1
                         [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
                         CONVERSATIONVIEWUNSPECIFIED = 0,
 
-                        /// <summary>Transcript field is not populated in the response.</summary>
+                        /// <summary>
+                        /// Transcript field is not populated in the response for Insights conversation.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
                         BASIC = 1,
 
-                        /// <summary>All fields are populated.</summary>
+                        /// <summary>All fields are populated for Insights conversation.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL = 2,
                     }
@@ -902,11 +905,13 @@ namespace Google.Apis.Contactcenterinsights.v1
                         [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
                         CONVERSATIONVIEWUNSPECIFIED = 0,
 
-                        /// <summary>Transcript field is not populated in the response.</summary>
+                        /// <summary>
+                        /// Transcript field is not populated in the response for Insights conversation.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
                         BASIC = 1,
 
-                        /// <summary>All fields are populated.</summary>
+                        /// <summary>All fields are populated for Insights conversation.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL = 2,
                     }
@@ -2283,6 +2288,320 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>Gets the Views resource.</summary>
+            public virtual ViewsResource Views { get; }
+
+            /// <summary>The "views" collection of methods.</summary>
+            public class ViewsResource
+            {
+                private const string Resource = "views";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ViewsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a view.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the view. Required. The location to create a view for. Format:
+                /// `projects//locations/` or `projects//locations/`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a view.</summary>
+                public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the view. Required. The location to create a view for. Format:
+                    /// `projects//locations/` or `projects//locations/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/views";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a view.</summary>
+                /// <param name="name">Required. The name of the view to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a view.</summary>
+                public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the view to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/views/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a view.</summary>
+                /// <param name="name">Required. The name of the view to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a view.</summary>
+                public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the view to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/views/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists views.</summary>
+                /// <param name="parent">Required. The parent resource of the views.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists views.</summary>
+                public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListViewsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the views.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of views to return in the response. If this value is zero, the service will
+                    /// select a default size. A call may return fewer objects than requested. A non-empty
+                    /// `next_page_token` in the response indicates that more data is available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListViewsResponse`; indicates that this is a continuation of a
+                    /// prior `ListViews` call and the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/views";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a view.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the view. Format:
+                /// projects/{project}/locations/{location}/views/{view}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a view.</summary>
+                public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the view. Format:
+                    /// projects/{project}/locations/{location}/views/{view}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1View Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/views/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets project-level settings.</summary>
             /// <param name="name">Required. The name of the settings resource to get.</param>
             public virtual GetSettingsRequest GetSettings(string name)
@@ -2779,6 +3098,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Obfuscated user ID which the customer sent to us.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedUserId")]
+        public virtual string ObfuscatedUserId { get; set; }
 
         /// <summary>
         /// Output only. The annotations that were generated during the customer and agent interaction.
@@ -3586,7 +3909,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Issue Modeling result on a conversation.</summary>
     public class GoogleCloudContactcenterinsightsV1IssueModelResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Issue model that generates the result.</summary>
+        /// <summary>
+        /// Issue model that generates the result. Format:
+        /// projects/{project}/locations/{location}/issueModels/{issue_model}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueModel")]
         public virtual string IssueModel { get; set; }
 
@@ -3669,6 +3995,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The phrase matchers that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1PhraseMatcher> PhraseMatchers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of listing views.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The views that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("views")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1View> Views { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4041,6 +4385,35 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The response to undeploy an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The View resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1View : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time at which this view was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The human-readable display name of the view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The most recent time at which the view was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>String with specific view properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

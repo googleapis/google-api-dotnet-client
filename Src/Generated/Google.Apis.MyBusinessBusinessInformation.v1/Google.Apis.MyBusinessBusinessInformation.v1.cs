@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1301,8 +1301,8 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
 
         /// <summary>
         /// Deletes a location. If this location cannot be deleted using the API and it is marked so in the
-        /// `google.mybusiness.businessinformation.v1.LocationState`, use the [Google My
-        /// Business](https://business.google.com/manage/) website.
+        /// `google.mybusiness.businessinformation.v1.LocationState`, use the [Google Business
+        /// Profile](https://business.google.com/manage/) website.
         /// </summary>
         /// <param name="name">Required. The name of the location to delete.</param>
         public virtual DeleteRequest Delete(string name)
@@ -1312,8 +1312,8 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
 
         /// <summary>
         /// Deletes a location. If this location cannot be deleted using the API and it is marked so in the
-        /// `google.mybusiness.businessinformation.v1.LocationState`, use the [Google My
-        /// Business](https://business.google.com/manage/) website.
+        /// `google.mybusiness.businessinformation.v1.LocationState`, use the [Google Business
+        /// Profile](https://business.google.com/manage/) website.
         /// </summary>
         public class DeleteRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.Empty>
         {
@@ -2222,8 +2222,8 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         /// <summary>
         /// Optional. User-provided latitude and longitude. When creating a location, this field is ignored if the
         /// provided address geocodes successfully. This field is only returned on get requests if the user-provided
-        /// `latlng` value was accepted during create, or the `latlng` value was updated through the Google My Business
-        /// website. This field can only be updated by approved clients.
+        /// `latlng` value was accepted during create, or the `latlng` value was updated through the Google Business
+        /// Profile website. This field can only be updated by approved clients.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latlng")]
         public virtual LatLng Latlng { get; set; }

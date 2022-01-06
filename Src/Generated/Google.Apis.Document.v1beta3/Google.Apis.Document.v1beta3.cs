@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -651,8 +651,8 @@ namespace Google.Apis.Document.v1beta3
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The resource name of Processor or ProcessorVersion. Format:
-                    /// projects/{project}/locations/{location}/processors/{processor}, or
-                    /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                    /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                    /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                     /// </param>
                     public virtual BatchProcessRequest BatchProcess(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3BatchProcessRequest body, string name)
                     {
@@ -675,8 +675,8 @@ namespace Google.Apis.Document.v1beta3
 
                         /// <summary>
                         /// Required. The resource name of Processor or ProcessorVersion. Format:
-                        /// projects/{project}/locations/{location}/processors/{processor}, or
-                        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                        /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -861,7 +861,7 @@ namespace Google.Apis.Document.v1beta3
                     /// <summary>Lists all versions of a processor.</summary>
                     /// <param name="parent">
                     /// Required. The parent (project, location and processor) to list all versions. Format:
-                    /// projects/{project}/locations/{location}/processors/{processor}
+                    /// `projects/{project}/locations/{location}/processors/{processor}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -880,7 +880,7 @@ namespace Google.Apis.Document.v1beta3
 
                         /// <summary>
                         /// Required. The parent (project, location and processor) to list all versions. Format:
-                        /// projects/{project}/locations/{location}/processors/{processor}
+                        /// `projects/{project}/locations/{location}/processors/{processor}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -944,8 +944,8 @@ namespace Google.Apis.Document.v1beta3
                     /// <param name="name">
                     /// Required. The resource name of the Processor or ProcessorVersion to use for processing. If a
                     /// Processor is specified, the server will use its default version. Format:
-                    /// projects/{project}/locations/{location}/processors/{processor}, or
-                    /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                    /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                    /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                     /// </param>
                     public virtual ProcessRequest Process(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ProcessRequest body, string name)
                     {
@@ -966,8 +966,8 @@ namespace Google.Apis.Document.v1beta3
                         /// <summary>
                         /// Required. The resource name of the Processor or ProcessorVersion to use for processing. If a
                         /// Processor is specified, the server will use its default version. Format:
-                        /// projects/{project}/locations/{location}/processors/{processor}, or
-                        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                        /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1063,8 +1063,8 @@ namespace Google.Apis.Document.v1beta3
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of Processor or ProcessorVersion. Format:
-                /// projects/{project}/locations/{location}/processors/{processor}, or
-                /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                 /// </param>
                 public virtual BatchProcessRequest BatchProcess(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3BatchProcessRequest body, string name)
                 {
@@ -1087,8 +1087,8 @@ namespace Google.Apis.Document.v1beta3
 
                     /// <summary>
                     /// Required. The resource name of Processor or ProcessorVersion. Format:
-                    /// projects/{project}/locations/{location}/processors/{processor}, or
-                    /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                    /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                    /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1130,7 +1130,7 @@ namespace Google.Apis.Document.v1beta3
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent (project and location) under which to create the processor. Format:
-                /// projects/{project}/locations/{location}
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3Processor body, string parent)
                 {
@@ -1153,7 +1153,7 @@ namespace Google.Apis.Document.v1beta3
 
                     /// <summary>
                     /// Required. The parent (project and location) under which to create the processor. Format:
-                    /// projects/{project}/locations/{location}
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1393,7 +1393,7 @@ namespace Google.Apis.Document.v1beta3
                 /// <summary>Lists all processors which belong to this project.</summary>
                 /// <param name="parent">
                 /// Required. The parent (project and location) which owns this collection of Processors. Format:
-                /// projects/{project}/locations/{location}
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1412,7 +1412,7 @@ namespace Google.Apis.Document.v1beta3
 
                     /// <summary>
                     /// Required. The parent (project and location) which owns this collection of Processors. Format:
-                    /// projects/{project}/locations/{location}
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1476,8 +1476,8 @@ namespace Google.Apis.Document.v1beta3
                 /// <param name="name">
                 /// Required. The resource name of the Processor or ProcessorVersion to use for processing. If a
                 /// Processor is specified, the server will use its default version. Format:
-                /// projects/{project}/locations/{location}/processors/{processor}, or
-                /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                 /// </param>
                 public virtual ProcessRequest Process(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ProcessRequest body, string name)
                 {
@@ -1498,8 +1498,8 @@ namespace Google.Apis.Document.v1beta3
                     /// <summary>
                     /// Required. The resource name of the Processor or ProcessorVersion to use for processing. If a
                     /// Processor is specified, the server will use its default version. Format:
-                    /// projects/{project}/locations/{location}/processors/{processor}, or
-                    /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+                    /// `projects/{project}/locations/{location}/processors/{processor}`, or
+                    /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1599,7 +1599,7 @@ namespace Google.Apis.Document.v1beta3
             /// <summary>Fetches processor types.</summary>
             /// <param name="parent">
             /// Required. The project of processor type to list. The available processor types may depend on the
-            /// whitelisting on projects. Format: projects/{project}/locations/{location}
+            /// allow-listing on projects. Format: `projects/{project}/locations/{location}`
             /// </param>
             public virtual FetchProcessorTypesRequest FetchProcessorTypes(string parent)
             {
@@ -1618,7 +1618,7 @@ namespace Google.Apis.Document.v1beta3
 
                 /// <summary>
                 /// Required. The project of processor type to list. The available processor types may depend on the
-                /// whitelisting on projects. Format: projects/{project}/locations/{location}
+                /// allow-listing on projects. Format: `projects/{project}/locations/{location}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2281,7 +2281,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string InputGcsSource { get; set; }
 
         /// <summary>
-        /// The output_gcs_destination (in the request as 'output_gcs_destination') of the processed document if it was
+        /// The output_gcs_destination (in the request as `output_gcs_destination`) of the processed document if it was
         /// successful, otherwise empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
@@ -2598,8 +2598,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
-    /// such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity
+    /// type, such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2707,7 +2707,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
-        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
         /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
         /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
         /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
@@ -3237,7 +3237,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
-        /// entities, etc.) on parent revision.
+        /// entities, etc.) in the parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -3702,8 +3702,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
-    /// such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity
+    /// type, such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3811,7 +3811,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
-        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
         /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
         /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
         /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
@@ -4370,7 +4370,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
-        /// entities, etc.) on parent revision.
+        /// entities, etc.) in the parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -4800,7 +4800,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string InputGcsSource { get; set; }
 
         /// <summary>
-        /// The output_gcs_destination (in the request as 'output_gcs_destination') of the processed document if it was
+        /// The output_gcs_destination (in the request as `output_gcs_destination`) of the processed document if it was
         /// successful, otherwise empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
@@ -5072,8 +5072,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
-    /// such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity
+    /// type, such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5181,7 +5181,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
-        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
         /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
         /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
         /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
@@ -5733,7 +5733,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
-        /// entities, etc.) on parent revision.
+        /// entities, etc.) in the parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -6138,7 +6138,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// The first-class citizen for DAI. Each processor defines how to extract structural information from a document.
+    /// The first-class citizen for Document AI. Each processor defines how to extract structural information from a
+    /// document.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3Processor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6163,7 +6164,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Output only. Immutable. The resource name of the processor. Format:
-        /// projects/{project}/locations/{location}/processors/{processor}
+        /// `projects/{project}/locations/{location}/processors/{processor}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6186,23 +6187,13 @@ namespace Google.Apis.Document.v1beta3.Data
 
     /// <summary>
     /// A processor type is responsible for performing a certain document understanding task on a certain type of
-    /// document. All processor types are created by the documentai service internally. User will only list all
-    /// available processor types via UI. For different users (projects), the available processor types may be different
-    /// since we'll expose the access of some types via EAP whitelisting. We make the ProcessorType a resource under
-    /// location so we have a unified API and keep the possibility that UI will load different available processor types
-    /// from different regions. But for alpha the behavior is that the user will always get the union of all available
-    /// processor types among all regions no matter which regionalized endpoint is called, and then we use the
-    /// 'available_locations' field to show under which regions a processor type is available. For example, users can
-    /// call either the 'US' or 'EU' endpoint to feach processor types. In the return, we will have an 'invoice parsing'
-    /// processor with 'available_locations' field only containing 'US'. So the user can try to create an 'invoice
-    /// parsing' processor under the location 'US'. Such attempt of creating under the location 'EU' will fail. Next ID:
-    /// 9.
+    /// document.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether the processor type allows creation. If yes, user can create a processor of this processor type.
-        /// Otherwise, user needs to request access.
+        /// Whether the processor type allows creation. If true, users can create a processor of this processor type.
+        /// Otherwise, users need to request access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowCreation")]
         public virtual System.Nullable<bool> AllowCreation { get; set; }
@@ -6261,7 +6252,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The resource name of the processor version. Format:
-        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6319,7 +6310,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for review document method. Next Id: 6.</summary>
+    /// <summary>Request message for review document method.</summary>
     public class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The document that needs human review.</summary>

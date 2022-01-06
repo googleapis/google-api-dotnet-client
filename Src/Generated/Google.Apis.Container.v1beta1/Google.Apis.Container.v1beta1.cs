@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7016,7 +7016,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
 
-        /// <summary>The desired GCFS config for the cluster</summary>
+        /// <summary>The desired GCFS config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredGcfsConfig")]
         public virtual GcfsConfig DesiredGcfsConfig { get; set; }
 
@@ -7463,6 +7463,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Allows filtering to one or more specific event types. If event types are present, those and only those event
+    /// types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event
+    /// types are present, all event types will be sent
+    /// </summary>
+    public class Filter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Event types to allowlist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual System.Collections.Generic.IList<string> EventType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8009,6 +8024,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Logging components configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("componentConfig")]
         public virtual LoggingComponentConfig ComponentConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Maintenance exclusion option.</summary>
+    public class MaintenanceExclusionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Scope specifies the upgrade scope which upgrades are blocked by the exclusion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8566,7 +8592,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>
         /// Control the CPU management policy on the node. See
         /// https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are
-        /// allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods
+        /// allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods
         /// with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The
         /// default value is 'none' if unspecified.
         /// </summary>
@@ -9036,6 +9062,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>
+        /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified
+        /// with no event types, all event types will be sent
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual Filter Filter { get; set; }
+
+        /// <summary>
         /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is
         /// `projects/{project}/topics/{topic}`.
         /// </summary>
@@ -9237,6 +9270,70 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Type of the sandbox to use for the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecurityBulletinEvent is a notification sent to customers when a security bulletin has been posted that they are
+    /// vulnerable to.
+    /// </summary>
+    public class SecurityBulletinEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The GKE minor versions affected by this vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedSupportedMinors")]
+        public virtual System.Collections.Generic.IList<string> AffectedSupportedMinors { get; set; }
+
+        /// <summary>
+        /// A brief description of the bulletin. See the bulletin pointed to by the bulletin_uri field for an expanded
+        /// description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("briefDescription")]
+        public virtual string BriefDescription { get; set; }
+
+        /// <summary>The ID of the bulletin corresponding to the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bulletinId")]
+        public virtual string BulletinId { get; set; }
+
+        /// <summary>The URI link to the bulletin on the website for more information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bulletinUri")]
+        public virtual string BulletinUri { get; set; }
+
+        /// <summary>The CVEs associated with this bulletin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cveIds")]
+        public virtual System.Collections.Generic.IList<string> CveIds { get; set; }
+
+        /// <summary>
+        /// If this field is specified, it means there are manual steps that the user must take to make their clusters
+        /// safe.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualStepsRequired")]
+        public virtual System.Nullable<bool> ManualStepsRequired { get; set; }
+
+        /// <summary>The GKE versions where this vulnerability is patched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchedVersions")]
+        public virtual System.Collections.Generic.IList<string> PatchedVersions { get; set; }
+
+        /// <summary>
+        /// The resource type (node/control plane) that has the vulnerability. Multiple notifications (1 notification
+        /// per resource type) will be sent for a vulnerability that affects &amp;gt; 1 resource type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypeAffected")]
+        public virtual string ResourceTypeAffected { get; set; }
+
+        /// <summary>The severity of this bulletin as it relates to GKE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>
+        /// This represents a version selected from the patched_versions field that the cluster receiving this
+        /// notification should most likely want to upgrade to based on its current version. Note that if this
+        /// notification is being received by a given cluster, it means that this version is currently available as an
+        /// upgrade target in that cluster's location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedUpgradeTarget")]
+        public virtual string SuggestedUpgradeTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9970,6 +10067,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The time that the window ends. The end time should take place after the start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
+
+        /// <summary>MaintenanceExclusionOptions provides maintenance exclusion related options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceExclusionOptions")]
+        public virtual MaintenanceExclusionOptions MaintenanceExclusionOptions { get; set; }
 
         /// <summary>The time that the window first starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]

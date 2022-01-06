@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3790,7 +3790,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// `product_merchant_center`: See [Importing catalog data from Merchant
         /// Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for
         /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: Using
-        /// https://support.google.com/analytics/answer/3437719.
+        /// https://support.google.com/analytics/answer/3437719. Supported values for control imports: * 'control'
+        /// (default): One JSON Control per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -4129,7 +4130,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match
         /// the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of
         /// the same type (text or number). * The max number of values per attribute is 10. * For text values, the
-        /// length limit is 64 UTF-8 characters. * The attribute does not support search. The `searchable` field should
+        /// length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should
         /// be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is
         /// 5MiB.
         /// </summary>
@@ -4376,7 +4377,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Price of the product. Google Merchant Center property
         /// [price](https://support.google.com/merchants/answer/6324371). Schema.org property
-        /// [Offer.priceSpecification](https://schema.org/priceSpecification).
+        /// [Offer.price](https://schema.org/price).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual System.Nullable<float> Price { get; set; }
@@ -5267,8 +5268,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Required. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
         /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
-        /// should not change if the visitor logs in or out of the website. The field must be a UTF-8 encoded string
-        /// with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// should not change if the visitor logs in or out of the website. This should be the same identifier as
+        /// UserEvent.visitor_id. The field must be a UTF-8 encoded string with a length limit of 128 characters.
+        /// Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
         public virtual string VisitorId { get; set; }
@@ -5702,9 +5704,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual GoogleCloudRetailV2alphaProduct Inventory { get; set; }
 
         /// <summary>
-        /// Indicates which inventory fields in the provided Product to update. If not set or set with empty paths, all
-        /// inventory fields will be updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
-        /// is returned and the entire update will be ignored.
+        /// Indicates which inventory fields in the provided Product to update. At least one field must be provided. If
+        /// an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned and the entire update
+        /// will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setMask")]
         public virtual object SetMask { get; set; }

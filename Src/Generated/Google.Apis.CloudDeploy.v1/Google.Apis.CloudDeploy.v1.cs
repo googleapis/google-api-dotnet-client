@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3765,6 +3765,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployEndTime")]
         public virtual object DeployEndTime { get; set; }
 
+        /// <summary>
+        /// Output only. The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployFailureCause")]
+        public virtual string DeployFailureCause { get; set; }
+
         /// <summary>Output only. Time at which the `Rollout` started deploying.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployStartTime")]
         public virtual object DeployStartTime { get; set; }
@@ -4025,6 +4031,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Details of rendering for a single target.</summary>
     public class TargetRender : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Reason this render failed. This will always be unspecified while the render in progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
+        public virtual string FailureCause { get; set; }
+
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to render the manifest for
         /// this target. Format is `projects/{project}/locations/{location}/builds/{build}`.

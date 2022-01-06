@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2515,11 +2515,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -4802,11 +4805,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -5855,6 +5861,128 @@ namespace Google.Apis.CloudHealthcare.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Validates an input FHIR resource's conformance to its profiles and the profiles configured
+                        /// on the FHIR store. Implements the FHIR extended operation $validate
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resource-operations.html#validate),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resource-operations.html#validate), or
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/resource-operation-validate.html)). The
+                        /// request body must contain a JSON-encoded FHIR resource, and the request headers must contain
+                        /// `Content-Type: application/fhir+json`. The `Parameters` input syntax is not supported. The
+                        /// `profile` query parameter can be used to request that the resource only be validated against
+                        /// a specific profile. If a profile with the given URL cannot be found in the FHIR store then
+                        /// an error is returned. Errors generated by validation contain a JSON-encoded
+                        /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
+                        /// mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// The name of the FHIR store that holds the profiles being used for validation.
+                        /// </param>
+                        /// <param name="type">
+                        /// The FHIR resource type of the resource being validated. For a complete list, see the FHIR
+                        /// Resource Index ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html), or
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the resource
+                        /// type in the provided content.
+                        /// </param>
+                        public virtual ResourceValidateRequest ResourceValidate(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string type)
+                        {
+                            return new ResourceValidateRequest(service, body, parent, type);
+                        }
+
+                        /// <summary>
+                        /// Validates an input FHIR resource's conformance to its profiles and the profiles configured
+                        /// on the FHIR store. Implements the FHIR extended operation $validate
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resource-operations.html#validate),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resource-operations.html#validate), or
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/resource-operation-validate.html)). The
+                        /// request body must contain a JSON-encoded FHIR resource, and the request headers must contain
+                        /// `Content-Type: application/fhir+json`. The `Parameters` input syntax is not supported. The
+                        /// `profile` query parameter can be used to request that the resource only be validated against
+                        /// a specific profile. If a profile with the given URL cannot be found in the FHIR store then
+                        /// an error is returned. Errors generated by validation contain a JSON-encoded
+                        /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
+                        /// mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead.
+                        /// </summary>
+                        public class ResourceValidateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new ResourceValidate request.</summary>
+                            public ResourceValidateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string type) : base(service)
+                            {
+                                Parent = parent;
+                                Type = type;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// The name of the FHIR store that holds the profiles being used for validation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The FHIR resource type of the resource being validated. For a complete list, see the
+                            /// FHIR Resource Index
+                            /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+                            /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html), or
+                            /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the
+                            /// resource type in the provided content.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Type { get; private set; }
+
+                            /// <summary>A profile that this resource should be validated against.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("profile", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Profile { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Resource-validate";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/fhir/{+type}/$validate";
+
+                            /// <summary>Initializes ResourceValidate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
+                                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "type",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+$",
+                                });
+                                RequestParameters.Add("profile", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "profile",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -7297,11 +7425,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -8668,11 +8799,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -9659,11 +9793,13 @@ namespace Google.Apis.CloudHealthcare.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -11522,9 +11658,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is
         /// either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in
         /// the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is
-        /// matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Code, Date, DateTime,
-        /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml. Base64Binary is also
-        /// supported, but may only be kept as-is or have all the content removed.
+        /// matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code,
+        /// Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String,
+        /// UnsignedInt, Uri, Uuid, Xhtml.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; }
@@ -12635,8 +12771,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string SegmentTerminator { get; set; }
 
         /// <summary>
-        /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This
-        /// field is immutable after store creation.
+        /// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well
+        /// as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store
+        /// creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -13309,6 +13446,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Nullable<bool> DisableFhirpathValidation { get; set; }
 
         /// <summary>
+        /// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming
+        /// resources for conformance against structure definitions in this FHIR store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableProfileValidation")]
+        public virtual System.Nullable<bool> DisableProfileValidation { get; set; }
+
+        /// <summary>
         /// Whether to disable reference type validation for incoming resources. Set this to true to disable checking
         /// incoming resources for conformance against reference type requirement defined in the FHIR specification.
         /// This property only affects resource types that do not have profiles configured for them, any rules in
@@ -13325,6 +13469,20 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableRequiredFieldValidation")]
         public virtual System.Nullable<bool> DisableRequiredFieldValidation { get; set; }
+
+        /// <summary>
+        /// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for
+        /// validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to
+        /// `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or
+        /// omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a
+        /// resource must conform to at least one profile listed in the `global` property of one of the enabled
+        /// ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a
+        /// StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type -
+        /// fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL
+        /// cannot be resolved (for example, in a type assertion), the server does not return an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledImplementationGuides")]
+        public virtual System.Collections.Generic.IList<string> EnabledImplementationGuides { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

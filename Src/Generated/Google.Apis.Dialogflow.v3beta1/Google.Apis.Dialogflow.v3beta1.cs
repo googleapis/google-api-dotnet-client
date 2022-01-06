@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18117,6 +18117,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the knowledge base interacted with during the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBase")]
+        public virtual string KnowledgeBase { get; set; }
+
         /// <summary>Required. Output only. The current state of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

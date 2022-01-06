@@ -1,0 +1,11 @@
+{
+  "Google.Apis.MyBusinessQA.v1.MyBusinessQABaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.MyBusinessQA.v1.MyBusinessQABaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

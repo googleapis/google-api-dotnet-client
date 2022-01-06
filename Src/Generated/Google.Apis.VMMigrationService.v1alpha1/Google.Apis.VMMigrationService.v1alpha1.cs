@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4285,6 +4285,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class ComputeEngineTargetDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Additional licenses to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
+        public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
+
         /// <summary>Output only. The OS license returned from the adaptation module report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
@@ -4364,6 +4368,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class ComputeEngineTargetDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Additional licenses to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
+        public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
+
         /// <summary>The OS license returned from the adaptation module report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }

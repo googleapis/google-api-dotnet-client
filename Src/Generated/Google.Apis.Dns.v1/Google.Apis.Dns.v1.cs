@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,6 +41,8 @@ namespace Google.Apis.Dns.v1
             Policies = new PoliciesResource(this);
             Projects = new ProjectsResource(this);
             ResourceRecordSets = new ResourceRecordSetsResource(this);
+            ResponsePolicies = new ResponsePoliciesResource(this);
+            ResponsePolicyRules = new ResponsePolicyRulesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -130,6 +132,12 @@ namespace Google.Apis.Dns.v1
 
         /// <summary>Gets the ResourceRecordSets resource.</summary>
         public virtual ResourceRecordSetsResource ResourceRecordSets { get; }
+
+        /// <summary>Gets the ResponsePolicies resource.</summary>
+        public virtual ResponsePoliciesResource ResponsePolicies { get; }
+
+        /// <summary>Gets the ResponsePolicyRules resource.</summary>
+        public virtual ResponsePolicyRulesResource ResponsePolicyRules { get; }
     }
 
     /// <summary>A base abstract class for Dns requests.</summary>
@@ -2674,6 +2682,1054 @@ namespace Google.Apis.Dns.v1
             }
         }
     }
+
+    /// <summary>The "responsePolicies" collection of methods.</summary>
+    public class ResponsePoliciesResource
+    {
+        private const string Resource = "responsePolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ResponsePoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a new Response Policy</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ResponsePolicy body, string project)
+        {
+            return new CreateRequest(service, body, project);
+        }
+
+        /// <summary>Creates a new Response Policy</summary>
+        public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePolicy>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResponsePolicy body, string project) : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dns.v1.Data.ResponsePolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Deletes a previously created Response Policy. Fails if the response policy is non-empty or still being
+        /// referenced by a network.
+        /// </summary>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">User assigned name of the Response Policy addressed by this request.</param>
+        public virtual DeleteRequest Delete(string project, string responsePolicy)
+        {
+            return new DeleteRequest(service, project, responsePolicy);
+        }
+
+        /// <summary>
+        /// Deletes a previously created Response Policy. Fails if the response policy is non-empty or still being
+        /// referenced by a network.
+        /// </summary>
+        public class DeleteRequest : DnsBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string responsePolicy) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Fetches the representation of an existing Response Policy.</summary>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">User assigned name of the Response Policy addressed by this request.</param>
+        public virtual GetRequest Get(string project, string responsePolicy)
+        {
+            return new GetRequest(service, project, responsePolicy);
+        }
+
+        /// <summary>Fetches the representation of an existing Response Policy.</summary>
+        public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string responsePolicy) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Enumerates all Response Policies associated with a project.</summary>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        public virtual ListRequest List(string project)
+        {
+            return new ListRequest(service, project);
+        }
+
+        /// <summary>Enumerates all Response Policies associated with a project.</summary>
+        public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePoliciesListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Applies a partial update to an existing Response Policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">User assigned name of the Respones Policy addressed by this request.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ResponsePolicy body, string project, string responsePolicy)
+        {
+            return new PatchRequest(service, body, project, responsePolicy);
+        }
+
+        /// <summary>Applies a partial update to an existing Response Policy.</summary>
+        public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePoliciesPatchResponse>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResponsePolicy body, string project, string responsePolicy) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Respones Policy addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dns.v1.Data.ResponsePolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an existing Response Policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">User assigned name of the Response Policy addressed by this request.</param>
+        public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.ResponsePolicy body, string project, string responsePolicy)
+        {
+            return new UpdateRequest(service, body, project, responsePolicy);
+        }
+
+        /// <summary>Updates an existing Response Policy.</summary>
+        public class UpdateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePoliciesUpdateResponse>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResponsePolicy body, string project, string responsePolicy) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dns.v1.Data.ResponsePolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "responsePolicyRules" collection of methods.</summary>
+    public class ResponsePolicyRulesResource
+    {
+        private const string Resource = "responsePolicyRules";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ResponsePolicyRulesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a new Response Policy Rule.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">
+        /// User assigned name of the Response Policy containing the Response Policy Rule.
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy)
+        {
+            return new CreateRequest(service, body, project, responsePolicy);
+        }
+
+        /// <summary>Creates a new Response Policy Rule.</summary>
+        public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePolicyRule>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy containing the Response Policy Rule.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dns.v1.Data.ResponsePolicyRule Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Deletes a previously created Response Policy Rule.</summary>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">
+        /// User assigned name of the Response Policy containing the Response Policy Rule.
+        /// </param>
+        /// <param name="responsePolicyRule">
+        /// User assigned name of the Response Policy Rule addressed by this request.
+        /// </param>
+        public virtual DeleteRequest Delete(string project, string responsePolicy, string responsePolicyRule)
+        {
+            return new DeleteRequest(service, project, responsePolicy, responsePolicyRule);
+        }
+
+        /// <summary>Deletes a previously created Response Policy Rule.</summary>
+        public class DeleteRequest : DnsBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string responsePolicy, string responsePolicyRule) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                ResponsePolicyRule = responsePolicyRule;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy containing the Response Policy Rule.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy Rule addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicyRule", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicyRule { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicyRule", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicyRule",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Fetches the representation of an existing Response Policy Rule.</summary>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">
+        /// User assigned name of the Response Policy containing the Response Policy Rule.
+        /// </param>
+        /// <param name="responsePolicyRule">
+        /// User assigned name of the Response Policy Rule addressed by this request.
+        /// </param>
+        public virtual GetRequest Get(string project, string responsePolicy, string responsePolicyRule)
+        {
+            return new GetRequest(service, project, responsePolicy, responsePolicyRule);
+        }
+
+        /// <summary>Fetches the representation of an existing Response Policy Rule.</summary>
+        public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePolicyRule>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string responsePolicy, string responsePolicyRule) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                ResponsePolicyRule = responsePolicyRule;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy containing the Response Policy Rule.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy Rule addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicyRule", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicyRule { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicyRule", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicyRule",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Enumerates all Response Policy Rules associated with a project.</summary>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">User assigned name of the Response Policy to list.</param>
+        public virtual ListRequest List(string project, string responsePolicy)
+        {
+            return new ListRequest(service, project, responsePolicy);
+        }
+
+        /// <summary>Enumerates all Response Policy Rules associated with a project.</summary>
+        public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePolicyRulesListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string responsePolicy) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy to list.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Applies a partial update to an existing Response Policy Rule.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">
+        /// User assigned name of the Response Policy containing the Response Policy Rule.
+        /// </param>
+        /// <param name="responsePolicyRule">
+        /// User assigned name of the Response Policy Rule addressed by this request.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy, string responsePolicyRule)
+        {
+            return new PatchRequest(service, body, project, responsePolicy, responsePolicyRule);
+        }
+
+        /// <summary>Applies a partial update to an existing Response Policy Rule.</summary>
+        public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePolicyRulesPatchResponse>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy, string responsePolicyRule) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                ResponsePolicyRule = responsePolicyRule;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy containing the Response Policy Rule.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy Rule addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicyRule", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicyRule { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dns.v1.Data.ResponsePolicyRule Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicyRule", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicyRule",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an existing Response Policy Rule.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Identifies the project addressed by this request.</param>
+        /// <param name="responsePolicy">
+        /// User assigned name of the Response Policy containing the Response Policy Rule.
+        /// </param>
+        /// <param name="responsePolicyRule">
+        /// User assigned name of the Response Policy Rule addressed by this request.
+        /// </param>
+        public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy, string responsePolicyRule)
+        {
+            return new UpdateRequest(service, body, project, responsePolicy, responsePolicyRule);
+        }
+
+        /// <summary>Updates an existing Response Policy Rule.</summary>
+        public class UpdateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResponsePolicyRulesUpdateResponse>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy, string responsePolicyRule) : base(service)
+            {
+                Project = project;
+                ResponsePolicy = responsePolicy;
+                ResponsePolicyRule = responsePolicyRule;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifies the project addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy containing the Response Policy Rule.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicy { get; private set; }
+
+            /// <summary>User assigned name of the Response Policy Rule addressed by this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("responsePolicyRule", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResponsePolicyRule { get; private set; }
+
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientOperationId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dns.v1.Data.ResponsePolicyRule Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("responsePolicyRule", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "responsePolicyRule",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientOperationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.Dns.v1.Data
 {
@@ -3660,6 +4716,195 @@ namespace Google.Apis.Dns.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePoliciesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual ResponseHeader Header { get; set; }
+
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
+        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
+        /// collection change between the first and last paginated list request, the set of all elements returned are an
+        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
+        /// the maximum page size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The Response Policy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicies")]
+        public virtual System.Collections.Generic.IList<ResponsePolicy> ResponsePolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePoliciesPatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual ResponseHeader Header { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicy")]
+        public virtual ResponsePolicy ResponsePolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePoliciesUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual ResponseHeader Header { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicy")]
+        public virtual ResponsePolicy ResponsePolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Response Policy is a collection of selectors that apply to queries made against one or more Virtual Private
+    /// Cloud networks.
+    /// </summary>
+    public class ResponsePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-provided description for this Response Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Unique identifier for the resource; defined by the server (output only).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>List of network names specifying networks to which this policy is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<ResponsePolicyNetwork> Networks { get; set; }
+
+        /// <summary>User assigned name for this Response Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyName")]
+        public virtual string ResponsePolicyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePolicyNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The fully qualified URL of the VPC network to bind to. This should be formatted like
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
+        public virtual string NetworkUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Response Policy Rule is a selector that applies its behavior to queries that match the selector. Selectors are
+    /// DNS names, which may be wildcards or exact matches. Each DNS query subject to a Response Policy matches at most
+    /// one ResponsePolicyRule, as identified by the dns_name field with the longest matching suffix.
+    /// </summary>
+    public class ResponsePolicyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Answer this query with a behavior rather than DNS data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("behavior")]
+        public virtual string Behavior { get; set; }
+
+        /// <summary>
+        /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the
+        /// matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA
+        /// nor NS types are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localData")]
+        public virtual ResponsePolicyRuleLocalData LocalData { get; set; }
+
+        /// <summary>An identifier for this rule. Must be unique with the ResponsePolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
+        public virtual string RuleName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePolicyRuleLocalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localDatas")]
+        public virtual System.Collections.Generic.IList<ResourceRecordSet> LocalDatas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePolicyRulesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual ResponseHeader Header { get; set; }
+
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
+        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
+        /// collection change between the first and last paginated list request, the set of all elements returned are an
+        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
+        /// the maximum page size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The Response Policy Rule resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyRules")]
+        public virtual System.Collections.Generic.IList<ResponsePolicyRule> ResponsePolicyRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePolicyRulesPatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual ResponseHeader Header { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyRule")]
+        public virtual ResponsePolicyRule ResponsePolicyRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePolicyRulesUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual ResponseHeader Header { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyRule")]
+        public virtual ResponsePolicyRule ResponsePolicyRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
