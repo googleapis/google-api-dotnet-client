@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1131,8 +1131,8 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
 
     /// <summary>
     /// Dimensions are attributes of your data. For example, the dimension city indicates the city from which an event
-    /// originates. Dimension values in report responses are strings; for example, city could be "Paris" or "New York".
-    /// Requests are allowed up to 9 dimensions.
+    /// originates. Dimension values in report responses are strings; for example, the city could be "Paris" or "New
+    /// York". Requests are allowed up to 9 dimensions.
     /// </summary>
     public class Dimension : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1326,8 +1326,8 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual FilterExpressionList AndGroup { get; set; }
 
         /// <summary>
-        /// A primitive filter. All fields in filter in same FilterExpression needs to be either all dimensions or
-        /// metrics.
+        /// A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all
+        /// dimensions or all metrics.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual Filter Filter { get; set; }
@@ -1848,14 +1848,14 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual SchemaRestrictionResponse SchemaRestrictionResponse { get; set; }
 
         /// <summary>
-        /// If `thresholdingApplied` is true, this report has thresholding applied and only returns data that meets the
-        /// minimum aggregation thresholds. This boolean only indicates if thresholding was applied. It is possible for
-        /// thresholding to be applied and no data is absent from the report, and this happens when all data is above
-        /// the thresholds. To learn more, see [Data thresholds](https://support.google.com/analytics/answer/9383630)
-        /// and [About Demographics and Interests](https://support.google.com/analytics/answer/2799357).
+        /// If `subjectToThresholding` is true, this report is subject to thresholding and only returns data that meets
+        /// the minimum aggregation thresholds. It is possible for a request to be subject to thresholding thresholding
+        /// and no data is absent from the report, and this happens when all data is above the thresholds. To learn
+        /// more, see [Data thresholds](https://support.google.com/analytics/answer/9383630) and [About Demographics and
+        /// Interests](https://support.google.com/analytics/answer/2799357).
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("thresholdingApplied")]
-        public virtual System.Nullable<bool> ThresholdingApplied { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectToThresholding")]
+        public virtual System.Nullable<bool> SubjectToThresholding { get; set; }
 
         /// <summary>
         /// The property's current timezone. Intended to be used to interpret time-based dimensions like `hour` and
@@ -2229,8 +2229,8 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual System.Collections.Generic.IList<string> MetricAggregations { get; set; }
 
         /// <summary>
-        /// The filter clause of metrics. Applied at post aggregation phase, similar to SQL having-clause. Dimensions
-        /// cannot be used in this filter.
+        /// The filter clause of metrics. Applied after aggregating the report's rows, similar to SQL having-clause.
+        /// Dimensions cannot be used in this filter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricFilter")]
         public virtual FilterExpression MetricFilter { get; set; }

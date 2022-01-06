@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3099,7 +3099,8 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// Drops (aka deletes) a Cloud Spanner database. Completed backups for the database will be retained
-                /// according to their `expire_time`.
+                /// according to their `expire_time`. Note: Cloud Spanner might continue to accept requests for a few
+                /// seconds after the database has been deleted.
                 /// </summary>
                 /// <param name="database">Required. The database to be dropped.</param>
                 public virtual DropDatabaseRequest DropDatabase(string database)
@@ -3109,7 +3110,8 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// Drops (aka deletes) a Cloud Spanner database. Completed backups for the database will be retained
-                /// according to their `expire_time`.
+                /// according to their `expire_time`. Note: Cloud Spanner might continue to accept requests for a few
+                /// seconds after the database has been deleted.
                 /// </summary>
                 public class DropDatabaseRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
                 {

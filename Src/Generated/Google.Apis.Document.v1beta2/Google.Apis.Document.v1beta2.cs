@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1230,7 +1230,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string InputGcsSource { get; set; }
 
         /// <summary>
-        /// The output_gcs_destination (in the request as 'output_gcs_destination') of the processed document if it was
+        /// The output_gcs_destination (in the request as `output_gcs_destination`) of the processed document if it was
         /// successful, otherwise empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
@@ -1547,8 +1547,8 @@ namespace Google.Apis.Document.v1beta2.Data
     }
 
     /// <summary>
-    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
-    /// such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity
+    /// type, such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1656,7 +1656,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
-        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
         /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
         /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
         /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
@@ -2186,7 +2186,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
-        /// entities, etc.) on parent revision.
+        /// entities, etc.) in the parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -2679,8 +2679,8 @@ namespace Google.Apis.Document.v1beta2.Data
     }
 
     /// <summary>
-    /// An entity that could be a phrase in the text or a property belongs to the document. It is a known entity type,
-    /// such as a person, an organization, or location.
+    /// An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity
+    /// type, such as a person, an organization, or location.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2DocumentEntity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2788,7 +2788,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
-        /// 'structured_value' fields may also be populated. Also not all the types of 'structured_value' will be
+        /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
         /// normalized. For example, some processors may not generate float or int normalized text by default. Below are
         /// sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text
         /// format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in
@@ -3347,7 +3347,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
-        /// entities, etc.) on parent revision.
+        /// entities, etc.) in the parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -3948,7 +3948,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string InputGcsSource { get; set; }
 
         /// <summary>
-        /// The output_gcs_destination (in the request as 'output_gcs_destination') of the processed document if it was
+        /// The output_gcs_destination (in the request as `output_gcs_destination`) of the processed document if it was
         /// successful, otherwise empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]

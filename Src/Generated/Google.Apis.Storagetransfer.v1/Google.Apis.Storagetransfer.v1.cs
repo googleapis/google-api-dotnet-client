@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1518,10 +1518,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class AzureCredentials : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2
-        /// is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2,
-        /// you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage
-        /// resources using shared access signatures
+        /// Required. Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to
+        /// Azure Storage resources using shared access signatures
         /// (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sasToken")]
@@ -1746,29 +1744,70 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Logging configuration.</summary>
+    /// <summary>
+    /// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud
+    /// Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for
+    /// details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the
+    /// source or sink of the transfer. See [Managing Transfer for on-premises jobs]
+    /// (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
+    /// </summary>
     public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with
-        /// PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this
+        /// transfer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableOnpremGcsTransferLogs")]
         public virtual System.Nullable<bool> EnableOnpremGcsTransferLogs { get; set; }
 
         /// <summary>
-        /// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for
-        /// transfers with PosixFilesystem data sources.
+        /// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with
+        /// PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logActionStates")]
         public virtual System.Collections.Generic.IList<string> LogActionStates { get; set; }
 
         /// <summary>
-        /// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with
-        /// PosixFilesystem data sources.
+        /// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with
+        /// PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logActions")]
         public virtual System.Collections.Generic.IList<string> LogActions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the metadata options for running a transfer.</summary>
+    public class MetadataOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default
+        /// behavior is the same as GID_SKIP when the source is a POSIX file system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gid")]
+        public virtual string Gid { get; set; }
+
+        /// <summary>
+        /// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default
+        /// behavior is the same as MODE_SKIP when the source is a POSIX file system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same
+        /// as SYMLINK_SKIP when the source is a POSIX file system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symlink")]
+        public virtual string Symlink { get; set; }
+
+        /// <summary>
+        /// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default
+        /// behavior is the same as UID_SKIP when the source is a POSIX file system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2361,6 +2400,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
         public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; }
 
+        /// <summary>Represents the selected metadata options for a transfer job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataOptions")]
+        public virtual MetadataOptions MetadataOptions { get; set; }
+
         /// <summary>
         /// When to overwrite objects that already exist in the sink. The default is that only objects that are
         /// different from the source are ovewritten. If true, all objects in the sink whose name matches an object in
@@ -2391,6 +2434,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>A Cloud Storage data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSource")]
         public virtual GcsData GcsDataSource { get; set; }
+
+        /// <summary>Cloud Storage intermediate data location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsIntermediateDataLocation")]
+        public virtual GcsData GcsIntermediateDataLocation { get; set; }
 
         /// <summary>An HTTP URL data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpDataSource")]
@@ -2451,19 +2498,19 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// Required. The job to update. `transferJob` is expected to specify only four fields: description,
-        /// transfer_spec, notification_config, and status. An `UpdateTransferJobRequest` that specifies other fields
-        /// are rejected with the error INVALID_ARGUMENT. Updating a job status to DELETED requires
-        /// `storagetransfer.jobs.delete` permissions.
+        /// Required. The job to update. `transferJob` is expected to specify one or more of five fields: description,
+        /// transfer_spec, notification_config, [logging_config[TransferJob.logging_config], and status. An
+        /// `UpdateTransferJobRequest` that specifies other fields are rejected with the error INVALID_ARGUMENT.
+        /// Updating a job status to DELETED requires `storagetransfer.jobs.delete` permissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
         public virtual TransferJob TransferJob { get; set; }
 
         /// <summary>
         /// The field mask of the fields in `transferJob` that are to be updated in this request. Fields in
-        /// `transferJob` that can be updated are: description, transfer_spec, notification_config, and status. To
-        /// update the `transfer_spec` of the job, a complete transfer specification must be provided. An incomplete
-        /// specification missing any required fields is rejected with the error INVALID_ARGUMENT.
+        /// `transferJob` that can be updated are: description, transfer_spec, notification_config, logging_config, and
+        /// status. To update the `transfer_spec` of the job, a complete transfer specification must be provided. An
+        /// incomplete specification missing any required fields is rejected with the error INVALID_ARGUMENT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTransferJobFieldMask")]
         public virtual object UpdateTransferJobFieldMask { get; set; }

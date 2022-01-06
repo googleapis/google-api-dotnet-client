@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2823,6 +2823,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>RoutingVPC contains information about the VPC network that is associated with a hub's spokes.</summary>
     public class RoutingVPC : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. If true, indicates that this VPC network is currently associated with spokes that use the data
+        /// transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new
+        /// spokes that use data transfer, they must be associated with this VPC network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredForNewSiteToSiteDataTransferSpokes")]
+        public virtual System.Nullable<bool> RequiredForNewSiteToSiteDataTransferSpokes { get; set; }
+
         /// <summary>The URI of the VPC network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }

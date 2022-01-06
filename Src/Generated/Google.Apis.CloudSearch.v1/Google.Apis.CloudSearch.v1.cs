@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1072,7 +1072,9 @@ namespace Google.Apis.CloudSearch.v1
                     /// stores the version from the datasource as a byte string and compares the Item version in the
                     /// index to the version of the queued Item using lexical ordering. Cloud Search Indexing won't
                     /// delete any queued item with a version value that is less than or equal to the version of the
-                    /// currently indexed item. The maximum length for this field is 1024 bytes.
+                    /// currently indexed item. The maximum length for this field is 1024 bytes. See [this
+                    /// guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations) to
+                    /// understand how item version affects reindexing after delete item.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Version { get; set; }
@@ -4313,6 +4315,115 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>
+        /// Get search application stats for customer. **Note:** This API requires a standard end user account to
+        /// execute.
+        /// </summary>
+        public virtual GetSearchapplicationRequest GetSearchapplication()
+        {
+            return new GetSearchapplicationRequest(service);
+        }
+
+        /// <summary>
+        /// Get search application stats for customer. **Note:** This API requires a standard end user account to
+        /// execute.
+        /// </summary>
+        public class GetSearchapplicationRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerSearchApplicationStatsResponse>
+        {
+            /// <summary>Constructs a new GetSearchapplication request.</summary>
+            public GetSearchapplicationRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> EndDateDay { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> EndDateMonth { get; set; }
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> EndDateYear { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> StartDateDay { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> StartDateMonth { get; set; }
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> StartDateYear { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSearchapplication";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/stats/searchapplication";
+
+            /// <summary>Initializes GetSearchapplication parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("endDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Get the # of search sessions, % of successful sessions with a click query statistics for customer. **Note:**
         /// This API requires a standard end user account to execute.
         /// </summary>
@@ -4734,6 +4845,21 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Search application stats for a customer for the given date.</summary>
+    public class CustomerSearchApplicationStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of search applications for the date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Date for which search application stats were calculated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class CustomerSessionStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4842,6 +4968,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>IDs of the Long Running Operations (LROs) currently running for this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
         public virtual System.Collections.Generic.IList<string> OperationIds { get; set; }
+
+        /// <summary>Can a user request to get thumbnail URI for Items indexed in this data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnThumbnailUrls")]
+        public virtual System.Nullable<bool> ReturnThumbnailUrls { get; set; }
 
         /// <summary>
         /// A short name or alias for the source. This value will be used to match the 'source' operator. For example,
@@ -5433,6 +5563,10 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class GetCustomerIndexStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Average item count for the given date range for which billing is done.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageIndexedItemCount")]
+        public virtual System.Nullable<long> AverageIndexedItemCount { get; set; }
+
         /// <summary>Summary of indexed item counts, one for each day in the requested range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<CustomerIndexStats> Stats { get; set; }
@@ -5445,6 +5579,25 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<CustomerQueryStats> Stats { get; set; }
+
+        /// <summary>Total successful query count (status code 200) for the given date range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalQueryCount")]
+        public virtual System.Nullable<long> TotalQueryCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response format for search application stats for a customer.</summary>
+    public class GetCustomerSearchApplicationStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average search application count for the given date range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSearchApplicationCount")]
+        public virtual System.Nullable<long> AverageSearchApplicationCount { get; set; }
+
+        /// <summary>Search application stats by date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IList<CustomerSearchApplicationStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5470,6 +5623,10 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class GetDataSourceIndexStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Average item count for the given date range for which billing is done.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageIndexedItemCount")]
+        public virtual System.Nullable<long> AverageIndexedItemCount { get; set; }
+
         /// <summary>Summary of indexed item counts, one for each day in the requested range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<DataSourceIndexStats> Stats { get; set; }
@@ -5484,6 +5641,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Query stats per date for a search application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<SearchApplicationQueryStats> Stats { get; set; }
+
+        /// <summary>Total successful query count (status code 200) for the given date range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalQueryCount")]
+        public virtual System.Nullable<long> TotalQueryCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5760,7 +5921,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// Required. The indexing system stores the version from the datasource as a byte string and compares the Item
         /// version in the index to the version of the queued Item using lexical ordering. Cloud Search Indexing won't
         /// index or delete any queued item with a version value that is less than or equal to the version of the
-        /// currently indexed item. The maximum length for this field is 1024 bytes.
+        /// currently indexed item. The maximum length for this field is 1024 bytes. See [this
+        /// guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations) to understand how
+        /// item version affects reindexing after delete item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -5858,6 +6021,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Number of items matching the status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>
+        /// Number of items matching the status code for which billing is done. This excludes virtual container items
+        /// from the total count. This count would not be applicable for items with ERROR or NEW_ITEM status code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexedItemsCount")]
+        public virtual System.Nullable<long> IndexedItemsCount { get; set; }
 
         /// <summary>Status of the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
@@ -6159,6 +6329,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The named source for the result, such as Gmail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
+
+        /// <summary>The thumbnail URL of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; }
 
         /// <summary>
         /// The last modified date for the object in the search result. If not set in the item, the value returned here
@@ -7171,6 +7345,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The default options for query interpretation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInterpretationConfig")]
         public virtual QueryInterpretationConfig QueryInterpretationConfig { get; set; }
+
+        /// <summary>With each result we should return the URI for its thumbnail (when applicable)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnResultThumbnailUrls")]
+        public virtual System.Nullable<bool> ReturnResultThumbnailUrls { get; set; }
 
         /// <summary>Configuration for ranking results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoringConfig")]

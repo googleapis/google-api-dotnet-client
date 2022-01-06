@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2558,6 +2558,27 @@ namespace Google.Apis.GKEHub.v1alpha
 }
 namespace Google.Apis.GKEHub.v1alpha.Data
 {
+    /// <summary>**Anthosobservability**: Per-Membership Feature spec.</summary>
+    public class AnthosObservabilityMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// use full of metrics rather than optimized metrics. See
+        /// https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doNotOptimizeMetrics")]
+        public virtual System.Nullable<bool> DoNotOptimizeMetrics { get; set; }
+
+        /// <summary>
+        /// enable collecting and reporting metrics and logs from user apps See
+        /// go/onyx-application-metrics-logs-user-guide
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverOnApplications")]
+        public virtual System.Nullable<bool> EnableStackdriverOnApplications { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Spec for App Dev Experience Feature.</summary>
     public class AppDevExperienceFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4077,6 +4098,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
     public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Anthos Observability-specific spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
+        public virtual AnthosObservabilityMembershipSpec Anthosobservability { get; set; }
+
         /// <summary>Config Management-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
@@ -4398,6 +4423,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectVersion")]
         public virtual string ConnectVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for
+        /// the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("k8sVersion")]
+        public virtual string K8sVersion { get; set; }
 
         /// <summary>
         /// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources.

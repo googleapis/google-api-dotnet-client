@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -442,7 +442,7 @@ namespace Google.Apis.Datapipelines.v1
                 /// "FORBIDDEN" error if the caller doesn't have permission to access it.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The pipeeline name. For example:
+                /// Required. The pipeline name. For example:
                 /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -464,7 +464,7 @@ namespace Google.Apis.Datapipelines.v1
                     }
 
                     /// <summary>
-                    /// Required. The pipeeline name. For example:
+                    /// Required. The pipeline name. For example:
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -495,7 +495,7 @@ namespace Google.Apis.Datapipelines.v1
                 }
 
                 /// <summary>
-                /// Updates a pipeline. If successful, the updated [Pipeline] is returned. Returns `NOT_FOUND` if the
+                /// Updates a pipeline. If successful, the updated Pipeline is returned. Returns `NOT_FOUND` if the
                 /// pipeline doesn't exist. If UpdatePipeline does not return successfully, you can retry the
                 /// UpdatePipeline request until you receive a successful response.
                 /// </summary>
@@ -504,12 +504,12 @@ namespace Google.Apis.Datapipelines.v1
                 /// The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. *
                 /// `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods
                 /// (.). For more information, see [Identifying
-                /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+                /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
                 /// * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can
-                /// be obtained by calling ListLocations. Note that the Data Pipelines service is not available in all
-                /// regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App
-                /// Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the
-                /// pipeline. Must be unique for the selected project and location.
+                /// be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines
+                /// service is not available in all regions. It depends on Cloud Scheduler, an App Engine application,
+                /// so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). *
+                /// `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1Pipeline body, string name)
                 {
@@ -517,7 +517,7 @@ namespace Google.Apis.Datapipelines.v1
                 }
 
                 /// <summary>
-                /// Updates a pipeline. If successful, the updated [Pipeline] is returned. Returns `NOT_FOUND` if the
+                /// Updates a pipeline. If successful, the updated Pipeline is returned. Returns `NOT_FOUND` if the
                 /// pipeline doesn't exist. If UpdatePipeline does not return successfully, you can retry the
                 /// UpdatePipeline request until you receive a successful response.
                 /// </summary>
@@ -536,12 +536,13 @@ namespace Google.Apis.Datapipelines.v1
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain
                     /// letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more
                     /// information, see [Identifying
-                    /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+                    /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
                     /// * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations
-                    /// can be obtained by calling ListLocations. Note that the Data Pipelines service is not available
-                    /// in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available
-                    /// in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the
-                    /// ID of the pipeline. Must be unique for the selected project and location.
+                    /// can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data
+                    /// Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine
+                    /// application, so it's only available in [App Engine
+                    /// regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the
+                    /// pipeline. Must be unique for the selected project and location.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -591,7 +592,7 @@ namespace Google.Apis.Datapipelines.v1
                 /// <summary>
                 /// Creates a job for the specified pipeline directly. You can use this method when the internal
                 /// scheduler is not configured and you want to trigger the job directly or through an external system.
-                /// Returns a "NOT_FOUND" error if the pipeline doesn't exist. Returns a "FOBIDDEN" error if the user
+                /// Returns a "NOT_FOUND" error if the pipeline doesn't exist. Returns a "FORBIDDEN" error if the user
                 /// doesn't have permission to access the pipeline or run jobs for the pipeline.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -607,7 +608,7 @@ namespace Google.Apis.Datapipelines.v1
                 /// <summary>
                 /// Creates a job for the specified pipeline directly. You can use this method when the internal
                 /// scheduler is not configured and you want to trigger the job directly or through an external system.
-                /// Returns a "NOT_FOUND" error if the pipeline doesn't exist. Returns a "FOBIDDEN" error if the user
+                /// Returns a "NOT_FOUND" error if the pipeline doesn't exist. Returns a "FORBIDDEN" error if the user
                 /// doesn't have permission to access the pipeline or run jobs for the pipeline.
                 /// </summary>
                 public class RunRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1RunPipelineResponse>
@@ -659,8 +660,7 @@ namespace Google.Apis.Datapipelines.v1
 
                 /// <summary>
                 /// Freezes pipeline execution permanently. If there's a corresponding scheduler entry, it's deleted,
-                /// and the pipeline state is changed to "ARCHIVED". However, pipeline metadata is retained. Upon
-                /// success, the pipeline state is updated to ARCHIVED.
+                /// and the pipeline state is changed to "ARCHIVED". However, pipeline metadata is retained.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -674,8 +674,7 @@ namespace Google.Apis.Datapipelines.v1
 
                 /// <summary>
                 /// Freezes pipeline execution permanently. If there's a corresponding scheduler entry, it's deleted,
-                /// and the pipeline state is changed to "ARCHIVED". However, pipeline metadata is retained. Upon
-                /// success, the pipeline state is updated to ARCHIVED.
+                /// and the pipeline state is changed to "ARCHIVED". However, pipeline metadata is retained.
                 /// </summary>
                 public class StopRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1Pipeline>
                 {
@@ -726,8 +725,7 @@ namespace Google.Apis.Datapipelines.v1
             }
 
             /// <summary>
-            /// Lists pipelines. Returns a "NOT_FOUND" error if the list is empty. Returns a "FORBIDDEN" error if the
-            /// caller doesn't have permission to access it.
+            /// Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
             /// </summary>
             /// <param name="parent">
             /// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
@@ -738,8 +736,7 @@ namespace Google.Apis.Datapipelines.v1
             }
 
             /// <summary>
-            /// Lists pipelines. Returns a "NOT_FOUND" error if the list is empty. Returns a "FORBIDDEN" error if the
-            /// caller doesn't have permission to access it.
+            /// Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
             /// </summary>
             public class ListPipelinesRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1ListPipelinesResponse>
             {
@@ -760,10 +757,9 @@ namespace Google.Apis.Datapipelines.v1
                 /// An expression for filtering the results of the request. If unspecified, all pipelines will be
                 /// returned. Multiple filters can be applied and must be comma separated. Fields eligible for filtering
                 /// are: + `type`: The type of the pipeline (streaming or batch). Allowed values are `ALL`, `BATCH`, and
-                /// `STREAMING`. + `executor_type`: The type of pipeline execution layer. This is always Dataflow for
-                /// now, but more executors may be added later. Allowed values are `ALL` and `DATAFLOW`. + `status`: The
-                /// activity status of the pipeline. Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`. For
-                /// example, to limit results to active batch processing pipelines: type:BATCH,status:ACTIVE
+                /// `STREAMING`. + `status`: The activity status of the pipeline. Allowed values are `ALL`, `ACTIVE`,
+                /// `ARCHIVED`, and `PAUSED`. For example, to limit results to active batch processing pipelines:
+                /// type:BATCH,status:ACTIVE
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1169,7 +1165,9 @@ namespace Google.Apis.Datapipelines.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The main pipeline entity and all the needed metadata to launch and manage linked jobs.</summary>
+    /// <summary>
+    /// The main pipeline entity and all the necessary metadata for launching and managing linked jobs.
+    /// </summary>
     public class GoogleCloudDatapipelinesV1Pipeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1201,12 +1199,12 @@ namespace Google.Apis.Datapipelines.v1.Data
         /// The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. *
         /// `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For
         /// more information, see [Identifying
-        /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) *
+        /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). *
         /// `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be
-        /// obtained by calling ListLocations. Note that the Data Pipelines service is not available in all regions. It
-        /// depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine
-        /// regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must
-        /// be unique for the selected project and location.
+        /// obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is
+        /// not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only
+        /// available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the
+        /// ID of the pipeline. Must be unique for the selected project and location.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

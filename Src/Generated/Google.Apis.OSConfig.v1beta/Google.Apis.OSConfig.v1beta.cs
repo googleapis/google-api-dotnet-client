@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -957,6 +957,132 @@ namespace Google.Apis.OSConfig.v1beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Change state of patch deployment to "PAUSED". Patch deployment in paused state doesn't generate patch
+            /// jobs.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+            /// </param>
+            public virtual PauseRequest Pause(Google.Apis.OSConfig.v1beta.Data.PausePatchDeploymentRequest body, string name)
+            {
+                return new PauseRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Change state of patch deployment to "PAUSED". Patch deployment in paused state doesn't generate patch
+            /// jobs.
+            /// </summary>
+            public class PauseRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1beta.Data.PatchDeployment>
+            {
+                /// <summary>Constructs a new Pause request.</summary>
+                public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1beta.Data.PausePatchDeploymentRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.OSConfig.v1beta.Data.PausePatchDeploymentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "pause";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}:pause";
+
+                /// <summary>Initializes Pause parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/patchDeployments/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Change state of patch deployment back to "ACTIVE". Patch deployment in active state continues to
+            /// generate patch jobs.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+            /// </param>
+            public virtual ResumeRequest Resume(Google.Apis.OSConfig.v1beta.Data.ResumePatchDeploymentRequest body, string name)
+            {
+                return new ResumeRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Change state of patch deployment back to "ACTIVE". Patch deployment in active state continues to
+            /// generate patch jobs.
+            /// </summary>
+            public class ResumeRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1beta.Data.PatchDeployment>
+            {
+                /// <summary>Constructs a new Resume request.</summary>
+                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1beta.Data.ResumePatchDeploymentRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.OSConfig.v1beta.Data.ResumePatchDeploymentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "resume";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}:resume";
+
+                /// <summary>Initializes Resume parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/patchDeployments/[^/]+$",
                     });
                 }
             }
@@ -2232,6 +2358,10 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual PatchRollout Rollout { get; set; }
 
+        /// <summary>Output only. Current state of the patch deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>
         /// Output only. Time the patch deployment was last updated. Timestamp is in
         /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -2515,6 +2645,13 @@ namespace Google.Apis.OSConfig.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request message for pausing a patch deployment.</summary>
+    public class PausePatchDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Sets the time for recurring patch deployments.</summary>
     public class RecurringSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2562,6 +2699,13 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("weekly")]
         public virtual WeeklySchedule Weekly { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request message for resuming a patch deployment.</summary>
+    public class ResumePatchDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2756,7 +2756,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="name">
@@ -2774,7 +2774,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -5740,7 +5740,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="name">
@@ -5758,7 +5758,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -9675,7 +9675,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="name">
@@ -9693,7 +9693,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -12517,7 +12517,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="name">
@@ -12535,7 +12535,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -13007,7 +13007,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         /// <param name="name">
@@ -13025,7 +13025,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for
         /// Google Cloud projects, folders, organizations and billing accounts. Once configured for an organization, it
-        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+        /// applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         public class GetCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
@@ -13264,7 +13264,7 @@ namespace Google.Apis.Logging.v2.Data
         /// Output only. The service account that will be used by the Log Router to access your Cloud KMS key.Before
         /// enabling CMEK for Log Router, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the
         /// service account that the Log Router will use to access your Cloud KMS key. Use GetCmekSettings to obtain the
-        /// service account ID.See Enabling CMEK for Logs Router
+        /// service account ID.See Enabling CMEK for Log Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]

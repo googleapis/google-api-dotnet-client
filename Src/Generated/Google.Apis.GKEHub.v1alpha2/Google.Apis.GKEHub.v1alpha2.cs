@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2425,6 +2425,13 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectVersion")]
         public virtual string ConnectVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for
+        /// the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("k8sVersion")]
+        public virtual string K8sVersion { get; set; }
 
         /// <summary>
         /// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources.

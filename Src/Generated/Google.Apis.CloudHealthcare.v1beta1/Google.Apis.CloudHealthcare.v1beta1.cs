@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1059,11 +1059,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -3699,11 +3702,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -5998,11 +6004,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -9405,11 +9414,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -10906,11 +10918,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -11895,11 +11910,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -13148,7 +13165,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     {
         /// <summary>
         /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for
-        /// each Deidentify operation and is used wherever crypto_key is not specified.
+        /// each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be
+        /// set if `kms_wrapped` is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
@@ -13191,7 +13209,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     {
         /// <summary>
         /// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default
-        /// key is generated for each Deidentify operation and is used wherever crypto_key is not specified.
+        /// key is generated for each de-identification operation and is used when neither `crypto_key` nor
+        /// `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
@@ -14043,9 +14062,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// omitted). Partial matching and type matching can be combined. For example, "Patient.Address.city" can be
         /// matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]),
         /// use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported
-        /// types are: AdministrativeGenderCode, Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown,
-        /// Oid, String, Uri, Uuid, Xhtml. The sub-type for HumanName, such as HumanName.given or HumanName.family, can
-        /// be omitted.
+        /// types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id,
+        /// Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The
+        /// sub-type for HumanName(for example HumanName.given, HumanName.family) can be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; }
@@ -15420,8 +15439,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string SegmentTerminator { get; set; }
 
         /// <summary>
-        /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This
-        /// field is immutable after store creation.
+        /// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well
+        /// as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store
+        /// creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }

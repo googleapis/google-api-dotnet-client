@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1723,8 +1723,8 @@ namespace Google.Apis.Eventarc.v1.Data
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Run fully-managed service that receives the events. The service should be running in the same project
-        /// of the trigger.
+        /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the
+        /// trigger.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRun CloudRun { get; set; }

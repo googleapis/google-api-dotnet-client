@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -881,22 +881,22 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Search group memberships related to a given account.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
+            /// <param name="project">
             /// Required. The name of the project to search related account group memberships from, in the format
             /// "projects/{project}".
             /// </param>
-            public virtual SearchRequest Search(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string parent)
+            public virtual SearchRequest Search(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string project)
             {
-                return new SearchRequest(service, body, parent);
+                return new SearchRequest(service, body, project);
             }
 
             /// <summary>Search group memberships related to a given account.</summary>
             public class SearchRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>
             {
                 /// <summary>Constructs a new Search request.</summary>
-                public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string parent) : base(service)
+                public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string project) : base(service)
                 {
-                    Parent = parent;
+                    Project = project;
                     Body = body;
                     InitParameters();
                 }
@@ -905,8 +905,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 /// Required. The name of the project to search related account group memberships from, in the format
                 /// "projects/{project}".
                 /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest Body { get; set; }
@@ -921,15 +921,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+parent}/relatedaccountgroupmemberships:search";
+                public override string RestPath => "v1/{+project}/relatedaccountgroupmemberships:search";
 
                 /// <summary>Initializes Search parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "parent",
+                        Name = "project",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -1152,6 +1152,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<string> Labels { get; set; }
 
+        /// <summary>Recommended action after this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedAction")]
+        public virtual string RecommendedAction { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1351,6 +1355,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Options for user acceptance testing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingOptions")]
         public virtual GoogleCloudRecaptchaenterpriseV1TestingOptions TestingOptions { get; set; }
+
+        /// <summary>Settings for WAF</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wafSettings")]
+        public virtual GoogleCloudRecaptchaenterpriseV1WafSettings WafSettings { get; set; }
 
         /// <summary>Settings for keys that can be used by websites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSettings")]
@@ -1630,6 +1638,21 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valid")]
         public virtual System.Nullable<bool> Valid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings specific to keys that can be used for WAF (Web Application Firewall).</summary>
+    public class GoogleCloudRecaptchaenterpriseV1WafSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The WAF feature for which this key is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wafFeature")]
+        public virtual string WafFeature { get; set; }
+
+        /// <summary>Required. The WAF service that uses this key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wafService")]
+        public virtual string WafService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

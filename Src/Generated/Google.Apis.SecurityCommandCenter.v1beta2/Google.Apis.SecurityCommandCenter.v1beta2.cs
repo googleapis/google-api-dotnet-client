@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -290,6 +290,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             ContainerThreatDetectionSettings = new ContainerThreatDetectionSettingsResource(service);
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
+            VirtualMachineThreatDetectionSettings = new VirtualMachineThreatDetectionSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
         }
 
@@ -523,6 +524,85 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the VirtualMachineThreatDetectionSettings resource.</summary>
+        public virtual VirtualMachineThreatDetectionSettingsResource VirtualMachineThreatDetectionSettings { get; }
+
+        /// <summary>The "virtualMachineThreatDetectionSettings" collection of methods.</summary>
+        public class VirtualMachineThreatDetectionSettingsResource
+        {
+            private const string Resource = "virtualMachineThreatDetectionSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public VirtualMachineThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </param>
+            public virtual CalculateRequest Calculate(string name)
+            {
+                return new CalculateRequest(service, name);
+            }
+
+            /// <summary>
+            /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+            {
+                /// <summary>Constructs a new Calculate request.</summary>
+                public CalculateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
+                /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+                /// folders/{folder}/virtualMachineThreatDetectionSettings *
+                /// projects/{project}/virtualMachineThreatDetectionSettings
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "calculate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta2/{+name}:calculate";
+
+                /// <summary>Initializes Calculate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/virtualMachineThreatDetectionSettings$",
                     });
                 }
             }
@@ -762,6 +842,61 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
+                });
+            }
+        }
+
+        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+        /// folders/{folder}/virtualMachineThreatDetectionSettings *
+        /// projects/{project}/virtualMachineThreatDetectionSettings
+        /// </param>
+        public virtual GetVirtualMachineThreatDetectionSettingsRequest GetVirtualMachineThreatDetectionSettings(string name)
+        {
+            return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        public class GetVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+        {
+            /// <summary>Constructs a new GetVirtualMachineThreatDetectionSettings request.</summary>
+            public GetVirtualMachineThreatDetectionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVirtualMachineThreatDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetVirtualMachineThreatDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/virtualMachineThreatDetectionSettings$",
                 });
             }
         }
@@ -1040,6 +1175,81 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+        /// folders/{folder}/virtualMachineThreatDetectionSettings *
+        /// projects/{project}/virtualMachineThreatDetectionSettings
+        /// </param>
+        public virtual UpdateVirtualMachineThreatDetectionSettingsRequest UpdateVirtualMachineThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name)
+        {
+            return new UpdateVirtualMachineThreatDetectionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
+        public class UpdateVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+        {
+            /// <summary>Constructs a new UpdateVirtualMachineThreatDetectionSettings request.</summary>
+            public UpdateVirtualMachineThreatDetectionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateVirtualMachineThreatDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes UpdateVirtualMachineThreatDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/virtualMachineThreatDetectionSettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -1129,6 +1339,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             ContainerThreatDetectionSettings = new ContainerThreatDetectionSettingsResource(service);
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
+            VirtualMachineThreatDetectionSettings = new VirtualMachineThreatDetectionSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
         }
 
@@ -1362,6 +1573,85 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the VirtualMachineThreatDetectionSettings resource.</summary>
+        public virtual VirtualMachineThreatDetectionSettingsResource VirtualMachineThreatDetectionSettings { get; }
+
+        /// <summary>The "virtualMachineThreatDetectionSettings" collection of methods.</summary>
+        public class VirtualMachineThreatDetectionSettingsResource
+        {
+            private const string Resource = "virtualMachineThreatDetectionSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public VirtualMachineThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </param>
+            public virtual CalculateRequest Calculate(string name)
+            {
+                return new CalculateRequest(service, name);
+            }
+
+            /// <summary>
+            /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+            {
+                /// <summary>Constructs a new Calculate request.</summary>
+                public CalculateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
+                /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+                /// folders/{folder}/virtualMachineThreatDetectionSettings *
+                /// projects/{project}/virtualMachineThreatDetectionSettings
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "calculate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta2/{+name}:calculate";
+
+                /// <summary>Initializes Calculate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/virtualMachineThreatDetectionSettings$",
                     });
                 }
             }
@@ -1705,6 +1995,61 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+        /// folders/{folder}/virtualMachineThreatDetectionSettings *
+        /// projects/{project}/virtualMachineThreatDetectionSettings
+        /// </param>
+        public virtual GetVirtualMachineThreatDetectionSettingsRequest GetVirtualMachineThreatDetectionSettings(string name)
+        {
+            return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        public class GetVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+        {
+            /// <summary>Constructs a new GetVirtualMachineThreatDetectionSettings request.</summary>
+            public GetVirtualMachineThreatDetectionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVirtualMachineThreatDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetVirtualMachineThreatDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/virtualMachineThreatDetectionSettings$",
+                });
+            }
+        }
+
         /// <summary>Get the WebSecurityScannerSettings resource.</summary>
         /// <param name="name">
         /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
@@ -1979,6 +2324,81 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+        /// folders/{folder}/virtualMachineThreatDetectionSettings *
+        /// projects/{project}/virtualMachineThreatDetectionSettings
+        /// </param>
+        public virtual UpdateVirtualMachineThreatDetectionSettingsRequest UpdateVirtualMachineThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name)
+        {
+            return new UpdateVirtualMachineThreatDetectionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
+        public class UpdateVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+        {
+            /// <summary>Constructs a new UpdateVirtualMachineThreatDetectionSettings request.</summary>
+            public UpdateVirtualMachineThreatDetectionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateVirtualMachineThreatDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes UpdateVirtualMachineThreatDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/virtualMachineThreatDetectionSettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -2069,6 +2489,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
             Locations = new LocationsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
+            VirtualMachineThreatDetectionSettings = new VirtualMachineThreatDetectionSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
         }
 
@@ -2560,6 +2981,85 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Gets the VirtualMachineThreatDetectionSettings resource.</summary>
+        public virtual VirtualMachineThreatDetectionSettingsResource VirtualMachineThreatDetectionSettings { get; }
+
+        /// <summary>The "virtualMachineThreatDetectionSettings" collection of methods.</summary>
+        public class VirtualMachineThreatDetectionSettingsResource
+        {
+            private const string Resource = "virtualMachineThreatDetectionSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public VirtualMachineThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </param>
+            public virtual CalculateRequest Calculate(string name)
+            {
+                return new CalculateRequest(service, name);
+            }
+
+            /// <summary>
+            /// Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+            {
+                /// <summary>Constructs a new Calculate request.</summary>
+                public CalculateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the VirtualMachineThreatDetectionSettings to calculate. Formats: *
+                /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+                /// folders/{folder}/virtualMachineThreatDetectionSettings *
+                /// projects/{project}/virtualMachineThreatDetectionSettings
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "calculate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta2/{+name}:calculate";
+
+                /// <summary>Initializes Calculate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/virtualMachineThreatDetectionSettings$",
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the WebSecurityScannerSettings resource.</summary>
         public virtual WebSecurityScannerSettingsResource WebSecurityScannerSettings { get; }
 
@@ -2794,6 +3294,61 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
+                });
+            }
+        }
+
+        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+        /// folders/{folder}/virtualMachineThreatDetectionSettings *
+        /// projects/{project}/virtualMachineThreatDetectionSettings
+        /// </param>
+        public virtual GetVirtualMachineThreatDetectionSettingsRequest GetVirtualMachineThreatDetectionSettings(string name)
+        {
+            return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the VirtualMachineThreatDetectionSettings resource.</summary>
+        public class GetVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+        {
+            /// <summary>Constructs a new GetVirtualMachineThreatDetectionSettings request.</summary>
+            public GetVirtualMachineThreatDetectionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the VirtualMachineThreatDetectionSettings to retrieve. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVirtualMachineThreatDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetVirtualMachineThreatDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/virtualMachineThreatDetectionSettings$",
                 });
             }
         }
@@ -3060,6 +3615,81 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+        /// folders/{folder}/virtualMachineThreatDetectionSettings *
+        /// projects/{project}/virtualMachineThreatDetectionSettings
+        /// </param>
+        public virtual UpdateVirtualMachineThreatDetectionSettingsRequest UpdateVirtualMachineThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name)
+        {
+            return new UpdateVirtualMachineThreatDetectionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
+        public class UpdateVirtualMachineThreatDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings>
+        {
+            /// <summary>Constructs a new UpdateVirtualMachineThreatDetectionSettings request.</summary>
+            public UpdateVirtualMachineThreatDetectionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+            /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+            /// folders/{folder}/virtualMachineThreatDetectionSettings *
+            /// projects/{project}/virtualMachineThreatDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateVirtualMachineThreatDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes UpdateVirtualMachineThreatDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/virtualMachineThreatDetectionSettings$",
                 });
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {
@@ -4176,6 +4806,44 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The tier of SCC features this organization currently has access to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource capturing the settings for the Virtual Machine Threat Detection service.</summary>
+    public class VirtualMachineThreatDetectionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The configurations including the state of enablement for the service's different modules. The absence of a
+        /// module in the map implies its configuration is inherited from its parent's.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modules")]
+        public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
+
+        /// <summary>
+        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// organizations/{organization}/virtualMachineThreatDetectionSettings *
+        /// folders/{folder}/virtualMachineThreatDetectionSettings *
+        /// projects/{project}/virtualMachineThreatDetectionSettings
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The service account used by Virtual Machine Threat Detection detectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// The state of enablement for the service at its level of the resource hierarchy. A DISABLED state will
+        /// override all module enablement_states to DISABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
+        public virtual string ServiceEnablementState { get; set; }
+
+        /// <summary>Output only. The time the settings were last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23569,9 +23569,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2SpeechToTextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`
-        /// will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and
-        /// StreamingAnalyzeContentRequest request.
+        /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be
+        /// treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest
+        /// request. If enhanced model variant is specified and an enhanced version of the specified model for the
+        /// language does not exist, then it would emit an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechModelVariant")]
         public virtual string SpeechModelVariant { get; set; }
@@ -25614,6 +25615,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the knowledge base interacted with during the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBase")]
+        public virtual string KnowledgeBase { get; set; }
+
         /// <summary>Required. Output only. The current state of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

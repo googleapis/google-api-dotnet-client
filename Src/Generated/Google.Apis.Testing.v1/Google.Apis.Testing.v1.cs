@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -986,17 +986,6 @@ namespace Google.Apis.Testing.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
         public virtual string AppPackageId { get; set; }
-
-        /// <summary>
-        /// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app
-        /// beyond the first activity. Default is 50.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxDepth")]
-        public virtual System.Nullable<int> MaxDepth { get; set; }
-
-        /// <summary>The max number of steps Robo can execute. Default is no limit.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxSteps")]
-        public virtual System.Nullable<int> MaxSteps { get; set; }
 
         /// <summary>
         /// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For

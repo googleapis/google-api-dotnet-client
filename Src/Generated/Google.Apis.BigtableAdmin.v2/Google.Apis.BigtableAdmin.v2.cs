@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1691,7 +1691,12 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
                 }
 
-                /// <summary>Creates a cluster within an instance.</summary>
+                /// <summary>
+                /// Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and
+                /// Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero,
+                /// then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then
+                /// autoscaling is enabled.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The unique name of the instance in which to create the new cluster. Values are of the form
@@ -1702,7 +1707,12 @@ namespace Google.Apis.BigtableAdmin.v2
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a cluster within an instance.</summary>
+                /// <summary>
+                /// Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and
+                /// Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero,
+                /// then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then
+                /// autoscaling is enabled.
+                /// </summary>
                 public class CreateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1934,6 +1944,12 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 /// <summary>
                 /// Partially updates a cluster within a project. This method is the preferred way to update a Cluster.
+                /// To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is
+                /// enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored.
+                /// Note that an update cannot simultaneously set serve_nodes to non-zero and
+                /// cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To
+                /// disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a
+                /// serve_node count via the update_mask.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1947,6 +1963,12 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 /// <summary>
                 /// Partially updates a cluster within a project. This method is the preferred way to update a Cluster.
+                /// To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is
+                /// enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored.
+                /// Note that an update cannot simultaneously set serve_nodes to non-zero and
+                /// cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To
+                /// disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a
+                /// serve_node count via the update_mask.
                 /// </summary>
                 public class PartialUpdateClusterRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
                 {
@@ -1965,9 +1987,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Required. The subset of Cluster fields which should be replaced. Must be explicitly set.
-                    /// </summary>
+                    /// <summary>Required. The subset of Cluster fields which should be replaced.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2010,8 +2030,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Updates a cluster within an instance. UpdateCluster is deprecated. Please use PartialUpdateCluster
-                /// instead.
+                /// Updates a cluster within an instance. Note that UpdateCluster does not support updating
+                /// cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2024,8 +2044,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Updates a cluster within an instance. UpdateCluster is deprecated. Please use PartialUpdateCluster
-                /// instead.
+                /// Updates a cluster within an instance. Note that UpdateCluster does not support updating
+                /// cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster.
                 /// </summary>
                 public class UpdateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
                 {
@@ -2951,7 +2971,12 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
             }
 
-            /// <summary>Create an instance within a project.</summary>
+            /// <summary>
+            /// Create an instance within a project. Note that exactly one of Cluster.serve_nodes and
+            /// Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then
+            /// the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then
+            /// autoscaling is enabled.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The unique name of the project in which to create the new instance. Values are of the form
@@ -2962,7 +2987,12 @@ namespace Google.Apis.BigtableAdmin.v2
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Create an instance within a project.</summary>
+            /// <summary>
+            /// Create an instance within a project. Note that exactly one of Cluster.serve_nodes and
+            /// Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then
+            /// the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then
+            /// autoscaling is enabled.
+            /// </summary>
             public class CreateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3966,8 +3996,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more
-        /// consistent performance.
+        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent
+        /// performance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serveNodes")]
         public virtual System.Nullable<int> ServeNodes { get; set; }
@@ -3998,11 +4028,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Configuration for a cluster.</summary>
     public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of
-        /// serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and
-        /// autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
-        /// </summary>
+        /// <summary>Autoscaling configuration for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterAutoscalingConfig")]
         public virtual ClusterAutoscalingConfig ClusterAutoscalingConfig { get; set; }
 
@@ -4403,11 +4429,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
-        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
-        /// which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+        /// Requests specifying an invalid value will be rejected. Requests for policies with any conditional role
+        /// bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or
+        /// leave the field unset. The policy in the response might use the policy version that you specified, or it
+        /// might use a lower policy version. For example, if you specify version 3, but the policy has no conditional
+        /// role bindings, the response uses version 1. To learn which resources support conditions in their IAM
+        /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
@@ -4795,6 +4823,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
         public virtual object FinishTime { get; set; }
 
+        /// <summary>The original request for PartialUpdateCluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
         public virtual PartialUpdateClusterRequest OriginalRequest { get; set; }
 
@@ -4815,7 +4844,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual Cluster Cluster { get; set; }
 
-        /// <summary>Required. The subset of Cluster fields which should be replaced. Must be explicitly set.</summary>
+        /// <summary>Required. The subset of Cluster fields which should be replaced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
 
@@ -5148,6 +5177,27 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata type for the operation returned by google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable.
+    /// </summary>
+    public class UndeleteTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation finished or was cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The name of the table being restored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The time at which this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

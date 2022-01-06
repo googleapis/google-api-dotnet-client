@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4337,8 +4337,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual System.Nullable<long> CurrentDiskSize { get; set; }
 
         /// <summary>
-        /// Output only. The databaseInstalledVersion stores the current fully resolved database version running on the
-        /// instance including minor version such as MYSQL_5_6_50
+        /// Output only. Stores the current database version running on the instance including minor version such as
+        /// **MYSQL_8_0_18**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseInstalledVersion")]
         public virtual string DatabaseInstalledVersion { get; set; }
@@ -4372,6 +4372,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>
         /// The Compute Engine zone that the instance is currently serving from. This value could be different from the
         /// zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        /// WARNING: Changing this might restart the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
         public virtual string GceZone { get; set; }
@@ -5224,7 +5225,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
 
         /// <summary>
         /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation,
-        /// also known as 'slash' notation (for example: **192.168.100.0/24**).
+        /// also known as 'slash' notation (for example: **157.197.200.0/24**).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworks")]
         public virtual System.Collections.Generic.IList<AclEntry> AuthorizedNetworks { get; set; }
@@ -5283,7 +5284,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
     public class LocationPreference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+        /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING:
+        /// Changing this might restart the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followGaeApplication")]
         public virtual string FollowGaeApplication { get; set; }
@@ -5299,7 +5301,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryZone")]
         public virtual string SecondaryZone { get; set; }
 
-        /// <summary>The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).</summary>
+        /// <summary>
+        /// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this
+        /// might restart the instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 
@@ -5792,7 +5797,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual System.Collections.Generic.IList<DatabaseFlags> DatabaseFlags { get; set; }
 
         /// <summary>
-        /// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+        /// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING:
+        /// Changing this restarts the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseReplicationEnabled")]
         public virtual System.Nullable<bool> DatabaseReplicationEnabled { get; set; }
@@ -5872,7 +5878,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageAutoResizeLimit")]
         public virtual System.Nullable<long> StorageAutoResizeLimit { get; set; }
 
-        /// <summary>The tier (or machine type) for this instance, for example **db-custom-1-3840**.</summary>
+        /// <summary>
+        /// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this
+        /// restarts the instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
 

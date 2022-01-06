@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7773,6 +7773,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
         public virtual string ParameterName { get; set; }
+
+        /// <summary>
+        /// Optional. Types of restricted data that this metric may contain. Required for metrics with CURRENCY
+        /// measurement unit. Must be empty for metrics with a non-CURRENCY measurement unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedMetricType")]
+        public virtual System.Collections.Generic.IList<string> RestrictedMetricType { get; set; }
 
         /// <summary>Required. Immutable. The scope of this custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]

@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -550,10 +550,13 @@ namespace Google.Apis.IAMCredentials.v1.Data
     public class GenerateAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The sequence of service accounts in a delegation chain. Each service account must be granted the
-        /// `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service
-        /// account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account
-        /// that is specified in the `name` field of the request. The delegates must have the following format:
+        /// The sequence of service accounts in a delegation chain. This field is required for [delegated
+        /// requests](https://cloud.google.com/iam/help/credentials/delegated-request). For [direct
+        /// requests](https://cloud.google.com/iam/help/credentials/direct-request), which are more common, do not
+        /// specify this field. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on
+        /// its next service account in the chain. The last service account in the chain must be granted the
+        /// `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of
+        /// the request. The delegates must have the following format:
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
         /// it with a project ID is invalid.
         /// </summary>

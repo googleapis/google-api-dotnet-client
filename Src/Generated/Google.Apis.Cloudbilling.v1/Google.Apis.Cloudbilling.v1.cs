@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -907,8 +907,9 @@ namespace Google.Apis.Cloudbilling.v1
         }
 
         /// <summary>
-        /// Gets the billing information for a project. The current authenticated user must have [permission to view the
-        /// project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ).
+        /// Gets the billing information for a project. The current authenticated user must have the
+        /// `resourcemanager.projects.get` permission for the project, which can be granted by assigning the [Project
+        /// Viewer](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles) role.
         /// </summary>
         /// <param name="name">
         /// Required. The resource name of the project for which billing information is retrieved. For example,
@@ -920,8 +921,9 @@ namespace Google.Apis.Cloudbilling.v1
         }
 
         /// <summary>
-        /// Gets the billing information for a project. The current authenticated user must have [permission to view the
-        /// project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ).
+        /// Gets the billing information for a project. The current authenticated user must have the
+        /// `resourcemanager.projects.get` permission for the project, which can be granted by assigning the [Project
+        /// Viewer](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles) role.
         /// </summary>
         public class GetBillingInfoRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.ProjectBillingInfo>
         {

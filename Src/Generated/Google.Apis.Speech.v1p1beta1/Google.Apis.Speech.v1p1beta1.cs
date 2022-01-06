@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -489,7 +489,10 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this custom class will be created. Format:
-                /// {api_version}/projects/{project}/locations/{location}/customClasses
+                /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
+                /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
+                /// endpoint, use the `global` location. To specify a region, use a [regional
+                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Speech.v1p1beta1.Data.CreateCustomClassRequest body, string parent)
                 {
@@ -509,7 +512,10 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The parent resource where this custom class will be created. Format:
-                    /// {api_version}/projects/{project}/locations/{location}/customClasses
+                    /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
+                    /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the
+                    /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
+                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -547,7 +553,10 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <summary>Delete a custom class.</summary>
                 /// <param name="name">
                 /// Required. The name of the custom class to delete. Format:
-                /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                /// `projects/{project}/locations/{location}/customClasses/{custom_class}` Speech-to-Text supports three
+                /// locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
+                /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional
+                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -566,7 +575,10 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The name of the custom class to delete. Format:
-                    /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                    /// `projects/{project}/locations/{location}/customClasses/{custom_class}` Speech-to-Text supports
+                    /// three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
+                    /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
+                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -598,7 +610,7 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <summary>Get a custom class.</summary>
                 /// <param name="name">
                 /// Required. The name of the custom class to retrieve. Format:
-                /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                /// `projects/{project}/locations/{location}/customClasses/{custom_class}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -617,7 +629,7 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The name of the custom class to retrieve. Format:
-                    /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+                    /// `projects/{project}/locations/{location}/customClasses/{custom_class}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -649,7 +661,10 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <summary>List custom classes.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of custom classes. Format:
-                /// {api_version}/projects/{project}/locations/{location}/customClasses
+                /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
+                /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
+                /// endpoint, use the `global` location. To specify a region, use a [regional
+                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -668,7 +683,10 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of custom classes. Format:
-                    /// {api_version}/projects/{project}/locations/{location}/customClasses
+                    /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
+                    /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the
+                    /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
+                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -820,7 +838,10 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this phrase set will be created. Format:
-                /// {api_version}/projects/{project}/locations/{location}/phraseSets
+                /// `projects/{project}/locations/{location}/phraseSets` Speech-to-Text supports three locations:
+                /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
+                /// endpoint, use the `global` location. To specify a region, use a [regional
+                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Speech.v1p1beta1.Data.CreatePhraseSetRequest body, string parent)
                 {
@@ -844,7 +865,10 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The parent resource where this phrase set will be created. Format:
-                    /// {api_version}/projects/{project}/locations/{location}/phraseSets
+                    /// `projects/{project}/locations/{location}/phraseSets` Speech-to-Text supports three locations:
+                    /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the
+                    /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
+                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -882,7 +906,7 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <summary>Delete a phrase set.</summary>
                 /// <param name="name">
                 /// Required. The name of the phrase set to delete. Format:
-                /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -901,7 +925,7 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The name of the phrase set to delete. Format:
-                    /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                    /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -933,7 +957,10 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <summary>Get a phrase set.</summary>
                 /// <param name="name">
                 /// Required. The name of the phrase set to retrieve. Format:
-                /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three
+                /// locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
+                /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional
+                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -952,7 +979,10 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The name of the phrase set to retrieve. Format:
-                    /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+                    /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three
+                    /// locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
+                    /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
+                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -984,7 +1014,10 @@ namespace Google.Apis.Speech.v1p1beta1
                 /// <summary>List phrase sets.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of phrase set. Format:
-                /// projects/{project}/locations/{location}
+                /// `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us`
+                /// (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use
+                /// the `global` location. To specify a region, use a [regional
+                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1003,7 +1036,10 @@ namespace Google.Apis.Speech.v1p1beta1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of phrase set. Format:
-                    /// projects/{project}/locations/{location}
+                    /// `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`,
+                    /// `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
+                    /// endpoint, use the `global` location. To specify a region, use a [regional
+                    /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1533,7 +1569,10 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the
     /// request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then
     /// use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class'
-    /// id wrapped in `${}` (e.g. `${my-months}`).
+    /// id wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three locations: `global`, `us` (US North
+    /// America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location.
+    /// To specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu`
+    /// location value.
     /// </summary>
     public class Phrase : Google.Apis.Requests.IDirectResponseSchema
     {

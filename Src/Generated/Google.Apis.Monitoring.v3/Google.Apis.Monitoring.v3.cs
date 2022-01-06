@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8039,8 +8039,8 @@ namespace Google.Apis.Monitoring.v3.Data
         /// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in
         /// must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so.
         /// If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1
-        /// megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in
-        /// URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+        /// megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode
+        /// your body data since the field is of bytes type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; }
@@ -9706,22 +9706,21 @@ namespace Google.Apis.Monitoring.v3.Data
     /// no older than the data retention period for the metric. Writes: A closed time interval. It extends from the
     /// start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the
     /// MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the
-    /// metric value. The end time must not be earlier than the start time. When writing data points, the start time
-    /// must not be more than 25 hours in the past and the end time must not be more than five minutes in the future.
-    /// For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time
-    /// defaults to the value of the end time, and the interval represents a single point in time. If both start and end
-    /// times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are
-    /// point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of
-    /// the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with
-    /// subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the
-    /// next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE
-    /// metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the
-    /// same start time and increasing end times, until an event resets the cumulative value to zero and sets a new
-    /// start time for the following points. The new start time must be at least a millisecond after the end time of the
-    /// previous interval. The start time of a new interval must be at least a millisecond after the end time of the
-    /// previous interval because intervals are closed. If the start time of a new interval is the same as the end time
-    /// of the previous interval, then data written at the new start time could overwrite data written at the previous
-    /// end time.
+    /// metric value. The end time must not be earlier than the start time, and the end time must not be more than 25
+    /// hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically
+    /// optional; if no value is specified, the start time defaults to the value of the end time, and the interval
+    /// represents a single point in time. If both start and end times are specified, they must be identical. Such an
+    /// interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval
+    /// must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time
+    /// and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping
+    /// intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end
+    /// time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero
+    /// interval, with subsequent points specifying the same start time and increasing end times, until an event resets
+    /// the cumulative value to zero and sets a new start time for the following points. The new start time must be at
+    /// least a millisecond after the end time of the previous interval. The start time of a new interval must be at
+    /// least a millisecond after the end time of the previous interval because intervals are closed. If the start time
+    /// of a new interval is the same as the end time of the previous interval, then data written at the new start time
+    /// could overwrite data written at the previous end time.
     /// </summary>
     public class TimeInterval : Google.Apis.Requests.IDirectResponseSchema
     {
