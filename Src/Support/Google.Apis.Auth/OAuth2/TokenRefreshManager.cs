@@ -92,6 +92,13 @@ namespace Google.Apis.Auth.OAuth2
                     // otherwise _refreshTask is updated in an incorrect order.
                     // And Task.Run also means it can be run here in the lock.
                     _refreshTask = Task.Run(RefreshTokenAsync);
+
+                    // Let's make sure that exceptions in _refreshTask are always observed.
+                    // Note that we don't keep a reference to this new task as we don't really
+                    // care about the errors, and we want calling code explicitly awaiting on _refreshTask
+                    // to actually fail if there's an error. We just schedule it to run and that's enough for
+                    // avoiding exception observavility issues.
+                    _refreshTask.ContinueWith(LogException, TaskContinuationOptions.OnlyOnFaulted);
                 }
                 // If current token is not hard-expired, then return it.
                 if (_token != null && !_token.IsEffectivelyExpired(_clock))
@@ -99,6 +106,18 @@ namespace Google.Apis.Auth.OAuth2
                     return _token.AccessToken;
                 }
                 refreshTask = _refreshTask;
+
+                async Task LogException(Task task)
+                {
+                    try
+                    {
+                        await task.ConfigureAwait(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.Debug($"An error occured on a background token refresh task.{Environment.NewLine}{ex}");
+                    }
+                }
             }
             // Otherwise block on refresh task.
             if (cancellationToken.CanBeCanceled)
