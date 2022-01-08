@@ -20,6 +20,7 @@ using Google.Apis.Logging;
 using Google.Apis.Tests.Mocks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -316,6 +317,71 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Contains("refresh error, refresh error, refresh error", ex.Message);
             Assert.Equal(TokenRefreshManager.RefreshTimeouts.Length, refreshCallCount);
             Assert.Equal(0, Interlocked.Add(ref refreshCompleted, 0));
+        }
+
+        [Fact]
+        public async Task UnobservedException()
+        {
+            // An unobserved exception used to happen when the token is soft expired so that
+            // a refresh token task is started but not inmediately observed and it fails.
+            // See https://github.com/googleapis/google-api-dotnet-client/issues/2021
+            string exceptionMessage = "While testing for unobserved exceptions the refresh task failed.";
+            int unobservedCount = 0;
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+            {
+                if (e.Exception.InnerExceptions.Any(ex => ex.Message == exceptionMessage))
+                {
+                    Interlocked.Increment(ref unobservedCount);
+                    e.SetObserved();
+                }
+            };
+
+            var refreshCompletionSource = new TaskCompletionSource<bool>();
+            var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var logger = new NullLogger();
+            var softExpiredToken = new TokenResponse
+            {
+                AccessToken = clock.UtcNow.ToString("O"),
+                ExpiresInSeconds = TokenResponse.TokenRefreshTimeWindowSeconds,
+                IssuedUtc = clock.UtcNow
+            };
+            TokenRefreshManager trm = new TokenRefreshManager(ThrowsWhenRefreshing, clock, logger)
+            {
+                // The initial token is soft expired.
+                Token = softExpiredToken
+            };
+
+            // Since the token is only soft expired, we will get it, but a refresh task
+            // is still started.
+            var token = await trm.GetAccessTokenForRequestAsync(default);
+            Assert.Equal(softExpiredToken.AccessToken, token);
+
+            // Let's wait for refresh to be done, so that we know for certain that an exception has been thrown.
+            await refreshCompletionSource.Task;
+
+            trm = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            // And let's just wait a little bit more, just to make sure that the UnobservedException would be raised.
+            await Task.Delay(TimeSpan.FromSeconds(5));
+
+            // We should not see unobserved exceptions as we are guarding against that.
+            Assert.Equal(0, unobservedCount);
+
+            async Task<bool> ThrowsWhenRefreshing(CancellationToken ct)
+            {
+                try
+                {
+                    // Let's yeild so that we don't complete syncronously.
+                    await Task.Yield();
+                    throw new Exception(exceptionMessage);
+                }
+                finally
+                {
+                    refreshCompletionSource.SetResult(true);
+                }
+            }
         }
     }
 }
