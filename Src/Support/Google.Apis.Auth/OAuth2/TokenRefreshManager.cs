@@ -119,17 +119,8 @@ namespace Google.Apis.Auth.OAuth2
                     }
                 }
             }
-            // Otherwise block on refresh task.
-            if (cancellationToken.CanBeCanceled)
-            {
-                // Reasonably simple way of creating a task that can be cancelled, based on another task.
-                // (It would be nice if this were simpler.)
-                refreshTask = refreshTask.ContinueWith(
-                    task => ResultWithUnwrappedExceptions(task),
-                    cancellationToken,
-                    TaskContinuationOptions.None,
-                    TaskScheduler.Default);
-            }
+
+            refreshTask = refreshTask.WithCancellationToken(cancellationToken);
             return (await refreshTask.ConfigureAwait(false)).AccessToken;
         }
 
