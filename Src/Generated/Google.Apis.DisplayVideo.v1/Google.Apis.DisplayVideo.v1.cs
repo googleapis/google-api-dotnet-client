@@ -17964,7 +17964,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
         /// <summary>
         /// Audio content type details. This field will be populated when the targeting_type is
-        /// 'TARGETING_TYPE_AUDIO_CONTENT_TYPE'.
+        /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioContentTypeDetails")]
         public virtual AudioContentTypeAssignedTargetingOptionDetails AudioContentTypeDetails { get; set; }

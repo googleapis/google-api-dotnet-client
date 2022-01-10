@@ -535,6 +535,250 @@ namespace Google.Apis.CloudRun.v2
                 public ServicesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Revisions = new RevisionsResource(service);
+                }
+
+                /// <summary>Gets the Revisions resource.</summary>
+                public virtual RevisionsResource Revisions { get; }
+
+                /// <summary>The "revisions" collection of methods.</summary>
+                public class RevisionsResource
+                {
+                    private const string Resource = "revisions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RevisionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Delete a Revision.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the Revision to delete. Format:
+                    /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Delete a Revision.</summary>
+                    public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Revision to delete. Format:
+                        /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// A system-generated fingerprint for this version of the resource. This may be used to detect
+                        /// modification conflict during updates.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Etag { get; set; }
+
+                        /// <summary>
+                        /// Indicates that the request should be validated without actually deleting any resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+/revisions/[^/]+$",
+                            });
+                            RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "etag",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets information about a Revision.</summary>
+                    /// <param name="name">
+                    /// Required. The full name of the Revision. Format:
+                    /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets information about a Revision.</summary>
+                    public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Revision>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The full name of the Revision. Format:
+                        /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List Revisions from a given Service, or from a given location.</summary>
+                    /// <param name="parent">
+                    /// Required. The Service from which the Revisions should be listed. To list all Revisions across
+                    /// Services, use "-" instead of Service name. Format:
+                    /// projects/{project}/locations/{location}/services/{service}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List Revisions from a given Service, or from a given location.</summary>
+                    public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2ListRevisionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Service from which the Revisions should be listed. To list all Revisions
+                        /// across Services, use "-" instead of Service name. Format:
+                        /// projects/{project}/locations/{location}/services/{service}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Maximum number of revisions to return in this call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token received from a previous call to ListRevisions. All other parameters must
+                        /// match.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// If true, returns deleted (but unexpired) resources along with active ones.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/revisions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showDeleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new Service in a given project and location.</summary>
@@ -962,7 +1206,7 @@ namespace Google.Apis.CloudRun.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// / If set to true, and if the Service does not exist, it will create a new one. Caller must have
+                    /// If set to true, and if the Service does not exist, it will create a new one. Caller must have
                     /// both create and update permissions for this call if this is set to true.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
@@ -1160,65 +1404,6 @@ namespace Google.Apis.CloudRun.v2
                         });
                     }
                 }
-
-                /// <summary>Undeletes a Service.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The full name of the Service. Format:
-                /// projects/{projectnumber}/locations/{location}/services/{service}
-                /// </param>
-                public virtual UndeleteRequest Undelete(Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2UndeleteServiceRequest body, string name)
-                {
-                    return new UndeleteRequest(service, body, name);
-                }
-
-                /// <summary>Undeletes a Service.</summary>
-                public class UndeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Undelete request.</summary>
-                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2UndeleteServiceRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The full name of the Service. Format:
-                    /// projects/{projectnumber}/locations/{location}/services/{service}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2UndeleteServiceRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "undelete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}:undelete";
-
-                    /// <summary>Initializes Undelete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
-                        });
-                    }
-                }
             }
         }
     }
@@ -1400,6 +1585,24 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
+    public class GoogleCloudRunOpV2ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ImageDigest holds the resolved digest for the image specified, regardless of whether a tag or digest was
+        /// originally specified in the Container object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
+        public virtual string ImageDigest { get; set; }
+
+        /// <summary>The name of the container, if specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>EnvVar represents an environment variable present in a Container.</summary>
     public class GoogleCloudRunOpV2EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1433,6 +1636,24 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Selects a secret and a specific version from Cloud Secret Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretKeyRef")]
         public virtual GoogleCloudRunOpV2SecretKeySelector SecretKeyRef { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message containing a list of Revisions.</summary>
+    public class GoogleCloudRunOpV2ListRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token indicating there are more items than page_size. Use it in the next ListRevisions request to
+        /// continue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resulting list of Revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Revision> Revisions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1472,6 +1693,164 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Revision is an immutable snapshot of code and configuration. A Revision references a container image.
+    /// Revisions are only created by updates to its parent Service.
+    /// </summary>
+    public class GoogleCloudRunOpV2Revision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>KRM-style annotations for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
+        /// Output only. The Condition of this Revision, containing its readiness status, and detailed error information
+        /// in case it did not reach a serving state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Condition> Conditions { get; set; }
+
+        /// <summary>Indicates whether Confidential Cloud Run is enabled in this Revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidential")]
+        public virtual System.Nullable<bool> Confidential { get; set; }
+
+        /// <summary>Sets the maximum number of requests that each serving instance can receive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerConcurrency")]
+        public virtual System.Nullable<int> ContainerConcurrency { get; set; }
+
+        /// <summary>Output only. Status information for each of the containers specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2ContainerStatus> ContainerStatuses { get; set; }
+
+        /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Container> Containers { get; set; }
+
+        /// <summary>Output only. The creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. For a deleted resource, the deletion time. It is only populated as a response to a Delete
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more
+        /// information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual string EncryptionKey { get; set; }
+
+        /// <summary>
+        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// modification conflict during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>The execution environment being used to host this Revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
+        public virtual string ExecutionEnvironment { get; set; }
+
+        /// <summary>
+        /// Output only. For a deleted resource, the time after which it will be permamently deleted. It is only
+        /// populated as a response to a Delete request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Output only. A number that monotonically increases every time the user modifies the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>
+        /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
+        /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
+        /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
+        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
+        /// not be preserved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Set the launch stage to a preview stage on write to allow use of preview features in that stage. On read,
+        /// describes whether the resource uses preview features. Launch Stages are defined at [Google Cloud Platform
+        /// Launch Stages](http://cloud.google.com/terms/launch-stages).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
+        /// <summary>Output only. The Google Console URI to obtain logs for the Revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logUri")]
+        public virtual string LogUri { get; set; }
+
+        /// <summary>Output only. The unique name of this Revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The generation of this Revision currently serving traffic. See comments in `reconciling` for
+        /// additional information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
+        public virtual System.Nullable<long> ObservedGeneration { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the resource's reconciliation is still in progress. See comments in
+        /// `Service.reconciling` for additional information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Scaling settings for this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
+        public virtual GoogleCloudRunOpV2RevisionScaling Scaling { get; set; }
+
+        /// <summary>Output only. The name of the parent service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>
+        /// Email address of the IAM service account associated with the revision of the service. The service account
+        /// represents the identity of the running revision, and determines what permissions the revision has.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Max allowed time for an instance to respond to a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the Revision. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>A list of Volumes to make available to containers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Volume> Volumes { get; set; }
+
+        /// <summary>
+        /// VPC Access configuration for this Revision. For more information, visit
+        /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
+        public virtual GoogleCloudRunOpV2VpcAccess VpcAccess { get; set; }
     }
 
     /// <summary>Settings for revision-level scaling settings.</summary>
@@ -1864,21 +2243,6 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message to undelete a previously existing Service.</summary>
-    public class GoogleCloudRunOpV2UndeleteServiceRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A system-generated fingerprint for this version of the resource. This may be used to detect modification
-        /// conflict during updates.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>Indicates that the request should be validated without actually undeleting any resources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
-        public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
     /// <summary>

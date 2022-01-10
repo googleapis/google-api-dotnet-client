@@ -4606,9 +4606,8 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual ConferenceParameters Parameters { get; set; }
 
         /// <summary>
-        /// The signature of the conference data. Generated on server side. Must be preserved while copying the
-        /// conference data between events, otherwise the conference data will not be copied. Unset for a conference
-        /// with a failed create request. Optional for a conference with a pending create request.
+        /// The signature of the conference data. Generated on server side. Unset for a conference with a failed create
+        /// request. Optional for a conference with a pending create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; }

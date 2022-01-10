@@ -9721,6 +9721,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual string CurrentPage { get; set; }
 
+        /// <summary>
+        /// Always present for WebhookRequest. Ignored for WebhookResponse. The display name of the current page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Optional for both WebhookRequest and WebhookResponse. Information about the form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInfo")]
         public virtual GoogleCloudDialogflowCxV3PageInfoFormInfo FormInfo { get; set; }
@@ -13075,6 +13081,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual string CurrentPage { get; set; }
 
+        /// <summary>
+        /// Always present for WebhookRequest. Ignored for WebhookResponse. The display name of the current page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Optional for both WebhookRequest and WebhookResponse. Information about the form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInfo")]
         public virtual GoogleCloudDialogflowCxV3beta1PageInfoFormInfo FormInfo { get; set; }
@@ -16080,7 +16092,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        /// <summary>Output only. The time when the message was created.</summary>
+        /// <summary>Output only. The time when the message was created in Contact Center AI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -16096,7 +16108,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual GoogleCloudDialogflowV2MessageAnnotation MessageAnnotation { get; set; }
 
         /// <summary>
-        /// The unique identifier of the message. Format: `projects//locations//conversations//messages/`.
+        /// Optional. The unique identifier of the message. Format: `projects//locations//conversations//messages/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -16108,6 +16120,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Output only. The role of the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
         public virtual string ParticipantRole { get; set; }
+
+        /// <summary>Optional. The time when the message was sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
+        public virtual object SendTime { get; set; }
+
+        /// <summary>Output only. The sentiment analysis result for the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysis")]
+        public virtual GoogleCloudDialogflowV2SentimentAnalysisResult SentimentAnalysis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16359,6 +16379,28 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a smart reply answer.</summary>
+    public class GoogleCloudDialogflowV2SmartReplyAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of answer record, in the format of "projects//locations//answerRecords/"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>
+        /// Smart reply confidence. The system's confidence score that this reply is a good match for this conversation,
+        /// as a value from 0.0 (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The content of the reply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reply")]
+        public virtual string Reply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Participants.SuggestArticles.</summary>
     public class GoogleCloudDialogflowV2SuggestArticlesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16411,6 +16453,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Participants.SuggestSmartReplies.</summary>
+    public class GoogleCloudDialogflowV2SuggestSmartRepliesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of messages prior to and including latest_message to compile the suggestion. It may be smaller than
+        /// the SuggestSmartRepliesRequest.context_size field in the request if there aren't that many messages in the
+        /// conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used to compile suggestion for. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>
+        /// Output only. Multiple reply options provided by smart reply service. The order is based on the rank of the
+        /// model prediction. The maximum number of the returned replies is set in SmartReplyConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SmartReplyAnswer> SmartReplyAnswers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// One response of different type of suggestion response which is used in the response of
     /// Participants.AnalyzeContent and Participants.AnalyzeContent, as well as HumanAgentAssistantEvent.
@@ -16428,6 +16499,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]
         public virtual GoogleCloudDialogflowV2SuggestFaqAnswersResponse SuggestFaqAnswersResponse { get; set; }
+
+        /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
+        public virtual GoogleCloudDialogflowV2SuggestSmartRepliesResponse SuggestSmartRepliesResponse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

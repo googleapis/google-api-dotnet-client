@@ -322,10 +322,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             }
 
             /// <summary>
-            /// Returns true if valid credentials exist for the given data source and requesting user. Some data sources
-            /// doesn't support service account, so we need to talk to them on behalf of the end user. This API just
-            /// checks whether we have OAuth token for the particular user, which is a pre-requisite before user can
-            /// create a transfer config.
+            /// Returns true if valid credentials exist for the given data source and requesting user.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -338,10 +335,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             }
 
             /// <summary>
-            /// Returns true if valid credentials exist for the given data source and requesting user. Some data sources
-            /// doesn't support service account, so we need to talk to them on behalf of the end user. This API just
-            /// checks whether we have OAuth token for the particular user, which is a pre-requisite before user can
-            /// create a transfer config.
+            /// Returns true if valid credentials exist for the given data source and requesting user.
             /// </summary>
             public class CheckValidCredsRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsResponse>
             {
@@ -390,9 +384,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
             }
 
-            /// <summary>
-            /// Retrieves a supported data source and returns its settings, which can be used for UI rendering.
-            /// </summary>
+            /// <summary>Retrieves a supported data source and returns its settings.</summary>
             /// <param name="name">
             /// Required. The field will contain name of the resource requested, for example:
             /// `projects/{project_id}/dataSources/{data_source_id}` or
@@ -403,9 +395,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>
-            /// Retrieves a supported data source and returns its settings, which can be used for UI rendering.
-            /// </summary>
+            /// <summary>Retrieves a supported data source and returns its settings.</summary>
             public class GetRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -447,9 +437,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
             }
 
-            /// <summary>
-            /// Lists supported data sources and returns their settings, which can be used for UI rendering.
-            /// </summary>
+            /// <summary>Lists supported data sources and returns their settings.</summary>
             /// <param name="parent">
             /// Required. The BigQuery project id for which data sources should be returned. Must be in the form:
             /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}
@@ -459,9 +447,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>
-            /// Lists supported data sources and returns their settings, which can be used for UI rendering.
-            /// </summary>
+            /// <summary>Lists supported data sources and returns their settings.</summary>
             public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListDataSourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -568,10 +554,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Returns true if valid credentials exist for the given data source and requesting user. Some data
-                /// sources doesn't support service account, so we need to talk to them on behalf of the end user. This
-                /// API just checks whether we have OAuth token for the particular user, which is a pre-requisite before
-                /// user can create a transfer config.
+                /// Returns true if valid credentials exist for the given data source and requesting user.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -584,10 +567,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Returns true if valid credentials exist for the given data source and requesting user. Some data
-                /// sources doesn't support service account, so we need to talk to them on behalf of the end user. This
-                /// API just checks whether we have OAuth token for the particular user, which is a pre-requisite before
-                /// user can create a transfer config.
+                /// Returns true if valid credentials exist for the given data source and requesting user.
                 /// </summary>
                 public class CheckValidCredsRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsResponse>
                 {
@@ -636,9 +616,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
                 }
 
-                /// <summary>
-                /// Retrieves a supported data source and returns its settings, which can be used for UI rendering.
-                /// </summary>
+                /// <summary>Retrieves a supported data source and returns its settings.</summary>
                 /// <param name="name">
                 /// Required. The field will contain name of the resource requested, for example:
                 /// `projects/{project_id}/dataSources/{data_source_id}` or
@@ -649,9 +627,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>
-                /// Retrieves a supported data source and returns its settings, which can be used for UI rendering.
-                /// </summary>
+                /// <summary>Retrieves a supported data source and returns its settings.</summary>
                 public class GetRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.DataSource>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -693,9 +669,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
                 }
 
-                /// <summary>
-                /// Lists supported data sources and returns their settings, which can be used for UI rendering.
-                /// </summary>
+                /// <summary>Lists supported data sources and returns their settings.</summary>
                 /// <param name="parent">
                 /// Required. The BigQuery project id for which data sources should be returned. Must be in the form:
                 /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}
@@ -705,9 +679,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>
-                /// Lists supported data sources and returns their settings, which can be used for UI rendering.
-                /// </summary>
+                /// <summary>Lists supported data sources and returns their settings.</summary>
                 public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListDataSourcesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -830,7 +802,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             this.service = service;
                         }
 
-                        /// <summary>Returns user facing log messages for the data transfer run.</summary>
+                        /// <summary>Returns log messages for the transfer run.</summary>
                         /// <param name="parent">
                         /// Required. Transfer run name in the form:
                         /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
@@ -841,7 +813,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Returns user facing log messages for the data transfer run.</summary>
+                        /// <summary>Returns log messages for the transfer run.</summary>
                         public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferLogsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1074,7 +1046,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         }
                     }
 
-                    /// <summary>Returns information about running and completed jobs.</summary>
+                    /// <summary>Returns information about running and completed transfer runs.</summary>
                     /// <param name="parent">
                     /// Required. Name of transfer configuration for which transfer runs should be retrieved. Format of
                     /// transfer configuration resource name is: `projects/{project_id}/transferConfigs/{config_id}` or
@@ -1085,7 +1057,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Returns information about running and completed jobs.</summary>
+                    /// <summary>Returns information about running and completed transfer runs.</summary>
                     public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferRunsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2086,7 +2058,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         this.service = service;
                     }
 
-                    /// <summary>Returns user facing log messages for the data transfer run.</summary>
+                    /// <summary>Returns log messages for the transfer run.</summary>
                     /// <param name="parent">
                     /// Required. Transfer run name in the form:
                     /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
@@ -2097,7 +2069,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Returns user facing log messages for the data transfer run.</summary>
+                    /// <summary>Returns log messages for the transfer run.</summary>
                     public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferLogsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2324,7 +2296,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
                 }
 
-                /// <summary>Returns information about running and completed jobs.</summary>
+                /// <summary>Returns information about running and completed transfer runs.</summary>
                 /// <param name="parent">
                 /// Required. Name of transfer configuration for which transfer runs should be retrieved. Format of
                 /// transfer configuration resource name is: `projects/{project_id}/transferConfigs/{config_id}` or
@@ -2335,7 +2307,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Returns information about running and completed jobs.</summary>
+                /// <summary>Returns information about running and completed transfer runs.</summary>
                 public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferRunsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3167,9 +3139,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents data source metadata. Metadata is sufficient to render UI and request proper OAuth tokens.
-    /// </summary>
+    /// <summary>Defines the properties and custom parameters for a data source.</summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates the type of authorization.</summary>
@@ -3266,12 +3236,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a data source parameter with validation rules, so that parameters can be rendered in the UI. These
-    /// parameters are given to us by supported data sources, and include all needed information for rendering and
-    /// validation. Thus, whoever uses this api can decide to generate either generic ui, or custom data source specific
-    /// forms.
-    /// </summary>
+    /// <summary>A parameter used to define custom fields in a data source definition.</summary>
     public class DataSourceParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>All possible values for the parameter.</summary>

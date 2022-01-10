@@ -2795,6 +2795,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Output only. Flag to mark the version indicating the launch stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
         /// <summary>
         /// Output only. Resource name of the Connector. Format:
         /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}
@@ -3489,6 +3493,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Flag to mark the version indicating the launch stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>
         /// Output only. Resource name of the Provider. Format:

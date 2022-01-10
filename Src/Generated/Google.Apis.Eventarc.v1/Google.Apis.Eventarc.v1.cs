@@ -297,9 +297,240 @@ namespace Google.Apis.Eventarc.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                ChannelConnections = new ChannelConnectionsResource(service);
                 Channels = new ChannelsResource(service);
                 Operations = new OperationsResource(service);
                 Triggers = new TriggersResource(service);
+            }
+
+            /// <summary>Gets the ChannelConnections resource.</summary>
+            public virtual ChannelConnectionsResource ChannelConnections { get; }
+
+            /// <summary>The "channelConnections" collection of methods.</summary>
+            public class ChannelConnectionsResource
+            {
+                private const string Resource = "channelConnections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ChannelConnectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/channelConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Eventarc.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/channelConnections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Eventarc.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                    /// documentation for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/channelConnections/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Channels resource.</summary>
@@ -1220,7 +1451,7 @@ namespace Google.Apis.Eventarc.v1
                 /// <summary>Update a single trigger.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The resource name of the trigger. Must be unique within the location on the project and
+                /// Required. The resource name of the trigger. Must be unique within the location of the project and
                 /// must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Eventarc.v1.Data.Trigger body, string name)
@@ -1240,7 +1471,7 @@ namespace Google.Apis.Eventarc.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the trigger. Must be unique within the location on the project
+                    /// Required. The resource name of the trigger. Must be unique within the location of the project
                     /// and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1698,7 +1929,8 @@ namespace Google.Apis.Eventarc.v1.Data
     {
         /// <summary>
         /// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to
-        /// the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        /// the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route",
+        /// "route/subroute".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -1710,7 +1942,7 @@ namespace Google.Apis.Eventarc.v1.Data
         /// <summary>
         /// Required. The name of the Cloud Run service being addressed. See
         /// https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same
-        /// project of the trigger object can be addressed.
+        /// project as the trigger object can be addressed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -1730,7 +1962,7 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual CloudRun CloudRun { get; set; }
 
         /// <summary>
-        /// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+        /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gke")]
         public virtual GKE Gke { get; set; }
@@ -1825,7 +2057,8 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>
         /// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute
-        /// zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+        /// zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional
+        /// clusters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -1836,7 +2069,7 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>
         /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the
-        /// definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        /// definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -2124,17 +2357,17 @@ namespace Google.Apis.Eventarc.v1.Data
     public class Pubsub : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for
-        /// the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        /// Output only. The name of the Pub/Sub subscription created and managed by Eventarc as a transport for the
+        /// event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }
 
         /// <summary>
-        /// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event
-        /// delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of
-        /// the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be
-        /// deleted by Eventarc at trigger deletion.
+        /// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event
+        /// delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of
+        /// the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by
+        /// Eventarc at trigger deletion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
@@ -2191,10 +2424,10 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the transport intermediaries created for the trigger in order to deliver events.</summary>
+    /// <summary>Represents the transport intermediaries created for the trigger to deliver events.</summary>
     public class Transport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.</summary>
+        /// <summary>The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsub")]
         public virtual Pubsub Pubsub { get; set; }
 
@@ -2214,15 +2447,15 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual Destination Destination { get; set; }
 
         /// <summary>
-        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent
-        /// only on create requests to ensure the client has an up-to-date value before proceeding.
+        /// Output only. This checksum is computed by the server based on the value of other fields, and might be sent
+        /// only on create requests to ensure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
         /// Required. null The list of filters that applies to event attributes. Only events that match all the provided
-        /// filters will be sent to the destination.
+        /// filters are sent to the destination.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
         public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
@@ -2232,7 +2465,7 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in
+        /// Required. The resource name of the trigger. Must be unique within the location of the project and must be in
         /// `projects/{project}/locations/{location}/triggers/{trigger}` format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2240,27 +2473,26 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the
-        /// identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission
-        /// in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common
-        /// for more information. For Cloud Run destinations, this service account is used to generate identity tokens
-        /// when invoking the service. See
-        /// https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to
-        /// invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should
-        /// also have `roles/eventarc.eventReceiver` IAM role.
+        /// identity of the trigger. The principal who calls this API must have the `iam.serviceAccounts.actAs`
+        /// permission in the service account. See
+        /// https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For
+        /// Cloud Run destinations, this service account is used to generate identity tokens when invoking the service.
+        /// See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how
+        /// to invoke authenticated Cloud Run services. To create Audit Log triggers, the service account should also
+        /// have the `roles/eventarc.eventReceiver` IAM role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
         /// <summary>
-        /// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This
-        /// field contains a reference to that transport intermediary. This information can be used for debugging
-        /// purposes.
+        /// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field
+        /// contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transport")]
         public virtual Transport Transport { get; set; }
 
         /// <summary>
-        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
+        /// Output only. Server-assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
         /// to remain unchanged until the resource is deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]

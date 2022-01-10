@@ -37620,7 +37620,7 @@
    }
   }
  },
- "revision": "20211208",
+ "revision": "20211228",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -40381,7 +40381,8 @@
       "ORIGINAL_DESTINATION",
       "RANDOM",
       "RING_HASH",
-      "ROUND_ROBIN"
+      "ROUND_ROBIN",
+      "WEIGHTED_MAGLEV"
      ],
      "enumDescriptions": [
       "",
@@ -40390,7 +40391,8 @@
       "Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.",
       "The load balancer selects a random healthy host.",
       "The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.",
-      "This is a simple policy in which each healthy backend is selected in round robin order. This is the default."
+      "This is a simple policy in which each healthy backend is selected in round robin order. This is the default.",
+      "Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing."
      ],
      "type": "string"
     },
@@ -54621,7 +54623,7 @@
    "id": "LocationPolicyLocation",
    "properties": {
     "preference": {
-     "description": "Preference for a given location: ALLOW or DENY.",
+     "description": "Preference for a given location.",
      "enum": [
       "ALLOW",
       "DENY",
@@ -62038,6 +62040,7 @@
       "COMMITTED_E2_CPUS",
       "COMMITTED_LICENSES",
       "COMMITTED_LOCAL_SSD_TOTAL_GB",
+      "COMMITTED_M3_CPUS",
       "COMMITTED_MEMORY_OPTIMIZED_CPUS",
       "COMMITTED_N2A_CPUS",
       "COMMITTED_N2D_CPUS",
@@ -62087,6 +62090,7 @@
       "LOCAL_SSD_TOTAL_GB",
       "M1_CPUS",
       "M2_CPUS",
+      "M3_CPUS",
       "MACHINE_IMAGES",
       "N2A_CPUS",
       "N2D_CPUS",
@@ -62189,7 +62193,9 @@
       "",
       "",
       "",
+      "",
       "Guest CPUs",
+      "",
       "",
       "",
       "",
@@ -65243,6 +65249,24 @@
      "description": "The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.",
      "format": "uint32",
      "type": "integer"
+    },
+    "routeStatus": {
+     "description": "[Output only] The status of the route.",
+     "enum": [
+      "ACTIVE",
+      "DROPPED",
+      "INACTIVE",
+      "PENDING",
+      "UNKNOWN_ROUTE_STATUS"
+     ],
+     "enumDescriptions": [
+      "This route is processed and active.",
+      "The route is dropped due to the VPC exceeding the dynamic route limit. For dynamic route limit, please refer to the Learned route example",
+      "This route is processed but inactive due to failure from the backend. The backend may have rejected the route",
+      "This route is being processed internally. The status will change once processed.",
+      ""
+     ],
+     "type": "string"
     },
     "routeType": {
      "description": "[Output Only] The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route",

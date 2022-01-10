@@ -1054,11 +1054,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -1170,6 +1172,40 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     [Google.Apis.Util.RequestParameterAttribute("notebookInstance", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string NotebookInstance { get; private set; }
 
+                    /// <summary>
+                    /// Optional. The optional UpgradeType. Setting this field will search for additional compute images
+                    /// to upgrade this instance.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                    /// <summary>
+                    /// Optional. The optional UpgradeType. Setting this field will search for additional compute images
+                    /// to upgrade this instance.
+                    /// </summary>
+                    public enum TypeEnum
+                    {
+                        /// <summary>Upgrade type is not specified.</summary>
+                        [Google.Apis.Util.StringValueAttribute("UPGRADE_TYPE_UNSPECIFIED")]
+                        UPGRADETYPEUNSPECIFIED = 0,
+
+                        /// <summary>Upgrade ML framework.</summary>
+                        [Google.Apis.Util.StringValueAttribute("UPGRADE_FRAMEWORK")]
+                        UPGRADEFRAMEWORK = 1,
+
+                        /// <summary>Upgrade Operating System.</summary>
+                        [Google.Apis.Util.StringValueAttribute("UPGRADE_OS")]
+                        UPGRADEOS = 2,
+
+                        /// <summary>Upgrade CUDA.</summary>
+                        [Google.Apis.Util.StringValueAttribute("UPGRADE_CUDA")]
+                        UPGRADECUDA = 3,
+
+                        /// <summary>Upgrade All (OS, Framework and CUDA).</summary>
+                        [Google.Apis.Util.StringValueAttribute("UPGRADE_ALL")]
+                        UPGRADEALL = 4,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "isUpgradeable";
 
@@ -1190,6 +1226,14 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -1981,6 +2025,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Add/update metadata items for an instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual UpdateMetadataItemsRequest UpdateMetadataItems(Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceMetadataItemsRequest body, string name)
+                {
+                    return new UpdateMetadataItemsRequest(service, body, name);
+                }
+
+                /// <summary>Add/update metadata items for an instance.</summary>
+                public class UpdateMetadataItemsRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceMetadataItemsResponse>
+                {
+                    /// <summary>Constructs a new UpdateMetadataItems request.</summary>
+                    public UpdateMetadataItemsRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceMetadataItemsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceMetadataItemsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateMetadataItems";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:updateMetadataItems";
+
+                    /// <summary>Initializes UpdateMetadataItems parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the Shielded instance configuration of a single Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2663,11 +2764,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -5495,6 +5598,28 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for adding/changing metadata items for an instance.</summary>
+    public class UpdateInstanceMetadataItemsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata items to add/update for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for adding/changing metadata items for an instance.</summary>
+    public class UpdateInstanceMetadataItemsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Map of items that were added/updated to/in the metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Request for updating the Shielded Instance config for a notebook instance. You can only use this method on a
     /// stopped instance
@@ -5560,6 +5685,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     public class UpgradeInstanceInternalRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The optional UpgradeType. Setting this field will search for additional compute images to upgrade
+        /// this instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
         /// Required. The VM hardware token for authenticating the VM.
         /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
         /// </summary>
@@ -5573,6 +5705,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for upgrading a notebook instance</summary>
     public class UpgradeInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The optional UpgradeType. Setting this field will search for additional compute images to upgrade
+        /// this instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

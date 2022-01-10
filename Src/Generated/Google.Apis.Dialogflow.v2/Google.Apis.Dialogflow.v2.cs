@@ -3573,6 +3573,19 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
+                        /// The filter expression used to filter documents returned by the list method. The expression
+                        /// has the following syntax: [AND ] ... The following fields and operators are supported: *
+                        /// knowledge_types with has(:) operator * display_name with has(:) operator * state with
+                        /// equals(=) operator Examples: * "knowledge_types:FAQ" matches documents with FAQ knowledge
+                        /// type. * "display_name:customer" matches documents whose display name contains "customer". *
+                        /// "state=ACTIVE" matches documents with ACTIVE state. * "knowledge_types:FAQ AND state=ACTIVE"
+                        /// matches all active FAQ documents. For more information about filtering, see [API
+                        /// Filtering](https://aip.dev/160).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
                         /// The maximum number of items to return in a single page. By default 10 and at most 100.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3602,6 +3615,14 @@ namespace Google.Apis.Dialogflow.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -3984,6 +4005,21 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// The filter expression used to filter knowledge bases returned by the list method. The expression
+                    /// has the following syntax: [AND ] ... The following fields and operators are supported: *
+                    /// display_name with has(:) operator * language_code with equals(=) operator Examples: *
+                    /// 'language_code=en-us' matches knowledge bases with en-us language code. *
+                    /// 'display_name:articles' matches knowledge bases whose display name contains "articles". *
+                    /// 'display_name:"Best Articles"' matches knowledge bases whose display name contains "Best
+                    /// Articles". * 'language_code=en-gb AND display_name=articles' matches all knowledge bases whose
+                    /// display name contains "articles" and whose language code is "en-gb". Note: An empty filter
+                    /// string (i.e. "") is a no-op and will result in no filtering. For more information about
+                    /// filtering, see [API Filtering](https://aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// The maximum number of items to return in a single page. By default 10 and at most 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -4013,6 +4049,14 @@ namespace Google.Apis.Dialogflow.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/agent$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -6785,6 +6829,65 @@ namespace Google.Apis.Dialogflow.v2
                             });
                         }
                     }
+
+                    /// <summary>Gets smart replies for a participant based on specific historical messages.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the participant to fetch suggestion for. Format:
+                    /// `projects//locations//conversations//participants/`.
+                    /// </param>
+                    public virtual SuggestSmartRepliesRequest SuggestSmartReplies(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest body, string parent)
+                    {
+                        return new SuggestSmartRepliesRequest(service, body, parent);
+                    }
+
+                    /// <summary>Gets smart replies for a participant based on specific historical messages.</summary>
+                    public class SuggestSmartRepliesRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesResponse>
+                    {
+                        /// <summary>Constructs a new SuggestSmartReplies request.</summary>
+                        public SuggestSmartRepliesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the participant to fetch suggestion for. Format:
+                        /// `projects//locations//conversations//participants/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "suggestSmartReplies";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/suggestions:suggestSmartReplies";
+
+                        /// <summary>Initializes SuggestSmartReplies parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/conversations/[^/]+/participants/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -7586,6 +7689,75 @@ namespace Google.Apis.Dialogflow.v2
                     }
                 }
 
+                /// <summary>
+                /// Exports a smart messaging candidate document into the specified destination. This method is a
+                /// [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+                /// The returned `Operation` type has the following method-specific fields: - `metadata`:
+                /// KnowledgeOperationMetadata - `response`: Document
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the document to export. Format:
+                /// `projects//locations//knowledgeBases//documents/`.
+                /// </param>
+                public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest body, string name)
+                {
+                    return new ExportRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Exports a smart messaging candidate document into the specified destination. This method is a
+                /// [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+                /// The returned `Operation` type has the following method-specific fields: - `metadata`:
+                /// KnowledgeOperationMetadata - `response`: Document
+                /// </summary>
+                public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Export request.</summary>
+                    public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the document to export. Format:
+                    /// `projects//locations//knowledgeBases//documents/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "export";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:export";
+
+                    /// <summary>Initializes Export parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/knowledgeBases/[^/]+/documents/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Retrieves the specified document.</summary>
                 /// <param name="name">
                 /// Required. The name of the document to retrieve. Format
@@ -7665,6 +7837,19 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// The filter expression used to filter documents returned by the list method. The expression has
+                    /// the following syntax: [AND ] ... The following fields and operators are supported: *
+                    /// knowledge_types with has(:) operator * display_name with has(:) operator * state with equals(=)
+                    /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ knowledge type. *
+                    /// "display_name:customer" matches documents whose display name contains "customer". *
+                    /// "state=ACTIVE" matches documents with ACTIVE state. * "knowledge_types:FAQ AND state=ACTIVE"
+                    /// matches all active FAQ documents. For more information about filtering, see [API
+                    /// Filtering](https://aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// The maximum number of items to return in a single page. By default 10 and at most 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -7694,6 +7879,14 @@ namespace Google.Apis.Dialogflow.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/knowledgeBases/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -8072,6 +8265,20 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// The filter expression used to filter knowledge bases returned by the list method. The expression has
+                /// the following syntax: [AND ] ... The following fields and operators are supported: * display_name
+                /// with has(:) operator * language_code with equals(=) operator Examples: * 'language_code=en-us'
+                /// matches knowledge bases with en-us language code. * 'display_name:articles' matches knowledge bases
+                /// whose display name contains "articles". * 'display_name:"Best Articles"' matches knowledge bases
+                /// whose display name contains "Best Articles". * 'language_code=en-gb AND display_name=articles'
+                /// matches all knowledge bases whose display name contains "articles" and whose language code is
+                /// "en-gb". Note: An empty filter string (i.e. "") is a no-op and will result in no filtering. For more
+                /// information about filtering, see [API Filtering](https://aip.dev/160).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// The maximum number of items to return in a single page. By default 10 and at most 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -8101,6 +8308,14 @@ namespace Google.Apis.Dialogflow.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -13986,6 +14201,69 @@ namespace Google.Apis.Dialogflow.v2
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Gets smart replies for a participant based on specific historical messages.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the participant to fetch suggestion for. Format:
+                        /// `projects//locations//conversations//participants/`.
+                        /// </param>
+                        public virtual SuggestSmartRepliesRequest SuggestSmartReplies(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest body, string parent)
+                        {
+                            return new SuggestSmartRepliesRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Gets smart replies for a participant based on specific historical messages.
+                        /// </summary>
+                        public class SuggestSmartRepliesRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesResponse>
+                        {
+                            /// <summary>Constructs a new SuggestSmartReplies request.</summary>
+                            public SuggestSmartRepliesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the participant to fetch suggestion for. Format:
+                            /// `projects//locations//conversations//participants/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "suggestSmartReplies";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/suggestions:suggestSmartReplies";
+
+                            /// <summary>Initializes SuggestSmartReplies parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+/participants/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>
@@ -14794,6 +15072,77 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
+                    /// <summary>
+                    /// Exports a smart messaging candidate document into the specified destination. This method is a
+                    /// [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the document to export. Format:
+                    /// `projects//locations//knowledgeBases//documents/`.
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest body, string name)
+                    {
+                        return new ExportRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Exports a smart messaging candidate document into the specified destination. This method is a
+                    /// [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: Document
+                    /// </summary>
+                    public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the document to export. Format:
+                        /// `projects//locations//knowledgeBases//documents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/knowledgeBases/[^/]+/documents/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves the specified document.</summary>
                     /// <param name="name">
                     /// Required. The name of the document to retrieve. Format
@@ -14873,6 +15222,19 @@ namespace Google.Apis.Dialogflow.v2
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
+                        /// The filter expression used to filter documents returned by the list method. The expression
+                        /// has the following syntax: [AND ] ... The following fields and operators are supported: *
+                        /// knowledge_types with has(:) operator * display_name with has(:) operator * state with
+                        /// equals(=) operator Examples: * "knowledge_types:FAQ" matches documents with FAQ knowledge
+                        /// type. * "display_name:customer" matches documents whose display name contains "customer". *
+                        /// "state=ACTIVE" matches documents with ACTIVE state. * "knowledge_types:FAQ AND state=ACTIVE"
+                        /// matches all active FAQ documents. For more information about filtering, see [API
+                        /// Filtering](https://aip.dev/160).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
                         /// The maximum number of items to return in a single page. By default 10 and at most 100.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -14902,6 +15264,14 @@ namespace Google.Apis.Dialogflow.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/knowledgeBases/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -15284,6 +15654,21 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// The filter expression used to filter knowledge bases returned by the list method. The expression
+                    /// has the following syntax: [AND ] ... The following fields and operators are supported: *
+                    /// display_name with has(:) operator * language_code with equals(=) operator Examples: *
+                    /// 'language_code=en-us' matches knowledge bases with en-us language code. *
+                    /// 'display_name:articles' matches knowledge bases whose display name contains "articles". *
+                    /// 'display_name:"Best Articles"' matches knowledge bases whose display name contains "Best
+                    /// Articles". * 'language_code=en-gb AND display_name=articles' matches all knowledge bases whose
+                    /// display name contains "articles" and whose language code is "en-gb". Note: An empty filter
+                    /// string (i.e. "") is a no-op and will result in no filtering. For more information about
+                    /// filtering, see [API Filtering](https://aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// The maximum number of items to return in a single page. By default 10 and at most 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -15313,6 +15698,14 @@ namespace Google.Apis.Dialogflow.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -17328,6 +17721,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual string CurrentPage { get; set; }
 
+        /// <summary>
+        /// Always present for WebhookRequest. Ignored for WebhookResponse. The display name of the current page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Optional for both WebhookRequest and WebhookResponse. Information about the form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInfo")]
         public virtual GoogleCloudDialogflowCxV3PageInfoFormInfo FormInfo { get; set; }
@@ -19175,6 +19574,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual string CurrentPage { get; set; }
+
+        /// <summary>
+        /// Always present for WebhookRequest. Ignored for WebhookResponse. The display name of the current page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional for both WebhookRequest and WebhookResponse. Information about the form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInfo")]
@@ -21280,6 +21685,25 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for Documents.ExportDocument.</summary>
+    public class GoogleCloudDialogflowV2ExportDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When enabled, export the full content of the document including empirical probability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportFullContent")]
+        public virtual System.Nullable<bool> ExportFullContent { get; set; }
+
+        /// <summary>Cloud Storage file path to export the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudDialogflowV2GcsDestination GcsDestination { get; set; }
+
+        /// <summary>When enabled, export the smart messaging allowlist document for partial update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartMessagingPartialUpdate")]
+        public virtual System.Nullable<bool> SmartMessagingPartialUpdate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents answer from "frequently asked questions".</summary>
     public class GoogleCloudDialogflowV2FaqAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21403,6 +21827,21 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Google Cloud Storage location for the output.</summary>
+    public class GoogleCloudDialogflowV2GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Google Cloud Storage URIs for the output. A URI is of the form: gs://bucket/object-prefix-or-name
+        /// Whether a prefix or name is used depends on the use case. The requesting user must have "write-permission"
+        /// to the bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the Human Agent Assist to connect to a conversation.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21438,6 +21877,19 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Conversation model resource name. Format: `projects//conversationModels/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config to process conversation.</summary>
+    public class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentSentencesCount")]
+        public virtual System.Nullable<int> RecentSentencesCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21501,6 +21953,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Configs of custom conversation model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModelConfig")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig ConversationModelConfig { get; set; }
+
+        /// <summary>Configs for processing conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProcessConfig")]
+        public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig ConversationProcessConfig { get; set; }
 
         /// <summary>
         /// Automatically iterates all participants and tries to compile suggestions. Supported features:
@@ -23010,7 +23466,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        /// <summary>Output only. The time when the message was created.</summary>
+        /// <summary>Output only. The time when the message was created in Contact Center AI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -23026,7 +23482,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2MessageAnnotation MessageAnnotation { get; set; }
 
         /// <summary>
-        /// The unique identifier of the message. Format: `projects//locations//conversations//messages/`.
+        /// Optional. The unique identifier of the message. Format: `projects//locations//conversations//messages/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -23038,6 +23494,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Output only. The role of the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
         public virtual string ParticipantRole { get; set; }
+
+        /// <summary>Optional. The time when the message was sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
+        public virtual object SendTime { get; set; }
+
+        /// <summary>Output only. The sentiment analysis result for the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysis")]
+        public virtual GoogleCloudDialogflowV2SentimentAnalysisResult SentimentAnalysis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23411,6 +23875,19 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentUri")]
         public virtual string ContentUri { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to import custom metadata from Google Cloud Storage. Only valid when the document source
+        /// is Google Cloud Storage URI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importGcsCustomMetadata")]
+        public virtual System.Nullable<bool> ImportGcsCustomMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. When enabled, the reload request is to apply partial update to the smart messaging allowlist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartMessagingPartialUpdate")]
+        public virtual System.Nullable<bool> SmartMessagingPartialUpdate { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -23539,6 +24016,28 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a smart reply answer.</summary>
+    public class GoogleCloudDialogflowV2SmartReplyAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of answer record, in the format of "projects//locations//answerRecords/"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>
+        /// Smart reply confidence. The system's confidence score that this reply is a good match for this conversation,
+        /// as a value from 0.0 (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The content of the reply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reply")]
+        public virtual string Reply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Hints for the speech recognizer to help with recognition in a specific conversation state.</summary>
     public class GoogleCloudDialogflowV2SpeechContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23589,15 +24088,15 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
 
         /// <summary>
-        /// Max number of messages prior to and including latest_message to use as context when compiling the
+        /// Optional. Max number of messages prior to and including latest_message to use as context when compiling the
         /// suggestion. By default 20 and at most 50.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
         public virtual System.Nullable<int> ContextSize { get; set; }
 
         /// <summary>
-        /// The name of the latest conversation message to compile suggestion for. If empty, it will be the latest
-        /// message of the conversation. Format: `projects//locations//conversations//messages/`.
+        /// Optional. The name of the latest conversation message to compile suggestion for. If empty, it will be the
+        /// latest message of the conversation. Format: `projects//locations//conversations//messages/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
         public virtual string LatestMessage { get; set; }
@@ -23640,15 +24139,15 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
 
         /// <summary>
-        /// Max number of messages prior to and including [latest_message] to use as context when compiling the
-        /// suggestion. By default 20 and at most 50.
+        /// Optional. Max number of messages prior to and including [latest_message] to use as context when compiling
+        /// the suggestion. By default 20 and at most 50.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
         public virtual System.Nullable<int> ContextSize { get; set; }
 
         /// <summary>
-        /// The name of the latest conversation message to compile suggestion for. If empty, it will be the latest
-        /// message of the conversation. Format: `projects//locations//conversations//messages/`.
+        /// Optional. The name of the latest conversation message to compile suggestion for. If empty, it will be the
+        /// latest message of the conversation. Format: `projects//locations//conversations//messages/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
         public virtual string LatestMessage { get; set; }
@@ -23678,6 +24177,63 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
         public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Participants.SuggestSmartReplies.</summary>
+    public class GoogleCloudDialogflowV2SuggestSmartRepliesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Max number of messages prior to and including [latest_message] to use as context when compiling the
+        /// suggestion. By default 20 and at most 50.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// The current natural language text segment to compile suggestion for. This provides a way for user to get
+        /// follow up smart reply suggestion after a smart reply selection, without sending a text message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentTextInput")]
+        public virtual GoogleCloudDialogflowV2TextInput CurrentTextInput { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message to compile suggestion for. If empty, it will be the latest
+        /// message of the conversation. Format: `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Participants.SuggestSmartReplies.</summary>
+    public class GoogleCloudDialogflowV2SuggestSmartRepliesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of messages prior to and including latest_message to compile the suggestion. It may be smaller than
+        /// the SuggestSmartRepliesRequest.context_size field in the request if there aren't that many messages in the
+        /// conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used to compile suggestion for. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>
+        /// Output only. Multiple reply options provided by smart reply service. The order is based on the rank of the
+        /// model prediction. The maximum number of the returned replies is set in SmartReplyConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SmartReplyAnswer> SmartReplyAnswers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23714,6 +24270,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]
         public virtual GoogleCloudDialogflowV2SuggestFaqAnswersResponse SuggestFaqAnswersResponse { get; set; }
+
+        /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
+        public virtual GoogleCloudDialogflowV2SuggestSmartRepliesResponse SuggestSmartRepliesResponse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
