@@ -7,5 +7,12 @@
   "Google.Apis.AIPlatformNotebooks.v1.AIPlatformNotebooksBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.AIPlatformNotebooks.v1.ProjectsResource+LocationsResource+InstancesResource+IsUpgradeableRequest.TypeEnum": [
+    "UPGRADE_TYPE_UNSPECIFIED",
+    "UPGRADE_FRAMEWORK",
+    "UPGRADE_OS",
+    "UPGRADE_CUDA",
+    "UPGRADE_ALL"
   ]
 }

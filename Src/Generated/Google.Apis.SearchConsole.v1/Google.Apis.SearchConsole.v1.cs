@@ -371,7 +371,10 @@ namespace Google.Apis.SearchConsole.v1
             this.service = service;
         }
 
-        /// <summary>Deletes a sitemap from this site.</summary>
+        /// <summary>
+        /// Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that
+        /// were previously crawled in the deleted sitemap.
+        /// </summary>
         /// <param name="siteUrl">The site's URL, including protocol. For example: `http://www.example.com/`.</param>
         /// <param name="feedpath">
         /// The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.
@@ -381,7 +384,10 @@ namespace Google.Apis.SearchConsole.v1
             return new DeleteRequest(service, siteUrl, feedpath);
         }
 
-        /// <summary>Deletes a sitemap from this site.</summary>
+        /// <summary>
+        /// Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that
+        /// were previously crawled in the deleted sitemap.
+        /// </summary>
         public class DeleteRequest : SearchConsoleBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>

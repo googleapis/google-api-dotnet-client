@@ -7527,10 +7527,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual GoogleAnalyticsAdminV1alphaAccount Account { get; set; }
 
-        /// <summary>A snapshot of an AndroidAppDataStream resource in change history.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("androidAppDataStream")]
-        public virtual GoogleAnalyticsAdminV1alphaAndroidAppDataStream AndroidAppDataStream { get; set; }
-
         /// <summary>A snapshot of a ConversionEvent resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionEvent")]
         public virtual GoogleAnalyticsAdminV1alphaConversionEvent ConversionEvent { get; set; }
@@ -7546,6 +7542,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of a data retention settings resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionSettings")]
         public virtual GoogleAnalyticsAdminV1alphaDataRetentionSettings DataRetentionSettings { get; set; }
+
+        /// <summary>A snapshot of a DataStream resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStream")]
+        public virtual GoogleAnalyticsAdminV1alphaDataStream DataStream { get; set; }
 
         /// <summary>A snapshot of a DisplayVideo360AdvertiserLink resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLink")]
@@ -7567,10 +7567,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSignalsSettings")]
         public virtual GoogleAnalyticsAdminV1alphaGoogleSignalsSettings GoogleSignalsSettings { get; set; }
 
-        /// <summary>A snapshot of an IosAppDataStream resource in change history.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosAppDataStream")]
-        public virtual GoogleAnalyticsAdminV1alphaIosAppDataStream IosAppDataStream { get; set; }
-
         /// <summary>A snapshot of a MeasurementProtocolSecret resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementProtocolSecret")]
         public virtual GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret MeasurementProtocolSecret { get; set; }
@@ -7578,10 +7574,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of a Property resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual GoogleAnalyticsAdminV1alphaProperty Property { get; set; }
-
-        /// <summary>A snapshot of a WebDataStream resource in change history.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webDataStream")]
-        public virtual GoogleAnalyticsAdminV1alphaWebDataStream WebDataStream { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

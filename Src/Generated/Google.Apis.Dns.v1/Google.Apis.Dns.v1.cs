@@ -4584,6 +4584,10 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeysPerManagedZone")]
         public virtual System.Nullable<int> DnsKeysPerManagedZone { get; set; }
 
+        /// <summary>Maximum allowed number of items per routing policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsPerRoutingPolicy")]
+        public virtual System.Nullable<int> ItemsPerRoutingPolicy { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4643,6 +4647,100 @@ namespace Google.Apis.Dns.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying
+    /// based on configured properties such as geolocation or by weighted random selection.
+    /// </summary>
+    public class RRSetRoutingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("geo")]
+        public virtual RRSetRoutingPolicyGeoPolicy Geo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("wrr")]
+        public virtual RRSetRoutingPolicyWrrPolicy Wrr { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RRSetRoutingPolicyGeoPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The primary geo routing configuration. If there are multiple items with the same location, an error is
+        /// returned instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> Items { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RRSetRoutingPolicyGeoPolicyGeoPolicyItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g.
+        /// "us-east1", "southamerica-east1", "asia-east1", etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rrdatas")]
+        public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
+
+        /// <summary>DNSSEC generated signatures for the above geo_rrdata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
+        public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RRSetRoutingPolicyWrrPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> Items { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RRSetRoutingPolicyWrrPolicyWrrPolicyItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rrdatas")]
+        public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
+
+        /// <summary>DNSSEC generated signatures for the above wrr_rrdata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
+        public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
+
+        /// <summary>
+        /// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are
+        /// configured, the probability of returning an rrset is proportional to its weight relative to the sum of
+        /// weights configured for all items. This weight should be non-negative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<double> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A unit of data that is returned by the DNS servers.</summary>
     public class ResourceRecordSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4652,6 +4750,14 @@ namespace Google.Apis.Dns.v1.Data
         /// <summary>For example, www.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based
+        /// routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An
+        /// error is returned otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingPolicy")]
+        public virtual RRSetRoutingPolicy RoutingPolicy { get; set; }
 
         /// <summary>As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrdatas")]

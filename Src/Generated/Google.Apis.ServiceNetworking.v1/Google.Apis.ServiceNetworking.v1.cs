@@ -5107,6 +5107,13 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     public class ValidateConsumerConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The IAM permission check determines whether the consumer project has
+        /// 'servicenetworking.services.use' permission or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkServiceNetworkingUsePermission")]
+        public virtual System.Nullable<bool> CheckServiceNetworkingUsePermission { get; set; }
+
+        /// <summary>
         /// Required. The network that the consumer is using to connect with services. Must be in the form of
         /// projects/{project}/global/networks/{network} {project} is a project number, as in '12345' {network} is
         /// network name.
