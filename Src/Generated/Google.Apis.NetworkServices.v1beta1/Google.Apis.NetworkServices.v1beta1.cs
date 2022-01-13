@@ -1165,6 +1165,179 @@ namespace Google.Apis.NetworkServices.v1beta1
                     this.service = service;
                 }
 
+                /// <summary>Creates a new ServiceBinding in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the ServiceBinding. Must be in the format
+                /// `projects/*/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new ServiceBinding in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the ServiceBinding. Must be in the format
+                    /// `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the ServiceBinding resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("serviceBindingId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ServiceBindingId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/serviceBindings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("serviceBindingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceBindingId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single ServiceBinding.</summary>
+                /// <param name="name">
+                /// Required. A name of the ServiceBinding to delete. Must be in the format
+                /// `projects/*/locations/global/serviceBindings/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single ServiceBinding.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the ServiceBinding to delete. Must be in the format
+                    /// `projects/*/locations/global/serviceBindings/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceBindings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single ServiceBinding.</summary>
+                /// <param name="name">
+                /// Required. A name of the ServiceBinding to get. Must be in the format
+                /// `projects/*/locations/global/serviceBindings/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single ServiceBinding.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the ServiceBinding to get. Must be in the format
+                    /// `projects/*/locations/global/serviceBindings/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceBindings/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -1235,6 +1408,161 @@ namespace Google.Apis.NetworkServices.v1beta1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists ServiceBinding in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the ServiceBindings should be listed, specified in the
+                /// format `projects/*/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists ServiceBinding in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListServiceBindingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the ServiceBindings should be listed, specified in
+                    /// the format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of ServiceBindings to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListServiceBindingsResponse` Indicates that this is a
+                    /// continuation of a prior `ListRouters` call, and that the system should return the next page of
+                    /// data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/serviceBindings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single ServiceBinding.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the ServiceBinding resource. It matches pattern
+                /// `projects/*/locations/global/serviceBindings/service_binding_name&amp;gt;`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single ServiceBinding.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the ServiceBinding resource. It matches pattern
+                    /// `projects/*/locations/global/serviceBindings/service_binding_name&amp;gt;`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the ServiceBinding
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceBindings/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1815,6 +2143,24 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the ListServiceBindings method.</summary>
+    public class ListServiceBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of ServiceBinding resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceBindings")]
+        public virtual System.Collections.Generic.IList<ServiceBinding> ServiceBindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2041,6 +2387,52 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// ServiceBinding is the resource that defines a Service Directory Service to be used in a BackendService resource.
+    /// </summary>
+    public class ServiceBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The endpoint filter associated with the Service Binding. The syntax is described in
+        /// http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointFilter")]
+        public virtual string EndpointFilter { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the ServiceBinding resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Name of the ServiceBinding resource. It matches pattern
+        /// `projects/*/locations/global/serviceBindings/service_binding_name&amp;gt;`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The full service directory service name of the format
+        /// /projects/*/locations/*/namespaces/*/services/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>

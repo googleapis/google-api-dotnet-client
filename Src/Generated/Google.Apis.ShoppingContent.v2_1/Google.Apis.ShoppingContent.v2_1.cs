@@ -12583,6 +12583,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adultContent")]
         public virtual System.Nullable<bool> AdultContent { get; set; }
 
+        /// <summary>
+        /// The automatic improvements of the account can be used to automatically update items, improve images and
+        /// shipping. Each section inside AutomaticImprovements is updated separately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticImprovements")]
+        public virtual AccountAutomaticImprovements AutomaticImprovements { get; set; }
+
         /// <summary>Automatically created label IDs that are assigned to the account by CSS Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticLabelIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<ulong>> AutomaticLabelIds { get; set; }
@@ -12695,6 +12702,48 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The automatic improvements of the account can be used to automatically update items, improve images and
+    /// shipping.
+    /// </summary>
+    public class AccountAutomaticImprovements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This improvement will attempt to automatically correct submitted images if they don't meet the [image
+        /// requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If
+        /// successful, the image will be replaced and approved. This improvement is only applied to images of
+        /// disapproved offers. For more information see: [Automatic image
+        /// improvements](https://support.google.com/merchants/answer/9242973) This field is only updated (cleared) if
+        /// provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageImprovements")]
+        public virtual AccountImageImprovements ImageImprovements { get; set; }
+
+        /// <summary>
+        /// Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to
+        /// automatically update items for you. When item updates are on, Google uses the structured data markup on the
+        /// website and advanced data extractors to update the price and availability of the items. When the item
+        /// updates are off, items with mismatched data aren't shown. This field is only updated (cleared) if provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemUpdates")]
+        public virtual AccountItemUpdates ItemUpdates { get; set; }
+
+        /// <summary>
+        /// Not available for MCAs [accounts](https://support.google.com/merchants/answer/188487). By turning on
+        /// [automatic shipping improvements](https://support.google.com/merchants/answer/10027038), you are allowing
+        /// Google to improve the accuracy of your delivery times shown to shoppers using Google. More accurate delivery
+        /// times, especially when faster, typically lead to better conversion rates. Google will improve your estimated
+        /// delivery times based on various factors: - Delivery address of an order - Current handling time and shipping
+        /// time settings - Estimated weekdays or business days - Parcel tracking data This field is only updated
+        /// (cleared) if provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingImprovements")]
+        public virtual AccountShippingImprovements ShippingImprovements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12817,6 +12866,117 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This improvement will attempt to automatically correct submitted images if they don't meet the [image
+    /// requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If
+    /// successful, the image will be replaced and approved. This improvement is only applied to images of disapproved
+    /// offers. For more information see: [Automatic image
+    /// improvements](https://support.google.com/merchants/answer/9242973)
+    /// </summary>
+    public class AccountImageImprovements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Determines how the images should be automatically updated. If this field is not present, then the settings
+        /// will be deleted. If there are no settings for subaccount, they are inherited from aggregator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountImageImprovementsSettings")]
+        public virtual AccountImageImprovementsSettings AccountImageImprovementsSettings { get; set; }
+
+        /// <summary>
+        /// Output only. The effective value of allow_automatic_image_improvements. If
+        /// account_image_improvements_settings is present, then this value is the same. Otherwise, it represents the
+        /// inherited value of the parent account. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveAllowAutomaticImageImprovements")]
+        public virtual System.Nullable<bool> EffectiveAllowAutomaticImageImprovements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for the Automatic Image Improvements.</summary>
+    public class AccountImageImprovementsSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables automatic image improvements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAutomaticImageImprovements")]
+        public virtual System.Nullable<bool> AllowAutomaticImageImprovements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to automatically
+    /// update items for you. When item updates are on, Google uses the structured data markup on the website and
+    /// advanced data extractors to update the price and availability of the items. When the item updates are off, items
+    /// with mismatched data aren't shown.
+    /// </summary>
+    public class AccountItemUpdates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Determines which attributes of the items should be automatically updated. If this field is not present, then
+        /// the settings will be deleted. If there are no settings for subaccount, they are inherited from aggregator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountItemUpdatesSettings")]
+        public virtual AccountItemUpdatesSettings AccountItemUpdatesSettings { get; set; }
+
+        /// <summary>
+        /// Output only. The effective value of allow_availability_updates. If account_item_updates_settings is present,
+        /// then this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveAllowAvailabilityUpdates")]
+        public virtual System.Nullable<bool> EffectiveAllowAvailabilityUpdates { get; set; }
+
+        /// <summary>
+        /// Output only. The effective value of allow_price_updates. If account_item_updates_settings is present, then
+        /// this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveAllowPriceUpdates")]
+        public virtual System.Nullable<bool> EffectiveAllowPriceUpdates { get; set; }
+
+        /// <summary>
+        /// Output only. The effective value of allow_strict_availability_updates. If account_item_updates_settings is
+        /// present, then this value is the same. Otherwise, it represents the inherited value of the parent account.
+        /// Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveAllowStrictAvailabilityUpdates")]
+        public virtual System.Nullable<bool> EffectiveAllowStrictAvailabilityUpdates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for the Automatic Item Updates.</summary>
+    public class AccountItemUpdatesSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If availability updates are enabled, any previous availability values get overwritten if Google finds an
+        /// out-of-stock annotation on the offer's page. If additionally `allow_availability_updates` field is set to
+        /// true, values get overwritten if Google finds an in-stock annotation on the offer’s page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAvailabilityUpdates")]
+        public virtual System.Nullable<bool> AllowAvailabilityUpdates { get; set; }
+
+        /// <summary>
+        /// If price updates are enabled, Google always updates the active price with the crawled information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPriceUpdates")]
+        public virtual System.Nullable<bool> AllowPriceUpdates { get; set; }
+
+        /// <summary>
+        /// If allow_availability_updates is enabled, items are automatically updated in all your Shopping target
+        /// countries. By default, availability updates will only be applied to items that are 'out of stock' on your
+        /// website but 'in stock' on Shopping. Set this to true to also update items that are 'in stock' on your
+        /// website, but 'out of stock' on Google Shopping. In order for this field to have an effect, you must also
+        /// allow availability updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowStrictAvailabilityUpdates")]
+        public virtual System.Nullable<bool> AllowStrictAvailabilityUpdates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Label assigned by CSS domain or CSS group to one of its sub-accounts.</summary>
     public class AccountLabel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12866,6 +13026,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The carrier code enum. Accepts the values FEDEX or UPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierCode")]
         public virtual string CarrierCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Not available for MCAs [accounts](https://support.google.com/merchants/answer/188487). By turning on [automatic
+    /// shipping improvements](https://support.google.com/merchants/answer/10027038), you are allowing Google to improve
+    /// the accuracy of your delivery times shown to shoppers using Google. More accurate delivery times, especially
+    /// when faster, typically lead to better conversion rates. Google will improve your estimated delivery times based
+    /// on various factors: * Delivery address of an order * Current handling time and shipping time settings *
+    /// Estimated weekdays or business days * Parcel tracking data
+    /// </summary>
+    public class AccountShippingImprovements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables automatic shipping improvements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowShippingImprovements")]
+        public virtual System.Nullable<bool> AllowShippingImprovements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14378,9 +14556,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center).
-        /// Default destinations are always included unless provided in `excludedDestinations`. List of supported
-        /// destinations (if available to the account): - DisplayAds - Shopping - ShoppingActions - SurfacesAcrossGoogle
-        /// 
+        /// Default destinations are always included unless provided in `excludedDestinations`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
@@ -19222,9 +19398,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Store resource.</summary>
     public class PosStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The business type of the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcidCategory")]
+        public virtual System.Collections.Generic.IList<string> GcidCategory { get; set; }
+
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#posStore`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The store phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The Google Place Id of the store location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
 
         /// <summary>Required. The street address of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeAddress")]
@@ -19233,6 +19421,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. A store identifier that is unique for the given merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
+
+        /// <summary>The merchant or store name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeName")]
+        public virtual string StoreName { get; set; }
+
+        /// <summary>The website url for the store or merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

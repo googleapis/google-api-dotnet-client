@@ -1673,7 +1673,9 @@ namespace Google.Apis.Document.v1
                 }
             }
 
-            /// <summary>Fetches processor types.</summary>
+            /// <summary>
+            /// Fetches processor types. Note that we do not use ListProcessorTypes here because it is not paginated.
+            /// </summary>
             /// <param name="parent">
             /// Required. The project of processor type to list. The available processor types may depend on the
             /// allow-listing on projects. Format: `projects/{project}/locations/{location}`
@@ -1683,7 +1685,9 @@ namespace Google.Apis.Document.v1
                 return new FetchProcessorTypesRequest(service, parent);
             }
 
-            /// <summary>Fetches processor types.</summary>
+            /// <summary>
+            /// Fetches processor types. Note that we do not use ListProcessorTypes here because it is not paginated.
+            /// </summary>
             public class FetchProcessorTypesRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1FetchProcessorTypesResponse>
             {
                 /// <summary>Constructs a new FetchProcessorTypes request.</summary>

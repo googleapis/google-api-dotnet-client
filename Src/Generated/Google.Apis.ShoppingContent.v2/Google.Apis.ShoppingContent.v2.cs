@@ -12895,9 +12895,21 @@ namespace Google.Apis.ShoppingContent.v2.Data
     /// <summary>Store resource.</summary>
     public class PosStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The business type of the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcidCategory")]
+        public virtual System.Collections.Generic.IList<string> GcidCategory { get; set; }
+
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#posStore`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The store phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The Google Place Id of the store location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
 
         /// <summary>Required. The street address of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeAddress")]
@@ -12906,6 +12918,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Required. A store identifier that is unique for the given merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
+
+        /// <summary>The merchant or store name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeName")]
+        public virtual string StoreName { get; set; }
+
+        /// <summary>The website url for the store or merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

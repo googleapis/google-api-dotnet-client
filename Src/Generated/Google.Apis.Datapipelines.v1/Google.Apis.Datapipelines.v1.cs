@@ -315,6 +315,114 @@ namespace Google.Apis.Datapipelines.v1
                 public PipelinesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Jobs = new JobsResource(service);
+                }
+
+                /// <summary>Gets the Jobs resource.</summary>
+                public virtual JobsResource Jobs { get; }
+
+                /// <summary>The "jobs" collection of methods.</summary>
+                public class JobsResource
+                {
+                    private const string Resource = "jobs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public JobsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Lists jobs for a given pipeline. Throws a "FORBIDDEN" error if the caller doesn't have
+                    /// permission to access it.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The pipeline name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists jobs for a given pipeline. Throws a "FORBIDDEN" error if the caller doesn't have
+                    /// permission to access it.
+                    /// </summary>
+                    public class ListRequest : DatapipelinesBaseServiceRequest<Google.Apis.Datapipelines.v1.Data.GoogleCloudDatapipelinesV1ListJobsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The pipeline name. For example:
+                        /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of entities to return. The service may return fewer than this value, even
+                        /// if there are additional pages. If unspecified, the max limit will be determined by the
+                        /// backend implementation.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListJobs` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListJobs` must match the
+                        /// call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/jobs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/pipelines/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -1139,6 +1247,26 @@ namespace Google.Apis.Datapipelines.v1.Data
         /// <summary>If true, the request is validated but not actually executed. Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListJobs</summary>
+    public class GoogleCloudDatapipelinesV1ListJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Results that were accessible to the caller. Results are always in descending order of job creation date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatapipelinesV1Job> Jobs { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

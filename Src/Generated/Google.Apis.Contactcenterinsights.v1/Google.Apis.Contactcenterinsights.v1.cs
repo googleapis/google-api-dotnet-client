@@ -798,21 +798,19 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public enum ViewEnum
                     {
                         /// <summary>
-                        /// Not specified. Defaults to FULL on GetConversationRequest and BASIC for
-                        /// ListConversationsRequest.
+                        /// The conversation view is not specified. * Defaults to `FULL` in `GetConversationRequest`. *
+                        /// Defaults to `BASIC` in `ListConversationsRequest`.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
                         CONVERSATIONVIEWUNSPECIFIED = 0,
 
-                        /// <summary>
-                        /// Transcript field is not populated in the response for Insights conversation.
-                        /// </summary>
-                        [Google.Apis.Util.StringValueAttribute("BASIC")]
-                        BASIC = 1,
-
-                        /// <summary>All fields are populated for Insights conversation.</summary>
+                        /// <summary>Populates all fields in the conversation.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL = 2,
+
+                        /// <summary>Populates all fields in the conversation except the transcript.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -899,21 +897,19 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public enum ViewEnum
                     {
                         /// <summary>
-                        /// Not specified. Defaults to FULL on GetConversationRequest and BASIC for
-                        /// ListConversationsRequest.
+                        /// The conversation view is not specified. * Defaults to `FULL` in `GetConversationRequest`. *
+                        /// Defaults to `BASIC` in `ListConversationsRequest`.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
                         CONVERSATIONVIEWUNSPECIFIED = 0,
 
-                        /// <summary>
-                        /// Transcript field is not populated in the response for Insights conversation.
-                        /// </summary>
-                        [Google.Apis.Util.StringValueAttribute("BASIC")]
-                        BASIC = 1,
-
-                        /// <summary>All fields are populated for Insights conversation.</summary>
+                        /// <summary>Populates all fields in the conversation.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL = 2,
+
+                        /// <summary>Populates all fields in the conversation except the transcript.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
                     }
 
                     /// <summary>Gets the method name.</summary>

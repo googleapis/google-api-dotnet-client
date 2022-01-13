@@ -1355,103 +1355,6 @@ namespace Google.Apis.CloudRetail.v2alpha
                                 });
                             }
                         }
-
-                        /// <summary>
-                        /// Set local inventory information for a Product with the provided list of places at a set
-                        /// timestamp. If a place in the provided list does not exist, the place will be created. If a
-                        /// place in the provided list already exists, it will be updated while respecting the last
-                        /// update timestamps of each inventory field. If an existing place is not in the provided list,
-                        /// it will be removed. This process is asynchronous. If the request is valid, the set operation
-                        /// will be enqueued and processed downstream. As a consequence, when a response is returned,
-                        /// set operations are not immediately manifested in the Product queried by GetProduct or
-                        /// ListProducts. When applying the set operation, this process takes a snapshot of currently
-                        /// existing places and their corresponding timestamps to determine the places to update. Avoid
-                        /// concurrent AddLocalInventories and RemoveLocalInventories calls, since they can introduce
-                        /// asynchronous updates that could be missed by the set operation. Local inventory information
-                        /// can only be updated with this method and other local inventory-specific methods.
-                        /// CreateProduct and UpdateProduct has no effect on local inventories. This feature is only
-                        /// available for users who have Retail Search enabled. Please submit a form
-                        /// [here](https://cloud.google.com/contact) to contact Cloud sales if you are interested in
-                        /// using Retail Search.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="product">
-                        /// Required. Full resource name of Product, such as
-                        /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
-                        /// If the caller does not have permission to access the Product, regardless of whether or not
-                        /// it exists, a PERMISSION_DENIED error is returned.
-                        /// </param>
-                        public virtual SetLocalInventoriesRequest SetLocalInventories(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaSetLocalInventoriesRequest body, string product)
-                        {
-                            return new SetLocalInventoriesRequest(service, body, product);
-                        }
-
-                        /// <summary>
-                        /// Set local inventory information for a Product with the provided list of places at a set
-                        /// timestamp. If a place in the provided list does not exist, the place will be created. If a
-                        /// place in the provided list already exists, it will be updated while respecting the last
-                        /// update timestamps of each inventory field. If an existing place is not in the provided list,
-                        /// it will be removed. This process is asynchronous. If the request is valid, the set operation
-                        /// will be enqueued and processed downstream. As a consequence, when a response is returned,
-                        /// set operations are not immediately manifested in the Product queried by GetProduct or
-                        /// ListProducts. When applying the set operation, this process takes a snapshot of currently
-                        /// existing places and their corresponding timestamps to determine the places to update. Avoid
-                        /// concurrent AddLocalInventories and RemoveLocalInventories calls, since they can introduce
-                        /// asynchronous updates that could be missed by the set operation. Local inventory information
-                        /// can only be updated with this method and other local inventory-specific methods.
-                        /// CreateProduct and UpdateProduct has no effect on local inventories. This feature is only
-                        /// available for users who have Retail Search enabled. Please submit a form
-                        /// [here](https://cloud.google.com/contact) to contact Cloud sales if you are interested in
-                        /// using Retail Search.
-                        /// </summary>
-                        public class SetLocalInventoriesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
-                        {
-                            /// <summary>Constructs a new SetLocalInventories request.</summary>
-                            public SetLocalInventoriesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaSetLocalInventoriesRequest body, string product) : base(service)
-                            {
-                                Product = product;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. Full resource name of Product, such as
-                            /// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
-                            /// If the caller does not have permission to access the Product, regardless of whether or
-                            /// not it exists, a PERMISSION_DENIED error is returned.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("product", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Product { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaSetLocalInventoriesRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "setLocalInventories";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v2alpha/{+product}:setLocalInventories";
-
-                            /// <summary>Initializes SetLocalInventories parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("product", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "product",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+/products/.*$",
-                                });
-                            }
-                        }
                     }
                 }
 
@@ -4519,7 +4422,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used".
-        /// A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit
+        /// A maximum of 1 value is allowed per Product. Each value must be a UTF-8 encoded string with a length limit
         /// of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google
         /// Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org
         /// property [Offer.itemCondition](https://schema.org/itemCondition).
@@ -5733,57 +5636,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Metadata related to the progress of the SetLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the SetLocalInventories method.
-    /// </summary>
-    public class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for SetLocalInventories method.</summary>
-    public class GoogleCloudRetailV2alphaSetLocalInventoriesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If set to true, and the Product is not found, the local inventory will still be processed and retained for
-        /// at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is returned if
-        /// the Product is not found.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
-        public virtual System.Nullable<bool> AllowMissing { get; set; }
-
-        /// <summary>
-        /// A list of inventory information at difference places. Each place is identified by its place ID. For example,
-        /// if `place1` and `place2` are stored, and this list is `[place1, place3]` with a fresher set timestamp, then
-        /// the stored places will become `place1` and `place3`. An empty list removes all existing places with staler
-        /// fields. At most 3000 inventories are allowed per request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localInventories")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaLocalInventory> LocalInventories { get; set; }
-
-        /// <summary>
-        /// The time when the inventory updates are issued. Used to prevent out-of-order updates on local inventory
-        /// fields. If not provided, the internal system time will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setTime")]
-        public virtual object SetTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the SetLocalInventories API. Currently empty because there is no meaningful response populated from
-    /// the SetLocalInventories method.
-    /// </summary>
-    public class GoogleCloudRetailV2alphaSetLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// UserEvent captures all metadata information Retail API needs to know about how end users interact with
     /// customers' website.
     /// </summary>
@@ -5903,11 +5755,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The main product details related to the event. This field is required for the following event types: *
-        /// `add-to-cart` * `detail-page-view` * `purchase-complete` In a `search` event, this field represents the
-        /// products returned to the end user on the current page (the end user may have not finished browsing the whole
-        /// page yet). When a new page is returned to the end user, after pagination/filtering/ordering even for the
-        /// same query, a new `search` event with different product_details is desired. The end user may have not
-        /// finished browsing the whole page yet.
+        /// `add-to-cart` * `detail-page-view` * `purchase-complete` * `search` In a `search` event, this field
+        /// represents the products returned to the end user on the current page (the end user may have not finished
+        /// browsing the whole page yet). When a new page is returned to the end user, after
+        /// pagination/filtering/ordering even for the same query, a new `search` event with different product_details
+        /// is desired. The end user may have not finished browsing the whole page yet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaProductDetail> ProductDetails { get; set; }

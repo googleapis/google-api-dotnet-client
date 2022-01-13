@@ -514,6 +514,7 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Create a new contact group owned by the authenticated user. Created contact group names must be unique to
         /// the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error.
+        /// Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.PeopleService.v1.Data.CreateContactGroupRequest body)
@@ -524,6 +525,7 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Create a new contact group owned by the authenticated user. Created contact group names must be unique to
         /// the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error.
+        /// Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         public class CreateRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ContactGroup>
         {
@@ -558,7 +560,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>
         /// Delete an existing contact group owned by the authenticated user by specifying a contact group resource
-        /// name.
+        /// name. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         /// <param name="resourceName">Required. The resource name of the contact group to delete.</param>
         public virtual DeleteRequest Delete(string resourceName)
@@ -568,7 +570,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>
         /// Delete an existing contact group owned by the authenticated user by specifying a contact group resource
-        /// name.
+        /// name. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         public class DeleteRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Empty>
         {
@@ -798,7 +800,8 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Update the name of an existing contact group owned by the authenticated user. Updated contact group names
         /// must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a
-        /// HTTP 409 error.
+        /// HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and
+        /// failures.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">
@@ -813,7 +816,8 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Update the name of an existing contact group owned by the authenticated user. Updated contact group names
         /// must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a
-        /// HTTP 409 error.
+        /// HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and
+        /// failures.
         /// </summary>
         public class UpdateRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ContactGroup>
         {
@@ -877,7 +881,10 @@ namespace Google.Apis.PeopleService.v1
             this.service = service;
         }
 
-        /// <summary>Copies an "Other contact" to a new contact in the user's "myContacts" group</summary>
+        /// <summary>
+        /// Copies an "Other contact" to a new contact in the user's "myContacts" group Mutate requests for the same
+        /// user should be sent sequentially to avoid increased latency and failures.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">Required. The resource name of the "Other contact" to copy.</param>
         public virtual CopyOtherContactToMyContactsGroupRequest CopyOtherContactToMyContactsGroup(Google.Apis.PeopleService.v1.Data.CopyOtherContactToMyContactsGroupRequest body, string resourceName)
@@ -885,7 +892,10 @@ namespace Google.Apis.PeopleService.v1
             return new CopyOtherContactToMyContactsGroupRequest(service, body, resourceName);
         }
 
-        /// <summary>Copies an "Other contact" to a new contact in the user's "myContacts" group</summary>
+        /// <summary>
+        /// Copies an "Other contact" to a new contact in the user's "myContacts" group Mutate requests for the same
+        /// user should be sent sequentially to avoid increased latency and failures.
+        /// </summary>
         public class CopyOtherContactToMyContactsGroupRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new CopyOtherContactToMyContactsGroup request.</summary>
@@ -1505,8 +1515,8 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts. Limited to 10
-        /// parallel requests per user.
+        /// Create a batch of new contacts and return the PersonResponses for the newly Mutate requests for the same
+        /// user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchCreateContactsRequest BatchCreateContacts(Google.Apis.PeopleService.v1.Data.BatchCreateContactsRequest body)
@@ -1515,8 +1525,8 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts. Limited to 10
-        /// parallel requests per user.
+        /// Create a batch of new contacts and return the PersonResponses for the newly Mutate requests for the same
+        /// user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         public class BatchCreateContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.BatchCreateContactsResponse>
         {
@@ -1550,8 +1560,8 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Delete a batch of contacts. Any non-contact data will not be deleted. Limited to 10 parallel requests per
-        /// user.
+        /// Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user
+        /// should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchDeleteContactsRequest BatchDeleteContacts(Google.Apis.PeopleService.v1.Data.BatchDeleteContactsRequest body)
@@ -1560,8 +1570,8 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Delete a batch of contacts. Any non-contact data will not be deleted. Limited to 10 parallel requests per
-        /// user.
+        /// Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user
+        /// should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         public class BatchDeleteContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Empty>
         {
@@ -1596,7 +1606,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>
         /// Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts.
-        /// Limited to 10 parallel requests per user.
+        /// Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchUpdateContactsRequest BatchUpdateContacts(Google.Apis.PeopleService.v1.Data.BatchUpdateContactsRequest body)
@@ -1606,7 +1616,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>
         /// Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts.
-        /// Limited to 10 parallel requests per user.
+        /// Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         public class BatchUpdateContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.BatchUpdateContactsResponse>
         {
@@ -1642,7 +1652,8 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Create a new contact and return the person resource for that contact. The request returns a 400 error if
         /// more than one field is specified on a field that is a singleton for contact sources: * biographies *
-        /// birthdays * genders * names
+        /// birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased
+        /// latency and failures.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateContactRequest CreateContact(Google.Apis.PeopleService.v1.Data.Person body)
@@ -1653,7 +1664,8 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Create a new contact and return the person resource for that contact. The request returns a 400 error if
         /// more than one field is specified on a field that is a singleton for contact sources: * biographies *
-        /// birthdays * genders * names
+        /// birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased
+        /// latency and failures.
         /// </summary>
         public class CreateContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
@@ -1758,14 +1770,20 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
-        /// <summary>Delete a contact person. Any non-contact data will not be deleted.</summary>
+        /// <summary>
+        /// Delete a contact person. Any non-contact data will not be deleted. Mutate requests for the same user should
+        /// be sent sequentially to avoid increased latency and failures.
+        /// </summary>
         /// <param name="resourceName">Required. The resource name of the contact to delete.</param>
         public virtual DeleteContactRequest DeleteContact(string resourceName)
         {
             return new DeleteContactRequest(service, resourceName);
         }
 
-        /// <summary>Delete a contact person. Any non-contact data will not be deleted.</summary>
+        /// <summary>
+        /// Delete a contact person. Any non-contact data will not be deleted. Mutate requests for the same user should
+        /// be sent sequentially to avoid increased latency and failures.
+        /// </summary>
         public class DeleteContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Empty>
         {
             /// <summary>Constructs a new DeleteContact request.</summary>
@@ -1803,14 +1821,20 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
-        /// <summary>Delete a contact's photo.</summary>
+        /// <summary>
+        /// Delete a contact's photo. Mutate requests for the same user should be done sequentially to avoid // lock
+        /// contention.
+        /// </summary>
         /// <param name="resourceName">Required. The resource name of the contact whose photo will be deleted.</param>
         public virtual DeleteContactPhotoRequest DeleteContactPhoto(string resourceName)
         {
             return new DeleteContactPhotoRequest(service, resourceName);
         }
 
-        /// <summary>Delete a contact's photo.</summary>
+        /// <summary>
+        /// Delete a contact's photo. Mutate requests for the same user should be done sequentially to avoid // lock
+        /// contention.
+        /// </summary>
         public class DeleteContactPhotoRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.DeleteContactPhotoResponse>
         {
             /// <summary>Constructs a new DeleteContactPhoto request.</summary>
@@ -2767,6 +2791,7 @@ namespace Google.Apis.PeopleService.v1
         /// latest person. The server returns a 400 error if `memberships` are being updated and there are no contact
         /// group memberships specified on the person. The server returns a 400 error if more than one field is
         /// specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names
+        /// Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">
@@ -2788,6 +2813,7 @@ namespace Google.Apis.PeopleService.v1
         /// latest person. The server returns a 400 error if `memberships` are being updated and there are no contact
         /// group memberships specified on the person. The server returns a 400 error if more than one field is
         /// specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names
+        /// Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
         /// </summary>
         public class UpdateContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
@@ -2926,7 +2952,10 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
-        /// <summary>Update a contact's photo.</summary>
+        /// <summary>
+        /// Update a contact's photo. Mutate requests for the same user should be sent sequentially to avoid increased
+        /// latency and failures.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">Required. Person resource name</param>
         public virtual UpdateContactPhotoRequest UpdateContactPhoto(Google.Apis.PeopleService.v1.Data.UpdateContactPhotoRequest body, string resourceName)
@@ -2934,7 +2963,10 @@ namespace Google.Apis.PeopleService.v1
             return new UpdateContactPhotoRequest(service, body, resourceName);
         }
 
-        /// <summary>Update a contact's photo.</summary>
+        /// <summary>
+        /// Update a contact's photo. Mutate requests for the same user should be sent sequentially to avoid increased
+        /// latency and failures.
+        /// </summary>
         public class UpdateContactPhotoRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.UpdateContactPhotoResponse>
         {
             /// <summary>Constructs a new UpdateContactPhoto request.</summary>

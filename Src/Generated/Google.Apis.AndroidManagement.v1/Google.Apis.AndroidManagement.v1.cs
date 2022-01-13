@@ -2321,7 +2321,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedProperties")]
         public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperties { get; set; }
 
-        /// <summary>The name of the app in the form enterprises/{enterpriseId}/applications/{package_name}.</summary>
+        /// <summary>The name of the app in the form enterprises/{enterprise}/applications/{package_name}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4207,6 +4207,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bluetoothDisabled")]
         public virtual System.Nullable<bool> BluetoothDisabled { get; set; }
 
+        /// <summary>
+        /// Controls the use of the camera and whether the user has access to the camera access toggle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cameraAccess")]
+        public virtual string CameraAccess { get; set; }
+
         /// <summary>Whether all cameras on the device are disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
         public virtual System.Nullable<bool> CameraDisabled { get; set; }
@@ -4326,6 +4332,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumTimeToLock")]
         public virtual System.Nullable<long> MaximumTimeToLock { get; set; }
+
+        /// <summary>
+        /// Controls the use of the microphone and whether the user has access to the microphone access toggle. This
+        /// applies only on fully managed devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microphoneAccess")]
+        public virtual string MicrophoneAccess { get; set; }
 
         /// <summary>The minimum allowed Android API level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumApiLevel")]

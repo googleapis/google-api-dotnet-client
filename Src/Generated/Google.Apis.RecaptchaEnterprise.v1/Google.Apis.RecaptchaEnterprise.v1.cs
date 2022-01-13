@@ -1281,6 +1281,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ExpectedAction { get; set; }
 
         /// <summary>
+        /// Optional. Optional unique stable hashed user identifier for the request. The identifier should ideally be
+        /// hashed using sha256 with stable secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
+        public virtual string HashedAccountId { get; set; }
+
+        /// <summary>
         /// Optional. The site key that was used to invoke reCAPTCHA on your site and generate the token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteKey")]
