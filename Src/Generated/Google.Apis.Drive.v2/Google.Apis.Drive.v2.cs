@@ -8973,6 +8973,13 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// The organizational unit of this shared drive. This field is only populated on drives.list responses when the
+        /// useDomainAdminAccess parameter is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
         /// <summary>A set of restrictions that apply to this shared drive or items inside this shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
         public virtual RestrictionsData Restrictions { get; set; }
@@ -10653,6 +10660,13 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>The name of this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The organizational unit of this shared drive. This field is only populated on drives.list responses when the
+        /// useDomainAdminAccess parameter is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
 
         /// <summary>A set of restrictions that apply to this Team Drive or items inside this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]

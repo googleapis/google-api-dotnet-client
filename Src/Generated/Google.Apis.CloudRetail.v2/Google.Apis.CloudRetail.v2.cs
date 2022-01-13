@@ -3767,7 +3767,7 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used".
-        /// A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit
+        /// A maximum of 1 value is allowed per Product. Each value must be a UTF-8 encoded string with a length limit
         /// of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google
         /// Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org
         /// property [Offer.itemCondition](https://schema.org/itemCondition).
@@ -5043,11 +5043,11 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// The main product details related to the event. This field is required for the following event types: *
-        /// `add-to-cart` * `detail-page-view` * `purchase-complete` In a `search` event, this field represents the
-        /// products returned to the end user on the current page (the end user may have not finished browsing the whole
-        /// page yet). When a new page is returned to the end user, after pagination/filtering/ordering even for the
-        /// same query, a new `search` event with different product_details is desired. The end user may have not
-        /// finished browsing the whole page yet.
+        /// `add-to-cart` * `detail-page-view` * `purchase-complete` * `search` In a `search` event, this field
+        /// represents the products returned to the end user on the current page (the end user may have not finished
+        /// browsing the whole page yet). When a new page is returned to the end user, after
+        /// pagination/filtering/ordering even for the same query, a new `search` event with different product_details
+        /// is desired. The end user may have not finished browsing the whole page yet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2ProductDetail> ProductDetails { get; set; }
@@ -5519,26 +5519,6 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// SetInventory method.
     /// </summary>
     public class GoogleCloudRetailV2alphaSetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata related to the progress of the SetLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the SetLocalInventories method.
-    /// </summary>
-    public class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the SetLocalInventories API. Currently empty because there is no meaningful response populated from
-    /// the SetLocalInventories method.
-    /// </summary>
-    public class GoogleCloudRetailV2alphaSetLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

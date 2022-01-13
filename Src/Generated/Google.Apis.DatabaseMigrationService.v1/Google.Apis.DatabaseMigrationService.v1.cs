@@ -609,7 +609,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
                 }
 
-                /// <summary>Retrieve a list of all connection profiles in a given project and location.</summary>
+                /// <summary>Retrieves a list of all connection profiles in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of connection profiles.
                 /// </param>
@@ -618,7 +618,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Retrieve a list of all connection profiles in a given project and location.</summary>
+                /// <summary>Retrieves a list of all connection profiles in a given project and location.</summary>
                 public class ListRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.ListConnectionProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -644,7 +644,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>the order by fields for the result.</summary>
+                    /// <summary>A comma-separated list of fields to order results according to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 

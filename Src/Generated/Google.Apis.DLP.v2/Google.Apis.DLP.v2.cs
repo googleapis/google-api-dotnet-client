@@ -10638,7 +10638,8 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+    /// Configuration to control the number of findings returned for inspection. This is not used for de-identification
+    /// or data profiling.
     /// </summary>
     public class GooglePrivacyDlpV2FindingLimits : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11049,9 +11050,7 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2InspectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// List of options defining data content to scan. If empty, text, images, and other content will be included.
-        /// </summary>
+        /// <summary>Deprecated and unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOptions")]
         public virtual System.Collections.Generic.IList<string> ContentOptions { get; set; }
 
@@ -11062,13 +11061,15 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customInfoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CustomInfoType> CustomInfoTypes { get; set; }
 
-        /// <summary>When true, excludes type information of the findings.</summary>
+        /// <summary>
+        /// When true, excludes type information of the findings. This is not used for data profiling.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
         public virtual System.Nullable<bool> ExcludeInfoTypes { get; set; }
 
         /// <summary>
         /// When true, a contextual quote from the data that triggered a finding is included in the response; see
-        /// Finding.quote.
+        /// Finding.quote. This is not used for data profiling.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeQuote")]
         public virtual System.Nullable<bool> IncludeQuote { get; set; }
@@ -11084,7 +11085,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
-        /// <summary>Configuration to control the number of findings returned.</summary>
+        /// <summary>
+        /// Configuration to control the number of findings returned. This is not used for data profiling.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual GooglePrivacyDlpV2FindingLimits Limits { get; set; }
 

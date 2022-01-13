@@ -2499,9 +2499,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Required. The job to update. `transferJob` is expected to specify one or more of five fields: description,
-        /// transfer_spec, notification_config, [logging_config[TransferJob.logging_config], and status. An
-        /// `UpdateTransferJobRequest` that specifies other fields are rejected with the error INVALID_ARGUMENT.
-        /// Updating a job status to DELETED requires `storagetransfer.jobs.delete` permissions.
+        /// transfer_spec, notification_config, logging_config, and status. An `UpdateTransferJobRequest` that specifies
+        /// other fields are rejected with the error INVALID_ARGUMENT. Updating a job status to DELETED requires
+        /// `storagetransfer.jobs.delete` permissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
         public virtual TransferJob TransferJob { get; set; }

@@ -3127,6 +3127,57 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Common Vulnerability Scoring System. This is the storage level proto that is intended to store similar data as
+    /// the CVSS proto in google3/third_party/grafeas/proto/v1/cvss.proto
+    /// </summary>
+    public class CVSS : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
+        public virtual string AttackComplexity { get; set; }
+
+        /// <summary>
+        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
+        /// across user environments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
+        public virtual string AttackVector { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual string Authentication { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
+        public virtual string AvailabilityImpact { get; set; }
+
+        /// <summary>The base score is a function of the base metric scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
+        public virtual System.Nullable<float> BaseScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
+        public virtual string ConfidentialityImpact { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitabilityScore")]
+        public virtual System.Nullable<float> ExploitabilityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
+        public virtual System.Nullable<float> ImpactScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
+        public virtual string IntegrityImpact { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
+        public virtual string PrivilegesRequired { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
+        public virtual string UserInteraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A compliance check that is a CIS benchmark.</summary>
     public class CisBenchmark : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4399,6 +4450,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatusError")]
         public virtual Status AnalysisStatusError { get; set; }
 
+        /// <summary>The time occurrences related to this discovery occurrence were archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveTime")]
+        public virtual object ArchiveTime { get; set; }
+
         /// <summary>Whether the resource is continuously analyzed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousAnalysis")]
         public virtual string ContinuousAnalysis { get; set; }
@@ -4406,6 +4461,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The CPE of the resource being scanned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpe")]
         public virtual string Cpe { get; set; }
+
+        /// <summary>The last time this resource was scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastScanTime")]
+        public virtual object LastScanTime { get; set; }
 
         /// <summary>
         /// Output only. An operation that indicates the status of the current scan. This field is deprecated, do not
@@ -6505,6 +6564,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
+
+        /// <summary>The CVSS v3 score of this vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
+        public virtual CVSS CvssV3 { get; set; }
 
         /// <summary>
         /// The distro assigned severity for this vulnerability when that is available and note provider assigned

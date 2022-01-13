@@ -1942,6 +1942,27 @@ namespace Google.Apis.OrgPolicyAPI.v2
 namespace Google.Apis.OrgPolicyAPI.v2.Data
 {
     /// <summary>
+    /// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for
+    /// dry-run/darklaunch.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2AlternatePolicySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Reference to the launch that will be used while audit logging and to control the launch. Should be set only
+        /// in the alternate policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launch")]
+        public virtual string Launch { get; set; }
+
+        /// <summary>Specify `Constraint` for configurations of Cloud Platform resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual GoogleCloudOrgpolicyV2PolicySpec Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A `constraint` describes a way to restrict resource's configuration. For example, you could enforce a constraint
     /// that controls which cloud services can be activated across an organization, or whether a Compute Engine instance
     /// can have serial port connections established. `Constraints` can be configured by the organization's policy
@@ -2116,6 +2137,10 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     /// </summary>
     public class GoogleCloudOrgpolicyV2Policy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternate")]
+        public virtual GoogleCloudOrgpolicyV2AlternatePolicySpec Alternate { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the
         /// name of the constraint which this Policy configures: *
