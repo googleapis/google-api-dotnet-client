@@ -3195,17 +3195,19 @@ namespace Google.Apis.Iam.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The output format of the public key requested. X509_PEM is the default output format.
+                    /// Optional. The output format of the public key. The default is `TYPE_NONE`, which means that the
+                    /// public key is not returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("publicKeyType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<PublicKeyTypeEnum> PublicKeyType { get; set; }
 
                     /// <summary>
-                    /// The output format of the public key requested. X509_PEM is the default output format.
+                    /// Optional. The output format of the public key. The default is `TYPE_NONE`, which means that the
+                    /// public key is not returned.
                     /// </summary>
                     public enum PublicKeyTypeEnum
                     {
-                        /// <summary>Unspecified. Returns nothing here.</summary>
+                        /// <summary>Do not return the public key.</summary>
                         [Google.Apis.Util.StringValueAttribute("TYPE_NONE")]
                         TYPENONE = 0,
 

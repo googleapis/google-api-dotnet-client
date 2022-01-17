@@ -323,8 +323,8 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// <summary>Adds a new Feature.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// The parent (project and location) where the Feature will be created. Specified in the format
-                /// `projects/*/locations/*`.
+                /// Required. The parent (project and location) where the Feature will be created. Specified in the
+                /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Feature body, string parent)
                 {
@@ -343,8 +343,8 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// The parent (project and location) where the Feature will be created. Specified in the format
-                    /// `projects/*/locations/*`.
+                    /// Required. The parent (project and location) where the Feature will be created. Specified in the
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -354,13 +354,13 @@ namespace Google.Apis.GKEHub.v1alpha
                     public virtual string FeatureId { get; set; }
 
                     /// <summary>
-                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// A request ID to identify requests. Specify a unique request ID so that if you must retry your
+                    /// request, the server will know to ignore the request if it has already been completed. The server
+                    /// will guarantee that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -414,7 +414,7 @@ namespace Google.Apis.GKEHub.v1alpha
 
                 /// <summary>Removes a Feature.</summary>
                 /// <param name="name">
-                /// The Feature resource name in the format `projects/*/locations/*/features/*`.
+                /// Required. The Feature resource name in the format `projects/*/locations/*/features/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -431,7 +431,9 @@ namespace Google.Apis.GKEHub.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>The Feature resource name in the format `projects/*/locations/*/features/*`.</summary>
+                    /// <summary>
+                    /// Required. The Feature resource name in the format `projects/*/locations/*/features/*`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -498,7 +500,7 @@ namespace Google.Apis.GKEHub.v1alpha
 
                 /// <summary>Gets details of a single Feature.</summary>
                 /// <param name="name">
-                /// The Feature resource name in the format `projects/*/locations/*/features/*`
+                /// Required. The Feature resource name in the format `projects/*/locations/*/features/*`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -515,7 +517,9 @@ namespace Google.Apis.GKEHub.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>The Feature resource name in the format `projects/*/locations/*/features/*`</summary>
+                    /// <summary>
+                    /// Required. The Feature resource name in the format `projects/*/locations/*/features/*`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -623,8 +627,8 @@ namespace Google.Apis.GKEHub.v1alpha
 
                 /// <summary>Lists Features in a given project and location.</summary>
                 /// <param name="parent">
-                /// The parent (project and location) where the Features will be listed. Specified in the format
-                /// `projects/*/locations/*`.
+                /// Required. The parent (project and location) where the Features will be listed. Specified in the
+                /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -642,8 +646,8 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// The parent (project and location) where the Features will be listed. Specified in the format
-                    /// `projects/*/locations/*`.
+                    /// Required. The parent (project and location) where the Features will be listed. Specified in the
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -738,7 +742,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// <summary>Updates an existing Feature.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The Feature resource name in the format `projects/*/locations/*/features/*`.
+                /// Required. The Feature resource name in the format `projects/*/locations/*/features/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Feature body, string name)
                 {
@@ -756,18 +760,20 @@ namespace Google.Apis.GKEHub.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>The Feature resource name in the format `projects/*/locations/*/features/*`.</summary>
+                    /// <summary>
+                    /// Required. The Feature resource name in the format `projects/*/locations/*/features/*`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// A request ID to identify requests. Specify a unique request ID so that if you must retry your
+                    /// request, the server will know to ignore the request if it has already been completed. The server
+                    /// will guarantee that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]

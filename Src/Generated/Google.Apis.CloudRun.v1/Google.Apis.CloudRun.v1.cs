@@ -4838,7 +4838,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Condition defines a generic condition for a Resource</summary>
+    /// <summary>Condition defines a generic condition for a Resource.</summary>
     public class GoogleCloudRunV1Condition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Last time the condition transitioned from one status to another.</summary>
@@ -5546,8 +5546,7 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'.
-        /// Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources
+        /// (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources
         /// allowed. The values of the map is string form of the 'quantity' k8s type:
         /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         /// </summary>
@@ -5555,10 +5554,10 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Limits { get; set; }
 
         /// <summary>
-        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'.
-        /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container,
-        /// it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The
-        /// values of the map is string form of the 'quantity' k8s type:
+        /// (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources
+        /// required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
+        /// otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s
+        /// type:
         /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]

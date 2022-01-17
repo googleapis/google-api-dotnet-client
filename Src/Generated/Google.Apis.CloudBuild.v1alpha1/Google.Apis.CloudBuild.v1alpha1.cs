@@ -839,6 +839,20 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response of BatchCreateBitbucketServerConnectedRepositories RPC method including all successfully connected
+    /// Bitbucket Server repositories.
+    /// </summary>
+    public class BatchCreateBitbucketServerConnectedRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The connected Bitbucket Server repositories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConnectedRepositories")]
+        public virtual System.Collections.Generic.IList<BitbucketServerConnectedRepository> BitbucketServerConnectedRepositories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.</summary>
     public class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -856,6 +870,50 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// <summary>Time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>/ BitbucketServerConnectedRepository represents a connected Bitbucket Server / repository.</summary>
+    public class BitbucketServerConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the `BitbucketServerConfig` that added connected repository. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The Bitbucket Server repositories to connect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual BitbucketServerRepositoryId Repo { get; set; }
+
+        /// <summary>Output only. The status of the repo connection request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server.</summary>
+    public class BitbucketServerRepositoryId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Identifier for the project storing the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectKey")]
+        public virtual string ProjectKey { get; set; }
+
+        /// <summary>Required. Identifier for the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoSlug")]
+        public virtual string RepoSlug { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the webhook that was created for receiving events from this repo. We only create and
+        /// manage a single webhook for each repo.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
+        public virtual System.Nullable<int> WebhookId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1287,6 +1345,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `CreateBitbucketServerConfig` operation.</summary>
+    public class CreateBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the BitbucketServerConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `CreateGithubEnterpriseConfig` operation.</summary>
     public class CreateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1304,6 +1384,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `CreateGitLabConfig` operation.</summary>
+    public class CreateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1331,6 +1433,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `DeleteBitbucketServerConfig` operation.</summary>
+    public class DeleteBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the BitbucketServerConfig to be deleted. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `DeleteGitHubEnterpriseConfig` operation.</summary>
     public class DeleteGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1348,6 +1472,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `DeleteGitLabConfig` operation.</summary>
+    public class DeleteGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2140,6 +2286,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `UpdateBitbucketServerConfig` operation.</summary>
+    public class UpdateBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the BitbucketServerConfig to be updated. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `UpdateGitHubEnterpriseConfig` operation.</summary>
     public class UpdateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2157,6 +2325,28 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `UpdateGitLabConfig` operation.</summary>
+    public class UpdateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

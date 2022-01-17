@@ -2493,10 +2493,7 @@ namespace Google.Apis.Datastream.v1alpha1
                 }
             }
 
-            /// <summary>
-            /// The FetchStaticIps API call exposes the static ips used by Datastream. Typically, a request returns
-            /// children data objects under a parent data object that's optionally supplied in the request.
-            /// </summary>
+            /// <summary>The FetchStaticIps API call exposes the static IP addresses used by Datastream.</summary>
             /// <param name="name">
             /// Required. The name resource of the Response type. Must be in the format `projects/*/locations/*`.
             /// </param>
@@ -2505,10 +2502,7 @@ namespace Google.Apis.Datastream.v1alpha1
                 return new FetchStaticIpsRequest(service, name);
             }
 
-            /// <summary>
-            /// The FetchStaticIps API call exposes the static ips used by Datastream. Typically, a request returns
-            /// children data objects under a parent data object that's optionally supplied in the request.
-            /// </summary>
+            /// <summary>The FetchStaticIps API call exposes the static IP addresses used by Datastream.</summary>
             public class FetchStaticIpsRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1alpha1.Data.FetchStaticIpsResponse>
             {
                 /// <summary>Constructs a new FetchStaticIps request.</summary>
@@ -3280,11 +3274,11 @@ namespace Google.Apis.Datastream.v1alpha1.Data
     /// <summary>Mysql data source object identifier.</summary>
     public class MysqlObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The database name.</summary>
+        /// <summary>Required. The database name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
-        /// <summary>The table name.</summary>
+        /// <summary>Required. The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
@@ -3541,11 +3535,11 @@ namespace Google.Apis.Datastream.v1alpha1.Data
     /// <summary>Oracle data source object identifier.</summary>
     public class OracleObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The schema name.</summary>
+        /// <summary>Required. The schema name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
-        /// <summary>The table name.</summary>
+        /// <summary>Required. The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 

@@ -1094,7 +1094,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string TriggerId { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not actually post it.
+                    /// Required. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1181,7 +1181,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not actually post it.
+                    /// Required. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1379,8 +1379,8 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The sorting order of the resources returned. Value should be a comma separated list of fields.
-                    /// The default sorting oder is ascending. To specify descending order for a field, append a ` desc`
+                    /// The sorting order of the resources returned. Value should be a comma-separated list of fields.
+                    /// The default sorting order is ascending. To specify descending order for a field, append a `desc`
                     /// suffix; for example: `name desc, trigger_id`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -1485,15 +1485,15 @@ namespace Google.Apis.Eventarc.v1
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                     /// <summary>
-                    /// The fields to be updated; only fields explicitly provided will be updated. If no field mask is
-                    /// provided, all provided fields in the request will be updated. To update all fields, provide a
-                    /// field mask of "*".
+                    /// The fields to be updated; only fields explicitly provided are updated. If no field mask is
+                    /// provided, all provided fields in the request are updated. To update all fields, provide a field
+                    /// mask of "*".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not actually post it.
+                    /// Required. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1955,6 +1955,13 @@ namespace Google.Apis.Eventarc.v1.Data
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format:
+        /// projects/{project}/locations/{location}/functions/{function}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
+        public virtual string CloudFunction { get; set; }
+
+        /// <summary>
         /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the
         /// trigger.
         /// </summary>
@@ -2191,7 +2198,7 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response message for the ListTriggers method.</summary>
+    /// <summary>The response message for the `ListTriggers` method.</summary>
     public class ListTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

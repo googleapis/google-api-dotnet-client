@@ -611,31 +611,6 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Added to the error payload.</summary>
-    public class FailureTrace : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
-        public virtual System.Collections.Generic.IList<Frame> Frames { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Frame : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("targetName")]
-        public virtual string TargetName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("workflowGuid")]
-        public virtual string WorkflowGuid { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
-        public virtual string ZoneId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all
     /// Clusters in the instance.
@@ -852,27 +827,6 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata type for the operation returned by google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable.
-    /// </summary>
-    public class UndeleteTableMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If set, the time at which this operation finished or was cancelled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>The name of the table being restored.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The time at which this operation started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

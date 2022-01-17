@@ -34,6 +34,7 @@ namespace Google.Apis.CloudBuild.v1
         /// <param name="initializer">The service initializer.</param>
         public CloudBuildService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Locations = new LocationsResource(this);
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
             V1 = new V1Resource(this);
@@ -83,6 +84,9 @@ namespace Google.Apis.CloudBuild.v1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
@@ -272,6 +276,89 @@ namespace Google.Apis.CloudBuild.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "locations" collection of methods.</summary>
+    public class LocationsResource
+    {
+        private const string Resource = "locations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LocationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>ReceiveRegionalWebhook is called when the API receives a regional GitHub webhook.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="location">Required. The location where the webhook should be sent.</param>
+        public virtual RegionalWebhookRequest RegionalWebhook(Google.Apis.CloudBuild.v1.Data.HttpBody body, string location)
+        {
+            return new RegionalWebhookRequest(service, body, location);
+        }
+
+        /// <summary>ReceiveRegionalWebhook is called when the API receives a regional GitHub webhook.</summary>
+        public class RegionalWebhookRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new RegionalWebhook request.</summary>
+            public RegionalWebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.HttpBody body, string location) : base(service)
+            {
+                Location = location;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The location where the webhook should be sent.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Location { get; private set; }
+
+            /// <summary>
+            /// For GitHub Enterprise webhooks, this key is used to associate the webhook request with the
+            /// GitHubEnterpriseConfig to use for validation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("webhookKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string WebhookKey { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudBuild.v1.Data.HttpBody Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "regionalWebhook";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+location}/regionalWebhook";
+
+            /// <summary>Initializes RegionalWebhook parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^locations/[^/]+$",
+                });
+                RequestParameters.Add("webhookKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "webhookKey",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
     }
 
@@ -1333,11 +1420,643 @@ namespace Google.Apis.CloudBuild.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                BitbucketServerConfigs = new BitbucketServerConfigsResource(service);
                 Builds = new BuildsResource(service);
                 GithubEnterpriseConfigs = new GithubEnterpriseConfigsResource(service);
                 Operations = new OperationsResource(service);
                 Triggers = new TriggersResource(service);
                 WorkerPools = new WorkerPoolsResource(service);
+            }
+
+            /// <summary>Gets the BitbucketServerConfigs resource.</summary>
+            public virtual BitbucketServerConfigsResource BitbucketServerConfigs { get; }
+
+            /// <summary>The "bitbucketServerConfigs" collection of methods.</summary>
+            public class BitbucketServerConfigsResource
+            {
+                private const string Resource = "bitbucketServerConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BitbucketServerConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    ConnectedRepositories = new ConnectedRepositoriesResource(service);
+                    Repos = new ReposResource(service);
+                }
+
+                /// <summary>Gets the ConnectedRepositories resource.</summary>
+                public virtual ConnectedRepositoriesResource ConnectedRepositories { get; }
+
+                /// <summary>The "connectedRepositories" collection of methods.</summary>
+                public class ConnectedRepositoriesResource
+                {
+                    private const string Resource = "connectedRepositories";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConnectedRepositoriesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Batch connecting Bitbucket Server repositories to Cloud Build.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// The name of the `BitbucketServerConfig` that added connected repository. Format:
+                    /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+                    /// </param>
+                    public virtual BatchCreateRequest BatchCreate(Google.Apis.CloudBuild.v1.Data.BatchCreateBitbucketServerConnectedRepositoriesRequest body, string parent)
+                    {
+                        return new BatchCreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Batch connecting Bitbucket Server repositories to Cloud Build.</summary>
+                    public class BatchCreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new BatchCreate request.</summary>
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.BatchCreateBitbucketServerConnectedRepositoriesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the `BitbucketServerConfig` that added connected repository. Format:
+                        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudBuild.v1.Data.BatchCreateBitbucketServerConnectedRepositoriesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchCreate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/connectedRepositories:batchCreate";
+
+                        /// <summary>Initializes BatchCreate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Repos resource.</summary>
+                public virtual ReposResource Repos { get; }
+
+                /// <summary>The "repos" collection of methods.</summary>
+                public class ReposResource
+                {
+                    private const string Resource = "repos";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ReposResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// List all repositories for a given `BitbucketServerConfig`. This API is experimental.
+                    /// </summary>
+                    /// <param name="parent">Required. Name of the parent resource.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// List all repositories for a given `BitbucketServerConfig`. This API is experimental.
+                    /// </summary>
+                    public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBitbucketServerRepositoriesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of configs to return. The service may return fewer than this value. If
+                        /// unspecified, at most 50 configs will be returned. The maximum value is 1000; values above
+                        /// 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListBitbucketServerRepositoriesRequest` call.
+                        /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided
+                        /// to `ListBitbucketServerConfigsRequest` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/repos";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Add a Bitbucket Server repository to a given BitbucketServerConfig's connected repositories. This
+                /// API is experimental.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="config">
+                /// Required. The name of the `BitbucketServerConfig` to add a connected repository. Format:
+                /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+                /// </param>
+                public virtual AddBitbucketServerConnectedRepositoryRequest AddBitbucketServerConnectedRepository(Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryRequest body, string config)
+                {
+                    return new AddBitbucketServerConnectedRepositoryRequest(service, body, config);
+                }
+
+                /// <summary>
+                /// Add a Bitbucket Server repository to a given BitbucketServerConfig's connected repositories. This
+                /// API is experimental.
+                /// </summary>
+                public class AddBitbucketServerConnectedRepositoryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryResponse>
+                {
+                    /// <summary>Constructs a new AddBitbucketServerConnectedRepository request.</summary>
+                    public AddBitbucketServerConnectedRepositoryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryRequest body, string config) : base(service)
+                    {
+                        Config = config;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `BitbucketServerConfig` to add a connected repository. Format:
+                    /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("config", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Config { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "addBitbucketServerConnectedRepository";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+config}:addBitbucketServerConnectedRepository";
+
+                    /// <summary>Initializes AddBitbucketServerConnectedRepository parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("config", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "config",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a new `BitbucketServerConfig`. This API is experimental.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Name of the parent resource.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new `BitbucketServerConfig`. This API is experimental.</summary>
+                public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of
+                    /// the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following
+                    /// requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64
+                    /// characters long. + They must begin and end with an alphanumeric character.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("bitbucketServerConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BitbucketServerConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/bitbucketServerConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("bitbucketServerConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "bitbucketServerConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a `BitbucketServerConfig`. This API is experimental.</summary>
+                /// <param name="name">Required. The config resource name.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Delete a `BitbucketServerConfig`. This API is experimental.</summary>
+                public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The config resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a `BitbucketServerConfig`. This API is experimental.</summary>
+                /// <param name="name">Required. The config resource name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieve a `BitbucketServerConfig`. This API is experimental.</summary>
+                public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The config resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List all `BitbucketServerConfigs` for a given project. This API is experimental.</summary>
+                /// <param name="parent">Required. Name of the parent resource.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List all `BitbucketServerConfigs` for a given project. This API is experimental.</summary>
+                public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBitbucketServerConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of configs to return. The service may return fewer than this value. If
+                    /// unspecified, at most 50 configs will be returned. The maximum value is 1000; values above 1000
+                    /// will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListBitbucketServerConfigsRequest` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListBitbucketServerConfigsRequest` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/bitbucketServerConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing `BitbucketServerConfig`. This API is experimental.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name for the config.</param>
+                public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates an existing `BitbucketServerConfig`. This API is experimental.</summary>
+                public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The resource name for the config.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Update mask for the resource. If this is set, the server will only update the fields specified
+                    /// in the field mask. Otherwise, a full update of the mutable resource fields will be performed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Remove a Bitbucket Server repository from an given BitbucketServerConfig’s connected repositories.
+                /// This API is experimental.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="config">
+                /// Required. The name of the `BitbucketServerConfig` to remove a connected repository. Format:
+                /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+                /// </param>
+                public virtual RemoveBitbucketServerConnectedRepositoryRequest RemoveBitbucketServerConnectedRepository(Google.Apis.CloudBuild.v1.Data.RemoveBitbucketServerConnectedRepositoryRequest body, string config)
+                {
+                    return new RemoveBitbucketServerConnectedRepositoryRequest(service, body, config);
+                }
+
+                /// <summary>
+                /// Remove a Bitbucket Server repository from an given BitbucketServerConfig’s connected repositories.
+                /// This API is experimental.
+                /// </summary>
+                public class RemoveBitbucketServerConnectedRepositoryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new RemoveBitbucketServerConnectedRepository request.</summary>
+                    public RemoveBitbucketServerConnectedRepositoryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.RemoveBitbucketServerConnectedRepositoryRequest body, string config) : base(service)
+                    {
+                        Config = config;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `BitbucketServerConfig` to remove a connected repository. Format:
+                    /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("config", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Config { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.RemoveBitbucketServerConnectedRepositoryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removeBitbucketServerConnectedRepository";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+config}:removeBitbucketServerConnectedRepository";
+
+                    /// <summary>Initializes RemoveBitbucketServerConnectedRepository parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("config", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "config",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Builds resource.</summary>
@@ -3992,6 +4711,35 @@ namespace Google.Apis.CloudBuild.v1
 }
 namespace Google.Apis.CloudBuild.v1.Data
 {
+    /// <summary>RPC request object accepted by the AddBitbucketServerConnectedRepository RPC method.</summary>
+    public class AddBitbucketServerConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The connected repository to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
+        public virtual BitbucketServerRepositoryId ConnectedRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC request object returned by the AddBitbucketServerConnectedRepository RPC method.</summary>
+    public class AddBitbucketServerConnectedRepositoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the `BitbucketServerConfig` that added connected repository. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual string Config { get; set; }
+
+        /// <summary>The connected repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
+        public virtual BitbucketServerRepositoryId ConnectedRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ApprovalConfig describes configuration for manual approval of a build.</summary>
     public class ApprovalConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4124,6 +4872,31 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RPC request object accepted by BatchCreateBitbucketServerConnectedRepositories RPC method.</summary>
+    public class BatchCreateBitbucketServerConnectedRepositoriesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Requests to connect Bitbucket Server repositories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<CreateBitbucketServerConnectedRepositoryRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of BatchCreateBitbucketServerConnectedRepositories RPC method including all successfully connected
+    /// Bitbucket Server repositories.
+    /// </summary>
+    public class BatchCreateBitbucketServerConnectedRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The connected Bitbucket Server repositories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConnectedRepositories")]
+        public virtual System.Collections.Generic.IList<BitbucketServerConnectedRepository> BitbucketServerConnectedRepositories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.</summary>
     public class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4141,6 +4914,207 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BitbucketServerConfig represents the configuration for a Bitbucket Server.</summary>
+    public class BitbucketServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be
+        /// changed. If you need to change it, please create another BitbucketServerConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>Output only. Connected Bitbucket Server repositories for this config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepositories")]
+        public virtual System.Collections.Generic.IList<BitbucketServerRepositoryId> ConnectedRepositories { get; set; }
+
+        /// <summary>Time when the config was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be
+        /// changed. If you need to change it, please create another BitbucketServerConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
+        public virtual string HostUri { get; set; }
+
+        /// <summary>The resource name for the config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be
+        /// enabled for private service connection. This should be set if the Bitbucket Server instance is hosted
+        /// on-premises and not reachable by public internet. If this field is left empty, no network peering will occur
+        /// and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+        /// `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is
+        /// the name of a VPC network in the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeredNetwork")]
+        public virtual string PeeredNetwork { get; set; }
+
+        /// <summary>Required. Secret Manager secrets needed by the config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
+        public virtual BitbucketServerSecrets Secrets { get; set; }
+
+        /// <summary>
+        /// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the
+        /// extension can be one of .pem, .cer, or .crt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCa")]
+        public virtual string SslCa { get; set; }
+
+        /// <summary>Username of the account Cloud Build will use on Bitbucket Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>
+        /// Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookKey")]
+        public virtual string WebhookKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>/ BitbucketServerConnectedRepository represents a connected Bitbucket Server / repository.</summary>
+    public class BitbucketServerConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the `BitbucketServerConfig` that added connected repository. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The Bitbucket Server repositories to connect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual BitbucketServerRepositoryId Repo { get; set; }
+
+        /// <summary>Output only. The status of the repo connection request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BitbucketServerRepository represents a repository hosted on a Bitbucket Server.</summary>
+    public class BitbucketServerRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Link to the browse repo page on the Bitbucket Server instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browseUri")]
+        public virtual string BrowseUri { get; set; }
+
+        /// <summary>Description of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Identifier for a repository hosted on a Bitbucket Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoId")]
+        public virtual BitbucketServerRepositoryId RepoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BitbucketServerRepositoryId identifies a specific repository hosted on a Bitbucket Server.</summary>
+    public class BitbucketServerRepositoryId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Identifier for the project storing the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectKey")]
+        public virtual string ProjectKey { get; set; }
+
+        /// <summary>Required. Identifier for the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoSlug")]
+        public virtual string RepoSlug { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the webhook that was created for receiving events from this repo. We only create and
+        /// manage a single webhook for each repo.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
+        public virtual System.Nullable<int> WebhookId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.</summary>
+    public class BitbucketServerSecrets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name for the admin access token's secret version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminAccessTokenVersionName")]
+        public virtual string AdminAccessTokenVersionName { get; set; }
+
+        /// <summary>Required. The resource name for the read access token's secret version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAccessTokenVersionName")]
+        public virtual string ReadAccessTokenVersionName { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The resource name for the webhook secret's secret version. Once this field has been
+        /// set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretVersionName")]
+        public virtual string WebhookSecretVersionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket
+    /// Server event is received.
+    /// </summary>
+    public class BitbucketServerTriggerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual BitbucketServerConfig BitbucketServerConfig { get; set; }
+
+        /// <summary>Required. The Bitbucket server config resource that this trigger config maps to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfigResource")]
+        public virtual string BitbucketServerConfigResource { get; set; }
+
+        /// <summary>
+        /// Required. Key of the project that the repo is in. For example: The key for
+        /// http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectKey")]
+        public virtual string ProjectKey { get; set; }
+
+        /// <summary>Filter to match changes in pull requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequest")]
+        public virtual PullRequestFilter PullRequest { get; set; }
+
+        /// <summary>Filter to match changes in refs like branches, tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("push")]
+        public virtual PushFilter Push { get; set; }
+
+        /// <summary>
+        /// Required. Slug of the repository. A repository slug is a URL-friendly version of a repository name,
+        /// automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo',
+        /// in the URL it would become 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoSlug")]
+        public virtual string RepoSlug { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4558,6 +5532,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
         public virtual System.Nullable<bool> Autodetect { get; set; }
 
+        /// <summary>
+        /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a
+        /// Bitbucket Server event is received.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerTriggerConfig")]
+        public virtual BitbucketServerTriggerConfig BitbucketServerTriggerConfig { get; set; }
+
         /// <summary>Contents of the build template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual Build Build { get; set; }
@@ -4575,8 +5556,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
-        /// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should
-        /// respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        /// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond.
+        /// This field will be validated against the rest of the configuration if it is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -4740,6 +5721,46 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `CreateBitbucketServerConfig` operation.</summary>
+    public class CreateBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the BitbucketServerConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to connect a repository from a connected Bitbucket Server host.</summary>
+    public class CreateBitbucketServerConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Bitbucket Server repository to connect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConnectedRepository")]
+        public virtual BitbucketServerConnectedRepository BitbucketServerConnectedRepository { get; set; }
+
+        /// <summary>
+        /// Required. The name of the `BitbucketServerConfig` that added connected repository. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `CreateGithubEnterpriseConfig` operation.</summary>
     public class CreateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4757,6 +5778,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `CreateGitLabConfig` operation.</summary>
+    public class CreateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4784,6 +5827,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `DeleteBitbucketServerConfig` operation.</summary>
+    public class DeleteBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the BitbucketServerConfig to be deleted. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `DeleteGitHubEnterpriseConfig` operation.</summary>
     public class DeleteGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4801,6 +5866,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `DeleteGitLabConfig` operation.</summary>
+    public class DeleteGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5175,6 +6262,42 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC response object returned by ListBitbucketServerConfigs RPC method.</summary>
+    public class ListBitbucketServerConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of BitbucketServerConfigs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfigs")]
+        public virtual System.Collections.Generic.IList<BitbucketServerConfig> BitbucketServerConfigs { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC response object returned by the ListBitbucketServerRepositories RPC method.</summary>
+    public class ListBitbucketServerRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Bitbucket Server repositories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerRepositories")]
+        public virtual System.Collections.Generic.IList<BitbucketServerRepository> BitbucketServerRepositories { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5618,6 +6741,17 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RPC request object accepted by RemoveBitbucketServerConnectedRepository RPC method.</summary>
+    public class RemoveBitbucketServerConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The connected repository to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
+        public virtual BitbucketServerRepositoryId ConnectedRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5732,7 +6866,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Source to build against this trigger.</summary>
+        /// <summary>
+        /// Source to build against this trigger. Branch and tag names cannot consist of regular expressions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual RepoSource Source { get; set; }
 
@@ -6008,6 +7144,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `UpdateBitbucketServerConfig` operation.</summary>
+    public class UpdateBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the BitbucketServerConfig to be updated. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `UpdateGitHubEnterpriseConfig` operation.</summary>
     public class UpdateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6025,6 +7183,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `UpdateGitLabConfig` operation.</summary>
+    public class UpdateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitLabConfig to be created. Format:
+        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6181,7 +7361,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Private Pool using a v1 configuration.</summary>
+        /// <summary>Legacy Private Pool configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privatePoolV1Config")]
         public virtual PrivatePoolV1Config PrivatePoolV1Config { get; set; }
 

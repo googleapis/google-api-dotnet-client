@@ -1585,24 +1585,6 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
-    public class GoogleCloudRunOpV2ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// ImageDigest holds the resolved digest for the image specified, regardless of whether a tag or digest was
-        /// originally specified in the Container object.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
-        public virtual string ImageDigest { get; set; }
-
-        /// <summary>The name of the container, if specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>EnvVar represents an environment variable present in a Container.</summary>
     public class GoogleCloudRunOpV2EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1719,10 +1701,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Sets the maximum number of requests that each serving instance can receive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerConcurrency")]
         public virtual System.Nullable<int> ContainerConcurrency { get; set; }
-
-        /// <summary>Output only. Status information for each of the containers specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2ContainerStatus> ContainerStatuses { get; set; }
 
         /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]

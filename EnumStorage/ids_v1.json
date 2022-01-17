@@ -1,0 +1,11 @@
+{
+  "Google.Apis.IDS.v1.IDSBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.IDS.v1.IDSBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

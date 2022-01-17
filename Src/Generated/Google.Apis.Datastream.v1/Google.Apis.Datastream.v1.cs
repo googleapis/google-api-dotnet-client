@@ -364,6 +364,13 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>
+                    /// Optional. Only validate the connection profile, but don't create any resources. The default is
+                    /// false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Datastream.v1.Data.ConnectionProfile Body { get; set; }
 
@@ -415,17 +422,25 @@ namespace Google.Apis.Datastream.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
 
-                /// <summary>Use this method to delete a connection profile..</summary>
+                /// <summary>Use this method to delete a connection profile.</summary>
                 /// <param name="name">Required. The name of the connection profile resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Use this method to delete a connection profile..</summary>
+                /// <summary>Use this method to delete a connection profile.</summary>
                 public class DeleteRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -486,7 +501,7 @@ namespace Google.Apis.Datastream.v1
 
                 /// <summary>
                 /// Use this method to discover a connection profile. The discover API call exposes the data objects and
-                /// metadata belonging to the profile. Typically, a request returns children data objects under a parent
+                /// metadata belonging to the profile. Typically, a request returns children data objects of a parent
                 /// data object that's optionally supplied in the request.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -501,7 +516,7 @@ namespace Google.Apis.Datastream.v1
 
                 /// <summary>
                 /// Use this method to discover a connection profile. The discover API call exposes the data objects and
-                /// metadata belonging to the profile. Typically, a request returns children data objects under a parent
+                /// metadata belonging to the profile. Typically, a request returns children data objects of a parent
                 /// data object that's optionally supplied in the request.
                 /// </summary>
                 public class DiscoverRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.DiscoverConnectionProfileResponse>
@@ -719,7 +734,7 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. Execute the update without validating it.</summary>
+                    /// <summary>Optional. Update the connection profile without validating it.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
 
@@ -744,6 +759,13 @@ namespace Google.Apis.Datastream.v1
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. Only validate the connection profile, but don't update any resources. The default is
+                    /// false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Datastream.v1.Data.ConnectionProfile Body { get; set; }
@@ -791,6 +813,14 @@ namespace Google.Apis.Datastream.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1122,7 +1152,8 @@ namespace Google.Apis.Datastream.v1
                     }
 
                     /// <summary>
-                    /// Use this method to create a route for a private connectivity in a project and location.
+                    /// Use this method to create a route for a private connectivity configuration in a project and
+                    /// location.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The parent that owns the collection of Routes.</param>
@@ -1132,7 +1163,8 @@ namespace Google.Apis.Datastream.v1
                     }
 
                     /// <summary>
-                    /// Use this method to create a route for a private connectivity in a project and location.
+                    /// Use this method to create a route for a private connectivity configuration in a project and
+                    /// location.
                     /// </summary>
                     public class CreateRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.Operation>
                     {
@@ -1325,7 +1357,8 @@ namespace Google.Apis.Datastream.v1
                     }
 
                     /// <summary>
-                    /// Use this method to list routes created for a private connectivity in a project and location.
+                    /// Use this method to list routes created for a private connectivity configuration in a project and
+                    /// location.
                     /// </summary>
                     /// <param name="parent">Required. The parent that owns the collection of Routess.</param>
                     public virtual ListRequest List(string parent)
@@ -1334,7 +1367,8 @@ namespace Google.Apis.Datastream.v1
                     }
 
                     /// <summary>
-                    /// Use this method to list routes created for a private connectivity in a project and location.
+                    /// Use this method to list routes created for a private connectivity configuration in a project and
+                    /// location.
                     /// </summary>
                     public class ListRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.ListRoutesResponse>
                     {
@@ -1961,7 +1995,7 @@ namespace Google.Apis.Datastream.v1
                         }
                     }
 
-                    /// <summary>Starts backfill job for the specified stream object.</summary>
+                    /// <summary>Use this method to start a backfill job for the specified stream object.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="datastreamObject">
                     /// Required. The name of the stream object resource to start a backfill job for.
@@ -1971,7 +2005,7 @@ namespace Google.Apis.Datastream.v1
                         return new StartBackfillJobRequest(service, body, datastreamObject);
                     }
 
-                    /// <summary>Starts backfill job for the specified stream object.</summary>
+                    /// <summary>Use this method to start a backfill job for the specified stream object.</summary>
                     public class StartBackfillJobRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.StartBackfillJobResponse>
                     {
                         /// <summary>Constructs a new StartBackfillJob request.</summary>
@@ -2018,7 +2052,7 @@ namespace Google.Apis.Datastream.v1
                         }
                     }
 
-                    /// <summary>Stops the backfill job for the specified stream object.</summary>
+                    /// <summary>Use this method to stop a backfill job for the specified stream object.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="datastreamObject">
                     /// Required. The name of the stream object resource to stop the backfill job for.
@@ -2028,7 +2062,7 @@ namespace Google.Apis.Datastream.v1
                         return new StopBackfillJobRequest(service, body, datastreamObject);
                     }
 
-                    /// <summary>Stops the backfill job for the specified stream object.</summary>
+                    /// <summary>Use this method to stop a backfill job for the specified stream object.</summary>
                     public class StopBackfillJobRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.StopBackfillJobResponse>
                     {
                         /// <summary>Constructs a new StopBackfillJob request.</summary>
@@ -2121,7 +2155,7 @@ namespace Google.Apis.Datastream.v1
                     public virtual string StreamId { get; set; }
 
                     /// <summary>
-                    /// Optional. Only validate the stream, but do not create any resources. The default is false.
+                    /// Optional. Only validate the stream, but don't create any resources. The default is false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2422,7 +2456,7 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. Create the stream without validating it.</summary>
+                    /// <summary>Optional. Update the stream without validating it.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
 
@@ -2518,22 +2552,17 @@ namespace Google.Apis.Datastream.v1
                 }
             }
 
-            /// <summary>
-            /// The FetchStaticIps API call exposes the static ips used by Datastream. Typically, a request returns
-            /// children data objects under a parent data object that's optionally supplied in the request.
-            /// </summary>
+            /// <summary>The FetchStaticIps API call exposes the static IP addresses used by Datastream.</summary>
             /// <param name="name">
-            /// Required. The name resource of the Response type. Must be in the format `projects/*/locations/*`.
+            /// Required. The resource name for the location for which static IPs should be returned. Must be in the
+            /// format `projects/*/locations/*`.
             /// </param>
             public virtual FetchStaticIpsRequest FetchStaticIps(string name)
             {
                 return new FetchStaticIpsRequest(service, name);
             }
 
-            /// <summary>
-            /// The FetchStaticIps API call exposes the static ips used by Datastream. Typically, a request returns
-            /// children data objects under a parent data object that's optionally supplied in the request.
-            /// </summary>
+            /// <summary>The FetchStaticIps API call exposes the static IP addresses used by Datastream.</summary>
             public class FetchStaticIpsRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.FetchStaticIpsResponse>
             {
                 /// <summary>Constructs a new FetchStaticIps request.</summary>
@@ -2544,7 +2573,8 @@ namespace Google.Apis.Datastream.v1
                 }
 
                 /// <summary>
-                /// Required. The name resource of the Response type. Must be in the format `projects/*/locations/*`.
+                /// Required. The resource name for the location for which static IPs should be returned. Must be in the
+                /// format `projects/*/locations/*`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3299,11 +3329,11 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Mysql data source object identifier.</summary>
     public class MysqlObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The database name.</summary>
+        /// <summary>Required. The database name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
-        /// <summary>The table name.</summary>
+        /// <summary>Required. The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
@@ -3553,11 +3583,11 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Oracle data source object identifier.</summary>
     public class OracleObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The schema name.</summary>
+        /// <summary>Required. The schema name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
-        /// <summary>The table name.</summary>
+        /// <summary>Required. The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
