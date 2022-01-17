@@ -4203,6 +4203,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("goo")]
         public virtual GooSettings Goo { get; set; }
 
+        /// <summary>Allows the patch job to run on Managed instance groups (MIGs).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migInstancesAllowed")]
+        public virtual System.Nullable<bool> MigInstancesAllowed { get; set; }
+
         /// <summary>The `ExecStep` to run after the patch update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postStep")]
         public virtual ExecStep PostStep { get; set; }

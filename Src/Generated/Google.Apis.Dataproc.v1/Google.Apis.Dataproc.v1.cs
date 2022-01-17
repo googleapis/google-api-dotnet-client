@@ -299,6 +299,7 @@ namespace Google.Apis.Dataproc.v1
             {
                 this.service = service;
                 AutoscalingPolicies = new AutoscalingPoliciesResource(service);
+                Batches = new BatchesResource(service);
                 WorkflowTemplates = new WorkflowTemplatesResource(service);
             }
 
@@ -865,6 +866,284 @@ namespace Google.Apis.Dataproc.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Batches resource.</summary>
+            public virtual BatchesResource Batches { get; }
+
+            /// <summary>The "batches" collection of methods.</summary>
+            public class BatchesResource
+            {
+                private const string Resource = "batches";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BatchesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a batch workload that executes asynchronously.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource where this batch will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.Batch body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a batch workload that executes asynchronously.</summary>
+                public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.Batch body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource where this batch will be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the batch, which will become the final component of the batch's
+                    /// resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("batchId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BatchId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A unique ID used to identify the request. If the service receives two
+                    /// CreateBatchRequest
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s
+                    /// with the same request_id, the second request is ignored and the Operation that corresponds to
+                    /// the first Batch created and stored in the backend is returned.Recommendation: Set this value to
+                    /// a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only
+                    /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.Batch Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/batches";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("batchId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "batchId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the batch workload resource. If the batch is not in terminal state, the delete fails and the
+                /// response returns FAILED_PRECONDITION.
+                /// </summary>
+                /// <param name="name">Required. The name of the batch resource to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the batch workload resource. If the batch is not in terminal state, the delete fails and the
+                /// response returns FAILED_PRECONDITION.
+                /// </summary>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the batch resource to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the batch workload resource representation.</summary>
+                /// <param name="name">Required. The name of the batch to retrieve.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the batch workload resource representation.</summary>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Batch>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the batch to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists batch workloads.</summary>
+                /// <param name="parent">Required. The parent, which owns this collection of batches.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists batch workloads.</summary>
+                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListBatchesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent, which owns this collection of batches.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of batches to return in each response. The service may return fewer
+                    /// than this value. The default page size is 20; the maximum page size is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token received from a previous ListBatches call. Provide this token to retrieve
+                    /// the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/batches";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -5810,6 +6089,89 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A representation of a batch workload in the service.</summary>
+    public class Batch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the batch was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The email address of the user who created the batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
+
+        /// <summary>Optional. Environment configuration for the batch execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentConfig")]
+        public virtual EnvironmentConfig EnvironmentConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must
+        /// conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must
+        /// contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more
+        /// than 32 labels can be associated with a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The resource name of the batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The resource name of the operation associated with this batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>Optional. PySpark batch config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pysparkBatch")]
+        public virtual PySparkBatch PysparkBatch { get; set; }
+
+        /// <summary>Optional. Runtime configuration for the batch execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfig")]
+        public virtual RuntimeConfig RuntimeConfig { get; set; }
+
+        /// <summary>Output only. Runtime information about batch execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeInfo")]
+        public virtual RuntimeInfo RuntimeInfo { get; set; }
+
+        /// <summary>Optional. Spark batch config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkBatch")]
+        public virtual SparkBatch SparkBatch { get; set; }
+
+        /// <summary>Optional. SparkR batch config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkRBatch")]
+        public virtual SparkRBatch SparkRBatch { get; set; }
+
+        /// <summary>Optional. SparkSql batch config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlBatch")]
+        public virtual SparkSqlBatch SparkSqlBatch { get; set; }
+
+        /// <summary>Output only. The state of the batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Historical state information for the batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateHistory")]
+        public virtual System.Collections.Generic.IList<StateHistory> StateHistory { get; set; }
+
+        /// <summary>Output only. Batch state details, such as a failure description if the state is FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
+
+        /// <summary>Output only. The time when the batch entered a current state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateTime")]
+        public virtual object StateTime { get; set; }
+
+        /// <summary>
+        /// Output only. A batch UUID (Unique Universal Identifier). The service generates this value when it creates
+        /// the batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
+        public virtual string Uuid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata describing the Batch operation.</summary>
     public class BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6309,6 +6671,48 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpPorts")]
         public virtual System.Collections.Generic.IDictionary<string, string> HttpPorts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment configuration for a workload.</summary>
+    public class EnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Execution configuration for a workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionConfig")]
+        public virtual ExecutionConfig ExecutionConfig { get; set; }
+
+        /// <summary>Optional. Peripherals configuration that workload has access to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peripheralsConfig")]
+        public virtual PeripheralsConfig PeripheralsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Execution configuration for a workload.</summary>
+    public class ExecutionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Cloud KMS key to use for encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>Optional. Tags used for network traffic control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
+        public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
+
+        /// <summary>Optional. Network URI to connect workload to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Optional. Service account that used to execute workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Optional. Subnetwork URI to connect workload to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
+        public virtual string SubnetworkUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7208,6 +7612,24 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A list of batch workloads.</summary>
+    public class ListBatchesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The batches from the specified collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batches")]
+        public virtual System.Collections.Generic.IList<Batch> Batches { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The list of all clusters in a project.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7531,6 +7953,24 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Auxiliary services configuration for a workload.</summary>
+    public class PeripheralsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of an existing Dataproc Metastore service.Example:
+        /// projects/[project_id]/locations/[region]/services/[service_id]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metastoreService")]
+        public virtual string MetastoreService { get; set; }
+
+        /// <summary>Optional. The Spark History Server configuration for the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkHistoryServerConfig")]
+        public virtual SparkHistoryServerConfig SparkHistoryServerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.</summary>
     public class PigJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7692,6 +8132,51 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
+    /// A configuration for running an Apache PySpark
+    /// (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
+    /// </summary>
+    public class PySparkBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file
+        /// types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
+
+        /// <summary>
+        /// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties,
+        /// such as --conf, since a collision can occur that causes an incorrect batch submission.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
+
+        /// <summary>Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
+
+        /// <summary>
+        /// Required. The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainPythonFileUri")]
+        public virtual string MainPythonFileUri { get; set; }
+
+        /// <summary>
+        /// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg,
+        /// and .zip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonFileUris")]
+        public virtual System.Collections.Generic.IList<string> PythonFileUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
     /// applications on YARN.
     /// </summary>
@@ -7817,6 +8302,51 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Corresponds to the label values of reservation resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime configuration for a workload.</summary>
+    public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional custom container image for the job runtime environment. If not specified, a default
+        /// container image will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
+        public virtual string ContainerImage { get; set; }
+
+        /// <summary>
+        /// Optional. A mapping of property names to values, which are used to configure workload execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>Optional. Version of the batch runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime information about workload execution.</summary>
+    public class RuntimeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A URI pointing to the location of the diagnostics tarball.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticOutputUri")]
+        public virtual string DiagnosticOutputUri { get; set; }
+
+        /// <summary>
+        /// Output only. Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Endpoints { get; set; }
+
+        /// <summary>Output only. A URI pointing to the location of the stdout and stderr of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
+        public virtual string OutputUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7948,6 +8478,60 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.</summary>
+    public class SparkBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file
+        /// types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
+
+        /// <summary>
+        /// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties,
+        /// such as --conf, since a collision can occur that causes an incorrect batch submission.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
+
+        /// <summary>Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath
+        /// or specified in jar_file_uris.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
+        public virtual string MainClass { get; set; }
+
+        /// <summary>Optional. The HCFS URI of the jar file that contains the main class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
+        public virtual string MainJarFileUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spark History Server configuration for the workload.</summary>
+    public class SparkHistoryServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the
+        /// workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataprocCluster")]
+        public virtual string DataprocCluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.</summary>
     public class SparkJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8004,6 +8588,37 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
+    /// A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+    /// </summary>
+    public class SparkRBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file
+        /// types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
+
+        /// <summary>
+        /// Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch
+        /// properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
+
+        /// <summary>Required. The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainRFileUri")]
+        public virtual string MainRFileUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on
     /// YARN.
     /// </summary>
@@ -8045,6 +8660,30 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+    /// </summary>
+    public class SparkSqlBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
+
+        /// <summary>Required. The HCFS URI of the script that contains Spark SQL queries to execute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryFileUri")]
+        public virtual string QueryFileUri { get; set; }
+
+        /// <summary>
+        /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET
+        /// name="value";).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> QueryVariables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8158,6 +8797,25 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Historical state information.</summary>
+    public class StateHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The state of the batch at this point in history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Details about the state at this point in history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
+
+        /// <summary>Output only. The time when the batch entered the historical state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
+        public virtual object StateStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

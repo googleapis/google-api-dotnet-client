@@ -1006,8 +1006,10 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is
         /// `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler
         /// will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. *
-        /// `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the
-        /// following headers: * `Content-Type`: By default, the `Content-Type` header is set to
+        /// `X-CloudScheduler`: This header will be set to true. * `X-CloudScheduler-JobName`: This header will contain
+        /// the job name. * `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the unix-cron format,
+        /// this header will contain the job schedule time in RFC3339 UTC "Zulu" format. If the job has an body, Cloud
+        /// Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to
         /// `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a
         /// particular media type when the job is created. For example, `Content-Type` can be set to
         /// `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It
@@ -1128,8 +1130,11 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: -
         /// Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be
         /// computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`:
-        /// Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be
-        /// less than 80KB.
+        /// Google internal use only. * `X-AppEngine-*`: Google internal use only. * `X-CloudScheduler`: This header
+        /// will be set to true. * `X-CloudScheduler-JobName`: This header will contain the job name. *
+        /// `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the unix-cron format, this header
+        /// will contain the job schedule time in RFC3339 UTC "Zulu" format. The total size of headers must be less than
+        /// 80KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
@@ -1168,7 +1173,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for a job. The maximum allowed size for a job is 100KB.</summary>
+    /// <summary>Configuration for a job. The maximum allowed size for a job is 1MB.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>App Engine HTTP target.</summary>
@@ -1180,7 +1185,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in
         /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for
         /// this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets,
-        /// between 15 seconds and 24 hours.
+        /// between 15 seconds and 24 hours 15 seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptDeadline")]
         public virtual object AttemptDeadline { get; set; }

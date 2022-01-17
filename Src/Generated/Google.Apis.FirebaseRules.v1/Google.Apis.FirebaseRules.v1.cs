@@ -1162,7 +1162,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// <summary>`File` containing source content.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Textual Content.</summary>
+        /// <summary>Required. Textual Content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
@@ -1170,7 +1170,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>File name.</summary>
+        /// <summary>Required. File name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1388,7 +1388,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>`Source` for the `Ruleset`.</summary>
+        /// <summary>Required. `Source` for the `Ruleset`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
 
@@ -1399,7 +1399,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// <summary>`Source` is one or more `File` messages comprising a logical set of rules.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>`File` set constituting the `Source` bundle.</summary>
+        /// <summary>Required. `File` set constituting the `Source` bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<File> Files { get; set; }
 

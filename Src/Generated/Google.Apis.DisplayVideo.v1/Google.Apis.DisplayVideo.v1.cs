@@ -20755,7 +20755,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
         public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
 
-        /// <summary>Output only. Whether the audience is a first or third party audience.</summary>
+        /// <summary>Whether the audience is a first or third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceType")]
         public virtual string FirstAndThirdPartyAudienceType { get; set; }
 
