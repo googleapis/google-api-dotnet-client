@@ -603,7 +603,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
+                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
+                /// be smaller or equal to the server time.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
@@ -1760,6 +1761,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                     /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
+                    /// Must be smaller or equal to the server time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
@@ -2299,7 +2301,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
+                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
+                /// be smaller or equal to the server time.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
@@ -4168,6 +4171,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                     /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
+                    /// Must be smaller or equal to the server time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
@@ -5126,7 +5130,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
+                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
+                /// be smaller or equal to the server time.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
@@ -6283,6 +6288,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                     /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
+                    /// Must be smaller or equal to the server time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
@@ -6857,10 +6863,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// The time at which the event took place, or when an update to the finding occurred. For example, if the
-        /// finding represents an open firewall it would capture the time the detector believes the firewall became
-        /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
-        /// would reflect when the finding was resolved. Must not be set to a value greater than the current timestamp.
+        /// The time the finding was first detected. If an existing finding is updated, then this is the time the update
+        /// occurred. For example, if the finding represents an open firewall, this property captures the time the
+        /// detector believes the firewall became open. The accuracy is determined by the detector. If the finding is
+        /// later resolved, then this time reflects when the finding was resolved. This must not be set to a value
+        /// greater than the current timestamp.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }

@@ -13171,6 +13171,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
 
+        /// <summary>KMS wrapped key. Must not be set if `crypto_key` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
+        public virtual KmsWrappedCryptoKey KmsWrapped { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13214,6 +13218,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
+
+        /// <summary>KMS wrapped key. Must not be set if `crypto_key` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
+        public virtual KmsWrappedCryptoKey KmsWrapped { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14907,6 +14915,26 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>Created message resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key.
+    /// The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+    /// Healthcare Service Agent service account. For more information, see [Creating a wrapped key]
+    /// (https://cloud.google.com/dlp/docs/create-wrapped-key).
+    /// </summary>
+    public class KmsWrappedCryptoKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of the KMS CryptoKey to use for unwrapping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
+        public virtual string CryptoKey { get; set; }
+
+        /// <summary>Required. The wrapped data crypto key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
+        public virtual string WrappedKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

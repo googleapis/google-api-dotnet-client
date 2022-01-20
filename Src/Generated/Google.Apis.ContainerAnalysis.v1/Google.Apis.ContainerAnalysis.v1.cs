@@ -2733,6 +2733,35 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Configuration per workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig WorkerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration per workload for both Private Pools and Hybrid Pools.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>
+        /// The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<float> VcpuCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3451,6 +3480,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatusError")]
         public virtual Status AnalysisStatusError { get; set; }
 
+        /// <summary>Output only. The time occurrences related to this discovery occurrence were archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveTime")]
+        public virtual object ArchiveTime { get; set; }
+
         /// <summary>Whether the resource is continuously analyzed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousAnalysis")]
         public virtual string ContinuousAnalysis { get; set; }
@@ -3874,11 +3907,11 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     /// </summary>
     public class InTotoStatement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Always "https://in-toto.io/Statement/v0.1".</summary>
+        /// <summary>Always `https://in-toto.io/Statement/v0.1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("_type")]
         public virtual string Type { get; set; }
 
-        /// <summary>"https://slsa.dev/provenance/v0.1" for SlsaProvenance.</summary>
+        /// <summary>`https://slsa.dev/provenance/v0.1` for SlsaProvenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predicateType")]
         public virtual string PredicateType { get; set; }
 
@@ -4062,18 +4095,18 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about files that caused a compliance check to fail.</summary>
+    /// <summary>
+    /// Details about files that caused a compliance check to fail. display_command is a single command that can be used
+    /// to display a list of non compliant files. When there is no such command, we can also iterate a list of non
+    /// compliant file using 'path'.
+    /// </summary>
     public class NonCompliantFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Command to display the non-compliant files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayCommand")]
         public virtual string DisplayCommand { get; set; }
 
-        /// <summary>
-        /// display_command is a single command that can be used to display a list of non compliant files. When there is
-        /// no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command`
-        /// is set.
-        /// </summary>
+        /// <summary>Empty if `display_command` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
@@ -4818,7 +4851,7 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     public class Subject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// "": "" Algorithms can be e.g. sha256, sha512 See
+        /// `"": ""` Algorithms can be e.g. sha256, sha512 See
         /// https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]

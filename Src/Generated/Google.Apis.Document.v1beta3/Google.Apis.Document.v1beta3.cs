@@ -2443,6 +2443,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The Crowd Compute question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionId")]
+        public virtual string QuestionId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6294,6 +6298,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>The Crowd Compute question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionId")]
+        public virtual string QuestionId { get; set; }
 
         /// <summary>Used only when Operation.done is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
