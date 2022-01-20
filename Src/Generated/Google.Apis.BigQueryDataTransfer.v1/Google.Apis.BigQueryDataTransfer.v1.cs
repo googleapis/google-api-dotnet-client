@@ -440,7 +440,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>Lists supported data sources and returns their settings.</summary>
             /// <param name="parent">
             /// Required. The BigQuery project id for which data sources should be returned. Must be in the form:
-            /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}
+            /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -459,7 +459,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                 /// <summary>
                 /// Required. The BigQuery project id for which data sources should be returned. Must be in the form:
-                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}
+                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -672,7 +672,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Lists supported data sources and returns their settings.</summary>
                 /// <param name="parent">
                 /// Required. The BigQuery project id for which data sources should be returned. Must be in the form:
-                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}
+                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -691,7 +691,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                     /// <summary>
                     /// Required. The BigQuery project id for which data sources should be returned. Must be in the
-                    /// form: `projects/{project_id}` or `projects/{project_id}/locations/{location_id}
+                    /// form: `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1440,8 +1440,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// Returns information about all transfer configs owned by a project in the specified location.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. The BigQuery project id for which data sources should be returned: `projects/{project_id}`
-                /// or `projects/{project_id}/locations/{location_id}`
+                /// Required. The BigQuery project id for which transfer configs should be returned:
+                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1461,7 +1461,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The BigQuery project id for which data sources should be returned:
+                    /// Required. The BigQuery project id for which transfer configs should be returned:
                     /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2687,8 +2687,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// Returns information about all transfer configs owned by a project in the specified location.
             /// </summary>
             /// <param name="parent">
-            /// Required. The BigQuery project id for which data sources should be returned: `projects/{project_id}` or
-            /// `projects/{project_id}/locations/{location_id}`
+            /// Required. The BigQuery project id for which transfer configs should be returned: `projects/{project_id}`
+            /// or `projects/{project_id}/locations/{location_id}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2708,8 +2708,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. The BigQuery project id for which data sources should be returned: `projects/{project_id}`
-                /// or `projects/{project_id}/locations/{location_id}`
+                /// Required. The BigQuery project id for which transfer configs should be returned:
+                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }

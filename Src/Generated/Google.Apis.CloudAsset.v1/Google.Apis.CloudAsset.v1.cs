@@ -301,7 +301,8 @@ namespace Google.Apis.CloudAsset.v1
         /// <param name="parent">
         /// Required. Name of the organization or project the assets belong to. Format:
         /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-id]" (such as
-        /// "projects/my-project-id"), or "projects/[project-number]" (such as "projects/12345").
+        /// "projects/my-project-id"), "projects/[project-number]" (such as "projects/12345"), or
+        /// "folders/[folder-number]" (such as "folders/12345").
         /// </param>
         public virtual ListRequest List(string parent)
         {
@@ -321,7 +322,8 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Required. Name of the organization or project the assets belong to. Format:
             /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-id]" (such as
-            /// "projects/my-project-id"), or "projects/[project-number]" (such as "projects/12345").
+            /// "projects/my-project-id"), "projects/[project-number]" (such as "projects/12345"), or
+            /// "folders/[folder-number]" (such as "folders/12345").
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }

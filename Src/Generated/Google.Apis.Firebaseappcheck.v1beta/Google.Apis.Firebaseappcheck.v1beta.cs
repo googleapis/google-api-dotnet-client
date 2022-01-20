@@ -405,7 +405,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     this.service = service;
                 }
 
-                /// <summary>Gets the AppAttestConfigs for the specified list of apps atomically.</summary>
+                /// <summary>Atomically gets the AppAttestConfigs for the specified list of apps.</summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all AppAttestConfigs being retrieved, in the format ```
                 /// projects/{project_number} ``` The parent collection in the `name` field of any resource being
@@ -416,7 +416,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     return new BatchGetRequest(service, parent);
                 }
 
-                /// <summary>Gets the AppAttestConfigs for the specified list of apps atomically.</summary>
+                /// <summary>Atomically gets the AppAttestConfigs for the specified list of apps.</summary>
                 public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse>
                 {
                     /// <summary>Constructs a new BatchGet request.</summary>
@@ -995,7 +995,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// Gets the DeviceCheckConfigs for the specified list of apps atomically. For security reasons, the
+                /// Atomically gets the DeviceCheckConfigs for the specified list of apps. For security reasons, the
                 /// `private_key` field is never populated in the response.
                 /// </summary>
                 /// <param name="parent">
@@ -1009,7 +1009,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// Gets the DeviceCheckConfigs for the specified list of apps atomically. For security reasons, the
+                /// Atomically gets the DeviceCheckConfigs for the specified list of apps. For security reasons, the
                 /// `private_key` field is never populated in the response.
                 /// </summary>
                 public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse>
@@ -1227,7 +1227,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// Gets the RecaptchaConfigs for the specified list of apps atomically. For security reasons, the
+                /// Atomically gets the RecaptchaConfigs for the specified list of apps. For security reasons, the
                 /// `site_secret` field is never populated in the response.
                 /// </summary>
                 /// <param name="parent">
@@ -1241,7 +1241,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// Gets the RecaptchaConfigs for the specified list of apps atomically. For security reasons, the
+                /// Atomically gets the RecaptchaConfigs for the specified list of apps. For security reasons, the
                 /// `site_secret` field is never populated in the response.
                 /// </summary>
                 public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse>
@@ -1458,7 +1458,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     this.service = service;
                 }
 
-                /// <summary>Gets the RecaptchaEnterpriseConfigs for the specified list of apps atomically.</summary>
+                /// <summary>Atomically gets the RecaptchaEnterpriseConfigs for the specified list of apps.</summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all RecaptchaEnterpriseConfigs being retrieved, in the
                 /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any resource
@@ -1469,7 +1469,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     return new BatchGetRequest(service, parent);
                 }
 
-                /// <summary>Gets the RecaptchaEnterpriseConfigs for the specified list of apps atomically.</summary>
+                /// <summary>Atomically gets the RecaptchaEnterpriseConfigs for the specified list of apps.</summary>
                 public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse>
                 {
                     /// <summary>Constructs a new BatchGet request.</summary>
@@ -1676,7 +1676,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     this.service = service;
                 }
 
-                /// <summary>Gets the SafetyNetConfigs for the specified list of apps atomically.</summary>
+                /// <summary>Atomically gets the SafetyNetConfigs for the specified list of apps.</summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format ```
                 /// projects/{project_number} ``` The parent collection in the `name` field of any resource being
@@ -1687,7 +1687,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     return new BatchGetRequest(service, parent);
                 }
 
-                /// <summary>Gets the SafetyNetConfigs for the specified list of apps atomically.</summary>
+                /// <summary>Atomically gets the SafetyNetConfigs for the specified list of apps.</summary>
                 public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse>
                 {
                     /// <summary>Constructs a new BatchGet request.</summary>
@@ -1949,8 +1949,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
-            /// Accepts an App Attest CBOR attestation and verifies it with Apple using the developer's preconfigured
-            /// team and bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an
+            /// Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and
+            /// bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an
             /// AttestationTokenResponse using ExchangeAppAttestAssertion. For convenience and performance, this
             /// method's response object will also contain an App Check token encapsulated in an
             /// AttestationTokenResponse (if the verification is successful).
@@ -1968,8 +1968,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
-            /// Accepts an App Attest CBOR attestation and verifies it with Apple using the developer's preconfigured
-            /// team and bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an
+            /// Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and
+            /// bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an
             /// AttestationTokenResponse using ExchangeAppAttestAssertion. For convenience and performance, this
             /// method's response object will also contain an App Check token encapsulated in an
             /// AttestationTokenResponse (if the verification is successful).
@@ -2534,7 +2534,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 this.service = service;
             }
 
-            /// <summary>Updates the specified Service configurations atomically.</summary>
+            /// <summary>Atomically updates the specified Service configurations.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent project name shared by all Service configurations being updated, in the format ```
@@ -2546,7 +2546,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 return new BatchUpdateRequest(service, body, parent);
             }
 
-            /// <summary>Updates the specified Service configurations atomically.</summary>
+            /// <summary>Atomically updates the specified Service configurations.</summary>
             public class BatchUpdateRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse>
             {
                 /// <summary>Constructs a new BatchUpdate request.</summary>
