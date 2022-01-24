@@ -2466,6 +2466,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata related to the update database operation.</summary>
+    public class GoogleFirestoreAdminV1UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for ExportDocuments operations.</summary>
     public class GoogleFirestoreAdminV1beta1ExportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

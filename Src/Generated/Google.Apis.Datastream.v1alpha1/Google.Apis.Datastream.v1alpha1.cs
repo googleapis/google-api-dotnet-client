@@ -2832,6 +2832,7 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConnectionProfileName")]
         public virtual string DestinationConnectionProfileName { get; set; }
 
+        /// <summary>GCS destination configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestinationConfig")]
         public virtual GcsDestinationConfig GcsDestinationConfig { get; set; }
 

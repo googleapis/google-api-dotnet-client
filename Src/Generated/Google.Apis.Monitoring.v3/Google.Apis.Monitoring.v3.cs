@@ -8920,8 +8920,8 @@ namespace Google.Apis.Monitoring.v3.Data
     /// MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field
     /// identifies the actual resource and its attributes according to the schema. For example, a particular Compute
     /// Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for
-    /// "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id":
-    /// "12345678901234", "zone": "us-central1-a" }}
+    /// "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": {
+    /// "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
     /// </summary>
     public class MonitoredResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9963,6 +9963,10 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>This message configures which resources and services to monitor for availability.</summary>
     public class UptimeCheckConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The type of checkers to use to execute the Uptime check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkerType")]
+        public virtual string CheckerType { get; set; }
+
         /// <summary>
         /// The content that is expected to appear in the data returned by the target server against which the check is
         /// run. Currently, only the first entry in the content_matchers list is supported, and additional entries will

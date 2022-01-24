@@ -2098,6 +2098,17 @@ namespace Google.Apis.SecretManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
+        /// <summary>
+        /// Optional. If specified, SecretManagerService will verify the integrity of the received data on
+        /// SecretManagerService.AddSecretVersion calls using the crc32c checksum and store it to include in future
+        /// SecretManagerService.AccessSecretVersion responses. If a checksum is not provided in the
+        /// SecretManagerService.AddSecretVersion request, the SecretManagerService will generate and store one for you.
+        /// The CRC32C value is encoded as a Int64 for compatibility, and can be safely downconverted to uint32 in
+        /// languages that support this type. https://cloud.google.com/apis/design/design_patterns#integer_types
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCrc32c")]
+        public virtual System.Nullable<long> DataCrc32c { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2105,6 +2116,13 @@ namespace Google.Apis.SecretManager.v1.Data
     /// <summary>A secret version resource in the Secret Manager API.</summary>
     public class SecretVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. True if payload checksum specified in SecretPayload object has been received by
+        /// SecretManagerService on SecretManagerService.AddSecretVersion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSpecifiedPayloadChecksum")]
+        public virtual System.Nullable<bool> ClientSpecifiedPayloadChecksum { get; set; }
+
         /// <summary>Output only. The time at which the SecretVersion was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

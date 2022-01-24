@@ -451,7 +451,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
     /// <summary>
     /// Metadata for Datastore to Firestore migration operations. The DatastoreFirestoreMigration operation is not
     /// started by the end-user via an explicit "creation" method. This is an intentional deviation from the LRO design
-    /// pattern. This singleton resource can be accessed at: "projects/{project_id}/datastore-firestore-migration"
+    /// pattern. This singleton resource can be accessed at:
+    /// "projects/{project_id}/operations/datastore-firestore-migration"
     /// </summary>
     public class GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -588,6 +589,56 @@ namespace Google.Apis.Datastore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An event signifying the start of a new step in a [migration from Cloud Datastore to Cloud Firestore in Datastore
+    /// mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore).
+    /// </summary>
+    public class GoogleDatastoreAdminV1MigrationProgressEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details for the `PREPARE` step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prepareStepDetails")]
+        public virtual GoogleDatastoreAdminV1PrepareStepDetails PrepareStepDetails { get; set; }
+
+        /// <summary>Details for the `REDIRECT_WRITES` step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectWritesStepDetails")]
+        public virtual GoogleDatastoreAdminV1RedirectWritesStepDetails RedirectWritesStepDetails { get; set; }
+
+        /// <summary>
+        /// The step that is starting. An event with step set to `START` indicates that the migration has been reverted
+        /// back to the initial pre-migration state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual string Step { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An event signifying a change in state of a [migration from Cloud Datastore to Cloud Firestore in Datastore
+    /// mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore).
+    /// </summary>
+    public class GoogleDatastoreAdminV1MigrationStateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new state of the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for the `PREPARE` step.</summary>
+    public class GoogleDatastoreAdminV1PrepareStepDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The concurrency mode this database will use when it reaches the `REDIRECT_WRITES` step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
+        public virtual string ConcurrencyMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Measures the progress of a particular metric.</summary>
     public class GoogleDatastoreAdminV1Progress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -602,6 +653,17 @@ namespace Google.Apis.Datastore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workEstimated")]
         public virtual System.Nullable<long> WorkEstimated { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for the `REDIRECT_WRITES` step.</summary>
+    public class GoogleDatastoreAdminV1RedirectWritesStepDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ths concurrency mode for this database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
+        public virtual string ConcurrencyMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
