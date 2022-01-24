@@ -383,7 +383,10 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Uploads an asset. Returns the ID of the newly uploaded asset if successful. The asset file size should
-            /// be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos.
+            /// be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos. Must be used within the
+            /// [multipart media upload process](/display-video/api/guides/how-tos/upload#multipart). Examples using
+            /// provided client libraries can be found in our [Creating Creatives
+            /// guide](/display-video/api/guides/creating-creatives/overview#upload_an_asset).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this asset belongs to.</param>
@@ -394,7 +397,10 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Uploads an asset. Returns the ID of the newly uploaded asset if successful. The asset file size should
-            /// be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos.
+            /// be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos. Must be used within the
+            /// [multipart media upload process](/display-video/api/guides/how-tos/upload#multipart). Examples using
+            /// provided client libraries can be found in our [Creating Creatives
+            /// guide](/display-video/api/guides/creating-creatives/overview#upload_an_asset).
             /// </summary>
             public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CreateAssetResponse>
             {
@@ -442,7 +448,10 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Uploads an asset. Returns the ID of the newly uploaded asset if successful. The asset file size should
-            /// be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos.
+            /// be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos. Must be used within the
+            /// [multipart media upload process](/display-video/api/guides/how-tos/upload#multipart). Examples using
+            /// provided client libraries can be found in our [Creating Creatives
+            /// guide](/display-video/api/guides/creating-creatives/overview#upload_an_asset).
             /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
@@ -11651,6 +11660,128 @@ namespace Google.Apis.DisplayVideo.v1
             this.service = service;
         }
 
+        /// <summary>
+        /// Creates a FirstAndThirdPartyAudience. Only supported for the following audience_type: *
+        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// Creates a FirstAndThirdPartyAudience. Only supported for the following audience_type: *
+        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the advertiser under whom the FirstAndThirdPartyAudience will be created.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/firstAndThirdPartyAudiences";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the member list of a Customer Match audience. Only supported for the following audience_type: *
+        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="firstAndThirdPartyAudienceId">
+        /// Required. The ID of the Customer Match FirstAndThirdPartyAudience whose members will be edited.
+        /// </param>
+        public virtual EditCustomerMatchMembersRequest EditCustomerMatchMembers(Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId)
+        {
+            return new EditCustomerMatchMembersRequest(service, body, firstAndThirdPartyAudienceId);
+        }
+
+        /// <summary>
+        /// Updates the member list of a Customer Match audience. Only supported for the following audience_type: *
+        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        public class EditCustomerMatchMembersRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersResponse>
+        {
+            /// <summary>Constructs a new EditCustomerMatchMembers request.</summary>
+            public EditCustomerMatchMembersRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId) : base(service)
+            {
+                FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the Customer Match FirstAndThirdPartyAudience whose members will be edited.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("firstAndThirdPartyAudienceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long FirstAndThirdPartyAudienceId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "editCustomerMatchMembers";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers";
+
+            /// <summary>Initializes EditCustomerMatchMembers parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("firstAndThirdPartyAudienceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "firstAndThirdPartyAudienceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Gets a first and third party audience.</summary>
         /// <param name="firstAndThirdPartyAudienceId">
         /// Required. The ID of the first and third party audience to fetch.
@@ -11838,6 +11969,93 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing FirstAndThirdPartyAudience. Only supported for the following audience_type: *
+        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="firstAndThirdPartyAudienceId">
+        /// Output only. The unique ID of the first and third party audience. Assigned by the system.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId)
+        {
+            return new PatchRequest(service, body, firstAndThirdPartyAudienceId);
+        }
+
+        /// <summary>
+        /// Updates an existing FirstAndThirdPartyAudience. Only supported for the following audience_type: *
+        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId) : base(service)
+            {
+                FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. The unique ID of the first and third party audience. Assigned by the system.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("firstAndThirdPartyAudienceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long FirstAndThirdPartyAudienceId { get; private set; }
+
+            /// <summary>Required. The ID of the owner advertiser of the updated FirstAndThirdPartyAudience.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>Required. The mask to control which fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("firstAndThirdPartyAudienceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "firstAndThirdPartyAudienceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -19436,6 +19654,48 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contact information defining a Customer Match audience member.</summary>
+    public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Country code of the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>A list of SHA256 hashed email of the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedEmails")]
+        public virtual System.Collections.Generic.IList<string> HashedEmails { get; set; }
+
+        /// <summary>SHA256 hashed first name of the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedFirstName")]
+        public virtual string HashedFirstName { get; set; }
+
+        /// <summary>SHA256 hashed last name of the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedLastName")]
+        public virtual string HashedLastName { get; set; }
+
+        /// <summary>A list of SHA256 hashed phone numbers of the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedPhoneNumbers")]
+        public virtual System.Collections.Generic.IList<string> HashedPhoneNumbers { get; set; }
+
+        /// <summary>A list of zip codes of the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zipCodes")]
+        public virtual System.Collections.Generic.IList<string> ZipCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
+    public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of ContactInfo objects defining Customer Match audience members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactInfos")]
+        public virtual System.Collections.Generic.IList<ContactInfo> ContactInfos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Assigned content instream position targeting option details. This will be populated in the
     /// content_instream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
@@ -20526,6 +20786,38 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.</summary>
+    public class EditCustomerMatchMembersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input only. A list of contact information to define the members to be added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedContactInfoList")]
+        public virtual ContactInfoList AddedContactInfoList { get; set; }
+
+        /// <summary>Input only. A list of mobile device IDs to define the members to be added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedMobileDeviceIdList")]
+        public virtual MobileDeviceIdList AddedMobileDeviceIdList { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the owner advertiser of the updated Customer Match FirstAndThirdPartyAudience.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.</summary>
+    public class EditCustomerMatchMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the updated Customer Match FirstAndThirdPartyAudience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
+        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -20707,7 +20999,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSource")]
         public virtual string AudienceSource { get; set; }
 
-        /// <summary>Output only. The type of the audience.</summary>
+        /// <summary>The type of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
         public virtual string AudienceType { get; set; }
 
@@ -20768,8 +21060,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> GmailAudienceSize { get; set; }
 
         /// <summary>
-        /// The duration in days that an entry remains in the audience after the qualifying event. Only applicable to
-        /// first party audiences.
+        /// The duration in days that an entry remains in the audience after the qualifying event. If the audience has
+        /// no expiration, the value of this field should be set 10000. Otherwise, the set value must be greater than 0
+        /// and less than or equal to 540. Only applicable to first party audiences. This field is required for the
+        /// following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
         public virtual System.Nullable<long> MembershipDurationDays { get; set; }
@@ -21271,6 +21565,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. Performance goal of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoal")]
         public virtual PerformanceGoal PerformanceGoal { get; set; }
+
+        /// <summary>Output only. The reservation type of the insertion order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationType")]
+        public virtual string ReservationType { get; set; }
 
         /// <summary>
         /// Output only. The timestamp when the insertion order was last updated. Assigned by the system.
@@ -21874,6 +22172,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
+        /// <summary>
+        /// Whether to exclude new exchanges from automatically being targeted by the line item. This field is false by
+        /// default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeNewExchanges")]
+        public virtual System.Nullable<bool> ExcludeNewExchanges { get; set; }
+
         /// <summary>Required. The start and end time of the line item's flight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
         public virtual LineItemFlight Flight { get; set; }
@@ -21927,6 +22232,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The partner revenue model setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerRevenueModel")]
         public virtual PartnerRevenueModel PartnerRevenueModel { get; set; }
+
+        /// <summary>Output only. The reservation type of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationType")]
+        public virtual string ReservationType { get; set; }
 
         /// <summary>
         /// The [targeting expansion](https://support.google.com/displayvideo/answer/10191558) settings of the line
@@ -22716,6 +23025,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The app publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual string Publisher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
+    public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of mobile device IDs defining Customer Match audience members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceIds")]
+        public virtual System.Collections.Generic.IList<string> MobileDeviceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3398,17 +3398,6 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ConcurrencyMode { get; set; }
 
         /// <summary>
-        /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See
-        /// [version_retention_period] above; this field is populated with `now - version_retention_period`. This value
-        /// is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover
-        /// data, make sure to account for the time from the moment when the value is queried to the moment when you
-        /// initiate the recovery. Note that you should not need to query this field: if you know the
-        /// `version_retention_period` then you can query within that time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("earliestVersionTime")]
-        public virtual object EarliestVersionTime { get; set; }
-
-        /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
         /// delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
@@ -3847,6 +3836,13 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedWork")]
         public virtual System.Nullable<long> EstimatedWork { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to the update database operation.</summary>
+    public class GoogleFirestoreAdminV1UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -8071,8 +8071,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// Represents an upload session reference. This reference is created via upload method. Updating of item content
-    /// may refer to this uploaded content via contentDataRef.
+    /// Represents an upload session reference. This reference is created via upload method. UploadItemRef may be used
+    /// upto 30 days since creation. Updating of item content may refer to this uploaded content via contentDataRef.
     /// </summary>
     public class UploadItemRef : Google.Apis.Requests.IDirectResponseSchema
     {

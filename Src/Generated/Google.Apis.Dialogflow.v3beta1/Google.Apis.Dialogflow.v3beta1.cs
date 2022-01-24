@@ -9004,7 +9004,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run
         /// once a day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]
@@ -12861,7 +12861,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
-        /// <summary>The event that matched the query. Only filled for `EVENT` match type.</summary>
+        /// <summary>
+        /// The event that matched the query. Filled for `EVENT`, `NO_MATCH` and `NO_INPUT` match types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual string Event__ { get; set; }
 
@@ -13893,7 +13895,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
-    /// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+    /// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15233,6 +15235,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV2ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An intent categorizes an end-user's intention for one conversation turn. For each agent, you define many
     /// intents, where your combined intents can handle a complete conversation. When an end-user writes or says
@@ -16077,6 +16090,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the knowledge base interacted with during the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBase")]
+        public virtual string KnowledgeBase { get; set; }
+
         /// <summary>Output only. The current state of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

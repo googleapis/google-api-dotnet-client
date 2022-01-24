@@ -2814,35 +2814,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Configuration per workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
-        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig WorkerConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration per workload for both Private Pools and Hybrid Pools.</summary>
-    public class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
-        public virtual System.Nullable<long> DiskSizeGb { get; set; }
-
-        /// <summary>
-        /// The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
-        public virtual System.Nullable<float> MemoryGb { get; set; }
-
-        /// <summary>
-        /// The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
-        public virtual System.Nullable<float> VcpuCount { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

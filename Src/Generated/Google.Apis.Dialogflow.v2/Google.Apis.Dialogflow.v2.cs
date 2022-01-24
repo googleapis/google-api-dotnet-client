@@ -7809,6 +7809,77 @@ namespace Google.Apis.Dialogflow.v2
                     }
                 }
 
+                /// <summary>
+                /// Creates documents by importing data from external sources. Dialogflow supports up to 350 documents
+                /// in each request. If you try to import more, Dialogflow will return an error. This method is a
+                /// [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+                /// The returned `Operation` type has the following method-specific fields: - `metadata`:
+                /// KnowledgeOperationMetadata - `response`: ImportDocumentsResponse
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The knowledge base to import documents into. Format:
+                /// `projects//locations//knowledgeBases/`.
+                /// </param>
+                public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest body, string parent)
+                {
+                    return new ImportRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates documents by importing data from external sources. Dialogflow supports up to 350 documents
+                /// in each request. If you try to import more, Dialogflow will return an error. This method is a
+                /// [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+                /// The returned `Operation` type has the following method-specific fields: - `metadata`:
+                /// KnowledgeOperationMetadata - `response`: ImportDocumentsResponse
+                /// </summary>
+                public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The knowledge base to import documents into. Format:
+                    /// `projects//locations//knowledgeBases/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/documents:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/knowledgeBases/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Returns the list of all documents of the knowledge base.</summary>
                 /// <param name="parent">
                 /// Required. The knowledge base to list all documents for. Format:
@@ -15194,6 +15265,79 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
+                    /// <summary>
+                    /// Creates documents by importing data from external sources. Dialogflow supports up to 350
+                    /// documents in each request. If you try to import more, Dialogflow will return an error. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: ImportDocumentsResponse
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The knowledge base to import documents into. Format:
+                    /// `projects//locations//knowledgeBases/`.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest body, string parent)
+                    {
+                        return new ImportRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates documents by importing data from external sources. Dialogflow supports up to 350
+                    /// documents in each request. If you try to import more, Dialogflow will return an error. This
+                    /// method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`:
+                    /// KnowledgeOperationMetadata - `response`: ImportDocumentsResponse
+                    /// </summary>
+                    public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The knowledge base to import documents into. Format:
+                        /// `projects//locations//knowledgeBases/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/documents:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/knowledgeBases/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Returns the list of all documents of the knowledge base.</summary>
                     /// <param name="parent">
                     /// Required. The knowledge base to list all documents for. Format:
@@ -17004,7 +17148,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run
         /// once a day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableContinuousRun")]
@@ -21842,6 +21986,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Google Cloud Storage location for the inputs.</summary>
+    public class GoogleCloudDialogflowV2GcsSources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Google Cloud Storage URIs for the inputs. A URI is of the form: gs://bucket/object-prefix-or-name
+        /// Whether a prefix or name is used depends on the use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the Human Agent Assist to connect to a conversation.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22206,6 +22364,65 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The template used for importing documents.</summary>
+    public class GoogleCloudDialogflowV2ImportDocumentTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The knowledge type of document content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeTypes")]
+        public virtual System.Collections.Generic.IList<string> KnowledgeTypes { get; set; }
+
+        /// <summary>
+        /// Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include
+        /// storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a
+        /// `key` or a `value` of the metadata is 1024 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Required. The MIME type of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV2ImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Document template used for importing all the documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentTemplate")]
+        public virtual GoogleCloudDialogflowV2ImportDocumentTemplate DocumentTemplate { get; set; }
+
+        /// <summary>
+        /// The Google Cloud Storage location for the documents. The path can include a wildcard. These URIs may have
+        /// the forms `gs:///`. `gs:////*.`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudDialogflowV2GcsSources GcsSource { get; set; }
+
+        /// <summary>
+        /// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google
+        /// Cloud Storage URI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importGcsCustomMetadata")]
+        public virtual System.Nullable<bool> ImportGcsCustomMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV2ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23184,6 +23401,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the knowledge base interacted with during the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBase")]
+        public virtual string KnowledgeBase { get; set; }
+
         /// <summary>Output only. The current state of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

@@ -1742,11 +1742,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string MethodName { get; set; }
 
         /// <summary>
-        /// Identity of the operation. This is expected to be unique within the scope of the service that generated the
-        /// operation, and guarantees idempotency in case of retries. In order to ensure best performance and latency in
-        /// the Quota backends, operation_ids are optimally associated with time, so that related operations can be
-        /// accessed fast in storage. For this reason, the recommended token for services that intend to operate at a
-        /// high QPS is Unix time in nanos + UUID
+        /// Identity of the operation. For Allocation Quota, this is expected to be unique within the scope of the
+        /// service that generated the operation, and guarantees idempotency in case of retries. In order to ensure best
+        /// performance and latency in the Quota backends, operation_ids are optimally associated with time, so that
+        /// related operations can be accessed fast in storage. For this reason, the recommended token for services that
+        /// intend to operate at a high QPS is Unix time in nanos + UUID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
