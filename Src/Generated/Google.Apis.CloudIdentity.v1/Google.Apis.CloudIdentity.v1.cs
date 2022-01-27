@@ -4141,7 +4141,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicGroupMetadata")]
         public virtual DynamicGroupMetadata DynamicGroupMetadata { get; set; }
 
-        /// <summary>Required. Immutable. The `EntityKey` of the `Group`.</summary>
+        /// <summary>Required. The `EntityKey` of the `Group`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
         public virtual EntityKey GroupKey { get; set; }
 

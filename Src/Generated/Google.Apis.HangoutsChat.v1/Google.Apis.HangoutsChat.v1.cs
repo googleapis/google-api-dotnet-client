@@ -3291,8 +3291,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// A user in Google Chat. Represents a person in the People API. Formatted as `users/person_id` where
-        /// `person_id` is available from the [People API](https://developers.google.com/people/api/rest/v1/people).
+        /// A user in Google Chat. Represents a [person](https://developers.google.com/people/api/rest/v1/people) in the
+        /// People API. Format: `users/{person}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }

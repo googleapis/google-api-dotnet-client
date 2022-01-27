@@ -2230,6 +2230,13 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     public class AddSubnetworkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The IAM permission check determines whether the consumer project has
+        /// 'servicenetworking.services.use' permission or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkServiceNetworkingUsePermission")]
+        public virtual System.Nullable<bool> CheckServiceNetworkingUsePermission { get; set; }
+
+        /// <summary>
         /// Required. A resource that represents the service consumer, such as `projects/123456`. The project number can
         /// be different from the value in the consumer network parameter. For example, the network might be part of a
         /// Shared VPC network. In those cases, Service Networking validates that this resource belongs to that Shared

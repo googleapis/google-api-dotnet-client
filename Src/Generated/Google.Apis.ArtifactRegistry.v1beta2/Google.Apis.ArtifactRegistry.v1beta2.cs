@@ -1408,7 +1408,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Optional. Sorting field and order</summary>
+                            /// <summary>Optional. The field to order the results by.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
@@ -2975,10 +2975,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response message from importing artifacts.</summary>
+    /// <summary>The response message from importing APT artifacts.</summary>
     public class ImportAptArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Apt artifacts updated.</summary>
+        /// <summary>The Apt artifacts imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aptArtifacts")]
         public virtual System.Collections.Generic.IList<AptArtifact> AptArtifacts { get; set; }
 
@@ -3031,14 +3031,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response message from importing artifacts.</summary>
+    /// <summary>The response message from importing YUM artifacts.</summary>
     public class ImportYumArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Detailed error info for packages that were not imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ImportYumArtifactsErrorInfo> Errors { get; set; }
 
-        /// <summary>The yum artifacts updated.</summary>
+        /// <summary>The yum artifacts imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yumArtifacts")]
         public virtual System.Collections.Generic.IList<YumArtifact> YumArtifacts { get; set; }
 

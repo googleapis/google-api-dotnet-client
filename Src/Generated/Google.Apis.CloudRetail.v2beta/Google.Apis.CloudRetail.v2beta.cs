@@ -318,8 +318,10 @@ namespace Google.Apis.CloudRetail.v2beta
                     this.service = service;
                     Branches = new BranchesResource(service);
                     CompletionData = new CompletionDataResource(service);
+                    Controls = new ControlsResource(service);
                     Operations = new OperationsResource(service);
                     Placements = new PlacementsResource(service);
+                    ServingConfigs = new ServingConfigsResource(service);
                     UserEvents = new UserEventsResource(service);
                 }
 
@@ -1263,6 +1265,384 @@ namespace Google.Apis.CloudRetail.v2beta
                     }
                 }
 
+                /// <summary>Gets the Controls resource.</summary>
+                public virtual ControlsResource Controls { get; }
+
+                /// <summary>The "controls" collection of methods.</summary>
+                public class ControlsResource
+                {
+                    private const string Resource = "controls";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ControlsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a Control. If the Control to create already exists, an ALREADY_EXISTS error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Full resource name of parent catalog. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a Control. If the Control to create already exists, an ALREADY_EXISTS error is returned.
+                    /// </summary>
+                    public class CreateRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of parent catalog. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the Control, which will become the final component of the
+                        /// Control's resource name. This value should be 4-63 characters, and valid characters are
+                        /// /a-z-_/.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("controlId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ControlId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+parent}/controls";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("controlId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "controlId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Control to delete. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    public class DeleteRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Control to delete. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/controls/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a Control.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Control to delete. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a Control.</summary>
+                    public class GetRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Control to delete. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/controls/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all Controls linked to this catalog.</summary>
+                    /// <param name="parent">
+                    /// Required. The catalog resource name. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all Controls linked to this catalog.</summary>
+                    public class ListRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaListControlsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The catalog resource name. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A filter to apply on the list results. Supported features: * List all the products
+                        /// under the parent branch if filter is unset. * List controls that are used in a single
+                        /// ServingConfig: 'serving_config = "boosted_home_page_cvr"'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed
+                        /// value is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListControls` call. Provide this to
+                        /// retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+parent}/controls";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates a Control. Control cannot be set to a different oneof field, if so an INVALID_ARGUMENT
+                    /// is returned. If the Control to delete does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates a Control. Control cannot be set to a different oneof field, if so an INVALID_ARGUMENT
+                    /// is returned. If the Control to delete does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    public class PatchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided Control to update. The following are NOT supported: *
+                        /// Control.name If not set or empty, all supported fields are updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/controls/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the Operations resource.</summary>
                 public virtual OperationsResource Operations { get; }
 
@@ -1582,6 +1962,504 @@ namespace Google.Apis.CloudRetail.v2beta
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/placements/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the ServingConfigs resource.</summary>
+                public virtual ServingConfigsResource ServingConfigs { get; }
+
+                /// <summary>The "servingConfigs" collection of methods.</summary>
+                public class ServingConfigsResource
+                {
+                    private const string Resource = "servingConfigs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ServingConfigsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Enables a Control on the specified ServingConfig. The control is added in the last position of
+                    /// the list of controls it belongs to (e.g. if it's a facet spec control it will be applied in the
+                    /// last position of servingConfig.facetSpecIds) Returns a ALREADY_EXISTS error if the control has
+                    /// already been applied. Returns a FAILED_PRECONDITION error if the addition could exceed maximum
+                    /// number of control allowed for that type of control.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="servingConfig">
+                    /// Required. The source ServingConfig resource name . Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// </param>
+                    public virtual AddControlRequest AddControl(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddControlRequest body, string servingConfig)
+                    {
+                        return new AddControlRequest(service, body, servingConfig);
+                    }
+
+                    /// <summary>
+                    /// Enables a Control on the specified ServingConfig. The control is added in the last position of
+                    /// the list of controls it belongs to (e.g. if it's a facet spec control it will be applied in the
+                    /// last position of servingConfig.facetSpecIds) Returns a ALREADY_EXISTS error if the control has
+                    /// already been applied. Returns a FAILED_PRECONDITION error if the addition could exceed maximum
+                    /// number of control allowed for that type of control.
+                    /// </summary>
+                    public class AddControlRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig>
+                    {
+                        /// <summary>Constructs a new AddControl request.</summary>
+                        public AddControlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddControlRequest body, string servingConfig) : base(service)
+                        {
+                            ServingConfig = servingConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The source ServingConfig resource name . Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServingConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddControlRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "addControl";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+servingConfig}:addControl";
+
+                        /// <summary>Initializes AddControl parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a Catalog, otherwise a
+                    /// FAILED_PRECONDITION error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Full resource name of parent. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a Catalog, otherwise a
+                    /// FAILED_PRECONDITION error is returned.
+                    /// </summary>
+                    public class CreateRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of parent. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the ServingConfig, which will become the final component of the
+                        /// ServingConfig's resource name. This value should be 4-63 characters, and valid characters
+                        /// are /a-z-_/.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servingConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ServingConfigId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+parent}/servingConfigs";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("servingConfigId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servingConfigId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the ServingConfig to delete. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    public class DeleteRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the ServingConfig to delete. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the ServingConfig to get. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    public class GetRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the ServingConfig to get. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all ServingConfigs linked to this catalog.</summary>
+                    /// <param name="parent">
+                    /// Required. The catalog resource name. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all ServingConfigs linked to this catalog.</summary>
+                    public class ListRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaListServingConfigsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The catalog resource name. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value
+                        /// greater than 100 is provided, at most 100 results are returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to
+                        /// retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+parent}/servingConfigs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a ServingConfig.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a ServingConfig.</summary>
+                    public class PatchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided ServingConfig to update. The following are NOT
+                        /// supported: * ServingConfig.name If not set, all supported fields are updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Disables a Control on the specified ServingConfig. The control is removed from the
+                    /// ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for the ServingConfig.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="servingConfig">
+                    /// Required. The source ServingConfig resource name . Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                    /// </param>
+                    public virtual RemoveControlRequest RemoveControl(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveControlRequest body, string servingConfig)
+                    {
+                        return new RemoveControlRequest(service, body, servingConfig);
+                    }
+
+                    /// <summary>
+                    /// Disables a Control on the specified ServingConfig. The control is removed from the
+                    /// ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for the ServingConfig.
+                    /// </summary>
+                    public class RemoveControlRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig>
+                    {
+                        /// <summary>Constructs a new RemoveControl request.</summary>
+                        public RemoveControlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveControlRequest body, string servingConfig) : base(service)
+                        {
+                            ServingConfig = servingConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The source ServingConfig resource name . Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServingConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveControlRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "removeControl";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+servingConfig}:removeControl";
+
+                        /// <summary>Initializes RemoveControl parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
                             });
                         }
                     }
@@ -3350,6 +4228,20 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for AddControl method.</summary>
+    public class GoogleCloudRetailV2betaAddControlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The id of the control to apply. Assumed to be in the same catalog as the serving config - if id is
+        /// not found a NOT_FOUND error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlId")]
+        public virtual string ControlId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the AddFulfillmentPlaces operation. Currently empty because there is no
     /// meaningful metadata populated from the AddFulfillmentPlaces method.
@@ -3640,6 +4532,112 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one
+    /// of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields
+    /// are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the
+    /// product_filter for requests with a query matching the query terms wil get boosted.
+    /// </summary>
+    public class GoogleCloudRetailV2betaCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeTimeRange")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaConditionTimeRange> ActiveTimeRange { get; set; }
+
+        /// <summary>
+        /// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query
+        /// terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaConditionQueryTerm> QueryTerms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Query terms that we want to match on.</summary>
+    public class GoogleCloudRetailV2betaConditionQueryTerm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether this is supposed to be a full or partial match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullMatch")]
+        public virtual System.Nullable<bool> FullMatch { get; set; }
+
+        /// <summary>
+        /// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a
+        /// partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and
+        /// allowed, " a b c d" is 4 terms and not allowed for partial match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used for time-dependent conditions. Example: Want to have rule applied for week long sale.</summary>
+    public class GoogleCloudRetailV2betaConditionTimeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End of time range. Range is inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Start of time range. Range is inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configures dynamic serving time metadata that is used to pre and post process search/recommendation model
+    /// results.
+    /// </summary>
+    public class GoogleCloudRetailV2betaControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of serving configuration ids that that are associated with this control. Note the
+        /// association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in
+        /// the same catalog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedServingConfigIds")]
+        public virtual System.Collections.Generic.IList<string> AssociatedServingConfigIds { get; set; }
+
+        /// <summary>
+        /// Required. The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded
+        /// string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A facet specification to perform faceted search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetSpec")]
+        public virtual GoogleCloudRetailV2betaSearchRequestFacetSpec FacetSpec { get; set; }
+
+        /// <summary>Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example:
+        /// Boost "gShoe" when query full matches "Running Shoes".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
+        public virtual GoogleCloudRetailV2betaRule Rule { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The solution types that the serving config is used for. Currently we support setting
+        /// only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
+        public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A custom attribute that is not explicitly modeled in Product.</summary>
     public class GoogleCloudRetailV2betaCustomAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3783,7 +4781,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for
         /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: Using
         /// https://support.google.com/analytics/answer/3437719. Supported values for control imports: * 'control'
-        /// (default): One JSON Control per line.
+        /// (default): One JSON Control per line. Supported values for catalog attribute imports: * 'catalog_attribute'
+        /// (default): One CSV CatalogAttribute per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -4087,6 +5086,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListControls method.</summary>
+    public class GoogleCloudRetailV2betaListControlsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the Controls for a given catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaControl> Controls { get; set; }
+
+        /// <summary>Pagination token, if not returned indicates the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ProductService.ListProducts method.</summary>
     public class GoogleCloudRetailV2betaListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4100,6 +5114,21 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>The Products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaProduct> Products { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListServingConfigs method.</summary>
+    public class GoogleCloudRetailV2betaListServingConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pagination token, if not returned indicates the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>All the ServingConfigs for a given catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaServingConfig> ServingConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4389,8 +5418,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Collections.Generic.IList<string> Categories { get; set; }
 
         /// <summary>
-        /// The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum
-        /// of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        /// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The
+        /// type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is
+        /// thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an
+        /// INVALID_ARGUMENT error is return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionMemberIds")]
         public virtual System.Collections.Generic.IList<string> CollectionMemberIds { get; set; }
@@ -4890,6 +5921,19 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for RemoveControl method.</summary>
+    public class GoogleCloudRetailV2betaRemoveControlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The id of the control to apply. Assumed to be in the same catalog as the serving config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlId")]
+        public virtual string ControlId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the RemoveFulfillmentPlaces operation. Currently empty because there is no
     /// meaningful metadata populated from the RemoveFulfillmentPlaces method.
@@ -4947,6 +5991,226 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// </summary>
     public class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies
+    /// what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search
+    /// endpoint.
+    /// </summary>
+    public class GoogleCloudRetailV2betaRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boost action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAction")]
+        public virtual GoogleCloudRetailV2betaRuleBoostAction BoostAction { get; set; }
+
+        /// <summary>
+        /// Required. The condition that triggers the rule. If the condition is empty, the rule will always apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual GoogleCloudRetailV2betaCondition Condition { get; set; }
+
+        /// <summary>Prevents term from being associated with other terms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doNotAssociateAction")]
+        public virtual GoogleCloudRetailV2betaRuleDoNotAssociateAction DoNotAssociateAction { get; set; }
+
+        /// <summary>Filters results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterAction")]
+        public virtual GoogleCloudRetailV2betaRuleFilterAction FilterAction { get; set; }
+
+        /// <summary>Ignores specific terms from query during search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreAction")]
+        public virtual GoogleCloudRetailV2betaRuleIgnoreAction IgnoreAction { get; set; }
+
+        /// <summary>
+        /// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with
+        /// the specific term.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onewaySynonymsAction")]
+        public virtual GoogleCloudRetailV2betaRuleOnewaySynonymsAction OnewaySynonymsAction { get; set; }
+
+        /// <summary>Redirects a shopper to a specific page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
+        public virtual GoogleCloudRetailV2betaRuleRedirectAction RedirectAction { get; set; }
+
+        /// <summary>Replaces specific terms in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementAction")]
+        public virtual GoogleCloudRetailV2betaRuleReplacementAction ReplacementAction { get; set; }
+
+        /// <summary>Treats a set of terms as synonyms of one another.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twowaySynonymsAction")]
+        public virtual GoogleCloudRetailV2betaRuleTwowaySynonymsAction TwowaySynonymsAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A boost action to apply to results matching condition specified above.</summary>
+    public class GoogleCloudRetailV2betaRuleBoostAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0.
+        /// Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item
+        /// will be the top result at all times, nor that other items will be excluded. Results could still be shown
+        /// even when none of them matches the condition. And results that are significantly more relevant to the search
+        /// query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big
+        /// demotion. However, results that are deeply relevant might still be shown. The item will have an upstream
+        /// battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost
+        /// applied. The boosting condition is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>
+        /// The filter can have a max size of 5000 characters. An expression which specifies which products to apply an
+        /// action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for
+        /// detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and
+        /// color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productsFilter")]
+        public virtual string ProductsFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe"
+    /// and "cheap".
+    /// </summary>
+    public class GoogleCloudRetailV2betaRuleDoNotAssociateAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cannot contain duplicates or the query term. Can specify up to 100 terms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doNotAssociateTerms")]
+        public virtual System.Collections.Generic.IList<string> DoNotAssociateTerms { get; set; }
+
+        /// <summary>
+        /// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can
+        /// specify up to 100 terms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
+        public virtual System.Collections.Generic.IList<string> QueryTerms { get; set; }
+
+        /// <summary>Will be [deprecated = true] post migration;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terms")]
+        public virtual System.Collections.Generic.IList<string> Terms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR
+    /// operator. * Action Input: The request query and filter that will be applied to the retrieved products, in
+    /// addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's
+    /// existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result:
+    /// Filters the returned objects to be ONLY those that passed the filter.
+    /// </summary>
+    public class GoogleCloudRetailV2betaRuleFilterAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter
+        /// syntax is identical to SearchRequest.filter. See more details at the Retail Search [user
+        /// guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or
+        /// "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies:
+        /// ANY("Red", "Blue")) *
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prevents a term in the query from being used in search. Example: Don't search for "shoddy".</summary>
+    public class GoogleCloudRetailV2betaRuleIgnoreAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Terms to ignore in the search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreTerms")]
+        public virtual System.Collections.Generic.IList<string> IgnoreTerms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only.
+    /// `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes".
+    /// "shoes" will not use a synonym of "sneakers".
+    /// </summary>
+    public class GoogleCloudRetailV2betaRuleOnewaySynonymsAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Will be [deprecated = true] post migration;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onewayTerms")]
+        public virtual System.Collections.Generic.IList<string> OnewayTerms { get; set; }
+
+        /// <summary>
+        /// Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms.
+        /// Can specify up to 100 terms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
+        public virtual System.Collections.Generic.IList<string> QueryTerms { get; set; }
+
+        /// <summary>Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
+        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request
+    /// Query * Action Result: Redirects shopper to provided uri.
+    /// </summary>
+    public class GoogleCloudRetailV2betaRuleRedirectAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL must have length equal or less than 2000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be
+    /// replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+    /// </summary>
+    public class GoogleCloudRetailV2betaRuleReplacementAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
+        public virtual System.Collections.Generic.IList<string> QueryTerms { get; set; }
+
+        /// <summary>Term that will be used for replacement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementTerm")]
+        public virtual string ReplacementTerm { get; set; }
+
+        /// <summary>Will be [deprecated = true] post migration;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual string Term { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and
+    /// "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+    /// </summary>
+    public class GoogleCloudRetailV2betaRuleTwowaySynonymsAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
+        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5467,6 +6731,157 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantRollupValues")]
         public virtual System.Collections.Generic.IDictionary<string, object> VariantRollupValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configures metadata that is used to generate serving time results (e.g. search results or recommendation
+    /// predictions). The ServingConfig is passed in the search and predict request and together with the
+    /// Catalog.default_branch, generates results.
+    /// </summary>
+    public class GoogleCloudRetailV2betaServingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores
+        /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
+        /// is 10. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost
+        /// conditions from both places are evaluated. If a search request matches multiple boost conditions, the final
+        /// boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if
+        /// solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostControlIds")]
+        public virtual System.Collections.Generic.IList<string> BoostControlIds { get; set; }
+
+        /// <summary>
+        /// Required. The human readable serving config display name. Used in Retail UI. This field must be a UTF-8
+        /// encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// How much diversity to use in recommendation model results e.g. 'medium-diversity' or 'high-diversity'.
+        /// Currently supported values: * 'no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' *
+        /// 'auto-diversity' If not specified, we choose default based on recommendation model type. Default value:
+        /// 'no-diversity'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diversityLevel")]
+        public virtual string DiversityLevel { get; set; }
+
+        /// <summary>
+        /// Condition do not associate specifications. If multiple do not associate conditions match, all matching do
+        /// not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications
+        /// is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doNotAssociateControlIds")]
+        public virtual System.Collections.Generic.IList<string> DoNotAssociateControlIds { get; set; }
+
+        /// <summary>
+        /// The specification for dynamically generated facets. Notice that only textual facets can be dynamically
+        /// generated. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicFacetSpec")]
+        public virtual GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec DynamicFacetSpec { get; set; }
+
+        /// <summary>
+        /// Whether to add additional category filters on the 'similar-items' model. If not specified, we enable it by
+        /// default. Allowed values are: * 'no-category-match': No additional filtering of original results from the
+        /// model and the customer's filters. * 'relaxed-category-match': Only keep results with categories that match
+        /// at least one item categories in the PredictRequests's context item. * If customer also sends filters in the
+        /// PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be
+        /// set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCategoryFilterLevel")]
+        public virtual string EnableCategoryFilterLevel { get; set; }
+
+        /// <summary>
+        /// Facet specifications for faceted search. If empty, no facets are returned. The ids refer to the ids of
+        /// Control resources with only the Facet control set. These controls are assumed to be in the same Catalog as
+        /// the ServingConfig. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetControlIds")]
+        public virtual System.Collections.Generic.IList<string> FacetControlIds { get; set; }
+
+        /// <summary>
+        /// Condition filter specifications. If a product matches multiple conditions in the specifications, filters
+        /// from these specifications are all applied and combined via the AND operator. Maximum number of
+        /// specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterControlIds")]
+        public virtual System.Collections.Generic.IList<string> FilterControlIds { get; set; }
+
+        /// <summary>
+        /// Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the
+        /// list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if
+        /// solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreControlIds")]
+        public virtual System.Collections.Generic.IList<string> IgnoreControlIds { get; set; }
+
+        /// <summary>
+        /// The id of the model to use at serving time. Currently only RecommendationModels are supported:
+        /// https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a
+        /// compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is
+        /// SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway
+        /// synonyms controls in the list will execute. Order of controls in the list will not matter. Maximum number of
+        /// specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onewaySynonymsControlIds")]
+        public virtual System.Collections.Generic.IList<string> OnewaySynonymsControlIds { get; set; }
+
+        /// <summary>
+        /// How much price ranking we want in serving results. Price reranking causes product items with a similar
+        /// recommendation probability to be ordered by price, with the highest-priced items first. This setting could
+        /// result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' *
+        /// 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose
+        /// default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is
+        /// SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceRerankingLevel")]
+        public virtual string PriceRerankingLevel { get; set; }
+
+        /// <summary>
+        /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple
+        /// apply. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectControlIds")]
+        public virtual System.Collections.Generic.IList<string> RedirectControlIds { get; set; }
+
+        /// <summary>
+        /// Condition replacement specifications. - Applied according to the order in the list. - A previously replaced
+        /// term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is
+        /// SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementControlIds")]
+        public virtual System.Collections.Generic.IList<string> ReplacementControlIds { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Specifies the solution types that a serving config can be associated with. Currently we
+        /// support setting only one type of solution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
+        public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>
+        /// Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in
+        /// the list will execute. Order of controls in the list will not matter. Maximum number of specifications is
+        /// 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twowaySynonymsControlIds")]
+        public virtual System.Collections.Generic.IList<string> TwowaySynonymsControlIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

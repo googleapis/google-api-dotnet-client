@@ -1861,7 +1861,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Optional. Sorting field and order</summary>
+                            /// <summary>Optional. The field to order the results by.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 

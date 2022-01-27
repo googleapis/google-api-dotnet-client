@@ -1324,7 +1324,8 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Optional. If true, the identities section of the result will expand any Google groups appearing in an
             /// IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result
-            /// will be determined by the selector, and this flag is not allowed to set. Default is false.
+            /// will be determined by the selector, and this flag is not allowed to set. If true, the default max
+            /// expansion per group is 1000 for AssetService.AnalyzeIamPolicy][]. Default is false.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.expandGroups", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AnalysisQueryOptionsExpandGroups { get; set; }
@@ -1339,7 +1340,9 @@ namespace Google.Apis.CloudAsset.v1
             /// resource hierarchy. Only project or lower resources are supported. Folder and organization resource
             /// cannot be used together with this option. For example, if the request analyzes for which users have
             /// permission P on a GCP project with this option enabled, the results will include all users who have
-            /// permission P on that project or any lower resource. Default is false.
+            /// permission P on that project or any lower resource. If true, the default max expansion per resource is
+            /// 1000 for AssetService.AnalyzeIamPolicy][] and 100000 for AssetService.AnalyzeIamPolicyLongrunning][].
+            /// Default is false.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.expandResources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AnalysisQueryOptionsExpandResources { get; set; }
@@ -4770,7 +4773,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// Optional. If true, the identities section of the result will expand any Google groups appearing in an IAM
         /// policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result will be
-        /// determined by the selector, and this flag is not allowed to set. Default is false.
+        /// determined by the selector, and this flag is not allowed to set. If true, the default max expansion per
+        /// group is 1000 for AssetService.AnalyzeIamPolicy][]. Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandGroups")]
         public virtual System.Nullable<bool> ExpandGroups { get; set; }
@@ -4784,8 +4788,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// result will expand the specified resource to include resources lower in the resource hierarchy. Only project
         /// or lower resources are supported. Folder and organization resource cannot be used together with this option.
         /// For example, if the request analyzes for which users have permission P on a GCP project with this option
-        /// enabled, the results will include all users who have permission P on that project or any lower resource.
-        /// Default is false.
+        /// enabled, the results will include all users who have permission P on that project or any lower resource. If
+        /// true, the default max expansion per resource is 1000 for AssetService.AnalyzeIamPolicy][] and 100000 for
+        /// AssetService.AnalyzeIamPolicyLongrunning][]. Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandResources")]
         public virtual System.Nullable<bool> ExpandResources { get; set; }
