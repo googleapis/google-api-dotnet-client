@@ -266,6 +266,53 @@ namespace Google.Apis.Digitalassetlinks.v1
         }
 
         /// <summary>
+        /// Send a bundle of statement checks in a single RPC to minimize latency and service load. Statements need not
+        /// be all for the same source and/or target. We recommend using this method when you need to check more than
+        /// one statement in a short period of time.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual BulkCheckRequest BulkCheck(Google.Apis.Digitalassetlinks.v1.Data.BulkCheckRequest body)
+        {
+            return new BulkCheckRequest(service, body);
+        }
+
+        /// <summary>
+        /// Send a bundle of statement checks in a single RPC to minimize latency and service load. Statements need not
+        /// be all for the same source and/or target. We recommend using this method when you need to check more than
+        /// one statement in a short period of time.
+        /// </summary>
+        public class BulkCheckRequest : DigitalassetlinksBaseServiceRequest<Google.Apis.Digitalassetlinks.v1.Data.BulkCheckResponse>
+        {
+            /// <summary>Constructs a new BulkCheck request.</summary>
+            public BulkCheckRequest(Google.Apis.Services.IClientService service, Google.Apis.Digitalassetlinks.v1.Data.BulkCheckRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Digitalassetlinks.v1.Data.BulkCheckRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "bulkCheck";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/assetlinks:bulkCheck";
+
+            /// <summary>Initializes BulkCheck parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Determines whether the specified (directional) relationship exists between the specified source and target
         /// assets. The relation describes the intent of the link between the two assets as claimed by the source asset.
         /// An example for such relationships is the delegation of privileges or permissions. This command is most often
@@ -665,6 +712,72 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message used to check for the existence of multiple digital asset links within a single RPC.</summary>
+    public class BulkCheckRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Same configuration as in Check request, all statements checks will use same configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGoogleInternalDataSources")]
+        public virtual System.Nullable<bool> AllowGoogleInternalDataSources { get; set; }
+
+        /// <summary>
+        /// If specified, will be used in any given template statement that doesn’t specify a relation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRelation")]
+        public virtual string DefaultRelation { get; set; }
+
+        /// <summary>If specified, will be used in any given template statement that doesn’t specify a source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSource")]
+        public virtual Asset DefaultSource { get; set; }
+
+        /// <summary>If specified, will be used in any given template statement that doesn’t specify a target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultTarget")]
+        public virtual Asset DefaultTarget { get; set; }
+
+        /// <summary>
+        /// Same configuration as in Check request, all statements checks will use same configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipCacheLookup")]
+        public virtual System.Nullable<bool> SkipCacheLookup { get; set; }
+
+        /// <summary>
+        /// List of statements to check. For each statement, you can omit a field if the corresponding default_* field
+        /// below was supplied. Minimum 1 statement; maximum 1,000 statements. Any additional statements will be
+        /// ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statements")]
+        public virtual System.Collections.Generic.IList<StatementTemplate> Statements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response for BulkCheck call. Results are sent in a list in the same order in which they were sent. Individual
+    /// check errors are described in the appropriate check_results entry. If the entire call fails, the response will
+    /// include a bulk_error_code field describing the error.
+    /// </summary>
+    public class BulkCheckResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Error code for the entire request. Present only if the entire request failed. Individual check errors will
+        /// not trigger the presence of this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bulkErrorCode")]
+        public virtual string BulkErrorCode { get; set; }
+
+        /// <summary>
+        /// List of results for each check request. Results are returned in the same order in which they were sent in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkResults")]
+        public virtual System.Collections.Generic.IList<CheckResponse> CheckResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes an X509 certificate.</summary>
     public class CertificateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -775,6 +888,36 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         public virtual Asset Source { get; set; }
 
         /// <summary>Every statement has a target asset. REQUIRED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual Asset Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single statement to check in a bulk call using BulkCheck. See CheckRequest for details about each field.
+    /// </summary>
+    public class StatementTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The relationship being asserted between the source and target. If omitted, you must specify a
+        /// BulkCheckRequest.default_relation value to use here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relation")]
+        public virtual string Relation { get; set; }
+
+        /// <summary>
+        /// The source asset that is asserting the statement. If omitted, you must specify a
+        /// BulkCheckRequest.default_source value to use here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual Asset Source { get; set; }
+
+        /// <summary>
+        /// The target that the source is declaring the relationship with. If omitted, you must specify a
+        /// BulkCheckRequest.default_target to use here.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual Asset Target { get; set; }
 

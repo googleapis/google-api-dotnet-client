@@ -8631,7 +8631,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Release notes specification, i.e. language and text.</summary>
+    /// <summary>Localized text in given language.</summary>
     public class LocalizedText : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

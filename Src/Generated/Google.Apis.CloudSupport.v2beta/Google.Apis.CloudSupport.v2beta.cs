@@ -945,14 +945,6 @@ namespace Google.Apis.CloudSupport.v2beta
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>
-            /// A comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-            /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
-            /// Example: `name asc,update_time, create_time desc`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
             /// <summary>The maximum number of cases fetched with each request. Defaults to 10.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -987,14 +979,6 @@ namespace Google.Apis.CloudSupport.v2beta
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "orderBy",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1659,7 +1643,11 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The severity of this case.</summary>
+        /// <summary>The priority of this case. If this is set, do not set severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
+
+        /// <summary>The severity of this case. Deprecated. Use priority instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 

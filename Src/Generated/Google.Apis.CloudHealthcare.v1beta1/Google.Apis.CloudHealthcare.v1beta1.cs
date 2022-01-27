@@ -13284,7 +13284,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Creates a new DICOM store with sensitive information de-identified.</summary>
     public class DeidentifyDicomStoreRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>De-identify configuration.</summary>
+        /// <summary>Deidentify configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual DeidentifyConfig Config { get; set; }
 

@@ -468,9 +468,11 @@ namespace Google.Apis.ApiKeysService.v2
                 }
 
                 /// <summary>
-                /// Clones the existing key's restriction and display name to a new API key. The service account must
-                /// have the `apikeys.keys.get` and `apikeys.keys.create` permissions in the project. NOTE: Key is a
-                /// global resource; hence the only supported value for location is `global`.
+                /// DEPRECATED: API customers can call `GetKey` and then `CreateKey` methods to create a copy of an
+                /// existing key. Retire `CloneKey` method to eliminate the unnessary method from API Keys API. Clones
+                /// the existing key's restriction and display name to a new API key. The service account must have the
+                /// `apikeys.keys.get` and `apikeys.keys.create` permissions in the project. NOTE: Key is a global
+                /// resource; hence the only supported value for location is `global`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -482,9 +484,11 @@ namespace Google.Apis.ApiKeysService.v2
                 }
 
                 /// <summary>
-                /// Clones the existing key's restriction and display name to a new API key. The service account must
-                /// have the `apikeys.keys.get` and `apikeys.keys.create` permissions in the project. NOTE: Key is a
-                /// global resource; hence the only supported value for location is `global`.
+                /// DEPRECATED: API customers can call `GetKey` and then `CreateKey` methods to create a copy of an
+                /// existing key. Retire `CloneKey` method to eliminate the unnessary method from API Keys API. Clones
+                /// the existing key's restriction and display name to a new API key. The service account must have the
+                /// `apikeys.keys.get` and `apikeys.keys.create` permissions in the project. NOTE: Key is a global
+                /// resource; hence the only supported value for location is `global`.
                 /// </summary>
                 public class CloneRequest : ApiKeysServiceBaseServiceRequest<Google.Apis.ApiKeysService.v2.Data.Operation>
                 {
@@ -805,8 +809,9 @@ namespace Google.Apis.ApiKeysService.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Only list keys that conform to the specified filter. The allowed filter strings are
-                    /// `state:ACTIVE` and `state:DELETED`. By default, ListKeys returns only active keys.
+                    /// Optional. Deprecated: Use `show_deleted` instead. Only list keys that conform to the specified
+                    /// filter. The allowed filter strings are `state:ACTIVE` and `state:DELETED`. By default, ListKeys
+                    /// returns only active keys.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -818,6 +823,13 @@ namespace Google.Apis.ApiKeysService.v2
                     /// <summary>Optional. Requests a specific page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. Indicate that keys are marked as deleted within 30 days should also be returned.
+                    /// Normally only active keys are returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -859,6 +871,14 @@ namespace Google.Apis.ApiKeysService.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

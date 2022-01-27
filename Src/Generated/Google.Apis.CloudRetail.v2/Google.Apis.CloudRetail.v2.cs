@@ -3145,7 +3145,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for
         /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: Using
         /// https://support.google.com/analytics/answer/3437719. Supported values for control imports: * 'control'
-        /// (default): One JSON Control per line.
+        /// (default): One JSON Control per line. Supported values for catalog attribute imports: * 'catalog_attribute'
+        /// (default): One CSV CatalogAttribute per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -3751,8 +3752,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual System.Collections.Generic.IList<string> Categories { get; set; }
 
         /// <summary>
-        /// The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum
-        /// of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        /// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The
+        /// type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is
+        /// thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an
+        /// INVALID_ARGUMENT error is return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionMemberIds")]
         public virtual System.Collections.Generic.IList<string> CollectionMemberIds { get; set; }
