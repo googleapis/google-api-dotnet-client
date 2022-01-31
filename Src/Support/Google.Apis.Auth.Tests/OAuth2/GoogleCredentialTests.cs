@@ -14,6 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#if NETCOREAPP2_0 || NETCOREAPP2_1 || NET461
+#define EXTENSIONS_SUPPORTED
+#elif !(NETCOREAPP1_0 || NETCOREAPP1_1 || NET452 || NET46)
+#error Unsupported Platform
+#endif
+
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
@@ -33,6 +39,11 @@ using System.Threading.Tasks;
 using Xunit;
 using static Google.Apis.Auth.JsonWebSignature;
 using static Google.Apis.Auth.OAuth2.BearerToken;
+#if EXTENSIONS_SUPPORTED
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
+#endif
+
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -70,6 +81,180 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 ""client_id"": ""CLIENT_ID"",
 ""project_id"": ""PROJECT_ID"",
 ""type"": ""service_account""}";
+
+#if EXTENSIONS_SUPPORTED
+        private const string DummyUserCredentialConfigContents = @"{ ""GoogleCredential"": {
+""ClientId"": ""CLIENT_ID"",
+""ClientSecret"": ""CLIENT_SECRET"",
+""RefreshToken"": ""REFRESH_TOKEN"",
+""ProjectId"": ""PROJECT_ID"",
+""QuotaProject"": ""QUOTA_PROJECT"",
+""Type"": ""authorized_user""}}";
+        private const string DummyServiceAccountCredentialConfigContents = @"{ ""GoogleCredential"": {
+""PrivateKeyId"": ""PRIVATE_KEY_ID"",
+""PrivateKey"": ""-----BEGIN PRIVATE KEY-----
+MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
+2x4zrzrwSUtmtR37XTTi0sPARTDF8uzmXy8UnE5RcVJzEH5T2Ssz/ylX4Sl/CI4L
+no1l8j9GiHJb49LSRjWe4Yx936q0Xj9H0R1HTxvjUPqwAsTwy2fKBTog+q1frqc9
+o8s2r6LYivUGDVbhuUzCaMJsf+x3AgMBAAECgYEAi0FTXsu/zRswAUGaViQiHjrL
+uU65BSHXNVjV/2fLNEKnGWGqpli68z1IXY+S2nwbUak7rnGsq9/0F6jtsW+hZbLk
+KXUOuuExpeC5Kd6ngWX/f2jqmhlUabiQijU9cVk7pMq8EHkRtvlosnMTUAEzempu
+QUPwn1PZHhmJkBvZ4lECQQDCErrxl+e3BwUDcS0yVEEmCNSG6xdXs2878b8rzbe7
+3Mmi6SuuOLi3PU92J+j+f/MOdtYrk13mEDdYmd5dhrt5AkEAwPvDEsDT/W4y4h5n
+gv1awGBA5aLFE1JNWM/Gwn4D1cGpEDHKFREaBtxMDCASpHJuw8r7zUywpKhmBZcf
+GS37bwJANdSAKfbafLfjuhqwUJ9yGpykZm/a36aTmerp/bpn1iHdg+RtCzwMcDb/
+TWSwibbvsflgWmHbz657y4WSWhq+8QJAWrpCNN/ZCk2zuGDo80lfUBAwkoVat8G6
+wWU1oZyS+vzIGef+hLb8kHsjeZPej9eIwZ39kcBbT54oELrCkRjwGwJAQ8V2A7lT
+ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
+4Z5p2prkjWTLcA\u003d\u003d
+-----END PRIVATE KEY-----"",
+""ClientEmail"": ""CLIENT_EMAIL"",
+""ClientId"": ""CLIENT_ID"",
+""ProjectId"": ""PROJECT_ID"",
+""Type"": ""service_account""}}";
+        private const string UntypedCredentialConfigContents = @"{ ""GoogleCredential"": {
+""ClientId"": ""CLIENT_ID"",
+""ClientSecret"": ""CLIENT_SECRET"",
+""RefreshToken"": ""REFRESH_TOKEN"",
+""ProjectId"": ""PROJECT_ID"",
+""QuotaProject"": ""QUOTA_PROJECT""}}";
+        private const string IncompleteUserCredentialConfigContents = @"{ ""GoogleCredential"": {
+""ClientId"": ""CLIENT_ID"",
+""RefreshToken"": ""REFRESH_TOKEN"",
+""ProjectId"": ""PROJECT_ID"",
+""QuotaProject"": ""QUOTA_PROJECT"",
+""Type"": ""authorized_user""}}";
+        private const string WrongTypesUserCredentialConfigContents = @"{ ""GoogleCredential"": {
+""ClientId"": 1,
+""ClientSecret"": 2,
+""RefreshToken"": true,
+""ProjectId"": false,
+""QuotaProject"": ""QUOTA_PROJECT"",
+""Type"": ""authorized_user""}}";
+        private const string UnusedPropertiesUserCredentialConfigContents = @"{ ""GoogleCredential"": {
+""ClientId"": ""CLIENT_ID"",
+""ClientSecret"": ""CLIENT_SECRET"",
+""RefreshToken"": ""REFRESH_TOKEN"",
+""ProjectId"": ""PROJECT_ID"",
+""QuotaProject"": ""QUOTA_PROJECT"",
+""Type"": ""authorized_user"",
+""Unused"": ""unused_value""}}";
+
+
+        private IConfiguration BuildConfigurationForCredential(string json) =>
+            // We parse the string and call ToString after because within the key
+            // there's a character that needs escaping. Json.Net seems to handle this
+            // by default, whereas System.Text.Json, which is what Microsoft.Extensions.Configuration
+            // depends on, does not.
+            // Note that this has no direct effect on Google.Apis.Auth, as, at most, this affects
+            // the step of writing the service account key to configuration, which is external to
+            // this library.
+            new ConfigurationBuilder().AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(JToken.Parse(json).ToString()))).Build();
+
+        [Fact]
+        public void FromConfig_UserCredential()
+        {
+            IConfiguration config = BuildConfigurationForCredential(DummyUserCredentialConfigContents);
+            JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
+            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+
+            var userCred = Assert.IsType<UserCredential>(credential.UnderlyingCredential);
+            Assert.False(credential.IsCreateScopedRequired);
+            Assert.Equal("REFRESH_TOKEN", userCred.Token.RefreshToken);
+            var flow = (GoogleAuthorizationCodeFlow)userCred.Flow;
+            Assert.Equal("CLIENT_ID", flow.ClientSecrets.ClientId);
+            Assert.Equal("CLIENT_SECRET", flow.ClientSecrets.ClientSecret);
+            Assert.Equal("PROJECT_ID", flow.ProjectId);
+            Assert.Equal("QUOTA_PROJECT", userCred.QuotaProject);
+        }
+
+        [Fact]
+        public void FromConfig_ServiceAccountCredential()
+        {
+            IConfiguration config = BuildConfigurationForCredential(DummyServiceAccountCredentialConfigContents);
+            JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
+            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+
+            var serviceCred = Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
+            Assert.True(credential.IsCreateScopedRequired);
+            Assert.Equal("CLIENT_EMAIL", serviceCred.Id);
+            Assert.Equal("PROJECT_ID", serviceCred.ProjectId);
+        }
+
+        [Fact]
+        public void FromConfig_Untyped()
+        {
+            IConfiguration config = BuildConfigurationForCredential(UntypedCredentialConfigContents);
+            JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => GoogleCredential.FromJsonParameters(credentialParameters));
+            Assert.Contains("Unrecognized credential type", ex.Message);
+        }
+
+        [Fact]
+        public void FromConfig_IncompleteUserCredential()
+        {
+            IConfiguration config = BuildConfigurationForCredential(IncompleteUserCredentialConfigContents);
+            JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => GoogleCredential.FromJsonParameters(credentialParameters));
+            Assert.Contains("does not represent a valid user credential", ex.Message);
+        }
+
+        [Fact]
+        public void FromConfig_WrongTypesUserCredential()
+        {
+            IConfiguration config = BuildConfigurationForCredential(WrongTypesUserCredentialConfigContents);
+            JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
+
+            // These are parsed as string. Nothing we can do our side.
+            Assert.Equal("1", credentialParameters.ClientId);
+            Assert.Equal("2", credentialParameters.ClientSecret);
+            Assert.Equal("True", credentialParameters.RefreshToken);
+            Assert.Equal("False", credentialParameters.ProjectId);
+
+            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+
+            var userCred = Assert.IsType<UserCredential>(credential.UnderlyingCredential);
+            Assert.False(credential.IsCreateScopedRequired);
+            Assert.Equal("True", userCred.Token.RefreshToken);
+            var flow = (GoogleAuthorizationCodeFlow)userCred.Flow;
+            Assert.Equal("1", flow.ClientSecrets.ClientId);
+            Assert.Equal("2", flow.ClientSecrets.ClientSecret);
+            Assert.Equal("False", flow.ProjectId);
+            Assert.Equal("QUOTA_PROJECT", userCred.QuotaProject);
+        }
+
+        [Fact]
+        public void FromConfig_UnusedPropertiesUserCredential()
+        {
+            IConfiguration config = BuildConfigurationForCredential(UnusedPropertiesUserCredentialConfigContents);
+            // Properties not in JsonCredentialParameters are ignored.
+            JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
+            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+
+            var userCred = Assert.IsType<UserCredential>(credential.UnderlyingCredential);
+            Assert.False(credential.IsCreateScopedRequired);
+            Assert.Equal("REFRESH_TOKEN", userCred.Token.RefreshToken);
+            var flow = (GoogleAuthorizationCodeFlow)userCred.Flow;
+            Assert.Equal("CLIENT_ID", flow.ClientSecrets.ClientId);
+            Assert.Equal("CLIENT_SECRET", flow.ClientSecrets.ClientSecret);
+            Assert.Equal("PROJECT_ID", flow.ProjectId);
+            Assert.Equal("QUOTA_PROJECT", userCred.QuotaProject);
+        }
+
+        [Fact]
+        public void FromConfig_NotAJson()
+        {
+            IConfiguration config = new ConfigurationBuilder().AddInMemoryCollection(new KeyValuePair<string, string>[]
+            {
+                new KeyValuePair<string, string>("GoogleCredential", "NotAJson")
+            }).Build();
+
+            JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
+            ArgumentNullException ex = Assert.Throws<ArgumentNullException>(() => GoogleCredential.FromJsonParameters(credentialParameters));
+            Assert.Equal("credentialParameters", ex.ParamName);
+        }
+
+#endif
 
         [Fact]
         public void FromStream_UserCredential()
