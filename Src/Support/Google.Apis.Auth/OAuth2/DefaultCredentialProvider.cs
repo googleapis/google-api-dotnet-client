@@ -23,6 +23,7 @@ using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
 using Google.Apis.Logging;
+using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -204,21 +205,13 @@ namespace Google.Apis.Auth.OAuth2
 
 
         /// <summary>Creates a default credential from JSON data.</summary>
-        private static GoogleCredential CreateDefaultCredentialFromParameters(JsonCredentialParameters credentialParameters)
-        {
-            switch (credentialParameters.Type)
+        internal GoogleCredential CreateDefaultCredentialFromParameters(JsonCredentialParameters credentialParameters) =>
+            credentialParameters.ThrowIfNull(nameof(credentialParameters)).Type switch
             {
-                case JsonCredentialParameters.AuthorizedUserCredentialType:
-                    return new GoogleCredential(CreateUserCredentialFromParameters(credentialParameters));
-                case JsonCredentialParameters.ServiceAccountCredentialType:
-                    return GoogleCredential.FromServiceAccountCredential(
-                        CreateServiceAccountCredentialFromParameters(credentialParameters));
-                default:
-                    throw new InvalidOperationException(
-                        String.Format("Error creating credential from JSON. Unrecognized credential type {0}.", 
-                            credentialParameters.Type));
-            }
-        }
+                JsonCredentialParameters.AuthorizedUserCredentialType => new GoogleCredential(CreateUserCredentialFromParameters(credentialParameters)),
+                JsonCredentialParameters.ServiceAccountCredentialType => GoogleCredential.FromServiceAccountCredential(CreateServiceAccountCredentialFromParameters(credentialParameters)),
+                _ => throw new InvalidOperationException($"Error creating credential from JSON or JSON parameters. Unrecognized credential type {credentialParameters.Type}."),
+            };
 
         /// <summary>Creates a user credential from JSON data.</summary>
         private static UserCredential CreateUserCredentialFromParameters(JsonCredentialParameters credentialParameters)

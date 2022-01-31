@@ -169,6 +169,14 @@ namespace Google.Apis.Auth.OAuth2
         public static GoogleCredential FromJson(string json) => defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
 
         /// <summary>
+        /// Loads a credential from JSON credential parameters. Fields are a union of credential fields
+        /// for all supported types. <see cref="JsonCredentialParameters"/> for more detailed information
+        /// about supported types and corresponding fields.
+        /// </summary>
+        public static GoogleCredential FromJsonParameters(JsonCredentialParameters credentialParameters) =>
+            defaultCredentialProvider.CreateDefaultCredentialFromParameters(credentialParameters);
+
+        /// <summary>
         /// Create a <see cref="GoogleCredential"/> directly from the provided access token.
         /// The access token will not be automatically refreshed.
         /// </summary>
