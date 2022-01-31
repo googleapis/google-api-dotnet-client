@@ -6611,7 +6611,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System
-        /// Interface), "nvme" (Non-Volatile Memory Express). See SSD Interface types
+        /// Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance
         /// (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdInterface")]
@@ -8478,7 +8478,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A configuration for running an Apache Spark (http://spark.apache.org/) batch workload.</summary>
+    /// <summary>A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.</summary>
     public class SparkBatch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8532,7 +8532,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.</summary>
+    /// <summary>A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.</summary>
     public class SparkJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8666,7 +8666,7 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
-    /// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/) queries as a batch workload.
+    /// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
     /// </summary>
     public class SparkSqlBatch : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8689,7 +8689,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.</summary>
+    /// <summary>A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.</summary>
     public class SparkSqlJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.</summary>

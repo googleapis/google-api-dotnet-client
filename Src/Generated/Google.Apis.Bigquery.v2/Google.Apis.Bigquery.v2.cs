@@ -4801,6 +4801,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
+        /// <summary>[Optional]The tags associated with this dataset. Tag keys are globally unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<TagsData> Tags { get; set; }
+
         /// <summary>
         /// [Optional] An array of objects that define dataset access for one or more entities. You can set this
         /// property when inserting or updating a dataset in order to control who is allowed to access the data. If
@@ -4883,6 +4887,20 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("view")]
             public virtual TableReference View { get; set; }
         }
+
+        /// <summary>[Optional]The tags associated with this dataset. Tag keys are globally unique.</summary>
+        public class TagsData
+        {
+            /// <summary>
+            /// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("tagKey")]
+            public virtual string TagKey { get; set; }
+
+            /// <summary>[Required] Friendly short name of the tag value, e.g. "production".</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("tagValue")]
+            public virtual string TagValue { get; set; }
+        }
     }
 
     public class DatasetAccessEntry : Google.Apis.Requests.IDirectResponseSchema
@@ -4892,21 +4910,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual DatasetReference Dataset { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("target_types")]
-        public virtual System.Collections.Generic.IList<TargetTypesData> TargetTypes { get; set; }
+        public virtual System.Collections.Generic.IList<string> TargetTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-
-        public class TargetTypesData
-        {
-            /// <summary>
-            /// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported,
-            /// but additional target types may be added in the future. Possible values: VIEWS: This entry applies to
-            /// all views in the dataset.
-            /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
-            public virtual string TargetType { get; set; }
-        }
     }
 
     public class DatasetList : Google.Apis.Requests.IDirectResponseSchema
@@ -7910,9 +7917,10 @@ namespace Google.Apis.Bigquery.v2.Data
     }
 
     /// <summary>
-    /// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY:
-    /// {type_kind="ARRAY", array_element_type="STRING"} STRUCT&amp;gt;: {type_kind="STRUCT", struct_type={fields=[
-    /// {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+    /// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` *
+    /// ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT&amp;gt;: { "typeKind":
+    /// "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": {
+    /// "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
     /// </summary>
     public class StandardSqlDataType : Google.Apis.Requests.IDirectResponseSchema
     {

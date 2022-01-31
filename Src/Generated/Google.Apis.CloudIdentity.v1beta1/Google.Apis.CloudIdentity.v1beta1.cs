@@ -37,6 +37,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             Customers = new CustomersResource(this);
             Devices = new DevicesResource(this);
             Groups = new GroupsResource(this);
+            OrgUnits = new OrgUnitsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -120,6 +121,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         /// <summary>Gets the Groups resource.</summary>
         public virtual GroupsResource Groups { get; }
+
+        /// <summary>Gets the OrgUnits resource.</summary>
+        public virtual OrgUnitsResource OrgUnits { get; }
     }
 
     /// <summary>A base abstract class for CloudIdentity requests.</summary>
@@ -3443,6 +3447,246 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
         }
     }
+
+    /// <summary>The "orgUnits" collection of methods.</summary>
+    public class OrgUnitsResource
+    {
+        private const string Resource = "orgUnits";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrgUnitsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Memberships = new MembershipsResource(service);
+        }
+
+        /// <summary>Gets the Memberships resource.</summary>
+        public virtual MembershipsResource Memberships { get; }
+
+        /// <summary>The "memberships" collection of methods.</summary>
+        public class MembershipsResource
+        {
+            private const string Resource = "memberships";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MembershipsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// List OrgMembership resources in an OrgUnit treated as 'parent'. Parent format: orgUnits/{$orgUnitId}
+            /// where `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit`
+            /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits)
+            /// </summary>
+            /// <param name="parent">
+            /// Required. Immutable. OrgUnit which is queried for a list of memberships. Format: orgUnits/{$orgUnitId}
+            /// where `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit`
+            /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits).
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// List OrgMembership resources in an OrgUnit treated as 'parent'. Parent format: orgUnits/{$orgUnitId}
+            /// where `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit`
+            /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits)
+            /// </summary>
+            public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListOrgMembershipsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Immutable. OrgUnit which is queried for a list of memberships. Format:
+                /// orgUnits/{$orgUnitId} where `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit`
+                /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Immutable. Customer that this OrgMembership belongs to. All authorization will happen on
+                /// the role assignments of this customer. Format: customers/{$customerId} where `$customerId` is the
+                /// `id` from the [Admin SDK `Customer`
+                /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may
+                /// also use `customers/my_customer` to specify your own organization.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Customer { get; set; }
+
+                /// <summary>
+                /// The search query. Must be specified in [Common Expression
+                /// Language](https://opensource.google/projects/cel). May only contain equality operators on the `type`
+                /// (e.g., `type == 'shared_drive'`).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// The maximum number of results to return. The service may return fewer than this value. If omitted
+                /// (or defaulted to zero) the server will default to 50. The maximum allowed value is 100, though
+                /// requests with page_size greater than that will be silently interpreted as 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `OrgMembershipsService.ListOrgMemberships` call. Provide this
+                /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListOrgMembershipsRequest` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/memberships";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^orgUnits/[^/]+$",
+                    });
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Move an OrgMembership to a new OrgUnit. NOTE: This is an atomic copy-and-delete. The resource will have
+            /// a new copy under the destination OrgUnit and be deleted from the source OrgUnit. The resource can only
+            /// be searched under the destination OrgUnit afterwards.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Immutable. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// OrgMembership. Format: orgUnits/{$orgUnitId}/memberships/{$membership} The `$orgUnitId` is the
+            /// `orgUnitId` from the [Admin SDK `OrgUnit`
+            /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits), The
+            /// `$membership` shall be of the form `{$entityType};{$memberId}`, where `$entityType` is the enum value of
+            /// OrgMembership.EntityType, and `memberId` is the `id` from [Drive API (V3) `Drive`
+            /// resource](https://developers.google.com/drive/api/v3/reference/drives#resource) for
+            /// OrgMembership.EntityType.SHARED_DRIVE.
+            /// </param>
+            public virtual MoveRequest Move(Google.Apis.CloudIdentity.v1beta1.Data.MoveOrgMembershipRequest body, string name)
+            {
+                return new MoveRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Move an OrgMembership to a new OrgUnit. NOTE: This is an atomic copy-and-delete. The resource will have
+            /// a new copy under the destination OrgUnit and be deleted from the source OrgUnit. The resource can only
+            /// be searched under the destination OrgUnit afterwards.
+            /// </summary>
+            public class MoveRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Move request.</summary>
+                public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.MoveOrgMembershipRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Immutable. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// OrgMembership. Format: orgUnits/{$orgUnitId}/memberships/{$membership} The `$orgUnitId` is the
+                /// `orgUnitId` from the [Admin SDK `OrgUnit`
+                /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits), The
+                /// `$membership` shall be of the form `{$entityType};{$memberId}`, where `$entityType` is the enum
+                /// value of OrgMembership.EntityType, and `memberId` is the `id` from [Drive API (V3) `Drive`
+                /// resource](https://developers.google.com/drive/api/v3/reference/drives#resource) for
+                /// OrgMembership.EntityType.SHARED_DRIVE.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1beta1.Data.MoveOrgMembershipRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "move";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:move";
+
+                /// <summary>Initializes Move parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^orgUnits/[^/]+/memberships/[^/]+$",
+                    });
+                }
+            }
+        }
+    }
 }
 namespace Google.Apis.CloudIdentity.v1beta1.Data
 {
@@ -4576,7 +4820,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicGroupMetadata")]
         public virtual DynamicGroupMetadata DynamicGroupMetadata { get; set; }
 
-        /// <summary>Required. Immutable. The `EntityKey` of the `Group`.</summary>
+        /// <summary>Required. The `EntityKey` of the `Group`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
         public virtual EntityKey GroupKey { get; set; }
 
@@ -4739,6 +4983,24 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for OrgMembershipsService.ListOrgMemberships.</summary>
+    public class ListOrgMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The non-vacuous membership in an orgUnit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgMemberships")]
+        public virtual System.Collections.Generic.IList<OrgMembership> OrgMemberships { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5014,6 +5276,31 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for OrgMembershipsService.MoveOrgMembership.</summary>
+    public class MoveOrgMembershipRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. Customer on whose membership change is made. All authorization will happen on the role
+        /// assignments of this customer. Format: customers/{$customerId} where `$customerId` is the `id` from the
+        /// [Admin SDK `Customer`
+        /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may also use
+        /// `customers/my_customer` to specify your own organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. OrgUnit where the membership will be moved to. Format: orgUnits/{$orgUnitId} where
+        /// `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit`
+        /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationOrgUnit")]
+        public virtual string DestinationOrgUnit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5052,6 +5339,49 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A membership in an OrgUnit. An `OrgMembership` defines a relationship between an `OrgUnit` and an entity
+    /// belonging to that `OrgUnit`, referred to as a "member".
+    /// </summary>
+    public class OrgMembership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Org member id as full resource name. Format for shared drive resource:
+        /// //drive.googleapis.com/drives/{$memberId} where `$memberId` is the `id` from [Drive API (V3) `Drive`
+        /// resource](https://developers.google.com/drive/api/v3/reference/drives#resource).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("member")]
+        public virtual string Member { get; set; }
+
+        /// <summary>
+        /// Uri with which you can read the member. This follows https://aip.dev/122 Format for shared drive resource:
+        /// https://drive.googleapis.com/drive/v3/drives/{$memberId} where `$memberId` is the `id` from [Drive API (V3)
+        /// `Drive` resource](https://developers.google.com/drive/api/v3/reference/drives#resource).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberUri")]
+        public virtual string MemberUri { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// OrgMembership. Format: orgUnits/{$orgUnitId}/memberships/{$membership} The `$orgUnitId` is the `orgUnitId`
+        /// from the [Admin SDK `OrgUnit`
+        /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits). The `$membership`
+        /// shall be of the form `{$entityType};{$memberId}`, where `$entityType` is the enum value of
+        /// [OrgMembership.EntityType], and `memberId` is the `id` from [Drive API (V3) `Drive`
+        /// resource](https://developers.google.com/drive/api/v3/reference/drives#resource) for
+        /// OrgMembership.EntityType.SHARED_DRIVE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Immutable. Entity type for the org member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

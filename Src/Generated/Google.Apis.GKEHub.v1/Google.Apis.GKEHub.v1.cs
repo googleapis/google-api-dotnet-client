@@ -2920,6 +2920,20 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>EdgeCluster contains information specific to Google Edge Clusters.</summary>
+    public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example:
+        /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -3418,6 +3432,10 @@ namespace Google.Apis.GKEHub.v1.Data
     /// </summary>
     public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specific information for a Google Edge cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
+        public virtual EdgeCluster EdgeCluster { get; set; }
+
         /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual GkeCluster GkeCluster { get; set; }
@@ -3471,6 +3489,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Config Management-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipState Configmanagement { get; set; }
+
+        /// <summary>Policycontroller-specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicyControllerMembershipState Policycontroller { get; set; }
 
         /// <summary>The high-level state of this Feature for a single membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3702,6 +3724,137 @@ namespace Google.Apis.GKEHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+    /// </summary>
+    public class PolicyControllerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy Controller configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
+        public virtual PolicyControllerPolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
+
+        /// <summary>Version of Policy Controller installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Policy Controller**: State for a single cluster.</summary>
+    public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
+        /// Membership's membership_name, unless the user installed PC on the cluster manually prior to enabling the PC
+        /// hub feature. Unique within a Policy Controller installation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>
+        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
+        /// MembershipSpec in the FeatureSpec represents the intended state
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
+        public virtual PolicyControllerMembershipSpec MembershipSpec { get; set; }
+
+        /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
+        public virtual PolicyControllerPolicyControllerHubState PolicyControllerHubState { get; set; }
+
+        /// <summary>The lifecycle state Policy Controller is in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Policy Controller</summary>
+    public class PolicyControllerPolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit
+        /// functionality altogether.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditIntervalSeconds")]
+        public virtual System.Nullable<long> AuditIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently
+        /// exist on the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptableNamespaces")]
+        public virtual System.Collections.Generic.IList<string> ExemptableNamespaces { get; set; }
+
+        /// <summary>
+        /// The install_spec represents the intended state specified by the latest request that mutated install_spec in
+        /// the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is
+        /// reported in the feature state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installSpec")]
+        public virtual string InstallSpec { get; set; }
+
+        /// <summary>Logs all denies and dry run failures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logDeniesEnabled")]
+        public virtual System.Nullable<bool> LogDeniesEnabled { get; set; }
+
+        /// <summary>
+        /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
+        /// being evaluated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referentialRulesEnabled")]
+        public virtual System.Nullable<bool> ReferentialRulesEnabled { get; set; }
+
+        /// <summary>Configures the library templates to install along with Policy Controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryConfig")]
+        public virtual PolicyControllerTemplateLibraryConfig TemplateLibraryConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State of the Policy Controller.</summary>
+    public class PolicyControllerPolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map from deployment name to deployment state. Example deployments are gatekeeper-controller-manager,
+        /// gatekeeper-audit deployment, and gatekeeper-mutation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentStates")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DeploymentStates { get; set; }
+
+        /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual PolicyControllerPolicyControllerHubVersion Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The build version of Gatekeeper that Policy Controller is using.</summary>
+    public class PolicyControllerPolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The config specifying which default library templates to install.</summary>
+    public class PolicyControllerTemplateLibraryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the standard template library should be installed or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("included")]
+        public virtual System.Nullable<bool> Included { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>ResourceManifest represents a single Kubernetes resource to be applied to the cluster.</summary>

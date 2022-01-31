@@ -18491,21 +18491,23 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// Assigned audience group targeting option details. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group
     /// is UNION, except for excluded_first_and_third_party_audience_group and excluded_google_audience_group, of which
-    /// COMPLEMENT is UNION'ed with other groups.
+    /// COMPLEMENT is used as an INTERSECTION with other groups.
     /// </summary>
     public class AudienceGroupAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The first and third party audience ids and recencies of the excluded first and third party audience group.
-        /// Used for negative targeting. Its COMPLEMENT is used to UNION other audience groups.
+        /// Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is
+        /// used as an INTERSECTION to any positive audience targeting. All items are logically ‘OR’ of each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFirstAndThirdPartyAudienceGroup")]
         public virtual FirstAndThirdPartyAudienceGroup ExcludedFirstAndThirdPartyAudienceGroup { get; set; }
 
         /// <summary>
-        /// The Google audience ids of the excluded Google audience group. Used for negative targeting. It's COMPLEMENT
-        /// is used to UNION other audience groups. Only contains Affinity, In-market and Installed-apps type Google
-        /// audiences. All items are logically ‘OR’ of each other.
+        /// The Google audience ids of the excluded Google audience group. Used for negative targeting. The COMPLEMENT
+        /// of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive
+        /// audience targeting. Only contains Affinity, In-market and Installed-apps type Google audiences. All items
+        /// are logically ‘OR’ of each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedGoogleAudienceGroup")]
         public virtual GoogleAudienceGroup ExcludedGoogleAudienceGroup { get; set; }
@@ -20995,6 +20997,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activeDisplayAudienceSize")]
         public virtual System.Nullable<long> ActiveDisplayAudienceSize { get; set; }
 
+        /// <summary>
+        /// The app_id matches with the type of the mobile_device_ids being uploaded. Only applicable to audience_type
+        /// `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
         /// <summary>Output only. The source of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSource")]
         public virtual string AudienceSource { get; set; }
@@ -21002,6 +21011,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The type of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
         public virtual string AudienceType { get; set; }
+
+        /// <summary>
+        /// Input only. A list of contact information to define the initial audience members. Only applicable to
+        /// audience_type `CUSTOMER_MATCH_CONTACT_INFO`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactInfoList")]
+        public virtual ContactInfoList ContactInfoList { get; set; }
 
         /// <summary>The user-provided description of the audience. Only applicable to first party audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -21062,11 +21078,18 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>
         /// The duration in days that an entry remains in the audience after the qualifying event. If the audience has
         /// no expiration, the value of this field should be set 10000. Otherwise, the set value must be greater than 0
-        /// and less than or equal to 540. Only applicable to first party audiences. This field is required for the
-        /// following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// and less than or equal to 540. Only applicable to first party audiences. This field is required if one of
+        /// the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
         public virtual System.Nullable<long> MembershipDurationDays { get; set; }
+
+        /// <summary>
+        /// Input only. A list of mobile device IDs to define the initial audience members. Only applicable to
+        /// audience_type `CUSTOMER_MATCH_DEVICE_ID`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceIdList")]
+        public virtual MobileDeviceIdList MobileDeviceIdList { get; set; }
 
         /// <summary>Output only. The resource name of the first and third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

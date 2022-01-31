@@ -2496,10 +2496,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router
-        /// appliance instances referenced by this hub's spokes must belong to this VPC network. This field is
-        /// read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the
-        /// hub.
+        /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center
+        /// automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingVpcs")]
         public virtual System.Collections.Generic.IList<RoutingVPC> RoutingVpcs { get; set; }
@@ -2531,9 +2529,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedInterconnectAttachments : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set
-        /// to false by default, but you must set it to true. Note that data transfer is available only in supported
-        /// locations.
+        /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
+        /// available only in [supported
+        /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteToSiteDataTransfer")]
         public virtual System.Nullable<bool> SiteToSiteDataTransfer { get; set; }
@@ -2557,9 +2555,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<RouterApplianceInstance> Instances { get; set; }
 
         /// <summary>
-        /// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set
-        /// to false by default, but you must set it to true. Note that data transfer is available only in supported
-        /// locations.
+        /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
+        /// available only in [supported
+        /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteToSiteDataTransfer")]
         public virtual System.Nullable<bool> SiteToSiteDataTransfer { get; set; }
@@ -2576,9 +2574,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedVpnTunnels : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A value that controls whether site-to-site data transfer is enabled for these resources. This field is set
-        /// to false by default, but you must set it to true. Note that data transfer is available only in supported
-        /// locations.
+        /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
+        /// available only in [supported
+        /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteToSiteDataTransfer")]
         public virtual System.Nullable<bool> SiteToSiteDataTransfer { get; set; }
@@ -2820,13 +2818,16 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RoutingVPC contains information about the VPC network that is associated with a hub's spokes.</summary>
+    /// <summary>
+    /// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+    /// </summary>
     public class RoutingVPC : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. If true, indicates that this VPC network is currently associated with spokes that use the data
         /// transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new
-        /// spokes that use data transfer, they must be associated with this VPC network.
+        /// spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will
+        /// have this field set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredForNewSiteToSiteDataTransferSpokes")]
         public virtual System.Nullable<bool> RequiredForNewSiteToSiteDataTransferSpokes { get; set; }

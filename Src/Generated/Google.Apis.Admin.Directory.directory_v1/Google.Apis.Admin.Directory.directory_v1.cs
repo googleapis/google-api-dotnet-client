@@ -3323,7 +3323,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string Customer { get; set; }
 
             /// <summary>
-            /// The domain name. Use this field to get fields from only one domain. To return all domains for a customer
+            /// The domain name. Use this field to get groups from only one domain. To return all domains for a customer
             /// account, use the `customer` query parameter instead.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Query)]
@@ -8744,7 +8744,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string Customer { get; set; }
 
             /// <summary>
-            /// The domain name. Use this field to get fields from only one domain. To return all domains for a customer
+            /// The domain name. Use this field to get groups from only one domain. To return all domains for a customer
             /// account, use the `customer` query parameter instead. Either the `customer` or the `domain` parameter
             /// must be provided.
             /// </summary>

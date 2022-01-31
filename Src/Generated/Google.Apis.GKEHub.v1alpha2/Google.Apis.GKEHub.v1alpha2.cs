@@ -1745,6 +1745,20 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>EdgeCluster contains information specific to Google Edge Clusters.</summary>
+    public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example:
+        /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -2156,6 +2170,10 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
     /// </summary>
     public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specific information for a Google Edge cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
+        public virtual EdgeCluster EdgeCluster { get; set; }
+
         /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual GkeCluster GkeCluster { get; set; }

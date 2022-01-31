@@ -2768,6 +2768,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>**Cloud Build**: Configurations for each Cloud Build enabled cluster.</summary>
+    public class CloudBuildMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether it is allowed to run the privileged builds on the cluster or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
+        public virtual string SecurityPolicy { get; set; }
+
+        /// <summary>Version of the cloud build software on the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3378,6 +3393,20 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Kubernetes type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual TypeMeta Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EdgeCluster contains information specific to Google Edge Clusters.</summary>
+    public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example:
+        /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4069,6 +4098,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specific information for a Google Edge cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
+        public virtual EdgeCluster EdgeCluster { get; set; }
+
         /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual GkeCluster GkeCluster { get; set; }
@@ -4108,6 +4141,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
         public virtual AnthosObservabilityMembershipSpec Anthosobservability { get; set; }
 
+        /// <summary>Cloud Build-specific spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudbuild")]
+        public virtual CloudBuildMembershipSpec Cloudbuild { get; set; }
+
         /// <summary>Config Management-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
@@ -4119,6 +4156,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Anthos Service Mesh-specific spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual ServiceMeshMembershipSpec Mesh { get; set; }
+
+        /// <summary>Policy Controller spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicycontrollerMembershipSpec Policycontroller { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4142,6 +4183,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Metering-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metering")]
         public virtual MeteringMembershipState Metering { get; set; }
+
+        /// <summary>Policycontroller-specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicycontrollerMembershipState Policycontroller { get; set; }
 
         /// <summary>Service Mesh-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
@@ -4402,6 +4447,141 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>
+    /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+    /// </summary>
+    public class PolicycontrollerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy Controller configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
+        public virtual PolicycontrollerPolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
+
+        /// <summary>Version of Policy Controller installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Policy Controller**: State for a single cluster.</summary>
+    public class PolicycontrollerMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
+        /// Membership's membership_name, unless the user installed PC on the cluster manually prior to enabling the PC
+        /// hub feature. Unique within a Policy Controller installation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>
+        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
+        /// MembershipSpec in the FeatureSpec represents the intended state
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
+        public virtual PolicycontrollerMembershipSpec MembershipSpec { get; set; }
+
+        /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
+        public virtual PolicycontrollerPolicyControllerHubState PolicyControllerHubState { get; set; }
+
+        /// <summary>The lifecycle state Policy Controller is in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Policy Controller</summary>
+    public class PolicycontrollerPolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit
+        /// functionality altogether.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditIntervalSeconds")]
+        public virtual System.Nullable<long> AuditIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently
+        /// exist on the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptableNamespaces")]
+        public virtual System.Collections.Generic.IList<string> ExemptableNamespaces { get; set; }
+
+        /// <summary>
+        /// The install_spec represents the intended state specified by the latest request that mutated install_spec in
+        /// the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is
+        /// reported in the feature state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installSpec")]
+        public virtual string InstallSpec { get; set; }
+
+        /// <summary>Logs all denies and dry run failures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logDeniesEnabled")]
+        public virtual System.Nullable<bool> LogDeniesEnabled { get; set; }
+
+        /// <summary>Enables the ability to mutate resources using Policy Controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
+        public virtual System.Nullable<bool> MutationEnabled { get; set; }
+
+        /// <summary>
+        /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
+        /// being evaluated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referentialRulesEnabled")]
+        public virtual System.Nullable<bool> ReferentialRulesEnabled { get; set; }
+
+        /// <summary>Configures the library templates to install along with Policy Controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryConfig")]
+        public virtual PolicycontrollerTemplateLibraryConfig TemplateLibraryConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State of the Policy Controller.</summary>
+    public class PolicycontrollerPolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map from deployment name to deployment state. Example deployments are gatekeeper-controller-manager,
+        /// gatekeeper-audit deployment, and gatekeeper-mutation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentStates")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DeploymentStates { get; set; }
+
+        /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual PolicycontrollerPolicyControllerHubVersion Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The build version of Gatekeeper that Policy Controller is using.</summary>
+    public class PolicycontrollerPolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The config specifying which default library templates to install.</summary>
+    public class PolicycontrollerTemplateLibraryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the standard template library should be installed or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("included")]
+        public virtual System.Nullable<bool> Included { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ResourceManifest represents a single Kubernetes resource to be applied to the cluster.</summary>
     public class ResourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4503,6 +4683,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Status of control plane management.</summary>
+    public class ServiceMeshControlPlaneManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explanation of state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<ServiceMeshStatusDetails> Details { get; set; }
+
+        /// <summary>LifecycleState of control plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.</summary>
     public class ServiceMeshFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4517,6 +4712,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**Service Mesh**: Spec for a single Membership for the servicemesh feature</summary>
     public class ServiceMeshMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Enables automatic control plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlane")]
+        public virtual string ControlPlane { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4529,6 +4728,25 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. Results of running Service Mesh analyzers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisMessages")]
         public virtual System.Collections.Generic.IList<ServiceMeshAnalysisMessage> AnalysisMessages { get; set; }
+
+        /// <summary>Output only. Status of control plane management</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneManagement")]
+        public virtual ServiceMeshControlPlaneManagement ControlPlaneManagement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Structured and human-readable details for a status.</summary>
+    public class ServiceMeshStatusDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A machine-readable code that further describes a broad status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Human-readable explanation of code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
