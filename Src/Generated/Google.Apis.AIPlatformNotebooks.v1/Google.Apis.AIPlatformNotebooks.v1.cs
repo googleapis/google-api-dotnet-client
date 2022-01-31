@@ -5266,7 +5266,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>
     /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime.
     /// Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` *
-    /// `idle_shutdown_timeout: 180` * `report-system-health: true`
+    /// `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
     /// </summary>
     public class RuntimeSoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5292,6 +5292,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Install Nvidia Driver automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installGpuDriver")]
         public virtual System.Nullable<bool> InstallGpuDriver { get; set; }
+
+        /// <summary>Optional. Use a list of container images to use as Kernels in the notebook instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernels")]
+        public virtual System.Collections.Generic.IList<ContainerImage> Kernels { get; set; }
 
         /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron
@@ -5767,7 +5771,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual RuntimeAcceleratorConfig AcceleratorConfig { get; set; }
 
-        /// <summary>Optional. Use a list of container images to start the notebook instance.</summary>
+        /// <summary>Optional. Use a list of container images to use as Kernels in the notebook instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImages")]
         public virtual System.Collections.Generic.IList<ContainerImage> ContainerImages { get; set; }
 

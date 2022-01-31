@@ -37,6 +37,7 @@ namespace Google.Apis.SearchConsole.v1
             Searchanalytics = new SearchanalyticsResource(this);
             Sitemaps = new SitemapsResource(this);
             Sites = new SitesResource(this);
+            UrlInspection = new UrlInspectionResource(this);
             UrlTestingTools = new UrlTestingToolsResource(this);
         }
 
@@ -93,6 +94,9 @@ namespace Google.Apis.SearchConsole.v1
 
         /// <summary>Gets the Sites resource.</summary>
         public virtual SitesResource Sites { get; }
+
+        /// <summary>Gets the UrlInspection resource.</summary>
+        public virtual UrlInspectionResource UrlInspection { get; }
 
         /// <summary>Gets the UrlTestingTools resource.</summary>
         public virtual UrlTestingToolsResource UrlTestingTools { get; }
@@ -819,6 +823,79 @@ namespace Google.Apis.SearchConsole.v1
         }
     }
 
+    /// <summary>The "urlInspection" collection of methods.</summary>
+    public class UrlInspectionResource
+    {
+        private const string Resource = "urlInspection";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UrlInspectionResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Index = new IndexResource(service);
+        }
+
+        /// <summary>Gets the Index resource.</summary>
+        public virtual IndexResource Index { get; }
+
+        /// <summary>The "index" collection of methods.</summary>
+        public class IndexResource
+        {
+            private const string Resource = "index";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public IndexResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Index inspection.</summary>
+            /// <param name="body">The body of the request.</param>
+            public virtual InspectRequest Inspect(Google.Apis.SearchConsole.v1.Data.InspectUrlIndexRequest body)
+            {
+                return new InspectRequest(service, body);
+            }
+
+            /// <summary>Index inspection.</summary>
+            public class InspectRequest : SearchConsoleBaseServiceRequest<Google.Apis.SearchConsole.v1.Data.InspectUrlIndexResponse>
+            {
+                /// <summary>Constructs a new Inspect request.</summary>
+                public InspectRequest(Google.Apis.Services.IClientService service, Google.Apis.SearchConsole.v1.Data.InspectUrlIndexRequest body) : base(service)
+                {
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SearchConsole.v1.Data.InspectUrlIndexRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "inspect";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/urlInspection/index:inspect";
+
+                /// <summary>Initializes Inspect parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                }
+            }
+        }
+    }
+
     /// <summary>The "urlTestingTools" collection of methods.</summary>
     public class UrlTestingToolsResource
     {
@@ -894,6 +971,71 @@ namespace Google.Apis.SearchConsole.v1
 }
 namespace Google.Apis.SearchConsole.v1.Data
 {
+    /// <summary>
+    /// AMP inspection result of the live page or the current information from Google's index, depending on whether you
+    /// requested a live inspection or not.
+    /// </summary>
+    public class AmpInspectionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Index status of the AMP URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ampIndexStatusVerdict")]
+        public virtual string AmpIndexStatusVerdict { get; set; }
+
+        /// <summary>
+        /// URL of the AMP that was inspected. If the submitted URL is a desktop page that refers to an AMP version, the
+        /// AMP version will be inspected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ampUrl")]
+        public virtual string AmpUrl { get; set; }
+
+        /// <summary>Whether or not the page blocks indexing through a noindex rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingState")]
+        public virtual string IndexingState { get; set; }
+
+        /// <summary>A list of zero or more AMP issues found for the inspected URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<AmpIssue> Issues { get; set; }
+
+        /// <summary>
+        /// Last time this AMP version was crawled by Google. Absent if the URL was never crawled successfully.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastCrawlTime")]
+        public virtual object LastCrawlTime { get; set; }
+
+        /// <summary>Whether or not Google could fetch the AMP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageFetchState")]
+        public virtual string PageFetchState { get; set; }
+
+        /// <summary>Whether or not the page is blocked to Google by a robots.txt rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("robotsTxtState")]
+        public virtual string RobotsTxtState { get; set; }
+
+        /// <summary>
+        /// The status of the most severe error on the page. If a page has both warnings and errors, the page status is
+        /// error. Error status means the page cannot be shown in Search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AMP issue.</summary>
+    public class AmpIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Brief description of this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueMessage")]
+        public virtual string IssueMessage { get; set; }
+
+        /// <summary>Severity of this issue: WARNING or ERROR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ApiDataRow : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("clicks")]
@@ -964,6 +1106,21 @@ namespace Google.Apis.SearchConsole.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rich Results items grouped by type.</summary>
+    public class DetectedItems : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Rich Results items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Item> Items { get; set; }
+
+        /// <summary>Rich Results type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richResultType")]
+        public virtual string RichResultType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describe image data.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -982,6 +1139,133 @@ namespace Google.Apis.SearchConsole.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Results of index status inspection for either the live page or the version in Google's index, depending on
+    /// whether you requested a live inspection or not. For more information, see the [Index coverage report
+    /// documentation](https://support.google.com/webmasters/answer/7440203).
+    /// </summary>
+    public class IndexStatusInspectionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Could Google find and index the page. More details about page indexing appear in 'indexing_state'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coverageState")]
+        public virtual string CoverageState { get; set; }
+
+        /// <summary>Primary crawler that was used by Google to crawl your site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crawledAs")]
+        public virtual string CrawledAs { get; set; }
+
+        /// <summary>
+        /// The URL of the page that Google selected as canonical. If the page was not indexed, this field is absent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCanonical")]
+        public virtual string GoogleCanonical { get; set; }
+
+        /// <summary>Whether or not the page blocks indexing through a noindex rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingState")]
+        public virtual string IndexingState { get; set; }
+
+        /// <summary>
+        /// Last time this URL was crawled by Google using the [primary
+        /// crawler](https://support.google.com/webmasters/answer/7440203#primary_crawler). Absent if the URL was never
+        /// crawled successfully.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastCrawlTime")]
+        public virtual object LastCrawlTime { get; set; }
+
+        /// <summary>
+        /// Whether or not Google could retrieve the page from your server. Equivalent to ["page
+        /// fetch"](https://support.google.com/webmasters/answer/9012289#index_coverage) in the URL inspection report.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageFetchState")]
+        public virtual string PageFetchState { get; set; }
+
+        /// <summary>URLs that link to the inspected URL, directly and indirectly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referringUrls")]
+        public virtual System.Collections.Generic.IList<string> ReferringUrls { get; set; }
+
+        /// <summary>Whether or not the page is blocked to Google by a robots.txt rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("robotsTxtState")]
+        public virtual string RobotsTxtState { get; set; }
+
+        /// <summary>
+        /// Any sitemaps that this URL was listed in, as known by Google. Not guaranteed to be an exhaustive list,
+        /// especially if Google did not discover this URL through a sitemap. Absent if no sitemaps were found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sitemap")]
+        public virtual System.Collections.Generic.IList<string> Sitemap { get; set; }
+
+        /// <summary>
+        /// The URL that your page or site [declares as
+        /// canonical](https://developers.google.com/search/docs/advanced/crawling/consolidate-duplicate-urls?#define-canonical).
+        /// If you did not declare a canonical URL, this field is absent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCanonical")]
+        public virtual string UserCanonical { get; set; }
+
+        /// <summary>
+        /// High level verdict about whether the URL *is* indexed (indexed status), or *can be* indexed (live
+        /// inspection).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Index inspection request.</summary>
+    public class InspectUrlIndexRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. URL to inspect. Must be under the property specified in "site_url".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectionUrl")]
+        public virtual string InspectionUrl { get; set; }
+
+        /// <summary>
+        /// Optional. An [IETF BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag) language code representing the
+        /// requested language for translated issue messages, e.g. "en-US", "or "de-CH". Default value is "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The URL of the property as defined in Search Console. **Examples:** `http://www.example.com/` for
+        /// a URL-prefix property, or `sc-domain:example.com` for a Domain property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteUrl")]
+        public virtual string SiteUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Index-Status inspection response.</summary>
+    public class InspectUrlIndexResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL inspection results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectionResult")]
+        public virtual UrlInspectionResult InspectionResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specific rich result found on the page.</summary>
+    public class Item : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of zero or more rich result issues found for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<RichResultsIssue> Issues { get; set; }
+
+        /// <summary>The user-provided name of this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Mobile-friendly issue.</summary>
     public class MobileFriendlyIssue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -993,12 +1277,82 @@ namespace Google.Apis.SearchConsole.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Mobile-usability inspection results.</summary>
+    public class MobileUsabilityInspectionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of zero or more mobile-usability issues detected for this URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<MobileUsabilityIssue> Issues { get; set; }
+
+        /// <summary>High-level mobile-usability inspection result for this URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mobile-usability issue.</summary>
+    public class MobileUsabilityIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mobile-usability issue type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueType")]
+        public virtual string IssueType { get; set; }
+
+        /// <summary>Additional information regarding the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Not returned; reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about a resource with issue.</summary>
     public class ResourceIssue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Describes a blocked resource issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockedResource")]
         public virtual BlockedResource BlockedResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rich-Results inspection result, including any rich results found at this URL.</summary>
+    public class RichResultsInspectionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of zero or more rich results detected on this page. Rich results that cannot even be parsed due to
+        /// syntactic issues will not be listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedItems")]
+        public virtual System.Collections.Generic.IList<DetectedItems> DetectedItems { get; set; }
+
+        /// <summary>High-level rich results inspection result for this URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Severity and status of a single issue affecting a single rich result instance on a page.</summary>
+    public class RichResultsIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rich Results issue type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueMessage")]
+        public virtual string IssueMessage { get; set; }
+
+        /// <summary>
+        /// Severity of this issue: WARNING, or ERROR. Items with an issue of status ERROR cannot appear with rich
+        /// result features in Google Search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1180,6 +1534,33 @@ namespace Google.Apis.SearchConsole.v1.Data
         /// <summary>Status of the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>URL inspection result, including all inspection results.</summary>
+    public class UrlInspectionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Result of the AMP analysis. Absent if the page is not an AMP page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ampResult")]
+        public virtual AmpInspectionResult AmpResult { get; set; }
+
+        /// <summary>Result of the index status analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexStatusResult")]
+        public virtual IndexStatusInspectionResult IndexStatusResult { get; set; }
+
+        /// <summary>Link to Search Console URL inspection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectionResultLink")]
+        public virtual string InspectionResultLink { get; set; }
+
+        /// <summary>Result of the Mobile usability analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileUsabilityResult")]
+        public virtual MobileUsabilityInspectionResult MobileUsabilityResult { get; set; }
+
+        /// <summary>Result of the Rich Results analysis. Absent if there are no rich results found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richResultsResult")]
+        public virtual RichResultsInspectionResult RichResultsResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

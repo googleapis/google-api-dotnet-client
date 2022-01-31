@@ -326,6 +326,125 @@ namespace Google.Apis.CloudKMS.v1
                     this.service = service;
                 }
 
+                /// <summary>Creates a new EkmConnection in a given Project and Location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location associated with the EkmConnection, in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.EkmConnection body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new EkmConnection in a given Project and Location.</summary>
+                public class CreateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.EkmConnection>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.EkmConnection body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location associated with the EkmConnection, in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. It must be unique within a location and match the regular expression
+                    /// `[a-zA-Z0-9_-]{1,63}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ekmConnectionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EkmConnectionId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudKMS.v1.Data.EkmConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/ekmConnections";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("ekmConnectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ekmConnectionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns metadata for a given EkmConnection.</summary>
+                /// <param name="name">Required. The name of the EkmConnection to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Returns metadata for a given EkmConnection.</summary>
+                public class GetRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.EkmConnection>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the EkmConnection to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/ekmConnections/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -396,6 +515,192 @@ namespace Google.Apis.CloudKMS.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists EkmConnections.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location associated with the EkmConnections to list, in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists EkmConnections.</summary>
+                public class ListRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ListEkmConnectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location associated with the EkmConnections to list, in the
+                    /// format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Only include resources that match the filter in the response. For more information,
+                    /// see [Sorting and filtering list
+                    /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specify how the results should be sorted. If not specified, the results will be sorted
+                    /// in the default order. For more information, see [Sorting and filtering list
+                    /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Optional limit on the number of EkmConnections to include in the response. Further
+                    /// EkmConnections can subsequently be obtained by including the
+                    /// ListEkmConnectionsResponse.next_page_token in a subsequent request. If unspecified, the server
+                    /// will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Optional pagination token, returned earlier via
+                    /// ListEkmConnectionsResponse.next_page_token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/ekmConnections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an EkmConnection's metadata.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name for the EkmConnection in the format
+                /// `projects/*/locations/*/ekmConnections/*`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudKMS.v1.Data.EkmConnection body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates an EkmConnection's metadata.</summary>
+                public class PatchRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.EkmConnection>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.EkmConnection body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name for the EkmConnection in the format
+                    /// `projects/*/locations/*/ekmConnections/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. List of fields to be updated in this request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudKMS.v1.Data.EkmConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/ekmConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3537,6 +3842,63 @@ namespace Google.Apis.CloudKMS.v1.Data
     }
 
     /// <summary>
+    /// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
+    /// </summary>
+    public class Certificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>
+        /// Output only. The certificate is not valid after this time. Only present if parsed is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notAfterTime")]
+        public virtual object NotAfterTime { get; set; }
+
+        /// <summary>
+        /// Output only. The certificate is not valid before this time. Only present if parsed is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notBeforeTime")]
+        public virtual object NotBeforeTime { get; set; }
+
+        /// <summary>Output only. True if the certificate was parsed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parsed")]
+        public virtual System.Nullable<bool> Parsed { get; set; }
+
+        /// <summary>Required. The raw certificate bytes in DER format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawDer")]
+        public virtual string RawDer { get; set; }
+
+        /// <summary>
+        /// Output only. The certificate serial number as a hex string. Only present if parsed is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>
+        /// Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Fingerprint")]
+        public virtual string Sha256Fingerprint { get; set; }
+
+        /// <summary>
+        /// Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>Output only. The subject Alternative DNS names. Only present if parsed is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectAlternativeDnsNames")]
+        public virtual System.Collections.Generic.IList<string> SubjectAlternativeDnsNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are ordered
     /// based on https://tools.ietf.org/html/rfc5246#section-7.4.2.
     /// </summary>
@@ -3567,6 +3929,16 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Output only. The time at which this CryptoKey was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions
+        /// associated with this CryptoKey reside and where all related cryptographic operations are performed. Only
+        /// applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format
+        /// `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional
+        /// ProtectionLevels in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyBackend")]
+        public virtual string CryptoKeyBackend { get; set; }
 
         /// <summary>
         /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before
@@ -3674,7 +4046,7 @@ namespace Google.Apis.CloudKMS.v1.Data
 
         /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that
-        /// are specific to the EXTERNAL protection level.
+        /// are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalProtectionLevelOptions")]
         public virtual ExternalProtectionLevelOptions ExternalProtectionLevelOptions { get; set; }
@@ -3859,6 +4231,39 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An EkmConnection represents an individual EKM connection. It can be used for creating CryptoKeys and
+    /// CryptoKeyVersions with a ProtectionLevel of EXTERNAL_VPC, as well as performing cryptographic operations using
+    /// keys created within the EkmConnection.
+    /// </summary>
+    public class EkmConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time at which the EkmConnection was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for the EkmConnection in the format
+        /// `projects/*/locations/*/ekmConnections/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM
+        /// replica. Currently, only a single ServiceResolver is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceResolvers")]
+        public virtual System.Collections.Generic.IList<ServiceResolver> ServiceResolvers { get; set; }
+    }
+
     /// <summary>Request message for KeyManagementService.Encrypt.</summary>
     public class EncryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4012,10 +4417,17 @@ namespace Google.Apis.CloudKMS.v1.Data
 
     /// <summary>
     /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are
-    /// specific to the EXTERNAL protection level.
+    /// specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
     /// </summary>
     public class ExternalProtectionLevelOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field
+        /// instead of external_key_uri when using an EkmConnection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmConnectionKeyPath")]
+        public virtual string EkmConnectionKeyPath { get; set; }
+
         /// <summary>The URI for an external resource that this CryptoKeyVersion represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalKeyUri")]
         public virtual string ExternalKeyUri { get; set; }
@@ -4263,6 +4675,28 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of CryptoKeys that matched the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for KeyManagementService.ListEkmConnections.</summary>
+    public class ListEkmConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of EkmConnections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmConnections")]
+        public virtual System.Collections.Generic.IList<EkmConnection> EkmConnections { get; set; }
+
+        /// <summary>
+        /// A token to retrieve next page of results. Pass this value in ListEkmConnectionsRequest.page_token to
+        /// retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The total number of EkmConnections that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
@@ -4656,6 +5090,39 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Request message for KeyManagementService.RestoreCryptoKeyVersion.</summary>
     public class RestoreCryptoKeyVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.</summary>
+    public class ServiceResolver : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all
+        /// endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each
+        /// request. For endpoint filter syntax and examples, see
+        /// https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointFilter")]
+        public virtual string EndpointFilter { get; set; }
+
+        /// <summary>Required. The hostname of the EKM replica used at TLS and HTTP layers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>
+        /// Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertificates")]
+        public virtual System.Collections.Generic.IList<Certificate> ServerCertificates { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the Service Directory service pointing to an EKM replica, in the format
+        /// `projects/*/locations/*/namespaces/*/services/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryService")]
+        public virtual string ServiceDirectoryService { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

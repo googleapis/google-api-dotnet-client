@@ -2464,8 +2464,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Updates the parameters of a single Target.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/
-                /// deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+                /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.Target body, string name)
                 {
@@ -2484,8 +2483,8 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/
-                    /// deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+                    /// Optional. Name of the `Target`. Format is
+                    /// projects/{project}/locations/{location}/targets/a-z{0,62}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2906,6 +2905,20 @@ namespace Google.Apis.CloudDeploy.v1
 }
 namespace Google.Apis.CloudDeploy.v1.Data
 {
+    /// <summary>Information specifying an Anthos Cluster.</summary>
+    public class AnthosCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is
+        /// `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual string Membership { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request object used by `ApproveRollout`.</summary>
     public class ApproveRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3198,6 +3211,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Configuration of the environment to use when calling Skaffold.</summary>
     public class ExecutionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket
+        /// ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket
+        /// located in the same region will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactStorage")]
+        public virtual string ArtifactStorage { get; set; }
+
         /// <summary>Optional. Use default Cloud Build pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPool")]
         public virtual DefaultPool DefaultPool { get; set; }
@@ -3206,9 +3227,24 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privatePool")]
         public virtual PrivatePool PrivatePool { get; set; }
 
+        /// <summary>
+        /// Optional. Google service account to use for execution. If unspecified, the project execution service account
+        /// (-compute@developer.gserviceaccount.com) will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
         /// <summary>Required. Usages when this configuration should be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usages")]
         public virtual System.Collections.Generic.IList<string> Usages { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the `WorkerPool`, with the format
+        /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified,
+        /// the default Cloud Build pool will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3727,7 +3763,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetRenders")]
         public virtual System.Collections.Generic.IDictionary<string, TargetRender> TargetRenders { get; set; }
 
-        /// <summary>Output only. Snapshot of the parent pipeline's targets taken at release creation time.</summary>
+        /// <summary>Output only. Snapshot of the targets taken at release creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSnapshots")]
         public virtual System.Collections.Generic.IList<Target> TargetSnapshots { get; set; }
 
@@ -3891,8 +3927,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>
         /// The target_id to which this stage points. This field refers exclusively to the last segment of a target
         /// name. For example, this field would just be `my-target` (rather than
-        /// `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the
-        /// `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+        /// `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the
+        /// same as the location of the `DeliveryPipeline` that contains this `Stage`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual string TargetId { get; set; }
@@ -3943,6 +3979,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>Information specifying an Anthos Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosCluster")]
+        public virtual AnthosCluster AnthosCluster { get; set; }
+
         /// <summary>Output only. Time at which the `Target` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -3983,8 +4023,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/
-        /// deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

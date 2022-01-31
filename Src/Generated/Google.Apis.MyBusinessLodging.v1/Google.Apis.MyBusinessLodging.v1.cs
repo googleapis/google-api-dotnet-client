@@ -3266,7 +3266,7 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
 
         /// <summary>
         /// Vegetarian meals. The property provides vegetarian menu options for guests. Vegetarian food does not contain
-        /// animal products.
+        /// meat, poultry, fish, or seafood.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vegetarianMeals")]
         public virtual System.Nullable<bool> VegetarianMeals { get; set; }

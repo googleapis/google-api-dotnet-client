@@ -2173,10 +2173,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// </summary>
     public class GoogleCloudRunOpV2TrafficTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. Cloud Run currently
-        /// requires 100 percent for a single TrafficTarget entry.
-        /// </summary>
+        /// <summary>Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
         public virtual System.Nullable<int> Percent { get; set; }
 

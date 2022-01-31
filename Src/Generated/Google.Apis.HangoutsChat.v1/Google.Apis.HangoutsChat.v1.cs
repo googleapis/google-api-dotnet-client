@@ -3300,7 +3300,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>State of the membership. Required for `CreateMembership`. Read-only for other usage.</summary>
+        /// <summary>State of the membership. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
