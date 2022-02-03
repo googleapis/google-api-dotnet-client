@@ -814,7 +814,6 @@ namespace Google.Apis.OrgPolicyAPI.v2
         {
             this.service = service;
             Constraints = new ConstraintsResource(service);
-            CustomConstraints = new CustomConstraintsResource(service);
             Policies = new PoliciesResource(service);
         }
 
@@ -914,91 +913,6 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the CustomConstraints resource.</summary>
-        public virtual CustomConstraintsResource CustomConstraints { get; }
-
-        /// <summary>The "customConstraints" collection of methods.</summary>
-        public class CustomConstraintsResource
-        {
-            private const string Resource = "customConstraints";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public CustomConstraintsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Updates a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-            /// constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be
-            /// * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-            /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
-            /// </param>
-            public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string name)
-            {
-                return new PatchRequest(service, body, name);
-            }
-
-            /// <summary>
-            /// Updates a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-            /// constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
-            /// </summary>
-            public class PatchRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should
-                /// be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-                /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/customConstraints/[^/]+$",
                     });
                 }
             }
@@ -2042,55 +1956,6 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsUnder")]
         public virtual System.Nullable<bool> SupportsUnder { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A custom constraint defined by customers which can *only* be applied to the given resource types and
-    /// organization. By creating a custom constraint, customers can applied policies of this custom constraint.
-    /// *Creating a custom constraint itself does NOT apply any policy enforcement*.
-    /// </summary>
-    public class GoogleCloudOrgpolicyV2CustomConstraint : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Allow or deny type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
-        public virtual string ActionType { get; set; }
-
-        /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'`
-        /// or, `resource.management.auto_upgrade == true`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; }
-
-        /// <summary>Detailed information about this custom policy constraint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>One line display name for the UI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>All the operations being applied for this constraint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("methodTypes")]
-        public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
-
-        /// <summary>
-        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
-        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example :
-        /// "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/"
-        /// Example: * `compute.googleapis.com/Instance`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
-        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

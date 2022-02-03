@@ -476,8 +476,8 @@ namespace Google.Apis.Container.v1
                     /// <summary>Creates a node pool for a cluster.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// The parent (project, location, cluster id) where the node pool will be created. Specified in the
-                    /// format `projects/*/locations/*/clusters/*`.
+                    /// The parent (project, location, cluster name) where the node pool will be created. Specified in
+                    /// the format `projects/*/locations/*/clusters/*`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Container.v1.Data.CreateNodePoolRequest body, string parent)
                     {
@@ -496,8 +496,8 @@ namespace Google.Apis.Container.v1
                         }
 
                         /// <summary>
-                        /// The parent (project, location, cluster id) where the node pool will be created. Specified in
-                        /// the format `projects/*/locations/*/clusters/*`.
+                        /// The parent (project, location, cluster name) where the node pool will be created. Specified
+                        /// in the format `projects/*/locations/*/clusters/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -760,8 +760,8 @@ namespace Google.Apis.Container.v1
 
                     /// <summary>Lists the node pools for a cluster.</summary>
                     /// <param name="parent">
-                    /// The parent (project, location, cluster id) where the node pools will be listed. Specified in the
-                    /// format `projects/*/locations/*/clusters/*`.
+                    /// The parent (project, location, cluster name) where the node pools will be listed. Specified in
+                    /// the format `projects/*/locations/*/clusters/*`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -779,8 +779,8 @@ namespace Google.Apis.Container.v1
                         }
 
                         /// <summary>
-                        /// The parent (project, location, cluster id) where the node pools will be listed. Specified in
-                        /// the format `projects/*/locations/*/clusters/*`.
+                        /// The parent (project, location, cluster name) where the node pools will be listed. Specified
+                        /// in the format `projects/*/locations/*/clusters/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1187,8 +1187,8 @@ namespace Google.Apis.Container.v1
                     /// is not yet intended for general use, and is not available for all clusters.
                     /// </summary>
                     /// <param name="parent">
-                    /// The cluster (project, location, cluster id) to get the discovery document for. Specified in the
-                    /// format `projects/*/locations/*/clusters/*`.
+                    /// The cluster (project, location, cluster name) to get the discovery document for. Specified in
+                    /// the format `projects/*/locations/*/clusters/*`.
                     /// </param>
                     public virtual GetOpenidConfigurationRequest GetOpenidConfiguration(string parent)
                     {
@@ -1210,8 +1210,8 @@ namespace Google.Apis.Container.v1
                         }
 
                         /// <summary>
-                        /// The cluster (project, location, cluster id) to get the discovery document for. Specified in
-                        /// the format `projects/*/locations/*/clusters/*`.
+                        /// The cluster (project, location, cluster name) to get the discovery document for. Specified
+                        /// in the format `projects/*/locations/*/clusters/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1244,7 +1244,7 @@ namespace Google.Apis.Container.v1
                 /// <summary>Completes master IP rotation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name (project, location, cluster id) of the cluster to complete IP rotation. Specified in the
+                /// The name (project, location, cluster name) of the cluster to complete IP rotation. Specified in the
                 /// format `projects/*/locations/*/clusters/*`.
                 /// </param>
                 public virtual CompleteIpRotationRequest CompleteIpRotation(Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string name)
@@ -1264,7 +1264,7 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>
-                    /// The name (project, location, cluster id) of the cluster to complete IP rotation. Specified in
+                    /// The name (project, location, cluster name) of the cluster to complete IP rotation. Specified in
                     /// the format `projects/*/locations/*/clusters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1584,7 +1584,7 @@ namespace Google.Apis.Container.v1
                 /// intended for general use, and is not available for all clusters.
                 /// </summary>
                 /// <param name="parent">
-                /// The cluster (project, location, cluster id) to get keys for. Specified in the format
+                /// The cluster (project, location, cluster name) to get keys for. Specified in the format
                 /// `projects/*/locations/*/clusters/*`.
                 /// </param>
                 public virtual GetJwksRequest GetJwks(string parent)
@@ -1606,7 +1606,7 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>
-                    /// The cluster (project, location, cluster id) to get keys for. Specified in the format
+                    /// The cluster (project, location, cluster name) to get keys for. Specified in the format
                     /// `projects/*/locations/*/clusters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1781,8 +1781,8 @@ namespace Google.Apis.Container.v1
                 /// <summary>Enables or disables the ABAC authorization mechanism on a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name (project, location, cluster id) of the cluster to set legacy abac. Specified in the format
-                /// `projects/*/locations/*/clusters/*`.
+                /// The name (project, location, cluster name) of the cluster to set legacy abac. Specified in the
+                /// format `projects/*/locations/*/clusters/*`.
                 /// </param>
                 public virtual SetLegacyAbacRequest SetLegacyAbac(Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string name)
                 {
@@ -1801,7 +1801,7 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>
-                    /// The name (project, location, cluster id) of the cluster to set legacy abac. Specified in the
+                    /// The name (project, location, cluster name) of the cluster to set legacy abac. Specified in the
                     /// format `projects/*/locations/*/clusters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1966,8 +1966,8 @@ namespace Google.Apis.Container.v1
                 /// <summary>Sets the maintenance policy for a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name (project, location, cluster id) of the cluster to set maintenance policy. Specified in the
-                /// format `projects/*/locations/*/clusters/*`.
+                /// The name (project, location, cluster name) of the cluster to set maintenance policy. Specified in
+                /// the format `projects/*/locations/*/clusters/*`.
                 /// </param>
                 public virtual SetMaintenancePolicyRequest SetMaintenancePolicy(Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string name)
                 {
@@ -1986,8 +1986,8 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>
-                    /// The name (project, location, cluster id) of the cluster to set maintenance policy. Specified in
-                    /// the format `projects/*/locations/*/clusters/*`.
+                    /// The name (project, location, cluster name) of the cluster to set maintenance policy. Specified
+                    /// in the format `projects/*/locations/*/clusters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2149,7 +2149,7 @@ namespace Google.Apis.Container.v1
                 /// <summary>Enables or disables Network Policy for a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name (project, location, cluster id) of the cluster to set networking policy. Specified in the
+                /// The name (project, location, cluster name) of the cluster to set networking policy. Specified in the
                 /// format `projects/*/locations/*/clusters/*`.
                 /// </param>
                 public virtual SetNetworkPolicyRequest SetNetworkPolicy(Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string name)
@@ -2169,7 +2169,7 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>
-                    /// The name (project, location, cluster id) of the cluster to set networking policy. Specified in
+                    /// The name (project, location, cluster name) of the cluster to set networking policy. Specified in
                     /// the format `projects/*/locations/*/clusters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2208,7 +2208,7 @@ namespace Google.Apis.Container.v1
                 /// <summary>Sets labels on a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name (project, location, cluster id) of the cluster to set labels. Specified in the format
+                /// The name (project, location, cluster name) of the cluster to set labels. Specified in the format
                 /// `projects/*/locations/*/clusters/*`.
                 /// </param>
                 public virtual SetResourceLabelsRequest SetResourceLabels(Google.Apis.Container.v1.Data.SetLabelsRequest body, string name)
@@ -2228,7 +2228,7 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>
-                    /// The name (project, location, cluster id) of the cluster to set labels. Specified in the format
+                    /// The name (project, location, cluster name) of the cluster to set labels. Specified in the format
                     /// `projects/*/locations/*/clusters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2267,7 +2267,7 @@ namespace Google.Apis.Container.v1
                 /// <summary>Starts master IP rotation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name (project, location, cluster id) of the cluster to start IP rotation. Specified in the
+                /// The name (project, location, cluster name) of the cluster to start IP rotation. Specified in the
                 /// format `projects/*/locations/*/clusters/*`.
                 /// </param>
                 public virtual StartIpRotationRequest StartIpRotation(Google.Apis.Container.v1.Data.StartIPRotationRequest body, string name)
@@ -2287,7 +2287,7 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>
-                    /// The name (project, location, cluster id) of the cluster to start IP rotation. Specified in the
+                    /// The name (project, location, cluster name) of the cluster to start IP rotation. Specified in the
                     /// format `projects/*/locations/*/clusters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3380,8 +3380,8 @@ namespace Google.Apis.Container.v1
                         public virtual string ClusterId { get; private set; }
 
                         /// <summary>
-                        /// The parent (project, location, cluster id) where the node pools will be listed. Specified in
-                        /// the format `projects/*/locations/*/clusters/*`.
+                        /// The parent (project, location, cluster name) where the node pools will be listed. Specified
+                        /// in the format `projects/*/locations/*/clusters/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Parent { get; set; }
@@ -6468,7 +6468,9 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; }
 
-        /// <summary>Configuration of Confidential Nodes</summary>
+        /// <summary>
+        /// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
@@ -7020,7 +7022,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ClusterId { get; set; }
 
         /// <summary>
-        /// The name (project, location, cluster id) of the cluster to complete IP rotation. Specified in the format
+        /// The name (project, location, cluster name) of the cluster to complete IP rotation. Specified in the format
         /// `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7052,7 +7054,7 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class ConfidentialNodes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether Confidential Nodes feature is enabled for all nodes in this cluster.</summary>
+        /// <summary>Whether Confidential Nodes feature is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -7136,7 +7138,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual NodePool NodePool { get; set; }
 
         /// <summary>
-        /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format
+        /// The parent (project, location, cluster name) where the node pool will be created. Specified in the format
         /// `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
@@ -9043,7 +9045,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string LabelFingerprint { get; set; }
 
         /// <summary>
-        /// The name (project, location, cluster id) of the cluster to set labels. Specified in the format
+        /// The name (project, location, cluster name) of the cluster to set labels. Specified in the format
         /// `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9088,7 +9090,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>
-        /// The name (project, location, cluster id) of the cluster to set legacy abac. Specified in the format
+        /// The name (project, location, cluster name) of the cluster to set legacy abac. Specified in the format
         /// `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9223,7 +9225,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual MaintenancePolicy MaintenancePolicy { get; set; }
 
         /// <summary>
-        /// The name (project, location, cluster id) of the cluster to set maintenance policy. Specified in the format
+        /// The name (project, location, cluster name) of the cluster to set maintenance policy. Specified in the format
         /// `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9350,7 +9352,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ClusterId { get; set; }
 
         /// <summary>
-        /// The name (project, location, cluster id) of the cluster to set networking policy. Specified in the format
+        /// The name (project, location, cluster name) of the cluster to set networking policy. Specified in the format
         /// `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9571,7 +9573,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ClusterId { get; set; }
 
         /// <summary>
-        /// The name (project, location, cluster id) of the cluster to start IP rotation. Specified in the format
+        /// The name (project, location, cluster name) of the cluster to start IP rotation. Specified in the format
         /// `projects/*/locations/*/clusters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

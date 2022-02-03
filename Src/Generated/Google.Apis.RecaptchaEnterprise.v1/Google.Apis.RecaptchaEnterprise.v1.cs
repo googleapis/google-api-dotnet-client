@@ -1152,10 +1152,6 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<string> Labels { get; set; }
 
-        /// <summary>Recommended action after this request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recommendedAction")]
-        public virtual string RecommendedAction { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

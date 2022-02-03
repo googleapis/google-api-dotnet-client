@@ -8838,11 +8838,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ShowDeleted { get; set; }
 
-            /// <summary>Whether to return results in ascending or descending order.</summary>
+            /// <summary>Whether to return results in ascending or descending order, ignoring case.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Whether to return results in ascending or descending order.</summary>
+            /// <summary>Whether to return results in ascending or descending order, ignoring case.</summary>
             public enum SortOrderEnum
             {
                 /// <summary>Ascending order.</summary>
@@ -10375,8 +10375,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The unique ID of the organizational unit. orgUnitPath is the human readable version of orgUnitId. While
         /// orgUnitPath may change by renaming an organizational unit within the path, orgUnitId is unchangeable for one
         /// organizational unit. This property can be
-        /// [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#update_chrome_device) using the API, and this
-        /// will be supported in the future.
+        /// [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou) using the API. For
+        /// more information about how to create an organizational structure for your device, see the [administration
+        /// help center](https://support.google.com/a/answer/182433).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
@@ -10385,9 +10386,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The full parent path with the organizational unit's name associated with the device. Path names are case
         /// insensitive. If the parent organizational unit is the top-level organization, it is represented as a forward
         /// slash, `/`. This property can be
-        /// [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#update_chrome_device) using the API. For more
-        /// information about how to create an organizational structure for your device, see the [administration help
-        /// center](https://support.google.com/a/answer/182433).
+        /// [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou) using the API. For
+        /// more information about how to create an organizational structure for your device, see the [administration
+        /// help center](https://support.google.com/a/answer/182433).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitPath")]
         public virtual string OrgUnitPath { get; set; }
@@ -11291,7 +11292,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// List of printers. If `org_unit_id` was given in the request, then only printers visible for this OU will be
-        /// returned. If `org_unit_id` was given in the request, then all printers will be returned.
+        /// returned. If `org_unit_id` was not given in the request, then all printers will be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("printers")]
         public virtual System.Collections.Generic.IList<Printer> Printers { get; set; }
@@ -12289,9 +12290,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// Stores the hash format of the password property. We recommend sending the `password` property value as a
-        /// base 16 bit hexadecimal-encoded hash value. Set the `hashFunction` values as either the
-        /// [SHA-1](https://wikipedia.org/wiki/SHA-1), [MD5](https://wikipedia.org/wiki/MD5), or
-        /// [crypt](https://en.wikipedia.org/wiki/Crypt_\(C\)) hash format.
+        /// base 16 bit hexadecimal-encoded hash value. The following `hashFunction` values are allowed: * `DES` * `MD5`
+        /// - hash prefix is `$1$` * `SHA2-256` - hash prefix is `$5$` * `SHA2-512` - hash prefix is `$6$` If rounds are
+        /// specified as part of the prefix, they must be 10,000 or fewer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashFunction")]
         public virtual string HashFunction { get; set; }

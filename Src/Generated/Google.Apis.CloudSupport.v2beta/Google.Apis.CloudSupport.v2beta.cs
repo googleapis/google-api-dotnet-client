@@ -1005,7 +1005,8 @@ namespace Google.Apis.CloudSupport.v2beta
 
         /// <summary>
         /// Update the specified case. Only a subset of fields (display_name, description, time_zone,
-        /// subscriber_email_addresses, related_resources, severity, primary_contact, and labels) can be updated.
+        /// subscriber_email_addresses, related_resources, severity, priority, primary_contact, and labels) can be
+        /// updated.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name for the case.</param>
@@ -1016,7 +1017,8 @@ namespace Google.Apis.CloudSupport.v2beta
 
         /// <summary>
         /// Update the specified case. Only a subset of fields (display_name, description, time_zone,
-        /// subscriber_email_addresses, related_resources, severity, primary_contact, and labels) can be updated.
+        /// subscriber_email_addresses, related_resources, severity, priority, primary_contact, and labels) can be
+        /// updated.
         /// </summary>
         public class PatchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
         {

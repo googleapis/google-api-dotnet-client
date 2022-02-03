@@ -300,6 +300,7 @@ namespace Google.Apis.Eventarc.v1
                 ChannelConnections = new ChannelConnectionsResource(service);
                 Channels = new ChannelsResource(service);
                 Operations = new OperationsResource(service);
+                Providers = new ProvidersResource(service);
                 Triggers = new TriggersResource(service);
             }
 
@@ -1024,6 +1025,170 @@ namespace Google.Apis.Eventarc.v1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Providers resource.</summary>
+            public virtual ProvidersResource Providers { get; }
+
+            /// <summary>The "providers" collection of methods.</summary>
+            public class ProvidersResource
+            {
+                private const string Resource = "providers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProvidersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Get a single Provider.</summary>
+                /// <param name="name">Required. The name of the provider to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get a single Provider.</summary>
+                public class GetRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.Provider>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the provider to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List providers.</summary>
+                /// <param name="parent">Required. The parent of the provider to get.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List providers.</summary>
+                public class ListRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.ListProvidersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the provider to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The filter field that the list request will filter on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The sorting order of the resources returned. Value should be a comma-separated list of fields.
+                    /// The default sorting oder is ascending. To specify descending order for a field, append a `desc`
+                    /// suffix; for example: `name desc, _id`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of providers to return on each page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The page token; provide the value from the `next_page_token` field in a previous `ListProviders`
+                    /// call to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListProviders` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/providers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2008,6 +2173,40 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A representation of the event type resource.</summary>
+    public class EventType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Human friendly description of what the event type is about. For example "Bucket created in
+        /// Cloud Storage".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. URI for the event schema. For example
+        /// "https://github.com/googleapis/google-cloudevents/blob/master/proto/google/events/cloud/storage/v1/events.proto"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventSchemaUri")]
+        public virtual string EventSchemaUri { get; set; }
+
+        /// <summary>Output only. Filtering attributes for the event type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringAttributes")]
+        public virtual System.Collections.Generic.IList<FilteringAttribute> FilteringAttributes { get; set; }
+
+        /// <summary>
+        /// Output only. The full name of the event type (for example, "google.cloud.storage.object.v1.finalized"). In
+        /// the form of {provider-id}.{resource}.{version}.{verb}. Types MUST be versioned and event schemas are
+        /// guaranteed to remain backward compatible within one version. Note that event type versions and API versions
+        /// do not need to match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -2047,6 +2246,34 @@ namespace Google.Apis.Eventarc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A representation of the FilteringAttribute resource. Filtering attributes are per event type.</summary>
+    public class FilteringAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Attribute used for filtering the event type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
+        public virtual string Attribute { get; set; }
+
+        /// <summary>Output only. Description of the purpose of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. If true, the attribute accepts matching expressions in the Eventarc PathPattern format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathPatternSupported")]
+        public virtual System.Nullable<bool> PathPatternSupported { get; set; }
+
+        /// <summary>
+        /// Output only. If true, the triggers for this provider should always specify a filter on these attributes.
+        /// Trigger creation will fail otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2193,6 +2420,28 @@ namespace Google.Apis.Eventarc.v1.Data
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the `ListProviders` method.</summary>
+    public class ListProvidersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A page token that can be sent to ListProviders to request the next page. If this is empty, then there are no
+        /// more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The requested providers, up to the number specified in `page_size`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providers")]
+        public virtual System.Collections.Generic.IList<Provider> Providers { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2358,6 +2607,25 @@ namespace Google.Apis.Eventarc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>A representation of the Provider resource.</summary>
+    public class Provider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Human friendly name for the Provider. For example "Cloud Storage".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Event types for this provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTypes")]
+        public virtual System.Collections.Generic.IList<EventType> EventTypes { get; set; }
+
+        /// <summary>Output only. In `projects/{project}/locations/{location}/providers/{provider-id}` format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Represents a Pub/Sub transport.</summary>

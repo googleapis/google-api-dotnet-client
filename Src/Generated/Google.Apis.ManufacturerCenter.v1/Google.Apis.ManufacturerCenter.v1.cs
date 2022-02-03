@@ -797,7 +797,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disclosureDate")]
         public virtual string DisclosureDate { get; set; }
 
-        /// <summary>A list of excluded destinations.</summary>
+        /// <summary>
+        /// A list of excluded destinations such as "ClientExport", "ClientShoppingCatalog" or "PartnerShoppingCatalog".
+        /// For more information, see https://support.google.com/manufacturers/answer/7443550
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestination")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestination { get; set; }
 
@@ -843,7 +846,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
         public virtual Image ImageLink { get; set; }
 
-        /// <summary>A list of included destinations.</summary>
+        /// <summary>
+        /// A list of included destinations such as "ClientExport", "ClientShoppingCatalog" or "PartnerShoppingCatalog".
+        /// For more information, see https://support.google.com/manufacturers/answer/7443550
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestination")]
         public virtual System.Collections.Generic.IList<string> IncludedDestination { get; set; }
 
@@ -964,7 +970,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedRetailPrice")]
         public virtual Price SuggestedRetailPrice { get; set; }
 
-        /// <summary>The target client id. Should only be used in the accounts of the data partners.</summary>
+        /// <summary>
+        /// The target client id. Should only be used in the accounts of the data partners. For more information, see
+        /// https://support.google.com/manufacturers/answer/10857344
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetClientId")]
         public virtual string TargetClientId { get; set; }
 

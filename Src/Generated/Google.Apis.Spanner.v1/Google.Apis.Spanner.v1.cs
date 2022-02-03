@@ -537,12 +537,16 @@ namespace Google.Apis.Spanner.v1
                     /// progress, else true. * `metadata.@type` - the type of metadata. For example, the type string for
                     /// CreateBackupMetadata is
                     /// `type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata`. * `metadata.` - any
-                    /// field in metadata.value. * `error` - Error associated with the long-running operation. *
-                    /// `response.@type` - the type of response. * `response.` - any field in response.value. You can
-                    /// combine multiple expressions by enclosing each expression in parentheses. By default,
-                    /// expressions are combined with AND logic, but you can specify AND, OR, and NOT logic explicitly.
-                    /// Here are a few examples: * `done:true` - The operation is complete. * `metadata.database:prod` -
-                    /// The database the backup was taken from has a name containing the string "prod". *
+                    /// field in metadata.value. `metadata.type_url` must be specified if filtering on metadata fields.
+                    /// * `error` - Error associated with the long-running operation. * `response.@type` - the type of
+                    /// response. * `response.` - any field in response.value. You can combine multiple expressions by
+                    /// enclosing each expression in parentheses. By default, expressions are combined with AND logic,
+                    /// but you can specify AND, OR, and NOT logic explicitly. Here are a few examples: * `done:true` -
+                    /// The operation is complete. *
+                    /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata) AND`
+                    /// \ `metadata.database:prod` - Returns operations where: * The operation's metadata type is
+                    /// CreateBackupMetadata. * The database the backup was taken from has a name containing the string
+                    /// "prod". *
                     /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata) AND`
                     /// \ `(metadata.name:howl) AND` \ `(metadata.progress.start_time &amp;lt; \"2018-03-28T14:50:00Z\")
                     /// AND` \ `(error:*)` - Returns operations where: * The operation's metadata type is
@@ -4879,6 +4883,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
+        /// <summary>Output only. The database dialect information for the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseDialect")]
+        public virtual string DatabaseDialect { get; set; }
+
         /// <summary>Output only. The encryption information for the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
@@ -5238,6 +5246,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createStatement")]
         public virtual string CreateStatement { get; set; }
 
+        /// <summary>Optional. The dialect of the Cloud Spanner Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseDialect")]
+        public virtual string DatabaseDialect { get; set; }
+
         /// <summary>
         /// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will
         /// encrypt/decrypt all data at rest using Google default encryption.
@@ -5320,6 +5332,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Output only. If exists, the time at which the database creation started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The dialect of the Cloud Spanner Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseDialect")]
+        public virtual string DatabaseDialect { get; set; }
 
         /// <summary>
         /// Output only. The read-write region which contains the database's leader replicas. This is the same as the
@@ -6062,10 +6078,10 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// The list of matching backup long-running operations. Each operation's name will be prefixed by the backup's
-        /// name and the operation's metadata will be of type CreateBackupMetadata. Operations returned include those
-        /// that are pending or have completed/failed/canceled within the last 7 days. Operations returned are ordered
-        /// by `operation.metadata.value.progress.start_time` in descending order starting from the most recently
-        /// started operation.
+        /// name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. Operations
+        /// returned include those that are pending or have completed/failed/canceled within the last 7 days. Operations
+        /// returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting from the
+        /// most recently started operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
@@ -7704,6 +7720,15 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>If code == STRUCT, then `struct_type` provides type information for the struct's fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structType")]
         public virtual StructType StructType { get; set; }
+
+        /// <summary>
+        /// The TypeAnnotationCode that disambiguates SQL type that Spanner will use to represent values of this type
+        /// during query processing. This is necessary for some type codes because a single TypeCode can be mapped to
+        /// different SQL types depending on the SQL dialect. type_annotation typically is not needed to process the
+        /// content of a value (it doesn't affect serialization) and clients can ignore it on the read path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeAnnotation")]
+        public virtual string TypeAnnotation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

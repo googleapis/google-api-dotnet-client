@@ -2685,10 +2685,6 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageLocation")]
         public virtual string ImageLocation { get; set; }
 
-        /// <summary>Optional. Inactive indicates the connection is active to use or not.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
-        public virtual System.Nullable<bool> Inactive { get; set; }
-
         /// <summary>
         /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for
         /// more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -2722,6 +2718,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Current status of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ConnectionStatus Status { get; set; }
+
+        /// <summary>Optional. Suspended indicates if a user has suspended a connection or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
+        public virtual System.Nullable<bool> Suspended { get; set; }
 
         /// <summary>Output only. Updated time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]

@@ -6905,13 +6905,17 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mitreAttack")]
         public virtual MitreAttack MitreAttack { get; set; }
 
-        /// <summary>Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined).</summary>
+        /// <summary>
+        /// Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined). Unlike other
+        /// attributes of a finding, a finding provider shouldn't set the value of mute.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mute")]
         public virtual string Mute { get; set; }
 
         /// <summary>
         /// First known as mute_annotation. Records additional information about the mute operation e.g. mute config
-        /// that muted the finding, user who muted the finding, etc.
+        /// that muted the finding, user who muted the finding, etc. Unlike other attributes of a finding, a finding
+        /// provider shouldn't set the value of mute.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("muteInitiator")]
         public virtual string MuteInitiator { get; set; }
