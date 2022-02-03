@@ -5401,7 +5401,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
         /// <summary>
         /// Output only. Provisioning ID of the entitlement. For Google Workspace, this would be the underlying
-        /// Subscription ID.
+        /// Subscription ID. For Google Cloud Platform, this would be the Billing Account ID of the billing subaccount."
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningId")]
         public virtual string ProvisioningId { get; set; }
@@ -5992,7 +5992,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
         /// <summary>
         /// Output only. Provisioning ID of the entitlement. For Google Workspace, this would be the underlying
-        /// Subscription ID.
+        /// Subscription ID. For Google Cloud Platform, this would be the Billing Account ID of the billing subaccount."
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningId")]
         public virtual string ProvisioningId { get; set; }

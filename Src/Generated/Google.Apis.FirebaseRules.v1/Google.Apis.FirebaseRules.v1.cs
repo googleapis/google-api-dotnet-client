@@ -1333,12 +1333,13 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Format: `projects/{project_id}/releases/{release_id}`</summary>
+        /// <summary>Required. Format: `projects/{project_id}/releases/{release_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        /// Required. Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be
+        /// created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesetName")]
         public virtual string RulesetName { get; set; }
@@ -1603,7 +1604,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// <summary>The request for FirebaseRulesService.UpdateRelease.</summary>
     public class UpdateReleaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>`Release` to update.</summary>
+        /// <summary>Required. `Release` to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual Release Release { get; set; }
 

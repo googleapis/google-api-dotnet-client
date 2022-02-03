@@ -11799,7 +11799,7 @@
      ]
     },
     "setScheduling": {
-     "description": "Sets an instance's scheduling options. You can only call this method on a stopped instance, that is, a VM instance that is in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.",
+     "description": "Sets an instance's scheduling options. You can only call this method on a stopped instance, that is, a VM instance that is in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states. For more information about setting scheduling options for a VM, see Set VM availability policies.",
      "flatPath": "projects/{project}/zones/{zone}/instances/{instance}/setScheduling",
      "httpMethod": "POST",
      "id": "compute.instances.setScheduling",
@@ -12049,7 +12049,7 @@
      ]
     },
     "simulateMaintenanceEvent": {
-     "description": "Simulates a maintenance event on the instance.",
+     "description": "Simulates a host maintenance event on a VM. For more information, see Simulate a host maintenance event.",
      "flatPath": "projects/{project}/zones/{zone}/instances/{instance}/simulateMaintenanceEvent",
      "httpMethod": "POST",
      "id": "compute.instances.simulateMaintenanceEvent",
@@ -12240,7 +12240,7 @@
      ]
     },
     "suspend": {
-     "description": "This method suspends a running instance, saving its state to persistent storage, and allows you to resume the instance at a later time. Suspended instances incur reduced per-minute, virtual machine usage charges while they are suspended. Any resources the virtual machine is using, such as persistent disks and static IP addresses, will continue to be charged until they are deleted. For more information, see Suspending and resuming an instance.",
+     "description": "This method suspends a running instance, saving its state to persistent storage, and allows you to resume the instance at a later time. Suspended instances have no compute costs (cores or RAM), and incur only storage charges for the saved VM memory and localSSD data. Any charged resources the virtual machine was using, such as persistent disks and static IP addresses, will continue to be charged while the instance is suspended. For more information, see Suspending and resuming an instance.",
      "flatPath": "projects/{project}/zones/{zone}/instances/{instance}/suspend",
      "httpMethod": "POST",
      "id": "compute.instances.suspend",
@@ -26234,6 +26234,345 @@
     }
    }
   },
+  "regionNetworks": {
+   "methods": {
+    "delete": {
+     "description": "Deletes the specified network.",
+     "flatPath": "projects/{project}/regions/{region}/networks/{network}",
+     "httpMethod": "DELETE",
+     "id": "compute.regionNetworks.delete",
+     "parameterOrder": [
+      "project",
+      "region",
+      "network"
+     ],
+     "parameters": {
+      "network": {
+       "description": "Name of the network to delete.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networks/{network}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "description": "Returns the specified network.",
+     "flatPath": "projects/{project}/regions/{region}/networks/{network}",
+     "httpMethod": "GET",
+     "id": "compute.regionNetworks.get",
+     "parameterOrder": [
+      "project",
+      "region",
+      "network"
+     ],
+     "parameters": {
+      "network": {
+       "description": "Name of the network to return.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networks/{network}",
+     "response": {
+      "$ref": "Network"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getIamPolicy": {
+     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
+     "flatPath": "projects/{project}/regions/{region}/networks/{resource}/getIamPolicy",
+     "httpMethod": "GET",
+     "id": "compute.regionNetworks.getIamPolicy",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "optionsRequestedPolicyVersion": {
+       "description": "Requested IAM Policy version.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networks/{resource}/getIamPolicy",
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "description": "Creates a network in the specified project and region using the data included in the request.",
+     "flatPath": "projects/{project}/regions/{region}/networks",
+     "httpMethod": "POST",
+     "id": "compute.regionNetworks.insert",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networks",
+     "request": {
+      "$ref": "Network"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "description": "Retrieves the list of networks available to the specified project in the given region.",
+     "flatPath": "projects/{project}/regions/{region}/networks",
+     "httpMethod": "GET",
+     "id": "compute.regionNetworks.list",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networks",
+     "response": {
+      "$ref": "NetworkList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "setIamPolicy": {
+     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+     "flatPath": "projects/{project}/regions/{region}/networks/{resource}/setIamPolicy",
+     "httpMethod": "POST",
+     "id": "compute.regionNetworks.setIamPolicy",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networks/{resource}/setIamPolicy",
+     "request": {
+      "$ref": "RegionSetPolicyRequest"
+     },
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "flatPath": "projects/{project}/regions/{region}/networks/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "id": "compute.regionNetworks.testIamPermissions",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networks/{resource}/testIamPermissions",
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
   "regionNotificationEndpoints": {
    "methods": {
     "aggregatedList": {
@@ -28124,6 +28463,56 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "patch": {
+     "description": "Patches the specified regional TargetHttpsProxy resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.",
+     "flatPath": "projects/{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}",
+     "httpMethod": "PATCH",
+     "id": "compute.regionTargetHttpsProxies.patch",
+     "parameterOrder": [
+      "project",
+      "region",
+      "targetHttpsProxy"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "targetHttpsProxy": {
+       "description": "Name of the TargetHttpsProxy resource to patch.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}",
+     "request": {
+      "$ref": "TargetHttpsProxy"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     },
     "setSslCertificates": {
@@ -37620,7 +38009,7 @@
    }
   }
  },
- "revision": "20211228",
+ "revision": "20220112",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -40462,7 +40851,7 @@
     },
     "securitySettings": {
      "$ref": "SecuritySettings",
-     "description": "This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. "
+     "description": "This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED."
     },
     "selfLink": {
      "description": "[Output Only] Server-defined URL for the resource.",
@@ -44391,6 +44780,18 @@
     "shortName": {
      "description": "User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
      "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+     "type": "string"
+    },
+    "vpcNetworkScope": {
+     "description": "The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.",
+     "enum": [
+      "GLOBAL_VPC_NETWORK",
+      "REGIONAL_VPC_NETWORK"
+     ],
+     "enumDescriptions": [
+      "The firewall policy is allowed to be attached only to global networks.",
+      "The firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. This option is applicable only to regional firewall policies."
+     ],
      "type": "string"
     }
    },
@@ -55843,6 +56244,10 @@
      },
      "type": "array"
     },
+    "region": {
+     "description": "[Output Only] URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.",
+     "type": "string"
+    },
     "routingConfig": {
      "$ref": "NetworkRoutingConfig",
      "description": "The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce."
@@ -65585,6 +65990,13 @@
      "description": "[Output Only] Type of resource. Always compute#router for routers.",
      "type": "string"
     },
+    "md5AuthenticationKeys": {
+     "description": "Keys used for MD5 authentication.",
+     "items": {
+      "$ref": "RouterMd5AuthenticationKey"
+     },
+     "type": "array"
+    },
     "name": {
      "annotations": {
       "required": [
@@ -65906,6 +66318,10 @@
      ],
      "type": "string"
     },
+    "md5AuthenticationKeyName": {
+     "description": "Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.",
+     "type": "string"
+    },
     "name": {
      "annotations": {
       "required": [
@@ -66172,6 +66588,32 @@
       }
      },
      "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "RouterMd5AuthenticationKey": {
+   "id": "RouterMd5AuthenticationKey",
+   "properties": {
+    "key": {
+     "annotations": {
+      "required": [
+       "compute.routers.insert"
+      ]
+     },
+     "description": "[Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.",
+     "pattern": "[ -~]+",
+     "type": "string"
+    },
+    "name": {
+     "annotations": {
+      "required": [
+       "compute.routers.insert",
+       "compute.routers.update"
+      ]
+     },
+     "description": "Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.",
+     "type": "string"
     }
    },
    "type": "object"
@@ -66482,6 +66924,10 @@
      "description": "URL of the VPN tunnel that this BGP peer controls.",
      "type": "string"
     },
+    "md5AuthEnabled": {
+     "description": "Informs whether MD5 authentication is enabled on this BGP peer.",
+     "type": "boolean"
+    },
     "name": {
      "description": "Name of this BGP peer. Unique within the Routers resource.",
      "type": "string"
@@ -66517,6 +66963,18 @@
      "enumDescriptions": [
       "",
       "",
+      ""
+     ],
+     "type": "string"
+    },
+    "statusReason": {
+     "description": "Indicates why particular status was returned.",
+     "enum": [
+      "MD5_AUTH_INTERNAL_PROBLEM",
+      "STATUS_REASON_UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "Indicates internal problems with configuration of MD5 authentication. This particular reason can only be returned when md5AuthEnabled is true and status is DOWN.",
       ""
      ],
      "type": "string"
@@ -67128,7 +67586,7 @@
      "type": "array"
     },
     "onHostMaintenance": {
-     "description": "Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.",
+     "description": "Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.",
      "enum": [
       "MIGRATE",
       "TERMINATE"

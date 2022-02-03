@@ -3893,7 +3893,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryProductId")]
         public virtual string PrimaryProductId { get; set; }
 
-        /// <summary>The promotions applied to the product. A maximum of 10 values are allowed per Product.</summary>
+        /// <summary>
+        /// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only
+        /// Promotion.promotion_id will be used, other fields will be ignored if set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2Promotion> Promotions { get; set; }
 
@@ -4095,9 +4098,9 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2Promotion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length
-        /// limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS.
-        /// Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
+        /// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit
+        /// of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise,
+        /// an INVALID_ARGUMENT error is returned. Google Merchant Center property
         /// [promotion](https://support.google.com/merchants/answer/7050148).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
@@ -4413,6 +4416,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
+        /// <summary>The specification for personalization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
+        public virtual GoogleCloudRetailV2SearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
+
         /// <summary>Raw search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -4651,6 +4658,17 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedValues")]
         public virtual System.Collections.Generic.IList<string> RestrictedValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for personalization.</summary>
+    public class GoogleCloudRetailV2SearchRequestPersonalizationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defaults to Mode.AUTO.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

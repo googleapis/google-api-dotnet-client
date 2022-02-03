@@ -3170,6 +3170,63 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
             }
 
+            /// <summary>
+            /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the site tag to lookup. Note that site tags are singletons and do not have unique
+            /// IDs. Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example:
+            /// "properties/123/dataStreams/456/globalSiteTag"
+            /// </param>
+            public virtual GetGlobalSiteTagRequest GetGlobalSiteTag(string name)
+            {
+                return new GetGlobalSiteTagRequest(service, name);
+            }
+
+            /// <summary>
+            /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
+            /// </summary>
+            public class GetGlobalSiteTagRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGlobalSiteTag>
+            {
+                /// <summary>Constructs a new GetGlobalSiteTag request.</summary>
+                public GetGlobalSiteTagRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the site tag to lookup. Note that site tags are singletons and do not have
+                /// unique IDs. Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example:
+                /// "properties/123/dataStreams/456/globalSiteTag"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getGlobalSiteTag";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetGlobalSiteTag parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+/globalSiteTag$",
+                    });
+                }
+            }
+
             /// <summary>Lists DataStreams on a property.</summary>
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
@@ -5605,63 +5662,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
-            /// </summary>
-            /// <param name="name">
-            /// Required. The name of the site tag to lookup. Note that site tags are singletons and do not have unique
-            /// IDs. Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example:
-            /// "properties/123/webDataStreams/456/globalSiteTag"
-            /// </param>
-            public virtual GetGlobalSiteTagRequest GetGlobalSiteTag(string name)
-            {
-                return new GetGlobalSiteTagRequest(service, name);
-            }
-
-            /// <summary>
-            /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
-            /// </summary>
-            public class GetGlobalSiteTagRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGlobalSiteTag>
-            {
-                /// <summary>Constructs a new GetGlobalSiteTag request.</summary>
-                public GetGlobalSiteTagRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the site tag to lookup. Note that site tags are singletons and do not have
-                /// unique IDs. Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example:
-                /// "properties/123/webDataStreams/456/globalSiteTag"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "getGlobalSiteTag";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes GetGlobalSiteTag parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+/webDataStreams/[^/]+/globalSiteTag$",
-                    });
-                }
-            }
-
-            /// <summary>
             /// Returns child web data streams under the specified parent property. Web data streams will be excluded if
             /// the caller does not have access. Returns an empty list if no relevant web data streams are found.
             /// </summary>
@@ -6165,13 +6165,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             /// <summary>
             /// Required. An expression for filtering the results of the request. Fields eligible for filtering are:
-            /// `parent:`(The resource name of the parent account) or `ancestor:`(The resource name of the parent
-            /// account) or `firebase_project:`(The id or number of the linked firebase project). Some examples of
-            /// filters: ``` | Filter | Description |
+            /// `parent:`(The resource name of the parent account/property) or `ancestor:`(The resource name of the
+            /// parent account) or `firebase_project:`(The id or number of the linked firebase project). Some examples
+            /// of filters: ``` | Filter | Description |
             /// |-----------------------------|-------------------------------------------| | parent:accounts/123 | The
-            /// account with account id: 123. | | ancestor:accounts/123 | The account with account id: 123. | |
-            /// firebase_project:project-id | The firebase project with id: project-id. | | firebase_project:123 | The
-            /// firebase project with number: 123. | ```
+            /// account with account id: 123. | | parent:properties/123 | The property with property id: 123. | |
+            /// ancestor:accounts/123 | The account with account id: 123. | | firebase_project:project-id | The firebase
+            /// project with id: project-id. | | firebase_project:123 | The firebase project with number: 123. | ```
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -7410,11 +7410,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Read-only resource with the tag for sending data from a website to a WebDataStream.</summary>
+    /// <summary>
+    /// Read-only resource with the tag for sending data from a website to a DataStream. Only present for web DataStream
+    /// resources.
+    /// </summary>
     public class GoogleAnalyticsAdminV1alphaGlobalSiteTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Resource name for this GlobalSiteTag resource. Format: properties/{propertyId}/globalSiteTag
+        /// Output only. Resource name for this GlobalSiteTag resource. Format:
+        /// properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example:
+        /// "properties/123/dataStreams/456/globalSiteTag"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -6484,6 +6484,13 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enrollmentCode")]
         public virtual string EnrollmentCode { get; set; }
 
+        /// <summary>
+        /// The gradebook settings that specify how a student's overall grade for the course will be calculated and who
+        /// it will be displayed to. Read-only
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gradebookSettings")]
+        public virtual GradebookSettings GradebookSettings { get; set; }
+
         /// <summary>Whether or not guardian notifications are enabled for this course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guardiansEnabled")]
         public virtual System.Nullable<bool> GuardiansEnabled { get; set; }
@@ -6687,6 +6694,13 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dueTime")]
         public virtual TimeOfDay DueTime { get; set; }
 
+        /// <summary>
+        /// The category that this coursework's grade contributes to. Present only when a category has been chosen for
+        /// the coursework. May be used in calculating the overall grade. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gradeCategory")]
+        public virtual GradeCategory GradeCategory { get; set; }
+
         /// <summary>Classroom-assigned identifier of this course work, unique per course. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6852,14 +6866,6 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
-    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
-    /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7000,6 +7006,39 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details for a grade category in a course. Coursework may have zero or one grade category, and the category may
+    /// be used in computing the overall grade. See the [help center
+    /// article](https://support.google.com/edu/classroom/answer/9184995) for details.
+    /// </summary>
+    public class GradeCategory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Default value of denominator. Only applicable when grade calculation type is TOTAL_POINTS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultGradeDenominator")]
+        public virtual System.Nullable<int> DefaultGradeDenominator { get; set; }
+
+        /// <summary>ID of the grade category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Name of the grade category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The weight of the category average as part of overall average. A weight of 12.34% is represented as 123400
+        /// (100% is 1,000,000). The last two digits should always be zero since we use two decimal precision. Only
+        /// applicable when grade calculation type is WEIGHTED_CATEGORIES.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The history of each grade on this submission.</summary>
     public class GradeHistory : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7022,6 +7061,28 @@ namespace Google.Apis.Classroom.v1.Data
         /// <summary>The numerator of the grade at this time in the submission grade history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointsEarned")]
         public virtual System.Nullable<double> PointsEarned { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The gradebook settings for a course. See the [help center
+    /// article](https://support.google.com/edu/classroom/answer/9184995) for details.
+    /// </summary>
+    public class GradebookSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates how the overall grade is calculated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculationType")]
+        public virtual string CalculationType { get; set; }
+
+        /// <summary>Indicates who can see the overall grade..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displaySetting")]
+        public virtual string DisplaySetting { get; set; }
+
+        /// <summary>Grade categories that are available for coursework in the course.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gradeCategories")]
+        public virtual System.Collections.Generic.IList<GradeCategory> GradeCategories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

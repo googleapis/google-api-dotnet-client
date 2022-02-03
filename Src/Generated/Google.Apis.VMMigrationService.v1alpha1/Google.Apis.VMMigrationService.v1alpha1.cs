@@ -4544,6 +4544,33 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CycleStep hold information about a step progress.</summary>
+    public class CycleStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the cycle step has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Initializing replication step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializingReplication")]
+        public virtual InitializingReplicationStep InitializingReplication { get; set; }
+
+        /// <summary>Post processing step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postProcessing")]
+        public virtual PostProcessingStep PostProcessing { get; set; }
+
+        /// <summary>Replicating step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicating")]
+        public virtual ReplicatingStep Replicating { get; set; }
+
+        /// <summary>The time the cycle step has started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DatacenterConnector message describes a connector between the Source and GCP, which is installed on a vmware
     /// datacenter (an OVA vm installed by the user) to connect the Datacenter to GCP and support vm migration data
@@ -4664,6 +4691,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>InitializingReplicationStep contains specific step details.</summary>
+    public class InitializingReplicationStep : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5197,6 +5231,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PostProcessingStep contains specific step details.</summary>
+    public class PostProcessingStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'RemoveMigration' request.</summary>
     public class RemoveGroupMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5208,9 +5249,36 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ReplicatingStep contains specific step details.</summary>
+    public class ReplicatingStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source disks replication rate for the last 30 minutes in bytes per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastThirtyMinutesAverageBytesPerSecond")]
+        public virtual System.Nullable<long> LastThirtyMinutesAverageBytesPerSecond { get; set; }
+
+        /// <summary>The source disks replication rate for the last 2 minutes in bytes per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTwoMinutesAverageBytesPerSecond")]
+        public virtual System.Nullable<long> LastTwoMinutesAverageBytesPerSecond { get; set; }
+
+        /// <summary>Replicated bytes in the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicatedBytes")]
+        public virtual System.Nullable<long> ReplicatedBytes { get; set; }
+
+        /// <summary>Total bytes to be handled in the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
+        public virtual System.Nullable<long> TotalBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ReplicationCycle contains information about the current replication cycle status.</summary>
     public class ReplicationCycle : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The time the replication cycle has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
         /// <summary>The current progress in percentage of this cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; }
@@ -5222,6 +5290,14 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The time the replication cycle has started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The cycle's steps list reflecting its progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<CycleStep> Steps { get; set; }
+
+        /// <summary>The accumulated duration the replication cycle was paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalPauseDuration")]
+        public virtual object TotalPauseDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

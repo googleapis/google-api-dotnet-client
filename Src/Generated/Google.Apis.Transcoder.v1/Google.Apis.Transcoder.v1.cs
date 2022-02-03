@@ -2169,7 +2169,7 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient
-        /// compression. The default is 21.
+        /// compression. The default is 21. *Note*: This field is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crfLevel")]
         public virtual System.Nullable<int> CrfLevel { get; set; }
@@ -2222,7 +2222,7 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable
-        /// bitrate - `crf` - constant rate factor
+        /// bitrate
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateControlMode")]
         public virtual string RateControlMode { get; set; }

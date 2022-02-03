@@ -4410,6 +4410,44 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The long running operation metadata for AnalyzeHitlData.</summary>
+    public class GoogleCloudDocumentaiV1alpha1AnalyzeHitlDataMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1alpha1CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The common metadata for long running operations.</summary>
+    public class GoogleCloudDocumentaiV1alpha1CommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>A related resource to this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>A message providing more details about the current state of processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
+
+        /// <summary>The last update time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response to an batch document processing request. This is returned in the LRO Operation after the operation is
     /// complete.
@@ -7147,14 +7185,6 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
-    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
-    /// </summary>
     public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

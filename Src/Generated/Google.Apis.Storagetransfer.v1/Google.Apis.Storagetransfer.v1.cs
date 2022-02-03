@@ -969,7 +969,7 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>
         /// Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one
-        /// active TransferOperation. If this method is called while a TransferOperation is active, an error wil be
+        /// active TransferOperation. If this method is called while a TransferOperation is active, an error will be
         /// returned.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -981,7 +981,7 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>
         /// Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one
-        /// active TransferOperation. If this method is called while a TransferOperation is active, an error wil be
+        /// active TransferOperation. If this method is called while a TransferOperation is active, an error will be
         /// returned.
         /// </summary>
         public class RunRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Operation>
@@ -1781,11 +1781,26 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class MetadataOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If
+        /// unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acl")]
+        public virtual string Acl { get; set; }
+
+        /// <summary>
         /// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default
         /// behavior is the same as GID_SKIP when the source is a POSIX file system.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gid")]
         public virtual string Gid { get; set; }
+
+        /// <summary>
+        /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers
+        /// between Google Cloud Storage buckets. If unspecified, the default behavior is the same as
+        /// KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
 
         /// <summary>
         /// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default
@@ -1795,11 +1810,25 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string Mode { get; set; }
 
         /// <summary>
+        /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If
+        /// unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
+        public virtual string StorageClass { get; set; }
+
+        /// <summary>
         /// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same
         /// as SYMLINK_SKIP when the source is a POSIX file system.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symlink")]
         public virtual string Symlink { get; set; }
+
+        /// <summary>
+        /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud
+        /// Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temporaryHold")]
+        public virtual string TemporaryHold { get; set; }
 
         /// <summary>
         /// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default

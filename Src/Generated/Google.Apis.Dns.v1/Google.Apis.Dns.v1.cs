@@ -4607,6 +4607,12 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networksPerPolicy")]
         public virtual System.Nullable<int> NetworksPerPolicy { get; set; }
 
+        /// <summary>
+        /// Maximum allowed number of consumer peering zones per target network owned by this producer project
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringZonesPerTargetNetwork")]
+        public virtual System.Nullable<int> PeeringZonesPerTargetNetwork { get; set; }
+
         /// <summary>Maximum allowed number of policies per project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Nullable<int> Policies { get; set; }
