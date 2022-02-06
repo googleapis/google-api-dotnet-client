@@ -42,6 +42,24 @@ OAuth authentication requires the end-user to interact with a web browser, which
 
 It is possible to user OAuth authentication in a web application, but not using this `GoogleWebAuthorizationBroker` class.
 
+One way to do it is OAuth via JWT:
+- Create a Service Account and obtain `key.json`
+ 1. https://console.cloud.google.com/ -> your project -> IAM & Admin -> Service Accounts
+ 2. switch to "permissions" tab
+ 3. click "grant access" -> create a new principal
+ 4. switch to "keys" tab
+ 5. click "add key" -> create new key -> json -> create
+ 6. `key.json` is generated, save it
+- Generate OAuth bearer token from GCP Service Account's JWT token
+```cs
+GoogleCredential cred = GoogleCredential.FromFile("key.json"); // <-- include key.json in project, other methods to load the file are available (from string, stream..)
+DocsService service = new DocsService(new BaseClientService.Initializer() {HttpClientInitializer = cred});
+string documentId = "OPEN_DOC_IN_BROWSER_AND_PASTE_ID_FROM_URL_HERE";
+DocumentsResource.GetRequest request = service.Documents.Get(documentId);
+Document doc = request.Execute();
+string str = doc.Title;
+```
+
 ### Should I create a new client instance for every request?
 
 Generally: No.
