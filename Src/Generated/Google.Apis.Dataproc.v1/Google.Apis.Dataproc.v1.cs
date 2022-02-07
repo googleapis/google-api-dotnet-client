@@ -6342,6 +6342,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; }
 
+        /// <summary>Optional. The configuration(s) for a dataproc metric(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetricConfig")]
+        public virtual DataprocMetricConfig DataprocMetricConfig { get; set; }
+
         /// <summary>Optional. Encryption settings for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -6568,6 +6572,17 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Defines whether the instance should have confidential compute enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains dataproc metric config.</summary>
+    public class DataprocMetricConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Metrics to be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7765,6 +7780,25 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetastoreService")]
         public virtual string DataprocMetastoreService { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+    /// </summary>
+    public class Metric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricOverrides")]
+        public virtual System.Collections.Generic.IList<string> MetricOverrides { get; set; }
+
+        /// <summary>Required. MetricSource that should be enabled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricSource")]
+        public virtual string MetricSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

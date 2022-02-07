@@ -4318,6 +4318,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>A Cloud SQL instance resource.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List all maintenance versions applicable on the instance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableMaintenanceVersions")]
+        public virtual System.Collections.Generic.IList<string> AvailableMaintenanceVersions { get; set; }
+
         /// <summary>
         /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not
         /// managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine
@@ -4404,6 +4408,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always `sql#instance`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The current software version on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
+        public virtual string MaintenanceVersion { get; set; }
 
         /// <summary>The name of the instance which will act as primary in the replication setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterInstanceName")]

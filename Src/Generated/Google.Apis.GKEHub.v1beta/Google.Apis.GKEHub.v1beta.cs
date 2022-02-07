@@ -1617,6 +1617,27 @@ namespace Google.Apis.GKEHub.v1beta
 }
 namespace Google.Apis.GKEHub.v1beta.Data
 {
+    /// <summary>**Anthosobservability**: Per-Membership Feature spec.</summary>
+    public class AnthosObservabilityMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// use full of metrics rather than optimized metrics. See
+        /// https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doNotOptimizeMetrics")]
+        public virtual System.Nullable<bool> DoNotOptimizeMetrics { get; set; }
+
+        /// <summary>
+        /// enable collecting and reporting metrics and logs from user apps See
+        /// go/onyx-application-metrics-logs-user-guide
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverOnApplications")]
+        public virtual System.Nullable<bool> EnableStackdriverOnApplications { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Spec for App Dev Experience Feature.</summary>
     public class AppDevExperienceFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2711,6 +2732,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
     public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Anthos Observability-specific spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
+        public virtual AnthosObservabilityMembershipSpec Anthosobservability { get; set; }
+
         /// <summary>Cloud Build-specific spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudbuild")]
         public virtual MembershipSpec Cloudbuild { get; set; }

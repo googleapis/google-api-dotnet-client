@@ -1072,9 +1072,9 @@ namespace Google.Apis.CloudSearch.v1
                     /// stores the version from the datasource as a byte string and compares the Item version in the
                     /// index to the version of the queued Item using lexical ordering. Cloud Search Indexing won't
                     /// delete any queued item with a version value that is less than or equal to the version of the
-                    /// currently indexed item. The maximum length for this field is 1024 bytes. See [this
-                    /// guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations) to
-                    /// understand how item version affects reindexing after delete item.
+                    /// currently indexed item. The maximum length for this field is 1024 bytes. For information on how
+                    /// item version affects the deletion process, refer to [Handle revisions after manual
+                    /// deletes](https://developers.google.com/cloud-search/docs/guides/operations).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Version { get; set; }
@@ -4702,6 +4702,25 @@ namespace Google.Apis.CloudSearch.v1
 }
 namespace Google.Apis.CloudSearch.v1.Data
 {
+    /// <summary>Next tag: 4</summary>
+    public class AclInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of groups which have at least read access to the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupsCount")]
+        public virtual System.Nullable<int> GroupsCount { get; set; }
+
+        /// <summary>The scope to which the content was shared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Number of users which have at least read access to the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usersCount")]
+        public virtual System.Nullable<int> UsersCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the settings for Cloud audit logging</summary>
     public class AuditLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5669,6 +5688,92 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
+    /// The corpus specific metadata for office-type documents, from Google Docs and other sources. This message is
+    /// passed to the scorer and beyond. Next tag: 7
+    /// </summary>
+    public class GoogleDocsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains number of users and groups which can access the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclInfo")]
+        public virtual AclInfo AclInfo { get; set; }
+
+        /// <summary>The conceptual type (presentation, document, etc.) of this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentType")]
+        public virtual string DocumentType { get; set; }
+
+        /// <summary>
+        /// The file extension of the document. NOTE: As of October 2018 this field is not backfilled for old documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
+        public virtual string FileExtension { get; set; }
+
+        /// <summary>
+        /// The last time this document was modified, in seconds since epoch. Only counts content modifications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastContentModifiedTimestamp")]
+        public virtual System.Nullable<long> LastContentModifiedTimestamp { get; set; }
+
+        /// <summary>
+        /// Additional per-result information, akin to Gmail's SingleThreadResponse. Note: GWS no longer seems to use
+        /// this field, but there's still one reference to it for Scribe, so we can't remove it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultInfo")]
+        public virtual GoogleDocsResultInfo ResultInfo { get; set; }
+
+        /// <summary>Contains additional information about the document depending on its type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeInfo")]
+        public virtual TypeInfo TypeInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message containing information about a specific result. This information is passed to the scorer and beyond;
+    /// in particular, GWS relies on it to format the result in the UI. Split from GoogleDocsMetadata in case we later
+    /// want to reuse the message.
+    /// </summary>
+    public class GoogleDocsResultInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The SHA1 hash of the object in Drive, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentSha1")]
+        public virtual string AttachmentSha1 { get; set; }
+
+        /// <summary>
+        /// The storage identifier for the object in Cosmo. This field is intended to used by Stratus/Moonshine
+        /// integration only. It should not be exposed externally (please refer to encrypted_id for that purpose).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cosmoId")]
+        public virtual Id CosmoId { get; set; }
+
+        /// <summary>
+        /// For Cosmo objects, the Cosmo namespace the object was in. This allows downstream clients to identify whether
+        /// a document was created in Writely or Kix, Presently or Punch, or whether it was uploaded from GDrive. See
+        /// storage_cosmo.Id.NAME_SPACE for a list of all Cosmo name spaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cosmoNameSpace")]
+        public virtual System.Nullable<int> CosmoNameSpace { get; set; }
+
+        /// <summary>
+        /// The encrypted (user-visible) id of this object. Knowing the id is sufficient to create a canonical URL for
+        /// this document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedId")]
+        public virtual string EncryptedId { get; set; }
+
+        /// <summary>The mimetype of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The visibility indicator in the UI will be based upon this.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shareScope")]
+        public virtual ShareScope ShareScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Used to provide a search operator for html properties. This is optional. Search operators let users restrict the
     /// query to specific fields relevant to the type of item being searched.
     /// </summary>
@@ -5714,6 +5819,41 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The maximum allowable length for html values is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Identifies a particular object, including both Users and DirEntries. This Id is unique across the entire server
+    /// instance, such as the production or qa instance.
+    /// </summary>
+    public class Id : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The User account in which the DirEntry was originally created. If name_space==GAIA, then it's the gaia_id of
+        /// the user this id is referring to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
+        public virtual System.Nullable<ulong> CreatorUserId { get; set; }
+
+        /// <summary>
+        /// The local identifier for the DirEntry (local to the creator's account). local_id + app_name is guaranteed to
+        /// be unique within the creator account, but not across all User accounts. The string is case sensitive. Ignore
+        /// if name_space==GAIA. NB For name_space==COSMO, all local_id's should be defined in
+        /// google3/java/com/google/storage/cosmo/server/api/SpecialObjectIds.java as they have a special predefined
+        /// meaning. See cosmo.client.CosmoIdFactory.createObjectId(long,String) for IMPORTANT recommendations when
+        /// generating IDs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localId")]
+        public virtual string LocalId { get; set; }
+
+        /// <summary>
+        /// The name space in which this id is unique (typically the application that created it). Values should be
+        /// drawn from the above enum, but for experimentation, use values greater than 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameSpace")]
+        public virtual System.Nullable<int> NameSpace__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5921,9 +6061,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// Required. The indexing system stores the version from the datasource as a byte string and compares the Item
         /// version in the index to the version of the queued Item using lexical ordering. Cloud Search Indexing won't
         /// index or delete any queued item with a version value that is less than or equal to the version of the
-        /// currently indexed item. The maximum length for this field is 1024 bytes. See [this
-        /// guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations) to understand how
-        /// item version affects reindexing after delete item.
+        /// currently indexed item. The maximum length for this field is 1024 bytes. For information on how item version
+        /// affects the deletion process, refer to [Handle revisions after manual
+        /// deletes](https://developers.google.com/cloud-search/docs/guides/operations).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -7613,6 +7753,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ShareScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If scope is DOMAIN, this field contains the dasher domain, for example "google.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The scope to which the content was shared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Snippet of the search result, which summarizes the content of the resulting page.</summary>
     public class Snippet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8004,6 +8158,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Next tag: 2</summary>
+    public class TypeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains additional video information only if document_type is VIDEO.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoInfo")]
+        public virtual VideoInfo VideoInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class UnmappedIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name for an external user.</summary>
@@ -8138,6 +8303,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The value to be compared with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual Value Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Next tag: 2</summary>
+    public class VideoInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Duration of the video in milliseconds. This field can be absent for recently uploaded video or inaccurate
+        /// sometimes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual System.Nullable<int> Duration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

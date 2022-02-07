@@ -19659,27 +19659,45 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Contact information defining a Customer Match audience member.</summary>
     public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Country code of the member.</summary>
+        /// <summary>
+        /// Country code of the member. Must also be set with the following fields: * hashed_first_name *
+        /// hashed_last_name * zip_codes
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
-        /// <summary>A list of SHA256 hashed email of the member.</summary>
+        /// <summary>
+        /// A list of SHA256 hashed email of the member. Before hashing, remove all whitespace and make sure the string
+        /// is all lowercase.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedEmails")]
         public virtual System.Collections.Generic.IList<string> HashedEmails { get; set; }
 
-        /// <summary>SHA256 hashed first name of the member.</summary>
+        /// <summary>
+        /// SHA256 hashed first name of the member. Before hashing, remove all whitespace and make sure the string is
+        /// all lowercase. Must also be set with the following fields: * country_code * hashed_last_name * zip_codes
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedFirstName")]
         public virtual string HashedFirstName { get; set; }
 
-        /// <summary>SHA256 hashed last name of the member.</summary>
+        /// <summary>
+        /// SHA256 hashed last name of the member. Before hashing, remove all whitespace and make sure the string is all
+        /// lowercase. Must also be set with the following fields: * country_code * hashed_first_name * zip_codes
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedLastName")]
         public virtual string HashedLastName { get; set; }
 
-        /// <summary>A list of SHA256 hashed phone numbers of the member.</summary>
+        /// <summary>
+        /// A list of SHA256 hashed phone numbers of the member. Before hashing, all phone numbers must be formatted
+        /// using the [E.164 format](//en.wikipedia.org/wiki/E.164) and include the country calling code.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedPhoneNumbers")]
         public virtual System.Collections.Generic.IList<string> HashedPhoneNumbers { get; set; }
 
-        /// <summary>A list of zip codes of the member.</summary>
+        /// <summary>
+        /// A list of zip codes of the member. Must also be set with the following fields: * country_code *
+        /// hashed_first_name * hashed_last_name
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zipCodes")]
         public virtual System.Collections.Generic.IList<string> ZipCodes { get; set; }
 
@@ -20445,10 +20463,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21077,9 +21095,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
         /// <summary>
         /// The duration in days that an entry remains in the audience after the qualifying event. If the audience has
-        /// no expiration, the value of this field should be set 10000. Otherwise, the set value must be greater than 0
-        /// and less than or equal to 540. Only applicable to first party audiences. This field is required if one of
-        /// the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// no expiration, set the value of this field to 10000. Otherwise, the set value must be greater than 0 and
+        /// less than or equal to 540. Only applicable to first party audiences. This field is required if one of the
+        /// following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
         public virtual System.Nullable<long> MembershipDurationDays { get; set; }

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CertificateManager.v1.CertificateManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CertificateManager.v1.CertificateManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

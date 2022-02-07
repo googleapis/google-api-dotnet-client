@@ -2819,6 +2819,77 @@ namespace Google.Apis.Logging.v2
                 });
             }
         }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+        /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log Router
+        /// can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it can only be
+        /// configured for organizations. Once configured for an organization, it applies to all projects and folders in
+        /// the Google Cloud organization.
+        /// </param>
+        public virtual GetSettingsRequest GetSettings(string name)
+        {
+            return new GetSettingsRequest(service, name);
+        }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class GetSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new GetSettings request.</summary>
+            public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+            /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log
+            /// Router can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it
+            /// can only be configured for organizations. Once configured for an organization, it applies to all
+            /// projects and folders in the Google Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes GetSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^billingAccounts/[^/]+$",
+                });
+            }
+        }
     }
 
     /// <summary>The "entries" collection of methods.</summary>
@@ -5790,6 +5861,77 @@ namespace Google.Apis.Logging.v2
             public override string RestPath => "v2/{+name}/cmekSettings";
 
             /// <summary>Initializes GetCmekSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+        /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log Router
+        /// can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it can only be
+        /// configured for organizations. Once configured for an organization, it applies to all projects and folders in
+        /// the Google Cloud organization.
+        /// </param>
+        public virtual GetSettingsRequest GetSettings(string name)
+        {
+            return new GetSettingsRequest(service, name);
+        }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class GetSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new GetSettings request.</summary>
+            public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+            /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log
+            /// Router can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it
+            /// can only be configured for organizations. Once configured for an organization, it applies to all
+            /// projects and folders in the Google Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes GetSettings parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -9740,6 +9882,77 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+        /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log Router
+        /// can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it can only be
+        /// configured for organizations. Once configured for an organization, it applies to all projects and folders in
+        /// the Google Cloud organization.
+        /// </param>
+        public virtual GetSettingsRequest GetSettings(string name)
+        {
+            return new GetSettingsRequest(service, name);
+        }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class GetSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new GetSettings request.</summary>
+            public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+            /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log
+            /// Router can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it
+            /// can only be configured for organizations. Once configured for an organization, it applies to all
+            /// projects and folders in the Google Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes GetSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only
         /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
         /// Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated
@@ -9812,6 +10025,101 @@ namespace Google.Apis.Logging.v2
             public override string RestPath => "v2/{+name}/cmekSettings";
 
             /// <summary>Initializes UpdateCmekSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the Log Router settings for the given resource.Note: Settings for the Log Router can currently only
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the associated
+        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        /// key, or 3) access to the key is disabled. 4) location_id is not supported by Logging. 5) location_id violate
+        /// OrgPolicy.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
+        /// example:"organizations/12345/settings"Note: Settings for the Log Router can currently only be configured for
+        /// Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud
+        /// organization.
+        /// </param>
+        public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
+        {
+            return new UpdateSettingsRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the Log Router settings for the given resource.Note: Settings for the Log Router can currently only
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the associated
+        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        /// key, or 3) access to the key is disabled. 4) location_id is not supported by Logging. 5) location_id violate
+        /// OrgPolicy.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class UpdateSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new UpdateSettings request.</summary>
+            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.Settings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
+            /// example:"organizations/12345/settings"Note: Settings for the Log Router can currently only be configured
+            /// for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google
+            /// Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Optional. Field mask identifying which fields from settings should be updated. A field will be
+            /// overwritten if and only if it is in the update mask. Output only fields cannot be updated.See FieldMask
+            /// for more information.For example: "updateMask=kmsKeyName"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Logging.v2.Data.Settings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes UpdateSettings parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -12580,6 +12888,77 @@ namespace Google.Apis.Logging.v2
                 });
             }
         }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+        /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log Router
+        /// can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it can only be
+        /// configured for organizations. Once configured for an organization, it applies to all projects and folders in
+        /// the Google Cloud organization.
+        /// </param>
+        public virtual GetSettingsRequest GetSettings(string name)
+        {
+            return new GetSettingsRequest(service, name);
+        }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class GetSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new GetSettings request.</summary>
+            public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+            /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log
+            /// Router can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it
+            /// can only be configured for organizations. Once configured for an organization, it applies to all
+            /// projects and folders in the Google Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes GetSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
     }
 
     /// <summary>The "sinks" collection of methods.</summary>
@@ -13072,6 +13451,77 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+        /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log Router
+        /// can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it can only be
+        /// configured for organizations. Once configured for an organization, it applies to all projects and folders in
+        /// the Google Cloud organization.
+        /// </param>
+        public virtual GetSettingsRequest GetSettings(string name)
+        {
+            return new GetSettingsRequest(service, name);
+        }
+
+        /// <summary>
+        /// Gets the Log Router settings for the given resource.Note: Settings for the Log Router can be get for Google
+        /// Cloud projects, folders, organizations and billing accounts. Currently it can only be configured for
+        /// organizations. Once configured for an organization, it applies to all projects and folders in the Google
+        /// Cloud organization.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class GetSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new GetSettings request.</summary>
+            public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings"
+            /// "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings for the Log
+            /// Router can be get for Google Cloud projects, folders, organizations and billing accounts. Currently it
+            /// can only be configured for organizations. Once configured for an organization, it applies to all
+            /// projects and folders in the Google Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes GetSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only
         /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
         /// Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated
@@ -13144,6 +13594,101 @@ namespace Google.Apis.Logging.v2
             public override string RestPath => "v2/{+name}/cmekSettings";
 
             /// <summary>Initializes UpdateCmekSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the Log Router settings for the given resource.Note: Settings for the Log Router can currently only
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the associated
+        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        /// key, or 3) access to the key is disabled. 4) location_id is not supported by Logging. 5) location_id violate
+        /// OrgPolicy.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
+        /// example:"organizations/12345/settings"Note: Settings for the Log Router can currently only be configured for
+        /// Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud
+        /// organization.
+        /// </param>
+        public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
+        {
+            return new UpdateSettingsRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the Log Router settings for the given resource.Note: Settings for the Log Router can currently only
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the associated
+        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        /// key, or 3) access to the key is disabled. 4) location_id is not supported by Logging. 5) location_id violate
+        /// OrgPolicy.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class UpdateSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new UpdateSettings request.</summary>
+            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.Settings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
+            /// example:"organizations/12345/settings"Note: Settings for the Log Router can currently only be configured
+            /// for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google
+            /// Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Optional. Field mask identifying which fields from settings should be updated. A field will be
+            /// overwritten if and only if it is in the update mask. Output only fields cannot be updated.See FieldMask
+            /// for more information.For example: "updateMask=kmsKeyName"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Logging.v2.Data.Settings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes UpdateSettings parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -14550,8 +15095,8 @@ namespace Google.Apis.Logging.v2.Data
     /// MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field
     /// identifies the actual resource and its attributes according to the schema. For example, a particular Compute
     /// Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for
-    /// "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id":
-    /// "12345678901234", "zone": "us-central1-a" }}
+    /// "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": {
+    /// "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
     /// </summary>
     public class MonitoredResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14853,6 +15398,35 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Whether this was a loading request for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wasLoadingRequest")]
         public virtual System.Nullable<bool> WasLoadingRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes the settings associated with a project, folder, organization, billing account, or flexible resource.
+    /// </summary>
+    public class Settings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, the _Default sink in newly created projects and folders will created in a disabled
+        /// state. This can be used to automatically disable log ingestion if there is already an aggregated sink
+        /// configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableDefaultSink")]
+        public virtual System.Nullable<bool> DisableDefaultSink { get; set; }
+
+        /// <summary>Output only. The resource name of the settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud region that will be used for _Default and _Required log buckets for newly created
+        /// projects and folders. For example europe-west1. This setting does not affect the location of custom log
+        /// buckets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLocation")]
+        public virtual string StorageLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

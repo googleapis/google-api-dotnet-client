@@ -2798,6 +2798,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multiclusteringress")]
         public virtual MultiClusterIngressFeatureSpec Multiclusteringress { get; set; }
 
+        /// <summary>Workload Certificate spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadcertificate")]
+        public virtual FeatureSpec Workloadcertificate { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3549,6 +3553,23 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>**Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.</summary>
+    public class FeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies default membership spec. Users can override the default in the member_configs for each member.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultConfig")]
+        public virtual MembershipSpec DefaultConfig { get; set; }
+
+        /// <summary>Immutable. Specifies CA configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionGoogleCa")]
+        public virtual string ProvisionGoogleCa { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the
     /// environ-level, or per-membershop, depending on the context.
@@ -4161,6 +4182,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
         public virtual PolicycontrollerMembershipSpec Policycontroller { get; set; }
 
+        /// <summary>Workload Certificate spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadcertificate")]
+        public virtual MembershipSpec Workloadcertificate { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4195,6 +4220,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>The high-level state of this Feature for a single membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual FeatureState State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Workload Certificate**: The membership-specific input for WorkloadCertificate feature.</summary>
+    public class MembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies workload certificate management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateManagement")]
+        public virtual string CertificateManagement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

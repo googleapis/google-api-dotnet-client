@@ -10005,7 +10005,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance,
-        /// gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service
+        /// gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual MonitoredResource MonitoredResource { get; set; }
