@@ -3243,11 +3243,12 @@ namespace Google.Apis.PeopleService.v1.Data
 
     /// <summary>
     /// A person's birthday. At least one of the `date` and `text` fields are specified. The `date` and `text` fields
-    /// typically represent the same date, but are not guaranteed to.
+    /// typically represent the same date, but are not guaranteed to. Clients should always set the `date` field when
+    /// mutating birthdays.
     /// </summary>
     public class Birthday : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The date of the birthday.</summary>
+        /// <summary>The structured date of the birthday.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
 
@@ -3255,7 +3256,10 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; }
 
-        /// <summary>A free-form string representing the user's birthday.</summary>
+        /// <summary>
+        /// Prefer to use the `date` field if set. A free-form string representing the user's birthday. This value is
+        /// not validated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 

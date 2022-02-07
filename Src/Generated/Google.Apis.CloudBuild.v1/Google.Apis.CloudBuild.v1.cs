@@ -6144,6 +6144,31 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration per workload for both Private Pools and Hybrid Pools.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The disk size (in GB) which is requested for the build container. If unset, a value of 10 GB will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// The memory (in GB) which is requested for the build container. If unset, a value of 4 GB will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>
+        /// The number of vCPUs which are requested for the build container. If unset, a value of 1 will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<float> VcpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleDevtoolsCloudbuildV2OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6237,6 +6262,46 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a Hybrid Worker Pool Next ID: 6</summary>
+    public class HybridPoolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Default settings which will be applied to builds on this worker pool if they are not specified in the build
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultWorkerConfig")]
+        public virtual HybridWorkerConfig DefaultWorkerConfig { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The Anthos/GKE Hub membership of the cluster which will run the actual build
+        /// operations. Example: projects/{project}/locations/{location}/memberships/{cluster_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual string Membership { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>These settings can be applied to a user's build operations. Next ID: 4</summary>
+    public class HybridWorkerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The disk size (in GB) which is requested for the build container. Defaults to 10 GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>The memory (in GB) which is requested for the build container. Defaults to 4 GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>The number of vCPUs which are requested for the build container. Defaults to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<float> VcpuCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6608,6 +6673,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Configuration per workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
+        public virtual GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig WorkerConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7351,6 +7420,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Hybrid pool configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridPoolConfig")]
+        public virtual HybridPoolConfig HybridPoolConfig { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the `WorkerPool`, with format

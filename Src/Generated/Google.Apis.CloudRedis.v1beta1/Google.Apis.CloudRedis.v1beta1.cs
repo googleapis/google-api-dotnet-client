@@ -1503,97 +1503,6 @@ namespace Google.Apis.CloudRedis.v1beta1
 }
 namespace Google.Apis.CloudRedis.v1beta1.Data
 {
-    /// <summary>A cluster instance.</summary>
-    public class Cluster : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. UID of the cluster for use by Pantheon for analytics.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterUid")]
-        public virtual string ClusterUid { get; set; }
-
-        /// <summary>Output only. The timestamp associated with the cluster creation request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// Input only. The KMS key reference that the customer provides when trying to create the instance.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedKey")]
-        public virtual string CustomerManagedKey { get; set; }
-
-        /// <summary>Optional. The number of replica nodes per shard. Valid range is [1-2] and defaults to 1.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultReplicaCount")]
-        public virtual System.Nullable<int> DefaultReplicaCount { get; set; }
-
-        /// <summary>Optional. An arbitrary and optional user-provided name for the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Output only. Hostname or IP address and port pairs used to connect to the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
-        public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
-
-        /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form:
-        /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Optional. Populate to use private service connect network option.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnect")]
-        public virtual PrivateServiceConnect PrivateServiceConnect { get; set; }
-
-        /// <summary>
-        /// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only
-        /// supported parameters are: Redis version 6.x and newer: * lfu-decay-time * lfu-log-factor * maxmemory-policy
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string, string> RedisConfigs { get; set; }
-
-        /// <summary>
-        /// Output only. The slots making up the cluster. Read-only. In future versions this will be writable to allow
-        /// for heterogeneous clusters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("slots")]
-        public virtual System.Collections.Generic.IList<ClusterSlots> Slots { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Optional. Redis memory size in GiB for the entire cluster. Defaults to 32.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalMemorySizeGb")]
-        public virtual System.Nullable<int> TotalMemorySizeGb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A series of slots belonging to a cluster.</summary>
-    public class ClusterSlots : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The end of the slots that make up this series.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endSlotsExclusive")]
-        public virtual System.Nullable<int> EndSlotsExclusive { get; set; }
-
-        /// <summary>Output only. The total size of keyspace this series has.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
-        public virtual System.Nullable<int> MemorySizeGb { get; set; }
-
-        /// <summary>Output only. The number of replicas this series has.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
-        public virtual System.Nullable<int> ReplicaCount { get; set; }
-
-        /// <summary>Output only. The start of the slots that make up this series.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startSlotsInclusive")]
-        public virtual System.Nullable<int> StartSlotsInclusive { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1602,26 +1511,6 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An endpoint exposed by a cluster. In the future we will add an enum to identify whether this endpoint is
-    /// read/write or read-only when the feature is ready.
-    /// </summary>
-    public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; }
-
-        /// <summary>Output only. The port number of the exposed Redis endpoint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2226,27 +2115,6 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rdbSnapshotStartTime")]
         public virtual object RdbSnapshotStartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains private service connect specific options.</summary>
-    public class PrivateServiceConnect : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. The address of the Private Service Connect (PSC) service that the customer can use to connect
-        /// this instance to their local network.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscService")]
-        public virtual string PscService { get; set; }
-
-        /// <summary>
-        /// Optional. The service route to connect using Private Service Connect. On Instance creation, this will
-        /// automatically connect this route to this instance.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceRoute")]
-        public virtual string PscServiceRoute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
