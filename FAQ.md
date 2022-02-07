@@ -40,7 +40,12 @@ In a word: No.
 
 OAuth authentication requires the end-user to interact with a web browser, which can only be done client-side.
 
-It is possible to user OAuth authentication in a web application, but not using this `GoogleWebAuthorizationBroker` class.
+It is possible to use OAuth authentication for end users in a web application, but not using this `GoogleWebAuthorizationBroker` class.
+For these purposes, you can use one of the ASP.NET integration packages we provide, for instance `Google.Apis.Auth.AspNetCore3`.
+
+You can find general information about Google APIs and OAuth 2.0 in 
+[Using OAuth 2.0 to Access Google APIs](https://developers.google.com/identity/protocols/oauth2) and about integration
+with .NET client libraries in the [.NET guide for OAuth 2.0 and Google APIs](https://developers.google.com/api-client-library/dotnet/guide/aaa_oauth).
 
 ### Should I create a new client instance for every request?
 
