@@ -124,17 +124,18 @@ namespace Google.Apis.Auth
                 }
             }
             throw new InvalidJwtException("JWT invalid, unable to verify signature.");
+        }
 
-            static RSA FromKeyToRsa(JToken key)
+        // Internal only for testing purposes.
+        internal static RSA FromKeyToRsa(JToken key)
+        {
+            var rsa = RSA.Create();
+            rsa.ImportParameters(new RSAParameters
             {
-                var rsa = RSA.Create();
-                rsa.ImportParameters(new RSAParameters
-                {
-                    Modulus = TokenEncodingHelpers.Base64UrlDecode((string)key["n"]),
-                    Exponent = TokenEncodingHelpers.Base64UrlDecode((string)key["e"]),
-                });
-                return rsa;
-            }
+                Modulus = TokenEncodingHelpers.Base64UrlDecode((string)key["n"]),
+                Exponent = TokenEncodingHelpers.Base64UrlDecode((string)key["e"]),
+            });
+            return rsa;
         }
 
 #if ES256_SUPPORTED
@@ -243,11 +244,13 @@ namespace Google.Apis.Auth
                         cachedCerts.Expired(_clock.UtcNow))
                     {
                         string certificatesJson = await FetchCertificatesAsync(certificatesLocation).ConfigureAwait(false);
-                        cachedCerts = new CachedCertificates(
-                            JToken.Parse(certificatesJson)["keys"]
-                            .AsEnumerable()
-                            .Select(key => certificateFactory(key)).ToList(),
-                            _clock.UtcNow);
+                        IEnumerable<JToken> jwks = JToken.Parse(certificatesJson)["keys"]?.AsEnumerable() 
+                            ?? throw new ArgumentException($"Only JWK formatted keys are currently supported. No 'keys' element was found in {certificatesLocation}");
+                        if (!jwks.Any())
+                        {
+                            throw new ArgumentException($"No JWKs were found on {certificatesLocation}. The 'keys' element was empty.");
+                        }
+                        cachedCerts = new CachedCertificates(jwks.Select(key => certificateFactory(key)).ToList(), _clock.UtcNow);
                         _cache[certificatesLocation] = cachedCerts;
                     }
                     return cachedCerts.Certificates;
