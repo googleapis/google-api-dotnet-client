@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using System;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Xunit;
@@ -24,15 +25,26 @@ namespace IntegrationTests
 {
     public class SignedTokenVerificationTests
     {
-        [Fact]
-        public async Task CertificateCache()
+        [Theory]
+        [InlineData(GoogleAuthConsts.JsonWebKeySetUrl)]
+        [InlineData("https://www.googleapis.com/service_accounts/v1/jwk/chat@system.gserviceaccount.com")]
+        public async Task CertificateCache_JWK_RS256(string certificateLocation)
         {
             var certCache = new CertificateCache();
 
-            // We don't care about cert transformation here, that'll be tested when verifying.
-            var certificates = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), false, default);
+            var certificates = await certCache.GetCertificatesAsync(certificateLocation, FromKeyToRsa, false, default);
 
             Assert.NotEmpty(certificates);
+        }
+
+        [Fact]
+        public async Task CertificateCache_NonJWK_Error()
+        {
+            var certCache = new CertificateCache();
+
+            var exception = await Assert.ThrowsAsync<ArgumentException>(() => certCache.GetCertificatesAsync(
+                "https://www.googleapis.com/service_accounts/v1/metadata/x509/chat@system.gserviceaccount.com", json => RSA.Create(), false, default));
+            Assert.Contains("Only JWK formatted keys are currently supported", exception.Message);
         }
     }
 }
