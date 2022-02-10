@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.MyBusinessNotificationSettings.v1 Client Library</Title>
-    <Version>1.55.0.2399</Version>
+    <Version>1.55.0.2595</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2022 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

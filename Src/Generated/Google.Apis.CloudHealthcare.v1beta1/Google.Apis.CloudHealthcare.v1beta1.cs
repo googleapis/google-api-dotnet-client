@@ -13991,7 +13991,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 
-        /// <summary>Configuration for how FHIR resource can be searched.</summary>
+        /// <summary>Configuration for how FHIR resources can be searched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
         public virtual SearchConfig SearchConfig { get; set; }
 

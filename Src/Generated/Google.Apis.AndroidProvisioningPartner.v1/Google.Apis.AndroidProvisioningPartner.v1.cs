@@ -295,7 +295,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The customer that manages the configuration. An API resource name in the format
-            /// `customers/[CUSTOMER_ID]`.
+            /// `customers/[CUSTOMER_ID]`. This field has custom validation in CreateConfigurationRequestValidator
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration body, string parent)
             {
@@ -317,7 +317,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
                 /// <summary>
                 /// Required. The customer that manages the configuration. An API resource name in the format
-                /// `customers/[CUSTOMER_ID]`.
+                /// `customers/[CUSTOMER_ID]`. This field has custom validation in CreateConfigurationRequestValidator
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1015,7 +1015,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A token specifying which result page to return.</summary>
+            /// <summary>
+            /// A token specifying which result page to return. This field has custom validations in
+            /// ListCustomersRequestValidator
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2249,7 +2252,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
         public virtual string Configuration { get; set; }
 
-        /// <summary>Required. The device the configuration is applied to.</summary>
+        /// <summary>
+        /// Required. The device the configuration is applied to. There are custom validations in
+        /// ApplyConfigurationRequestValidator
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual DeviceReference Device { get; set; }
 
@@ -2316,7 +2322,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request message for customer to remove the configuration from device.</summary>
     public class CustomerRemoveConfigurationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The device to remove the configuration from.</summary>
+        /// <summary>
+        /// Required. The device to remove the configuration from. There are custom validations in
+        /// RemoveConfigurationRequestValidator
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual DeviceReference Device { get; set; }
 
@@ -2327,7 +2336,9 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request message for customer to unclaim a device.</summary>
     public class CustomerUnclaimDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The device to unclaim.</summary>
+        /// <summary>
+        /// Required. The device to unclaim. There are custom validations in UnclaimDeviceRequestValidator.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual DeviceReference Device { get; set; }
 

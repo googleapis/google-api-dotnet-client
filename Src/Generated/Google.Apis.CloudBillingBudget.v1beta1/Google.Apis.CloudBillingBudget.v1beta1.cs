@@ -306,8 +306,8 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             }
 
             /// <summary>
-            /// Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets
-            /// you can create.
+            /// Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more
+            /// information on the limits of the number of budgets you can create.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -320,8 +320,8 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             }
 
             /// <summary>
-            /// Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets
-            /// you can create.
+            /// Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more
+            /// information on the limits of the number of budgets you can create.
             /// </summary>
             public class CreateRequest : CloudBillingBudgetBaseServiceRequest<Google.Apis.CloudBillingBudget.v1beta1.Data.GoogleCloudBillingBudgetsV1beta1Budget>
             {
@@ -953,6 +953,14 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
+    /// </summary>
     public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

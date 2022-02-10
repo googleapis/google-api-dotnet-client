@@ -3011,9 +3011,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                 /// <summary>
                 /// Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a
-                /// specified parent catalog. This feature is only available for users who have Retail Search enabled.
-                /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
-                /// interested in using Retail Search.
+                /// specified parent catalog.
                 /// </summary>
                 /// <param name="catalog">
                 /// The parent catalog resource name, such as `projects/*/locations/global/catalogs/default_catalog`.
@@ -3025,9 +3023,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                 /// <summary>
                 /// Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a
-                /// specified parent catalog. This feature is only available for users who have Retail Search enabled.
-                /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
-                /// interested in using Retail Search.
+                /// specified parent catalog.
                 /// </summary>
                 public class GetDefaultBranchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaGetDefaultBranchResponse>
                 {
@@ -3238,9 +3234,6 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// from the old one. More specifically: * PredictionService will only return product IDs from branch
                 /// {newBranch}. * SearchService will only return product IDs from branch {newBranch} (if branch is not
                 /// explicitly set). * UserEventService will only join events with products from branch {newBranch}.
-                /// This feature is only available for users who have Retail Search enabled. Please submit a form
-                /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in using
-                /// Retail Search.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="catalog">
@@ -3266,9 +3259,6 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// from the old one. More specifically: * PredictionService will only return product IDs from branch
                 /// {newBranch}. * SearchService will only return product IDs from branch {newBranch} (if branch is not
                 /// explicitly set). * UserEventService will only join events with products from branch {newBranch}.
-                /// This feature is only available for users who have Retail Search enabled. Please submit a form
-                /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in using
-                /// Retail Search.
                 /// </summary>
                 public class SetDefaultBranchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleProtobufEmpty>
                 {
@@ -4342,8 +4332,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// (default): One JSON Product per line. Each product must have a valid Product.id. *
         /// `product_merchant_center`: See [Importing catalog data from Merchant
         /// Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc). Supported values for
-        /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: Using
-        /// https://support.google.com/analytics/answer/3437719.
+        /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: The schema
+        /// is available here: https://support.google.com/analytics/answer/3437719. * `user_event_ga4`: This feature is
+        /// in private preview. Please contact the support team for importing Google Analytics 4 events. The schema is
+        /// available here: https://support.google.com/analytics/answer/7029846.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -7377,10 +7369,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
     {

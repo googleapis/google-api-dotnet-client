@@ -4672,32 +4672,4 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
-
-    /// <summary>
-    /// The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to
-    /// join the customer's Google Workspace or Cloud Identity account. An unmanaged account shares an email address
-    /// domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the
-    /// `UserInvitation`, the user account will become managed.
-    /// </summary>
-    public class UserInvitation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of invitation emails sent to the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mailsSentCount")]
-        public virtual System.Nullable<long> MailsSentCount { get; set; }
-
-        /// <summary>Shall be of the form `customers/{customer}/userinvitations/{user_email_address}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>State of the `UserInvitation`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Time when the `UserInvitation` was last updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
 }

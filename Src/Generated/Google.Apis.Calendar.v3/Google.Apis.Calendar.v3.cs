@@ -2332,8 +2332,9 @@ namespace Google.Apis.Calendar.v3
                 ExternalOnly = 1,
 
                 /// <summary>
-                /// No notifications are sent. For calendar migration tasks, consider using the Events.import method
-                /// instead.
+                /// No notifications are sent. Warning: Using the value none can have significant adverse effects,
+                /// including events not syncing to external calendars or events being lost altogether for some users.
+                /// For calendar migration tasks, consider using the events.import method instead.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 2,

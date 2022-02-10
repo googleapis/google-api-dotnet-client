@@ -3759,6 +3759,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securityProjection")]
         public virtual GoogleCloudRecommenderV1beta1SecurityProjection SecurityProjection { get; set; }
 
+        /// <summary>Use with CategoryType.SUSTAINABILITY</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityProjection")]
+        public virtual GoogleCloudRecommenderV1beta1SustainabilityProjection SustainabilityProjection { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4301,6 +4305,24 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>This field can be used by the recommender to define details specific to security impact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains metadata about how much sustainability a recommendation can save or incur.</summary>
+    public class GoogleCloudRecommenderV1beta1SustainabilityProjection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration for which this sustanability applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// Carbon Footprint generated in kg of CO2 equivalent. Chose kg_c_o2e so that the name renders correctly in
+        /// camelCase (kgCO2e).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kgCO2e")]
+        public virtual System.Nullable<double> KgCO2e { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
