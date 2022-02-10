@@ -396,14 +396,12 @@ namespace Google.Apis.ArtifactRegistry.v1
                 {
                     this.service = service;
                     AptArtifacts = new AptArtifactsResource(service);
-                    Aptartifacts = new AptartifactsResource(service);
                     DockerImages = new DockerImagesResource(service);
                     Files = new FilesResource(service);
                     GooGetArtifacts = new GooGetArtifactsResource(service);
-                    Googetartifacts = new GoogetartifactsResource(service);
+                    GoogetArtifacts = new GoogetArtifactsResource(service);
                     Packages = new PackagesResource(service);
                     YumArtifacts = new YumArtifactsResource(service);
-                    Yumartifacts = new YumartifactsResource(service);
                 }
 
                 /// <summary>Gets the AptArtifacts resource.</summary>
@@ -484,24 +482,6 @@ namespace Google.Apis.ArtifactRegistry.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
                             });
                         }
-                    }
-                }
-
-                /// <summary>Gets the Aptartifacts resource.</summary>
-                public virtual AptartifactsResource Aptartifacts { get; }
-
-                /// <summary>The "aptartifacts" collection of methods.</summary>
-                public class AptartifactsResource
-                {
-                    private const string Resource = "aptartifacts";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public AptartifactsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
                     }
 
                     /// <summary>
@@ -1088,19 +1068,19 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
                 }
 
-                /// <summary>Gets the Googetartifacts resource.</summary>
-                public virtual GoogetartifactsResource Googetartifacts { get; }
+                /// <summary>Gets the GoogetArtifacts resource.</summary>
+                public virtual GoogetArtifactsResource GoogetArtifacts { get; }
 
-                /// <summary>The "googetartifacts" collection of methods.</summary>
-                public class GoogetartifactsResource
+                /// <summary>The "googetArtifacts" collection of methods.</summary>
+                public class GoogetArtifactsResource
                 {
-                    private const string Resource = "googetartifacts";
+                    private const string Resource = "googetArtifacts";
 
                     /// <summary>The service which this resource belongs to.</summary>
                     private readonly Google.Apis.Services.IClientService service;
 
                     /// <summary>Constructs a new resource.</summary>
-                    public GoogetartifactsResource(Google.Apis.Services.IClientService service)
+                    public GoogetArtifactsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
                     }
@@ -2202,24 +2182,6 @@ namespace Google.Apis.ArtifactRegistry.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
                             });
                         }
-                    }
-                }
-
-                /// <summary>Gets the Yumartifacts resource.</summary>
-                public virtual YumartifactsResource Yumartifacts { get; }
-
-                /// <summary>The "yumartifacts" collection of methods.</summary>
-                public class YumartifactsResource
-                {
-                    private const string Resource = "yumartifacts";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public YumartifactsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
                     }
 
                     /// <summary>
@@ -3645,7 +3607,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string Format { get; set; }
 
         /// <summary>
-        /// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of
+        /// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of
         /// the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
         /// This value may not be changed after the Repository has been created.
         /// </summary>

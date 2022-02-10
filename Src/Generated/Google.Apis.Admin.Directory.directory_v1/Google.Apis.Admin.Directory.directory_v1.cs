@@ -2066,6 +2066,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
+                    /// The order to sort results by. Must be one of display_name, description, make_and_model, or
+                    /// create_time. Default order is ascending, but descending order can be returned by appending
+                    /// "desc" to the order_by field. For instance, "description desc" will return the printers sorted
+                    /// by description in descending order.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
                     /// Organization Unit that we want to list the printers for. When org_unit is not present in the
                     /// request then all printers of the customer are returned (or filtered). When org_unit is present
                     /// in the request then only printers available to this OU will be returned (owned or inherited).
@@ -2108,6 +2117,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

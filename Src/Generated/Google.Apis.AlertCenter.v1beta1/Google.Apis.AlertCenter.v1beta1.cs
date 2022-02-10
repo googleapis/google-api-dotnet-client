@@ -1836,7 +1836,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     public class MergeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// New alert ID. Reference the [google.apps.alertcenter.Alert] with this ID for the current state.
+        /// Optional. New alert ID. Reference the [google.apps.alertcenter.Alert] with this ID for the current state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newAlertId")]
         public virtual string NewAlertId { get; set; }

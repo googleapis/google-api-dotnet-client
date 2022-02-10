@@ -1587,7 +1587,9 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
+                /// <summary>
+                /// The requested page size. This is a hint and the actual page size in the response may be different.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 

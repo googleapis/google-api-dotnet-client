@@ -431,7 +431,7 @@ namespace Google.Apis.CloudRun.v2
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
                 /// collection id.
                 /// </summary>
-                /// <param name="name">The name of the operation's parent resource.</param>
+                /// <param name="name">Required. To query for all of the operations for a project.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
@@ -455,19 +455,29 @@ namespace Google.Apis.CloudRun.v2
                         InitParameters();
                     }
 
-                    /// <summary>The name of the operation's parent resource.</summary>
+                    /// <summary>Required. To query for all of the operations for a project.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
+                    /// <summary>
+                    /// Optional. A filter for matching the completed or in-progress operations. The supported formats
+                    /// of *filter* are: To query for only completed operations: done:true To query for only ongoing
+                    /// operations: done:false Must be empty to query for all of the latest operations for the given
+                    /// parent project.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>The standard list page size.</summary>
+                    /// <summary>
+                    /// The maximum number of records that should be returned. Requested page size cannot exceed 100. If
+                    /// not set or set to less than or equal to 0, the default page size is 100. .
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>The standard list page token.</summary>
+                    /// <summary>
+                    /// Token identifying which result to start with, which is returned by a previous list call.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1762,7 +1772,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// Set the launch stage to a preview stage on write to allow use of preview features in that stage. On read,
         /// describes whether the resource uses preview features. Launch Stages are defined at [Google Cloud Platform
-        /// Launch Stages](http://cloud.google.com/terms/launch-stages).
+        /// Launch Stages](https://cloud.google.com/terms/launch-stages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
@@ -1990,7 +2000,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not
         /// queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using
         /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations'
-        /// namespacing, limits, and rules. More info: http://kubernetes.io/docs/user-guide/annotations
+        /// namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -2087,7 +2097,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// The launch stage as defined by [Google Cloud Platform Launch
-        /// Stages](http://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
+        /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
         /// value is specified, GA is assumed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]

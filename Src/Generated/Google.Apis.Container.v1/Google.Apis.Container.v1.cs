@@ -6548,6 +6548,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>Configuration for Identity Service component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityServiceConfig")]
+        public virtual IdentityServiceConfig IdentityServiceConfig { get; set; }
+
         /// <summary>
         /// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions
         /// returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in
@@ -6875,6 +6879,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired GCFS config for the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredGcfsConfig")]
         public virtual GcfsConfig DesiredGcfsConfig { get; set; }
+
+        /// <summary>The desired Identity Service component configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredIdentityServiceConfig")]
+        public virtual IdentityServiceConfig DesiredIdentityServiceConfig { get; set; }
 
         /// <summary>
         /// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
@@ -7537,6 +7545,20 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useRoutes")]
         public virtual System.Nullable<bool> UseRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity
+    /// providers with the K8S API
+    /// </summary>
+    public class IdentityServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to enable the Identity Service component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

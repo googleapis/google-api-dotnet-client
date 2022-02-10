@@ -1549,10 +1549,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1777,7 +1777,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies the metadata options for running a transfer.</summary>
+    /// <summary>
+    /// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX
+    /// filesystem and are ignored for other transfers.
+    /// </summary>
     public class MetadataOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1788,8 +1791,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string Acl { get; set; }
 
         /// <summary>
-        /// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default
-        /// behavior is the same as GID_SKIP when the source is a POSIX file system.
+        /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID
+        /// is not preserved.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gid")]
         public virtual string Gid { get; set; }
@@ -1803,8 +1806,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default
-        /// behavior is the same as MODE_SKIP when the source is a POSIX file system.
+        /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not
+        /// preserved.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -1817,8 +1820,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string StorageClass { get; set; }
 
         /// <summary>
-        /// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same
-        /// as SYMLINK_SKIP when the source is a POSIX file system.
+        /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symlink")]
         public virtual string Symlink { get; set; }
@@ -1831,8 +1833,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string TemporaryHold { get; set; }
 
         /// <summary>
-        /// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default
-        /// behavior is the same as UID_SKIP when the source is a POSIX file system.
+        /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID
+        /// is not preserved.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -2428,7 +2430,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
         public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; }
 
-        /// <summary>Represents the selected metadata options for a transfer job.</summary>
+        /// <summary>Represents the selected metadata options for a transfer job. This feature is in Preview.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataOptions")]
         public virtual MetadataOptions MetadataOptions { get; set; }
 
