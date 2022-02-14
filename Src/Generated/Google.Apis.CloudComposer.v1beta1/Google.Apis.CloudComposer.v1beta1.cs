@@ -1255,10 +1255,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2088,12 +2088,12 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     public class StoreEnvironmentStateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The fully-resolved Cloud Storage location of the created snapshot, e.g.:
-        /// "gs://my-bucket/snapshots/project_id/location/environment_uuid/timestamp". This field is populated only if
-        /// the snapshot creation was successful.
+        /// The fully-resolved Cloud Storage path of the created snapshot, e.g.:
+        /// "gs://my-bucket/snapshots/project_location_environment_timestamp". This field is populated only if the
+        /// snapshot creation was successful.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshotLocation")]
-        public virtual string SnapshotLocation { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
+        public virtual string SnapshotPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

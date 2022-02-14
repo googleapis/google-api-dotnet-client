@@ -2604,12 +2604,20 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
+        /// <summary>Unencrypted OIDC client secret will be passed to the GKE Hub CLH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
         /// <summary>
         /// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when
         /// provider is not reachable by Google Cloud Console.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployCloudConsoleProxy")]
         public virtual System.Nullable<bool> DeployCloudConsoleProxy { get; set; }
+
+        /// <summary>Output only. Encrypted OIDC Client secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]
+        public virtual string EncryptedClientSecret { get; set; }
 
         /// <summary>Comma-separated list of key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extraParams")]
@@ -2747,6 +2755,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Identity Service-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
         public virtual IdentityServiceMembershipSpec Identityservice { get; set; }
+
+        /// <summary>Policy Controller spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicyControllerMembershipSpec Policycontroller { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

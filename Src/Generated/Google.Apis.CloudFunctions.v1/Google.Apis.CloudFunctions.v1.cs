@@ -1487,6 +1487,14 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be
+        /// automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`.
+        /// This field may be overridden by the backend for eligible deployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerRegistry")]
+        public virtual string DockerRegistry { get; set; }
+
+        /// <summary>
         /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If
         /// specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use
         /// Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region.
@@ -1810,6 +1818,200 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]
         public virtual string UploadUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class GoogleCloudFunctionsV2alphaOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
+        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The original request that started the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
+        public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
+
+        /// <summary>Mechanism for reporting in-progress stages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStage> Stages { get; set; }
+
+        /// <summary>Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each Stage of the deployment process</summary>
+    public class GoogleCloudFunctionsV2alphaStage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Message describing the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Name of the Stage. This will be unique for each Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Link to the current Stage resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>Current state of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>State messages from the current Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStateMessage> StateMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Informational messages about the state of the Cloud Function or Operation.</summary>
+    public class GoogleCloudFunctionsV2alphaStateMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Severity of the state message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>One-word CamelCase type of the state message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class GoogleCloudFunctionsV2betaOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
+        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The original request that started the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
+        public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
+
+        /// <summary>Mechanism for reporting in-progress stages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2betaStage> Stages { get; set; }
+
+        /// <summary>Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each Stage of the deployment process</summary>
+    public class GoogleCloudFunctionsV2betaStage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Message describing the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Name of the Stage. This will be unique for each Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Link to the current Stage resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>Current state of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>State messages from the current Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2betaStateMessage> StateMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Informational messages about the state of the Cloud Function or Operation.</summary>
+    public class GoogleCloudFunctionsV2betaStateMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Severity of the state message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>One-word CamelCase type of the state message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

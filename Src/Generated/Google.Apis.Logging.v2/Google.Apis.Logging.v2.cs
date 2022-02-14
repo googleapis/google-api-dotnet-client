@@ -5945,6 +5945,101 @@ namespace Google.Apis.Logging.v2
                 });
             }
         }
+
+        /// <summary>
+        /// Updates the Log Router settings for the given resource.Note: Settings for the Log Router can currently only
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the associated
+        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        /// key, or 3) access to the key is disabled. 4) location_id is not supported by Logging. 5) location_id violate
+        /// OrgPolicy.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
+        /// example:"organizations/12345/settings"Note: Settings for the Log Router can currently only be configured for
+        /// Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud
+        /// organization.
+        /// </param>
+        public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
+        {
+            return new UpdateSettingsRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the Log Router settings for the given resource.Note: Settings for the Log Router can currently only
+        /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
+        /// Google Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the associated
+        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
+        /// key, or 3) access to the key is disabled. 4) location_id is not supported by Logging. 5) location_id violate
+        /// OrgPolicy.See Enabling CMEK for Log Router
+        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// </summary>
+        public class UpdateSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
+        {
+            /// <summary>Constructs a new UpdateSettings request.</summary>
+            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.Settings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
+            /// example:"organizations/12345/settings"Note: Settings for the Log Router can currently only be configured
+            /// for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google
+            /// Cloud organization.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Optional. Field mask identifying which fields from settings should be updated. A field will be
+            /// overwritten if and only if it is in the update mask. Output only fields cannot be updated.See FieldMask
+            /// for more information.For example: "updateMask=kmsKeyName"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Logging.v2.Data.Settings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}/settings";
+
+            /// <summary>Initializes UpdateSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "locations" collection of methods.</summary>
@@ -14531,6 +14626,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; }
 
+        /// <summary>
+        /// Optional. Information indicating this LogEntry is part of a sequence of multiple log entries split from a
+        /// single LogEntry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("split")]
+        public virtual LogSplit Split { get; set; }
+
         /// <summary>The log entry payload, represented as a Unicode string (UTF-8).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
         public virtual string TextPayload { get; set; }
@@ -14914,6 +15016,34 @@ namespace Google.Apis.Logging.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
         public virtual string WriterIdentity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Additional information used to correlate multiple log entries. Used when a single LogEntry would exceed the
+    /// Google Cloud Logging size limit and is split across multiple log entries.
+    /// </summary>
+    public class LogSplit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The index of this LogEntry in the sequence of split log entries. Log entries are given |index| values 0, 1,
+        /// ..., n-1 for a sequence of n log entries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>The total number of log entries that the original LogEntry was split into.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSplits")]
+        public virtual System.Nullable<int> TotalSplits { get; set; }
+
+        /// <summary>
+        /// A globally unique identifier for all log entries in a sequence of split log entries. All log entries with
+        /// the same |LogSplit.uid| are assumed to be part of the same sequence of split log entries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

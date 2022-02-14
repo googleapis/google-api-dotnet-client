@@ -673,7 +673,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
 
                 /// <summary>Updates the parameters of a single Group.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The Group name.</param>
+                /// <param name="name">Output only. The Group name.</param>
                 public virtual PatchRequest Patch(Google.Apis.VMMigrationService.v1alpha1.Data.Group body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -690,7 +690,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         InitParameters();
                     }
 
-                    /// <summary>The Group name.</summary>
+                    /// <summary>Output only. The Group name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1443,6 +1443,63 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Upgrades the appliance relate to this DatacenterConnector to the in-place updateable version.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="datacenterConnector">Required. The DatacenterConnector name.</param>
+                    public virtual UpgradeApplianceRequest UpgradeAppliance(Google.Apis.VMMigrationService.v1alpha1.Data.UpgradeApplianceRequest body, string datacenterConnector)
+                    {
+                        return new UpgradeApplianceRequest(service, body, datacenterConnector);
+                    }
+
+                    /// <summary>
+                    /// Upgrades the appliance relate to this DatacenterConnector to the in-place updateable version.
+                    /// </summary>
+                    public class UpgradeApplianceRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new UpgradeAppliance request.</summary>
+                        public UpgradeApplianceRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1alpha1.Data.UpgradeApplianceRequest body, string datacenterConnector) : base(service)
+                        {
+                            DatacenterConnector = datacenterConnector;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The DatacenterConnector name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("datacenterConnector", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DatacenterConnector { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1alpha1.Data.UpgradeApplianceRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "upgradeAppliance";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+datacenterConnector}:upgradeAppliance";
+
+                        /// <summary>Initializes UpgradeAppliance parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("datacenterConnector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "datacenterConnector",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/datacenterConnectors/[^/]+$",
                             });
                         }
                     }
@@ -3948,7 +4005,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                 /// the only supported value for location is `global`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the target project.</param>
+                /// <param name="name">Output only. The name of the target project.</param>
                 public virtual PatchRequest Patch(Google.Apis.VMMigrationService.v1alpha1.Data.TargetProject body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -3968,7 +4025,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         InitParameters();
                     }
 
-                    /// <summary>The name of the target project.</summary>
+                    /// <summary>Output only. The name of the target project.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4190,6 +4247,29 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes an appliance version.</summary>
+    public class ApplianceVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Determine whether it's critical to upgrade the appliance to this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("critical")]
+        public virtual System.Nullable<bool> Critical { get; set; }
+
+        /// <summary>Link to a page that contains the version release notes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseNotesUri")]
+        public virtual string ReleaseNotesUri { get; set; }
+
+        /// <summary>A link for downloading the version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The appliance version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AppliedLicense holds the license data returned by adaptation module report.</summary>
     public class AppliedLicense : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4200,6 +4280,27 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The license type that was used in OS adaptation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Holds informatiom about the available versions for upgrade.</summary>
+    public class AvailableUpdates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The latest version for in place update. The current appliance can be updated to this version using the API
+        /// or m4c CLI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inPlaceUpdate")]
+        public virtual ApplianceVersion InPlaceUpdate { get; set; }
+
+        /// <summary>
+        /// The newest deployable version of the appliance. The current appliance can't be updated into this version,
+        /// and the owner must manually deploy this OVA to a new appliance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newDeployableAppliance")]
+        public virtual ApplianceVersion NewDeployableAppliance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4257,7 +4358,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>The name of the clone.</summary>
+        /// <summary>Output only. The name of the clone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4544,33 +4645,6 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CycleStep hold information about a step progress.</summary>
-    public class CycleStep : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time the cycle step has ended.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>Initializing replication step.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initializingReplication")]
-        public virtual InitializingReplicationStep InitializingReplication { get; set; }
-
-        /// <summary>Post processing step.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("postProcessing")]
-        public virtual PostProcessingStep PostProcessing { get; set; }
-
-        /// <summary>Replicating step.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replicating")]
-        public virtual ReplicatingStep Replicating { get; set; }
-
-        /// <summary>The time the cycle step has started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// DatacenterConnector message describes a connector between the Source and GCP, which is installed on a vmware
     /// datacenter (an OVA vm installed by the user) to connect the Datacenter to GCP and support vm migration data
@@ -4578,6 +4652,24 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class DatacenterConnector : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Appliance OVA version. This is the OVA which is manually installed by the user and contains the
+        /// infrastructure for the automatically updatable components on the appliance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applianceInfrastructureVersion")]
+        public virtual string ApplianceInfrastructureVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Appliance last installed update bundle version. This is the version of the automatically
+        /// updatable components on the appliance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applianceSoftwareVersion")]
+        public virtual string ApplianceSoftwareVersion { get; set; }
+
+        /// <summary>Output only. The available versions for updating this appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableVersions")]
+        public virtual AvailableUpdates AvailableVersions { get; set; }
+
         /// <summary>Output only. The communication channel between the datacenter connector and GCP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
@@ -4621,6 +4713,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>Output only. The status of the current / last upgradeAppliance operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeStatus")]
+        public virtual UpgradeStatus UpgradeStatus { get; set; }
+
         /// <summary>
         /// The version running in the DatacenterConnector. This is supplied by the OVA connector during the
         /// registration process and can not be modified.
@@ -4653,7 +4749,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>Output only. The description of the VMs in a Source of type Vmware.</summary>
+        /// <summary>The description of the VMs in a Source of type Vmware.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareVms")]
         public virtual VmwareVmsDetails VmwareVms { get; set; }
 
@@ -4683,7 +4779,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The Group name.</summary>
+        /// <summary>Output only. The Group name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4691,13 +4787,6 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>InitializingReplicationStep contains specific step details.</summary>
-    public class InitializingReplicationStep : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5231,13 +5320,6 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>PostProcessingStep contains specific step details.</summary>
-    public class PostProcessingStep : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for 'RemoveMigration' request.</summary>
     public class RemoveGroupMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5249,36 +5331,9 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ReplicatingStep contains specific step details.</summary>
-    public class ReplicatingStep : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The source disks replication rate for the last 30 minutes in bytes per second.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastThirtyMinutesAverageBytesPerSecond")]
-        public virtual System.Nullable<long> LastThirtyMinutesAverageBytesPerSecond { get; set; }
-
-        /// <summary>The source disks replication rate for the last 2 minutes in bytes per second.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastTwoMinutesAverageBytesPerSecond")]
-        public virtual System.Nullable<long> LastTwoMinutesAverageBytesPerSecond { get; set; }
-
-        /// <summary>Replicated bytes in the step.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replicatedBytes")]
-        public virtual System.Nullable<long> ReplicatedBytes { get; set; }
-
-        /// <summary>Total bytes to be handled in the step.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
-        public virtual System.Nullable<long> TotalBytes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>ReplicationCycle contains information about the current replication cycle status.</summary>
     public class ReplicationCycle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time the replication cycle has ended.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
         /// <summary>The current progress in percentage of this cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; }
@@ -5290,10 +5345,6 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The time the replication cycle has started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
-
-        /// <summary>The cycle's steps list reflecting its progress.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Collections.Generic.IList<CycleStep> Steps { get; set; }
 
         /// <summary>The accumulated duration the replication cycle was paused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPauseDuration")]
@@ -5449,7 +5500,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The name of the target project.</summary>
+        /// <summary>Output only. The name of the target project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5562,6 +5613,52 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The zone in which to create the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for 'UpgradeAppliance' request.</summary>
+    public class UpgradeApplianceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the
+        /// server will know to ignore the request if it has already been completed. The server will guarantee that for
+        /// at least 60 minutes after the first request. For example, consider a situation where you make an initial
+        /// request and t he request times out. If you make the request again with the same request ID, the server can
+        /// check if original operation with the same request ID was received, and if so, will ignore the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpgradeStatus contains information about upgradeAppliance operation.</summary>
+    public class UpgradeStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Provides details on the state of the upgrade operation in case of an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>The version from which we upgraded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousVersion")]
+        public virtual string PreviousVersion { get; set; }
+
+        /// <summary>The time the operation was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The state of the upgradeAppliance operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The version to upgrade to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5788,8 +5885,8 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
 
         /// <summary>
         /// The VM's OS. See for example
-        /// https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for
-        /// types of strings this might hold.
+        /// https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        /// for types of strings this might hold.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestDescription")]
         public virtual string GuestDescription { get; set; }
