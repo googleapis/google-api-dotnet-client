@@ -8887,6 +8887,12 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual object Duration { get; set; }
 
         /// <summary>
+        /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMissingData")]
+        public virtual string EvaluationMissingData { get; set; }
+
+        /// <summary>
         /// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series
         /// should be compared with the threshold.The filter is similar to the one that is specified in the
         /// ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list)
@@ -9042,6 +9048,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMissingData")]
+        public virtual string EvaluationMissingData { get; set; }
 
         /// <summary>
         /// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.

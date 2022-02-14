@@ -5112,6 +5112,7 @@ namespace Google.Apis.CloudKMS.v1.Data
 
         /// <summary>
         /// Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica.
+        /// Currently, a maximum of 10 Certificate is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCertificates")]
         public virtual System.Collections.Generic.IList<Certificate> ServerCertificates { get; set; }

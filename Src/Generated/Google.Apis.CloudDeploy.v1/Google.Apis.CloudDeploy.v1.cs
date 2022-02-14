@@ -2909,7 +2909,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class AnthosCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Membership of the GKE Hub registered cluster that the Skaffold configuration should be applied to. Format is
+        /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is
         /// `projects/{project}/locations/{location}/memberships/{membership_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
@@ -3086,10 +3086,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3212,7 +3212,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class ExecutionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket
+        /// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket
         /// ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket
         /// located in the same region will be used.
         /// </summary>
@@ -3229,7 +3229,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. Google service account to use for execution. If unspecified, the project execution service account
-        /// (-compute@developer.gserviceaccount.com) will be used.
+        /// (-compute@developer.gserviceaccount.com) is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -3303,6 +3303,16 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
+
+        /// <summary>
+        /// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint.
+        /// Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the
+        /// private IP address for clusters with private control-plane endpoints and the public IP address otherwise.
+        /// Only specify this option when `cluster` is a [private GKE
+        /// cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual System.Nullable<bool> InternalIp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

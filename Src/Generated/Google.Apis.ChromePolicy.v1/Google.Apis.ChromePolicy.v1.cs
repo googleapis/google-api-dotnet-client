@@ -1275,6 +1275,16 @@ namespace Google.Apis.ChromePolicy.v1.Data
     public class GoogleChromePolicyV1ResolvedPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. The added source key establishes at which level an entity was explicitly added for management.
+        /// This is useful for certain type of policies that are only applied if they are explicitly added for
+        /// management. For example: apps and networks. An entity can only be deleted from management in an
+        /// Organizational Unit that it was explicitly added to. If this is not present it means that the policy is
+        /// managed without the need to explicitly add an entity, for example: standard user or device policies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedSourceKey")]
+        public virtual GoogleChromePolicyV1PolicyTargetKey AddedSourceKey { get; set; }
+
+        /// <summary>
         /// Output only. The source resource from which this policy value is obtained. May be the same as `targetKey` if
         /// the policy is directly modified on the target, otherwise it would be another resource from which the policy
         /// gets its value (if applicable). If not present, the source is the default value for the customer.

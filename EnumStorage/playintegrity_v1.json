@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PlayIntegrity.v1.PlayIntegrityBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PlayIntegrity.v1.PlayIntegrityBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

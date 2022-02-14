@@ -2121,7 +2121,7 @@ namespace Google.Apis.Eventarc.v1.Data
     {
         /// <summary>
         /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format:
-        /// projects/{project}/locations/{location}/functions/{function}
+        /// `projects/{project}/locations/{location}/functions/{function}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual string CloudFunction { get; set; }
@@ -2165,6 +2165,14 @@ namespace Google.Apis.Eventarc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
         public virtual string Attribute { get; set; }
 
+        /// <summary>
+        /// Optional. The operator used for matching the events with the value of the filter. If not specified, only
+        /// events that have an exact key-value pair specified in the filter are matched. The only allowed value is
+        /// `match-path-pattern`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; }
+
         /// <summary>Required. The value for the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -2196,9 +2204,9 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>
         /// Output only. The full name of the event type (for example, "google.cloud.storage.object.v1.finalized"). In
-        /// the form of {provider-id}.{resource}.{version}.{verb}. Types MUST be versioned and event schemas are
-        /// guaranteed to remain backward compatible within one version. Note that event type versions and API versions
-        /// do not need to match.
+        /// the form of {provider-specific-prefix}.{resource}.{version}.{verb}. Types MUST be versioned and event
+        /// schemas are guaranteed to remain backward compatible within one version. Note that event type versions and
+        /// API versions do not need to match.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -2620,7 +2628,7 @@ namespace Google.Apis.Eventarc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTypes")]
         public virtual System.Collections.Generic.IList<EventType> EventTypes { get; set; }
 
-        /// <summary>Output only. In `projects/{project}/locations/{location}/providers/{provider-id}` format.</summary>
+        /// <summary>Output only. In `projects/{project}/locations/{location}/providers/{provider_id}` format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

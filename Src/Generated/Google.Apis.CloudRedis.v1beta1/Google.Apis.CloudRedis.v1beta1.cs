@@ -1653,7 +1653,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Google Cloud Redis instance.</summary>
+    /// <summary>A Memorystore for Redis instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

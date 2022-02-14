@@ -3780,12 +3780,20 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
+        /// <summary>Unencrypted OIDC client secret will be passed to the GKE Hub CLH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
         /// <summary>
         /// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when
         /// provider is not reachable by Google Cloud Console.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployCloudConsoleProxy")]
         public virtual System.Nullable<bool> DeployCloudConsoleProxy { get; set; }
+
+        /// <summary>Output only. Encrypted OIDC Client secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]
+        public virtual string EncryptedClientSecret { get; set; }
 
         /// <summary>Comma-separated list of key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extraParams")]
@@ -4180,7 +4188,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>Policy Controller spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
-        public virtual PolicycontrollerMembershipSpec Policycontroller { get; set; }
+        public virtual PolicyControllerMembershipSpec Policycontroller { get; set; }
 
         /// <summary>Workload Certificate spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadcertificate")]
@@ -4211,7 +4219,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>Policycontroller-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
-        public virtual PolicycontrollerMembershipState Policycontroller { get; set; }
+        public virtual PolicyControllerMembershipState Policycontroller { get; set; }
 
         /// <summary>Service Mesh-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
@@ -4486,11 +4494,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>
     /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
     /// </summary>
-    public class PolicycontrollerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Policy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
-        public virtual PolicycontrollerPolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
+        public virtual PolicyControllerPolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
 
         /// <summary>Version of Policy Controller installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -4501,7 +4509,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     }
 
     /// <summary>**Policy Controller**: State for a single cluster.</summary>
-    public class PolicycontrollerMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
@@ -4516,11 +4524,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// MembershipSpec in the FeatureSpec represents the intended state
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
-        public virtual PolicycontrollerMembershipSpec MembershipSpec { get; set; }
+        public virtual PolicyControllerMembershipSpec MembershipSpec { get; set; }
 
         /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
-        public virtual PolicycontrollerPolicyControllerHubState PolicyControllerHubState { get; set; }
+        public virtual PolicyControllerPolicyControllerHubState PolicyControllerHubState { get; set; }
 
         /// <summary>The lifecycle state Policy Controller is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -4531,7 +4539,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     }
 
     /// <summary>Configuration for Policy Controller</summary>
-    public class PolicycontrollerPolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerPolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit
@@ -4572,14 +4580,14 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>Configures the library templates to install along with Policy Controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryConfig")]
-        public virtual PolicycontrollerTemplateLibraryConfig TemplateLibraryConfig { get; set; }
+        public virtual PolicyControllerTemplateLibraryConfig TemplateLibraryConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>State of the Policy Controller.</summary>
-    public class PolicycontrollerPolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerPolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Map from deployment name to deployment state. Example deployments are gatekeeper-controller-manager,
@@ -4590,14 +4598,14 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual PolicycontrollerPolicyControllerHubVersion Version { get; set; }
+        public virtual PolicyControllerPolicyControllerHubVersion Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>The build version of Gatekeeper that Policy Controller is using.</summary>
-    public class PolicycontrollerPolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerPolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -4608,7 +4616,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     }
 
     /// <summary>The config specifying which default library templates to install.</summary>
-    public class PolicycontrollerTemplateLibraryConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerTemplateLibraryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the standard template library should be installed or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("included")]

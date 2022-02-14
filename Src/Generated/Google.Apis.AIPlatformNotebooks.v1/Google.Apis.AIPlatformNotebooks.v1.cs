@@ -4052,6 +4052,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>The definition of an Event for a managed / semi-managed notebook instance.</summary>
     public class Event : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Event details. This field is used to pass event information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
+
         /// <summary>Event report time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
         public virtual object ReportTime { get; set; }
@@ -4326,6 +4330,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Output only. Instance creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Email address of entity that sent original CreateInstance request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
 
         /// <summary>
         /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically
@@ -5084,14 +5092,14 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for reseting a notebook instance</summary>
+    /// <summary>Request for resetting a notebook instance</summary>
     public class ResetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for reseting a Managed Notebook Runtime.</summary>
+    /// <summary>Request for resetting a Managed Notebook Runtime.</summary>
     public class ResetRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -5266,7 +5274,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>
     /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime.
     /// Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` *
-    /// `idle_shutdown_timeout: 180` * `report-system-health: true`
+    /// `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
     /// </summary>
     public class RuntimeSoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5293,6 +5301,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installGpuDriver")]
         public virtual System.Nullable<bool> InstallGpuDriver { get; set; }
 
+        /// <summary>Optional. Use a list of container images to use as Kernels in the notebook instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernels")]
+        public virtual System.Collections.Generic.IList<ContainerImage> Kernels { get; set; }
+
         /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron
         /// format](https://en.wikipedia.org/wiki/Cron).
@@ -5306,6 +5318,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postStartupScript")]
         public virtual string PostStartupScript { get; set; }
+
+        /// <summary>Output only. Bool indicating whether an newer image is available in an image family.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeable")]
+        public virtual System.Nullable<bool> Upgradeable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5767,7 +5783,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual RuntimeAcceleratorConfig AcceleratorConfig { get; set; }
 
-        /// <summary>Optional. Use a list of container images to start the notebook instance.</summary>
+        /// <summary>Optional. Use a list of container images to use as Kernels in the notebook instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImages")]
         public virtual System.Collections.Generic.IList<ContainerImage> ContainerImages { get; set; }
 
@@ -5835,6 +5851,16 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nicType")]
         public virtual string NicType { get; set; }
+
+        /// <summary>
+        /// Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range
+        /// *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c
+        /// gcloud compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \
+        /// --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$NETWORK \ --addresses=192.168.0.0 \
+        /// --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
+        public virtual string ReservedIpRange { get; set; }
 
         /// <summary>Optional. Shielded VM Instance configuration settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
