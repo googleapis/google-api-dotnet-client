@@ -1124,7 +1124,9 @@ namespace Google.Apis.ChromeManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Maximum number of results to return. Maximum and default are 100.</summary>
+                    /// <summary>
+                    /// Maximum number of results to return. Default value is 100. Maximum value is 200.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 

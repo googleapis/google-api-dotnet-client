@@ -2091,6 +2091,54 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata proto of ResyncDataset method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>
+        /// Returns the newly added document Cloud Storage prefix if the documents are founded in Cloud Storage while
+        /// not in Document Service storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newlyAddedDocuments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument> NewlyAddedDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The proto for updated document in resync pipeline.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The prefix of cloud storage, identifies the destination document which should be updated by resync pipeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPrefix")]
+        public virtual string DestinationPrefix { get; set; }
+
+        /// <summary>
+        /// The prefix of cloud storage, identifies the original document which should be updated by resync pipeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePrefix")]
+        public virtual string SourcePrefix { get; set; }
+
+        /// <summary>The final status of the documents which should be updated by resync pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response proto of ResyncDataset method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The revision reference specifies which revision on the document to read.</summary>
     public class GoogleCloudDocumentaiUiv1beta3RevisionReference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2843,6 +2891,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
 
+        /// <summary>A list of visually detected symbols on the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symbols")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageSymbol> Symbols { get; set; }
+
         /// <summary>A list of visually detected tables on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageTable> Tables { get; set; }
@@ -2940,7 +2992,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -3133,6 +3185,21 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The history of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detected symbol.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageSymbol : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of detected languages together with confidence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage> DetectedLanguages { get; set; }
+
+        /// <summary>Layout for Symbol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentPageLayout Layout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3441,7 +3508,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta1DocumentTextAnchor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Contains the content of the text span so that users do not have to look it up in the text_segments.
+        /// Contains the content of the text span so that users do not have to look it up in the text_segments. It is
+        /// always populated for formFields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -3976,6 +4044,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
 
+        /// <summary>A list of visually detected symbols on the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symbols")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageSymbol> Symbols { get; set; }
+
         /// <summary>A list of visually detected tables on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageTable> Tables { get; set; }
@@ -4073,7 +4145,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -4266,6 +4338,21 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The history of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detected symbol.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageSymbol : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of detected languages together with confidence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage> DetectedLanguages { get; set; }
+
+        /// <summary>Layout for Symbol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentPageLayout Layout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4574,7 +4661,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta2DocumentTextAnchor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Contains the content of the text span so that users do not have to look it up in the text_segments.
+        /// Contains the content of the text span so that users do not have to look it up in the text_segments. It is
+        /// always populated for formFields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -5339,6 +5427,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentProvenance Provenance { get; set; }
 
+        /// <summary>A list of visually detected symbols on the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symbols")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageSymbol> Symbols { get; set; }
+
         /// <summary>A list of visually detected tables on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageTable> Tables { get; set; }
@@ -5436,7 +5528,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -5629,6 +5721,21 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The history of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentProvenance Provenance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detected symbol.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentPageSymbol : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of detected languages together with confidence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage> DetectedLanguages { get; set; }
+
+        /// <summary>Layout for Symbol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentPageLayout Layout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5937,7 +6044,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3DocumentTextAnchor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Contains the content of the text span so that users do not have to look it up in the text_segments.
+        /// Contains the content of the text span so that users do not have to look it up in the text_segments. It is
+        /// always populated for formFields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }

@@ -177,6 +177,10 @@ namespace Google.Apis.Storage.v1
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
+        /// <summary>Upload protocol for media (e.g. "media", "multipart", "resumable").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
         /// <summary>Deprecated. Please use quotaUser instead.</summary>
         [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UserIp { get; set; }
@@ -228,6 +232,14 @@ namespace Google.Apis.Storage.v1
             RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
             {
                 Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
                 IsRequired = false,
                 ParameterType = "query",
                 DefaultValue = null,
@@ -5310,6 +5322,10 @@ namespace Google.Apis.Storage.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string QuotaUser { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "media", "multipart", "resumable").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
 
             /// <summary>Deprecated. Please use quotaUser instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]

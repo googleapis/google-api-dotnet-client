@@ -4721,6 +4721,31 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Identifier of an App.</summary>
+    public class AppId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enum indicating the type of App this is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>
+        /// Enum indicating which 1P App this is when app_type is GSUITE_APP. Determined &amp;amp; set by the 1P API as
+        /// a convenience for all users of this identifier(Eg. clients, chime, backend etc.) to map to 1P properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gsuiteAppType")]
+        public virtual string GsuiteAppType { get; set; }
+
+        /// <summary>
+        /// Numeric identifier of the App. Set to Project number for 1/3P Apps. For Webhook, this is WebhookId.
+        /// Determined &amp;amp; set by the 1P API from App credentials on the side channel.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the settings for Cloud audit logging</summary>
     public class AuditLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4747,6 +4772,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AvatarInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
+        public virtual Emoji Emoji { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4829,6 +4863,77 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Proto representation of a custom emoji. May be used in both APIs and in Spanner, but certain fields should be
+    /// restricted to one or the other. See the per-field documentation for details. NEXT_TAG: 11
+    /// </summary>
+    public class CustomEmoji : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ID for the underlying image data in Blobstore. This field should *only* be present in Spanner or within the
+        /// server, but should not be exposed in public APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
+        public virtual string BlobId { get; set; }
+
+        /// <summary>
+        /// Time when the Emoji was created, in microseconds. This field may be present in Spanner, within the server,
+        /// or in public APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTimeMicros")]
+        public virtual System.Nullable<long> CreateTimeMicros { get; set; }
+
+        /// <summary>This field should *never* be persisted to Spanner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
+        public virtual UserId CreatorUserId { get; set; }
+
+        /// <summary>This field should *never* be persisted to Spanner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual CustomerId OwnerCustomerId { get; set; }
+
+        /// <summary>
+        /// Opaque token that clients use to construct the URL for accessing the custom emoji’s image data. This field
+        /// is intended for API consumption, and should *never* be persisted to Spanner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
+        public virtual string ReadToken { get; set; }
+
+        /// <summary>
+        /// User-provided, human-readable ID for the custom emoji. Users are expected to observe this field in the UI
+        /// instead of the UUID. This shortcode should be unique within an organization, but has no global uniqueness
+        /// guarantees, unlike the UUID. This field should *never* be persisted to Spanner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortcode")]
+        public virtual string Shortcode { get; set; }
+
+        /// <summary>
+        /// Snapshot of the current state of the emoji, which may differ from the source-of-truth in the CustomEmojis
+        /// table. This field should *never* be persisted to Spanner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTimeMicros")]
+        public virtual System.Nullable<long> UpdateTimeMicros { get; set; }
+
+        /// <summary>Unique key for a custom emoji resource. Required. This field is *always* populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
+        public virtual string Uuid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.</summary>
+    public class CustomerId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerIdValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5184,6 +5289,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DmId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique server assigned Id, per Direct Message Space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmId")]
+        public virtual string DmIdValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Used to provide a search operator for double properties. This is optional. Search operators let users restrict
     /// the query to specific fields relevant to the type of item being searched.
@@ -5268,6 +5383,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddressValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Emoji : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A custom emoji.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
+        public virtual CustomEmoji CustomEmoji { get; set; }
+
+        /// <summary>A basic emoji represented by a unicode string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unicode")]
+        public virtual string Unicode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5768,6 +5897,24 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The visibility indicator in the UI will be based upon this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareScope")]
         public virtual ShareScope ShareScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Id representing a group that could be a space, a chat, or a direct message space. Which ID is set here will
+    /// determine which group
+    /// </summary>
+    public class GroupId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique, immutable ID of the Direct Message Space</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmId")]
+        public virtual DmId DmId { get; set; }
+
+        /// <summary>Unique, immutable ID of the Space</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceId")]
+        public virtual SpaceId SpaceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7637,8 +7784,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// The raw query string. See supported search operators in the [Cloud search Cheat
-        /// Sheet](https://support.google.com/a/users/answer/9299929)
+        /// The raw query string. See supported search operators in the [Narrow your search with
+        /// operators](https://support.google.com/cloudsearch/answer/6172299)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -7891,6 +8038,43 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Importance of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImportance")]
         public virtual string SourceImportance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Primary key for Space resource.</summary>
+    public class SpaceId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique, immutable ID of the Space</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceId")]
+        public virtual string SpaceIdValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the representation of a single matching space.</summary>
+    public class SpaceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("avatarInfo")]
+        public virtual AvatarInfo AvatarInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual GroupId GroupId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numMembers")]
+        public virtual System.Nullable<int> NumMembers { get; set; }
+
+        /// <summary>searching user's membership state in this space</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMembershipState")]
+        public virtual string UserMembershipState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8244,6 +8428,35 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Name of the content reference. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Primary key for User resource.</summary>
+    public class UserId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Opaque, server-assigned ID of the User.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. Identifier of the App involved (directly or on behalf of a human creator) in creating this
+        /// message. This is not set if the user posted a message directly, but is used in the case of, for example, a
+        /// message being generated by a 1P integration based on a user action (creating an event, creating a task etc).
+        /// This should only be used on the BE. For clients, please use the field in the FE message proto instead
+        /// (google3/apps/dynamite/v1/frontend/api/message.proto?q=origin_app_id).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originAppId")]
+        public virtual AppId OriginAppId { get; set; }
+
+        /// <summary>
+        /// Clients do not need to send UserType to Backend, but Backend will always send this field to clients per the
+        /// following rule: 1. For HUMAN Ids, the field is empty but by default .getType() will return HUMAN. 2. For BOT
+        /// Ids, the field is ALWAYS set to BOT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

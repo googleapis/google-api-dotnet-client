@@ -1,0 +1,27 @@
+{
+  "Google.Apis.CloudDataplex.v1.CloudDataplexBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudDataplex.v1.CloudDataplexBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LakesResource+ContentitemsResource+GetRequest.ViewEnum": [
+    "CONTENT_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LakesResource+ZonesResource+EntitiesResource+GetRequest.ViewEnum": [
+    "ENTITY_VIEW_UNSPECIFIED",
+    "BASIC",
+    "SCHEMA",
+    "FULL"
+  ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LakesResource+ZonesResource+EntitiesResource+ListRequest.ViewEnum": [
+    "ENTITY_VIEW_UNSPECIFIED",
+    "TABLES",
+    "FILESETS"
+  ]
+}

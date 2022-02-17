@@ -6702,6 +6702,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("references")]
         public virtual System.Collections.Generic.IList<Reference> References { get; set; }
 
+        /// <summary>Whether upstream fix is available for the CVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreamFixAvailable")]
+        public virtual System.Nullable<bool> UpstreamFixAvailable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

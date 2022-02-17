@@ -2037,7 +2037,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual object DeleteTime { get; set; }
 
-        /// <summary>User-provided description of the Service.</summary>
+        /// <summary>User-provided description of the Service. This field currently has a 512-character limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 

@@ -3327,6 +3327,12 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     /// <summary>Message captures data about the creatives in the deal.</summary>
     public class CreativeRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The format of the creative, only applicable for programmatic guaranteed and preferred deals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeFormat")]
+        public virtual string CreativeFormat { get; set; }
+
         /// <summary>Output only. Specifies the creative pre-approval policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativePreApprovalPolicy")]
         public virtual string CreativePreApprovalPolicy { get; set; }
@@ -3336,11 +3342,25 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual string CreativeSafeFrameCompatibility { get; set; }
 
         /// <summary>
+        /// Output only. The max duration of the video creative in milliseconds. only applicable for deals with video
+        /// creatives.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAdDurationMs")]
+        public virtual System.Nullable<long> MaxAdDurationMs { get; set; }
+
+        /// <summary>
         /// Output only. Specifies the creative source for programmatic deals. PUBLISHER means creative is provided by
         /// seller and ADVERTISER means creative is provided by the buyer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programmaticCreativeSource")]
         public virtual string ProgrammaticCreativeSource { get; set; }
+
+        /// <summary>
+        /// Output only. Skippable video ads allow viewers to skip ads after 5 seconds. Only applicable for deals with
+        /// video creatives.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippableAdType")]
+        public virtual string SkippableAdType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

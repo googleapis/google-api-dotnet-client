@@ -1833,6 +1833,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string TemporaryHold { get; set; }
 
         /// <summary>
+        /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage
+        /// buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
+        public virtual string TimeCreated { get; set; }
+
+        /// <summary>
         /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID
         /// is not preserved.
         /// </summary>
