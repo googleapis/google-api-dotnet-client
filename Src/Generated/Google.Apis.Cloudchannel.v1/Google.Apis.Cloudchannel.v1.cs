@@ -623,6 +623,14 @@ namespace Google.Apis.Cloudchannel.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See
+                    /// https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more
+                    /// information.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of customers to return. The service may return fewer than this
                     /// value. If unspecified, returns at most 10 customers. The maximum value is 50.
                     /// </summary>
@@ -656,6 +664,14 @@ namespace Google.Apis.Cloudchannel.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -2341,6 +2357,13 @@ namespace Google.Apis.Cloudchannel.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See
+                /// https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. The maximum number of customers to return. The service may return fewer than this value.
                 /// If unspecified, returns at most 10 customers. The maximum value is 50.
                 /// </summary>
@@ -2374,6 +2397,14 @@ namespace Google.Apis.Cloudchannel.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {

@@ -2468,8 +2468,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
-    /// A hub is a collection of spokes. A single hub can contain spokes from multiple regions. However, all of a hub's
-    /// spokes must be associated with resources that reside in the same VPC network.
+    /// A hub is a collection of spokes. A single hub can contain spokes from multiple regions. However, if any of a
+    /// hub's spokes use the data transfer feature, the resources associated with those spokes must all reside in the
+    /// same VPC network. Spokes that do not use data transfer can be associated with any VPC network in your project.
     /// </summary>
     public class Hub : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2545,8 +2546,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
-    /// A collection of router appliance instances. If you have multiple router appliance instances connected to the
-    /// same site, they should all be attached to the same spoke.
+    /// A collection of router appliance instances. If you configure multiple router appliance instances to receive data
+    /// from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the
+    /// same spoke.
     /// </summary>
     public class LinkedRouterApplianceInstances : Google.Apis.Requests.IDirectResponseSchema
     {

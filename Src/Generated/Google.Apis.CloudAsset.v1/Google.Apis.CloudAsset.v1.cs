@@ -35,6 +35,7 @@ namespace Google.Apis.CloudAsset.v1
         public CloudAssetService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Assets = new AssetsResource(this);
+            EffectiveIamPolicies = new EffectiveIamPoliciesResource(this);
             Feeds = new FeedsResource(this);
             Operations = new OperationsResource(this);
             SavedQueries = new SavedQueriesResource(this);
@@ -88,6 +89,9 @@ namespace Google.Apis.CloudAsset.v1
 
         /// <summary>Gets the Assets resource.</summary>
         public virtual AssetsResource Assets { get; }
+
+        /// <summary>Gets the EffectiveIamPolicies resource.</summary>
+        public virtual EffectiveIamPoliciesResource EffectiveIamPolicies { get; }
 
         /// <summary>Gets the Feeds resource.</summary>
         public virtual FeedsResource Feeds { get; }
@@ -480,6 +484,99 @@ namespace Google.Apis.CloudAsset.v1
                 RequestParameters.Add("relationshipTypes", new Google.Apis.Discovery.Parameter
                 {
                     Name = "relationshipTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "effectiveIamPolicies" collection of methods.</summary>
+    public class EffectiveIamPoliciesResource
+    {
+        private const string Resource = "effectiveIamPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EffectiveIamPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets effective IAM policies for a batch of resources.</summary>
+        /// <param name="scope">
+        /// Required. Only IAM policies on or below the scope will be returned. This can only be an organization number
+        /// (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as
+        /// "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization
+        /// id, visit [here
+        /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
+        /// To know how to get folder or project id, visit [here
+        /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
+        /// </param>
+        public virtual BatchGetRequest BatchGet(string scope)
+        {
+            return new BatchGetRequest(service, scope);
+        }
+
+        /// <summary>Gets effective IAM policies for a batch of resources.</summary>
+        public class BatchGetRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.BatchGetEffectiveIamPoliciesResponse>
+        {
+            /// <summary>Constructs a new BatchGet request.</summary>
+            public BatchGetRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
+            {
+                Scope = scope;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Only IAM policies on or below the scope will be returned. This can only be an organization
+            /// number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as
+            /// "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get
+            /// organization id, visit [here
+            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
+            /// To know how to get folder or project id, visit [here
+            /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Scope { get; private set; }
+
+            /// <summary>
+            /// Required. The names refer to the [full_resource_names]
+            /// (https://cloud.google.com/asset-inventory/docs/resource-name-format) of [searchable asset
+            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types). A
+            /// maximum of 20 resources' effective policies can be retrieved in a batch.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchGet";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+scope}/effectiveIamPolicies:batchGet";
+
+            /// <summary>Initializes BatchGet parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "names",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2645,6 +2742,21 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response message for AssetService.BatchGetEffectiveIamPolicies.</summary>
+    public class BatchGetEffectiveIamPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The effective policies for a batch of resources. Note that the results order is the same as the order of
+        /// BatchGetEffectiveIamPoliciesRequest.names. When a resource does not have any effective IAM policies, its
+        /// corresponding policy_result will contain empty EffectiveIamPolicy.policies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyResults")]
+        public virtual System.Collections.Generic.IList<EffectiveIamPolicy> PolicyResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A BigQuery destination for exporting assets to.</summary>
     public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2830,6 +2942,33 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The effective IAM policies on one resource.</summary>
+    public class EffectiveIamPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [full_resource_name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) for which the
+        /// policies are computed. This is one of the BatchGetEffectiveIamPoliciesRequest.names the caller provides in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>
+        /// The effective policies for the full_resource_name. These policies include the policy set on the
+        /// full_resource_name and those set on its parents and ancestors up to the
+        /// BatchGetEffectiveIamPoliciesRequest.scope. Note that these policies are not filtered according to the
+        /// resource type of the full_resource_name. These policies are hierarchically ordered by
+        /// PolicyInfo.attached_resource starting from full_resource_name itself to its parents and ancestors, such that
+        /// policies[i]'s PolicyInfo.attached_resource is the child of policies[i+1]'s PolicyInfo.attached_resource, if
+        /// policies[i+1] exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<PolicyInfo> Policies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4969,6 +5108,21 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>The IAM policy and its attached resource.</summary>
+    public class PolicyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full resource name the policy is directly attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedResource")]
+        public virtual string AttachedResource { get; set; }
+
+        /// <summary>The IAM policy that's directly attached to the attached_resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>A Pub/Sub destination.</summary>

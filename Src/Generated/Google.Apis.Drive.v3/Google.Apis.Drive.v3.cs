@@ -3281,7 +3281,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Subscribes to changes to a file</summary>
+        /// <summary>
+        /// Subscribes to changes to a file. While you can establish a channel forchanges to a file on a shared drive, a
+        /// change to a shared drive file won't create a notification.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual WatchRequest Watch(Google.Apis.Drive.v3.Data.Channel body, string fileId)
@@ -3289,7 +3292,10 @@ namespace Google.Apis.Drive.v3
             return new WatchRequest(service, body, fileId);
         }
 
-        /// <summary>Subscribes to changes to a file</summary>
+        /// <summary>
+        /// Subscribes to changes to a file. While you can establish a channel forchanges to a file on a shared drive, a
+        /// change to a shared drive file won't create a notification.
+        /// </summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>

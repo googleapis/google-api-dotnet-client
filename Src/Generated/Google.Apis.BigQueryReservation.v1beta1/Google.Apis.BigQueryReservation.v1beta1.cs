@@ -357,9 +357,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                     /// <summary>
                     /// The optional capacity commitment ID. Capacity commitment name will be generated automatically if
-                    /// this field is empty. This field must only contain lower case alphanumeric characters or dash.
-                    /// Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or
-                    /// merged.
+                    /// this field is empty. This field must only contain lower case alphanumeric characters or dashes.
+                    /// The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't
+                    /// be kept if the capacity commitment is split or merged.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("capacityCommitmentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CapacityCommitmentId { get; set; }
@@ -688,7 +688,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The resource name of the capacity commitment, e.g.,
-                /// `projects/myproject/locations/US/capacityCommitments/123`
+                /// `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only
+                /// contain lower case alphanumeric characters or dashes.It must start with a letter and must not end
+                /// with a dash. Its maximum length is 64 characters.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment body, string name)
                 {
@@ -712,7 +714,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                     /// <summary>
                     /// Output only. The resource name of the capacity commitment, e.g.,
-                    /// `projects/myproject/locations/US/capacityCommitments/123`
+                    /// `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only
+                    /// contain lower case alphanumeric characters or dashes.It must start with a letter and must not
+                    /// end with a dash. Its maximum length is 64 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -929,7 +933,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                         /// <summary>
                         /// The optional assignment ID. Assignment name will be generated automatically if this field is
-                        /// empty. This field must only contain lower case alphanumeric characters or dash. Max length
+                        /// empty. This field must only contain lower case alphanumeric characters or dashes. Max length
                         /// is 64 characters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("assignmentId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1204,7 +1208,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. Name of the resource. E.g.:
-                    /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+                    /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`. For the assignment
+                    /// id, it must only contain lower case alphanumeric characters or dashes and the max length is 64
+                    /// characters.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1beta1.Data.Assignment body, string name)
                     {
@@ -1224,7 +1230,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                         /// <summary>
                         /// Output only. Name of the resource. E.g.:
-                        /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+                        /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`. For the
+                        /// assignment id, it must only contain lower case alphanumeric characters or dashes and the max
+                        /// length is 64 characters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1296,8 +1304,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The reservation ID. This field must only contain lower case alphanumeric characters or dash. Max
-                    /// length is 64 characters.
+                    /// The reservation ID. It must only contain lower case alphanumeric characters or dashes.It must
+                    /// start with a letter and must not end with a dash. Its maximum length is 64 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("reservationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ReservationId { get; set; }
@@ -1542,7 +1550,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 /// <summary>Updates an existing reservation resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+                /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For
+                /// the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start
+                /// with a letter and must not end with a dash. Its maximum length is 64 characters.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1beta1.Data.Reservation body, string name)
                 {
@@ -1562,6 +1572,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                     /// <summary>
                     /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+                    /// For the reservation id, it must only contain lower case alphanumeric characters or dashes.It
+                    /// must start with a letter and must not end with a dash. Its maximum length is 64 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1871,7 +1883,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
 
         /// <summary>
         /// Output only. Name of the resource. E.g.:
-        /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+        /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`. For the assignment id, it must
+        /// only contain lower case alphanumeric characters or dashes and the max length is 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1933,8 +1946,18 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual Status FailureStatus { get; set; }
 
         /// <summary>
+        /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true,
+        /// this commitment is placed in the organization's secondary region which is designated for disaster recovery
+        /// purposes. If false, this commitment is placed in the organization's default region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiRegionAuxiliary")]
+        public virtual System.Nullable<bool> MultiRegionAuxiliary { get; set; }
+
+        /// <summary>
         /// Output only. The resource name of the capacity commitment, e.g.,
-        /// `projects/myproject/locations/US/capacityCommitments/123`
+        /// `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower
+        /// case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum
+        /// length is 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2073,7 +2096,17 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; }
 
         /// <summary>
-        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to
+        /// true, this reservation is placed in the organization's secondary region which is designated for disaster
+        /// recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiRegionAuxiliary")]
+        public virtual System.Nullable<bool> MultiRegionAuxiliary { get; set; }
+
+        /// <summary>
+        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the
+        /// reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a
+        /// letter and must not end with a dash. Its maximum length is 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
