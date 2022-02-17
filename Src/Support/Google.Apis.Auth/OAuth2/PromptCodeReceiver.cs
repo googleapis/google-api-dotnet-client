@@ -25,6 +25,7 @@ using Google.Apis.Logging;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>OAuth 2.0 verification code receiver that reads the authorization code from the user input.</summary>
+    [Obsolete(@"The OAuth out-of-band flow will be deprecated and this class will be removed on October 3rd 2022. You can read more about deprecation here: https://developers.googleblog.com/2022/02/making-oauth-flows-safer.html#disallowed-oob.")]
     public class PromptCodeReceiver : ICodeReceiver
     {
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<PromptCodeReceiver>();
