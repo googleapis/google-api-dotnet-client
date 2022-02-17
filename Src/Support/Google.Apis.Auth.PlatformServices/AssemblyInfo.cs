@@ -22,5 +22,7 @@ using System.Runtime.CompilerServices;
 [assembly: TypeForwardedTo(typeof(Google.Apis.Auth.OAuth2.GoogleCredential))]
 [assembly: TypeForwardedTo(typeof(Google.Apis.Auth.OAuth2.GoogleWebAuthorizationBroker))]
 [assembly: TypeForwardedTo(typeof(Google.Apis.Auth.OAuth2.LocalServerCodeReceiver))]
+#pragma warning disable CS0618 // Type or member is obsolete
 [assembly: TypeForwardedTo(typeof(Google.Apis.Auth.OAuth2.PromptCodeReceiver))]
+#pragma warning restore CS0618 // Type or member is obsolete
 [assembly: TypeForwardedTo(typeof(Google.Apis.Auth.OAuth2.ServiceAccountCredential))]
