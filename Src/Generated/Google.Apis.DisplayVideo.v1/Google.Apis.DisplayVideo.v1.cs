@@ -20280,7 +20280,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Creative requirements configuration for the inventory source.</summary>
     public class CreativeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of creative that can be assigned to the inventory source.</summary>
+        /// <summary>
+        /// The type of creative that can be assigned to the inventory source. Only the following types are supported: *
+        /// `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeType")]
         public virtual string CreativeType { get; set; }
 
@@ -21236,8 +21239,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class FrequencyCap : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The maximum number of times a user may be shown with the same ad during this period. Must be greater than 0.
-        /// Required when unlimited is `false`.
+        /// The maximum number of times a user may be shown the same ad during this period. Must be greater than 0.
+        /// Required when unlimited is `false` and max_views is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxImpressions")]
         public virtual System.Nullable<int> MaxImpressions { get; set; }
@@ -22224,7 +22227,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
         public virtual LineItemFlight Flight { get; set; }
 
-        /// <summary>Required. The frequency capping setting of the line item.</summary>
+        /// <summary>
+        /// Required. The impression frequency cap settings of the line item. The max_impressions field in this settings
+        /// object must be used if assigning a limited cap.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
 

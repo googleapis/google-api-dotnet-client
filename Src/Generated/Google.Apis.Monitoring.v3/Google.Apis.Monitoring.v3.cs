@@ -337,7 +337,7 @@ namespace Google.Apis.Monitoring.v3
                 this.service = service;
             }
 
-            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <summary>Lists time series that match a filter.</summary>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder
             /// on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
@@ -348,7 +348,7 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <summary>Lists time series that match a filter.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListTimeSeriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1315,7 +1315,7 @@ namespace Google.Apis.Monitoring.v3
                 this.service = service;
             }
 
-            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <summary>Lists time series that match a filter.</summary>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder
             /// on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
@@ -1326,7 +1326,7 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <summary>Lists time series that match a filter.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListTimeSeriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3456,7 +3456,7 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
-            /// <summary>Gets a single metric descriptor. This method does not require a Workspace.</summary>
+            /// <summary>Gets a single metric descriptor.</summary>
             /// <param name="name">
             /// Required. The metric descriptor on which to execute the request. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example value of [METRIC_ID] is
@@ -3467,7 +3467,7 @@ namespace Google.Apis.Monitoring.v3
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a single metric descriptor. This method does not require a Workspace.</summary>
+            /// <summary>Gets a single metric descriptor.</summary>
             public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MetricDescriptor>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3509,9 +3509,7 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
-            /// <summary>
-            /// Lists metric descriptors that match a filter. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Lists metric descriptors that match a filter.</summary>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
             /// request. The format is: projects/[PROJECT_ID_OR_NUMBER]
@@ -3521,9 +3519,7 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>
-            /// Lists metric descriptors that match a filter. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Lists metric descriptors that match a filter.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListMetricDescriptorsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3628,9 +3624,7 @@ namespace Google.Apis.Monitoring.v3
                 this.service = service;
             }
 
-            /// <summary>
-            /// Gets a single monitored resource descriptor. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Gets a single monitored resource descriptor.</summary>
             /// <param name="name">
             /// Required. The monitored resource descriptor to get. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE] The [RESOURCE_TYPE] is a
@@ -3641,9 +3635,7 @@ namespace Google.Apis.Monitoring.v3
                 return new GetRequest(service, name);
             }
 
-            /// <summary>
-            /// Gets a single monitored resource descriptor. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Gets a single monitored resource descriptor.</summary>
             public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MonitoredResourceDescriptor>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3685,9 +3677,7 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
-            /// <summary>
-            /// Lists monitored resource descriptors that match a filter. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Lists monitored resource descriptors that match a filter.</summary>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
             /// request. The format is: projects/[PROJECT_ID_OR_NUMBER]
@@ -3697,9 +3687,7 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>
-            /// Lists monitored resource descriptors that match a filter. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Lists monitored resource descriptors that match a filter.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListMonitoredResourceDescriptorsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4730,7 +4718,7 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
-            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <summary>Lists time series that match a filter.</summary>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder
             /// on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
@@ -4741,7 +4729,7 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <summary>Lists time series that match a filter.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListTimeSeriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -5674,9 +5662,7 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
-            /// <summary>
-            /// Queries time series using Monitoring Query Language. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Queries time series using Monitoring Query Language.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
@@ -5687,9 +5673,7 @@ namespace Google.Apis.Monitoring.v3
                 return new QueryRequest(service, body, name);
             }
 
-            /// <summary>
-            /// Queries time series using Monitoring Query Language. This method does not require a Workspace.
-            /// </summary>
+            /// <summary>Queries time series using Monitoring Query Language.</summary>
             public class QueryRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.QueryTimeSeriesResponse>
             {
                 /// <summary>Constructs a new Query request.</summary>
@@ -7735,6 +7719,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode
         /// characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+        /// This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
