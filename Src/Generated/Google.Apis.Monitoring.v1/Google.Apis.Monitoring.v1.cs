@@ -1743,6 +1743,20 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are
+    /// considered member widgets.
+    /// </summary>
+    public class CollapsibleGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The collapsed state of the widget on first page load.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapsed")]
+        public virtual System.Nullable<bool> Collapsed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the layout properties and content for a column.</summary>
     public class Column : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2840,6 +2854,13 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>A blank space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blank")]
         public virtual Empty Blank { get; set; }
+
+        /// <summary>
+        /// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget
+        /// are considered member widgets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapsibleGroup")]
+        public virtual CollapsibleGroup CollapsibleGroup { get; set; }
 
         /// <summary>A widget that shows a stream of logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logsPanel")]
