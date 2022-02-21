@@ -4212,6 +4212,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
+        /// <summary>
+        /// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format:
+        /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tensorboard")]
+        public virtual string Tensorboard { get; set; }
+
         /// <summary>Parameters used in Vertex AI JobType executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiParameters")]
         public virtual VertexAIParameters VertexAiParameters { get; set; }
@@ -5297,7 +5304,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("idleShutdownTimeout")]
         public virtual System.Nullable<int> IdleShutdownTimeout { get; set; }
 
-        /// <summary>Install Nvidia Driver automatically.</summary>
+        /// <summary>Install Nvidia Driver automatically. Default: True</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installGpuDriver")]
         public virtual System.Nullable<bool> InstallGpuDriver { get; set; }
 

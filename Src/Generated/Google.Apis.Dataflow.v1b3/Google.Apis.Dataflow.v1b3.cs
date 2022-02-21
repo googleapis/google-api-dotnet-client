@@ -6885,6 +6885,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentLimitBytes")]
         public virtual System.Nullable<ulong> CurrentLimitBytes { get; set; }
 
+        /// <summary>Number of Out of Memory (OOM) events recorded since the previous measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentOoms")]
+        public virtual System.Nullable<long> CurrentOoms { get; set; }
+
         /// <summary>Instantenous memory (RSS) size in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentRssBytes")]
         public virtual System.Nullable<ulong> CurrentRssBytes { get; set; }
