@@ -5558,14 +5558,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents information which resellers will get as part of notification from Cloud Pub/Sub.</summary>
+    /// <summary>Represents information which resellers will get as part of notification from Pub/Sub.</summary>
     public class GoogleCloudChannelV1SubscriberEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Customer event send as part of Pub/Sub event to partners.</summary>
+        /// <summary>Customer event sent as part of Pub/Sub event to partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerEvent")]
         public virtual GoogleCloudChannelV1CustomerEvent CustomerEvent { get; set; }
 
-        /// <summary>Entitlement event send as part of Pub/Sub event to partners.</summary>
+        /// <summary>Entitlement event sent as part of Pub/Sub event to partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementEvent")]
         public virtual GoogleCloudChannelV1EntitlementEvent EntitlementEvent { get; set; }
 
@@ -6073,14 +6073,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents information which resellers will get as part of notification from Cloud Pub/Sub.</summary>
+    /// <summary>Represents information which resellers will get as part of notification from Pub/Sub.</summary>
     public class GoogleCloudChannelV1alpha1SubscriberEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Customer event send as part of Pub/Sub event to partners.</summary>
+        /// <summary>Customer event sent as part of Pub/Sub event to partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerEvent")]
         public virtual GoogleCloudChannelV1alpha1CustomerEvent CustomerEvent { get; set; }
 
-        /// <summary>Entitlement event send as part of Pub/Sub event to partners.</summary>
+        /// <summary>Entitlement event sent as part of Pub/Sub event to partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementEvent")]
         public virtual GoogleCloudChannelV1alpha1EntitlementEvent EntitlementEvent { get; set; }
 

@@ -1092,7 +1092,7 @@ namespace Google.Apis.CloudRetail.v2
                         /// overwritten to the time of the CreateProduct or UpdateProduct request. If no inventory
                         /// fields are set in CreateProductRequest.product, then any pre-existing inventory information
                         /// for this product will be used. If no inventory fields are set in
-                        /// UpdateProductRequest.set_mask, then any existing inventory information will be preserved.
+                        /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
                         /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
                         /// who have Retail Search enabled. Please submit a form
@@ -1121,7 +1121,7 @@ namespace Google.Apis.CloudRetail.v2
                         /// overwritten to the time of the CreateProduct or UpdateProduct request. If no inventory
                         /// fields are set in CreateProductRequest.product, then any pre-existing inventory information
                         /// for this product will be used. If no inventory fields are set in
-                        /// UpdateProductRequest.set_mask, then any existing inventory information will be preserved.
+                        /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
                         /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
                         /// who have Retail Search enabled. Please submit a form
@@ -3258,7 +3258,8 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color".
-        /// Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or
+        /// numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
@@ -3414,9 +3415,9 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2ImportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
+        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
+        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
@@ -3855,8 +3856,9 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200.
         /// * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute,
         /// the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text
-        /// attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a UTF-8 encoded
-        /// string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
+        /// attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty
+        /// UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are
+        /// allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2CustomAttribute> Attributes { get; set; }
@@ -5033,10 +5035,18 @@ namespace Google.Apis.CloudRetail.v2.Data
     {
         /// <summary>
         /// The final component of the resource name of a branch. This field must be one of "0", "1" or "2". Otherwise,
-        /// an INVALID_ARGUMENT error is returned.
+        /// an INVALID_ARGUMENT error is returned. If there are no sufficient active products in the targeted branch and
+        /// force is not set, a FAILED_PRECONDITION error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
+
+        /// <summary>
+        /// If set to true, it permits switching to a branch with branch_id even if it has no sufficient active
+        /// products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>
         /// Some note on this request, this can be retrieved by CatalogService.GetDefaultBranch before next valid
@@ -5080,10 +5090,17 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// Product to update does not have existing inventory information, the provided inventory information will be
         /// inserted. If the Product to update has existing inventory information, the provided inventory information
         /// will be merged while respecting the last update time for each inventory field, using the provided or default
-        /// value for SetInventoryRequest.set_time. The last update time is recorded for the following inventory fields:
-        /// * Product.price_info * Product.availability * Product.available_quantity * Product.fulfillment_info If a
-        /// full overwrite of inventory information while ignoring timestamps is needed, UpdateProduct should be invoked
-        /// instead.
+        /// value for SetInventoryRequest.set_time. The caller can replace place IDs for a subset of fulfillment types
+        /// in the following ways: * Adds "fulfillment_info" in SetInventoryRequest.set_mask * Specifies only the
+        /// desired fulfillment types and corresponding place IDs to update in
+        /// SetInventoryRequest.inventory.fulfillment_info The caller can clear all place IDs from a subset of
+        /// fulfillment types in the following ways: * Adds "fulfillment_info" in SetInventoryRequest.set_mask *
+        /// Specifies only the desired fulfillment types to clear in SetInventoryRequest.inventory.fulfillment_info *
+        /// Checks that only the desired fulfillment info types have empty
+        /// SetInventoryRequest.inventory.fulfillment_info.place_ids The last update time is recorded for the following
+        /// inventory fields: * Product.price_info * Product.availability * Product.available_quantity *
+        /// Product.fulfillment_info If a full overwrite of inventory information while ignoring timestamps is needed,
+        /// UpdateProduct should be invoked instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual GoogleCloudRetailV2Product Inventory { get; set; }
@@ -5525,9 +5542,9 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2alphaImportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
+        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
+        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
@@ -5844,9 +5861,9 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2betaImportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
+        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
+        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }

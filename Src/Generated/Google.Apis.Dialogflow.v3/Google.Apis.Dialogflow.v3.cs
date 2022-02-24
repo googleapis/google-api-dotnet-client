@@ -14992,6 +14992,17 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for article suggestion models.</summary>
+    public class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Type of the article suggestion model. If not provided, model_type is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingModelType")]
+        public virtual string TrainingModelType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for EntityTypes.BatchUpdateEntityTypes.</summary>
     public class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15009,6 +15020,34 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The collection of updated or created intents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intents")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Intent> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.</summary>
+    public class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the conversation profile. Format: `projects//locations//conversationProfiles/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. The participant role to remove the suggestion feature config. Only HUMAN_AGENT or END_USER can be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
+        public virtual string ParticipantRole { get; set; }
+
+        /// <summary>Required. The type of the suggestion feature to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionFeatureType")]
+        public virtual string SuggestionFeatureType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15083,6 +15122,149 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The type of the event that this notification refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a conversation model.</summary>
+    public class GoogleCloudDialogflowV2ConversationModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata for article suggestion models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestionModelMetadata")]
+        public virtual GoogleCloudDialogflowV2ArticleSuggestionModelMetadata ArticleSuggestionModelMetadata { get; set; }
+
+        /// <summary>Output only. Creation time of this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Required. Datasets used to create model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2InputDataset> Datasets { get; set; }
+
+        /// <summary>Required. The display name of the model. At most 64 bytes long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Language code for the conversation model. If not specified, the language is en-US. Language at
+        /// ConversationModel should be set for all non en-us languages. This should be a
+        /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>ConversationModel resource name. Format: `projects//conversationModels/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Metadata for smart reply models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReplyModelMetadata")]
+        public virtual GoogleCloudDialogflowV2SmartReplyModelMetadata SmartReplyModelMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. State of the model. A model can only serve prediction requests after it gets deployed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for ConversationDatasets.</summary>
+    public class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationModels.CreateConversationModelEvaluation operation.</summary>
+    public class GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the conversation model. Format: `projects//locations//conversationModels/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>
+        /// The resource name of the conversation model. Format: `projects//locations//conversationModels//evaluations/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModelEvaluation")]
+        public virtual string ConversationModelEvaluation { get; set; }
+
+        /// <summary>
+        /// Timestamp when the request to create conversation model was submitted. The time is measured on server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>State of CreateConversationModel operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationModels.CreateConversationModel operation.</summary>
+    public class GoogleCloudDialogflowV2CreateConversationModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the conversation model. Format: `projects//conversationModels/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>
+        /// Timestamp when the request to create conversation model is submitted. The time is measured on server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>State of CreateConversationModel operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for ConversationDatasets.</summary>
+    public class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationModels.DeleteConversationModel operation.</summary>
+    public class GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the conversation model. Format: `projects//conversationModels/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>
+        /// Timestamp when delete conversation model request was created. The time is measured on server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationModels.DeployConversationModel operation.</summary>
+    public class GoogleCloudDialogflowV2DeployConversationModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the conversation model. Format: `projects//conversationModels/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>
+        /// Timestamp when request to deploy conversation model was submitted. The time is measured on server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15205,6 +15387,17 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata related to the Export Data Operations (e.g. ExportDocument).</summary>
+    public class GoogleCloudDialogflowV2ExportOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage file path of the exported data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportedGcsDestination")]
+        public virtual GoogleCloudDialogflowV2GcsDestination ExportedGcsDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents answer from "frequently asked questions".</summary>
     public class GoogleCloudDialogflowV2FaqAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15242,6 +15435,21 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Google Cloud Storage location for the output.</summary>
+    public class GoogleCloudDialogflowV2GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Google Cloud Storage URIs for the output. A URI is of the form: gs://bucket/object-prefix-or-name
+        /// Whether a prefix or name is used depends on the use case. The requesting user must have "write-permission"
+        /// to the bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a notification sent to Cloud Pub/Sub subscribers for human agent assistant events in a specific
     /// conversation.
@@ -15267,12 +15475,68 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for a ConversationDatasets.ImportConversationData operation.</summary>
+    public class GoogleCloudDialogflowV2ImportConversationDataOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the imported conversation dataset. Format: `projects//locations//conversationDatasets/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationDataset")]
+        public virtual string ConversationDataset { get; set; }
+
+        /// <summary>
+        /// Timestamp when import conversation data request was created. The time is measured on server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Partial failures are failures that don't fail the whole long running operation, e.g. single files that
+        /// couldn't be read.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailures")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialFailures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response used for ConversationDatasets.ImportConversationData long running operation.</summary>
+    public class GoogleCloudDialogflowV2ImportConversationDataOperationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the imported conversation dataset. Format: `projects//locations//conversationDatasets/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationDataset")]
+        public virtual string ConversationDataset { get; set; }
+
+        /// <summary>Number of conversations imported successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importCount")]
+        public virtual System.Nullable<int> ImportCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for Documents.ImportDocuments.</summary>
     public class GoogleCloudDialogflowV2ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>InputDataset used to create model or do evaluation. NextID:5</summary>
+    public class GoogleCloudDialogflowV2InputDataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16122,6 +16386,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata for the Export Data Operation such as the destination of export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportOperationMetadata")]
+        public virtual GoogleCloudDialogflowV2ExportOperationMetadata ExportOperationMetadata { get; set; }
+
         /// <summary>The name of the knowledge base interacted with during the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBase")]
         public virtual string KnowledgeBase { get; set; }
@@ -16428,6 +16696,34 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.</summary>
+    public class GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the conversation profile. Format: `projects//locations//conversationProfiles/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. The participant role to add or update the suggestion feature config. Only HUMAN_AGENT or END_USER
+        /// can be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
+        public virtual string ParticipantRole { get; set; }
+
+        /// <summary>Required. The type of the suggestion feature to add or update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionFeatureType")]
+        public virtual string SuggestionFeatureType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a smart reply answer.</summary>
     public class GoogleCloudDialogflowV2SmartReplyAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16445,6 +16741,17 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The content of the reply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reply")]
         public virtual string Reply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for smart reply models.</summary>
+    public class GoogleCloudDialogflowV2SmartReplyModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Type of the smart reply model. If not provided, model_type is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingModelType")]
+        public virtual string TrainingModelType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16552,6 +16859,24 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
         public virtual GoogleCloudDialogflowV2SuggestSmartRepliesResponse SuggestSmartRepliesResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationModels.UndeployConversationModel operation.</summary>
+    public class GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the conversation model. Format: `projects//conversationModels/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>
+        /// Timestamp when the request to undeploy conversation model was submitted. The time is measured on server
+        /// side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16736,6 +17061,34 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The collection of updated or created intents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intents")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Intent> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.</summary>
+    public class GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the conversation profile. Format: `projects//locations//conversationProfiles/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. The participant role to remove the suggestion feature config. Only HUMAN_AGENT or END_USER can be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
+        public virtual string ParticipantRole { get; set; }
+
+        /// <summary>Required. The type of the suggestion feature to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionFeatureType")]
+        public virtual string SuggestionFeatureType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16936,6 +17289,17 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata related to the Export Data Operations (e.g. ExportDocument).</summary>
+    public class GoogleCloudDialogflowV2beta1ExportOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage file path of the exported data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportedGcsDestination")]
+        public virtual GoogleCloudDialogflowV2beta1GcsDestination ExportedGcsDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents answer from "frequently asked questions".</summary>
     public class GoogleCloudDialogflowV2beta1FaqAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16968,6 +17332,21 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage location for the output.</summary>
+    public class GoogleCloudDialogflowV2beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Google Cloud Storage URIs for the output. A URI is of the form:
+        /// gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case. The requesting
+        /// user must have "write-permission" to the bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18241,6 +18620,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata for the Export Data Operation such as the destination of export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportOperationMetadata")]
+        public virtual GoogleCloudDialogflowV2beta1ExportOperationMetadata ExportOperationMetadata { get; set; }
+
         /// <summary>The name of the knowledge base interacted with during the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBase")]
         public virtual string KnowledgeBase { get; set; }
@@ -18550,6 +18933,34 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.</summary>
+    public class GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the conversation profile. Format: `projects//locations//conversationProfiles/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. The participant role to add or update the suggestion feature config. Only HUMAN_AGENT or END_USER
+        /// can be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
+        public virtual string ParticipantRole { get; set; }
+
+        /// <summary>Required. The type of the suggestion feature to add or update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionFeatureType")]
+        public virtual string SuggestionFeatureType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

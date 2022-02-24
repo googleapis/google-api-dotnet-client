@@ -2310,4 +2310,235 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
+
+    /// <summary>
+    /// A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification.
+    /// Product-specific logging information MUST be defined in a separate message.
+    /// </summary>
+    public class V1HttpRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of HTTP response bytes inserted into cache. Set only when a cache fill was attempted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheFillBytes")]
+        public virtual System.Nullable<long> CacheFillBytes { get; set; }
+
+        /// <summary>Whether or not an entity was served from cache (with or without validation).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
+        public virtual System.Nullable<bool> CacheHit { get; set; }
+
+        /// <summary>Whether or not a cache lookup was attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheLookup")]
+        public virtual System.Nullable<bool> CacheLookup { get; set; }
+
+        /// <summary>
+        /// Whether or not the response was validated with the origin server before being served from cache. This field
+        /// is only meaningful if `cache_hit` is True.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheValidatedWithOriginServer")]
+        public virtual System.Nullable<bool> CacheValidatedWithOriginServer { get; set; }
+
+        /// <summary>
+        /// The request processing latency on the server, from the time the request was received until the response was
+        /// sent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latency")]
+        public virtual object Latency { get; set; }
+
+        /// <summary>Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>
+        /// The referer URL of the request, as defined in [HTTP/1.1 Header Field
+        /// Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referer")]
+        public virtual string Referer { get; set; }
+
+        /// <summary>
+        /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request. Examples: `"192.168.1.1"`,
+        /// `"FE80::0202:B3FF:FE1E:8329"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteIp")]
+        public virtual string RemoteIp { get; set; }
+
+        /// <summary>The request method. Examples: `"GET"`, `"HEAD"`, `"PUT"`, `"POST"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestMethod")]
+        public virtual string RequestMethod { get; set; }
+
+        /// <summary>
+        /// The size of the HTTP request message in bytes, including the request headers and the request body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestSize")]
+        public virtual System.Nullable<long> RequestSize { get; set; }
+
+        /// <summary>
+        /// The scheme (http, https), the host name, the path, and the query portion of the URL that was requested.
+        /// Example: `"http://example.com/some/info?color=red"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestUrl")]
+        public virtual string RequestUrl { get; set; }
+
+        /// <summary>
+        /// The size of the HTTP response message sent back to the client, in bytes, including the response headers and
+        /// the response body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseSize")]
+        public virtual System.Nullable<long> ResponseSize { get; set; }
+
+        /// <summary>The IP address (IPv4 or IPv6) of the origin server that the request was sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverIp")]
+        public virtual string ServerIp { get; set; }
+
+        /// <summary>The response code indicating the status of the response. Examples: 200, 404.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<int> Status { get; set; }
+
+        /// <summary>
+        /// The user agent sent by the client. Example: `"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET
+        /// CLR 1.0.3705)"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An individual log entry.</summary>
+    public class V1LogEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Information about the HTTP request associated with this log entry, if applicable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
+        public virtual V1HttpRequest HttpRequest { get; set; }
+
+        /// <summary>
+        /// A unique ID for the log entry used for deduplication. If omitted, the implementation will generate one based
+        /// on operation_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
+        public virtual string InsertId { get; set; }
+
+        /// <summary>
+        /// A set of user-defined (key, value) data that provides additional information about the log entry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// A set of user-defined (key, value) data that provides additional information about the moniotored resource
+        /// that the log entry belongs to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResourceLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MonitoredResourceLabels { get; set; }
+
+        /// <summary>Required. The log to which this log entry belongs. Examples: `"syslog"`, `"book_log"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Information about an operation associated with the log entry, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual V1LogEntryOperation Operation { get; set; }
+
+        /// <summary>
+        /// The log entry payload, represented as a protocol buffer that is expressed as a JSON object. The only
+        /// accepted type currently is AuditLog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoPayload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ProtoPayload { get; set; }
+
+        /// <summary>The severity of the log entry. The default value is `LogSeverity.DEFAULT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Optional. Source code location information associated with the log entry, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
+        public virtual V1LogEntrySourceLocation SourceLocation { get; set; }
+
+        /// <summary>The log entry payload, represented as a structure that is expressed as a JSON object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structPayload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructPayload { get; set; }
+
+        /// <summary>The log entry payload, represented as a Unicode string (UTF-8).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
+        public virtual string TextPayload { get; set; }
+
+        /// <summary>
+        /// The time the event described by the log entry occurred. If omitted, defaults to operation start time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual object Timestamp { get; set; }
+
+        /// <summary>
+        /// Optional. Resource name of the trace associated with the log entry, if any. If this field contains a
+        /// relative resource name, you can assume the name is relative to `//tracing.googleapis.com`. Example:
+        /// `projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trace")]
+        public virtual string Trace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Additional information about a potentially long-running operation with which a log entry is associated.
+    /// </summary>
+    public class V1LogEntryOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Set this to True if this is the first log entry in the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("first")]
+        public virtual System.Nullable<bool> First { get; set; }
+
+        /// <summary>
+        /// Optional. An arbitrary operation identifier. Log entries with the same identifier are assumed to be part of
+        /// the same operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Set this to True if this is the last log entry in the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("last")]
+        public virtual System.Nullable<bool> Last { get; set; }
+
+        /// <summary>
+        /// Optional. An arbitrary producer identifier. The combination of `id` and `producer` must be globally unique.
+        /// Examples for `producer`: `"MyDivision.MyBigCompany.com"`, `"github.com/MyProject/MyApplication"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producer")]
+        public virtual string Producer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information about the source code location that produced the log entry.</summary>
+    public class V1LogEntrySourceLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Source file name. Depending on the runtime environment, this might be a simple name or a
+        /// fully-qualified name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual string File { get; set; }
+
+        /// <summary>
+        /// Optional. Human-readable name of the function or method being invoked, with optional context such as the
+        /// class or package name. This information may be used in contexts such as the logs viewer, where a file and
+        /// line number are less meaningful. The format can vary by language. For example: `qual.if.ied.Class.method`
+        /// (Java), `dir/package.func` (Go), `function` (Python).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("function")]
+        public virtual string Function { get; set; }
+
+        /// <summary>Optional. Line within the source file. 1-based; 0 indicates no line number available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual System.Nullable<long> Line { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
 }
