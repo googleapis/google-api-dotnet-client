@@ -8206,6 +8206,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
 
+        /// <summary>Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spot")]
+        public virtual System.Nullable<bool> Spot { get; set; }
+
         /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for
         /// network firewalls and are specified by the client during cluster or node pool creation. Each tag within the

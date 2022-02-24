@@ -1772,7 +1772,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Parameters that a bot can use to configure how it's response is posted.</summary>
     public class ActionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This response is for Dialog related events and must be accompanied by ResponseType.Dialog</summary>
+        /// <summary>
+        /// A response to an event related to a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs). Must
+        /// be accompanied by `ResponseType.Dialog`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogAction")]
         public virtual DialogAction DialogAction { get; set; }
 
@@ -1788,11 +1791,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// ActionStatus represents status of a request from the bot developer's side. In specific, for each request a bot
-    /// gets, the bot developer will set both fields below in relation to what the response status and message related
-    /// to status should be.
-    /// </summary>
+    /// <summary>Represents the status of a request.</summary>
     public class ActionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code.</summary>
@@ -1800,9 +1799,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string StatusCode { get; set; }
 
         /// <summary>
-        /// This message will be the corresponding string to the above status_code. If unset, an appropriate generic
-        /// message based on the status_code will be shown to the user. If this field is set then the message will be
-        /// surfaced to the user for both successes and errors.
+        /// The message to send users about the status of their request. If unset, a generic message based on the
+        /// `status_code` is sent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userFacingMessage")]
         public virtual string UserFacingMessage { get; set; }
@@ -2050,39 +2048,55 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next available ID = 8</summary>
+    /// <summary>
+    /// Represents information about the user's client, such as locale, host app, and platform. For Chat apps,
+    /// `CommonEventObject` includes data submitted by users interacting with cards, like data entered in
+    /// [dialogs](https://developers.google.com/chat/how-tos/bot-dialogs).
+    /// </summary>
     public class CommonEventObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The keys are the string IDs associated with the widget and the values are inputs with a widget in the card.
+        /// A map containing the current values of the widgets in a card. The map keys are the string IDs assigned to
+        /// each widget, and the values represent inputs to the widget. Depending on the input data type, a different
+        /// object represents each input: For single-value widgets, `StringInput`. For multi-value widgets, an array of
+        /// `StringInput` objects. For a date-time picker, a `DateTimeInput`. For a date-only picker, a `DateInput`. For
+        /// a time-only picker, a `TimeInput`. Corresponds with the data entered by a user on a card in a
+        /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInputs")]
         public virtual System.Collections.Generic.IDictionary<string, Inputs> FormInputs { get; set; }
 
-        /// <summary>The hostApp enum which indicates the app the add-on is invoked from</summary>
+        /// <summary>
+        /// The hostApp enum which indicates the app the add-on is invoked from. Always `CHAT` for Chat apps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostApp")]
         public virtual string HostApp { get; set; }
 
-        /// <summary>
-        /// Name of the invoked function associated with the widget. This field is currently only set for chat.
-        /// </summary>
+        /// <summary>Name of the invoked function associated with the widget. Only set for Chat apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invokedFunction")]
         public virtual string InvokedFunction { get; set; }
 
-        /// <summary>Any additional parameters.</summary>
+        /// <summary>
+        /// Custom [parameters](/chat/api/reference/rest/v1/cards#ActionParameter) passed to the invoked function. Both
+        /// keys and values must be strings.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
 
-        /// <summary>The platform enum which indicates the platform where the add-on is running.</summary>
+        /// <summary>
+        /// The platform enum which indicates the platform where the event originates (`WEB`, `IOS`, or `ANDROID`). Not
+        /// supported by Chat apps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual string Platform { get; set; }
 
+        /// <summary>The timezone ID and offset from Coordinated Universal Time (UTC).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual TimeZone TimeZone { get; set; }
 
         /// <summary>
         /// The full locale.displayName in the format of [ISO 639 language code]-[ISO 3166 country/region code] such as
-        /// "en-US"
+        /// "en-US". Not supported by Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLocale")]
         public virtual string UserLocale { get; set; }
@@ -2091,9 +2105,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Input Parameter for Date Picker widget.</summary>
+    /// <summary>Date input values. Not supported by Chat apps.</summary>
     public class DateInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Time since epoch time, in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("msSinceEpoch")]
         public virtual System.Nullable<long> MsSinceEpoch { get; set; }
 
@@ -2101,15 +2116,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Input Parameter for Date and Time Picker widget.</summary>
+    /// <summary>Date and time input values. Not supported by Chat apps.</summary>
     public class DateTimeInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the `datetime` input includes a calendar date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasDate")]
         public virtual System.Nullable<bool> HasDate { get; set; }
 
+        /// <summary>Whether the `datetime` input includes a timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasTime")]
         public virtual System.Nullable<bool> HasTime { get; set; }
 
+        /// <summary>Time since epoch time, in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("msSinceEpoch")]
         public virtual System.Nullable<long> MsSinceEpoch { get; set; }
 
@@ -2127,7 +2145,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual FormAction Action { get; set; }
 
-        /// <summary>This will include form information for dialogs such as form inputs, action parameters.</summary>
+        /// <summary>
+        /// Represents information about the user's client, such as locale, host app, and platform. For Chat apps,
+        /// `CommonEventObject` includes information submitted by users interacting with
+        /// [dialogs](https://developers.google.com/chat/how-tos/bot-dialogs), like data entered on a card.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonEventObject Common { get; set; }
 
@@ -2139,7 +2161,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
 
-        /// <summary>The type of dialog event we have received.</summary>
+        /// <summary>
+        /// The type of [dialog](https://developers.google.com/chat/how-tos/bot-dialogs) event received.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogEventType")]
         public virtual string DialogEventType { get; set; }
 
@@ -2148,8 +2172,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual object EventTime { get; set; }
 
         /// <summary>
-        /// Whether or not this event is related to dialogs request, submit or cancel. This will be set to true when we
-        /// want a request/submit/cancel event.
+        /// True when the event is related to [dialogs](https://developers.google.com/chat/how-tos/bot-dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
         public virtual System.Nullable<bool> IsDialogEvent { get; set; }
@@ -2193,12 +2216,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Dialog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Body of the dialog, which will be rendered in a modal. NOTE: The following fields within the objects are not
-        /// supported: google.apps.card.v1.Widget.date_time_picker
-        /// google.apps.card.v1.DecoratedText.SwitchControl.on_change_action
-        /// google.apps.card.v1.TextInput.on_change_action google.apps.card.v1.SelectionInput.on_change_action
-        /// google.apps.card.v1.DateTimePicker.on_change_action Setting the fields above will have no effect on the
-        /// dialog.
+        /// Body of the dialog, which is rendered in a modal. Google Chat apps do not support the following card
+        /// entities: `DateTimePicker`, `OnChangeAction`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual GoogleAppsCardV1Card Body { get; set; }
@@ -2207,17 +2226,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains dialog if present as well as the ActionStatus for the request sent from user.</summary>
+    /// <summary>
+    /// Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs) and request status code.
+    /// </summary>
     public class DialogAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Status for either invoke dialog or submit dialog requests. This will be used to display a status and message
-        /// to user if needed. For example in case of an error or success.
+        /// Status for a request to either invoke or submit a
+        /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs). Displays a status and message to users, if
+        /// necessary. For example, in case of an error or success.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionStatus")]
         public virtual ActionStatus ActionStatus { get; set; }
 
-        /// <summary>Dialog for the request.</summary>
+        /// <summary>[Dialog](https://developers.google.com/chat/how-tos/bot-dialogs) for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialog")]
         public virtual Dialog Dialog { get; set; }
 
@@ -2305,6 +2327,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; }
 
+        /// <summary>
+        /// Specifies the loading indicator that the action displays while making the call to the action.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadIndicator")]
         public virtual string LoadIndicator { get; set; }
 
@@ -2381,7 +2406,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 
-        /// <summary>If true, the button is displayed in a disabled state and doesn't respond to user actions.</summary>
+        /// <summary>
+        /// If `true`, the button is displayed in a disabled state and doesn't respond to user actions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
@@ -2404,6 +2431,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A list of buttons layed out horizontally.</summary>
     public class GoogleAppsCardV1ButtonList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An array of buttons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1Button> Buttons { get; set; }
 
@@ -2429,16 +2457,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The actions of this card. They are added to a card's generated toolbar menu. For example, the following JSON
+        /// The card's actions. Actions are added to the card's generated toolbar menu. For example, the following JSON
         /// constructs a card action menu with Settings and Send Feedback options: ``` "card_actions": [ {
-        /// "actionLabel": "Setting", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
+        /// "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
         /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
         /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1CardAction> CardActions { get; set; }
 
-        /// <summary>The display style for peekCardHeader.</summary>
+        /// <summary>The display style for `peekCardHeader`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayStyle")]
         public virtual string DisplayStyle { get; set; }
 
@@ -2450,7 +2478,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual GoogleAppsCardV1CardHeader Header { get; set; }
 
-        /// <summary>Name of the card, which is used as a identifier for the card in card navigation.</summary>
+        /// <summary>Name of the card. Used as a card identifier in card navigation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2479,7 +2507,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
         public virtual string ActionLabel { get; set; }
 
-        /// <summary>The onclick action for this action item.</summary>
+        /// <summary>The `onClick` action for this action item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
 
@@ -2507,6 +2535,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a card header.</summary>
     public class GoogleAppsCardV1CardHeader : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alternative text of this image which is used for accessibility.</summary>
@@ -2526,8 +2555,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Subtitle { get; set; }
 
         /// <summary>
-        /// The title of the card header. The title must be specified. The header has a fixed height: if both a title
-        /// and subtitle are specified, each takes up one line. If only the title is specified, it takes up both lines.
+        /// Required. The title of the card header. The header has a fixed height: if both a title and subtitle are
+        /// specified, each takes up one line. If only the title is specified, it takes up both lines.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -2536,14 +2565,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The widget that lets users to specify a date and time.</summary>
+    /// <summary>The widget that lets users to specify a date and time. Not supported by Google Chat apps.</summary>
     public class GoogleAppsCardV1DateTimePicker : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The label for the field that displays to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>The name of the text input that's used in formInput, and uniquely identifies this input.</summary>
+        /// <summary>
+        /// The name of the text input that's used in `formInput`, and uniquely identifies this input.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2724,7 +2755,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
-        /// <summary>The icon specified by the string name of a list of known icons</summary>
+        /// <summary>The icon specified by the string name of a list of known icons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
         public virtual string KnownIcon { get; set; }
 
@@ -2732,7 +2763,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An image that is specified by a URL and can have an onClick action.</summary>
+    /// <summary>An image that is specified by a URL and can have an `onClick` action.</summary>
     public class GoogleAppsCardV1Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alternative text of this image, used for accessibility.</summary>
@@ -2743,6 +2774,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; }
 
+        /// <summary>The action triggered by an `onClick` event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
 
@@ -2750,6 +2782,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an image.</summary>
     public class GoogleAppsCardV1ImageComponent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The accessibility label for the image.</summary>
@@ -2787,9 +2820,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the response to an `onClick` event.</summary>
     public class GoogleAppsCardV1OnClick : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If specified, an action is triggered by this onClick.</summary>
+        /// <summary>If specified, an action is triggered by this `onClick`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual GoogleAppsCardV1Action Action { get; set; }
 
@@ -2798,14 +2832,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1Card Card { get; set; }
 
         /// <summary>
-        /// An add-on triggers this action when the action needs to open a link. This differs from the open_link above
+        /// An add-on triggers this action when the action needs to open a link. This differs from the `open_link` above
         /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
         /// to do before the open link action response comes back.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openDynamicLinkAction")]
         public virtual GoogleAppsCardV1Action OpenDynamicLinkAction { get; set; }
 
-        /// <summary>If specified, this onClick triggers an open link action.</summary>
+        /// <summary>If specified, this `onClick` triggers an open link action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
         public virtual GoogleAppsCardV1OpenLink OpenLink { get; set; }
 
@@ -2813,11 +2847,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an `onClick` event that opens a hyperlink.</summary>
     public class GoogleAppsCardV1OpenLink : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether the client forgets about a link after opening it, or observes it until the window closes. Not
+        /// supported by Chat apps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClose")]
         public virtual string OnClose { get; set; }
 
+        /// <summary>How to open a link. Not supported by Chat apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
         public virtual string OpenAs { get; set; }
 
@@ -2848,8 +2888,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The number of uncollapsible widgets. For example, when a section contains five widgets and the
-        /// `numUncollapsibleWidget` is set to `2`, the first two widgets are always shown and the last three are
-        /// collapsed as default. The `numUncollapsibleWidget` is taken into account only when collapsible is set to
+        /// `uncollapsibleWidgetsCount` is set to `2`, the first two widgets are always shown and the last three are
+        /// collapsed as default. The `uncollapsibleWidgetsCount` is taken into account only when `collapsible` is
         /// `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
@@ -2864,10 +2904,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A widget that creates a UI item (for example, a drop-down list) with options for users to select.
+    /// A widget that creates a UI item with options for users to select. For example, a dropdown menu.
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An array of the selected items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1SelectionItem> Items { get; set; }
 
@@ -2875,7 +2916,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>The name of the text input which is used in formInput.</summary>
+        /// <summary>The name of the text input which is used in `formInput`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2886,6 +2927,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
+        /// <summary>The type of the selection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -2893,7 +2935,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The item in the switch control. A radio button, at most one of the items is selected.</summary>
+    /// <summary>A selectable item in the switch control.</summary>
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2915,9 +2957,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A suggestion item. Only supports text for now.</summary>
+    /// <summary>A suggestion item.</summary>
     public class GoogleAppsCardV1SuggestionItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The suggested autocomplete result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -2930,7 +2973,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1Suggestions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of suggestions items which will be used in are used in autocomplete.</summary>
+        /// <summary>A list of suggestions used for autocomplete recommendations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1SuggestionItem> Items { get; set; }
 
@@ -2938,13 +2981,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Either a toggle-style switch or a checkbox.</summary>
     public class GoogleAppsCardV1SwitchControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The control type, either switch or checkbox.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
         public virtual string ControlType { get; set; }
 
-        /// <summary>The name of the switch widget that's used in formInput.</summary>
+        /// <summary>The name of the switch widget that's used in `formInput`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2989,7 +3033,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>The name of the text input which is used in formInput.</summary>
+        /// <summary>The name of the text input which is used in `formInput`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3161,18 +3205,25 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The inputs with widgets.</summary>
+    /// <summary>Types of data inputs for widgets. Users enter data with these inputs.</summary>
     public class Inputs : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Date input values. Not supported by Chat apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateInput")]
         public virtual DateInput DateInput { get; set; }
 
+        /// <summary>Date and time input values. Not supported by Chat apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimeInput")]
         public virtual DateTimeInput DateTimeInput { get; set; }
 
+        /// <summary>
+        /// Input parameter for regular widgets. For single-valued widgets, it is a single value list. For multi-valued
+        /// widgets, such as checkbox, all the values are presented.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringInputs")]
         public virtual StringInputs StringInputs { get; set; }
 
+        /// <summary>Time input values. Not supported by Chat apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInput")]
         public virtual TimeInput TimeInput { get; set; }
 
@@ -3442,7 +3493,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Slash Command in Chat.</summary>
+    /// <summary>A [slash command](https://developers.google.com/chat/how-tos/slash-commands) in Google Chat.</summary>
     public class SlashCommand : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The id of the slash command invoked.</summary>
@@ -3540,11 +3591,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Input parameter for regular widgets. For single-valued widgets, it will be a single value list; for multi-valued
+    /// Input parameter for regular widgets. For single-valued widgets, it is a single value list. For multi-valued
     /// widgets, such as checkbox, all the values are presented.
     /// </summary>
     public class StringInputs : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An array of strings entered by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IList<string> Value { get; set; }
 
@@ -3590,12 +3642,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Input Parameter for Time Picker widget.</summary>
+    /// <summary>Time input values. Not supported by Chat apps.</summary>
     public class TimeInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The hour on a 24-hour clock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
+        /// <summary>The number of minutes past the hour. Valid values are 0 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
@@ -3603,15 +3657,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The timezone id and offset. The id is the tz database time zones such as "America/Toronto". The user timezone
-    /// offset, in milliseconds, from Coordinated Universal Time (UTC).
-    /// </summary>
+    /// <summary>The timezone ID and offset from Coordinated Universal Time (UTC). Not supported by Chat apps.</summary>
     public class TimeZone : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The [IANA TZ](https://www.iana.org/time-zones) time zone database code, such as "America/Toronto".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>The user timezone offset, in milliseconds, from Coordinated Universal Time (UTC).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<int> Offset { get; set; }
 
@@ -3635,7 +3690,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 
         /// <summary>
-        /// Resource name for a Google Chat user. Formatted as `users/AAAAAAAAAAA`. Represents a
+        /// Resource name for a Google Chat user. Formatted as `users/{user}`. Represents a
         /// [person](https://developers.google.com/people/api/rest/v1/people#Person) in the People API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

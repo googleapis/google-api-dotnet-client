@@ -2634,7 +2634,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentEntity> Entities { get; set; }
 
-        /// <summary>Relationship among Document.entities.</summary>
+        /// <summary>Placeholder. Relationship among Document.entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityRelations")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentEntityRelation> EntityRelations { get; set; }
 
@@ -2653,7 +2653,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPage> Pages { get; set; }
 
-        /// <summary>Revision history of this document.</summary>
+        /// <summary>Placeholder. Revision history of this document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentRevision> Revisions { get; set; }
 
@@ -2669,13 +2669,13 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR
-        /// mistakes. Text changes for a given revision may not overlap with each other.
+        /// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating
+        /// corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Styles for the Document.text.</summary>
+        /// <summary>Placeholder. Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentStyle> TextStyles { get; set; }
 
@@ -3754,7 +3754,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentEntity> Entities { get; set; }
 
-        /// <summary>Relationship among Document.entities.</summary>
+        /// <summary>Placeholder. Relationship among Document.entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityRelations")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentEntityRelation> EntityRelations { get; set; }
 
@@ -3777,7 +3777,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPage> Pages { get; set; }
 
-        /// <summary>Revision history of this document.</summary>
+        /// <summary>Placeholder. Revision history of this document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentRevision> Revisions { get; set; }
 
@@ -3793,13 +3793,13 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR
-        /// mistakes. Text changes for a given revision may not overlap with each other.
+        /// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating
+        /// corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Styles for the Document.text.</summary>
+        /// <summary>Placeholder. Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentStyle> TextStyles { get; set; }
 
@@ -5148,7 +5148,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentEntity> Entities { get; set; }
 
-        /// <summary>Relationship among Document.entities.</summary>
+        /// <summary>Placeholder. Relationship among Document.entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityRelations")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentEntityRelation> EntityRelations { get; set; }
 
@@ -5167,7 +5167,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPage> Pages { get; set; }
 
-        /// <summary>Revision history of this document.</summary>
+        /// <summary>Placeholder. Revision history of this document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentRevision> Revisions { get; set; }
 
@@ -5183,13 +5183,13 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR
-        /// mistakes. Text changes for a given revision may not overlap with each other.
+        /// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating
+        /// corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textChanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentTextChange> TextChanges { get; set; }
 
-        /// <summary>Styles for the Document.text.</summary>
+        /// <summary>Placeholder. Styles for the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentStyle> TextStyles { get; set; }
 
@@ -6404,6 +6404,14 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>The KMS key name used for encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The KMS key version with which data is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; }
+
         /// <summary>
         /// The resource name of the processor version. Format:
         /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`
@@ -6981,9 +6989,9 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the
-        /// user to ensure the value is correct. See http://cldr.unicode.org/ and
-        /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for
-        /// Switzerland.
+        /// user to ensure the value is correct. See https://cldr.unicode.org/ and
+        /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH"
+        /// for Switzerland.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }

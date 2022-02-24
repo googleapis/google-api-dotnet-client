@@ -317,6 +317,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                 public CatalogsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    AttributesConfig = new AttributesConfigResource(service);
                     Branches = new BranchesResource(service);
                     CompletionData = new CompletionDataResource(service);
                     Controls = new ControlsResource(service);
@@ -324,6 +325,221 @@ namespace Google.Apis.CloudRetail.v2alpha
                     Placements = new PlacementsResource(service);
                     ServingConfigs = new ServingConfigsResource(service);
                     UserEvents = new UserEventsResource(service);
+                }
+
+                /// <summary>Gets the AttributesConfig resource.</summary>
+                public virtual AttributesConfigResource AttributesConfig { get; }
+
+                /// <summary>The "attributesConfig" collection of methods.</summary>
+                public class AttributesConfigResource
+                {
+                    private const string Resource = "attributesConfig";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AttributesConfigResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Adds the specified CatalogAttribute to the AttributesConfig. If the CatalogAttribute to add
+                    /// already exists, an ALREADY_EXISTS error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="attributesConfig">
+                    /// Required. Full AttributesConfig resource name. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// </param>
+                    public virtual AddCatalogAttributeRequest AddCatalogAttribute(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAddCatalogAttributeRequest body, string attributesConfig)
+                    {
+                        return new AddCatalogAttributeRequest(service, body, attributesConfig);
+                    }
+
+                    /// <summary>
+                    /// Adds the specified CatalogAttribute to the AttributesConfig. If the CatalogAttribute to add
+                    /// already exists, an ALREADY_EXISTS error is returned.
+                    /// </summary>
+                    public class AddCatalogAttributeRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig>
+                    {
+                        /// <summary>Constructs a new AddCatalogAttribute request.</summary>
+                        public AddCatalogAttributeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAddCatalogAttributeRequest body, string attributesConfig) : base(service)
+                        {
+                            AttributesConfig = attributesConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full AttributesConfig resource name. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("attributesConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AttributesConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAddCatalogAttributeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "addCatalogAttribute";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2alpha/{+attributesConfig}:addCatalogAttribute";
+
+                        /// <summary>Initializes AddCatalogAttribute parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("attributesConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "attributesConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/attributesConfig$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Removes the specified CatalogAttribute from the AttributesConfig. If the CatalogAttribute to
+                    /// remove does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="attributesConfig">
+                    /// Required. Full AttributesConfig resource name. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// </param>
+                    public virtual RemoveCatalogAttributeRequest RemoveCatalogAttribute(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaRemoveCatalogAttributeRequest body, string attributesConfig)
+                    {
+                        return new RemoveCatalogAttributeRequest(service, body, attributesConfig);
+                    }
+
+                    /// <summary>
+                    /// Removes the specified CatalogAttribute from the AttributesConfig. If the CatalogAttribute to
+                    /// remove does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    public class RemoveCatalogAttributeRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig>
+                    {
+                        /// <summary>Constructs a new RemoveCatalogAttribute request.</summary>
+                        public RemoveCatalogAttributeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaRemoveCatalogAttributeRequest body, string attributesConfig) : base(service)
+                        {
+                            AttributesConfig = attributesConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full AttributesConfig resource name. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("attributesConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AttributesConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaRemoveCatalogAttributeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "removeCatalogAttribute";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2alpha/{+attributesConfig}:removeCatalogAttribute";
+
+                        /// <summary>Initializes RemoveCatalogAttribute parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("attributesConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "attributesConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/attributesConfig$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Replaces the specified CatalogAttribute in the AttributesConfig by updating the catalog
+                    /// attribute with the same CatalogAttribute.key. If the CatalogAttribute to replace does not exist,
+                    /// a NOT_FOUND error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="attributesConfig">
+                    /// Required. Full AttributesConfig resource name. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// </param>
+                    public virtual ReplaceCatalogAttributeRequest ReplaceCatalogAttribute(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaReplaceCatalogAttributeRequest body, string attributesConfig)
+                    {
+                        return new ReplaceCatalogAttributeRequest(service, body, attributesConfig);
+                    }
+
+                    /// <summary>
+                    /// Replaces the specified CatalogAttribute in the AttributesConfig by updating the catalog
+                    /// attribute with the same CatalogAttribute.key. If the CatalogAttribute to replace does not exist,
+                    /// a NOT_FOUND error is returned.
+                    /// </summary>
+                    public class ReplaceCatalogAttributeRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig>
+                    {
+                        /// <summary>Constructs a new ReplaceCatalogAttribute request.</summary>
+                        public ReplaceCatalogAttributeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaReplaceCatalogAttributeRequest body, string attributesConfig) : base(service)
+                        {
+                            AttributesConfig = attributesConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full AttributesConfig resource name. Format:
+                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("attributesConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AttributesConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaReplaceCatalogAttributeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "replaceCatalogAttribute";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2alpha/{+attributesConfig}:replaceCatalogAttribute";
+
+                        /// <summary>Initializes ReplaceCatalogAttribute parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("attributesConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "attributesConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/attributesConfig$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Branches resource.</summary>
@@ -1276,7 +1492,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// overwritten to the time of the CreateProduct or UpdateProduct request. If no inventory
                         /// fields are set in CreateProductRequest.product, then any pre-existing inventory information
                         /// for this product will be used. If no inventory fields are set in
-                        /// UpdateProductRequest.set_mask, then any existing inventory information will be preserved.
+                        /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
                         /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
                         /// who have Retail Search enabled. Please submit a form
@@ -1305,7 +1521,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// overwritten to the time of the CreateProduct or UpdateProduct request. If no inventory
                         /// fields are set in CreateProductRequest.product, then any pre-existing inventory information
                         /// for this product will be used. If no inventory fields are set in
-                        /// UpdateProductRequest.set_mask, then any existing inventory information will be preserved.
+                        /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
                         /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
                         /// who have Retail Search enabled. Please submit a form
@@ -3192,6 +3408,57 @@ namespace Google.Apis.CloudRetail.v2alpha
                     }
                 }
 
+                /// <summary>Gets an AttributesConfig.</summary>
+                /// <param name="name">
+                /// Required. Full AttributesConfig resource name. Format:
+                /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                /// </param>
+                public virtual GetAttributesConfigRequest GetAttributesConfig(string name)
+                {
+                    return new GetAttributesConfigRequest(service, name);
+                }
+
+                /// <summary>Gets an AttributesConfig.</summary>
+                public class GetAttributesConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig>
+                {
+                    /// <summary>Constructs a new GetAttributesConfig request.</summary>
+                    public GetAttributesConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full AttributesConfig resource name. Format:
+                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getAttributesConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha/{+name}";
+
+                    /// <summary>Initializes GetAttributesConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/attributesConfig$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a
                 /// specified parent catalog.
@@ -3486,6 +3753,93 @@ namespace Google.Apis.CloudRetail.v2alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the AttributesConfig. The catalog attributes in the request will be updated in the catalog,
+                /// or inserted if they do not exist. Existing catalog attributes not included in the request will
+                /// remain unchanged. Attributes that are assigned to products, but do not exist at the catalog level,
+                /// are always included in the response. The product attribute is assigned default values for missing
+                /// catalog attribute fields, e.g., searchable and dynamic facetable options.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Immutable. The fully qualified resource name of the attribute config. Format:
+                /// "projects/*/locations/*/catalogs/*/attributesConfig"
+                /// </param>
+                public virtual UpdateAttributesConfigRequest UpdateAttributesConfig(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig body, string name)
+                {
+                    return new UpdateAttributesConfigRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the AttributesConfig. The catalog attributes in the request will be updated in the catalog,
+                /// or inserted if they do not exist. Existing catalog attributes not included in the request will
+                /// remain unchanged. Attributes that are assigned to products, but do not exist at the catalog level,
+                /// are always included in the response. The product attribute is assigned default values for missing
+                /// catalog attribute fields, e.g., searchable and dynamic facetable options.
+                /// </summary>
+                public class UpdateAttributesConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig>
+                {
+                    /// <summary>Constructs a new UpdateAttributesConfig request.</summary>
+                    public UpdateAttributesConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Immutable. The fully qualified resource name of the attribute config. Format:
+                    /// "projects/*/locations/*/catalogs/*/attributesConfig"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Indicates which fields in the provided AttributesConfig to update. The following is the only
+                    /// supported field: * AttributesConfig.catalog_attributes If not set, all supported fields are
+                    /// updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAttributesConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateAttributesConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha/{+name}";
+
+                    /// <summary>Initializes UpdateAttributesConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/attributesConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -4034,9 +4388,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2ImportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
+        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
+        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
@@ -4226,6 +4580,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for CatalogService.AddCatalogAttribute method.</summary>
+    public class GoogleCloudRetailV2alphaAddCatalogAttributeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The CatalogAttribute to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogAttribute")]
+        public virtual GoogleCloudRetailV2alphaCatalogAttribute CatalogAttribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for AddControl method.</summary>
     public class GoogleCloudRetailV2alphaAddControlRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4363,6 +4728,33 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Catalog level attribute config.</summary>
+    public class GoogleCloudRetailV2alphaAttributesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The AttributeConfigLevel used for this catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeConfigLevel")]
+        public virtual string AttributeConfigLevel { get; set; }
+
+        /// <summary>
+        /// Enable attribute(s) config at catalog level. For example, indexable, dynamic_facetable, or searchable for
+        /// each attribute. The key is catalog attribute's name. For example: `color`, `brands`,
+        /// `attributes.custom_attribute`, such as `attributes.xyz`. The maximum number of catalog attributes allowed in
+        /// a request is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCatalogAttribute> CatalogAttributes { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The fully qualified resource name of the attribute config. Format:
+        /// "projects/*/locations/*/catalogs/*/attributesConfig"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An intended audience of the Product for whom it's sold.</summary>
     public class GoogleCloudRetailV2alphaAudience : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4470,6 +4862,63 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>Required. The product level configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productLevelConfig")]
         public virtual GoogleCloudRetailV2alphaProductLevelConfig ProductLevelConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Catalog level attribute config for an attribute. For example, if customers want to enable/disable facet for a
+    /// specific attribute.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaCatalogAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet. Could only be
+        /// DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an
+        /// INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicFacetableOption")]
+        public virtual string DynamicFacetableOption { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product
+        /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
+        /// pre-loaded by using AddCatalogAttribute, ImportCatalogAttributes, or UpdateAttributesConfig APIs. This field
+        /// is `False` for pre-loaded CatalogAttributes. After catalog changes, it takes about 10 minutes for this field
+        /// to update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inUse")]
+        public virtual System.Nullable<bool> InUse { get; set; }
+
+        /// <summary>
+        /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED
+        /// attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexableOption")]
+        public virtual string IndexableOption { get; set; }
+
+        /// <summary>
+        /// Required. Attribute name. For example: `color`, `brands`, `attributes.custom_attribute`, such as
+        /// `attributes.xyz`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED,
+        /// attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute
+        /// type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there
+        /// are no text values associated to numerical attributes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchableOption")]
+        public virtual string SearchableOption { get; set; }
+
+        /// <summary>
+        /// Output only. The type of this attribute. This is derived from the attribute in Product.attributes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4736,7 +5185,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color".
-        /// Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or
+        /// numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
@@ -4961,9 +5411,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaImportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
+        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
+        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
@@ -5537,8 +5987,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200.
         /// * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute,
         /// the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text
-        /// attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a UTF-8 encoded
-        /// string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
+        /// attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty
+        /// UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are
+        /// allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCustomAttribute> Attributes { get; set; }
@@ -6100,6 +6551,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for CatalogService.RemoveCatalogAttribute method.</summary>
+    public class GoogleCloudRetailV2alphaRemoveCatalogAttributeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The attribute name key of the CatalogAttribute to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for RemoveControl method.</summary>
     public class GoogleCloudRetailV2alphaRemoveControlRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6219,6 +6681,24 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// </summary>
     public class GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for CatalogService.ReplaceCatalogAttribute method.</summary>
+    public class GoogleCloudRetailV2alphaReplaceCatalogAttributeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The updated CatalogAttribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogAttribute")]
+        public virtual GoogleCloudRetailV2alphaCatalogAttribute CatalogAttribute { get; set; }
+
+        /// <summary>
+        /// Indicates which fields in the provided CatalogAttribute to update. The following are NOT supported: *
+        /// CatalogAttribute.key If not set, all supported fields are updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7010,10 +7490,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores
         /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
-        /// is 10. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost
-        /// conditions from both places are evaluated. If a search request matches multiple boost conditions, the final
-        /// boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if
-        /// solution_types is SOLUTION_TYPE_SEARCH.
+        /// is 100. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the
+        /// boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the
+        /// final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set
+        /// if solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostControlIds")]
         public virtual System.Collections.Generic.IList<string> BoostControlIds { get; set; }
@@ -7119,7 +7599,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple
-        /// apply. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        /// apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectControlIds")]
         public virtual System.Collections.Generic.IList<string> RedirectControlIds { get; set; }
@@ -7156,10 +7636,18 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// The final component of the resource name of a branch. This field must be one of "0", "1" or "2". Otherwise,
-        /// an INVALID_ARGUMENT error is returned.
+        /// an INVALID_ARGUMENT error is returned. If there are no sufficient active products in the targeted branch and
+        /// force is not set, a FAILED_PRECONDITION error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
+
+        /// <summary>
+        /// If set to true, it permits switching to a branch with branch_id even if it has no sufficient active
+        /// products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>
         /// Some note on this request, this can be retrieved by CatalogService.GetDefaultBranch before next valid
@@ -7203,10 +7691,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Product to update does not have existing inventory information, the provided inventory information will be
         /// inserted. If the Product to update has existing inventory information, the provided inventory information
         /// will be merged while respecting the last update time for each inventory field, using the provided or default
-        /// value for SetInventoryRequest.set_time. The last update time is recorded for the following inventory fields:
-        /// * Product.price_info * Product.availability * Product.available_quantity * Product.fulfillment_info If a
-        /// full overwrite of inventory information while ignoring timestamps is needed, UpdateProduct should be invoked
-        /// instead.
+        /// value for SetInventoryRequest.set_time. The caller can replace place IDs for a subset of fulfillment types
+        /// in the following ways: * Adds "fulfillment_info" in SetInventoryRequest.set_mask * Specifies only the
+        /// desired fulfillment types and corresponding place IDs to update in
+        /// SetInventoryRequest.inventory.fulfillment_info The caller can clear all place IDs from a subset of
+        /// fulfillment types in the following ways: * Adds "fulfillment_info" in SetInventoryRequest.set_mask *
+        /// Specifies only the desired fulfillment types to clear in SetInventoryRequest.inventory.fulfillment_info *
+        /// Checks that only the desired fulfillment info types have empty
+        /// SetInventoryRequest.inventory.fulfillment_info.place_ids The last update time is recorded for the following
+        /// inventory fields: * Product.price_info * Product.availability * Product.available_quantity *
+        /// Product.fulfillment_info If a full overwrite of inventory information while ignoring timestamps is needed,
+        /// UpdateProduct should be invoked instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual GoogleCloudRetailV2alphaProduct Inventory { get; set; }
@@ -7628,9 +8123,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2betaImportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
+        /// Google Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory.
+        /// Import errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// `google.rpc.Status` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }

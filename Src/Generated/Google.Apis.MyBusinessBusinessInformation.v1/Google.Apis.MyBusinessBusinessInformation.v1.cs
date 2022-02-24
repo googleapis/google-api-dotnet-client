@@ -2251,8 +2251,9 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual PhoneNumbers PhoneNumbers { get; set; }
 
         /// <summary>
-        /// Required. Describes your business in your own voice and shares with users the unique story of your business
-        /// and offerings.
+        /// Optional. Describes your business in your own voice and shares with users the unique story of your business
+        /// and offerings. This field is required for all categories except lodging categories (e.g. hotels, motels,
+        /// inns).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual Profile Profile { get; set; }
@@ -2261,7 +2262,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regularHours")]
         public virtual BusinessHours RegularHours { get; set; }
 
-        /// <summary>Output only. All locations and chain related to this one.</summary>
+        /// <summary>Optional. All locations and chain related to this one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipData")]
         public virtual RelationshipData RelationshipData { get; set; }
 

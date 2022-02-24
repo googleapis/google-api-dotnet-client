@@ -1085,8 +1085,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
             /// <summary>
             /// Only available to selected merchants, for example multi-client accounts (MCAs) and their sub-accounts.
-            /// When set to `True`, this flag removes any existing claim on the requested website and replaces it with a
-            /// claim from the account that makes the request.
+            /// When set to `True`, this option removes any existing claim on the requested website and replaces it with
+            /// a claim from the account that makes the request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("overwrite", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Overwrite { get; set; }
@@ -1207,7 +1207,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to delete sub-accounts with products. The default value is false.</summary>
+            /// <summary>Option to delete sub-accounts with products. The default value is false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Force { get; set; }
 
@@ -7178,7 +7178,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 TEMPLATE4 = 5,
             }
 
-            /// <summary>The country of the template to retrieve. Defaults to `US`.</summary>
+            /// <summary>The country of the template to retrieve. Defaults to "`US`".</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Country { get; set; }
 
@@ -7224,11 +7224,11 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments
-        /// processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to
-        /// refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible
-        /// differences arising between merchant and Google transaction records. We also recommend having the point of
-        /// sale system communicate with Google to ensure that customers do not receive a double refund by first
-        /// refunding via Google then via an in-store return.
+        /// processing (for example, cash refund done in store). Note: We recommend calling the returnrefundlineitem
+        /// method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent
+        /// possible differences arising between merchant and Google transaction records. We also recommend having the
+        /// point of sale system communicate with Google to ensure that customers do not receive a double refund by
+        /// first refunding through Google then through an in-store return.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">
@@ -7242,11 +7242,11 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments
-        /// processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to
-        /// refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible
-        /// differences arising between merchant and Google transaction records. We also recommend having the point of
-        /// sale system communicate with Google to ensure that customers do not receive a double refund by first
-        /// refunding via Google then via an in-store return.
+        /// processing (for example, cash refund done in store). Note: We recommend calling the returnrefundlineitem
+        /// method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent
+        /// possible differences arising between merchant and Google transaction records. We also recommend having the
+        /// point of sale system communicate with Google to ensure that customers do not receive a double refund by
+        /// first refunding through Google then through an in-store return.
         /// </summary>
         public class InstorerefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersInStoreRefundLineItemResponse>
         {
@@ -7364,7 +7364,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string PlacedDateStart { get; set; }
 
             /// <summary>
-            /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for
+            /// Obtains orders that match any of the specified statuses. Note that `active` is a shortcut for
             /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
             /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
             /// </summary>
@@ -7376,7 +7376,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual System.Nullable<StatusesEnum> Statuses { get; set; }
 
             /// <summary>
-            /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for
+            /// Obtains orders that match any of the specified statuses. Note that `active` is a shortcut for
             /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
             /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
             /// </summary>
@@ -7388,7 +7388,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual Google.Apis.Util.Repeatable<StatusesEnum> StatusesList { get; set; }
 
             /// <summary>
-            /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for
+            /// Obtains orders that match any of the specified statuses. Note that `active` is a shortcut for
             /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
             /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
             /// </summary>
@@ -7733,11 +7733,10 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Returns and refunds a line item. Note that this method can only be called on fully shipped orders. Please
-        /// also note that the Orderreturns API is the preferred way to handle returns after you receive a return from a
-        /// customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use
-        /// Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this
-        /// API to issue a refund.
+        /// Returns and refunds a line item. Note that this method can only be called on fully shipped orders. The
+        /// Orderreturns API is the preferred way to handle returns after you receive a return from a customer. You can
+        /// use Orderreturns.list or Orderreturns.get to search for the return, and then use Orderreturns.processreturn
+        /// to issue the refund. If the return cannot be found, then we recommend using this API to issue a refund.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">
@@ -7750,11 +7749,10 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Returns and refunds a line item. Note that this method can only be called on fully shipped orders. Please
-        /// also note that the Orderreturns API is the preferred way to handle returns after you receive a return from a
-        /// customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use
-        /// Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this
-        /// API to issue a refund.
+        /// Returns and refunds a line item. Note that this method can only be called on fully shipped orders. The
+        /// Orderreturns API is the preferred way to handle returns after you receive a return from a customer. You can
+        /// use Orderreturns.list or Orderreturns.get to search for the return, and then use Orderreturns.processreturn
+        /// to issue the refund. If the return cannot be found, then we recommend using this API to issue a refund.
         /// </summary>
         public class ReturnrefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersReturnRefundLineItemResponse>
         {
@@ -7816,7 +7814,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>
         /// Sets (or overrides if it already exists) merchant provided annotations in the form of key-value pairs. A
         /// common use case would be to supply us with additional structured information about a line item that cannot
-        /// be provided via other methods. Submitted key-value pairs can be retrieved as part of the orders resource.
+        /// be provided through other methods. Submitted key-value pairs can be retrieved as part of the orders
+        /// resource.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">
@@ -7831,7 +7830,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>
         /// Sets (or overrides if it already exists) merchant provided annotations in the form of key-value pairs. A
         /// common use case would be to supply us with additional structured information about a line item that cannot
-        /// be provided via other methods. Submitted key-value pairs can be retrieved as part of the orders resource.
+        /// be provided through other methods. Submitted key-value pairs can be retrieved as part of the orders
+        /// resource.
         /// </summary>
         public class SetlineitemmetadataRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersSetLineItemMetadataResponse>
         {
@@ -9713,7 +9713,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Register a Merchant Center account for pubsub notifications. Note that cloud topic name should not be
+        /// Register a Merchant Center account for pubsub notifications. Note that cloud topic name shouldn't be
         /// provided as part of the request.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -9724,7 +9724,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Register a Merchant Center account for pubsub notifications. Note that cloud topic name should not be
+        /// Register a Merchant Center account for pubsub notifications. Note that cloud topic name shouldn't be
         /// provided as part of the request.
         /// </summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings>
@@ -12560,7 +12560,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 namespace Google.Apis.ShoppingContent.v2_1.Data
 {
     /// <summary>
-    /// Account data. After the creation of a new account it may take a few minutes before it is fully operational. The
+    /// Account data. After the creation of a new account it may take a few minutes before it's fully operational. The
     /// methods delete, insert, and update require the admin role.
     /// </summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
@@ -12654,20 +12654,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountAddress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// CLDR country code (e.g. "US"). All MCA sub-accounts inherit the country of their parent MCA by default,
-        /// however the country can be updated for individual sub-accounts.
+        /// CLDR country code (for example, "US"). All MCA sub-accounts inherit the country of their parent MCA by
+        /// default, however the country can be updated for individual sub-accounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
         /// <summary>
-        /// City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods or
+        /// City, town or commune. May also include dependent localities or sublocalities (for example, neighborhoods or
         /// suburbs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
         public virtual string Locality { get; set; }
 
-        /// <summary>Postal code or ZIP (e.g. "94043").</summary>
+        /// <summary>Postal code or ZIP (for example, "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
@@ -13051,7 +13051,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// The status of an account, i.e., information about its products, which is computed offline and not returned
+    /// The status of an account, that is, information about its products, which is computed offline and not returned
     /// immediately at insertion time.
     /// </summary>
     public class AccountStatus : Google.Apis.Requests.IDirectResponseSchema
@@ -13226,8 +13226,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Tax rules. Updating the tax rules will enable US taxes (not reversible). Defining no rules is equivalent to
-        /// not charging tax at all.
+        /// Tax rules. Updating the tax rules will enable "US" taxes (not reversible). Defining no rules is equivalent
+        /// to not charging tax at all.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<AccountTaxTaxRule> Rules { get; set; }
@@ -13236,7 +13236,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Tax calculation rule to apply in a state or province (USA only).</summary>
+    /// <summary>Tax calculation rule to apply in a state or province (US only).</summary>
     public class AccountTaxTaxRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Country code in which tax is applicable.</summary>
@@ -13812,19 +13812,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string AdministrativeArea { get; set; }
 
         /// <summary>
-        /// Required. City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
-        /// or suburbs).
+        /// Required. City, town or commune. May also include dependent localities or sublocalities (for example,
+        /// neighborhoods or suburbs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; }
 
         /// <summary>
-        /// Required. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) (e.g. "US").
+        /// Required. [CLDR country code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) (for
+        /// example, "US").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
-        /// <summary>Required. Postal code or ZIP (e.g. "94043").</summary>
+        /// <summary>Required. Postal code or ZIP (for example, "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
@@ -13944,7 +13945,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class CarrierRate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved via the
+        /// Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved through the
         /// `getSupportedCarriers` method. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
@@ -13952,7 +13953,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Carrier service, such as `"ground"` or `"2 days"`. The list of supported services for a carrier can be
-        /// retrieved via the `getSupportedCarriers` method. Required.
+        /// retrieved through the `getSupportedCarriers` method. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
         public virtual string CarrierService { get; set; }
@@ -13985,7 +13986,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class CarriersCarrier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The CLDR country code of the carrier (e.g., "US"). Always present.</summary>
+        /// <summary>The CLDR country code of the carrier (for example, "US"). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
@@ -13996,13 +13997,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eddServices")]
         public virtual System.Collections.Generic.IList<string> EddServices { get; set; }
 
-        /// <summary>The name of the carrier (e.g., `"UPS"`). Always present.</summary>
+        /// <summary>The name of the carrier (for example, `"UPS"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// A list of supported services (e.g., `"ground"`) for that carrier. Contains at least one service. This is the
-        /// list of valid values for CarrierRate.carrierService.
+        /// A list of supported services (for example, `"ground"`) for that carrier. Contains at least one service. This
+        /// is the list of valid values for CarrierRate.carrierService.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
@@ -14302,8 +14303,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> Minute { get; set; }
 
         /// <summary>
-        /// Timezone identifier for the cutoff time. A list of identifiers can be found in the AdWords API
-        /// documentation. E.g. "Europe/Zurich". Required.
+        /// Timezone identifier for the cutoff time (for example, "Europe/Zurich"). List of identifiers. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
         public virtual string Timezone { get; set; }
@@ -14393,7 +14393,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
         public virtual System.Nullable<bool> Paused { get; set; }
 
-        /// <summary>Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".</summary>
+        /// <summary>Time zone used for schedule. UTC by default. For example, "America/Los_Angeles".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
@@ -14441,7 +14441,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// The status of a datafeed, i.e., the result of the last retrieval of the datafeed computed asynchronously when
+    /// The status of a datafeed, that is, the result of the last retrieval of the datafeed computed asynchronously when
     /// the feed processing is finished.
     /// </summary>
     public class DatafeedStatus : Google.Apis.Requests.IDirectResponseSchema
@@ -14500,7 +14500,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>An error occurring in the feed, like "invalid price".</summary>
     public class DatafeedStatusError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The code of the error, e.g., "validation/invalid_value".</summary>
+        /// <summary>The code of the error, for example, "validation/invalid_value".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
@@ -14512,7 +14512,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("examples")]
         public virtual System.Collections.Generic.IList<DatafeedStatusExample> Examples { get; set; }
 
-        /// <summary>The error message, e.g., "Invalid price".</summary>
+        /// <summary>The error message, for example, "Invalid price".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
@@ -14549,8 +14549,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Country { get; set; }
 
         /// <summary>
-        /// The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant
-        /// Center).
+        /// The list of destinations to exclude for this target (corresponds to cleared check boxes in Merchant Center).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -14904,7 +14903,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> MaxHandlingTimeInDays { get; set; }
 
         /// <summary>
-        /// Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next day
+        /// Maximum number of business days that are spent in transit. 0 means same day delivery, 1 means next day
         /// delivery. Must be greater than or equal to `minTransitTimeInDays`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
@@ -14918,7 +14917,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> MinHandlingTimeInDays { get; set; }
 
         /// <summary>
-        /// Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next day
+        /// Minimum number of business days that are spent in transit. 0 means same day delivery, 1 means next day
         /// delivery. Either `{min,max}TransitTimeInDays` or `transitTimeTable` must be set, but not both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
@@ -15155,7 +15154,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class HolidayCutoff : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date of the order deadline, in ISO 8601 format. E.g. "2016-11-29" for 29th November 2016. Required.
+        /// Date of the order deadline, in ISO 8601 format. For example, "2016-11-29" for 29th November 2016. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadlineDate")]
         public virtual string DeadlineDate { get; set; }
@@ -15168,8 +15167,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> DeadlineHour { get; set; }
 
         /// <summary>
-        /// Timezone identifier for the deadline hour. A list of identifiers can be found in the AdWords API
-        /// documentation. E.g. "Europe/Zurich". Required.
+        /// Timezone identifier for the deadline hour (for example, "Europe/Zurich"). List of identifiers. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadlineTimezone")]
         public virtual string DeadlineTimezone { get; set; }
@@ -15179,8 +15177,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string HolidayId { get; set; }
 
         /// <summary>
-        /// Date on which the deadline will become visible to consumers in ISO 8601 format. E.g. "2016-10-31" for 31st
-        /// October 2016. Required.
+        /// Date on which the deadline will become visible to consumers in ISO 8601 format. For example, "2016-10-31"
+        /// for 31st October 2016. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleFromDate")]
         public virtual string VisibleFromDate { get; set; }
@@ -15192,21 +15190,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class HolidaysHoliday : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The CLDR territory code of the country in which the holiday is available. E.g. "US", "DE", "GB". A holiday
-        /// cutoff can only be configured in a shipping settings service with matching delivery country. Always present.
+        /// The CLDR territory code of the country in which the holiday is available. For example, "US", "DE", "GB". A
+        /// holiday cutoff can only be configured in a shipping settings service with matching delivery country. Always
+        /// present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
         /// <summary>
-        /// Date of the holiday, in ISO 8601 format. E.g. "2016-12-25" for Christmas 2016. Always present.
+        /// Date of the holiday, in ISO 8601 format. For example, "2016-12-25" for Christmas 2016. Always present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual string Date { get; set; }
 
         /// <summary>
-        /// Date on which the order has to arrive at the customer's, in ISO 8601 format. E.g. "2016-12-24" for 24th
-        /// December 2016. Always present.
+        /// Date on which the order has to arrive at the customer's, in ISO 8601 format. For example, "2016-12-24" for
+        /// 24th December 2016. Always present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryGuaranteeDate")]
         public virtual string DeliveryGuaranteeDate { get; set; }
@@ -15327,7 +15326,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("about")]
         public virtual LiaAboutPageSettings About { get; set; }
 
-        /// <summary>Required. CLDR country code (e.g. "US").</summary>
+        /// <summary>Required. CLDR country code (for example, "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
@@ -15993,7 +15992,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class LocationIdSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A non-empty list of location IDs. They must all be of the same location type (e.g., state).
+        /// A non-empty list of location IDs. They must all be of the same location type (for example, state).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationIds")]
         public virtual System.Collections.Generic.IList<string> LocationIds { get; set; }
@@ -16315,16 +16314,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class MonetaryAmount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The pre-tax or post-tax price depends on the location of the order. - For countries (e.g. US) where price
-        /// attribute excludes tax, this field corresponds to the pre-tax value. - For coutries (e.g. France) where
-        /// price attribute includes tax, this field corresponds to the post-tax value .
+        /// The pre-tax or post-tax price depends on the location of the order. - For countries (for example, "US".
+        /// where price attribute excludes tax, this field corresponds to the pre-tax value. - For coutries (for
+        /// example, "France") where price attribute includes tax, this field corresponds to the post-tax value .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
         public virtual Price PriceAmount { get; set; }
 
         /// <summary>
-        /// Tax value, present only for countries where price attribute excludes tax (e.g. US). No tax is referenced as
-        /// 0 value with the corresponding `currency`.
+        /// Tax value, present only for countries where price attribute excludes tax (for example, "US". No tax is
+        /// referenced as 0 value with the corresponding `currency`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
         public virtual Price TaxAmount { get; set; }
@@ -16471,7 +16470,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>CLDR country code (e.g. "US").</summary>
+        /// <summary>CLDR country code (for example, "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
@@ -16487,13 +16486,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<bool> IsPostOfficeBox { get; set; }
 
         /// <summary>
-        /// City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods or
+        /// City, town or commune. May also include dependent localities or sublocalities (for example, neighborhoods or
         /// suburbs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
         public virtual string Locality { get; set; }
 
-        /// <summary>Postal Code or ZIP (e.g. "94043").</summary>
+        /// <summary>Postal Code or ZIP (for example, "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
@@ -16535,8 +16534,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to the removal
-        /// of the product from Buy on Google until you make an update to that product. This will not affect your
-        /// Shopping ads. Acceptable values are: - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+        /// of the product from Buy on Google until you make an update to that product. This won't affect your Shopping
+        /// ads. Acceptable values are: - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
         /// "`autoPostNoInventory`" - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" -
         /// "`couponAbuse`" - "`customerCanceled`" - "`customerInitiatedCancel`" - "`customerSupportRequested`" -
         /// "`failToPushOrderGoogleError`" - "`failToPushOrderMerchantError`" -
@@ -16671,7 +16670,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Product data as seen by customer from the time of the order placement. Note that certain attributes values
-        /// (e.g. title or gtin) might be reformatted and no longer match values submitted via product feed.
+        /// (for example, title or gtin) might be reformatted and no longer match values submitted through product feed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual OrderLineItemProduct Product { get; set; }
@@ -16801,7 +16800,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shownImage")]
         public virtual string ShownImage { get; set; }
 
-        /// <summary>The CLDR territory // code of the target country of the product.</summary>
+        /// <summary>The CLDR territory code of the target country of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }
 
@@ -17012,8 +17011,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<OrderPromotionItem> AppliedItems { get; set; }
 
         /// <summary>
-        /// Promotion end time in ISO 8601 format. Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00" or
-        /// "2020-01-02T09:00:00Z".
+        /// Promotion end time in ISO 8601 format. Date, time, and offset required, for example,
+        /// "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; }
@@ -17043,8 +17042,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ShortTitle { get; set; }
 
         /// <summary>
-        /// Promotion start time in ISO 8601 format. Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00"
-        /// or "2020-01-02T09:00:00Z".
+        /// Promotion start time in ISO 8601 format. Date, time, and offset required, for example,
+        /// "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; }
@@ -17255,8 +17254,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// The carrier handling the shipment. For supported carriers, Google includes the carrier name and tracking URL
         /// in emails to customers. For select supported carriers, Google also automatically updates the shipment status
         /// based on the provided shipment ID. *Note:* You can also use unsupported carriers, but emails to customers
-        /// will not include the carrier name or tracking URL, and there will be no automatic order status updates.
-        /// Supported carriers for US are: - "`ups`" (United Parcel Service) *automatic status updates* - "`usps`"
+        /// won't include the carrier name or tracking URL, and there will be no automatic order status updates.
+        /// Supported carriers for "US" are: - "`ups`" (United Parcel Service) *automatic status updates* - "`usps`"
         /// (United States Postal Service) *automatic status updates* - "`fedex`" (FedEx) *automatic status updates * -
         /// "`dhl`" (DHL eCommerce) *automatic status updates* (US only) - "`ontrac`" (OnTrac) *automatic status updates
         /// * - "`dhl express`" (DHL Express) - "`deliv`" (Deliv) - "`dynamex`" (TForce) - "`lasership`" (LaserShip) -
@@ -17345,7 +17344,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// The phone number of the carrier fulfilling the delivery. The phone number is formatted as the international
-        /// notation in ITU-T Recommendation E.123 (e.g., "+41 44 668 1800").
+        /// notation in ITU-T Recommendation E.123 (for example, "+41 44 668 1800").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierPhoneNumber")]
         public virtual string CarrierPhoneNumber { get; set; }
@@ -17930,7 +17929,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// If true, the item will be fully refunded. Allowed only when payment_type is FOP. Merchant can choose this
         /// refund option to indicate the full remaining amount of corresponding object to be refunded to the customer
-        /// via FOP.
+        /// through FOP.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
         public virtual System.Nullable<bool> FullRefund { get; set; }
@@ -18152,8 +18151,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// The CLDR territory code of the country of the test order to create. Affects the currency and addresses of
-        /// orders created via `template_name`, or the addresses of orders created via `test_order`. Acceptable values
-        /// are: - "`US`" - "`FR`" Defaults to `US`.
+        /// orders created through `template_name`, or the addresses of orders created through `test_order`. Acceptable
+        /// values are: - "`US`" - "`FR`" Defaults to "`US`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
@@ -18234,15 +18233,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class OrdersCustomBatchRequestEntryRefundItemItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The total amount that is refunded. (e.g. refunding $5 each for 2 products should be done by setting quantity
-        /// to 2 and amount to 10$) In case of multiple refunds, this should be the amount you currently want to refund
-        /// to the customer.
+        /// The total amount that is refunded. (for example, refunding $5 each for 2 products should be done by setting
+        /// quantity to 2 and amount to 10$) In case of multiple refunds, this should be the amount you currently want
+        /// to refund to the customer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual MonetaryAmount Amount { get; set; }
 
         /// <summary>
-        /// If true, the full item will be refunded. If this is true, amount should not be provided and will be ignored.
+        /// If true, the full item will be refunded. If this is true, amount shouldn't be provided and will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
         public virtual System.Nullable<bool> FullRefund { get; set; }
@@ -18276,7 +18275,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual Price Amount { get; set; }
 
         /// <summary>
-        /// If set to true, all shipping costs for the order will be refunded. If this is true, amount should not be
+        /// If set to true, all shipping costs for the order will be refunded. If this is true, amount shouldn't be
         /// provided and will be ignored. If set to false, submit the amount of the partial shipping refund, excluding
         /// the shipping tax. The shipping tax is calculated and handled on Google's side.
         /// </summary>
@@ -18506,7 +18505,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual MonetaryAmount Amount { get; set; }
 
         /// <summary>
-        /// If true, the full order will be refunded, including shipping. If this is true, amount should not be provided
+        /// If true, the full order will be refunded, including shipping. If this is true, amount shouldn't be provided
         /// and will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
@@ -18753,7 +18752,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated. Provided date
-        /// should be within 1 year timeframe and can not be a date in the past.
+        /// should be within 1 year timeframe and can't be a date in the past.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliverByDate")]
         public virtual string DeliverByDate { get; set; }
@@ -18775,7 +18774,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated. Provided date
-        /// should be within 1 year timeframe and can not be a date in the past.
+        /// should be within 1 year timeframe and can't be a date in the past.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
         public virtual string ShipByDate { get; set; }
@@ -18938,11 +18937,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class PickupCarrierService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the pickup carrier (e.g., `"UPS"`). Required.</summary>
+        /// <summary>The name of the pickup carrier (for example, `"UPS"`). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
         public virtual string CarrierName { get; set; }
 
-        /// <summary>The name of the pickup service (e.g., `"Access point"`). Required.</summary>
+        /// <summary>The name of the pickup service (for example, `"Access point"`). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
 
@@ -18952,15 +18951,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class PickupServicesPickupService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the carrier (e.g., `"UPS"`). Always present.</summary>
+        /// <summary>The name of the carrier (for example, `"UPS"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
         public virtual string CarrierName { get; set; }
 
-        /// <summary>The CLDR country code of the carrier (e.g., "US"). Always present.</summary>
+        /// <summary>The CLDR country code of the carrier (for example, "US"). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
-        /// <summary>The name of the pickup service (e.g., `"Access point"`). Always present.</summary>
+        /// <summary>The name of the pickup service (for example, `"Access point"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
 
@@ -19129,8 +19128,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>
-        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in a Business Profile.
+        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code
+        /// of the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19170,8 +19169,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>
-        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in a Business Profile.
+        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code
+        /// of the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19217,8 +19216,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>
-        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in a Business Profile.
+        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code
+        /// of the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19282,8 +19281,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string SaleId { get; set; }
 
         /// <summary>
-        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in a Business Profile.
+        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code
+        /// of the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19327,8 +19326,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string SaleId { get; set; }
 
         /// <summary>
-        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in a Business Profile.
+        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code
+        /// of the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19378,8 +19377,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string SaleId { get; set; }
 
         /// <summary>
-        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the code of
-        /// the store in a Business Profile.
+        /// Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code
+        /// of the store in a Business Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
@@ -19584,9 +19583,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the
-        /// feed specification in its generic form (e.g., `{ "name": "size type", "value": "regular" }`). This is useful
-        /// for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on
-        /// Google (formerly known as Shopping Actions).
+        /// feed specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is
+        /// useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for
+        /// Buy on Google (formerly known as Shopping Actions).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
@@ -19640,8 +19639,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string EnergyEfficiencyClass { get; set; }
 
         /// <summary>
-        /// The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant
-        /// Center).
+        /// The list of destinations to exclude for this target (corresponds to cleared check boxes in Merchant Center).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -19773,7 +19771,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }
 
-        /// <summary>The item's pattern (e.g. polka dots).</summary>
+        /// <summary>The item's pattern (for example, polka dots).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
 
@@ -19900,7 +19898,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> Sizes { get; set; }
 
         /// <summary>
-        /// The source of the offer, i.e., how the offer was created. Acceptable values are: - "`api`" - "`crawl`" -
+        /// The source of the offer, that is, how the offer was created. Acceptable values are: - "`api`" - "`crawl`" -
         /// "`feed`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
@@ -20020,14 +20018,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Maximum handling time (inclusive) between when the order is received and shipped in business days. 0 means
-        /// that the order is shipped on the same day as it is received if it happens before the cut-off time. Both
+        /// that the order is shipped on the same day as it's received if it happens before the cut-off time. Both
         /// maxHandlingTime and maxTransitTime are required if providing shipping speeds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTime")]
         public virtual System.Nullable<long> MaxHandlingTime { get; set; }
 
         /// <summary>
-        /// Maximum transit time (inclusive) between when the order has shipped and when it is delivered in business
+        /// Maximum transit time (inclusive) between when the order has shipped and when it's delivered in business
         /// days. 0 means that the order is delivered on the same day as it ships. Both maxHandlingTime and
         /// maxTransitTime are required if providing shipping speeds.
         /// </summary>
@@ -20036,17 +20034,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Minimum handling time (inclusive) between when the order is received and shipped in business days. 0 means
-        /// that the order is shipped on the same day as it is received if it happens before the cut-off time.
-        /// minHandlingTime can only be present together with maxHandlingTime; but it is not required if maxHandlingTime
+        /// that the order is shipped on the same day as it's received if it happens before the cut-off time.
+        /// minHandlingTime can only be present together with maxHandlingTime; but it's not required if maxHandlingTime
         /// is present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
         public virtual System.Nullable<long> MinHandlingTime { get; set; }
 
         /// <summary>
-        /// Minimum transit time (inclusive) between when the order has shipped and when it is delivered in business
+        /// Minimum transit time (inclusive) between when the order has shipped and when it's delivered in business
         /// days. 0 means that the order is delivered on the same day as it ships. minTransitTime can only be present
-        /// together with maxTransitTime; but it is not required if maxTransitTime is present.
+        /// together with maxTransitTime; but it's not required if maxTransitTime is present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTime")]
         public virtual System.Nullable<long> MinTransitTime { get; set; }
@@ -20102,7 +20100,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of a product, i.e., information about a product computed asynchronously.</summary>
+    /// <summary>The status of a product, that is, information about a product computed asynchronously.</summary>
     public class ProductStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Date on which the item has been created, in ISO 8601 format.</summary>
@@ -20757,8 +20755,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The value of the rate group (e.g. flat rate $10). Can only be set if `mainTable` and `subtables` are not
-        /// set.
+        /// The value of the rate group (for example, flat rate $10). Can only be set if `mainTable` and `subtables` are
+        /// not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleValue")]
         public virtual Value SingleValue { get; set; }
@@ -21544,18 +21542,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class ReturnAddressAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>CLDR country code (e.g. "US").</summary>
+        /// <summary>CLDR country code (for example, "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
         /// <summary>
-        /// City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods or
+        /// City, town or commune. May also include dependent localities or sublocalities (for example, neighborhoods or
         /// suburbs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
         public virtual string Locality { get; set; }
 
-        /// <summary>Postal code or ZIP (e.g. "94043").</summary>
+        /// <summary>Postal code or ZIP (for example, "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
@@ -22374,8 +22372,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The carrier-service pair delivering items to collection points. The list of supported pickup services can be
-        /// retrieved via the `getSupportedPickupServices` method. Required if and only if the service delivery type is
-        /// `pickup`.
+        /// retrieved through the `getSupportedPickupServices` method. Required if and only if the service delivery type
+        /// is `pickup`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupService")]
         public virtual PickupCarrierService PickupService { get; set; }
@@ -22436,8 +22434,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string TransferDate { get; set; }
 
         /// <summary>
-        /// The list of bank identifiers used for the transfer. e.g. Trace ID for Federal Automated Clearing House
-        /// (ACH). This may also be known as the Wire ID.
+        /// The list of bank identifiers used for the transfer. For example, Trace ID for Federal Automated Clearing
+        /// House (ACH). This may also be known as the Wire ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferIds")]
         public virtual System.Collections.Generic.IList<string> TransferIds { get; set; }
@@ -22542,7 +22540,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class SettlementTransactionIdentifiers : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier of the adjustments, if it is available.</summary>
+        /// <summary>The identifier of the adjustments, if it's available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustmentId")]
         public virtual string AdjustmentId { get; set; }
 
@@ -23043,7 +23041,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class TestOrderAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>CLDR country code (e.g. "US").</summary>
+        /// <summary>CLDR country code (for example, "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
@@ -23059,13 +23057,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<bool> IsPostOfficeBox { get; set; }
 
         /// <summary>
-        /// City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods or
+        /// City, town or commune. May also include dependent localities or sublocalities (for example, neighborhoods or
         /// suburbs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
         public virtual string Locality { get; set; }
 
-        /// <summary>Postal Code or ZIP (e.g. "94043").</summary>
+        /// <summary>Postal Code or ZIP (for example, "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
@@ -23175,7 +23173,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; }
 
-        /// <summary>Required. The CLDR territory // code of the target country of the product.</summary>
+        /// <summary>Required. The CLDR territory code of the target country of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }
 
@@ -23307,7 +23305,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class UnitInvoice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional charges for a unit, e.g. shipping costs.</summary>
+        /// <summary>Additional charges for a unit, for example, shipping costs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalCharges")]
         public virtual System.Collections.Generic.IList<UnitInvoiceAdditionalCharge> AdditionalCharges { get; set; }
 
@@ -23392,15 +23390,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<bool> NoShipping { get; set; }
 
         /// <summary>
-        /// A percentage of the price represented as a number in decimal notation (e.g., `"5.4"`). Can only be set if
-        /// all other fields are not set.
+        /// A percentage of the price represented as a number in decimal notation (for example, `"5.4"`). Can only be
+        /// set if all other fields are not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricePercentage")]
         public virtual string PricePercentage { get; set; }
 
         /// <summary>
-        /// The name of a subtable. Can only be set in table cells (i.e., not for single values), and only if all other
-        /// fields are not set.
+        /// The name of a subtable. Can only be set in table cells (not for single values), and only if all other fields
+        /// are not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtableName")]
         public virtual string SubtableName { get; set; }
@@ -23478,7 +23476,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class WarehouseBasedDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Carrier, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved via the
+        /// Required. Carrier, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved through the
         /// `listSupportedCarriers` method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
@@ -23486,7 +23484,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. Carrier service, such as `"ground"` or `"2 days"`. The list of supported services for a carrier
-        /// can be retrieved via the `listSupportedCarriers` method. The name of the service must be in the
+        /// can be retrieved through the `listSupportedCarriers` method. The name of the service must be in the
         /// eddSupportedServices list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
@@ -23502,7 +23500,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Shipping origin's country represented as a [CLDR territory
-        /// code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+        /// code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originCountry")]
         public virtual string OriginCountry { get; set; }

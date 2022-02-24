@@ -288,6 +288,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         {
             this.service = service;
             Assets = new AssetsResource(service);
+            BigQueryExports = new BigQueryExportsResource(service);
             Findings = new FindingsResource(service);
             MuteConfigs = new MuteConfigsResource(service);
             Sources = new SourcesResource(service);
@@ -651,6 +652,377 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the BigQueryExports resource.</summary>
+        public virtual BigQueryExportsResource BigQueryExports { get; }
+
+        /// <summary>The "bigQueryExports" collection of methods.</summary>
+        public class BigQueryExportsResource
+        {
+            private const string Resource = "bigQueryExports";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BigQueryExportsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a big query export.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the new big query export's parent. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a big query export.</summary>
+            public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the new big query export's parent. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower
+                /// case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number,
+                /// and a 63 character maximum.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("bigQueryExportId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BigQueryExportId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/bigQueryExports";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("bigQueryExportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bigQueryExportId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes an existing big query export.</summary>
+            /// <param name="name">
+            /// Required. Name of the big query export to delete. Its format is
+            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
+            /// or projects/{project}/bigQueryExports/{export_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an existing big query export.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the big query export to delete. Its format is
+                /// organizations/{organization}/bigQueryExports/{export_id},
+                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/bigQueryExports/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a big query export.</summary>
+            /// <param name="name">
+            /// Required. Name of the big query export to retrieve. Its format is
+            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
+            /// or projects/{project}/bigQueryExports/{export_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a big query export.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the big query export to retrieve. Its format is
+                /// organizations/{organization}/bigQueryExports/{export_id},
+                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/bigQueryExports/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under
+            /// that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery
+            /// exports immediately under the folder plus the ones created under the projects within the folder are
+            /// returned.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns the collection of BigQuery exports. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under
+            /// that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery
+            /// exports immediately under the folder plus the ones created under the projects within the folder are
+            /// returned.
+            /// </summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListBigQueryExportsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns the collection of BigQuery exports. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of configs to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 configs will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListBigQueryExports` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListBigQueryExports` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/bigQueryExports";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a BigQuery export.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// The relative resource name of this export. See:
+            /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+            /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+            /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+            /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored
+            /// when provided in create requests.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a BigQuery export.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The relative resource name of this export. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+                /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+                /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+                /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is
+                /// ignored when provided in create requests.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated. If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/bigQueryExports/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -1917,6 +2289,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         {
             this.service = service;
             Assets = new AssetsResource(service);
+            BigQueryExports = new BigQueryExportsResource(service);
             Findings = new FindingsResource(service);
             MuteConfigs = new MuteConfigsResource(service);
             NotificationConfigs = new NotificationConfigsResource(service);
@@ -2349,6 +2722,377 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the BigQueryExports resource.</summary>
+        public virtual BigQueryExportsResource BigQueryExports { get; }
+
+        /// <summary>The "bigQueryExports" collection of methods.</summary>
+        public class BigQueryExportsResource
+        {
+            private const string Resource = "bigQueryExports";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BigQueryExportsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a big query export.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the new big query export's parent. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a big query export.</summary>
+            public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the new big query export's parent. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower
+                /// case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number,
+                /// and a 63 character maximum.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("bigQueryExportId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BigQueryExportId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/bigQueryExports";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("bigQueryExportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bigQueryExportId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes an existing big query export.</summary>
+            /// <param name="name">
+            /// Required. Name of the big query export to delete. Its format is
+            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
+            /// or projects/{project}/bigQueryExports/{export_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an existing big query export.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the big query export to delete. Its format is
+                /// organizations/{organization}/bigQueryExports/{export_id},
+                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/bigQueryExports/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a big query export.</summary>
+            /// <param name="name">
+            /// Required. Name of the big query export to retrieve. Its format is
+            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
+            /// or projects/{project}/bigQueryExports/{export_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a big query export.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the big query export to retrieve. Its format is
+                /// organizations/{organization}/bigQueryExports/{export_id},
+                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/bigQueryExports/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under
+            /// that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery
+            /// exports immediately under the folder plus the ones created under the projects within the folder are
+            /// returned.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns the collection of BigQuery exports. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under
+            /// that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery
+            /// exports immediately under the folder plus the ones created under the projects within the folder are
+            /// returned.
+            /// </summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListBigQueryExportsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns the collection of BigQuery exports. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of configs to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 configs will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListBigQueryExports` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListBigQueryExports` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/bigQueryExports";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a BigQuery export.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// The relative resource name of this export. See:
+            /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+            /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+            /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+            /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored
+            /// when provided in create requests.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a BigQuery export.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The relative resource name of this export. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+                /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+                /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+                /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is
+                /// ignored when provided in create requests.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated. If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/bigQueryExports/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -4815,6 +5559,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         {
             this.service = service;
             Assets = new AssetsResource(service);
+            BigQueryExports = new BigQueryExportsResource(service);
             Findings = new FindingsResource(service);
             MuteConfigs = new MuteConfigsResource(service);
             Sources = new SourcesResource(service);
@@ -5178,6 +5923,377 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the BigQueryExports resource.</summary>
+        public virtual BigQueryExportsResource BigQueryExports { get; }
+
+        /// <summary>The "bigQueryExports" collection of methods.</summary>
+        public class BigQueryExportsResource
+        {
+            private const string Resource = "bigQueryExports";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BigQueryExportsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a big query export.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the new big query export's parent. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a big query export.</summary>
+            public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the new big query export's parent. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower
+                /// case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number,
+                /// and a 63 character maximum.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("bigQueryExportId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BigQueryExportId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/bigQueryExports";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("bigQueryExportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bigQueryExportId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes an existing big query export.</summary>
+            /// <param name="name">
+            /// Required. Name of the big query export to delete. Its format is
+            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
+            /// or projects/{project}/bigQueryExports/{export_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an existing big query export.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the big query export to delete. Its format is
+                /// organizations/{organization}/bigQueryExports/{export_id},
+                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/bigQueryExports/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a big query export.</summary>
+            /// <param name="name">
+            /// Required. Name of the big query export to retrieve. Its format is
+            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
+            /// or projects/{project}/bigQueryExports/{export_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a big query export.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the big query export to retrieve. Its format is
+                /// organizations/{organization}/bigQueryExports/{export_id},
+                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/bigQueryExports/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under
+            /// that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery
+            /// exports immediately under the folder plus the ones created under the projects within the folder are
+            /// returned.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns the collection of BigQuery exports. Its format is
+            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under
+            /// that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery
+            /// exports immediately under the folder plus the ones created under the projects within the folder are
+            /// returned.
+            /// </summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListBigQueryExportsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns the collection of BigQuery exports. Its format is
+                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of configs to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 configs will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListBigQueryExports` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListBigQueryExports` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/bigQueryExports";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a BigQuery export.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// The relative resource name of this export. See:
+            /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+            /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+            /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+            /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored
+            /// when provided in create requests.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a BigQuery export.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The relative resource name of this export. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+                /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+                /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+                /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is
+                /// ignored when provided in create requests.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated. If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/bigQueryExports/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -7046,6 +8162,80 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configures how to deliver Findings to BigQuery Instance.</summary>
+    public class GoogleCloudSecuritycenterV1BigQueryExport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time at which the big query export was created. This field is set by the server and will be
+        /// ignored if provided on export on creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The dataset to write findings' updates to. Its format is
+        /// "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters
+        /// (a-z, A-Z), numbers (0-9), or underscores (_).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The description of the export (max of 1024 characters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Expression that defines the filter to apply across create/update events of findings. The expression is a
+        /// list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported,
+        /// and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in
+        /// front of them to indicate negation. The fields map to those defined in the corresponding resource. The
+        /// supported operators are: * `=` for all value types. * `&amp;gt;`, `&amp;lt;`, `&amp;gt;=`, `&amp;lt;=` for
+        /// integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string
+        /// literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
+        /// Please see the proto documentation in the finding
+        /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/finding.proto) and in
+        /// the ListFindingsRequest for valid filter syntax.
+        /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/securitycenter_service.proto).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Output only. Email address of the user who last edited the big query export. This field is set by the server
+        /// and will be ignored if provided on export creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostRecentEditor")]
+        public virtual string MostRecentEditor { get; set; }
+
+        /// <summary>
+        /// The relative resource name of this export. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+        /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+        /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+        /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when
+        /// provided in create requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The service account that needs permission to create table, upload data to the big query
+        /// dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; }
+
+        /// <summary>
+        /// Output only. The most recent time at which the big export was updated. This field is set by the server and
+        /// will be ignored if provided on export creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response to a BulkMute request. Contains the LRO information.</summary>
     public class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7198,7 +8388,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The human readable name of project that the resource belongs to.</summary>
+        /// <summary>The project id that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 
@@ -7403,7 +8593,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The human readable name of project that the resource belongs to.</summary>
+        /// <summary>The project id that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 
@@ -7775,6 +8965,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing BigQuery exports.</summary>
+    public class ListBigQueryExportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery exports from the specified parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryExports")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1BigQueryExport> BigQueryExports { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing findings.</summary>
     public class ListFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8141,7 +9349,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
         public virtual string ParentName { get; set; }
 
-        /// <summary>The human readable name of project that the resource belongs to.</summary>
+        /// <summary>The project id that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 

@@ -4066,6 +4066,15 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies if a user is able to factory reset a device after a Device Wipe. On iOS, this is called
+        /// "Activation Lock", while on Android, this is known as "Factory Reset Protection". If true, this protection
+        /// will be removed from the device, so that a user can successfully factory reset. If false, the setting is
+        /// untouched on the device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeResetLock")]
+        public virtual System.Nullable<bool> RemoveResetLock { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

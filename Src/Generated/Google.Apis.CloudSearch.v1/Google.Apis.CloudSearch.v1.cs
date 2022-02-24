@@ -2832,7 +2832,8 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
                 /// <summary>
-                /// Maximum number of datasources to fetch in a request. The max value is 100. The default value is 10
+                /// Maximum number of datasources to fetch in a request. The max value is 1000. The default value is
+                /// 1000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -8059,6 +8060,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("avatarInfo")]
         public virtual AvatarInfo AvatarInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("avatarUrl")]
+        public virtual string AvatarUrl { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
