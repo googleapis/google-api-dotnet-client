@@ -13,21 +13,21 @@ jobs:
 
     # We build with .NET Core 3.1 SDK
     - name: Setup .NET Core 3.1	
-      uses: actions/setup-dotnet@v1	
+      uses: actions/setup-dotnet@v2	
       with:	
         dotnet-version: 3.1.x
 
     # We use the .NET Core 1.1, 2.0 and 2.1 runtimes for additional testing
     - name: Setup .NET Core 1.1	
-      uses: actions/setup-dotnet@v1	
+      uses: actions/setup-dotnet@v2	
       with:	
         dotnet-version: 1.1.x	
     - name: Setup .NET Core 2.0	
-      uses: actions/setup-dotnet@v1	
+      uses: actions/setup-dotnet@v2	
       with:	
         dotnet-version: 2.0.x
     - name: Setup .NET Core 2.1	
-      uses: actions/setup-dotnet@v1	
+      uses: actions/setup-dotnet@v2	
       with:	
         dotnet-version: 2.1.x	
 
