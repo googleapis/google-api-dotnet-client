@@ -2765,13 +2765,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Operation payload for EnableService method.</summary>
-    public class EnableServiceResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service
     /// endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service
@@ -4195,7 +4188,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>This field is deprecated and will be deleted. Please remove usage of this field.</summary>
+        /// <summary>The user who created the Rollout. Readonly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdBy")]
         public virtual string CreatedBy { get; set; }
 

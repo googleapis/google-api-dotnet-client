@@ -68,7 +68,8 @@
   ],
   "Google.Apis.Blogger.v3.PagesResource+ListRequest.StatusEnum": [
     "LIVE",
-    "DRAFT"
+    "DRAFT",
+    "SOFT_TRASHED"
   ],
   "Google.Apis.Blogger.v3.PagesResource+ListRequest.ViewEnum": [
     "VIEW_TYPE_UNSPECIFIED",
@@ -101,7 +102,8 @@
   "Google.Apis.Blogger.v3.PostsResource+ListRequest.StatusEnum": [
     "LIVE",
     "DRAFT",
-    "SCHEDULED"
+    "SCHEDULED",
+    "SOFT_TRASHED"
   ],
   "Google.Apis.Blogger.v3.PostsResource+ListRequest.ViewEnum": [
     "VIEW_TYPE_UNSPECIFIED",
@@ -122,7 +124,8 @@
   "Google.Apis.Blogger.v3.PostUserInfosResource+ListRequest.StatusEnum": [
     "LIVE",
     "DRAFT",
-    "SCHEDULED"
+    "SCHEDULED",
+    "SOFT_TRASHED"
   ],
   "Google.Apis.Blogger.v3.PostUserInfosResource+ListRequest.ViewEnum": [
     "VIEW_TYPE_UNSPECIFIED",

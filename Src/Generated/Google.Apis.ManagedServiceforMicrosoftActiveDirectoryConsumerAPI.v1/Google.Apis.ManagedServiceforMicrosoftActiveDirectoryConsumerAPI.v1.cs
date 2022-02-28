@@ -341,7 +341,601 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     public DomainsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Backups = new BackupsResource(service);
                         SqlIntegrations = new SqlIntegrationsResource(service);
+                    }
+
+                    /// <summary>Gets the Backups resource.</summary>
+                    public virtual BackupsResource Backups { get; }
+
+                    /// <summary>The "backups" collection of methods.</summary>
+                    public class BackupsResource
+                    {
+                        private const string Resource = "backups";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public BackupsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Creates a Backup for a domain.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a Backup for a domain.</summary>
+                        public class CreateRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The domain resource name using the form:
+                            /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. Backup Id, unique name to identify the backups with the following
+                            /// restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a
+                            /// letter. * Must contain between 1-63 characters. * Must end with a number or a letter. *
+                            /// Must be unique within the domain.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("backupId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string BackupId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/backups";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                                });
+                                RequestParameters.Add("backupId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "backupId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes identified Backup.</summary>
+                        /// <param name="name">
+                        /// Required. The backup resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes identified Backup.</summary>
+                        public class DeleteRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The backup resource name using the form:
+                            /// `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+/backups/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets details of a single Backup.</summary>
+                        /// <param name="name">
+                        /// Required. The backup resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details of a single Backup.</summary>
+                        public class GetRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The backup resource name using the form:
+                            /// `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+/backups/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the access control policy for a resource. Returns an empty policy if the resource
+                        /// exists and does not have a policy set.
+                        /// </summary>
+                        /// <param name="resource">
+                        /// REQUIRED: The resource for which the policy is being requested. See the operation
+                        /// documentation for the appropriate value for this field.
+                        /// </param>
+                        public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                        {
+                            return new GetIamPolicyRequest(service, resource);
+                        }
+
+                        /// <summary>
+                        /// Gets the access control policy for a resource. Returns an empty policy if the resource
+                        /// exists and does not have a policy set.
+                        /// </summary>
+                        public class GetIamPolicyRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Policy>
+                        {
+                            /// <summary>Constructs a new GetIamPolicy request.</summary>
+                            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// REQUIRED: The resource for which the policy is being requested. See the operation
+                            /// documentation for the appropriate value for this field.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum policy version that will be used to format the policy. Valid
+                            /// values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests
+                            /// for policies with any conditional role bindings must specify version 3. Policies with no
+                            /// conditional role bindings may specify any valid value or leave the field unset. The
+                            /// policy in the response might use the policy version that you specified, or it might use
+                            /// a lower policy version. For example, if you specify version 3, but the policy has no
+                            /// conditional role bindings, the response uses version 1. To learn which resources support
+                            /// conditions in their IAM policies, see the [IAM
+                            /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "getIamPolicy";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+/backups/[^/]+$",
+                                });
+                                RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "options.requestedPolicyVersion",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists Backup in a given project.</summary>
+                        /// <param name="parent">
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists Backup in a given project.</summary>
+                        public class ListRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ListBackupsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The domain resource name using the form:
+                            /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. Filter specifying constraints of a list operation.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Optional. Specifies the ordering of results following syntax at
+                            /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of items to return. If not specified, a default value of
+                            /// 1000 will be used by the service. Regardless of the page_size value, the response may
+                            /// include a partial list and a caller should only rely on response's next_page_token to
+                            /// determine if there are more instances left to be queried.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The `next_page_token` value returned from a previous List request, if any.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/backups";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates the labels for specified Backup.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Output only. The unique name of the Backup in the form of
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the labels for specified Backup.</summary>
+                        public class PatchRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Output only. The unique name of the Backup in the form of
+                            /// `projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Required. Mask of fields to update. At least one path must be supplied in this field.
+                            /// The elements of the repeated paths field may only include these fields from Backup: *
+                            /// `labels`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+/backups/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                        /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="resource">
+                        /// REQUIRED: The resource for which the policy is being specified. See the operation
+                        /// documentation for the appropriate value for this field.
+                        /// </param>
+                        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.SetIamPolicyRequest body, string resource)
+                        {
+                            return new SetIamPolicyRequest(service, body, resource);
+                        }
+
+                        /// <summary>
+                        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                        /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                        /// </summary>
+                        public class SetIamPolicyRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Policy>
+                        {
+                            /// <summary>Constructs a new SetIamPolicy request.</summary>
+                            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// REQUIRED: The resource for which the policy is being specified. See the operation
+                            /// documentation for the appropriate value for this field.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "setIamPolicy";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+/backups/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Returns permissions that a caller has on the specified resource. If the resource does not
+                        /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                        /// operation is designed to be used for building permission-aware UIs and command-line tools,
+                        /// not for authorization checking. This operation may "fail open" without warning.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="resource">
+                        /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                        /// documentation for the appropriate value for this field.
+                        /// </param>
+                        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.TestIamPermissionsRequest body, string resource)
+                        {
+                            return new TestIamPermissionsRequest(service, body, resource);
+                        }
+
+                        /// <summary>
+                        /// Returns permissions that a caller has on the specified resource. If the resource does not
+                        /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                        /// operation is designed to be used for building permission-aware UIs and command-line tools,
+                        /// not for authorization checking. This operation may "fail open" without warning.
+                        /// </summary>
+                        public class TestIamPermissionsRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.TestIamPermissionsResponse>
+                        {
+                            /// <summary>Constructs a new TestIamPermissions request.</summary>
+                            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                            /// documentation for the appropriate value for this field.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "testIamPermissions";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+/backups/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the SqlIntegrations resource.</summary>
@@ -1246,6 +1840,59 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         public override string RestPath => "v1/{+name}:resetAdminPassword";
 
                         /// <summary>Initializes ResetAdminPassword parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>RestoreDomain restores domain backup mentioned in the RestoreDomainRequest</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Resource name for the domain to which the backup belongs</param>
+                    public virtual RestoreRequest Restore(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.RestoreDomainRequest body, string name)
+                    {
+                        return new RestoreRequest(service, body, name);
+                    }
+
+                    /// <summary>RestoreDomain restores domain backup mentioned in the RestoreDomainRequest</summary>
+                    public class RestoreRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Restore request.</summary>
+                        public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.RestoreDomainRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Resource name for the domain to which the backup belongs</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.RestoreDomainRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "restore";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:restore";
+
+                        /// <summary>Initializes Restore parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -2566,6 +3213,46 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a Managed Microsoft Identities backup.</summary>
+    public class Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the backups was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. Resource labels to represent user provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The unique name of the Backup in the form of
+        /// `projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current state of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information about the current status of this backup, if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. Indicates whether it’s an on-demand backup or scheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Last update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2666,10 +3353,10 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3001,6 +3688,16 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual object CreateTime { get; set; }
 
         /// <summary>
+        /// Optional. The instance_type of this instance of format:
+        /// projects/{project_id}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a
+        /// high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout),
+        /// Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or
+        /// not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
+        public virtual string InstanceType { get; set; }
+
+        /// <summary>
         /// Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both
         /// the key and the value are arbitrary strings provided by the user.
         /// </summary>
@@ -3033,6 +3730,14 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. notification_parameters are information that service producers may like to include that is not
+        /// relevant to Rollout. This parameter will only be passed to Gamma and Cloud Logging for notification/logging
+        /// purpose.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParameters { get; set; }
 
         /// <summary>
         /// Output only. Custom string attributes used primarily to expose producer-specific information in monitoring
@@ -3321,6 +4026,27 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         /// <summary>Output only. Last update time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ListBackupsResponse is the response message for ListBackups method.</summary>
+    public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of Cloud AD backups in the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3743,6 +4469,17 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         /// <summary>A random password. See admin for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RestoreDomainRequest is the request received by RestoreDomain rpc</summary>
+    public class RestoreDomainRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the backup to be restored</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual string BackupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

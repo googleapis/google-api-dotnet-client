@@ -2629,15 +2629,15 @@ namespace Google.Apis.BigtableAdmin.v2
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// The view to be applied to the returned tables' fields. Only NAME_ONLY view (default) and
-                    /// REPLICATION_VIEW are supported.
+                    /// The view to be applied to the returned tables' fields. Only NAME_ONLY view (default),
+                    /// REPLICATION_VIEW and ENCRYPTION_VIEW are supported.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
                     /// <summary>
-                    /// The view to be applied to the returned tables' fields. Only NAME_ONLY view (default) and
-                    /// REPLICATION_VIEW are supported.
+                    /// The view to be applied to the returned tables' fields. Only NAME_ONLY view (default),
+                    /// REPLICATION_VIEW and ENCRYPTION_VIEW are supported.
                     /// </summary>
                     public enum ViewEnum
                     {

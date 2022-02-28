@@ -2933,6 +2933,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class AndroidApp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have
+        /// restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an
+        /// existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you.
+        /// Cannot be set to an empty value in update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyId")]
+        public virtual string ApiKeyId { get; set; }
+
+        /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be
         /// treated as an opaque token, as the data format is not specified.
         /// </summary>
@@ -3158,6 +3167,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>Details of a Firebase App for iOS.</summary>
     public class IosApp : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have
+        /// restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an
+        /// existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you.
+        /// Cannot be set to an empty value in update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyId")]
+        public virtual string ApiKeyId { get; set; }
+
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be
         /// treated as an opaque token, as the data format is not specified.
@@ -3607,6 +3625,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>Details of a Firebase App for the web.</summary>
     public class WebApp : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have
+        /// restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an
+        /// existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you.
+        /// Cannot be set to an empty value in update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyId")]
+        public virtual string ApiKeyId { get; set; }
+
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be
         /// treated as an opaque token, as the data format is not specified.

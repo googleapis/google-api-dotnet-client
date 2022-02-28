@@ -345,7 +345,7 @@ namespace Google.Apis.GameServices.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GameServices.v1.Data.GameServerConfig body, string parent)
                     {
@@ -369,12 +369,12 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The parent resource name, in the following form:
-                        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
+                        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The ID of the game server config resource to be created.</summary>
+                        /// <summary>Required. The ID of the game server config resource to create.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ConfigId { get; set; }
 
@@ -417,12 +417,12 @@ namespace Google.Apis.GameServices.v1
                     }
 
                     /// <summary>
-                    /// Deletes a single game server config. The deletion will fail if the game server config is
-                    /// referenced in a game server deployment rollout.
+                    /// Deletes a single game server config. The deletion fails if the game server config is referenced
+                    /// in a game server deployment rollout.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The name of the game server config to delete, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -430,8 +430,8 @@ namespace Google.Apis.GameServices.v1
                     }
 
                     /// <summary>
-                    /// Deletes a single game server config. The deletion will fail if the game server config is
-                    /// referenced in a game server deployment rollout.
+                    /// Deletes a single game server config. The deletion fails if the game server config is referenced
+                    /// in a game server deployment rollout.
                     /// </summary>
                     public class DeleteRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1.Data.Operation>
                     {
@@ -444,7 +444,7 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The name of the game server config to delete, in the following form:
-                        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
+                        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -476,7 +476,7 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Gets details of a single game server config.</summary>
                     /// <param name="name">
                     /// Required. The name of the game server config to retrieve, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -495,7 +495,7 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The name of the game server config to retrieve, in the following form:
-                        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
+                        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -529,7 +529,7 @@ namespace Google.Apis.GameServices.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/*`.
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/*`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -550,27 +550,29 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The parent resource name, in the following form:
-                        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/*`.
+                        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The filter to apply to list results.</summary>
+                        /// <summary>
+                        /// Optional. The filter to apply to list results (see [Filtering](https://google.aip.dev/160)).
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. Specifies the ordering of results following syntax at
-                        /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+                        /// Optional. Specifies the ordering of results following [Cloud API
+                        /// syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of items to return. If unspecified, server will pick an
-                        /// appropriate default. Server may return fewer items than requested. A caller should only rely
-                        /// on response's next_page_token to determine if there are more GameServerConfigs left to be
-                        /// queried.
+                        /// Optional. The maximum number of items to return. If unspecified, the server picks an
+                        /// appropriate default. The server may return fewer items than requested. A caller should only
+                        /// rely on response's next_page_token to determine if there are more GameServerConfigs left to
+                        /// be queried.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -642,7 +644,7 @@ namespace Google.Apis.GameServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource name, in the following form:
-                /// `projects/{project}/locations/{location}`.
+                /// `projects/{project}/locations/{locationId}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GameServices.v1.Data.GameServerDeployment body, string parent)
                 {
@@ -662,12 +664,12 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}`.
+                    /// `projects/{project}/locations/{locationId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. The ID of the game server delpoyment resource to be created.</summary>
+                    /// <summary>Required. The ID of the game server deployment resource to create.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("deploymentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DeploymentId { get; set; }
 
@@ -711,8 +713,8 @@ namespace Google.Apis.GameServices.v1
 
                 /// <summary>Deletes a single game server deployment.</summary>
                 /// <param name="name">
-                /// Required. The name of the game server delpoyment to delete, in the following form:
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+                /// Required. The name of the game server deployment to delete, in the following form:
+                /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -730,8 +732,8 @@ namespace Google.Apis.GameServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the game server delpoyment to delete, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+                    /// Required. The name of the game server deployment to delete, in the following form:
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -767,8 +769,8 @@ namespace Google.Apis.GameServices.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The name of the game server delpoyment, in the following form:
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+                /// Required. The name of the game server deployment, in the following form:
+                /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
                 /// </param>
                 public virtual FetchDeploymentStateRequest FetchDeploymentState(Google.Apis.GameServices.v1.Data.FetchDeploymentStateRequest body, string name)
                 {
@@ -791,8 +793,8 @@ namespace Google.Apis.GameServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the game server delpoyment, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+                    /// Required. The name of the game server deployment, in the following form:
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -829,8 +831,8 @@ namespace Google.Apis.GameServices.v1
 
                 /// <summary>Gets details of a single game server deployment.</summary>
                 /// <param name="name">
-                /// Required. The name of the game server delpoyment to retrieve, in the following form:
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+                /// Required. The name of the game server deployment to retrieve, in the following form:
+                /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -848,8 +850,8 @@ namespace Google.Apis.GameServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the game server delpoyment to retrieve, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+                    /// Required. The name of the game server deployment to retrieve, in the following form:
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -956,17 +958,17 @@ namespace Google.Apis.GameServices.v1
                     }
                 }
 
-                /// <summary>Gets details a single game server deployment rollout.</summary>
+                /// <summary>Gets details of a single game server deployment rollout.</summary>
                 /// <param name="name">
-                /// Required. The name of the game server delpoyment to retrieve, in the following form:
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
+                /// Required. The name of the game server deployment rollout to retrieve, in the following form:
+                /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`.
                 /// </param>
                 public virtual GetRolloutRequest GetRollout(string name)
                 {
                     return new GetRolloutRequest(service, name);
                 }
 
-                /// <summary>Gets details a single game server deployment rollout.</summary>
+                /// <summary>Gets details of a single game server deployment rollout.</summary>
                 public class GetRolloutRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1.Data.GameServerDeploymentRollout>
                 {
                     /// <summary>Constructs a new GetRollout request.</summary>
@@ -977,8 +979,8 @@ namespace Google.Apis.GameServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the game server delpoyment to retrieve, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
+                    /// Required. The name of the game server deployment rollout to retrieve, in the following form:
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1010,7 +1012,7 @@ namespace Google.Apis.GameServices.v1
                 /// <summary>Lists game server deployments in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource name, in the following form:
-                /// `projects/{project}/locations/{location}`.
+                /// `projects/{project}/locations/{locationId}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1029,33 +1031,35 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}`.
+                    /// `projects/{project}/locations/{locationId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filter to apply to list results.</summary>
+                    /// <summary>
+                    /// Optional. The filter to apply to list results (see [Filtering](https://google.aip.dev/160)).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Specifies the ordering of results following syntax at
-                    /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+                    /// Optional. Specifies the ordering of results following [Cloud API
+                    /// syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of items to return. If unspecified, the server will pick an
-                    /// appropriate default. The server may return fewer items than requested. A caller should only rely
-                    /// on response's next_page_token to determine if there are more GameServerDeployments left to be
+                    /// Optional. The maximum number of items to return. If unspecified, the server picks an appropriate
+                    /// default. The server may return fewer items than requested. A caller should only rely on the
+                    /// response's next_page_token to determine if there are more GameServerDeployments left to be
                     /// queried.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The next_page_token value returned from a previous List request, if any.
+                    /// Optional. The next_page_token value returned from a previous list request, if any.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1120,7 +1124,7 @@ namespace Google.Apis.GameServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The resource name of the game server deployment, in the following form:
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example,
+                /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example,
                 /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GameServices.v1.Data.GameServerDeployment body, string name)
@@ -1141,16 +1145,16 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// The resource name of the game server deployment, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example,
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example,
                     /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Mask of fields to update. At least one path must be supplied in this field. For the
-                    /// `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                    /// Required. The update mask to apply to the resource. At least one path must be supplied in this
+                    /// field. For more information, see the [`FieldMask`
+                    /// definition](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1199,8 +1203,8 @@ namespace Google.Apis.GameServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The resource name of the game server deployment rollout, in the following form:
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example,
-                /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
+                /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`. For
+                /// example, `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
                 /// </param>
                 public virtual PreviewRolloutRequest PreviewRollout(Google.Apis.GameServices.v1.Data.GameServerDeploymentRollout body, string name)
                 {
@@ -1222,7 +1226,7 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// The resource name of the game server deployment rollout, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`. For
                     /// example, `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1236,9 +1240,9 @@ namespace Google.Apis.GameServices.v1
                     public virtual object PreviewTime { get; set; }
 
                     /// <summary>
-                    /// Optional. Mask of fields to update. At least one path must be supplied in this field. For the
-                    /// `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                    /// Optional. The update mask to apply to the resource. At least one path must be supplied in this
+                    /// field. For more information, see the [`FieldMask`
+                    /// definition](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1425,15 +1429,15 @@ namespace Google.Apis.GameServices.v1
 
                 /// <summary>
                 /// Patches a single game server deployment rollout. The method will not return an error if the update
-                /// does not affect any existing realms. For example - if the default_game_server_config is changed but
-                /// all existing realms use the override, that is valid. Similarly, if a non existing realm is
-                /// explicitly called out in game_server_config_overrides field, that will also not result in an error.
+                /// does not affect any existing realms. For example, the following cases will not return an error: *
+                /// The default_game_server_config is changed but all existing realms use the override. * A non-existing
+                /// realm is explicitly called out in the game_server_config_overrides field.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The resource name of the game server deployment rollout, in the following form:
-                /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example,
-                /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
+                /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`. For
+                /// example, `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
                 /// </param>
                 public virtual UpdateRolloutRequest UpdateRollout(Google.Apis.GameServices.v1.Data.GameServerDeploymentRollout body, string name)
                 {
@@ -1442,9 +1446,9 @@ namespace Google.Apis.GameServices.v1
 
                 /// <summary>
                 /// Patches a single game server deployment rollout. The method will not return an error if the update
-                /// does not affect any existing realms. For example - if the default_game_server_config is changed but
-                /// all existing realms use the override, that is valid. Similarly, if a non existing realm is
-                /// explicitly called out in game_server_config_overrides field, that will also not result in an error.
+                /// does not affect any existing realms. For example, the following cases will not return an error: *
+                /// The default_game_server_config is changed but all existing realms use the override. * A non-existing
+                /// realm is explicitly called out in the game_server_config_overrides field.
                 /// </summary>
                 public class UpdateRolloutRequest : GameServicesBaseServiceRequest<Google.Apis.GameServices.v1.Data.Operation>
                 {
@@ -1458,16 +1462,16 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// The resource name of the game server deployment rollout, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For
+                    /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`. For
                     /// example, `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Mask of fields to update. At least one path must be supplied in this field. For the
-                    /// `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                    /// Required. The update mask to apply to the resource. At least one path must be supplied in this
+                    /// field. For more information, see the [`FieldMask`
+                    /// definition](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1836,7 +1840,7 @@ namespace Google.Apis.GameServices.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm-id}`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GameServices.v1.Data.GameServerCluster body, string parent)
                     {
@@ -1856,12 +1860,12 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The parent resource name, in the following form:
-                        /// `projects/{project}/locations/{location}/realms/{realm-id}`.
+                        /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The ID of the game server cluster resource to be created.</summary>
+                        /// <summary>Required. The ID of the game server cluster resource to create.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("gameServerClusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string GameServerClusterId { get; set; }
 
@@ -1906,7 +1910,7 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Deletes a single game server cluster.</summary>
                     /// <param name="name">
                     /// Required. The name of the game server cluster to delete, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
+                    /// `projects/{project}/locations/{locationId}/gameServerClusters/{gameServerClusterId}`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -1925,7 +1929,7 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The name of the game server cluster to delete, in the following form:
-                        /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
+                        /// `projects/{project}/locations/{locationId}/gameServerClusters/{gameServerClusterId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1957,7 +1961,7 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Gets details of a single game server cluster.</summary>
                     /// <param name="name">
                     /// Required. The name of the game server cluster to retrieve, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1976,7 +1980,7 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The name of the game server cluster to retrieve, in the following form:
-                        /// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.
+                        /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1985,8 +1989,8 @@ namespace Google.Apis.GameServices.v1
                         /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
                         /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
                         /// state of the referenced Kubernetes cluster such as versions and provider info. The
-                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
-                        /// return the `cluster_state` field.
+                        /// default/unset value is `GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`, which
+                        /// does not return the `cluster_state` field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1995,24 +1999,28 @@ namespace Google.Apis.GameServices.v1
                         /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
                         /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
                         /// state of the referenced Kubernetes cluster such as versions and provider info. The
-                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
-                        /// return the `cluster_state` field.
+                        /// default/unset value is `GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`, which
+                        /// does not return the `cluster_state` field.
                         /// </summary>
                         public enum ViewEnum
                         {
-                            /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                            /// <summary>
+                            /// If the value is not set, Google Cloud Game Servers defaults to the `BASIC` view.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED")]
                             GAMESERVERCLUSTERVIEWUNSPECIFIED = 0,
 
                             /// <summary>
-                            /// Include basic information of a GameServerCluster resource and omit `cluster_state`. This
-                            /// is the default value (for ListGameServerClusters, GetGameServerCluster and
+                            /// Includes basic information of a GameServerCluster resource and omits `cluster_state`.
+                            /// This is the default value (for methods ListGameServerClusters, GetGameServerCluster, and
                             /// PreviewCreateGameServerCluster).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 1,
 
-                            /// <summary>Include everything.</summary>
+                            /// <summary>
+                            /// Include basic information of a GameServerCluster resource as well as `cluster_state`.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL = 2,
                         }
@@ -2052,7 +2060,7 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Lists game server clusters in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource name, in the following form:
-                    /// "projects/{project}/locations/{location}/realms/{realm}".
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2071,24 +2079,26 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The parent resource name, in the following form:
-                        /// "projects/{project}/locations/{location}/realms/{realm}".
+                        /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The filter to apply to list results.</summary>
+                        /// <summary>
+                        /// Optional. The filter to apply to list results (see [Filtering](https://google.aip.dev/160)).
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. Specifies the ordering of results following syntax at
-                        /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+                        /// Optional. Specifies the ordering of results following [Cloud API
+                        /// syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of items to return. If unspecified, the server will pick an
+                        /// Optional. The maximum number of items to return. If unspecified, the server picks an
                         /// appropriate default. The server may return fewer items than requested. A caller should only
                         /// rely on response's next_page_token to determine if there are more GameServerClusters left to
                         /// be queried.
@@ -2097,7 +2107,7 @@ namespace Google.Apis.GameServices.v1
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. The next_page_token value returned from a previous List request, if any.
+                        /// Optional. The next_page_token value returned from a previous list request, if any.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -2106,8 +2116,8 @@ namespace Google.Apis.GameServices.v1
                         /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
                         /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
                         /// state of the referenced Kubernetes cluster such as versions and provider info. The
-                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
-                        /// return the `cluster_state` field.
+                        /// default/unset value is `GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`, which
+                        /// does not return the `cluster_state` field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -2116,24 +2126,28 @@ namespace Google.Apis.GameServices.v1
                         /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
                         /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
                         /// state of the referenced Kubernetes cluster such as versions and provider info. The
-                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
-                        /// return the `cluster_state` field.
+                        /// default/unset value is `GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`, which
+                        /// does not return the `cluster_state` field.
                         /// </summary>
                         public enum ViewEnum
                         {
-                            /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                            /// <summary>
+                            /// If the value is not set, Google Cloud Game Servers defaults to the `BASIC` view.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED")]
                             GAMESERVERCLUSTERVIEWUNSPECIFIED = 0,
 
                             /// <summary>
-                            /// Include basic information of a GameServerCluster resource and omit `cluster_state`. This
-                            /// is the default value (for ListGameServerClusters, GetGameServerCluster and
+                            /// Includes basic information of a GameServerCluster resource and omits `cluster_state`.
+                            /// This is the default value (for methods ListGameServerClusters, GetGameServerCluster, and
                             /// PreviewCreateGameServerCluster).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 1,
 
-                            /// <summary>Include everything.</summary>
+                            /// <summary>
+                            /// Include basic information of a GameServerCluster resource as well as `cluster_state`.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL = 2,
                         }
@@ -2206,9 +2220,9 @@ namespace Google.Apis.GameServices.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The resource name of the game server cluster, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For
-                    /// example,
-                    /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
+                    /// For example,
+                    /// `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GameServices.v1.Data.GameServerCluster body, string name)
                     {
@@ -2228,17 +2242,17 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The resource name of the game server cluster, in the following form:
-                        /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For
-                        /// example,
-                        /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+                        /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
+                        /// For example,
+                        /// `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Required. Mask of fields to update. At least one path must be supplied in this field. For
-                        /// the `FieldMask` definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                        /// Required. The update mask to apply to the resource. At least one path must be supplied in
+                        /// this field. For more information, see the [`FieldMask`
+                        /// definition](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -2287,7 +2301,7 @@ namespace Google.Apis.GameServices.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm}`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                     /// </param>
                     public virtual PreviewCreateRequest PreviewCreate(Google.Apis.GameServices.v1.Data.GameServerCluster body, string parent)
                     {
@@ -2309,12 +2323,12 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The parent resource name, in the following form:
-                        /// `projects/{project}/locations/{location}/realms/{realm}`.
+                        /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The ID of the game server cluster resource to be created.</summary>
+                        /// <summary>Required. The ID of the game server cluster resource to create.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("gameServerClusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string GameServerClusterId { get; set; }
 
@@ -2323,29 +2337,33 @@ namespace Google.Apis.GameServices.v1
                         public virtual object PreviewTime { get; set; }
 
                         /// <summary>
-                        /// Optional. This field is deprecated, preview will always return KubernetesClusterState.
+                        /// Optional. This field is deprecated. Preview will always return KubernetesClusterState.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Optional. This field is deprecated, preview will always return KubernetesClusterState.
+                        /// Optional. This field is deprecated. Preview will always return KubernetesClusterState.
                         /// </summary>
                         public enum ViewEnum
                         {
-                            /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                            /// <summary>
+                            /// If the value is not set, Google Cloud Game Servers defaults to the `BASIC` view.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED")]
                             GAMESERVERCLUSTERVIEWUNSPECIFIED = 0,
 
                             /// <summary>
-                            /// Include basic information of a GameServerCluster resource and omit `cluster_state`. This
-                            /// is the default value (for ListGameServerClusters, GetGameServerCluster and
+                            /// Includes basic information of a GameServerCluster resource and omits `cluster_state`.
+                            /// This is the default value (for methods ListGameServerClusters, GetGameServerCluster, and
                             /// PreviewCreateGameServerCluster).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 1,
 
-                            /// <summary>Include everything.</summary>
+                            /// <summary>
+                            /// Include basic information of a GameServerCluster resource as well as `cluster_state`.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL = 2,
                         }
@@ -2407,7 +2425,7 @@ namespace Google.Apis.GameServices.v1
                     /// <summary>Previews deletion of a single game server cluster.</summary>
                     /// <param name="name">
                     /// Required. The name of the game server cluster to delete, in the following form:
-                    /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
+                    /// `projects/{project}/locations/{locationId}/gameServerClusters/{gameServerClusterId}`.
                     /// </param>
                     public virtual PreviewDeleteRequest PreviewDelete(string name)
                     {
@@ -2426,7 +2444,7 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The name of the game server cluster to delete, in the following form:
-                        /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
+                        /// `projects/{project}/locations/{locationId}/gameServerClusters/{gameServerClusterId}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2471,9 +2489,9 @@ namespace Google.Apis.GameServices.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The resource name of the game server cluster, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For
-                    /// example,
-                    /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
+                    /// For example,
+                    /// `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
                     /// </param>
                     public virtual PreviewUpdateRequest PreviewUpdate(Google.Apis.GameServices.v1.Data.GameServerCluster body, string name)
                     {
@@ -2493,9 +2511,9 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. The resource name of the game server cluster, in the following form:
-                        /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For
-                        /// example,
-                        /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+                        /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
+                        /// For example,
+                        /// `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2506,8 +2524,8 @@ namespace Google.Apis.GameServices.v1
 
                         /// <summary>
                         /// Required. Mask of fields to update. At least one path must be supplied in this field. For
-                        /// the `FieldMask` definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                        /// more information, see the [`FieldMask`
+                        /// definition](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -2563,7 +2581,7 @@ namespace Google.Apis.GameServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource name, in the following form:
-                /// `projects/{project}/locations/{location}`.
+                /// `projects/{project}/locations/{locationId}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GameServices.v1.Data.Realm body, string parent)
                 {
@@ -2583,12 +2601,12 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}`.
+                    /// `projects/{project}/locations/{locationId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. The ID of the realm resource to be created.</summary>
+                    /// <summary>Required. The ID of the realm resource to create.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("realmId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RealmId { get; set; }
 
@@ -2633,7 +2651,7 @@ namespace Google.Apis.GameServices.v1
                 /// <summary>Deletes a single realm.</summary>
                 /// <param name="name">
                 /// Required. The name of the realm to delete, in the following form:
-                /// `projects/{project}/locations/{location}/realms/{realm}`.
+                /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2652,7 +2670,7 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// Required. The name of the realm to delete, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm}`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2684,7 +2702,7 @@ namespace Google.Apis.GameServices.v1
                 /// <summary>Gets details of a single realm.</summary>
                 /// <param name="name">
                 /// Required. The name of the realm to retrieve, in the following form:
-                /// `projects/{project}/locations/{location}/realms/{realm}`.
+                /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2703,7 +2721,7 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// Required. The name of the realm to retrieve, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm}`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2735,7 +2753,7 @@ namespace Google.Apis.GameServices.v1
                 /// <summary>Lists realms in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource name, in the following form:
-                /// `projects/{project}/locations/{location}`.
+                /// `projects/{project}/locations/{locationId}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2754,32 +2772,34 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// Required. The parent resource name, in the following form:
-                    /// `projects/{project}/locations/{location}`.
+                    /// `projects/{project}/locations/{locationId}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filter to apply to list results.</summary>
+                    /// <summary>
+                    /// Optional. The filter to apply to list results (see [Filtering](https://google.aip.dev/160)).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Specifies the ordering of results following syntax at
-                    /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+                    /// Optional. Specifies the ordering of results following [Cloud API
+                    /// syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of items to return. If unspecified, server will pick an appropriate
-                    /// default. Server may return fewer items than requested. A caller should only rely on response's
-                    /// next_page_token to determine if there are more realms left to be queried.
+                    /// Optional. The maximum number of items to return. If unspecified, the server picks an appropriate
+                    /// default. The server may return fewer items than requested. A caller should only rely on the
+                    /// response's next_page_token to determine if there are more realms left to be queried.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The next_page_token value returned from a previous List request, if any.
+                    /// Optional. The next_page_token value returned from a previous list request, if any.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2844,8 +2864,8 @@ namespace Google.Apis.GameServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The resource name of the realm, in the following form:
-                /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
-                /// `projects/my-project/locations/{location}/realms/my-realm`.
+                /// `projects/{project}/locations/{locationId}/realms/{realmId}`. For example,
+                /// `projects/my-project/locations/global/realms/my-realm`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GameServices.v1.Data.Realm body, string name)
                 {
@@ -2865,15 +2885,15 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// The resource name of the realm, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
-                    /// `projects/my-project/locations/{location}/realms/my-realm`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}`. For example,
+                    /// `projects/my-project/locations/global/realms/my-realm`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                    /// Required. The update mask to apply to the resource. For more information, see the [`FieldMask`
+                    /// definition](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2920,8 +2940,8 @@ namespace Google.Apis.GameServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The resource name of the realm, in the following form:
-                /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
-                /// `projects/my-project/locations/{location}/realms/my-realm`.
+                /// `projects/{project}/locations/{locationId}/realms/{realmId}`. For example,
+                /// `projects/my-project/locations/global/realms/my-realm`.
                 /// </param>
                 public virtual PreviewUpdateRequest PreviewUpdate(Google.Apis.GameServices.v1.Data.Realm body, string name)
                 {
@@ -2941,8 +2961,8 @@ namespace Google.Apis.GameServices.v1
 
                     /// <summary>
                     /// The resource name of the realm, in the following form:
-                    /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
-                    /// `projects/my-project/locations/{location}/realms/my-realm`.
+                    /// `projects/{project}/locations/{locationId}/realms/{realmId}`. For example,
+                    /// `projects/my-project/locations/global/realms/my-realm`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2952,8 +2972,8 @@ namespace Google.Apis.GameServices.v1
                     public virtual object PreviewTime { get; set; }
 
                     /// <summary>
-                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                    /// Required. The update mask to apply to the resource. For more information, see the [`FieldMask`
+                    /// definition](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3461,8 +3481,8 @@ namespace Google.Apis.GameServices.v1.Data
     }
 
     /// <summary>
-    /// DeployedFleetStatus has details about the Agones fleets such as how many are running, how many allocated, and so
-    /// on.
+    /// DeployedFleetStatus has details about the Agones fleets, such as how many are running, how many are allocated,
+    /// and so on.
     /// </summary>
     public class DeployedFleetStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3570,7 +3590,7 @@ namespace Google.Apis.GameServices.v1.Data
     /// <summary>Fleet configs for Agones.</summary>
     public class FleetConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.</summary>
+        /// <summary>Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetSpec")]
         public virtual string FleetSpec { get; set; }
 
@@ -3586,8 +3606,8 @@ namespace Google.Apis.GameServices.v1.Data
     public class GameServerCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the
-        /// relevant List/Get/Preview request.
+        /// Output only. The state of the Kubernetes cluster in preview. This will be available if view is set to FULL
+        /// in the relevant list/get/preview request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterState")]
         public virtual KubernetesClusterState ClusterState { get; set; }
@@ -3606,7 +3626,9 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>ETag of the resource.</summary>
+        /// <summary>
+        /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -3616,8 +3638,8 @@ namespace Google.Apis.GameServices.v1.Data
 
         /// <summary>
         /// Required. The resource name of the game server cluster, in the following form:
-        /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example,
-        /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+        /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For
+        /// example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3666,8 +3688,8 @@ namespace Google.Apis.GameServices.v1.Data
 
         /// <summary>
         /// The resource name of the game server config, in the following form:
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example,
-        /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For
+        /// example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3706,11 +3728,13 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Human readable description of the game server delpoyment.</summary>
+        /// <summary>Human readable description of the game server deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>ETag of the resource.</summary>
+        /// <summary>
+        /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -3720,7 +3744,7 @@ namespace Google.Apis.GameServices.v1.Data
 
         /// <summary>
         /// The resource name of the game server deployment, in the following form:
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example,
+        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example,
         /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3758,7 +3782,7 @@ namespace Google.Apis.GameServices.v1.Data
 
         /// <summary>
         /// The resource name of the game server deployment rollout, in the following form:
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example,
+        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`. For example,
         /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3774,8 +3798,8 @@ namespace Google.Apis.GameServices.v1.Data
     {
         /// <summary>
         /// The full or partial name of a GKE cluster, using one of the following forms: *
-        /// `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` *
-        /// `{cluster}` If project and location are not specified, the project and location of the GameServerCluster
+        /// `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}`
+        /// * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster
         /// resource are used to generate the full name of the GKE cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
@@ -3810,7 +3834,7 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual string KubernetesVersionInstalled { get; set; }
 
         /// <summary>
-        /// Output only. The cloud provider type reported by the first node's providerID in the list of nodes on the
+        /// Output only. The cloud provider type reported by the first node's `providerID` in the list of nodes on the
         /// Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider
         /// type will be empty.
         /// </summary>
@@ -4196,8 +4220,8 @@ namespace Google.Apis.GameServices.v1.Data
     public class PreviewCreateGameServerClusterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The state of the Kubernetes cluster in preview, this will be available if 'view' is set to
-        /// `FULL` in the relevant List/Get/Preview request.
+        /// Output only. The state of the Kubernetes cluster in preview. This will be available if view is set to FULL
+        /// in the relevant list/get/preview request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterState")]
         public virtual KubernetesClusterState ClusterState { get; set; }
@@ -4277,7 +4301,9 @@ namespace Google.Apis.GameServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>ETag of the resource.</summary>
+        /// <summary>
+        /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -4287,15 +4313,15 @@ namespace Google.Apis.GameServices.v1.Data
 
         /// <summary>
         /// The resource name of the realm, in the following form:
-        /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
-        /// `projects/my-project/locations/{location}/realms/my-realm`.
+        /// `projects/{project}/locations/{locationId}/realms/{realmId}`. For example,
+        /// `projects/my-project/locations/global/realms/my-realm`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be
-        /// from the IANA time zone database: https://www.iana.org/time-zones.
+        /// from the [IANA time zone database](https://www.iana.org/time-zones).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -4365,17 +4391,17 @@ namespace Google.Apis.GameServices.v1.Data
     public class ScalingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Agones fleet autoscaler spec. Example spec:
-        /// https://agones.dev/site/docs/reference/fleetautoscaler/
+        /// Required. Agones fleet autoscaler spec (see [example
+        /// spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetAutoscalerSpec")]
         public virtual string FleetAutoscalerSpec { get; set; }
 
-        /// <summary>Required. The name of the Scaling Config</summary>
+        /// <summary>Required. The name of the scaling config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The schedules to which this Scaling Config applies.</summary>
+        /// <summary>The schedules to which this scaling config applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedules")]
         public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; }
 
@@ -4392,10 +4418,10 @@ namespace Google.Apis.GameServices.v1.Data
 
     /// <summary>
     /// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If
-    /// the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If
-    /// only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by
-    /// cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron
-    /// job: cron spec start time + duration ```
+    /// the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If
+    /// only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec,
+    /// and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron
+    /// spec start time + duration ```
     /// </summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4406,8 +4432,8 @@ namespace Google.Apis.GameServices.v1.Data
         public virtual object CronJobDuration { get; set; }
 
         /// <summary>
-        /// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the
-        /// local time as defined by the realm.
+        /// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies
+        /// the local time as defined by the realm.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSpec")]
         public virtual string CronSpec { get; set; }
@@ -4451,13 +4477,13 @@ namespace Google.Apis.GameServices.v1.Data
     {
         /// <summary>
         /// The game server config resource. Uses the form:
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}`.
+        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerConfigName")]
         public virtual string GameServerConfigName { get; set; }
 
         /// <summary>
-        /// The name of the Agones leet config or Agones scaling config used to derive the Agones fleet or Agones
+        /// The name of the Agones fleet config or Agones scaling config used to derive the Agones fleet or Agones
         /// autoscaler spec.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4505,14 +4531,14 @@ namespace Google.Apis.GameServices.v1.Data
 
         /// <summary>
         /// The game server cluster name. Uses the form:
-        /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
+        /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerClusterName")]
         public virtual string GameServerClusterName { get; set; }
 
         /// <summary>
         /// The game server deployment name. Uses the form:
-        /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.
+        /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerDeploymentName")]
         public virtual string GameServerDeploymentName { get; set; }

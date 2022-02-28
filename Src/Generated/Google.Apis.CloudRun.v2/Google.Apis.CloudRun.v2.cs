@@ -1097,8 +1097,8 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>List Services.</summary>
                 /// <param name="parent">
-                /// Required. The location and project to list resources on. Format:
-                /// projects/{projectnumber}/locations/{location}
+                /// Required. The location and project to list resources on. Location must be a valid GCP region, and
+                /// may not be the "-" wildcard. Format: projects/{projectnumber}/locations/{location}
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1116,8 +1116,8 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// Required. The location and project to list resources on. Format:
-                    /// projects/{projectnumber}/locations/{location}
+                    /// Required. The location and project to list resources on. Location must be a valid GCP region,
+                    /// and may not be the "-" wildcard. Format: projects/{projectnumber}/locations/{location}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }

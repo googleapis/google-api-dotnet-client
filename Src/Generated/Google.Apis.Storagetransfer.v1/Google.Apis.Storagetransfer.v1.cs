@@ -1176,7 +1176,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <summary>
         /// Lists transfer operations. Operations are ordered by their creation time in reverse chronological order.
         /// </summary>
-        /// <param name="name">Not used.</param>
+        /// <param name="name">Required. The name of the type being listed; must be `transferOperations`.</param>
         /// <param name="filter">
         /// Required. A list of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id",
         /// "jobNames":["jobid1","jobid2",...], "operationNames":["opid1","opid2",...],
@@ -1203,7 +1203,7 @@ namespace Google.Apis.Storagetransfer.v1
                 InitParameters();
             }
 
-            /// <summary>Not used.</summary>
+            /// <summary>Required. The name of the type being listed; must be `transferOperations`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 

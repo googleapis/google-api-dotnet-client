@@ -2476,7 +2476,7 @@
        "type": "string"
       },
       "guestFlush": {
-       "description": "[Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).",
+       "description": "[Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.",
        "location": "query",
        "type": "boolean"
       },
@@ -2946,6 +2946,148 @@
      "path": "projects/{project}/zones/{zone}/disks/{resource}/setLabels",
      "request": {
       "$ref": "ZoneSetLabelsRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "startAsyncReplication": {
+     "description": "Starts asynchronous replication. Must be invoked on the primary disk.",
+     "flatPath": "projects/{project}/zones/{zone}/disks/{disk}/startAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.disks.startAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/disks/{disk}/startAsyncReplication",
+     "request": {
+      "$ref": "DisksStartAsyncReplicationRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopAsyncReplication": {
+     "description": "Stops asynchronous replication. Can be invoked either on the primary or on the secondary disk.",
+     "flatPath": "projects/{project}/zones/{zone}/disks/{disk}/stopAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.disks.stopAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/disks/{disk}/stopAsyncReplication",
+     "request": {
+      "$ref": "DisksStopAsyncReplicationRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopGroupAsyncReplication": {
+     "description": "Stops asynchronous replication for a consistency group of disks. Can be invoked either in the primary or secondary scope.",
+     "flatPath": "projects/{project}/zones/{zone}/disks/stopGroupAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.disks.stopGroupAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request. This must be the zone of the primary or secondary disks in the consistency group.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/disks/stopGroupAsyncReplication",
+     "request": {
+      "$ref": "DisksStopGroupAsyncReplicationRequest"
      },
      "response": {
       "$ref": "Operation"
@@ -12071,6 +12213,11 @@
        "location": "path",
        "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
        "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
        "type": "string"
       },
       "zone": {
@@ -22265,6 +22412,148 @@
       "https://www.googleapis.com/auth/compute"
      ]
     },
+    "startAsyncReplication": {
+     "description": "Starts asynchronous replication. Must be invoked on the primary disk.",
+     "flatPath": "projects/{project}/regions/{region}/disks/{disk}/startAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.regionDisks.startAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "region",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/disks/{disk}/startAsyncReplication",
+     "request": {
+      "$ref": "RegionDisksStartAsyncReplicationRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopAsyncReplication": {
+     "description": "Stops asynchronous replication. Can be invoked either on the primary or on the secondary disk.",
+     "flatPath": "projects/{project}/regions/{region}/disks/{disk}/stopAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.regionDisks.stopAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "region",
+      "disk"
+     ],
+     "parameters": {
+      "disk": {
+       "description": "The name of the persistent disk.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/disks/{disk}/stopAsyncReplication",
+     "request": {
+      "$ref": "RegionDisksStopAsyncReplicationRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "stopGroupAsyncReplication": {
+     "description": "Stops asynchronous replication for a consistency group of disks. Can be invoked either in the primary or secondary scope.",
+     "flatPath": "projects/{project}/regions/{region}/disks/stopGroupAsyncReplication",
+     "httpMethod": "POST",
+     "id": "compute.regionDisks.stopGroupAsyncReplication",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request. This must be the region of the primary or secondary disks in the consistency group.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/disks/stopGroupAsyncReplication",
+     "request": {
+      "$ref": "RegionDisksStopGroupAsyncReplicationRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "testIamPermissions": {
      "description": "Returns permissions that a caller has on the specified resource.",
      "flatPath": "projects/{project}/regions/{region}/disks/{resource}/testIamPermissions",
@@ -27659,55 +27948,6 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
-    "getIamPolicy": {
-     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
-     "flatPath": "projects/{project}/regions/{region}/sslPolicies/{resource}/getIamPolicy",
-     "httpMethod": "GET",
-     "id": "compute.regionSslPolicies.getIamPolicy",
-     "parameterOrder": [
-      "project",
-      "region",
-      "resource"
-     ],
-     "parameters": {
-      "optionsRequestedPolicyVersion": {
-       "description": "Requested IAM Policy version.",
-       "format": "int32",
-       "location": "query",
-       "type": "integer"
-      },
-      "project": {
-       "description": "Project ID for this request.",
-       "location": "path",
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "required": true,
-       "type": "string"
-      },
-      "region": {
-       "description": "The name of the region for this request.",
-       "location": "path",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "required": true,
-       "type": "string"
-      },
-      "resource": {
-       "description": "Name or id of the resource for this request.",
-       "location": "path",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "projects/{project}/regions/{region}/sslPolicies/{resource}/getIamPolicy",
-     "response": {
-      "$ref": "Policy"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    },
     "insert": {
      "description": "Creates a new policy in the specified project and region using the data included in the request.",
      "flatPath": "projects/{project}/regions/{region}/sslPolicies",
@@ -28649,6 +28889,251 @@
       }
      },
      "path": "projects/{project}/regions/{region}/targetHttpsProxies/{resource}/testIamPermissions",
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
+  "regionTargetTcpProxies": {
+   "methods": {
+    "delete": {
+     "description": "Deletes the specified TargetTcpProxy resource.",
+     "flatPath": "projects/{project}/regions/{region}/targetTcpProxies/{targetTcpProxy}",
+     "httpMethod": "DELETE",
+     "id": "compute.regionTargetTcpProxies.delete",
+     "parameterOrder": [
+      "project",
+      "region",
+      "targetTcpProxy"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "targetTcpProxy": {
+       "description": "Name of the TargetTcpProxy resource to delete.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/targetTcpProxies/{targetTcpProxy}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "description": "Returns the specified TargetTcpProxy resource.",
+     "flatPath": "projects/{project}/regions/{region}/targetTcpProxies/{targetTcpProxy}",
+     "httpMethod": "GET",
+     "id": "compute.regionTargetTcpProxies.get",
+     "parameterOrder": [
+      "project",
+      "region",
+      "targetTcpProxy"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "targetTcpProxy": {
+       "description": "Name of the TargetTcpProxy resource to return.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/targetTcpProxies/{targetTcpProxy}",
+     "response": {
+      "$ref": "TargetTcpProxy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "description": "Creates a TargetTcpProxy resource in the specified project and region using the data included in the request.",
+     "flatPath": "projects/{project}/regions/{region}/targetTcpProxies",
+     "httpMethod": "POST",
+     "id": "compute.regionTargetTcpProxies.insert",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/targetTcpProxies",
+     "request": {
+      "$ref": "TargetTcpProxy"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "description": "Retrieves a list of TargetTcpProxy resources available to the specified project in a given region.",
+     "flatPath": "projects/{project}/regions/{region}/targetTcpProxies",
+     "httpMethod": "GET",
+     "id": "compute.regionTargetTcpProxies.list",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/targetTcpProxies",
+     "response": {
+      "$ref": "TargetTcpProxyList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "testIamPermissions": {
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "flatPath": "projects/{project}/regions/{region}/targetTcpProxies/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "id": "compute.regionTargetTcpProxies.testIamPermissions",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/targetTcpProxies/{resource}/testIamPermissions",
      "request": {
       "$ref": "TestPermissionsRequest"
      },
@@ -38009,7 +38494,7 @@
    }
   }
  },
- "revision": "20220112",
+ "revision": "20220224",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -38540,6 +39025,16 @@
       "",
       "",
       ""
+     ],
+     "type": "string"
+    },
+    "ipv6EndpointType": {
+     "description": "The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.",
+     "enum": [
+      "VM"
+     ],
+     "enumDescriptions": [
+      "Reserved IPv6 address will be assigned to VM."
      ],
      "type": "string"
     },
@@ -40900,7 +41395,7 @@
      "$ref": "Subsetting"
     },
     "timeoutSec": {
-     "description": "Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.",
+     "description": "The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.",
      "format": "int32",
      "type": "integer"
     }
@@ -41976,12 +42471,12 @@
      "description": "The timeout for new network connections to hosts."
     },
     "maxConnections": {
-     "description": "Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
+     "description": "The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
      "format": "int32",
      "type": "integer"
     },
     "maxPendingRequests": {
-     "description": "Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
+     "description": "The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
      "format": "int32",
      "type": "integer"
     },
@@ -41991,12 +42486,12 @@
      "type": "integer"
     },
     "maxRequestsPerConnection": {
-     "description": "Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
+     "description": "Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
      "format": "int32",
      "type": "integer"
     },
     "maxRetries": {
-     "description": "Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
+     "description": "The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
      "format": "int32",
      "type": "integer"
     }
@@ -42835,6 +43330,17 @@
      ],
      "type": "string"
     },
+    "asyncPrimaryDisk": {
+     "$ref": "DiskAsyncReplication",
+     "description": "Disk asynchronously replicated into this disk."
+    },
+    "asyncSecondaryDisks": {
+     "additionalProperties": {
+      "$ref": "DiskAsyncReplicationList"
+     },
+     "description": "[Output Only] A list of disks this disk is asynchronously replicated to.",
+     "type": "object"
+    },
     "creationTimestamp": {
      "description": "[Output Only] Creation timestamp in RFC3339 text format.",
      "type": "string"
@@ -42971,6 +43477,10 @@
      },
      "type": "array"
     },
+    "resourceStatus": {
+     "$ref": "DiskResourceStatus",
+     "description": "[Output Only] Status information for the disk resource."
+    },
     "satisfiesPzs": {
      "description": "[Output Only] Reserved for future use.",
      "type": "boolean"
@@ -42986,6 +43496,14 @@
     "sizeGb": {
      "description": "Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.",
      "format": "int64",
+     "type": "string"
+    },
+    "sourceConsistencyGroupPolicy": {
+     "description": "[Output Only] URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.",
+     "type": "string"
+    },
+    "sourceConsistencyGroupPolicyId": {
+     "description": "[Output Only] ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.",
      "type": "string"
     },
     "sourceDisk": {
@@ -43210,6 +43728,29 @@
    },
    "type": "object"
   },
+  "DiskAsyncReplication": {
+   "id": "DiskAsyncReplication",
+   "properties": {
+    "disk": {
+     "description": "The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk ",
+     "type": "string"
+    },
+    "diskId": {
+     "description": "[Output Only] The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DiskAsyncReplicationList": {
+   "id": "DiskAsyncReplicationList",
+   "properties": {
+    "asyncReplicationDisk": {
+     "$ref": "DiskAsyncReplication"
+    }
+   },
+   "type": "object"
+  },
   "DiskInstantiationConfig": {
    "description": "A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.",
    "id": "DiskInstantiationConfig",
@@ -43376,6 +43917,45 @@
     },
     "targetDisk": {
      "description": "The URL of the target disk to move. This can be a full or partial URL. For example, the following are all valid URLs to a disk: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DiskResourceStatus": {
+   "id": "DiskResourceStatus",
+   "properties": {
+    "asyncPrimaryDisk": {
+     "$ref": "DiskResourceStatusAsyncReplicationStatus"
+    },
+    "asyncSecondaryDisks": {
+     "additionalProperties": {
+      "$ref": "DiskResourceStatusAsyncReplicationStatus"
+     },
+     "description": "Key: disk, value: AsyncReplicationStatus message",
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "DiskResourceStatusAsyncReplicationStatus": {
+   "id": "DiskResourceStatusAsyncReplicationStatus",
+   "properties": {
+    "state": {
+     "enum": [
+      "ACTIVE",
+      "STARTING",
+      "STATE_UNSPECIFIED",
+      "STOPPED",
+      "STOPPING"
+     ],
+     "enumDescriptions": [
+      "Replication is active.",
+      "Replication is starting.",
+      "",
+      "Replication is stopped.",
+      "Replication is stopping."
+     ],
      "type": "string"
     }
    },
@@ -43908,6 +44488,36 @@
       }
      },
      "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "DisksStartAsyncReplicationRequest": {
+   "id": "DisksStartAsyncReplicationRequest",
+   "properties": {
+    "asyncSecondaryDisk": {
+     "description": "The secondary disk to start asynchronous replication to. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DisksStopAsyncReplicationRequest": {
+   "id": "DisksStopAsyncReplicationRequest",
+   "properties": {
+    "asyncSecondaryDisk": {
+     "description": "The secondary disk to stop asynchronous replication to. Supplied if and only if the target disk is a primary disk in an asynchronously replicated pair. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "DisksStopGroupAsyncReplicationRequest": {
+   "id": "DisksStopGroupAsyncReplicationRequest",
+   "properties": {
+    "resourcePolicy": {
+     "description": "The URL of the DiskConsistencyGroupPolicy for the group of disks to stop. This may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/projects/project/regions/region /resourcePolicies/resourcePolicy - projects/project/regions/region/resourcePolicies/resourcePolicy - regions/region/resourcePolicies/resourcePolicy ",
+     "type": "string"
     }
    },
    "type": "object"
@@ -44980,6 +45590,10 @@
      "format": "int32",
      "type": "integer"
     },
+    "ruleName": {
+     "description": "An optional name for the rule. This field is not a unique identifier and can be updated.",
+     "type": "string"
+    },
     "ruleTupleCount": {
      "description": "[Output Only] Calculation of the complexity of a single firewall policy rule.",
      "format": "int32",
@@ -45041,6 +45655,13 @@
      },
      "type": "array"
     },
+    "destThreatIntelligences": {
+     "description": "Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
     "layer4Configs": {
      "description": "Pairs of IP protocols and ports that the rule should match.",
      "items": {
@@ -45080,6 +45701,13 @@
      "description": "List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.",
      "items": {
       "$ref": "FirewallPolicyRuleSecureTag"
+     },
+     "type": "array"
+    },
+    "srcThreatIntelligences": {
+     "description": "Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.",
+     "items": {
+      "type": "string"
      },
      "type": "array"
     }
@@ -46462,7 +47090,7 @@
    "id": "GuestOsFeature",
    "properties": {
     "type": {
-     "description": "The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.",
+     "description": "The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.",
      "enum": [
       "BARE_METAL_LINUX_COMPATIBLE",
       "FEATURE_TYPE_UNSPECIFIED",
@@ -48170,7 +48798,7 @@
     },
     "faultInjectionPolicy": {
      "$ref": "HttpFaultInjection",
-     "description": "The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy."
+     "description": "The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection."
     },
     "maxStreamDuration": {
      "$ref": "Duration",
@@ -49382,7 +50010,7 @@
      "type": "string"
     },
     "namedPorts": {
-     "description": " Assigns a name to a port number. For example: {name: \"http\", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: \"http\", port: 80},{name: \"http\", port: 8080}] Named ports apply to all instances in this instance group. ",
+     "description": " Assigns a name to a port number. For example: {name: \"http\", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: \"app1\", port: 8080}, {name: \"app1\", port: 8081}, {name: \"app2\", port: 8082}] Named ports apply to all instances in this instance group. ",
      "items": {
       "$ref": "NamedPort"
      },
@@ -49737,6 +50365,18 @@
     "kind": {
      "default": "compute#instanceGroupManager",
      "description": "[Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.",
+     "type": "string"
+    },
+    "listManagedInstancesResults": {
+     "description": "Pagination behavior of listManagedInstances API method for this Managed Instance Group.",
+     "enum": [
+      "PAGELESS",
+      "PAGINATED"
+     ],
+     "enumDescriptions": [
+      "(Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.",
+      "Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected."
+     ],
      "type": "string"
     },
     "name": {
@@ -52025,7 +52665,7 @@
      "type": "string"
     },
     "type": {
-     "description": "[Output Only] The type of the firewall policy.",
+     "description": "[Output Only] The type of the firewall policy. Can be one of HIERARCHY, NETWORK, NETWORK_REGIONAL.",
      "enum": [
       "HIERARCHY",
       "NETWORK",
@@ -52320,7 +52960,7 @@
      "type": "string"
     },
     "guestFlush": {
-     "description": "Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).",
+     "description": "Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.",
      "type": "boolean"
     },
     "id": {
@@ -53029,7 +53669,7 @@
      "type": "string"
     },
     "candidateIpv6Subnets": {
-     "description": "Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.",
+     "description": "This field is not available.",
      "items": {
       "type": "string"
      },
@@ -53051,7 +53691,7 @@
      "type": "string"
     },
     "cloudRouterIpv6InterfaceId": {
-     "description": "If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.",
+     "description": "This field is not available.",
      "type": "string"
     },
     "creationTimestamp": {
@@ -53067,11 +53707,11 @@
      "type": "string"
     },
     "customerRouterIpv6InterfaceId": {
-     "description": "If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.",
+     "description": "This field is not available.",
      "type": "string"
     },
     "dataplaneVersion": {
-     "description": "[Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.",
+     "description": "[Output Only] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.",
      "format": "int32",
      "type": "integer"
     },
@@ -55023,6 +55663,10 @@
   "LocationPolicyLocation": {
    "id": "LocationPolicyLocation",
    "properties": {
+    "constraints": {
+     "$ref": "LocationPolicyLocationConstraints",
+     "description": "Constraints that the caller requires on the result distribution in this zone."
+    },
     "preference": {
      "description": "Preference for a given location.",
      "enum": [
@@ -55036,6 +55680,18 @@
       "Default value, unused."
      ],
      "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "LocationPolicyLocationConstraints": {
+   "description": "Per-zone constraints on location policy for this zone.",
+   "id": "LocationPolicyLocationConstraints",
+   "properties": {
+    "maxCount": {
+     "description": "Maximum number of items that are allowed to be placed in this zone. The value must be non-negative.",
+     "format": "int32",
+     "type": "integer"
     }
    },
    "type": "object"
@@ -55153,7 +55809,7 @@
      "type": "string"
     },
     "guestFlush": {
-     "description": "[Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).",
+     "description": "[Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.",
      "type": "boolean"
     },
     "id": {
@@ -56227,6 +56883,7 @@
      "type": "string"
     },
     "networkFirewallPolicyEnforcementOrder": {
+     "description": "The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.",
      "enum": [
       "AFTER_CLASSIC_FIREWALL",
       "BEFORE_CLASSIC_FIREWALL"
@@ -56633,7 +57290,7 @@
      "type": "string"
     },
     "networkEndpointType": {
-     "description": "Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.",
+     "description": "Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.",
      "enum": [
       "GCE_VM_IP",
       "GCE_VM_IP_PORT",
@@ -56872,7 +57529,7 @@
      "type": "string"
     },
     "urlMask": {
-     "description": "A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs \"foo1.domain.com/bar1\" and \"foo1.domain.com/bar2\" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask \".domain.com/\". The URL mask will parse them to { service=\"bar1\", tag=\"foo1\" } and { service=\"bar2\", tag=\"foo2\" } respectively.",
+     "description": "A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs \"foo1.domain.com/bar1\" and \"foo1.domain.com/bar2\" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask \"<tag>.domain.com/<service>\". The URL mask will parse them to { service=\"bar1\", tag=\"foo1\" } and { service=\"bar2\", tag=\"foo2\" } respectively.",
      "type": "string"
     }
    },
@@ -57365,13 +58022,11 @@
      "description": "[Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6.",
      "enum": [
       "EXTERNAL",
-      "INTERNAL",
-      "UNSPECIFIED_IPV6_ACCESS_TYPE"
+      "INTERNAL"
      ],
      "enumDescriptions": [
       "This network interface can have external IPv6.",
-      "This network interface can have internal IPv6.",
-      "IPv6 access type not set. Means this network interface hasn't been turned on IPv6 yet."
+      "This network interface can have internal IPv6."
      ],
      "type": "string"
     },
@@ -57419,13 +58074,11 @@
      "description": "The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.",
      "enum": [
       "IPV4_IPV6",
-      "IPV4_ONLY",
-      "UNSPECIFIED_STACK_TYPE"
+      "IPV4_ONLY"
      ],
      "enumDescriptions": [
       "The network interface can have both IPv4 and IPv6 addresses.",
-      "The network interface will be assigned IPv4 address.",
-      ""
+      "The network interface will be assigned IPv4 address."
      ],
      "type": "string"
     },
@@ -61762,6 +62415,20 @@
      "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
      "type": "string"
     },
+    "pdpScope": {
+     "description": "Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. ",
+     "enum": [
+      "GLOBAL",
+      "GLOBAL_AND_REGIONAL",
+      "REGIONAL"
+     ],
+     "enumDescriptions": [
+      "The public delegated prefix is global only. The provisioning will take ~4 weeks.",
+      "The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.",
+      "The public delegated prefix is regional only. The provisioning will take a few minutes."
+     ],
+     "type": "string"
+    },
     "publicDelegatedPrefixs": {
      "description": "[Output Only] The list of public delegated prefixes that exist for this public advertised prefix.",
      "items": {
@@ -61784,20 +62451,24 @@
     "status": {
      "description": "The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. ",
      "enum": [
+      "ANNOUNCED_TO_INTERNET",
       "INITIAL",
       "PREFIX_CONFIGURATION_COMPLETE",
       "PREFIX_CONFIGURATION_IN_PROGRESS",
       "PREFIX_REMOVAL_IN_PROGRESS",
       "PTR_CONFIGURED",
+      "READY_TO_ANNOUNCE",
       "REVERSE_DNS_LOOKUP_FAILED",
       "VALIDATED"
      ],
      "enumDescriptions": [
+      "The prefix is announced to Internet.",
       "RPKI validation is complete.",
       "The prefix is fully configured.",
       "The prefix is being configured.",
       "The prefix is being removed.",
       "User has configured the PTR.",
+      "The prefix is currently withdrawn but ready to be announced.",
       "Reverse DNS lookup failed.",
       "Reverse DNS lookup is successful."
      ],
@@ -62020,12 +62691,16 @@
      "description": "[Output Only] The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is active. - `DELETING` The public delegated prefix is being deprovsioned. ",
      "enum": [
       "ANNOUNCED",
+      "ANNOUNCED_TO_GOOGLE",
+      "ANNOUNCED_TO_INTERNET",
       "DELETING",
       "INITIALIZING",
       "READY_TO_ANNOUNCE"
      ],
      "enumDescriptions": [
       "The public delegated prefix is active.",
+      "The prefix is announced within Google network.",
+      "The prefix is announced to Internet and within Google.",
       "The public delegated prefix is being deprovsioned.",
       "The public delegated prefix is being initialized and addresses cannot be created yet.",
       "The public delegated prefix is currently withdrawn but ready to be announced."
@@ -62462,6 +63137,7 @@
       "CPUS_ALL_REGIONS",
       "DISKS_TOTAL_GB",
       "E2_CPUS",
+      "EXTERNAL_MANAGED_FORWARDING_RULES",
       "EXTERNAL_NETWORK_LB_FORWARDING_RULES",
       "EXTERNAL_PROTOCOL_FORWARDING_RULES",
       "EXTERNAL_VPN_GATEWAYS",
@@ -62483,9 +63159,7 @@
       "INTERCONNECT_TOTAL_GBPS",
       "INTERNAL_ADDRESSES",
       "INTERNAL_FORWARDING_RULES_PER_NETWORK",
-      "INTERNAL_FORWARDING_RULES_WITH_GLOBAL_ACCESS_PER_NETWORK",
       "INTERNAL_FORWARDING_RULES_WITH_TARGET_INSTANCE_PER_NETWORK",
-      "INTERNAL_TARGET_INSTANCE_WITH_GLOBAL_ACCESS_PER_NETWORK",
       "INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES",
       "IN_PLACE_SNAPSHOTS",
       "IN_USE_ADDRESSES",
@@ -62600,7 +63274,6 @@
       "",
       "",
       "Guest CPUs",
-      "",
       "",
       "",
       "",
@@ -63116,6 +63789,36 @@
     "sizeGb": {
      "description": "The new size of the regional persistent disk, which is specified in GB.",
      "format": "int64",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "RegionDisksStartAsyncReplicationRequest": {
+   "id": "RegionDisksStartAsyncReplicationRequest",
+   "properties": {
+    "asyncSecondaryDisk": {
+     "description": "The secondary disk to start asynchronous replication to. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "RegionDisksStopAsyncReplicationRequest": {
+   "id": "RegionDisksStopAsyncReplicationRequest",
+   "properties": {
+    "asyncSecondaryDisk": {
+     "description": "The secondary disk to stop asynchronous replication to. Supplied if and only if the target disk is a primary disk in an asynchronously replicated pair. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk ",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "RegionDisksStopGroupAsyncReplicationRequest": {
+   "id": "RegionDisksStopGroupAsyncReplicationRequest",
+   "properties": {
+    "resourcePolicy": {
+     "description": "The URL of the DiskConsistencyGroupPolicy for the group of disks to stop. This may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/projects/project/regions/region /resourcePolicies/resourcePolicy - projects/project/regions/region/resourcePolicies/resourcePolicy - regions/region/resourcePolicies/resourcePolicy ",
      "type": "string"
     }
    },
@@ -64094,7 +64797,7 @@
      "type": "array"
     },
     "type": {
-     "description": "[Output Only] The type of the firewall policy.",
+     "description": "[Output Only] The type of the firewall policy. Can be one of HIERARCHY, NETWORK, NETWORK_REGIONAL.",
      "enum": [
       "HIERARCHY",
       "NETWORK",
@@ -65012,7 +65715,7 @@
    "id": "ResourcePolicyDailyCycle",
    "properties": {
     "daysInCycle": {
-     "description": "Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.",
+     "description": "Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.",
      "format": "int32",
      "type": "integer"
     },
@@ -66402,7 +67105,7 @@
      "type": "string"
     },
     "sessionInitializationMode": {
-     "description": "The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.",
+     "description": "The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.",
      "enum": [
       "ACTIVE",
       "DISABLED",
@@ -66602,7 +67305,6 @@
       ]
      },
      "description": "[Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.",
-     "pattern": "[ -~]+",
      "type": "string"
     },
     "name": {
@@ -66635,6 +67337,21 @@
     },
     "enableEndpointIndependentMapping": {
      "type": "boolean"
+    },
+    "endpointTypes": {
+     "description": "List of Natted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM",
+     "items": {
+      "enum": [
+       "ENDPOINT_TYPE_SWG",
+       "ENDPOINT_TYPE_VM"
+      ],
+      "enumDescriptions": [
+       "This is used for Secure Web Gateway (go/securewebgateway) endpoints.",
+       "This is the default."
+      ],
+      "type": "string"
+     },
+     "type": "array"
     },
     "icmpIdleTimeoutSec": {
      "description": "Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.",
@@ -66950,7 +67667,7 @@
      "type": "string"
     },
     "state": {
-     "description": "BGP state as specified in RFC1771.",
+     "description": "The state of the BGP session. For a list of possible values for this field, see BGP session states.",
      "type": "string"
     },
     "status": {
@@ -68021,7 +68738,7 @@
      "type": "string"
     },
     "type": {
-     "description": "The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.",
+     "description": "The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.",
      "enum": [
       "CLOUD_ARMOR",
       "CLOUD_ARMOR_EDGE",
@@ -68353,6 +69070,20 @@
      "description": "This must be specified for redirect actions. Cannot be specified for any other actions.",
      "type": "string"
     },
+    "ruleManagedProtectionTier": {
+     "description": "[Output Only] The minimum managed protection tier required for this rule.",
+     "enum": [
+      "CAMP_PLUS",
+      "CAMP_PREMIUM",
+      "CAMP_STANDARD"
+     ],
+     "enumDescriptions": [
+      "Plus tier protection.",
+      "Premium tier protection.",
+      "Standard tier protection."
+     ],
+     "type": "string"
+    },
     "ruleNumber": {
      "description": "Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.",
      "format": "int64",
@@ -68519,7 +69250,7 @@
      "type": "string"
     },
     "enforceOnKey": {
-     "description": "Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under \"enforce_on_key_name\". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under \"enforce_on_key_name\". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. ",
+     "description": "Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under \"enforce_on_key_name\". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under \"enforce_on_key_name\". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. ",
      "enum": [
       "ALL",
       "ALL_IPS",
@@ -68543,7 +69274,7 @@
      "type": "string"
     },
     "exceedAction": {
-     "description": "Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are \"deny()\" where valid values for status are 403, 404, 429, and 502, and \"redirect\" where the redirect parameters come from exceed_redirect_options below.",
+     "description": "Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are \"deny(status)\", where valid values for status are 403, 404, 429, and 502, and \"redirect\" where the redirect parameters come from exceedRedirectOptions below.",
      "type": "string"
     },
     "exceedRedirectOptions": {
@@ -69494,7 +70225,7 @@
      "type": "string"
     },
     "guestFlush": {
-     "description": "[Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).",
+     "description": "[Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.",
      "type": "boolean"
     },
     "guestOsFeatures": {
@@ -71083,6 +71814,10 @@
      "format": "uint64",
      "type": "string"
     },
+    "internalIpv6Prefix": {
+     "description": "[Output Only] The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.",
+     "type": "string"
+    },
     "ipCidrRange": {
      "description": "The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.",
      "type": "string"
@@ -71091,13 +71826,11 @@
      "description": "The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.",
      "enum": [
       "EXTERNAL",
-      "INTERNAL",
-      "UNSPECIFIED_IPV6_ACCESS_TYPE"
+      "INTERNAL"
      ],
      "enumDescriptions": [
       "VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.",
-      "VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.",
-      "IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet."
+      "VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network."
      ],
      "type": "string"
     },
@@ -71224,16 +71957,14 @@
      "type": "string"
     },
     "stackType": {
-     "description": "The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.",
+     "description": "The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.",
      "enum": [
       "IPV4_IPV6",
-      "IPV4_ONLY",
-      "UNSPECIFIED_STACK_TYPE"
+      "IPV4_ONLY"
      ],
      "enumDescriptions": [
       "New VMs in this subnet can have both IPv4 and IPv6 addresses.",
-      "New VMs in this subnet will only be assigned IPv4 addresses.",
-      ""
+      "New VMs in this subnet will only be assigned IPv4 addresses."
      ],
      "type": "string"
     },
@@ -71528,7 +72259,7 @@
      "type": "boolean"
     },
     "filterExpr": {
-     "description": "Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.",
+     "description": "Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.",
      "type": "string"
     },
     "flowSampling": {
@@ -74047,6 +74778,10 @@
       "",
       ""
      ],
+     "type": "string"
+    },
+    "region": {
+     "description": "[Output Only] URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.",
      "type": "string"
     },
     "selfLink": {

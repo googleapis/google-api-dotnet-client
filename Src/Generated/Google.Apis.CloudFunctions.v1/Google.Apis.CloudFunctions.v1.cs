@@ -1449,7 +1449,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
 
     /// <summary>
     /// Describes a Cloud Function that contains user computation executed in response to an event. It encapsulate
-    /// function and triggers configurations. Next tag: 36
+    /// function and triggers configurations.
     /// </summary>
     public class CloudFunction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2296,8 +2296,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
 
     /// <summary>
     /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from
-    /// secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret
-    /// values are only fetched when a new clone starts.
+    /// secret manager and expose it as an environment variable.
     /// </summary>
     public class SecretEnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2319,7 +2318,8 @@ namespace Google.Apis.CloudFunctions.v1.Data
 
         /// <summary>
         /// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version
-        /// for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        /// for secret environment variables as any updates to the secret value is not reflected until new instances
+        /// start.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }

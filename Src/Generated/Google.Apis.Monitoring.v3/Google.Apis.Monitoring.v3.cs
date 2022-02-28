@@ -7519,8 +7519,8 @@ namespace Google.Apis.Monitoring.v3.Data
     public class ContentMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching
-        /// is to be performed.
+        /// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content
+        /// matching is to be performed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
