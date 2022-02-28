@@ -3357,6 +3357,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("showConfidentialModeContent")]
         public virtual System.Nullable<bool> ShowConfidentialModeContent { get; set; }
 
+        /// <summary>To use the new export system, set to **true**.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNewExport")]
+        public virtual System.Nullable<bool> UseNewExport { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -4202,6 +4202,80 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configures how to deliver Findings to BigQuery Instance.</summary>
+    public class GoogleCloudSecuritycenterV1BigQueryExport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time at which the big query export was created. This field is set by the server and will be
+        /// ignored if provided on export on creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The dataset to write findings' updates to. Its format is
+        /// "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters
+        /// (a-z, A-Z), numbers (0-9), or underscores (_).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The description of the export (max of 1024 characters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Expression that defines the filter to apply across create/update events of findings. The expression is a
+        /// list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported,
+        /// and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in
+        /// front of them to indicate negation. The fields map to those defined in the corresponding resource. The
+        /// supported operators are: * `=` for all value types. * `&amp;gt;`, `&amp;lt;`, `&amp;gt;=`, `&amp;lt;=` for
+        /// integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string
+        /// literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
+        /// Please see the proto documentation in the finding
+        /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/finding.proto) and in
+        /// the ListFindingsRequest for valid filter syntax.
+        /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/securitycenter_service.proto).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Output only. Email address of the user who last edited the big query export. This field is set by the server
+        /// and will be ignored if provided on export creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostRecentEditor")]
+        public virtual string MostRecentEditor { get; set; }
+
+        /// <summary>
+        /// The relative resource name of this export. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format:
+        /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example format:
+        /// "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+        /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when
+        /// provided in create requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The service account that needs permission to create table, upload data to the big query
+        /// dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; }
+
+        /// <summary>
+        /// Output only. The most recent time at which the big export was updated. This field is set by the server and
+        /// will be ignored if provided on export creation or update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response to a BulkMute request. Contains the LRO information.</summary>
     public class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4354,7 +4428,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The human readable name of project that the resource belongs to.</summary>
+        /// <summary>The project id that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 
@@ -4559,7 +4633,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The human readable name of project that the resource belongs to.</summary>
+        /// <summary>The project id that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 

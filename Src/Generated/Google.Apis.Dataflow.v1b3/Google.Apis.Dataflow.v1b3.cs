@@ -6251,7 +6251,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines a job to be run by the Cloud Dataflow service. nextID: 26</summary>
+    /// <summary>Defines a job to be run by the Cloud Dataflow service.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

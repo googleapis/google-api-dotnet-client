@@ -1758,6 +1758,10 @@ namespace Google.Apis.Blogger.v3
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DRAFT")]
                 DRAFT = 1,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("SOFT_TRASHED")]
+                SOFTTRASHED = 2,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -2310,6 +2314,10 @@ namespace Google.Apis.Blogger.v3
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SCHEDULED")]
                 SCHEDULED = 2,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("SOFT_TRASHED")]
+                SOFTTRASHED = 3,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -2891,6 +2899,10 @@ namespace Google.Apis.Blogger.v3
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SCHEDULED")]
                 SCHEDULED = 2,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("SOFT_TRASHED")]
+                SOFTTRASHED = 3,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
