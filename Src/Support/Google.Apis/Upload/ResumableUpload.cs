@@ -14,24 +14,24 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Http;
+using Google.Apis.Json;
+using Google.Apis.Logging;
+using Google.Apis.Requests;
+using Google.Apis.Responses;
+using Google.Apis.Services;
+using Google.Apis.Testing;
+using Google.Apis.Util;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Reflection;
-
-using Google.Apis.Http;
-using Google.Apis.Logging;
-using Google.Apis.Media;
-using Google.Apis.Requests;
-using Google.Apis.Services;
-using Google.Apis.Testing;
-using Google.Apis.Util;
-using System.Collections.Generic;
 
 namespace Google.Apis.Upload
 {
@@ -685,9 +685,17 @@ namespace Google.Apis.Upload
         /// </summary>
         /// <param name="response">The error response.</param>
         /// <returns>An exception which can be thrown by the caller.</returns>
-        protected Task<GoogleApiException> ExceptionForResponseAsync(HttpResponseMessage response)
+        protected async Task<GoogleApiException> ExceptionForResponseAsync(HttpResponseMessage response)
         {
-            return MediaApiErrorHandling.ExceptionForResponseAsync(Options?.Serializer, Options?.ServiceName, response);
+            string effectiveServiceName = Options?.ServiceName ?? "";
+            RequestError error = await response
+                .DeserializeErrorAsync(effectiveServiceName, Options?.Serializer ?? NewtonsoftJsonSerializer.Instance)
+                .ConfigureAwait(false);
+            return new GoogleApiException(effectiveServiceName)
+            {
+                Error = error,
+                HttpStatusCode = response.StatusCode
+            };
         }
 
         /// <summary>A callback when the media was uploaded successfully.</summary>

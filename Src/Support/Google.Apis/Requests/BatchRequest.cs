@@ -219,8 +219,17 @@ namespace Google.Apis.Requests
                 }
                 else
                 {
-                    // Parse the error from the current response.
-                    var error = await service.DeserializeError(responseMessage).ConfigureAwait(false);
+                    RequestError error;
+                    try
+                    {
+                        // Parse the error from the current response.
+                        error = await service.DeserializeError(responseMessage).ConfigureAwait(false);
+                    }
+                    catch (GoogleApiException ex) when (ex.Error is object)
+                    {
+                        error = ex.Error;
+                    }
+
                     allRequests[requestIndex].OnResponse(null, error, requestIndex, responseMessage);
                 }
 
@@ -233,23 +242,20 @@ namespace Google.Apis.Requests
         {
             if (!result.IsSuccessStatusCode)
             {
-                Exception innerException = null;
+                Exception innerException;
                 try
                 {
                     // Try to parse the error from the current response.
                     RequestError error = await service.DeserializeError(result).ConfigureAwait(false);
-                    // If we were able to get an error object, wrap it in a GoogleApiException
-                    // and throw that to use as the inner exception.
-                    if (error != null)
+                    // If DeserializeError didn't threw, then we got an error object.
+                    // We wrap it in a GoogleApiException and throw that to use as the inner exception.
+                    // We throw here instead of simply creating a new GoogleApiException
+                    // so as to get the StackTrace.
+                    throw new GoogleApiException(service.Name)
                     {
-                        // We throw here instead of simply creating a new GoogleApiException
-                        // so as to get the StackTrace.
-                        throw new GoogleApiException(service.Name, error.ToString())
-                        {
-                            Error = error,
-                            HttpStatusCode = result.StatusCode
-                        };
-                    }
+                        Error = error,
+                        HttpStatusCode = result.StatusCode
+                    };
                 }
                 catch (Exception ex)
                 {
@@ -265,13 +271,12 @@ namespace Google.Apis.Requests
                     // Now that we may have more error detail, let's call EnsureSuccessStatusCode.
                     // We don't want to introduce breaking changes for users that relied on
                     // HttpRequestException before, and importantly on its message format which is the only
-                    // way they could access the HttpStatusCode.
+                    // way they could access the HttpStatusCode (pre .NET 5).
                     result.EnsureSuccessStatusCode();
                 }
-                // If innerException is null that means that our attempt to obtain error information
-                // couldn't parse a RequestError but also didn't throw. So we really don't have any
-                // more information to add. We don't need to do anything.
-                catch (HttpRequestException original) when (innerException != null)
+                // innerException is never null, either it's the one thrown by DeserializeError
+                // or is the one thrown by us that wraps the deserialized error object.
+                catch (HttpRequestException original)
                 {
                     throw new HttpRequestException(original.Message, innerException);
                 }

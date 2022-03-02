@@ -14,18 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Http;
+using Google.Apis.Logging;
+using Google.Apis.Requests;
+using Google.Apis.Responses;
+using Google.Apis.Services;
+using Google.Apis.Util;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Apis.Logging;
-using Google.Apis.Media;
-using Google.Apis.Services;
-using Google.Apis.Util;
-using System.Net.Http.Headers;
-using Google.Apis.Http;
 
 namespace Google.Apis.Download
 {
@@ -285,7 +285,12 @@ namespace Google.Apis.Download
                 {
                     if (!response.IsSuccessStatusCode)
                     {
-                        throw await MediaApiErrorHandling.ExceptionForResponseAsync(service, response).ConfigureAwait(false);
+                        RequestError error = await response.DeserializeErrorAsync(service.Name, service.Serializer).ConfigureAwait(false);
+                        throw new GoogleApiException(service.Name)
+                        {
+                            Error = error,
+                            HttpStatusCode = response.StatusCode
+                        };
                     }
 
                     OnResponseReceived(response);

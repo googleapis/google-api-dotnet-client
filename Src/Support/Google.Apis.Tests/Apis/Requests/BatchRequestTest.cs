@@ -521,6 +521,13 @@ hello world
         public async Task BatchEndpointErrorNonJsonContent()
         {
             string nonJsonContent = "Invalid JSON";
+            string expectedExceptionMessage = "The service TestService has thrown an exception. HttpStatusCode is BadRequest. No error message was specified.";
+            string expectedExceptionToStringContent =
+                $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
+                $"No JSON error details were specified.{Environment.NewLine}" +
+                $"Raw error details are: {nonJsonContent}";
+
             using (var service = new MockClientService( new BaseClientService.Initializer()
             {
                 HttpClientFactory = new MockHttpClientFactory(new BatchEndpointErrorMessageHandler(nonJsonContent))
@@ -544,8 +551,9 @@ hello world
                 GoogleApiException innerException = Assert.IsType<GoogleApiException>(outerException.InnerException);
 
                 Assert.Equal(HttpStatusCode.BadRequest, innerException.HttpStatusCode);
-                Assert.Null(innerException.Error);
-                Assert.Equal(nonJsonContent, innerException.Message);
+                Assert.True(innerException.Error.IsOnlyRawContent);
+                Assert.Equal(expectedExceptionMessage, innerException.Message);
+                Assert.Contains(expectedExceptionToStringContent, innerException.ToString());
 
                 Assert.IsAssignableFrom<JsonException>(innerException.InnerException);
             }
@@ -554,6 +562,12 @@ hello world
         [Fact]
         public async Task BatchEndpointErrorNullContent()
         {
+            string expectedExceptionMessage = "The service TestService has thrown an exception. HttpStatusCode is BadRequest. No error message was specified.";
+            string expectedExceptionToStringContent =
+                $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                $"HttpStatusCode is BadRequest.{Environment.NewLine}" +
+                $"No error details were specified.";
+
             using (var service = new MockClientService( new BaseClientService.Initializer()
             {
                 HttpClientFactory = new MockHttpClientFactory(new BatchEndpointErrorMessageHandler(null))
@@ -577,7 +591,8 @@ hello world
                 GoogleApiException innerException = Assert.IsType<GoogleApiException>(outerException.InnerException);
                 Assert.Equal(HttpStatusCode.BadRequest, innerException.HttpStatusCode);
                 Assert.Null(innerException.Error);
-                Assert.Contains("unexpectedly null", innerException.Message);
+                Assert.Equal(expectedExceptionMessage, innerException.Message);
+                Assert.Contains(expectedExceptionToStringContent, innerException.ToString());
             }
         }
 

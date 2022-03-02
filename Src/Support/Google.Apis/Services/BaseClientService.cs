@@ -14,24 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
-
 using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
-using Google.Apis.Util;
+using Google.Apis.Responses;
 using Google.Apis.Testing;
+using Google.Apis.Util;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Services
 {
@@ -336,38 +332,8 @@ namespace Google.Apis.Services
         }
 
         /// <inheritdoc/>
-        public virtual async Task<RequestError> DeserializeError(HttpResponseMessage response)
-        {
-            if (response?.Content == null)
-            {
-                var ex = new GoogleApiException(Name, "response or response content unexpectedly null.");
-                ex.HttpStatusCode = response?.StatusCode ?? ex.HttpStatusCode;
-                throw ex;
-            }
-            // If we can't even read the response, let that exception bubble up.
-            var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            RequestError error;
-            try
-            {
-                error = Serializer.Deserialize<StandardResponse<object>>(responseText)?.Error;
-            }
-            catch (JsonException ex)
-            {
-                throw new GoogleApiException(Name, responseText, ex)
-                {
-                    HttpStatusCode = response.StatusCode
-                };
-            }
-            if (error == null)
-            {
-                throw new GoogleApiException(Name, "Error response is null")
-                {
-                    HttpStatusCode = response.StatusCode
-                };
-            }
-            error.ErrorResponseContent = responseText;
-            return error;
-        }
+        public virtual Task<RequestError> DeserializeError(HttpResponseMessage response) =>
+            response.DeserializeErrorAsync(Name, Serializer);
 
         #endregion
 

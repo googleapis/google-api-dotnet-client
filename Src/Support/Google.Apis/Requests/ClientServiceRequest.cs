@@ -14,23 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Discovery;
+using Google.Apis.Http;
+using Google.Apis.Logging;
+using Google.Apis.Requests.Parameters;
+using Google.Apis.Services;
+using Google.Apis.Testing;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Apis.Discovery;
-using Google.Apis.Http;
-using Google.Apis.Logging;
-using Google.Apis.Services;
-using Google.Apis.Testing;
-using Google.Apis.Util;
-using Google.Apis.Requests.Parameters;
-using System.Runtime.ExceptionServices;
 
 namespace Google.Apis.Requests
 {
@@ -255,7 +252,7 @@ namespace Google.Apis.Requests
                 return await service.DeserializeResponse<TResponse>(response).ConfigureAwait(false);
             }
             var error = await service.DeserializeError(response).ConfigureAwait(false);
-            throw new GoogleApiException(service.Name, error.ToString())
+            throw new GoogleApiException(service.Name)
             {
                 Error = error,
                 HttpStatusCode = response.StatusCode

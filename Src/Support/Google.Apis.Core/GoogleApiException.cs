@@ -25,38 +25,76 @@ namespace Google
     /// <summary>Represents an exception thrown by an API Service.</summary>
     public class GoogleApiException : Exception
     {
-        private readonly string serviceName;
+        private readonly bool _hasMessage;
 
         /// <summary>Gets the service name which related to this exception.</summary>
-        public string ServiceName
-        {
-            get { return serviceName; }
-        }
+        public string ServiceName { get; }
 
         /// <summary>Creates an API Service exception.</summary>
         public GoogleApiException(string serviceName, string message, Exception inner)
             : base(message, inner)
         {
-            serviceName.ThrowIfNull("serviceName");
-            this.serviceName = serviceName;
+            ServiceName = serviceName.ThrowIfNull(nameof(serviceName));
+            _hasMessage = message is object;
         }
 
         /// <summary>Creates an API Service exception.</summary>
-        public GoogleApiException(string serviceName, string message) : this(serviceName, message, null) { }
+        public GoogleApiException(string serviceName, string message) : this(serviceName, message, null)
+        { }
+
+        /// <summary>
+        /// Creates an API Service exception with no message.
+        /// </summary>
+        /// <remarks>
+        /// <see cref="Message"/> may still contain useful information if the
+        /// <see cref="Error"/> and/or <see cref="HttpStatusCode"/> properties are set.
+        /// </remarks>
+        public GoogleApiException(string serviceName) : this(serviceName, null, null)
+        { }
 
         /// <summary>The Error which was returned from the server, or <c>null</c> if unavailable.</summary>
         public RequestError Error { get; set; }
 
+        private string ErrorMessage =>
+            Error?.Message ?? "No error message was specified.";
+
+        private string ContentMessage =>
+            Error is null
+            ? "No error details were specified."
+            : (Error.IsOnlyRawContent
+                ? $"No JSON error details were specified.{Environment.NewLine}" +
+                    (string.IsNullOrWhiteSpace(Error.ErrorResponseContent)
+                    ? "Raw error details are empty or white spaces only."
+                    : $"Raw error details are: {Error.ErrorResponseContent}")
+                : $"{Error}");
+
         /// <summary>The HTTP status code which was returned along with this error, or 0 if unavailable.</summary>
         public HttpStatusCode HttpStatusCode { get; set; }
+
+        private string HttpStatusCodeMessage =>
+            HttpStatusCode > 0
+            ? $"HttpStatusCode is {HttpStatusCode}."
+            : "No HttpStatusCode was specified.";
+
+        private string ServiceNameMessage => $"The service {ServiceName} has thrown an exception.";
+
+        private string CombinedMessage => $"{ServiceNameMessage} {HttpStatusCodeMessage} {ErrorMessage}";
+
+        /// <inheritdoc/>
+        public override string Message =>
+            // We just override the default message which is very generic in Exception
+            _hasMessage ? base.Message : CombinedMessage;
 
         /// <summary>
         /// Returns a summary of this exception.
         /// </summary>
         /// <returns>A summary of this exception.</returns>
-        public override string ToString()
-        {
-            return string.Format("The service {1} has thrown an exception: {0}", base.ToString(), serviceName);
-        }
+        public override string ToString() =>
+            // base.ToString() prints Message, and if we have overwritten Message with DefaultMessage
+            // then ToString() will contain some duplicate information. But that's OK.
+            $"{ServiceNameMessage}{Environment.NewLine}" +
+            $"{HttpStatusCodeMessage}{Environment.NewLine}" +
+            $"{ContentMessage}{Environment.NewLine}" +
+            $"{base.ToString()}";
     }
 }
