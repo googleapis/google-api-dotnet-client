@@ -629,8 +629,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 uploader.Upload();
                 Assert.NotNull(lastProgress);
                 Assert.Equal(UploadStatus.Failed, lastProgress.Status);
-                var exception = (GoogleApiException)lastProgress.Exception;
-                Assert.Contains("Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]", exception.Message);
+                var exception = Assert.IsType<GoogleApiException>(lastProgress.Exception);
+                Assert.Equal("The service TestService has thrown an exception. HttpStatusCode is NotFound. Login Required", exception.Message);
+                Assert.Contains("Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]", exception.ToString());
                 Assert.Equal("Login Required", exception.Error.Message);
             }
         }
@@ -654,9 +655,14 @@ namespace Google.Apis.Tests.Apis.Upload
                 uploader.Upload();
                 Assert.NotNull(lastProgress);
                 Assert.Equal(UploadStatus.Failed, lastProgress.Status);
-                var exception = (GoogleApiException)lastProgress.Exception;
-                Assert.Equal(plainTextError, exception.Message);
-                Assert.Null(exception.Error);
+                var exception = Assert.IsType<GoogleApiException>(lastProgress.Exception);
+                Assert.Equal("The service TestService has thrown an exception. HttpStatusCode is NotFound. No error message was specified.", exception.Message);
+                Assert.Contains(
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"HttpStatusCode is NotFound.{Environment.NewLine}" +
+                    $"No JSON error details were specified.{Environment.NewLine}" +
+                    $"Raw error details are: {plainTextError}", exception.ToString());
+                Assert.True(exception.Error.IsOnlyRawContent);
             }
         }
 

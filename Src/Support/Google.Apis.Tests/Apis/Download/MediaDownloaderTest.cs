@@ -495,10 +495,15 @@ namespace Google.Apis.Tests.Apis.Download
 
                 var lastProgress = progressList.LastOrDefault();
                 Assert.Equal(DownloadStatus.Failed, lastProgress.Status);
-                GoogleApiException exception = (GoogleApiException) lastProgress.Exception;
+                GoogleApiException exception = Assert.IsType<GoogleApiException>(lastProgress.Exception);
                 Assert.Equal(HttpStatusCode.NotFound, exception.HttpStatusCode);
-                Assert.Equal(NotFoundError, exception.Message);
-                Assert.Null(exception.Error);
+                Assert.Equal("The service TestService has thrown an exception. HttpStatusCode is NotFound. No error message was specified.", exception.Message);
+                Assert.Contains(
+                    $"The service TestService has thrown an exception.{Environment.NewLine}" +
+                    $"HttpStatusCode is NotFound.{Environment.NewLine}" +
+                    $"No JSON error details were specified.{Environment.NewLine}" +
+                    $"Raw error details are: {NotFoundError}", exception.ToString());
+                Assert.True(exception.Error.IsOnlyRawContent);
             }
         }
 

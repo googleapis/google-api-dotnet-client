@@ -64,6 +64,9 @@ namespace Google.Apis.Requests
         /// </remarks>
         public string ErrorResponseContent { get; set; }
 
+        internal bool IsOnlyRawContent =>
+            Message is null && Code == 0 && Errors.IsNullOrEmpty();
+
         /// <summary>
         /// Returns a string summary of this error
         /// </summary>
