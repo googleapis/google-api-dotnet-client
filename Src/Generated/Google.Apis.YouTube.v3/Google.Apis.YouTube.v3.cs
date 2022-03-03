@@ -12068,7 +12068,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes information necessary for ingesting an RTMP or an HTTP stream.</summary>
+    /// <summary>Describes information necessary for ingesting an RTMP, HTTP, or SRT stream.</summary>
     public class IngestionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12101,7 +12101,7 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rtmpsIngestionAddress")]
         public virtual string RtmpsIngestionAddress { get; set; }
 
-        /// <summary>The HTTP or RTMP stream name that YouTube assigns to the video stream.</summary>
+        /// <summary>The stream name that YouTube assigns to the video stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamName")]
         public virtual string StreamName { get; set; }
 

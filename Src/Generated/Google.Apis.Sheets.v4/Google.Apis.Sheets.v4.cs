@@ -657,7 +657,7 @@ namespace Google.Apis.Sheets.v4
                     /// format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the
                     /// decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal)
                     /// counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2
-                    /// because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st
+                    /// because it's 2 days after December 30th 1899, and .5 because noon is half a day. February 1st
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
@@ -665,7 +665,7 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
-                    /// number format (which is dependent on the spreadsheet locale).
+                    /// number format (which depends on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING = 1,
@@ -976,7 +976,7 @@ namespace Google.Apis.Sheets.v4
                     /// format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the
                     /// decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal)
                     /// counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2
-                    /// because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st
+                    /// because it's 2 days after December 30th 1899, and .5 because noon is half a day. February 1st
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
@@ -984,7 +984,7 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
-                    /// number format (which is dependent on the spreadsheet locale).
+                    /// number format (which depends on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING = 1,
@@ -1415,7 +1415,7 @@ namespace Google.Apis.Sheets.v4
                     /// format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the
                     /// decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal)
                     /// counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2
-                    /// because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st
+                    /// because it's 2 days after December 30th 1899, and .5 because noon is half a day. February 1st
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
@@ -1423,7 +1423,7 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
-                    /// number format (which is dependent on the spreadsheet locale).
+                    /// number format (which depends on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING = 1,
@@ -1611,7 +1611,7 @@ namespace Google.Apis.Sheets.v4
                     /// format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the
                     /// decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal)
                     /// counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2
-                    /// because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st
+                    /// because it's 2 days after December 30th 1899, and .5 because noon is half a day. February 1st
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
@@ -1619,7 +1619,7 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
-                    /// number format (which is dependent on the spreadsheet locale).
+                    /// number format (which depends on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING = 1,

@@ -12929,6 +12929,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<bool> EffectiveAllowAvailabilityUpdates { get; set; }
 
         /// <summary>
+        /// Output only. The effective value of allow_condition_updates. If account_item_updates_settings is present,
+        /// then this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveAllowConditionUpdates")]
+        public virtual System.Nullable<bool> EffectiveAllowConditionUpdates { get; set; }
+
+        /// <summary>
         /// Output only. The effective value of allow_price_updates. If account_item_updates_settings is present, then
         /// this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only.
         /// </summary>
@@ -12957,6 +12964,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAvailabilityUpdates")]
         public virtual System.Nullable<bool> AllowAvailabilityUpdates { get; set; }
+
+        /// <summary>
+        /// If condition updates are enabled, Google always updates item condition with the condition detected from the
+        /// details of your product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowConditionUpdates")]
+        public virtual System.Nullable<bool> AllowConditionUpdates { get; set; }
 
         /// <summary>
         /// If price updates are enabled, Google always updates the active price with the crawled information.

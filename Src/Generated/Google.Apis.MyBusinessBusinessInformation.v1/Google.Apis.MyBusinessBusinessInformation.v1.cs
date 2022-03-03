@@ -1982,10 +1982,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
-    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
-    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
-    /// google.protobuf.Timestamp
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2375,6 +2375,13 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasPendingEdits")]
         public virtual System.Nullable<bool> HasPendingEdits { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates if the listing has Voice of Merchant. If this boolean is false, you should call the
+        /// locations.getVoiceOfMerchantState API to get details as to why they do not have Voice of Merchant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasVoiceOfMerchant")]
+        public virtual System.Nullable<bool> HasVoiceOfMerchant { get; set; }
 
         /// <summary>Output only. A link to the location on Maps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapsUri")]
