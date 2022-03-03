@@ -2763,7 +2763,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the snapshot
         /// result should be exported. If this dataset does not exist, the export call returns an INVALID_ARGUMENT
-        /// error.
+        /// error. Setting the `contentType` for `exportAssets` determines the
+        /// [schema](/asset-inventory/docs/exporting-to-bigquery#bigquery-schema) of the BigQuery table. Setting
+        /// `separateTablesPerAssetType` to `TRUE` also influences the schema.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }

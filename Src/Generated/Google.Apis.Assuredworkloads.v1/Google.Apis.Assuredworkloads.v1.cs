@@ -948,8 +948,9 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string KajEnrollmentState { get; set; }
 
         /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
-        /// provisioned. This field is mandatory for a subset of Compliance Regimes.
+        /// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is
+        /// provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should
+        /// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1WorkloadKMSSettings KmsSettings { get; set; }
@@ -1043,7 +1044,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>
         /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload
-        /// creation will fail.
+        /// creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as
+        /// folder_id is assigned by Google.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
@@ -1117,7 +1119,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
         public virtual string BillingAccount { get; set; }
 
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for CJIS.</summary>
+        /// <summary>Input only. Immutable. Settings specific to resources needed for CJIS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cjisSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings CjisSettings { get; set; }
 
@@ -1151,17 +1153,15 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP High.</summary>
+        /// <summary>Input only. Immutable. Settings specific to resources needed for FedRAMP High.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fedrampHighSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings FedrampHighSettings { get; set; }
 
-        /// <summary>
-        /// Required. Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.
-        /// </summary>
+        /// <summary>Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fedrampModerateSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings FedrampModerateSettings { get; set; }
 
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
+        /// <summary>Input only. Immutable. Settings specific to resources needed for IL4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings Il4Settings { get; set; }
 
@@ -1170,8 +1170,9 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string KajEnrollmentState { get; set; }
 
         /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
-        /// provisioned. This field is mandatory for a subset of Compliance Regimes.
+        /// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is
+        /// provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should
+        /// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
@@ -1220,7 +1221,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for CJIS.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1231,7 +1232,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for FedRAMP High.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1242,7 +1243,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for FedRAMP Moderate.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1253,7 +1254,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for IL4.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1309,7 +1310,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>
         /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload
-        /// creation will fail.
+        /// creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as
+        /// folder_id is assigned by Google.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
@@ -1436,8 +1438,9 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string KajEnrollmentState { get; set; }
 
         /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
-        /// provisioned. This field is mandatory for a subset of Compliance Regimes.
+        /// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is
+        /// provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should
+        /// specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
@@ -1486,7 +1489,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for CJIS.</summary>
     public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCJISSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1497,7 +1500,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for FedRAMP High.</summary>
     public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1508,7 +1511,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for FedRAMP Moderate.</summary>
     public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampModerateSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1519,7 +1522,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Settings specific to resources needed for IL4.</summary>
     public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIL4Settings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
+        /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1575,7 +1578,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>
         /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload
-        /// creation will fail.
+        /// creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as
+        /// folder_id is assigned by Google.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }

@@ -1463,6 +1463,29 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with an App Engine version.</summary>
+    public class AppEngineVersionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of an App Engine version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>App Engine execution environment for a version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>Runtime of the App Engine version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual string Runtime { get; set; }
+
+        /// <summary>URI of an App Engine version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -1575,6 +1598,29 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>A [Cloud function](https://cloud.google.com/functions) name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a Cloud function.</summary>
+    public class CloudFunctionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Location in which the Cloud function is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>URI of a Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>Latest successfully deployed version id of the Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual System.Nullable<long> VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2577,9 +2623,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("abort")]
         public virtual AbortInfo Abort { get; set; }
 
+        /// <summary>Display information of an App Engine service version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineVersionInfo")]
+        public virtual AppEngineVersionInfo AppEngineVersionInfo { get; set; }
+
         /// <summary>This is a step that leads to the final state Drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
         public virtual System.Nullable<bool> CausesDrop { get; set; }
+
+        /// <summary>Display information of a Cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
+        public virtual CloudFunctionInfo CloudFunction { get; set; }
 
         /// <summary>Display information of a Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
@@ -2645,6 +2699,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Display information of a VPC connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcConnector")]
+        public virtual VpcConnectorInfo VpcConnector { get; set; }
+
         /// <summary>Display information of a Compute Engine VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnGateway")]
         public virtual VpnGatewayInfo VpnGateway { get; set; }
@@ -2706,6 +2764,25 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a VPC connector.</summary>
+    public class VpcConnectorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a VPC connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Location in which the VPC connector is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>URI of a VPC connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

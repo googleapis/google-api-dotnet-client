@@ -5959,6 +5959,21 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>GitFileSource describes a file within a (possibly remote) code repository.</summary>
     public class GitFileSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The full resource name of the bitbucket server config. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>
+        /// The full resource name of the github enterprise config. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// `projects/{project}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
+
         /// <summary>The path of the file, with the repo root as the root of the path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -6128,6 +6143,21 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>GitRepoSource describes a repo and ref of a code repository.</summary>
     public class GitRepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The full resource name of the bitbucket server config. Format:
+        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketServerConfig")]
+        public virtual string BitbucketServerConfig { get; set; }
+
+        /// <summary>
+        /// The full resource name of the github enterprise config. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// `projects/{project}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
+
         /// <summary>The branch or tag to use. Must start with "refs/" (required).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ref")]
         public virtual string Ref__ { get; set; }
@@ -6875,6 +6905,45 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Required. ID of the trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the custom metadata of the RunWorkflow long-running operation.</summary>
+    public class RunWorkflowCustomOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. ID of the pipeline run created by RunWorkflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineRunId")]
+        public virtual string PipelineRunId { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

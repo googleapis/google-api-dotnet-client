@@ -2083,6 +2083,14 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due
+        /// to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which
+        /// means that concurrency will be automatically set based on the reservation size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrency")]
+        public virtual System.Nullable<long> Concurrency { get; set; }
+
         /// <summary>Output only. Creation time of the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; }

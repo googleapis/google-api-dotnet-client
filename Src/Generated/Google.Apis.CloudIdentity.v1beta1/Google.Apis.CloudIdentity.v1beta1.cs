@@ -68,8 +68,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Identity API.</summary>
         public class Scope
         {
+            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
+            public static string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
+
             /// <summary>See your device details</summary>
             public static string CloudIdentityDevicesLookup = "https://www.googleapis.com/auth/cloud-identity.devices.lookup";
+
+            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices.readonly</summary>
+            public static string CloudIdentityDevicesReadonly = "https://www.googleapis.com/auth/cloud-identity.devices.readonly";
 
             /// <summary>
             /// See, change, create, and delete any of the Cloud Identity Groups that you can access, including the
@@ -92,8 +98,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Identity API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
+            public const string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
+
             /// <summary>See your device details</summary>
             public const string CloudIdentityDevicesLookup = "https://www.googleapis.com/auth/cloud-identity.devices.lookup";
+
+            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices.readonly</summary>
+            public const string CloudIdentityDevicesReadonly = "https://www.googleapis.com/auth/cloud-identity.devices.readonly";
 
             /// <summary>
             /// See, change, create, and delete any of the Cloud Identity Groups that you can access, including the
