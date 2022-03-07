@@ -3596,9 +3596,7 @@ namespace Google.Apis.CloudDataplex.v1
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
 
-                                /// <summary>
-                                /// Optional. The etag associated with the partition if it was previously retrieved.
-                                /// </summary>
+                                /// <summary>Optional. The etag associated with the partition.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string Etag { get; set; }
 
@@ -3717,10 +3715,10 @@ namespace Google.Apis.CloudDataplex.v1
                                 public virtual string Parent { get; private set; }
 
                                 /// <summary>
-                                /// Optional. Filter the partitions returned to the caller using a key vslue pair
-                                /// expression. The filter expression supports: logical operators: AND, OR comparison
+                                /// Optional. Filter the partitions returned to the caller using a key value pair
+                                /// expression. Supported operators and syntax: logic operators: AND, OR comparison
                                 /// operators: &amp;lt;, &amp;gt;, &amp;gt;=, &amp;lt;= ,=, != LIKE operators: The right
-                                /// hand of a LIKE operator supports “.” and “*” for wildcard searches, for example
+                                /// hand of a LIKE operator supports "." and "*" for wildcard searches, for example
                                 /// "value1 LIKE ".*oo.*" parenthetical grouping: ( )Sample filter expression:
                                 /// `?filter="key1 &amp;lt; value1 OR key2 &amp;gt; value2"Notes: Keys to the left of
                                 /// operators are case insensitive. Partition results are sorted first by creation time,
@@ -3896,7 +3894,8 @@ namespace Google.Apis.CloudDataplex.v1
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// Required. The etag associated with the partition if it was previously retrieved.
+                            /// Required. The etag associated with the entity, which can be retrieved with a GetEntity
+                            /// request.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Etag { get; set; }
@@ -4053,8 +4052,8 @@ namespace Google.Apis.CloudDataplex.v1
                             /// Optional. The following filter parameters can be added to the URL to limit the entities
                             /// returned by the API: Entity ID: ?filter="id=entityID" Asset ID: ?filter="asset=assetID"
                             /// Data path ?filter="data_path=gs://my-bucket" Is HIVE compatible:
-                            /// ?filter=”hive_compatible=true” Is BigQuery compatible:
-                            /// ?filter=”bigquery_compatible=true”
+                            /// ?filter="hive_compatible=true" Is BigQuery compatible:
+                            /// ?filter="bigquery_compatible=true"
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -4082,7 +4081,9 @@ namespace Google.Apis.CloudDataplex.v1
                             /// <summary>Required. Specify the entity view to make a partial list request.</summary>
                             public enum ViewEnum
                             {
-                                /// <summary>The default unset value. The API will default to the FULL view.</summary>
+                                /// <summary>
+                                /// The default unset value. Return both table and fileset entities if unspecified.
+                                /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("ENTITY_VIEW_UNSPECIFIED")]
                                 ENTITYVIEWUNSPECIFIED = 0,
 
@@ -6600,12 +6601,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Display name must be shorter than or equal to 63 characters.</summary>
+        /// <summary>Optional. Display name must be shorter than or equal to 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+        /// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for
+        /// update and delete requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -6620,7 +6622,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Required. A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying
         /// a new ID in an update entity request will override the existing value. The ID must contain only letters
-        /// (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter.
+        /// (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7313,11 +7315,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Location { get; set; }
 
         /// <summary>
-        /// Output only. The values must be HTML URL encoded two times before constructing the path. For example, if you
-        /// have a value of "US:CA", encoded it two times and you get "US%253ACA". Then if you have the 2nd value is
-        /// "CA#Sunnyvale", encoded two times and you get "CA%2523Sunnyvale". The partition values path is
-        /// "US%253ACA/CA%2523Sunnyvale". The final URL will be "https://.../partitions/US%253ACA/CA%2523Sunnyvale". The
-        /// name field in the responses will always have the encoded format.
+        /// Output only. Partition values used in the HTTP URL must be double encoded. For example,
+        /// url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with
+        /// "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7333,7 +7333,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Schema information describing the structure and layout of the data.</summary>
     public class GoogleCloudDataplexV1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The sequence of fields describing data in table entities.</summary>
+        /// <summary>
+        /// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are
+        /// immutable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1SchemaSchemaField> Fields { get; set; }
 
@@ -7349,18 +7352,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string PartitionStyle { get; set; }
 
         /// <summary>
-        /// Required. Whether the schema is user-managed or managed by the service. - Set user_manage to false if you
-        /// would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex
-        /// discovery, including new data discovery, schema inference and schema evolution. You can still provide input
-        /// the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think
-        /// the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if
-        /// they were produced by the previous discovery run), and will evolve schema or flag actions based on that. -
-        /// Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when
-        /// you would like to manually specify the schema for a table. In this case, the schema defined by the user is
-        /// guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide
-        /// schema evolution management for you. Dataplex will still be able to manage partition registration (i.e.,
-        /// keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to
-        /// true.
+        /// Required. Set to true if user-managed or false if managed by Dataplex. The default is false (managed by
+        /// Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery,
+        /// schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex
+        /// treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will
+        /// evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema.
+        /// This setting guarantees that Dataplex will not change schema fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userManaged")]
         public virtual System.Nullable<bool> UserManaged { get; set; }
@@ -7371,13 +7368,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
     /// <summary>
     /// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but
-    /// only the first 10 partitions have the filtering ability due to performance consideration.
+    /// only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields
+    /// are immutable.
     /// </summary>
     public class GoogleCloudDataplexV1SchemaPartitionField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Partition name is editable if only the partition style is not HIVE compatible. The maximum length
-        /// allowed is 767 characters.
+        /// Required. Partition field name must consist of letters, numbers, and underscores only, with a maximum of
+        /// length of 256 characters, and must begin with a letter or underscore..
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7406,8 +7404,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Mode { get; set; }
 
         /// <summary>
-        /// Required. The name of the field. The maximum length is 767 characters. The name must begins with a letter
-        /// and not contains : and ..
+        /// Required. The name of the field. Must contain only letters, numbers and underscores, with a maximum length
+        /// of 767 characters, and must begin with a letter or underscore.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7532,9 +7530,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Required. The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values:
-        /// - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json
-        /// - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio
-        /// subtype}
+        /// application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json
+        /// application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -7565,7 +7562,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Nullable<int> HeaderRows { get; set; }
 
         /// <summary>
-        /// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+        /// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single
+        /// quotation mark). Defaults to '"' (double quotation mark) if unspecified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; }

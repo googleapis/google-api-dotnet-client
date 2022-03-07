@@ -326,11 +326,11 @@ namespace Google.Apis.CloudTrace.v2
                 /// <summary>Creates a new span.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The resource name of the span in the following format:
-                /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a
-                /// project; it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique
-                /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array.
-                /// It should not be zero.
+                /// Required. The resource name of the span in the following format: *
+                /// `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a
+                /// trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not
+                /// be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character
+                /// hexadecimal encoding of an 8-byte array. It should not be zero. .
                 /// </param>
                 public virtual CreateSpanRequest CreateSpan(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
@@ -349,11 +349,11 @@ namespace Google.Apis.CloudTrace.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the span in the following format:
-                    /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within
-                    /// a project; it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique
-                    /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
-                    /// array. It should not be zero.
+                    /// Required. The resource name of the span in the following format: *
+                    /// `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier
+                    /// for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It
+                    /// should not be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a
+                    /// 16-character hexadecimal encoding of an 8-byte array. It should not be zero. .
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -389,7 +389,7 @@ namespace Google.Apis.CloudTrace.v2
                 }
             }
 
-            /// <summary>Sends new spans to new or existing traces. You cannot update existing spans.</summary>
+            /// <summary>Batch writes new spans to new or existing traces. You cannot update existing spans.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The name of the project where the spans belong. The format is `projects/[PROJECT_ID]`.
@@ -399,7 +399,7 @@ namespace Google.Apis.CloudTrace.v2
                 return new BatchWriteRequest(service, body, name);
             }
 
-            /// <summary>Sends new spans to new or existing traces. You cannot update existing spans.</summary>
+            /// <summary>Batch writes new spans to new or existing traces. You cannot update existing spans.</summary>
             public class BatchWriteRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Empty>
             {
                 /// <summary>Constructs a new BatchWrite request.</summary>
@@ -467,7 +467,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.</summary>
+    /// <summary>The allowed types for `[VALUE]` in a `[KEY]:[VALUE]` attribute.</summary>
     public class AttributeValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A Boolean value represented by `true` or `false`.</summary>
@@ -486,12 +486,12 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A set of attributes, each in the format `[KEY]:[VALUE]`.</summary>
+    /// <summary>A set of attributes as key-value pairs.</summary>
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256
-        /// bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example: "/instance_id": {
+        /// A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256
+        /// bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: "/instance_id": {
         /// "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
         /// "abc.com/myattribute": { "bool_value": false }
         /// </summary>
@@ -513,7 +513,8 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class BatchWriteSpansRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A list of new spans. The span names must not match existing spans, or the results are undefined.
+        /// Required. A list of new spans. The span names must not match existing spans, otherwise the results are
+        /// undefined.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spans")]
         public virtual System.Collections.Generic.IList<Span> Spans { get; set; }
@@ -541,15 +542,15 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// </summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the link. You have have up to 32 attributes per link.</summary>
+        /// <summary>A set of attributes on the link. Up to 32 attributes can be specified per link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
 
-        /// <summary>The [SPAN_ID] for a span within a trace.</summary>
+        /// <summary>The `[SPAN_ID]` for a span within a trace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; }
 
-        /// <summary>The [TRACE_ID] for a trace within a project.</summary>
+        /// <summary>The `[TRACE_ID]` for a trace within a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
         public virtual string TraceId { get; set; }
 
@@ -585,14 +586,14 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class MessageEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of compressed bytes sent or received. If missing assumed to be the same size as uncompressed.
+        /// The number of compressed bytes sent or received. If missing, the compressed size is assumed to be the same
+        /// size as the uncompressed size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compressedSizeBytes")]
         public virtual System.Nullable<long> CompressedSizeBytes { get; set; }
 
         /// <summary>
-        /// An identifier for the MessageEvent's message that can be used to match SENT and RECEIVED MessageEvents. It
-        /// is recommended to be unique within a Span.
+        /// An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED` MessageEvents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
@@ -630,8 +631,8 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>
     /// A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace
     /// contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A
-    /// trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous—there may be gaps
-    /// or overlaps between spans in a trace.
+    /// trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous—there might be
+    /// gaps or overlaps between spans in a trace.
     /// </summary>
     public class Span : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -647,10 +648,10 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual System.Nullable<int> ChildSpanCount { get; set; }
 
         /// <summary>
-        /// Required. A description of the span's operation (up to 128 bytes). Trace displays the description in the
-        /// Google Cloud Platform Console. For example, the display name can be a qualified method name or a file name
-        /// and a line number where the operation is called. A best practice is to use the same display name within an
-        /// application and at the same call point. This makes it easier to correlate spans in different traces.
+        /// Required. A description of the span's operation (up to 128 bytes). Cloud Trace displays the description in
+        /// the Cloud Console. For example, the display name can be a qualified method name or a file name and a line
+        /// number where the operation is called. A best practice is to use the same display name within an application
+        /// and at the same call point. This makes it easier to correlate spans in different traces.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual TruncatableString DisplayName { get; set; }
@@ -667,16 +668,17 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual Links Links { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the span in the following format:
-        /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;
-        /// it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
-        /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero.
+        /// Required. The resource name of the span in the following format: *
+        /// `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a trace
+        /// within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not be zero.
+        /// `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of
+        /// an 8-byte array. It should not be zero. .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The [SPAN_ID] of this span's parent span. If this is a root span, then this field must be empty.
+        /// The `[SPAN_ID]` of this span's parent span. If this is a root span, then this field must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
         public virtual string ParentSpanId { get; set; }
@@ -688,7 +690,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
         public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; }
 
-        /// <summary>Required. The [SPAN_ID] portion of the span's resource name.</summary>
+        /// <summary>Required. The `[SPAN_ID]` portion of the span's resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; }
 

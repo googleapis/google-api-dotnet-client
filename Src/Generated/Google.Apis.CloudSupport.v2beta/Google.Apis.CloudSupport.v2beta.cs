@@ -1538,14 +1538,6 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSupport")]
         public virtual System.Nullable<bool> GoogleSupport { get; set; }
 
-        /// <summary>
-        /// Output only. An ID representing the user that was authenticated when the corresponding action was taken.
-        /// This will be an email address, if one is available, or some other unique ID. See
-        /// https://cloud.google.com/docs/authentication for more information on types of authentication.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("principalId")]
-        public virtual string PrincipalId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1938,24 +1930,12 @@ namespace Google.Apis.CloudSupport.v2beta.Data
     /// <summary>An escalation of a support case.</summary>
     public class Escalation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The user or Google Support agent initiated this escalation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual Actor Actor { get; set; }
-
-        /// <summary>Output only. The time when this escalation event was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
         /// <summary>
         /// Required. A free text description to accompany the `reason` field above. Provides additional context on why
         /// the case is being escalated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("justification")]
         public virtual string Justification { get; set; }
-
-        /// <summary>Output only. The resource name for the escalation event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>Required. The reason why the Case is being escalated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]

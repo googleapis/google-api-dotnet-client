@@ -3088,7 +3088,10 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
         public virtual StructuredQuery StructuredQuery { get; set; }
 
-        /// <summary>Reads documents in a transaction.</summary>
+        /// <summary>
+        /// Run the query within an already active transaction. The value here is the opaque transaction ID to execute
+        /// the query in.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
 
@@ -3099,7 +3102,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The response for Firestore.RunQuery.</summary>
     public class RunQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A query result. Not set when reporting partial progress.</summary>
+        /// <summary>A query result, not set when reporting partial progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; }
 

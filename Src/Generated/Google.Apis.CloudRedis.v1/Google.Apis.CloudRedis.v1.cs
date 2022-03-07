@@ -1776,7 +1776,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readEndpointPort")]
         public virtual System.Nullable<int> ReadEndpointPort { get; set; }
 
-        /// <summary>Optional. Read replica mode. Can only be specified when trying to create the instance.</summary>
+        /// <summary>Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readReplicasMode")]
         public virtual string ReadReplicasMode { get; set; }
 
@@ -1816,10 +1816,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ReservedIpRange { get; set; }
 
         /// <summary>
-        /// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1
-        /// secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates
-        /// can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap
-        /// with the reserved_ip_range. Not supported during instance creation.
+        /// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing
+        /// instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For
+        /// PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private
+        /// service access connection, or "auto".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRange")]
         public virtual string SecondaryIpRange { get; set; }

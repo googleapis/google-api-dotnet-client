@@ -6367,11 +6367,12 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual NodeManagement Management { get; set; }
 
         /// <summary>
-        /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer
-        /// CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel
-        /// Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU
-        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
-        /// platform field pass "automatic" as field value.
+        /// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+        /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as
+        /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
+        /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This
+        /// field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform
+        /// label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }
@@ -6816,6 +6817,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; }
 
         /// <summary>
+        /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node
+        /// auto-provisioning enabled clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolAutoConfig")]
+        public virtual NodePoolAutoConfig NodePoolAutoConfig { get; set; }
+
+        /// <summary>
         /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific
         /// NodePool object.
         /// </summary>
@@ -6913,6 +6921,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; }
+
+        /// <summary>Configuration for direct-path (via ALTS) with workload identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadAltsConfig")]
+        public virtual WorkloadALTSConfig WorkloadAltsConfig { get; set; }
 
         /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadCertificates")]
@@ -7105,6 +7117,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string DesiredMonitoringService { get; set; }
 
         /// <summary>
+        /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node
+        /// auto-provisioning enabled clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolAutoConfigNetworkTags")]
+        public virtual NetworkTags DesiredNodePoolAutoConfigNetworkTags { get; set; }
+
+        /// <summary>
         /// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in
         /// the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
         /// </summary>
@@ -7170,6 +7189,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; }
+
+        /// <summary>Configuration for direct-path (via ALTS) with workload identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadAltsConfig")]
+        public virtual WorkloadALTSConfig DesiredWorkloadAltsConfig { get; set; }
 
         /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadCertificates")]
@@ -7398,10 +7421,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
-    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
-    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8797,6 +8820,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The version of the Kubernetes of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning
+    /// enabled clusters
+    /// </summary>
+    public class NodePoolAutoConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for
+        /// network firewalls and are specified by the client during cluster creation. Each tag within the list must
+        /// comply with RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
+        public virtual NetworkTags NetworkTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10521,6 +10562,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>List of Windows server versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsVersions")]
         public virtual System.Collections.Generic.IList<WindowsVersion> WindowsVersionsValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for direct-path (via ALTS) with workload identity.</summary>
+    public class WorkloadALTSConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload
+        /// Identity (workload_pool must be non-empty).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAlts")]
+        public virtual System.Nullable<bool> EnableAlts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

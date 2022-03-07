@@ -1598,8 +1598,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Load environment state response.</summary>
-    public class LoadEnvironmentStateResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Response to LoadSnapshotRequest.</summary>
+    public class LoadSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1959,6 +1959,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to SaveSnapshotRequest.</summary>
+    public class SaveSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-resolved Cloud Storage path of the created snapshot, e.g.:
+        /// "gs://my-bucket/snapshots/project_location_environment_timestamp". This field is populated only if the
+        /// snapshot creation was successful.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
+        public virtual string SnapshotPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for resources used by Airflow schedulers.</summary>
     public class SchedulerResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2079,21 +2094,6 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Store environment state response.</summary>
-    public class StoreEnvironmentStateResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The fully-resolved Cloud Storage path of the created snapshot, e.g.:
-        /// "gs://my-bucket/snapshots/project_location_environment_timestamp". This field is populated only if the
-        /// snapshot creation was successful.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
-        public virtual string SnapshotPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

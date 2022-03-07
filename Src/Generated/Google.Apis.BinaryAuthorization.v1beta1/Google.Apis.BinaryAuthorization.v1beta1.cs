@@ -1404,6 +1404,12 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1416,9 +1422,6 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         /// <summary>A Drydock ATTESTATION_AUTHORITY Note, created by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userOwnedDrydockNote")]
         public virtual UserOwnedDrydockNote UserOwnedDrydockNote { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>An attestor public key that will be used to verify attestations signed by this attestor.</summary>
@@ -1712,6 +1715,12 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Used to prevent updating the policy when another request has updated it since it was retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Optional. Controls the evaluation of a Google-maintained global admission policy for common system-level
         /// images. Images not covered by the global policy will be subject to the project admission policy. This
         /// setting has no effect when specified inside a global admission policy.
@@ -1749,9 +1758,6 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         /// <summary>Output only. Time when the policy was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
