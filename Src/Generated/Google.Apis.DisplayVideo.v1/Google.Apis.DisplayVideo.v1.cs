@@ -12014,7 +12014,10 @@ namespace Google.Apis.DisplayVideo.v1
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-            /// <summary>Required. The mask to control which fields to update.</summary>
+            /// <summary>
+            /// Required. The mask to control which fields to update. Updates are only supported for the following
+            /// fields: * `displayName` * `description` * `membershipDurationDays`
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -20466,10 +20469,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
-    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
-    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
-    /// google.protobuf.Timestamp
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23030,6 +23033,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalType")]
         public virtual string PerformanceGoalType { get; set; }
+
+        /// <summary>Controls whether the strategy takes deal floor prices into account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiseBidForDeals")]
+        public virtual System.Nullable<bool> RaiseBidForDeals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

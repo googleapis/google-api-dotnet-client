@@ -6301,12 +6301,11 @@ namespace Google.Apis.Container.v1.Data
         public virtual NodeManagement Management { get; set; }
 
         /// <summary>
-        /// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
-        /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as
-        /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
-        /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This
-        /// field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform
-        /// label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        /// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified
+        /// or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform:
+        /// Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU
+        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
+        /// platform field pass "automatic" as field value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }
@@ -6705,13 +6704,6 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; }
 
         /// <summary>
-        /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node
-        /// auto-provisioning enabled clusters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolAutoConfig")]
-        public virtual NodePoolAutoConfig NodePoolAutoConfig { get; set; }
-
-        /// <summary>
         /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific
         /// NodePool object.
         /// </summary>
@@ -6961,13 +6953,6 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; }
-
-        /// <summary>
-        /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node
-        /// auto-provisioning enabled clusters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolAutoConfigNetworkTags")]
-        public virtual NetworkTags DesiredNodePoolAutoConfigNetworkTags { get; set; }
 
         /// <summary>
         /// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in
@@ -8061,19 +8046,6 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
-    /// </summary>
-    public class NetworkTags : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of network tags.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Parameters that describe the nodes in a cluster.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8464,24 +8436,6 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The version of the Kubernetes of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning
-    /// enabled clusters.
-    /// </summary>
-    public class NodePoolAutoConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for
-        /// network firewalls and are specified by the client during cluster creation. Each tag within the list must
-        /// comply with RFC1035.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
-        public virtual NetworkTags NetworkTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

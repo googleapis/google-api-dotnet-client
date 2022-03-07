@@ -370,14 +370,14 @@ namespace Google.Apis.CloudTrace.v1
                 }
             }
 
-            /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
+            /// <summary>Returns a list of traces that match the specified filter conditions.</summary>
             /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
             }
 
-            /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
+            /// <summary>Returns a list of traces that match the specified filter conditions.</summary>
             public class ListRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.ListTracesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

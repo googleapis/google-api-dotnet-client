@@ -4885,8 +4885,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
         /// pre-loaded by using AddCatalogAttribute, ImportCatalogAttributes, or UpdateAttributesConfig APIs. This field
-        /// is `False` for pre-loaded CatalogAttributes. After catalog changes, it takes about 10 minutes for this field
-        /// to update.
+        /// is `False` for pre-loaded CatalogAttributes. Only CatalogAttributes that are not in use by products can be
+        /// deleted. CatalogAttributes that are in use by products cannot be deleted; however, their configuration
+        /// properties will reset to default values upon removal request. After catalog changes, it takes about 10
+        /// minutes for this field to update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inUse")]
         public virtual System.Nullable<bool> InUse { get; set; }
@@ -5146,7 +5148,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Required. Immutable. The solution types that the serving config is used for. Currently we support setting
-        /// only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        /// only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If
+        /// no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
         public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }

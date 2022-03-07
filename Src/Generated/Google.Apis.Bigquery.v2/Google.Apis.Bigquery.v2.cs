@@ -4909,7 +4909,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual DatasetReference Dataset { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("target_types")]
+        [Newtonsoft.Json.JsonPropertyAttribute("targetTypes")]
         public virtual System.Collections.Generic.IList<string> TargetTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
@@ -5970,6 +5970,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] Options to configure parquet support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parquetOptions")]
         public virtual ParquetOptions ParquetOptions { get; set; }
+
+        /// <summary>
+        /// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from
+        /// '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preserveAsciiControlCharacters")]
+        public virtual System.Nullable<bool> PreserveAsciiControlCharacters { get; set; }
 
         /// <summary>
         /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a

@@ -1986,7 +1986,11 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
-        /// <summary>Transcript text representing the words that the user spoke.</summary>
+        /// <summary>
+        /// Transcript text representing the words that the user spoke. In languages that use spaces to separate words,
+        /// the transcript might have a leading space if it isn't the first result. You can concatenate each result to
+        /// obtain the full transcript without using a separator.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; }
 

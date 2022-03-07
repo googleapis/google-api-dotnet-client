@@ -2715,6 +2715,32 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Dump flag definition.</summary>
+    public class DumpFlag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the flag</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The value of the flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dump flags definition.</summary>
+    public class DumpFlags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The flags for the initial dump.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dumpFlags")]
+        public virtual System.Collections.Generic.IList<DumpFlag> DumpFlagsValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -2961,8 +2987,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>The initial dump flags. This field and the "dump_path" field are mutually exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dumpFlags")]
+        public virtual DumpFlags DumpFlags { get; set; }
+
         /// <summary>
-        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This
+        /// field and the "dump_flags" field are mutually exclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dumpPath")]
         public virtual string DumpPath { get; set; }

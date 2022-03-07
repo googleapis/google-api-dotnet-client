@@ -319,9 +319,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. A unique request ID for this message. If a message has already been created in the space
-                /// with this request ID, the subsequent request will return the existing message and no new message
-                /// will be created.
+                /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
+                /// message created with that ID instead of creating a new message.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
@@ -410,9 +409,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Optional. A unique request ID for this message. If a message has already been created in the space with
-            /// this request ID, the subsequent request will return the existing message and no new message will be
-            /// created.
+            /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
+            /// created with that ID instead of creating a new message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
@@ -500,9 +498,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Optional. A unique request ID for this message. If a message has already been created in the space with
-            /// this request ID, the subsequent request will return the existing message and no new message will be
-            /// created.
+            /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
+            /// created with that ID instead of creating a new message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
@@ -783,9 +780,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. A unique request ID for this message. If a message has already been created in the space
-                /// with this request ID, the subsequent request will return the existing message and no new message
-                /// will be created.
+                /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
+                /// message created with that ID instead of creating a new message.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
@@ -874,9 +870,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Optional. A unique request ID for this message. If a message has already been created in the space with
-            /// this request ID, the subsequent request will return the existing message and no new message will be
-            /// created.
+            /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
+            /// created with that ID instead of creating a new message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
@@ -964,9 +959,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Optional. A unique request ID for this message. If a message has already been created in the space with
-            /// this request ID, the subsequent request will return the existing message and no new message will be
-            /// created.
+            /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
+            /// created with that ID instead of creating a new message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
@@ -1309,9 +1303,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. A unique request ID for this message. If a message has already been created in the space
-                /// with this request ID, the subsequent request will return the existing message and no new message
-                /// will be created.
+                /// Optional. A unique request ID for this message. Specifying an existing request ID returns the
+                /// message created with that ID instead of creating a new message.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
@@ -1683,9 +1676,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Optional. A unique request ID for this message. If a message has already been created in the space with
-            /// this request ID, the subsequent request will return the existing message and no new message will be
-            /// created.
+            /// Optional. A unique request ID for this message. Specifying an existing request ID returns the message
+            /// created with that ID instead of creating a new message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
@@ -2095,8 +2087,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual TimeZone TimeZone { get; set; }
 
         /// <summary>
-        /// The full locale.displayName in the format of [ISO 639 language code]-[ISO 3166 country/region code] such as
-        /// "en-US". Not supported by Chat apps.
+        /// The full `locale.displayName` in the format of [ISO 639 language code]-[ISO 3166 country/region code] such
+        /// as "en-US". Not supported by Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLocale")]
         public virtual string UserLocale { get; set; }
@@ -2443,16 +2435,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// A card is a UI element that can contain UI widgets such as text and images. For more information, see Cards .
     /// For example, the following JSON creates a card that has a header with the name, position, icons, and link for a
     /// contact, followed by a section with contact information like email and phone number. ``` { "header": { "title":
-    /// "Heba Salam", "subtitle": "Software Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
-    /// "https://example.com/heba_salam.png", "imageAltText": "Avatar for Heba Salam" }, "sections" : [ { "header":
-    /// "Contact Info", "widgets": [ { "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content":
-    /// "heba.salam@example.com" } }, { "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" } }, {
-    /// "decoratedText": { "icon": { "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ {
-    /// "textButton": { "text": "Share", }, "onClick": { "openLink": { "url": "https://example.com/share" } } }, {
-    /// "textButton": { "text": "Edit", }, "onClick": { "action": { "function": "goToView", "parameters": [ { "key":
-    /// "viewType", "value": "EDIT" } ], "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true,
-    /// "uncollapsibleWidgetsCount": 3 } ], "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink":
-    /// { "url": "https://example.com/feedback" } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
+    /// "Sasha", "subtitle": "Software Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
+    /// "https://example.com/sasha.png", "imageAltText": "Avatar for Sasha" }, "sections" : [ { "header": "Contact
+    /// Info", "widgets": [ { "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content": "sasha@example.com" } },
+    /// { "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" } }, { "decoratedText": { "icon": {
+    /// "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ { "textButton": { "text": "Share", },
+    /// "onClick": { "openLink": { "url": "https://example.com/share" } } }, { "textButton": { "text": "Edit", },
+    /// "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType", "value": "EDIT" } ],
+    /// "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true, "uncollapsibleWidgetsCount": 3 } ],
+    /// "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink": { "url":
+    /// "https://example.com/feedback" } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
     /// </summary>
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3091,9 +3083,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Displays a decorated text item in this widget. For example, the following JSON creates a decorated text
         /// widget showing email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email
-        /// Address", "content": "heba.salam@example.com", "bottomLabel": "This is a new Email address!",
-        /// "switchWidget": { "name": "has_send_welcome_email_to_heba_salam", "selected": false, "controlType":
-        /// "ControlType.CHECKBOX" } } ```
+        /// Address", "content": "sasha@example.com", "bottomLabel": "This is a new Email address!", "switchWidget": {
+        /// "name": "has_send_welcome_email_to_sasha", "selected": false, "controlType": "ControlType.CHECKBOX" } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
         public virtual GoogleAppsCardV1DecoratedText DecoratedText { get; set; }
@@ -3120,7 +3111,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Displays an image in this widget. For example, the following JSON creates an image with alternative text:
-        /// ``` "image": { "imageUrl": "https://example.com/heba_salam.png" "altText": "Avatar for Heba Salam" } ```
+        /// ``` "image": { "imageUrl": "https://example.com/sasha.png" "altText": "Avatar for Sasha" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleAppsCardV1Image Image { get; set; }
@@ -3343,7 +3334,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// A user in Google Chat. Represents a [person](https://developers.google.com/people/api/rest/v1/people) in the
-        /// People API. Format: `users/{person}`
+        /// People API or a [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the
+        /// Admin SDK Directory API. Format: `users/{user}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
@@ -3690,8 +3682,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 
         /// <summary>
-        /// Resource name for a Google Chat user. Formatted as `users/{user}`. Represents a
-        /// [person](https://developers.google.com/people/api/rest/v1/people#Person) in the People API.
+        /// Resource name for a Google Chat user. Represents a
+        /// [person](https://developers.google.com/people/api/rest/v1/people#Person) in the People API or a
+        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
+        /// API. Formatted as: `users/{user}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

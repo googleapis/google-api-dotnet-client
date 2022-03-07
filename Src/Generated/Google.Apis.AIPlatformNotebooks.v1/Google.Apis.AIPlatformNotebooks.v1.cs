@@ -3852,6 +3852,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.</summary>
+    public class BootImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4329,6 +4336,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskType")]
         public virtual string BootDiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Flag to enable ip forwarding or not, default false/off.
+        /// https://cloud.google.com/vpc/docs/using-routes#canipforward
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
+        public virtual System.Nullable<bool> CanIpForward { get; set; }
 
         /// <summary>Use a container image to start the notebook instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
@@ -5789,6 +5803,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Optional. The Compute Engine accelerator configuration for this runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual RuntimeAcceleratorConfig AcceleratorConfig { get; set; }
+
+        /// <summary>Optional. Boot image metadata used for runtime upgradeability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootImage")]
+        public virtual BootImage BootImage { get; set; }
 
         /// <summary>Optional. Use a list of container images to use as Kernels in the notebook instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImages")]
