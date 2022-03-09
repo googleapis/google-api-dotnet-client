@@ -128,7 +128,7 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>A mock message handler which returns an error.</summary>
-        class ErrorMessageHanlder : CountableMessageHandler
+        class ErrorMessageHandler : CountableMessageHandler
         {
             public const string ExpectedError = 
                 @"Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]";
@@ -638,7 +638,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Fact]
         public void Execute_Error()
         {
-            var handler = new ErrorMessageHanlder();
+            var handler = new ErrorMessageHandler();
             var initializer = new BaseClientService.Initializer()
             {
                 HttpClientFactory = new MockHttpClientFactory(handler)
@@ -650,8 +650,8 @@ namespace Google.Apis.Tests.Apis.Requests
                 var exception = Assert.Throws<GoogleApiException>(() => request.Execute());
 
                 Assert.Equal(1, handler.Calls);
-                Assert.Equal(ErrorMessageHanlder.ExpectedExceptionMessage, exception.Message);
-                Assert.Contains(ErrorMessageHanlder.ExpectedError, exception.ToString());
+                Assert.Equal(ErrorMessageHandler.ExpectedExceptionMessage, exception.Message);
+                Assert.Contains(ErrorMessageHandler.ExpectedError, exception.ToString());
             }
         }
 
@@ -659,7 +659,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Fact]
         public async Task ExecuteAsync_Error()
         {
-            var handler = new ErrorMessageHanlder();
+            var handler = new ErrorMessageHandler();
             var initializer = new BaseClientService.Initializer
             {
                 HttpClientFactory = new MockHttpClientFactory(handler)
@@ -672,8 +672,8 @@ namespace Google.Apis.Tests.Apis.Requests
                 AutoResetEvent resetEvent = new AutoResetEvent(false);
                 
                 Assert.Equal(1, handler.Calls);
-                Assert.Equal(ErrorMessageHanlder.ExpectedExceptionMessage, exception.Message);
-                Assert.Contains(ErrorMessageHanlder.ExpectedError, exception.ToString());
+                Assert.Equal(ErrorMessageHandler.ExpectedExceptionMessage, exception.Message);
+                Assert.Contains(ErrorMessageHandler.ExpectedError, exception.ToString());
             }
         }
 
