@@ -16,7 +16,7 @@ limitations under the License.
 
 #if NETCOREAPP2_0 || NETCOREAPP2_1 || NET461
 #define EXTENSIONS_SUPPORTED
-#elif !(NETCOREAPP1_0 || NETCOREAPP1_1 || NET452 || NET46)
+#elif !(NET452 || NET46)
 #error Unsupported Platform
 #endif
 
