@@ -1030,6 +1030,10 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
+                        /// <summary>Optional. This field sets the CA to have a pending delete duration of 0.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("skipGracePeriod", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> SkipGracePeriod { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
@@ -1062,6 +1066,14 @@ namespace Google.Apis.CertificateAuthorityService.v1
                             RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("skipGracePeriod", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "skipGracePeriod",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

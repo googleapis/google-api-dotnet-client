@@ -688,6 +688,57 @@ namespace Google.Apis.AccessApproval.v1
         }
 
         /// <summary>
+        /// Retrieves the service account that is used by Access Approval to access KMS keys for signing approved
+        /// approval requests.
+        /// </summary>
+        /// <param name="name">Name of the AccessApprovalServiceAccount to retrieve.</param>
+        public virtual GetServiceAccountRequest GetServiceAccount(string name)
+        {
+            return new GetServiceAccountRequest(service, name);
+        }
+
+        /// <summary>
+        /// Retrieves the service account that is used by Access Approval to access KMS keys for signing approved
+        /// approval requests.
+        /// </summary>
+        public class GetServiceAccountRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.AccessApprovalServiceAccount>
+        {
+            /// <summary>Constructs a new GetServiceAccount request.</summary>
+            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Name of the AccessApprovalServiceAccount to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getServiceAccount";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetServiceAccount parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/serviceAccount$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Updates the settings associated with a project, folder, or organization. Settings to update are determined
         /// by the value of field_mask.
         /// </summary>
@@ -1180,6 +1231,57 @@ namespace Google.Apis.AccessApproval.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^organizations/[^/]+/accessApprovalSettings$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the service account that is used by Access Approval to access KMS keys for signing approved
+        /// approval requests.
+        /// </summary>
+        /// <param name="name">Name of the AccessApprovalServiceAccount to retrieve.</param>
+        public virtual GetServiceAccountRequest GetServiceAccount(string name)
+        {
+            return new GetServiceAccountRequest(service, name);
+        }
+
+        /// <summary>
+        /// Retrieves the service account that is used by Access Approval to access KMS keys for signing approved
+        /// approval requests.
+        /// </summary>
+        public class GetServiceAccountRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.AccessApprovalServiceAccount>
+        {
+            /// <summary>Constructs a new GetServiceAccount request.</summary>
+            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Name of the AccessApprovalServiceAccount to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getServiceAccount";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetServiceAccount parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/serviceAccount$",
                 });
             }
         }
@@ -1682,6 +1784,57 @@ namespace Google.Apis.AccessApproval.v1
         }
 
         /// <summary>
+        /// Retrieves the service account that is used by Access Approval to access KMS keys for signing approved
+        /// approval requests.
+        /// </summary>
+        /// <param name="name">Name of the AccessApprovalServiceAccount to retrieve.</param>
+        public virtual GetServiceAccountRequest GetServiceAccount(string name)
+        {
+            return new GetServiceAccountRequest(service, name);
+        }
+
+        /// <summary>
+        /// Retrieves the service account that is used by Access Approval to access KMS keys for signing approved
+        /// approval requests.
+        /// </summary>
+        public class GetServiceAccountRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.AccessApprovalServiceAccount>
+        {
+            /// <summary>Constructs a new GetServiceAccount request.</summary>
+            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Name of the AccessApprovalServiceAccount to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getServiceAccount";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetServiceAccount parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/serviceAccount$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Updates the settings associated with a project, folder, or organization. Settings to update are determined
         /// by the value of field_mask.
         /// </summary>
@@ -1768,9 +1921,44 @@ namespace Google.Apis.AccessApproval.v1
 }
 namespace Google.Apis.AccessApproval.v1.Data
 {
+    /// <summary>Access Approval service account related to a project/folder/organization.</summary>
+    public class AccessApprovalServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountEmail")]
+        public virtual string AccountEmail { get; set; }
+
+        /// <summary>
+        /// The resource name of the Access Approval service account. Format is one of: *
+        /// "projects/{project}/serviceAccount" * "folders/{folder}/serviceAccount" *
+        /// "organizations/{organization}/serviceAccount"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings on a Project/Folder/Organization related to Access Approval.</summary>
     public class AccessApprovalSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates
+        /// that a Google-managed key should be used for signing. This property will be ignored if set by an ancestor of
+        /// this resource, and new non-empty values may not be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeKeyVersion")]
+        public virtual string ActiveKeyVersion { get; set; }
+
+        /// <summary>
+        /// Output only. This field is read only (not settable via UpdateAccessApprovalSettings method). If the field is
+        /// true, that indicates that an ancestor of this Project or Folder has set active_key_version (this field will
+        /// always be unset for the organization since organizations do not have ancestors).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestorHasActiveKeyVersion")]
+        public virtual System.Nullable<bool> AncestorHasActiveKeyVersion { get; set; }
+
         /// <summary>
         /// Output only. This field is read only (not settable via UpdateAccessApprovalSettings method). If the field is
         /// true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of
@@ -1791,6 +1979,16 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledServices")]
         public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; }
+
+        /// <summary>
+        /// Output only. This field is read only (not settable via UpdateAccessApprovalSettings method). If the field is
+        /// true, that indicates that there is some configuration issue with the active_key_version configured at this
+        /// level in the resource hierarchy (e.g. it doesn't exist or the Access Approval service account doesn't have
+        /// the correct permissions on it, etc.) This key version is not necessarily the effective key version at this
+        /// level, as key versions are inherited top-down.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidKeyVersion")]
+        public virtual System.Nullable<bool> InvalidKeyVersion { get; set; }
 
         /// <summary>
         /// The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" *
@@ -1922,9 +2120,17 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approveTime")]
         public virtual object ApproveTime { get; set; }
 
+        /// <summary>True when the request has been auto-approved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoApproved")]
+        public virtual System.Nullable<bool> AutoApproved { get; set; }
+
         /// <summary>The time at which the approval expires.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
+
+        /// <summary>The signature for the ApprovalRequest and details on how it was signed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureInfo")]
+        public virtual SignatureInfo SignatureInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2018,6 +2224,28 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// <summary>Whether an approval will exclude the descendants of the resource being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludesDescendants")]
         public virtual System.Nullable<bool> ExcludesDescendants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the digital signature of the resource.</summary>
+    public class SignatureInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the customer CryptoKeyVersion used for signing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerKmsKeyVersion")]
+        public virtual string CustomerKmsKeyVersion { get; set; }
+
+        /// <summary>
+        /// The public key for the Google default signing, encoded in PEM format. The signature was created using a
+        /// private key which may be verified using this public key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googlePublicKeyPem")]
+        public virtual string GooglePublicKeyPem { get; set; }
+
+        /// <summary>The digital signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
+        public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

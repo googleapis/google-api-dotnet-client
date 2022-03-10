@@ -2789,9 +2789,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         /// <summary>
         /// External System Name e.g. jira, demisto, etc. e.g.:
-        /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
-        /// folders/1234/sources/5678/findings/123456/externalSystems/jira
-        /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+        /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
+        /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
+        /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3604,8 +3604,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>
         /// The MITRE ATT&amp;amp;CK technique most closely represented by this finding, if any. primary_techniques is a
         /// repeated field because there are multiple levels of MITRE ATT&amp;amp;CK techniques. If the technique most
-        /// closely represented by this finding is a sub-technique (e.g. SCANNING_IP_BLOCKS), both the sub-technique and
-        /// its parent technique(s) will be listed (e.g. SCANNING_IP_BLOCKS, ACTIVE_SCANNING).
+        /// closely represented by this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the sub-technique
+        /// and its parent technique(s) will be listed (e.g. `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryTechniques")]
         public virtual System.Collections.Generic.IList<string> PrimaryTechniques { get; set; }

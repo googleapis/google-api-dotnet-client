@@ -1821,6 +1821,23 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Alert Created by the MSA team for communications necessary for continued use of Google Workspace Products.
+    /// </summary>
+    public class MandatoryServiceAnnouncement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed, freeform text describing the announcement</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>One line summary of the announcement</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Proto that contains match information from the condition part of the rule.</summary>
     public class MatchInfo : Google.Apis.Requests.IDirectResponseSchema
     {

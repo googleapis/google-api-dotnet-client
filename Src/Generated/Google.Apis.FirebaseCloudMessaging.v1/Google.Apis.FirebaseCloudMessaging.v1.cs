@@ -468,6 +468,12 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual string BodyLocKey { get; set; }
 
         /// <summary>
+        /// If set, display notifications delivered to the device will be handled by the app instead of the proxy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bypassProxyNotification")]
+        public virtual System.Nullable<bool> BypassProxyNotification { get; set; }
+
+        /// <summary>
         /// The [notification's channel
         /// id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels) (new in Android
         /// O). The app must create a channel with this channel ID before any notification with this channel ID is

@@ -656,7 +656,7 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>Gets information about a Revision.</summary>
-                    public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Revision>
+                    public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Revision>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -708,7 +708,7 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>List Revisions from a given Service, or from a given location.</summary>
-                    public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2ListRevisionsResponse>
+                    public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListRevisionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -797,7 +797,7 @@ namespace Google.Apis.CloudRun.v2
                 /// Required. The location and project in which this service should be created. Format:
                 /// projects/{projectnumber}/locations/{location}
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Service body, string parent)
+                public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
@@ -806,7 +806,7 @@ namespace Google.Apis.CloudRun.v2
                 public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Service body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -835,7 +835,7 @@ namespace Google.Apis.CloudRun.v2
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Service Body { get; set; }
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -977,7 +977,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>Gets information about a Service.</summary>
-                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Service>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -1106,7 +1106,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>List Services.</summary>
-                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2ListServicesResponse>
+                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListServicesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -1191,7 +1191,7 @@ namespace Google.Apis.CloudRun.v2
                 /// instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format:
                 /// projects/{project}/locations/{location}/services/{service_id}
                 /// </param>
-                public virtual PatchRequest Patch(Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Service body, string name)
+                public virtual PatchRequest Patch(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
@@ -1200,7 +1200,7 @@ namespace Google.Apis.CloudRun.v2
                 public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Service body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1234,7 +1234,7 @@ namespace Google.Apis.CloudRun.v2
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunOpV2Service Body { get; set; }
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Service Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1421,7 +1421,7 @@ namespace Google.Apis.CloudRun.v2
 namespace Google.Apis.CloudRun.v2.Data
 {
     /// <summary>Settings for Binary Authorization feature.</summary>
-    public class GoogleCloudRunOpV2BinaryAuthorization : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2BinaryAuthorization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be
@@ -1443,7 +1443,7 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>Represents a specific Cloud SQL instance.</summary>
-    public class GoogleCloudRunOpV2CloudSqlInstance : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2CloudSqlInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances.
@@ -1458,7 +1458,7 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>Defines a status condition for a resource.</summary>
-    public class GoogleCloudRunOpV2Condition : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2Condition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A reason for the domain mapping condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainMappingReason")]
@@ -1513,7 +1513,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container
     /// at runtime.
     /// </summary>
-    public class GoogleCloudRunOpV2Container : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2Container : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references
@@ -1539,7 +1539,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>List of environment variables to set in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2EnvVar> Env { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> Env { get; set; }
 
         /// <summary>
         /// Required. URL of the Container image in Google Container Registry or Docker More info:
@@ -1558,25 +1558,25 @@ namespace Google.Apis.CloudRun.v2.Data
         /// be chosen and passed to the container through the PORT environment variable for the container to listen on.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2ContainerPort> Ports { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerPort> Ports { get; set; }
 
         /// <summary>
         /// Compute Resource requirements by this container. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual GoogleCloudRunOpV2ResourceRequirements Resources { get; set; }
+        public virtual GoogleCloudRunV2ResourceRequirements Resources { get; set; }
 
         /// <summary>Volume to mount into the container's filesystem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2VolumeMount> VolumeMounts { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2VolumeMount> VolumeMounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>ContainerPort represents a network port in a single container.</summary>
-    public class GoogleCloudRunOpV2ContainerPort : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2ContainerPort : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Port number the container listens on. This must be a valid TCP port number, 0 &amp;lt; container_port
@@ -1596,7 +1596,7 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>EnvVar represents an environment variable present in a Container.</summary>
-    public class GoogleCloudRunOpV2EnvVar : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
@@ -1616,25 +1616,25 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>Source for the environment variable's value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueSource")]
-        public virtual GoogleCloudRunOpV2EnvVarSource ValueSource { get; set; }
+        public virtual GoogleCloudRunV2EnvVarSource ValueSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>EnvVarSource represents a source for the value of an EnvVar.</summary>
-    public class GoogleCloudRunOpV2EnvVarSource : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2EnvVarSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Selects a secret and a specific version from Cloud Secret Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretKeyRef")]
-        public virtual GoogleCloudRunOpV2SecretKeySelector SecretKeyRef { get; set; }
+        public virtual GoogleCloudRunV2SecretKeySelector SecretKeyRef { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response message containing a list of Revisions.</summary>
-    public class GoogleCloudRunOpV2ListRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2ListRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A token indicating there are more items than page_size. Use it in the next ListRevisions request to
@@ -1645,14 +1645,14 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>The resulting list of Revisions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Revision> Revisions { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Revision> Revisions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response message containing a list of Services.</summary>
-    public class GoogleCloudRunOpV2ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A token indicating there are more items than page_size. Use it in the next ListServices request to continue.
@@ -1662,14 +1662,14 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>The resulting list of Services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Service> Services { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Service> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>ResourceRequirements describes the compute resource requirements.</summary>
-    public class GoogleCloudRunOpV2ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Determines whether CPU should be throttled or not outside of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuIdle")]
@@ -1691,7 +1691,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// A Revision is an immutable snapshot of code and configuration. A Revision references a container image.
     /// Revisions are only created by updates to its parent Service.
     /// </summary>
-    public class GoogleCloudRunOpV2Revision : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2Revision : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>KRM-style annotations for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
@@ -1702,7 +1702,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// in case it did not reach a serving state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Condition> Conditions { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
 
         /// <summary>Indicates whether Confidential Cloud Run is enabled in this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidential")]
@@ -1714,7 +1714,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Container> Containers { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
 
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -1801,7 +1801,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>Scaling settings for this revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
-        public virtual GoogleCloudRunOpV2RevisionScaling Scaling { get; set; }
+        public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
 
         /// <summary>Output only. The name of the parent service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
@@ -1831,18 +1831,18 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>A list of Volumes to make available to containers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Volume> Volumes { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Volume> Volumes { get; set; }
 
         /// <summary>
         /// VPC Access configuration for this Revision. For more information, visit
         /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
-        public virtual GoogleCloudRunOpV2VpcAccess VpcAccess { get; set; }
+        public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
     }
 
     /// <summary>Settings for revision-level scaling settings.</summary>
-    public class GoogleCloudRunOpV2RevisionScaling : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2RevisionScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum number of serving instances that this resource should have.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
@@ -1857,7 +1857,7 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>RevisionTemplate describes the data a revision should have when created from a template.</summary>
-    public class GoogleCloudRunOpV2RevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2RevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>KRM-style annotations for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
@@ -1873,7 +1873,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Container> Containers { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
 
         /// <summary>
         /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more
@@ -1899,7 +1899,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>Scaling settings for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
-        public virtual GoogleCloudRunOpV2RevisionScaling Scaling { get; set; }
+        public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
 
         /// <summary>
         /// Email address of the IAM service account associated with the revision of the service. The service account
@@ -1915,21 +1915,21 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>A list of Volumes to make available to containers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Volume> Volumes { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Volume> Volumes { get; set; }
 
         /// <summary>
         /// VPC Access configuration to use for this Revision. For more information, visit
         /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
-        public virtual GoogleCloudRunOpV2VpcAccess VpcAccess { get; set; }
+        public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>SecretEnvVarSource represents a source for the value of an EnvVar.</summary>
-    public class GoogleCloudRunOpV2SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same
@@ -1953,7 +1953,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no
     /// items are defined, the name of the file is the secret.
     /// </summary>
-    public class GoogleCloudRunOpV2SecretVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2SecretVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and
@@ -1975,7 +1975,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2VersionToPath> Items { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2VersionToPath> Items { get; set; }
 
         /// <summary>
         /// Required. The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same
@@ -1994,7 +1994,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource
     /// ownership.
     /// </summary>
-    public class GoogleCloudRunOpV2Service : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2Service : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not
@@ -2007,7 +2007,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>Settings for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
-        public virtual GoogleCloudRunOpV2BinaryAuthorization BinaryAuthorization { get; set; }
+        public virtual GoogleCloudRunV2BinaryAuthorization BinaryAuthorization { get; set; }
 
         /// <summary>Arbitrary identifier for the API client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
@@ -2023,7 +2023,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// additional information on reconciliation process in Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2Condition> Conditions { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
 
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -2137,7 +2137,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>Required. The template used to create revisions for this Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
-        public virtual GoogleCloudRunOpV2RevisionTemplate Template { get; set; }
+        public virtual GoogleCloudRunV2RevisionTemplate Template { get; set; }
 
         /// <summary>
         /// Output only. The Condition of this Service, containing its readiness status, and detailed error information
@@ -2145,21 +2145,21 @@ namespace Google.Apis.CloudRun.v2.Data
         /// reconciliation process in Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminalCondition")]
-        public virtual GoogleCloudRunOpV2Condition TerminalCondition { get; set; }
+        public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
 
         /// <summary>
         /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is
         /// empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traffic")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2TrafficTarget> Traffic { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2TrafficTarget> Traffic { get; set; }
 
         /// <summary>
         /// Output only. Detailed status information for corresponding traffic targets. See comments in `reconciling`
         /// for additional information on reconciliation process in Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficStatuses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunOpV2TrafficTargetStatus> TrafficStatuses { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2TrafficTargetStatus> TrafficStatuses { get; set; }
 
         /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
@@ -2181,7 +2181,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or
     /// pointing to the latest Ready Revision.
     /// </summary>
-    public class GoogleCloudRunOpV2TrafficTarget : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2TrafficTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
@@ -2204,7 +2204,7 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>Represents the observed state of a single `TrafficTarget` entry.</summary>
-    public class GoogleCloudRunOpV2TrafficTargetStatus : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2TrafficTargetStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies percent of the traffic to this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
@@ -2234,7 +2234,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's
     /// mount_path.
     /// </summary>
-    public class GoogleCloudRunOpV2VersionToPath : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2VersionToPath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set,
@@ -2264,7 +2264,7 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>Volume represents a named volume in a container.</summary>
-    public class GoogleCloudRunOpV2Volume : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2Volume : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit
@@ -2272,7 +2272,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
-        public virtual GoogleCloudRunOpV2CloudSqlInstance CloudSqlInstance { get; set; }
+        public virtual GoogleCloudRunV2CloudSqlInstance CloudSqlInstance { get; set; }
 
         /// <summary>Required. Volume's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2283,14 +2283,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// https://kubernetes.io/docs/concepts/storage/volumes#secret
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]
-        public virtual GoogleCloudRunOpV2SecretVolumeSource Secret { get; set; }
+        public virtual GoogleCloudRunV2SecretVolumeSource Secret { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>VolumeMount describes a mounting of a Volume within a container.</summary>
-    public class GoogleCloudRunOpV2VolumeMount : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2VolumeMount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud
@@ -2314,7 +2314,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run
     /// with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
     /// </summary>
-    public class GoogleCloudRunOpV2VpcAccess : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudRunV2VpcAccess : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}

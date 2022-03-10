@@ -1225,7 +1225,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Gets the metadata of a message attachment. The attachment data is fetched using the media API.
                 /// </summary>
                 /// <param name="name">
-                /// Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
+                /// Required. Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1245,7 +1245,7 @@ namespace Google.Apis.HangoutsChat.v1
                     }
 
                     /// <summary>
-                    /// Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
+                    /// Required. Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3533,7 +3533,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA</summary>
+        /// <summary>
+        /// Optional. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

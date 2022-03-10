@@ -676,11 +676,14 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
 
     /// <summary>
     /// Indicates that the location fails to comply with our
-    /// [guidelines](https://support.google.com/business/answer/3038177). To fix this issue, consult the [Help Center
-    /// Article](https://support.google.com/business/answer/4569145).
+    /// [guidelines](https://support.google.com/business/answer/3038177).
     /// </summary>
     public class ComplyWithGuidelines : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The reason why the location is being recommended to comply with guidelines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationReason")]
+        public virtual string RecommendationReason { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -5723,8 +5723,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Immediately and permanently deletes the specified thread. This operation cannot be undone. Prefer
-            /// `threads.trash` instead.
+            /// Immediately and permanently deletes the specified thread. Any messages that belong to the thread are
+            /// also deleted. This operation cannot be undone. Prefer `threads.trash` instead.
             /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -5736,8 +5736,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Immediately and permanently deletes the specified thread. This operation cannot be undone. Prefer
-            /// `threads.trash` instead.
+            /// Immediately and permanently deletes the specified thread. Any messages that belong to the thread are
+            /// also deleted. This operation cannot be undone. Prefer `threads.trash` instead.
             /// </summary>
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
@@ -6090,7 +6090,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Moves the specified thread to the trash.</summary>
+            /// <summary>
+            /// Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the
+            /// trash.
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -6100,7 +6103,10 @@ namespace Google.Apis.Gmail.v1
                 return new TrashRequest(service, userId, id);
             }
 
-            /// <summary>Moves the specified thread to the trash.</summary>
+            /// <summary>
+            /// Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the
+            /// trash.
+            /// </summary>
             public class TrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
                 /// <summary>Constructs a new Trash request.</summary>
@@ -6153,7 +6159,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Removes the specified thread from the trash.</summary>
+            /// <summary>
+            /// Removes the specified thread from the trash. Any messages that belong to the thread are also removed
+            /// from the trash.
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -6163,7 +6172,10 @@ namespace Google.Apis.Gmail.v1
                 return new UntrashRequest(service, userId, id);
             }
 
-            /// <summary>Removes the specified thread from the trash.</summary>
+            /// <summary>
+            /// Removes the specified thread from the trash. Any messages that belong to the thread are also removed
+            /// from the trash.
+            /// </summary>
             public class UntrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
                 /// <summary>Constructs a new Untrash request.</summary>
@@ -7098,11 +7110,15 @@ namespace Google.Apis.Gmail.v1.Data
 
     public class ModifyMessageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of IDs of labels to add to this message.</summary>
+        /// <summary>
+        /// A list of IDs of labels to add to this message. You can add up to 100 labels with each update.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
         public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
 
-        /// <summary>A list IDs of labels to remove from this message.</summary>
+        /// <summary>
+        /// A list IDs of labels to remove from this message. You can remove up to 100 labels with each update.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
         public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; }
 
@@ -7112,11 +7128,15 @@ namespace Google.Apis.Gmail.v1.Data
 
     public class ModifyThreadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of IDs of labels to add to this thread.</summary>
+        /// <summary>
+        /// A list of IDs of labels to add to this thread. You can add up to 100 labels with each update.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
         public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
 
-        /// <summary>A list of IDs of labels to remove from this thread.</summary>
+        /// <summary>
+        /// A list of IDs of labels to remove from this thread. You can remove up to 100 labels with each update.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
         public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; }
 

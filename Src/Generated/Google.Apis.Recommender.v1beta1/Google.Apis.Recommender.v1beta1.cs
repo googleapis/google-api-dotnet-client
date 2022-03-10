@@ -2012,95 +2012,6 @@ namespace Google.Apis.Recommender.v1beta1
                 }
 
                 /// <summary>
-                /// Updates an InsightTypeConfig change. This will create a new revision of the config.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Name of insight type config. Eg,
-                /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
-                /// </param>
-                public virtual ConfigRequest Config(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
-                {
-                    return new ConfigRequest(service, body, name);
-                }
-
-                /// <summary>
-                /// Updates an InsightTypeConfig change. This will create a new revision of the config.
-                /// </summary>
-                public class ConfigRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig>
-                {
-                    /// <summary>Constructs a new Config request.</summary>
-                    public ConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Name of insight type config. Eg,
-                    /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>The list of fields to be updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>
-                    /// If true, validate the request and preview the change, but do not actually update it.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "config";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Config parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+/config$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
                 /// Gets the requested InsightTypeConfig. There is only one instance of the config for each InsightType.
                 /// </summary>
                 /// <param name="name">
@@ -2155,6 +2066,95 @@ namespace Google.Apis.Recommender.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+/config$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates an InsightTypeConfig change. This will create a new revision of the config.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Name of insight type config. Eg,
+                /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
+                /// </param>
+                public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
+                {
+                    return new UpdateConfigRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates an InsightTypeConfig change. This will create a new revision of the config.
+                /// </summary>
+                public class UpdateConfigRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig>
+                {
+                    /// <summary>Constructs a new UpdateConfig request.</summary>
+                    public UpdateConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of insight type config. Eg,
+                    /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// If true, validate the request and preview the change, but do not actually update it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes UpdateConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+/config$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2566,91 +2566,6 @@ namespace Google.Apis.Recommender.v1beta1
                     }
                 }
 
-                /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Name of recommender config. Eg,
-                /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
-                /// </param>
-                public virtual ConfigRequest Config(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
-                {
-                    return new ConfigRequest(service, body, name);
-                }
-
-                /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
-                public class ConfigRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig>
-                {
-                    /// <summary>Constructs a new Config request.</summary>
-                    public ConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Name of recommender config. Eg,
-                    /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>The list of fields to be updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>
-                    /// If true, validate the request and preview the change, but do not actually update it.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "config";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Config parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/config$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
                 /// <summary>
                 /// Gets the requested Recommender Config. There is only one instance of the config for each
                 /// Recommender.
@@ -2708,6 +2623,91 @@ namespace Google.Apis.Recommender.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/config$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Name of recommender config. Eg,
+                /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
+                /// </param>
+                public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
+                {
+                    return new UpdateConfigRequest(service, body, name);
+                }
+
+                /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
+                public class UpdateConfigRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig>
+                {
+                    /// <summary>Constructs a new UpdateConfig request.</summary>
+                    public UpdateConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of recommender config. Eg,
+                    /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// If true, validate the request and preview the change, but do not actually update it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes UpdateConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/config$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
