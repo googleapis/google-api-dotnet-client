@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <!-- net452 is the earliest desktop version supported by xunit runner -->
-    <TargetFrameworks>netcoreapp2.0;netcoreapp2.1;net452;net46;net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net452;net46;net461</TargetFrameworks>
     <!-- On non-Windows platforms only net core can be built -->
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp3.1</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
@@ -16,6 +16,7 @@
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="Xunit.Combinatorial" Version="1.4.1" />
     <PackageReference Include="Moq" Version="4.17.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
     <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
@@ -27,18 +28,10 @@
     <PackageReference Include="BouncyCastle" Version="1.8.9" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.0'">
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.1' or '$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46' or '$(TargetFramework)'=='net461'">
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0' or '$(TargetFramework)' == 'netcoreapp2.1' or '$(TargetFramework)' == 'net461'">
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net461'">
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

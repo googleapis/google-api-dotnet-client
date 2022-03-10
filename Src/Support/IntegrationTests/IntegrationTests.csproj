@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <!-- net452 is the earliest desktop version supported by xunit runner -->
-    <TargetFrameworks>netcoreapp2.0;netcoreapp2.1;net452;net46</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net452;net46</TargetFrameworks>
     <!-- On non-Windows platforms only net core can be built -->
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp3.1</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
@@ -14,6 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
     <ProjectReference Include="..\Google.Apis.Tests\Google.Apis.Tests.csproj" />
     <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
@@ -24,18 +25,10 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0' or '$(TargetFramework)' == 'netcoreapp2.1'">
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.0'">
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp2.1' or '$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46'">
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Flakey in net core 2.0 due to https://github.com/dotnet/corefx/issues/25016
-#if !NETCOREAPP2_0
+// This continues to be flaky in .netcore3.1 due to https://github.com/dotnet/corefx/issues/25016
+#if !NETCOREAPP3_1
 
 using Google.Apis.Json;
 using Google.Apis.Services;
