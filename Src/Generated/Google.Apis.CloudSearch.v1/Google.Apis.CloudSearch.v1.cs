@@ -5378,6 +5378,31 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This is the proto for holding space level scoring information. This data is used for logging in query-api server
+    /// and for testing purposes.
+    /// </summary>
+    public class DynamiteSpacesScoringInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("finalScore")]
+        public virtual System.Nullable<double> FinalScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessScore")]
+        public virtual System.Nullable<double> FreshnessScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageScore")]
+        public virtual System.Nullable<double> MessageScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceAgeInDays")]
+        public virtual System.Nullable<double> SpaceAgeInDays { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
+        public virtual System.Nullable<double> TopicalityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A person's email address.</summary>
     public class EmailAddress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8069,6 +8094,10 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual GroupId GroupId { get; set; }
+
+        /// <summary>Whether this is an external space outside of user's organization</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isExternal")]
+        public virtual System.Nullable<bool> IsExternal { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

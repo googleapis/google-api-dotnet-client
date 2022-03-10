@@ -861,7 +861,7 @@ namespace Google.Apis.CloudBuild.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/location`
+                /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Parent { get; set; }
@@ -2362,7 +2362,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// finished successfully or unsuccessfully.
                 /// </summary>
                 /// <param name="parent">
-                /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/location`
+                /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2383,7 +2383,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
                     /// <summary>
-                    /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/location`
+                    /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }

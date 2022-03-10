@@ -3121,10 +3121,11 @@ namespace Google.Apis.CloudRetail.v2beta
                     public virtual string DeviceType { get; set; }
 
                     /// <summary>
-                    /// The list of languages of the query. This is the BCP-47 language code, such as "en-US" or
-                    /// "sr-Latn". For more information, see [Tags for Identifying
-                    /// Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255.
-                    /// Only "en-US" is currently supported.
+                    /// The language filters applied to the output suggestions. If set, it should contain the language
+                    /// of the query. If not set, suggestions are returned without considering language restrictions.
+                    /// This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags
+                    /// for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of language
+                    /// codes is 3.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
@@ -8048,10 +8049,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
-    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
-    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
-    /// google.protobuf.Timestamp
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
     /// </summary>
     public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
     {

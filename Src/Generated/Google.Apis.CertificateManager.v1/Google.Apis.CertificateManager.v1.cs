@@ -2367,8 +2367,8 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames
-        /// with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+        /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of
+        /// hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
@@ -2419,8 +2419,8 @@ namespace Google.Apis.CertificateManager.v1.Data
 
         /// <summary>
         /// Required. Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain
-        /// and its wildcard, e.g. authorization for "example.com" can be used to issue certificates for "example.com"
-        /// and "*.example.com".
+        /// and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com`
+        /// and `*.example.com`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
@@ -2455,7 +2455,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string Data { get; set; }
 
         /// <summary>
-        /// Output only. Fully qualified name of the DNS Resource Record. e.g. "_acme-challenge.example.com."
+        /// Output only. Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

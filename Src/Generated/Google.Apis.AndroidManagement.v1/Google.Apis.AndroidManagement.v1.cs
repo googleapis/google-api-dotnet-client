@@ -2312,16 +2312,99 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This represents a single version of the app.</summary>
+    public class AppVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if this version is a production track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("production")]
+        public virtual System.Nullable<bool> Production { get; set; }
+
+        /// <summary>
+        /// Track ids that the app version is published in. This doesn't include the production track (see production
+        /// instead).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackIds")]
+        public virtual System.Collections.Generic.IList<string> TrackIds { get; set; }
+
+        /// <summary>Unique increasing identifier for the app version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<int> VersionCode { get; set; }
+
+        /// <summary>
+        /// The string used in the Play store by the app developer to identify the version. The string is not
+        /// necessarily unique or localized (for example, the string could be "1.4").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionString")]
+        public virtual string VersionString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about an app.</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether this app is free, free with in-app purchases, or paid. If the pricing is unspecified, this means the
+        /// app is not generally available anymore (even though it might still be available to people who own it).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appPricing")]
+        public virtual string AppPricing { get; set; }
+
         /// <summary>Application tracks visible to the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appTracks")]
         public virtual System.Collections.Generic.IList<AppTrackInfo> AppTracks { get; set; }
 
+        /// <summary>Versions currently available for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersions")]
+        public virtual System.Collections.Generic.IList<AppVersion> AppVersions { get; set; }
+
+        /// <summary>The name of the author of the apps (for example, the app developer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>The countries which this app is available in as per ISO 3166-1 alpha-2.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCountries")]
+        public virtual System.Collections.Generic.IList<string> AvailableCountries { get; set; }
+
+        /// <summary>The app category (e.g. RACING, SOCIAL, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>The content rating for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentRating")]
+        public virtual string ContentRating { get; set; }
+
+        /// <summary>The localized promotional description, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>How and to whom the package is made available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributionChannel")]
+        public virtual string DistributionChannel { get; set; }
+
+        /// <summary>Noteworthy features (if any) of this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<string> Features { get; set; }
+
+        /// <summary>Full app description, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullDescription")]
+        public virtual string FullDescription { get; set; }
+
+        /// <summary>
+        /// A link to an image that can be used as an icon for the app. This image is suitable for use at up to 512px x
+        /// 512px
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
         /// <summary>The set of managed properties available to be pre-configured for the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedProperties")]
         public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperties { get; set; }
+
+        /// <summary>The minimum Android SDK necessary to run the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAndroidSdkVersion")]
+        public virtual System.Nullable<int> MinAndroidSdkVersion { get; set; }
 
         /// <summary>The name of the app in the form enterprises/{enterprise}/applications/{package_name}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2331,9 +2414,32 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<ApplicationPermission> Permissions { get; set; }
 
+        /// <summary>A link to the (consumer) Google Play details page for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playStoreUrl")]
+        public virtual string PlayStoreUrl { get; set; }
+
+        /// <summary>A localised description of the recent changes made to the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentChanges")]
+        public virtual string RecentChanges { get; set; }
+
+        /// <summary>A list of screenshot links representing the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenshotUrls")]
+        public virtual System.Collections.Generic.IList<string> ScreenshotUrls { get; set; }
+
+        /// <summary>
+        /// A link to a smaller image that can be used as an icon for the app. This image is suitable for use at up to
+        /// 128px x 128px.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smallIconUrl")]
+        public virtual string SmallIconUrl { get; set; }
+
         /// <summary>The title of the app. Localized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>Output only. The approximate time (within 7 days) the app was last published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4018,6 +4124,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requirePasswordUnlock")]
         public virtual string RequirePasswordUnlock { get; set; }
 
+        /// <summary>
+        /// Controls whether a unified lock is allowed for the device and the work profile, on devices running Android 9
+        /// and above with a work profile. This has no effect on other devices. This can be set only if password_scope
+        /// is set to SCOPE_PROFILE, the policy will be rejected otherwise. If user has not set a separate work lock and
+        /// this field is set to REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with nonComplianceReason
+        /// set to USER_ACTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unifiedLockSettings")]
+        public virtual string UnifiedLockSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4215,7 +4331,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cameraAccess")]
         public virtual string CameraAccess { get; set; }
 
-        /// <summary>Whether all cameras on the device are disabled.</summary>
+        /// <summary>
+        /// If camera_access is set to any value other than CAMERA_ACCESS_UNSPECIFIED, this has no effect. Otherwise
+        /// this field controls whether cameras are disabled: If true, all cameras are disabled, otherwise they are
+        /// available. For fully managed devices this field applies for all apps on the device. For work profiles, this
+        /// field applies only to apps in the work profile, and the camera access of apps outside the work profile is
+        /// unaffected.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
         public virtual System.Nullable<bool> CameraDisabled { get; set; }
 
@@ -4403,8 +4525,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Password requirements. The field password_requirements.require_password_unlock must not be set. DEPRECATED -
-        /// Use password_policies.Note:Complexity-based values of PasswordQuality, that is, COMPLEXITY_LOW,
-        /// COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here.
+        /// Use passwordPolicies.Note:Complexity-based values of PasswordQuality, that is, COMPLEXITY_LOW,
+        /// COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here. unified_lock_settings cannot be used here
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordRequirements")]
         public virtual PasswordRequirements PasswordRequirements { get; set; }
@@ -4496,7 +4618,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("setWallpaperDisabled")]
         public virtual System.Nullable<bool> SetWallpaperDisabled { get; set; }
 
-        /// <summary>Actions to take during the setup process.</summary>
+        /// <summary>Action to take during the setup process. At most one action may be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setupActions")]
         public virtual System.Collections.Generic.IList<SetupAction> SetupActions { get; set; }
 
@@ -4556,7 +4678,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uninstallAppsDisabled")]
         public virtual System.Nullable<bool> UninstallAppsDisabled { get; set; }
 
-        /// <summary>Whether the microphone is muted and adjusting microphone volume is disabled.</summary>
+        /// <summary>
+        /// If microphone_access is set to any value other than MICROPHONE_ACCESS_UNSPECIFIED, this has no effect.
+        /// Otherwise this field controls whether microphones are disabled: If true, all microphones are disabled,
+        /// otherwise they are available. This is available only on fully managed devices.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmuteMicrophoneDisabled")]
         public virtual System.Nullable<bool> UnmuteMicrophoneDisabled { get; set; }
 

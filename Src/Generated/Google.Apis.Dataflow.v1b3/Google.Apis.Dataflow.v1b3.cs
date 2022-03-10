@@ -7686,6 +7686,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Defines a SDK harness container for executing Dataflow pipelines.</summary>
     public class SdkHarnessContainerImage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The set of capabilities enumerated in the above Environment proto. See also
+        /// https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual System.Collections.Generic.IList<string> Capabilities { get; set; }
+
         /// <summary>A docker container image that resides in Google Container Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
         public virtual string ContainerImage { get; set; }
@@ -7727,7 +7734,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to send encoded debug information.</summary>
+    /// <summary>Request to send encoded debug information. Next ID: 8</summary>
     public class SendDebugCaptureRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The internal component id for which debug information is sent.</summary>
@@ -7737,6 +7744,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The encoded debug information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
+
+        /// <summary>Format for the data field above (id=5).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
 
         /// <summary>
         /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains

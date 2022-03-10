@@ -13254,6 +13254,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual ImageConfig Image { get; set; }
 
+        /// <summary>Details about the work the de-identify operation performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationMetadata")]
+        public virtual DeidentifyOperationMetadata OperationMetadata { get; set; }
+
         /// <summary>Configures de-identification of text wherever it is found in the source_dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual TextConfig Text { get; set; }
@@ -13330,6 +13334,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
         public virtual FhirFilter ResourceFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the work the de-identify operation performed.</summary>
+    public class DeidentifyOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details about the FHIR store to write the output to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirOutput")]
+        public virtual FhirOutput FhirOutput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13916,6 +13931,24 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual Resources Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the FHIR store to write the output to.</summary>
+    public class FhirOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update
+        /// permission on the destination store to your project's **Cloud Healthcare Service Agent** [service
+        /// account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent).
+        /// The destination store must set `enable_update_create` to true. The destination store must use FHIR version
+        /// R4. Writing these resources will consume FHIR operations quota from the project containing the source data.
+        /// De-identify operation metadata is only generated for DICOM de-identification operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirStore")]
+        public virtual string FhirStore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Playdeveloperreporting.v1beta1.PlaydeveloperreportingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Playdeveloperreporting.v1beta1.PlaydeveloperreportingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

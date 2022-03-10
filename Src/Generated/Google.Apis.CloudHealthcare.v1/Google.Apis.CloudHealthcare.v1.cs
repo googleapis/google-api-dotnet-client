@@ -11390,6 +11390,21 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class ExportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// If provided, only resources updated after this time are exported. The time uses the format
+        /// YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
+        /// time must be specified to the second and include a time zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_since")]
+        public virtual string Since { get; set; }
+
+        /// <summary>
+        /// String of comma-delimited FHIR resource types. If provided, only resources of the specified resource type(s)
+        /// are exported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
         /// The BigQuery output destination. The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
         /// location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery table per
         /// resource type. Unlike when setting `BigQueryDestination` for `StreamConfig`, `ExportResources` does not
