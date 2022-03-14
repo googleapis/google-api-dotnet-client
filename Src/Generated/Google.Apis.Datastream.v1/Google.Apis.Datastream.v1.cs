@@ -3437,7 +3437,7 @@ namespace Google.Apis.Datastream.v1.Data
     public class MysqlTable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes
+        /// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes
         /// everything.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlColumns")]
@@ -3671,7 +3671,7 @@ namespace Google.Apis.Datastream.v1.Data
     public class OracleTable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes
+        /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes
         /// everything.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleColumns")]
@@ -3782,11 +3782,11 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>The configuration of the stream source.</summary>
     public class SourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>MySQL data source configuration</summary>
+        /// <summary>MySQL data source configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlSourceConfig")]
         public virtual MysqlSourceConfig MysqlSourceConfig { get; set; }
 
-        /// <summary>Oracle data source configuration</summary>
+        /// <summary>Oracle data source configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleSourceConfig")]
         public virtual OracleSourceConfig OracleSourceConfig { get; set; }
 

@@ -1617,6 +1617,17 @@ namespace Google.Apis.GKEHub.v1beta
 }
 namespace Google.Apis.GKEHub.v1beta.Data
 {
+    /// <summary>**Anthos Observability**: Spec</summary>
+    public class AnthosObservabilityFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>default membership spec for unconfigured memberships</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultMembershipSpec")]
+        public virtual AnthosObservabilityMembershipSpec DefaultMembershipSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Anthosobservability**: Per-Membership Feature spec.</summary>
     public class AnthosObservabilityMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1633,6 +1644,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverOnApplications")]
         public virtual System.Nullable<bool> EnableStackdriverOnApplications { get; set; }
+
+        /// <summary>the version of stackdriver operator used by this feature</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1765,6 +1780,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Anthos Observability spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
+        public virtual AnthosObservabilityFeatureSpec Anthosobservability { get; set; }
+
         /// <summary>Appdevexperience specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureSpec Appdevexperience { get; set; }
@@ -2998,55 +3017,8 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>
-    /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
-    /// </summary>
-    public class PolicyControllerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Policy Controller configuration for the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
-        public virtual PolicyControllerPolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
-
-        /// <summary>Version of Policy Controller installed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>**Policy Controller**: State for a single cluster.</summary>
-    public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
-        /// Membership's membership_name, unless the user installed PC on the cluster manually prior to enabling the PC
-        /// hub feature. Unique within a Policy Controller installation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; }
-
-        /// <summary>
-        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
-        /// MembershipSpec in the FeatureSpec represents the intended state
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
-        public virtual PolicyControllerMembershipSpec MembershipSpec { get; set; }
-
-        /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
-        public virtual PolicyControllerPolicyControllerHubState PolicyControllerHubState { get; set; }
-
-        /// <summary>The lifecycle state Policy Controller is in.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Configuration for Policy Controller</summary>
-    public class PolicyControllerPolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit
@@ -3090,7 +3062,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
     }
 
     /// <summary>State of the Policy Controller.</summary>
-    public class PolicyControllerPolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Map from deployment name to deployment state. Example deployments are gatekeeper-controller-manager,
@@ -3101,18 +3073,65 @@ namespace Google.Apis.GKEHub.v1beta.Data
 
         /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual PolicyControllerPolicyControllerHubVersion Version { get; set; }
+        public virtual PolicyControllerHubVersion Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>The build version of Gatekeeper that Policy Controller is using.</summary>
-    public class PolicyControllerPolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+    /// </summary>
+    public class PolicyControllerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy Controller configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
+        public virtual PolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
+
+        /// <summary>Version of Policy Controller installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Policy Controller**: State for a single cluster.</summary>
+    public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
+        /// Membership's membership_name, unless the user installed PC on the cluster manually prior to enabling the PC
+        /// hub feature. Unique within a Policy Controller installation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>
+        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
+        /// MembershipSpec in the FeatureSpec represents the intended state
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
+        public virtual PolicyControllerMembershipSpec MembershipSpec { get; set; }
+
+        /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
+        public virtual PolicyControllerHubState PolicyControllerHubState { get; set; }
+
+        /// <summary>The lifecycle state Policy Controller is in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

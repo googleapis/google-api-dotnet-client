@@ -299,7 +299,6 @@ namespace Google.Apis.Baremetalsolution.v2
                 this.service = service;
                 Instances = new InstancesResource(service);
                 Networks = new NetworksResource(service);
-                NfsShares = new NfsSharesResource(service);
                 ProvisioningConfigs = new ProvisioningConfigsResource(service);
                 ProvisioningQuotas = new ProvisioningQuotasResource(service);
                 SnapshotSchedulePolicies = new SnapshotSchedulePoliciesResource(service);
@@ -913,32 +912,87 @@ namespace Google.Apis.Baremetalsolution.v2
                 }
             }
 
-            /// <summary>Gets the NfsShares resource.</summary>
-            public virtual NfsSharesResource NfsShares { get; }
+            /// <summary>Gets the ProvisioningConfigs resource.</summary>
+            public virtual ProvisioningConfigsResource ProvisioningConfigs { get; }
 
-            /// <summary>The "nfsShares" collection of methods.</summary>
-            public class NfsSharesResource
+            /// <summary>The "provisioningConfigs" collection of methods.</summary>
+            public class ProvisioningConfigsResource
             {
-                private const string Resource = "nfsShares";
+                private const string Resource = "provisioningConfigs";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public NfsSharesResource(Google.Apis.Services.IClientService service)
+                public ProvisioningConfigsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
                 }
 
-                /// <summary>Get details of a single NFS share.</summary>
-                /// <param name="name">Required. Name of the resource.</param>
+                /// <summary>Create new ProvisioningConfig.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent project and location containing the ProvisioningConfig.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create new ProvisioningConfig.</summary>
+                public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent project and location containing the ProvisioningConfig.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/provisioningConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get ProvisioningConfig by name.</summary>
+                /// <param name="name">Required. Name of the ProvisioningConfig.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Get details of a single NFS share.</summary>
-                public class GetRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.NfsShare>
+                /// <summary>Get ProvisioningConfig by name.</summary>
+                public class GetRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -947,7 +1001,7 @@ namespace Google.Apis.Baremetalsolution.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource.</summary>
+                    /// <summary>Required. Name of the ProvisioningConfig.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -970,126 +1024,40 @@ namespace Google.Apis.Baremetalsolution.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/nfsShares/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/provisioningConfigs/[^/]+$",
                         });
                     }
                 }
 
-                /// <summary>List NFS shares.</summary>
-                /// <param name="parent">Required. Parent value for ListNfsSharesRequest.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>List NFS shares.</summary>
-                public class ListRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ListNfsSharesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Parent value for ListNfsSharesRequest.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>List filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>
-                    /// Requested page size. The server might return fewer items than requested. If unspecified, server
-                    /// will pick an appropriate default.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>A token identifying a page of results from the server.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/nfsShares";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Update details of a single NFS share.</summary>
+                /// <summary>Update existing ProvisioningConfig.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The name of the NFS share.</param>
-                public virtual PatchRequest Patch(Google.Apis.Baremetalsolution.v2.Data.NfsShare body, string name)
+                /// <param name="name">Output only. The name of the provisioning config.</param>
+                public virtual PatchRequest Patch(Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Update details of a single NFS share.</summary>
-                public class PatchRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                /// <summary>Update existing ProvisioningConfig.</summary>
+                public class PatchRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.NfsShare body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The name of the NFS share.</summary>
+                    /// <summary>Output only. The name of the provisioning config.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// The list of fields to update. The only currently supported fields are: `labels`
-                    /// </summary>
+                    /// <summary>Required. The list of fields to update.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Baremetalsolution.v2.Data.NfsShare Body { get; set; }
+                    Google.Apis.Baremetalsolution.v2.Data.ProvisioningConfig Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1113,7 +1081,7 @@ namespace Google.Apis.Baremetalsolution.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/nfsShares/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/provisioningConfigs/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -1124,24 +1092,6 @@ namespace Google.Apis.Baremetalsolution.v2
                             Pattern = null,
                         });
                     }
-                }
-            }
-
-            /// <summary>Gets the ProvisioningConfigs resource.</summary>
-            public virtual ProvisioningConfigsResource ProvisioningConfigs { get; }
-
-            /// <summary>The "provisioningConfigs" collection of methods.</summary>
-            public class ProvisioningConfigsResource
-            {
-                private const string Resource = "provisioningConfigs";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public ProvisioningConfigsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
                 }
 
                 /// <summary>Submit a provisiong configuration for a given project.</summary>
@@ -2217,6 +2167,7 @@ namespace Google.Apis.Baremetalsolution.v2
                     /// <summary>
                     /// The list of fields to update. The only currently supported fields are:
                     /// `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'requested_size_gib'
+                    /// 'snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2398,44 +2349,6 @@ namespace Google.Apis.Baremetalsolution.v2
 }
 namespace Google.Apis.Baremetalsolution.v2.Data
 {
-    /// <summary>Represents an 'access point' for the share.</summary>
-    public class AllowedClient : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Allow dev flag. Which controls whether to allow creation of devices.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowDev")]
-        public virtual System.Nullable<bool> AllowDev { get; set; }
-
-        /// <summary>Allow the setuid flag.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowSuid")]
-        public virtual System.Nullable<bool> AllowSuid { get; set; }
-
-        /// <summary>The subnet of IP addresses permitted to access the share.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedClientsCidr")]
-        public virtual string AllowedClientsCidr { get; set; }
-
-        /// <summary>Mount permissions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mountPermissions")]
-        public virtual string MountPermissions { get; set; }
-
-        /// <summary>The network the access point sits on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; }
-
-        /// <summary>
-        /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser
-        /// (root) identity when using identity authentication.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("noRootSquash")]
-        public virtual System.Nullable<bool> NoRootSquash { get; set; }
-
-        /// <summary>The IP address of the share on this network.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shareIp")]
-        public virtual string ShareIp { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -2672,25 +2585,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>A token identifying a page of results from the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message containing the list of NFS shares.</summary>
-    public class ListNfsSharesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A token identifying a page of results from the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The list of NFS shares.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nfsShares")]
-        public virtual System.Collections.Generic.IList<NfsShare> NfsShares { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
@@ -2953,6 +2847,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
         public virtual string Cidr { get; set; }
 
+        /// <summary>
+        /// The GCP service of the network. Available gcp_service are in
+        /// https://cloud.google.com/bare-metal/docs/bms-planning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpService")]
+        public virtual string GcpService { get; set; }
+
         /// <summary>A transient unique identifier to identify a volume within an ProvisioningConfig request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -2982,6 +2883,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vlanAttachments")]
         public virtual System.Collections.Generic.IList<IntakeVlanAttachment> VlanAttachments { get; set; }
+
+        /// <summary>Whether the VLAN attachment pair is located in the same project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vlanSameProject")]
+        public virtual System.Nullable<bool> VlanSameProject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3040,37 +2945,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An NFS share.</summary>
-    public class NfsShare : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of allowed access points.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedClients")]
-        public virtual System.Collections.Generic.IList<AllowedClient> AllowedClients { get; set; }
-
-        /// <summary>Labels as key value pairs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Output only. The name of the NFS share.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. An identifier for the NFS share, generated by the backend.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nfsShareId")]
-        public virtual string NfsShareId { get; set; }
-
-        /// <summary>The state of the NFS share.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The volume containing the share.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
-        public virtual string Volume { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3117,6 +2991,14 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>A provisioning configuration.</summary>
     public class ProvisioningConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. URI to Cloud Console UI view of this provisioning config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudConsoleUri")]
+        public virtual string CloudConsoleUri { get; set; }
+
+        /// <summary>Optional. Email provided to send a confirmation with provisioning config to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
         /// <summary>A service account to enable customers to access instance credentials upon handover.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("handoverServiceAccount")]
         public virtual string HandoverServiceAccount { get; set; }
@@ -3124,6 +3006,12 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Instances to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<InstanceConfig> Instances { get; set; }
+
+        /// <summary>
+        /// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
 
         /// <summary>Output only. The name of the provisioning config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3133,9 +3021,17 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
 
+        /// <summary>Output only. State of ProvisioningConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>A generated buganizer id to track provisioning request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ticketId")]
         public virtual string TicketId { get; set; }
+
+        /// <summary>Output only. Last update timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Volumes to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
@@ -3226,6 +3122,14 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The space on this storage volume reserved for snapshots, shown in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedSpaceGib")]
         public virtual System.Nullable<long> ReservedSpaceGib { get; set; }
+
+        /// <summary>
+        /// Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or
+        /// more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this
+        /// field will effectively set snapshot_enabled to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedSpacePercent")]
+        public virtual System.Nullable<int> ReservedSpacePercent { get; set; }
 
         /// <summary>The amount, in GiB, of available space in this storage volume's reserved snapshot space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedSpaceRemainingGib")]
@@ -3427,6 +3331,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotAutoDeleteBehavior")]
         public virtual string SnapshotAutoDeleteBehavior { get; set; }
 
+        /// <summary>Whether snapshots are enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotEnabled")]
+        public virtual System.Nullable<bool> SnapshotEnabled { get; set; }
+
         /// <summary>Details about snapshot space reservation and usage on the storage volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotReservationDetail")]
         public virtual SnapshotReservationDetail SnapshotReservationDetail { get; set; }
@@ -3450,6 +3358,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>Configuration parameters for a new volume.</summary>
     public class VolumeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The GCP service of the storage volume. Available gcp_service are in
+        /// https://cloud.google.com/bare-metal/docs/bms-planning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpService")]
+        public virtual string GcpService { get; set; }
+
         /// <summary>A transient unique identifier to identify a volume within an ProvisioningConfig request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }

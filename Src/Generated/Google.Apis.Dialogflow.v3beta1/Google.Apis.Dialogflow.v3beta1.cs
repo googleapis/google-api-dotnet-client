@@ -10247,10 +10247,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3TestConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+        /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and
+        /// `page` should be set to indicate the starting point of the test case. If both are set, `page` takes
+        /// precedence over `flow`. If neither is set, the test case will start with start page on the default start
+        /// flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flow")]
         public virtual string Flow { get; set; }
+
+        /// <summary>
+        /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of
+        /// `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page`
+        /// takes precedence over `flow`. If neither is set, the test case will start with start page on the default
+        /// start flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("page")]
+        public virtual string Page { get; set; }
 
         /// <summary>Session parameters to be compared when calculating differences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingParameters")]
@@ -11648,6 +11660,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>
         /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the agent to. The
         /// format of this URI must be `gs:///`. If left unspecified, the serialized agent is returned inline.
+        /// Dialogflow performs a write operation for the Cloud Storage object on the caller's behalf, so your request
+        /// authentication must have write permissions for the object. For more information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
@@ -11686,7 +11701,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>
         /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the flow to. The
-        /// format of this URI must be `gs:///`. If left unspecified, the serialized flow is returned inline.
+        /// format of this URI must be `gs:///`. If left unspecified, the serialized flow is returned inline. Dialogflow
+        /// performs a write operation for the Cloud Storage object on the caller's behalf, so your request
+        /// authentication must have write permissions for the object. For more information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
         public virtual string FlowUri { get; set; }
@@ -11745,6 +11763,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>
         /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the test cases to. The
         /// format of this URI must be `gs:///`. If unspecified, the serialized test cases is returned inline.
+        /// Dialogflow performs a write operation for the Cloud Storage object on the caller's behalf, so your request
+        /// authentication must have write permissions for the object. For more information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
@@ -12161,7 +12182,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to import flow from. The format of
-        /// this URI must be `gs:///`.
+        /// this URI must be `gs:///`. Dialogflow performs a read operation for the Cloud Storage object on the caller's
+        /// behalf, so your request authentication must have read permissions for the object. For more information, see
+        /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
         public virtual string FlowUri { get; set; }
@@ -12205,7 +12228,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to import test cases from. The format
-        /// of this URI must be `gs:///`.
+        /// of this URI must be `gs:///`. Dialogflow performs a read operation for the Cloud Storage object on the
+        /// caller's behalf, so your request authentication must have read permissions for the object. For more
+        /// information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
@@ -13670,7 +13696,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to restore agent from. The format of
-        /// this URI must be `gs:///`.
+        /// this URI must be `gs:///`. Dialogflow performs a read operation for the Cloud Storage object on the caller's
+        /// behalf, so your request authentication must have read permissions for the object. For more information, see
+        /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
@@ -14155,10 +14183,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1TestConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+        /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and
+        /// `page` should be set to indicate the starting point of the test case. If both are set, `page` takes
+        /// precedence over `flow`. If neither is set, the test case will start with start page on the default start
+        /// flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flow")]
         public virtual string Flow { get; set; }
+
+        /// <summary>
+        /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of
+        /// `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page`
+        /// takes precedence over `flow`. If neither is set, the test case will start with start page on the default
+        /// start flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("page")]
+        public virtual string Page { get; set; }
 
         /// <summary>Session parameters to be compared when calculating differences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingParameters")]
@@ -15314,6 +15354,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// Required. The language of this query. See [Language
         /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
         /// language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// This field is ignored when used in the context of a WebhookResponse.followup_event_input field, because the
+        /// language was already defined in the originating detect intent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -17216,6 +17258,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// Required. The language of this query. See [Language
         /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
         /// language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// This field is ignored when used in the context of a WebhookResponse.followup_event_input field, because the
+        /// language was already defined in the originating detect intent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }

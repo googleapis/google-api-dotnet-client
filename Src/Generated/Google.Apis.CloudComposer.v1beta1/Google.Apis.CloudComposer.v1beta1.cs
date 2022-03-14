@@ -697,10 +697,9 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// cleared. It is an error to provide both this mask and a mask specifying one or more individual
                     /// environment variables. * `config.softwareConfig.imageVersion` * Upgrade the version of the
                     /// environment in-place. Refer to `SoftwareConfig.image_version` for information on how to format
-                    /// the new image version. Additionally, the new image version cannot effect a version downgrade and
-                    /// must match the current image version's Composer major version and Airflow major and minor
-                    /// versions. Consult the [Cloud Composer Version
-                    /// List](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) for valid
+                    /// the new image version. Additionally, the new image version cannot effect a version downgrade,
+                    /// and must match the current image version's Composer and Airflow major versions. Consult the
+                    /// [Cloud Composer version list](/composer/docs/concepts/versioning/composer-versions) for valid
                     /// values. * `config.softwareConfig.schedulerCount` * Horizontally scale the number of schedulers
                     /// in Airflow. A positive integer not greater than the number of nodes must be provided in the
                     /// `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer environments in
@@ -1172,15 +1171,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
         /// functionality and the version of Apache Airflow. It must match the regular expression
-        /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the
-        /// server also checks if the provided version is supported and denies the request for an unsupported version.
-        /// The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the
-        /// patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided
-        /// instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version
-        /// and stores that version number in the same field. The portion of the image version that follows `airflow-`
-        /// is an official Apache Airflow repository [release
-        /// name](https://github.com/apache/incubator-airflow/releases). See also [Version List]
-        /// (/composer/docs/concepts/versioning/composer-versions).
+        /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+\.[0-9]+(\.[0-9]+)?)`. When
+        /// used as input, the server also checks if the provided version is supported and denies the request for an
+        /// unsupported version. The Cloud Composer portion of the image version is a full [semantic
+        /// version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is
+        /// provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The
+        /// Apache Airflow portion of the image version is a full semantic version that points to one of the supported
+        /// Apache Airflow versions, or an alias in the form of only major and minor versions specified. When an alias
+        /// is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is
+        /// supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the
+        /// same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning
+        /// overview](/composer/docs/concepts/versioning/composer-versioning-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; }
@@ -1235,15 +1236,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud
-    /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
-    /// </summary>
+    /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2,
         /// db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+        /// Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
@@ -1255,10 +1254,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
-    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
-    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
-    /// google.protobuf.Timestamp
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1376,8 +1375,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string DagGcsPrefix { get; set; }
 
         /// <summary>
-        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This
-        /// field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseConfig")]
         public virtual DatabaseConfig DatabaseConfig { get; set; }
@@ -1526,7 +1524,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationDisabled")]
         public virtual System.Nullable<bool> CreationDisabled { get; set; }
 
-        /// <summary>The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b(.c)"</summary>
+        /// <summary>The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b.c"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersionId")]
         public virtual string ImageVersionId { get; set; }
 
@@ -2028,15 +2026,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
         /// functionality and the version of Apache Airflow. It must match the regular expression
-        /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the
-        /// server also checks if the provided version is supported and denies the request for an unsupported version.
-        /// The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the
-        /// patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided
-        /// instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version
-        /// and stores that version number in the same field. The portion of the image version that follows *airflow-*
-        /// is an official Apache Airflow repository [release
-        /// name](https://github.com/apache/incubator-airflow/releases). See also [Version
-        /// List](/composer/docs/concepts/versioning/composer-versions).
+        /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+\.[0-9]+(\.[0-9]+)?)`. When
+        /// used as input, the server also checks if the provided version is supported and denies the request for an
+        /// unsupported version. The Cloud Composer portion of the image version is a full [semantic
+        /// version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is
+        /// provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The
+        /// Apache Airflow portion of the image version is a full semantic version that points to one of the supported
+        /// Apache Airflow versions, or an alias in the form of only major and minor versions specified. When an alias
+        /// is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is
+        /// supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the
+        /// same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning
+        /// overview](/composer/docs/concepts/versioning/composer-versioning-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; }

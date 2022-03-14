@@ -34,6 +34,7 @@ namespace Google.Apis.GKEHub.v1alpha
         /// <param name="initializer">The service initializer.</param>
         public GKEHubService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
         }
 
@@ -81,6 +82,9 @@ namespace Google.Apis.GKEHub.v1alpha
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -264,6 +268,130 @@ namespace Google.Apis.GKEHub.v1alpha
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Fleets = new FleetsResource(service);
+            }
+
+            /// <summary>Gets the Fleets resource.</summary>
+            public virtual FleetsResource Fleets { get; }
+
+            /// <summary>The "fleets" collection of methods.</summary>
+            public class FleetsResource
+            {
+                private const string Resource = "fleets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FleetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Returns all fleets within an organization or a project that the caller has access to.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The organization or project to list for Fleets under, in the format
+                /// `organizations/*/locations/*` or `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns all fleets within an organization or a project that the caller has access to.
+                /// </summary>
+                public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListFleetsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The organization or project to list for Fleets under, in the format
+                    /// `organizations/*/locations/*` or `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListFleets` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListFleets` must match the
+                    /// call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/fleets";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
     }
 
@@ -1134,6 +1262,77 @@ namespace Google.Apis.GKEHub.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/fleets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns all fleets within an organization or a project that the caller has access to.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The organization or project to list for Fleets under, in the format
+                /// `organizations/*/locations/*` or `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns all fleets within an organization or a project that the caller has access to.
+                /// </summary>
+                public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListFleetsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The organization or project to list for Fleets under, in the format
+                    /// `organizations/*/locations/*` or `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListFleets` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListFleets` must match the
+                    /// call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/fleets";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2564,6 +2763,17 @@ namespace Google.Apis.GKEHub.v1alpha
 }
 namespace Google.Apis.GKEHub.v1alpha.Data
 {
+    /// <summary>**Anthos Observability**: Spec</summary>
+    public class AnthosObservabilityFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>default membership spec for unconfigured memberships</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultMembershipSpec")]
+        public virtual AnthosObservabilityMembershipSpec DefaultMembershipSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Anthosobservability**: Per-Membership Feature spec.</summary>
     public class AnthosObservabilityMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2580,6 +2790,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverOnApplications")]
         public virtual System.Nullable<bool> EnableStackdriverOnApplications { get; set; }
+
+        /// <summary>the version of stackdriver operator used by this feature</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2786,6 +3000,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Anthos Observability spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
+        public virtual AnthosObservabilityFeatureSpec Anthosobservability { get; set; }
+
         /// <summary>Appdevexperience specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureSpec Appdevexperience { get; set; }
@@ -3958,6 +4176,24 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the `GkeHub.ListFleetsResponse` method.</summary>
+    public class ListFleetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching fleets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleets")]
+        public virtual System.Collections.Generic.IList<Fleet> Fleets { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4491,55 +4727,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>
-    /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
-    /// </summary>
-    public class PolicyControllerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Policy Controller configuration for the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
-        public virtual PolicyControllerPolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
-
-        /// <summary>Version of Policy Controller installed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>**Policy Controller**: State for a single cluster.</summary>
-    public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
-        /// Membership's membership_name, unless the user installed PC on the cluster manually prior to enabling the PC
-        /// hub feature. Unique within a Policy Controller installation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; }
-
-        /// <summary>
-        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
-        /// MembershipSpec in the FeatureSpec represents the intended state
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
-        public virtual PolicyControllerMembershipSpec MembershipSpec { get; set; }
-
-        /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
-        public virtual PolicyControllerPolicyControllerHubState PolicyControllerHubState { get; set; }
-
-        /// <summary>The lifecycle state Policy Controller is in.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Configuration for Policy Controller</summary>
-    public class PolicyControllerPolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit
@@ -4587,7 +4776,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     }
 
     /// <summary>State of the Policy Controller.</summary>
-    public class PolicyControllerPolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerHubState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Map from deployment name to deployment state. Example deployments are gatekeeper-controller-manager,
@@ -4598,18 +4787,65 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual PolicyControllerPolicyControllerHubVersion Version { get; set; }
+        public virtual PolicyControllerHubVersion Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>The build version of Gatekeeper that Policy Controller is using.</summary>
-    public class PolicyControllerPolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
+    public class PolicyControllerHubVersion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+    /// </summary>
+    public class PolicyControllerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy Controller configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
+        public virtual PolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
+
+        /// <summary>Version of Policy Controller installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Policy Controller**: State for a single cluster.</summary>
+    public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
+        /// Membership's membership_name, unless the user installed PC on the cluster manually prior to enabling the PC
+        /// hub feature. Unique within a Policy Controller installation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>
+        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
+        /// MembershipSpec in the FeatureSpec represents the intended state
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
+        public virtual PolicyControllerMembershipSpec MembershipSpec { get; set; }
+
+        /// <summary>Policy Controller state observed by the Policy Controller Hub</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubState")]
+        public virtual PolicyControllerHubState PolicyControllerHubState { get; set; }
+
+        /// <summary>The lifecycle state Policy Controller is in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

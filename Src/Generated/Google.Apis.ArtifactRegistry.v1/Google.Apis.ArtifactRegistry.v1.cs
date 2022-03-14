@@ -398,8 +398,6 @@ namespace Google.Apis.ArtifactRegistry.v1
                     AptArtifacts = new AptArtifactsResource(service);
                     DockerImages = new DockerImagesResource(service);
                     Files = new FilesResource(service);
-                    GooGetArtifacts = new GooGetArtifactsResource(service);
-                    GoogetArtifacts = new GoogetArtifactsResource(service);
                     Packages = new PackagesResource(service);
                     YumArtifacts = new YumArtifactsResource(service);
                 }
@@ -899,7 +897,10 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>Lists files.</summary>
-                    /// <param name="parent">The name of the parent resource whose files will be listed.</param>
+                    /// <param name="parent">
+                    /// The name of the repository whose files will be listed. For example:
+                    /// "projects/p1/locations/us-central1/repositories/repo1
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -915,7 +916,10 @@ namespace Google.Apis.ArtifactRegistry.v1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the parent resource whose files will be listed.</summary>
+                        /// <summary>
+                        /// The name of the repository whose files will be listed. For example:
+                        /// "projects/p1/locations/us-central1/repositories/repo1
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -995,320 +999,6 @@ namespace Google.Apis.ArtifactRegistry.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        }
-                    }
-                }
-
-                /// <summary>Gets the GooGetArtifacts resource.</summary>
-                public virtual GooGetArtifactsResource GooGetArtifacts { get; }
-
-                /// <summary>The "gooGetArtifacts" collection of methods.</summary>
-                public class GooGetArtifactsResource
-                {
-                    private const string Resource = "gooGetArtifacts";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public GooGetArtifactsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Imports GooGet artifacts. The returned Operation will complete once the resources are imported.
-                    /// Package, Version, and File resources are created based on the imported artifacts. Imported
-                    /// artifacts that conflict with existing resources are ignored.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// The name of the parent resource where the artifacts will be imported.
-                    /// </param>
-                    public virtual ImportRequest Import(Google.Apis.ArtifactRegistry.v1.Data.ImportGooGetArtifactsRequest body, string parent)
-                    {
-                        return new ImportRequest(service, body, parent);
-                    }
-
-                    /// <summary>
-                    /// Imports GooGet artifacts. The returned Operation will complete once the resources are imported.
-                    /// Package, Version, and File resources are created based on the imported artifacts. Imported
-                    /// artifacts that conflict with existing resources are ignored.
-                    /// </summary>
-                    public class ImportRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Import request.</summary>
-                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.ImportGooGetArtifactsRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>The name of the parent resource where the artifacts will be imported.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ArtifactRegistry.v1.Data.ImportGooGetArtifactsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "import";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/gooGetArtifacts:import";
-
-                        /// <summary>Initializes Import parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Gets the GoogetArtifacts resource.</summary>
-                public virtual GoogetArtifactsResource GoogetArtifacts { get; }
-
-                /// <summary>The "googetArtifacts" collection of methods.</summary>
-                public class GoogetArtifactsResource
-                {
-                    private const string Resource = "googetArtifacts";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public GoogetArtifactsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Directly uploads a GooGet artifact. The returned Operation will complete once the resources are
-                    /// uploaded. Package, Version, and File resources are created based on the imported artifact.
-                    /// Imported artifacts that conflict with existing resources are ignored.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// The name of the parent resource where the artifacts will be uploaded.
-                    /// </param>
-                    public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactRequest body, string parent)
-                    {
-                        return new UploadRequest(service, body, parent);
-                    }
-
-                    /// <summary>
-                    /// Directly uploads a GooGet artifact. The returned Operation will complete once the resources are
-                    /// uploaded. Package, Version, and File resources are created based on the imported artifact.
-                    /// Imported artifacts that conflict with existing resources are ignored.
-                    /// </summary>
-                    public class UploadRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactMediaResponse>
-                    {
-                        /// <summary>Constructs a new Upload request.</summary>
-                        public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>The name of the parent resource where the artifacts will be uploaded.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "upload";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/googetArtifacts:create";
-
-                        /// <summary>Initializes Upload parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Directly uploads a GooGet artifact. The returned Operation will complete once the resources are
-                    /// uploaded. Package, Version, and File resources are created based on the imported artifact.
-                    /// Imported artifacts that conflict with existing resources are ignored.
-                    /// </summary>
-                    /// <remarks>
-                    /// Considerations regarding <paramref name="stream"/>:
-                    /// <list type="bullet">
-                    /// <item>
-                    /// <description>
-                    /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c>
-                    /// before reading commences. If <paramref name="stream"/> is not seekable, then it will be read
-                    /// from its current position
-                    /// </description>
-                    /// </item>
-                    /// <item>
-                    /// <description>
-                    /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
-                    /// completed
-                    /// </description>
-                    /// </item>
-                    /// <item>
-                    /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
-                    /// </item>
-                    /// </list>
-                    /// </remarks>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// The name of the parent resource where the artifacts will be uploaded.
-                    /// </param>
-                    /// <param name="stream">The stream to upload. See remarks for further information.</param>
-                    /// <param name="contentType">The content type of the stream to upload.</param>
-                    public virtual UploadMediaUpload Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactRequest body, string parent, System.IO.Stream stream, string contentType)
-                    {
-                        return new UploadMediaUpload(service, body, parent, stream, contentType);
-                    }
-
-                    /// <summary>Upload media upload which supports resumable upload.</summary>
-                    public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactRequest, Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactMediaResponse>
-                    {
-                        /// <summary>V1 error format.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
-
-                        /// <summary>V1 error format.</summary>
-                        public enum XgafvEnum
-                        {
-                            /// <summary>v1 error format</summary>
-                            [Google.Apis.Util.StringValueAttribute("1")]
-                            Value1 = 0,
-
-                            /// <summary>v2 error format</summary>
-                            [Google.Apis.Util.StringValueAttribute("2")]
-                            Value2 = 1,
-                        }
-
-                        /// <summary>OAuth access token.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string AccessToken { get; set; }
-
-                        /// <summary>Data format for response.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<AltEnum> Alt { get; set; }
-
-                        /// <summary>Data format for response.</summary>
-                        public enum AltEnum
-                        {
-                            /// <summary>Responses with Content-Type of application/json</summary>
-                            [Google.Apis.Util.StringValueAttribute("json")]
-                            Json = 0,
-
-                            /// <summary>Media download with context-dependent Content-Type</summary>
-                            [Google.Apis.Util.StringValueAttribute("media")]
-                            Media = 1,
-
-                            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
-                            [Google.Apis.Util.StringValueAttribute("proto")]
-                            Proto = 2,
-                        }
-
-                        /// <summary>JSONP</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Callback { get; set; }
-
-                        /// <summary>Selector specifying which fields to include in a partial response.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Fields { get; set; }
-
-                        /// <summary>
-                        /// API key. Your API key identifies your project and provides you with API access, quota, and
-                        /// reports. Required unless you provide an OAuth 2.0 token.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Key { get; set; }
-
-                        /// <summary>OAuth 2.0 token for the current user.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string OauthToken { get; set; }
-
-                        /// <summary>Returns response with indentations and line breaks.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<bool> PrettyPrint { get; set; }
-
-                        /// <summary>
-                        /// Available to use for quota purposes for server-side applications. Can be any arbitrary
-                        /// string assigned to a user, but should not exceed 40 characters.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string QuotaUser { get; set; }
-
-                        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string UploadType { get; set; }
-
-                        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string UploadProtocol { get; set; }
-
-                        /// <summary>The name of the parent resource where the artifacts will be uploaded.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Constructs a new Upload media upload instance.</summary>
-                        /// <remarks>
-                        /// Considerations regarding <paramref name="stream"/>:
-                        /// <list type="bullet">
-                        /// <item>
-                        /// <description>
-                        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c>
-                        /// before reading commences. If <paramref name="stream"/> is not seekable, then it will be read
-                        /// from its current position
-                        /// </description>
-                        /// </item>
-                        /// <item>
-                        /// <description>
-                        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
-                        /// completed
-                        /// </description>
-                        /// </item>
-                        /// <item>
-                        /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
-                        /// </item>
-                        /// </list>
-                        /// </remarks>
-                        public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.UploadGooGetArtifactRequest body, string parent, System.IO.Stream stream, string contentType)
-                            : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/{+parent}/googetArtifacts:create"), "POST", stream, contentType)
-                        {
-                            Parent = parent;
-                            Body = body;
                         }
                     }
                 }
@@ -3278,32 +2968,6 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     }
 
     /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
-    public class ImportGooGetArtifactsGcsSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket/my_object).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
-        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
-
-        /// <summary>Supports URI wildcards for matching multiple objects from a single URI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useWildcards")]
-        public virtual System.Nullable<bool> UseWildcards { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to import new googet artifacts.</summary>
-    public class ImportGooGetArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Google Cloud Storage location where input content is located.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual ImportGooGetArtifactsGcsSource GcsSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
     public class ImportYumArtifactsGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket//my_object).</summary>
@@ -3763,24 +3427,6 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
     /// <summary>The request to upload an artifact.</summary>
     public class UploadAptArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response to upload an artifact.</summary>
-    public class UploadGooGetArtifactMediaResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Operation to be returned to the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual Operation Operation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to upload an artifact.</summary>
-    public class UploadGooGetArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
