@@ -1775,6 +1775,19 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     }
 
     /// <summary>
+    /// Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+    /// </summary>
+    public class EdgeLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the metropolitan area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metropolitanArea")]
+        public virtual string MetropolitanArea { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
@@ -2446,6 +2459,15 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>The reason probing was aborted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abortCause")]
         public virtual string AbortCause { get; set; }
+
+        /// <summary>
+        /// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the
+        /// Google network. This will only be populated for a connectivity test which has an internet destination/source
+        /// address. The absence of this field *must not* be used as an indication that the destination/source is part
+        /// of the Google network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEgressLocation")]
+        public virtual EdgeLocation DestinationEgressLocation { get; set; }
 
         /// <summary>
         /// The source and destination endpoints derived from the test input and used for active probing.

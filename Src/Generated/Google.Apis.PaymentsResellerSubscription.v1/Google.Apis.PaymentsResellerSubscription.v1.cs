@@ -1348,15 +1348,15 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ProcessingState { get; set; }
 
         /// <summary>
-        /// Required. Resource name that identifies one or more subscription products. The format will be
+        /// Required. Required. Resource name that identifies the purchased products. The format will be
         /// 'partners/{partner_id}/products/{product_id}'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<string> Products { get; set; }
 
         /// <summary>
-        /// Optional. Resource name that identifies one or more promotions that can be applied on the product. A typical
-        /// promotion for a subscription is Free trial. The format will be
+        /// Optional. Optional. Resource name that identifies one or more promotions that can be applied on the product.
+        /// A typical promotion for a subscription is Free trial. The format will be
         /// 'partners/{partner_id}/promotions/{promotion_id}'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]

@@ -2586,6 +2586,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Required. User-defined unique ID of this Runtime.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("runtimeId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RuntimeId { get; set; }
@@ -2616,6 +2620,14 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("runtimeId", new Google.Apis.Discovery.Parameter
                         {
@@ -2653,6 +2665,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -2673,6 +2689,14 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -5123,6 +5147,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for resetting a Managed Notebook Runtime.</summary>
     public class ResetRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Idempotent request UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5529,6 +5557,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for starting a Managed Notebook Runtime.</summary>
     public class StartRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Idempotent request UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5572,6 +5604,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for stopping a Managed Notebook Runtime.</summary>
     public class StopRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Idempotent request UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5586,6 +5622,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>Idempotent request UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

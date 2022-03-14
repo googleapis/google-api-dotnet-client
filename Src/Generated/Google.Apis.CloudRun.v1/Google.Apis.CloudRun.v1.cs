@@ -6140,6 +6140,10 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>ExecutionStatus represents the current state of a Execution.</summary>
     public class ExecutionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The number of tasks which reached phase Cancelled. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelledCount")]
+        public virtual System.Nullable<int> CancelledCount { get; set; }
+
         /// <summary>
         /// Optional. Represents time when the execution was completed. It is not guaranteed to be set in happens-before
         /// order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
@@ -6165,6 +6169,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Optional. The 'generation' of the execution that was last processed by the controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; }
+
+        /// <summary>Optional. The number of tasks which have retried at least once. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retriedCount")]
+        public virtual System.Nullable<int> RetriedCount { get; set; }
 
         /// <summary>Optional. The number of actively running tasks. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningCount")]

@@ -3688,8 +3688,8 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>
         /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the
-        /// OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the
-        /// iam.serviceAccounts.actAs permission for the service account.
+        /// OIDC token. See [Setting up push authentication](/pubsub/docs/push#setting_up_for_push_authentication) for
+        /// more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
@@ -3980,6 +3980,14 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTime")]
+        public virtual object RevisionCreateTime { get; set; }
+
+        /// <summary>Output only. Immutable. The revision ID of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The type of the schema definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
