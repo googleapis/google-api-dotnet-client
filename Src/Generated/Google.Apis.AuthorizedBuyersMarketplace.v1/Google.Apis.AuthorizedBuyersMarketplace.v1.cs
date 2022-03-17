@@ -1600,10 +1600,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// List of fields to be updated. If empty or unspecified, the service will update all fields populated
                 /// in the update request excluding the output only fields and primitive fields with default value. Note
                 /// that explicit field mask is required in order to reset a primitive field back to its default value,
-                /// e.g. false for boolean fields, 0 for integer fields. A special field mask consisting of a single
-                /// path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields
-                /// unset or unspecified in the input will be cleared or set to default value. Output only fields will
-                /// be ignored regardless of the value of updateMask.
+                /// for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a
+                /// single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable
+                /// fields unset or unspecified in the input will be cleared or set to default value. Output only fields
+                /// will be ignored regardless of the value of updateMask.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2326,7 +2326,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// number is incremented by the server whenever the proposal or its constituent deals are updated.
                 /// Note: The revision number is kept at a proposal level. The buyer of the API is expected to keep
                 /// track of the revision number after the last update operation and send it in as part of the next
-                /// update request. This way, if there are further changes on the server (e.g., seller making new
+                /// update request. This way, if there are further changes on the server (for example, seller making new
                 /// updates), then the server can detect conflicts and reject the proposed changes.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -2345,7 +2345,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// number is incremented by the server whenever the proposal or its constituent deals are updated.
                 /// Note: The revision number is kept at a proposal level. The buyer of the API is expected to keep
                 /// track of the revision number after the last update operation and send it in as part of the next
-                /// update request. This way, if there are further changes on the server (e.g., seller making new
+                /// update request. This way, if there are further changes on the server (for example, seller making new
                 /// updates), then the server can detect conflicts and reject the proposed changes.
                 /// </summary>
                 public class PatchRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Deal>
@@ -2369,10 +2369,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                     /// List of fields to be updated. If empty or unspecified, the service will update all fields
                     /// populated in the update request excluding the output only fields and primitive fields with
                     /// default value. Note that explicit field mask is required in order to reset a primitive field
-                    /// back to its default value, e.g. false for boolean fields, 0 for integer fields. A special field
-                    /// mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of
-                    /// PUT method), updatable fields unset or unspecified in the input will be cleared or set to
-                    /// default value. Output only fields will be ignored regardless of the value of updateMask.
+                    /// back to its default value, for example, false for boolean fields, 0 for integer fields. A
+                    /// special field mask consisting of a single path "*" can be used to indicate full replacement(the
+                    /// equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or
+                    /// set to default value. Output only fields will be ignored regardless of the value of updateMask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2801,10 +2801,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// List of fields to be updated. If empty or unspecified, the service will update all fields populated
                 /// in the update request excluding the output only fields and primitive fields with default value. Note
                 /// that explicit field mask is required in order to reset a primitive field back to its default value,
-                /// e.g. false for boolean fields, 0 for integer fields. A special field mask consisting of a single
-                /// path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields
-                /// unset or unspecified in the input will be cleared or set to default value. Output only fields will
-                /// be ignored regardless of the value of updateMask.
+                /// for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a
+                /// single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable
+                /// fields unset or unspecified in the input will be cleared or set to default value. Output only fields
+                /// will be ignored regardless of the value of updateMask.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3512,8 +3512,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
 
         /// <summary>
         /// Proposed flight start time of the deal. This will generally be stored in the granularity of one second since
-        /// deal serving starts at seconds boundary. Any time specified with more granularity (e.g., in milliseconds)
-        /// will be truncated towards the start of time in seconds.
+        /// deal serving starts at seconds boundary. Any time specified with more granularity (for example, in
+        /// milliseconds) will be truncated towards the start of time in seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightStartTime")]
         public virtual object FlightStartTime { get; set; }
@@ -3598,7 +3598,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     /// <summary>Message contains details about how the deal will be paced.</summary>
     public class DeliveryControl : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Specifies roadblocking in a master companion lineitem.</summary>
+        /// <summary>Output only. Specifies roadblocking in a main companion lineitem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionDeliveryType")]
         public virtual string CompanionDeliveryType { get; set; }
 
@@ -3640,9 +3640,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     /// <summary>
     /// A finalized deal is a snapshot of the deal when both buyer and seller accept the deal. The buyer or seller can
     /// update the deal after it's been finalized and renegotiate on the deal targeting, terms and other fields, while
-    /// at the same time the finalized snapshot of the deal can still be retrieved via this API. The finalized deal
+    /// at the same time the finalized snapshot of the deal can still be retrieved using this API. The finalized deal
     /// contains a copy of the deal as it existed when most recently finalized, as well as fields related to deal
-    /// serving such as pause/resume status, RTB metrics, etc.
+    /// serving such as pause/resume status, RTB metrics, and more.
     /// </summary>
     public class FinalizedDeal : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3874,16 +3874,18 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySizeTargeting")]
         public virtual InventorySizeTargeting InventorySizeTargeting { get; set; }
 
-        /// <summary>Output only. Placement targeting information, e.g., URL, mobile applications.</summary>
+        /// <summary>Output only. Placement targeting information, for example, URL, mobile applications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementTargeting")]
         public virtual PlacementTargeting PlacementTargeting { get; set; }
 
-        /// <summary>Output only. Technology targeting information, e.g., operating system, device category.</summary>
+        /// <summary>
+        /// Output only. Technology targeting information, for example, operating system, device category.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
         public virtual TechnologyTargeting TechnologyTargeting { get; set; }
 
         /// <summary>
-        /// Buyer user list targeting information. User lists can be uploaded via
+        /// Buyer user list targeting information. User lists can be uploaded using
         /// https://developers.google.com/authorized-buyers/rtb/bulk-uploader.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListTargeting")]
@@ -3984,8 +3986,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     }
 
     /// <summary>
-    /// Represents targeting about where the ads can appear, e.g., certain sites or mobile applications. Different
-    /// placement targeting types will be logically OR'ed.
+    /// Represents targeting about where the ads can appear, for example, certain sites or mobile applications.
+    /// Different placement targeting types will be logically OR'ed.
     /// </summary>
     public class PlacementTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4310,7 +4312,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual string SamplePageUrl { get; set; }
 
         /// <summary>
-        /// Up to three key metrics and rankings. For example "#1 Mobile News Site for 20 Straight Months".
+        /// Up to three key metrics and rankings. For example, "#1 Mobile News Site for 20 Straight Months".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topHeadlines")]
         public virtual System.Collections.Generic.IList<string> TopHeadlines { get; set; }
@@ -4587,10 +4589,11 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         /// <summary>
         /// List of fields to be updated. If empty or unspecified, the service will update all fields populated in the
         /// update request excluding the output only fields and primitive fields with default value. Note that explicit
-        /// field mask is required in order to reset a primitive field back to its default value, e.g. false for boolean
-        /// fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate
-        /// full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be
-        /// cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask.
+        /// field mask is required in order to reset a primitive field back to its default value, for example, false for
+        /// boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to
+        /// indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input
+        /// will be cleared or set to default value. Output only fields will be ignored regardless of the value of
+        /// updateMask.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -4600,8 +4603,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     }
 
     /// <summary>
-    /// Represents a list of targeted and excluded URLs (e.g., google.com). For Private Auction Deals, URLs are either
-    /// included or excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't apply.
+    /// Represents a list of targeted and excluded URLs (for example, google.com). For Private Auction Deals, URLs are
+    /// either included or excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't apply.
     /// </summary>
     public class UriTargeting : Google.Apis.Requests.IDirectResponseSchema
     {

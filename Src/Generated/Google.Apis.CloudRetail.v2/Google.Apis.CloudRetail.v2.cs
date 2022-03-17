@@ -1840,12 +1840,12 @@ namespace Google.Apis.CloudRetail.v2
                     }
 
                     /// <summary>
-                    /// Triggers a user event rejoin operation with latest product catalog. Events will not be annotated
+                    /// Starts a user event rejoin operation with latest product catalog. Events will not be annotated
                     /// with detailed product information if product is missing from the catalog at the time the user
                     /// event is ingested, and these events are stored as unjoined events with a limited usage on
-                    /// training and serving. This API can be used to trigger a 'join' operation on specified events
-                    /// with latest version of product catalog. It can also be used to correct events joined with wrong
-                    /// product catalog.
+                    /// training and serving. This method can be used to start a join operation on specified events with
+                    /// latest version of product catalog. It can also be used to correct events joined with the wrong
+                    /// product catalog. A rejoin operation can take hours or days to complete.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1858,12 +1858,12 @@ namespace Google.Apis.CloudRetail.v2
                     }
 
                     /// <summary>
-                    /// Triggers a user event rejoin operation with latest product catalog. Events will not be annotated
+                    /// Starts a user event rejoin operation with latest product catalog. Events will not be annotated
                     /// with detailed product information if product is missing from the catalog at the time the user
                     /// event is ingested, and these events are stored as unjoined events with a limited usage on
-                    /// training and serving. This API can be used to trigger a 'join' operation on specified events
-                    /// with latest version of product catalog. It can also be used to correct events joined with wrong
-                    /// product catalog.
+                    /// training and serving. This method can be used to start a join operation on specified events with
+                    /// latest version of product catalog. It can also be used to correct events joined with the wrong
+                    /// product catalog. A rejoin operation can take hours or days to complete.
                     /// </summary>
                     public class RejoinRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleLongrunningOperation>
                     {
@@ -2052,11 +2052,11 @@ namespace Google.Apis.CloudRetail.v2
                     public virtual string Query { get; set; }
 
                     /// <summary>
-                    /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
-                    /// cookie, which should be able to uniquely identify a visitor on a single device. This unique
-                    /// identifier should not change if the visitor logs in or out of the website. The field must be a
-                    /// UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error
-                    /// is returned.
+                    /// Required field. A unique identifier for tracking visitors. For example, this could be
+                    /// implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single
+                    /// device. This unique identifier should not change if the visitor logs in or out of the website.
+                    /// The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+                    /// INVALID_ARGUMENT error is returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("visitorId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VisitorId { get; set; }
@@ -3349,7 +3349,11 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Product thumbnail/detail image.</summary>
+    /// <summary>
+    /// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search
+    /// results. However, product images can be returned in results, and are shown in prediction or search previews in
+    /// the console.
+    /// </summary>
     public class GoogleCloudRetailV2Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3643,8 +3647,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// filterOutOfStockItems. Restricts predictions to products that do not have a stockState value of
         /// OUT_OF_STOCK. Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional") *
         /// filterOutOfStockItems tag=(-"promotional") * filterOutOfStockItems If your filter blocks all prediction
-        /// results, nothing will be returned. If you want generic (unfiltered) popular products to be returned instead,
-        /// set `strictFiltering` to false in `PredictRequest.params`.
+        /// results, the API will return generic (unfiltered) popular products. If you only want results strictly
+        /// matching the filters, set `strictFiltering` to True in `PredictRequest.params` to receive empty results
+        /// instead. Note that the API will never return items with storageStatus of "EXPIRED" or "DELETED" regardless
+        /// of filter choices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -3993,8 +3999,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300
-        /// images are allowed. Corresponding properties: Google Merchant Center property
+        /// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images
+        /// are allowed. Corresponding properties: Google Merchant Center property
         /// [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property
         /// [Product.image](https://schema.org/image).
         /// </summary>
@@ -4503,10 +4509,11 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string Branch { get; set; }
 
         /// <summary>
-        /// The filter applied to every search request when quality improvement such as query expansion is needed. For
-        /// example, if a query does not have enough results, an expanded query with SearchRequest.canonical_filter will
-        /// be returned as a supplement of the original query. This field is strongly recommended to achieve high search
-        /// quality. See SearchRequest.filter for more details about filter syntax.
+        /// The default filter that is applied when a user performs a search without checking any filters on the search
+        /// page. The filter applied to every search request when quality improvement such as query expansion is needed.
+        /// For example, if a query does not have enough results, an expanded query with SearchRequest.canonical_filter
+        /// will be returned as a supplement of the original query. This field is strongly recommended to achieve high
+        /// search quality. See SearchRequest.filter for more details about filter syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalFilter")]
         public virtual string CanonicalFilter { get; set; }
@@ -5142,13 +5149,17 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2UserEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Extra user event features to include in the recommendation model. This field needs to pass all below
-        /// criteria, otherwise an INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string with a
-        /// length limit of 5,000 characters. * For text attributes, at most 400 values are allowed. Empty values are
-        /// not allowed. Each value must be a UTF-8 encoded string with a length limit of 256 characters. * For number
-        /// attributes, at most 400 values are allowed. For product recommendation, an example of extra user information
-        /// is traffic_channel, i.e. how user arrives at the site. Users can arrive at the site by coming to the site
-        /// directly, or coming through Google search, and etc.
+        /// Extra user event features to include in the recommendation model. If you provide custom attributes for
+        /// ingested user events, also include them in the user events that you associate with prediction requests.
+        /// Custom attribute formatting must be consistent between imported events and events provided with prediction
+        /// requests. This lets the Retail API use those custom attributes when training models and serving predictions,
+        /// which helps improve recommendation quality. This field needs to pass all below criteria, otherwise an
+        /// INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string with a length limit of 5,000
+        /// characters. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value
+        /// must be a UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400
+        /// values are allowed. For product recommendations, an example of extra user information is traffic_channel,
+        /// which is how a user arrives at the site. Users can arrive at the site by coming to the site directly, coming
+        /// through Google search, or in other ways.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2CustomAttribute> Attributes { get; set; }
@@ -5640,6 +5651,53 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// </summary>
     public class GoogleCloudRetailV2alphaPurgeMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the PurgeProducts operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaPurgeProductsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaPurgeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of products purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1879,8 +1879,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Accepts an App Attest assertion and an artifact previously obtained from ExchangeAppAttestAttestation
-            /// and verifies those with Apple. If valid, returns an App Check token encapsulated in an
-            /// AttestationTokenResponse.
+            /// and verifies those with Apple. If valid, returns an AppCheckToken.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -1896,10 +1895,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Accepts an App Attest assertion and an artifact previously obtained from ExchangeAppAttestAttestation
-            /// and verifies those with Apple. If valid, returns an App Check token encapsulated in an
-            /// AttestationTokenResponse.
+            /// and verifies those with Apple. If valid, returns an AppCheckToken.
             /// </summary>
-            public class ExchangeAppAttestAssertionRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            public class ExchangeAppAttestAssertionRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
                 /// <summary>Constructs a new ExchangeAppAttestAssertion request.</summary>
                 public ExchangeAppAttestAssertionRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest body, string app) : base(service)
@@ -1950,10 +1948,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and
-            /// bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an
-            /// AttestationTokenResponse using ExchangeAppAttestAssertion. For convenience and performance, this
-            /// method's response object will also contain an App Check token encapsulated in an
-            /// AttestationTokenResponse (if the verification is successful).
+            /// bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an AppCheckToken
+            /// using ExchangeAppAttestAssertion. For convenience and performance, this method's response object will
+            /// also contain an AppCheckToken (if the verification is successful).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -1969,10 +1966,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and
-            /// bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an
-            /// AttestationTokenResponse using ExchangeAppAttestAssertion. For convenience and performance, this
-            /// method's response object will also contain an App Check token encapsulated in an
-            /// AttestationTokenResponse (if the verification is successful).
+            /// bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an AppCheckToken
+            /// using ExchangeAppAttestAssertion. For convenience and performance, this method's response object will
+            /// also contain an AppCheckToken (if the verification is successful).
             /// </summary>
             public class ExchangeAppAttestAttestationRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse>
             {
@@ -2025,7 +2021,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Validates a custom token signed using your project's Admin SDK service account credentials. If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an AppCheckToken.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -2041,9 +2037,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Validates a custom token signed using your project's Admin SDK service account credentials. If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an AppCheckToken.
             /// </summary>
-            public class ExchangeCustomTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            public class ExchangeCustomTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
                 /// <summary>Constructs a new ExchangeCustomToken request.</summary>
                 public ExchangeCustomTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest body, string app) : base(service)
@@ -2094,8 +2090,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Validates a debug token secret that you have previously created using CreateDebugToken. If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse. Note that a restrictive quota is
-            /// enforced on this method to prevent accidental exposure of the app to abuse.
+            /// returns an AppCheckToken. Note that a restrictive quota is enforced on this method to prevent accidental
+            /// exposure of the app to abuse.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -2111,10 +2107,10 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Validates a debug token secret that you have previously created using CreateDebugToken. If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse. Note that a restrictive quota is
-            /// enforced on this method to prevent accidental exposure of the app to abuse.
+            /// returns an AppCheckToken. Note that a restrictive quota is enforced on this method to prevent accidental
+            /// exposure of the app to abuse.
             /// </summary>
-            public class ExchangeDebugTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            public class ExchangeDebugTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
                 /// <summary>Constructs a new ExchangeDebugToken request.</summary>
                 public ExchangeDebugTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest body, string app) : base(service)
@@ -2165,8 +2161,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Accepts a [`device_token`](https://developer.apple.com/documentation/devicecheck/dcdevice) issued by
-            /// DeviceCheck, and attempts to validate it with Apple. If valid, returns an App Check token encapsulated
-            /// in an AttestationTokenResponse.
+            /// DeviceCheck, and attempts to validate it with Apple. If valid, returns an AppCheckToken.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -2182,10 +2177,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Accepts a [`device_token`](https://developer.apple.com/documentation/devicecheck/dcdevice) issued by
-            /// DeviceCheck, and attempts to validate it with Apple. If valid, returns an App Check token encapsulated
-            /// in an AttestationTokenResponse.
+            /// DeviceCheck, and attempts to validate it with Apple. If valid, returns an AppCheckToken.
             /// </summary>
-            public class ExchangeDeviceCheckTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            public class ExchangeDeviceCheckTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
                 /// <summary>Constructs a new ExchangeDeviceCheckToken request.</summary>
                 public ExchangeDeviceCheckTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest body, string app) : base(service)
@@ -2237,7 +2231,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// <summary>
             /// Validates a [reCAPTCHA Enterprise response
             /// token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token). If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an App Check token AppCheckToken.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -2254,9 +2248,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// <summary>
             /// Validates a [reCAPTCHA Enterprise response
             /// token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token). If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an App Check token AppCheckToken.
             /// </summary>
-            public class ExchangeRecaptchaEnterpriseTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            public class ExchangeRecaptchaEnterpriseTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
                 /// <summary>Constructs a new ExchangeRecaptchaEnterpriseToken request.</summary>
                 public ExchangeRecaptchaEnterpriseTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest body, string app) : base(service)
@@ -2307,7 +2301,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an AppCheckToken.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -2323,9 +2317,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
             /// <summary>
             /// Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an AppCheckToken.
             /// </summary>
-            public class ExchangeRecaptchaTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            public class ExchangeRecaptchaTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
                 /// <summary>Constructs a new ExchangeRecaptchaToken request.</summary>
                 public ExchangeRecaptchaTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest body, string app) : base(service)
@@ -2375,9 +2369,78 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
+            /// Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid,
+            /// returns an AppCheckToken.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The relative resource name of the web app, in the format: ```
+            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </param>
+            public virtual ExchangeRecaptchaV3TokenRequest ExchangeRecaptchaV3Token(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest body, string app)
+            {
+                return new ExchangeRecaptchaV3TokenRequest(service, body, app);
+            }
+
+            /// <summary>
+            /// Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid,
+            /// returns an AppCheckToken.
+            /// </summary>
+            public class ExchangeRecaptchaV3TokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
+            {
+                /// <summary>Constructs a new ExchangeRecaptchaV3Token request.</summary>
+                public ExchangeRecaptchaV3TokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The relative resource name of the web app, in the format: ```
+                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
+                /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exchangeRecaptchaV3Token";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+app}:exchangeRecaptchaV3Token";
+
+                /// <summary>Initializes ExchangeRecaptchaV3Token parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Validates a [SafetyNet
             /// token](https://developer.android.com/training/safetynet/attestation#request-attestation-step). If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an AppCheckToken.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -2394,9 +2457,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// <summary>
             /// Validates a [SafetyNet
             /// token](https://developer.android.com/training/safetynet/attestation#request-attestation-step). If valid,
-            /// returns an App Check token encapsulated in an AttestationTokenResponse.
+            /// returns an AppCheckToken.
             /// </summary>
-            public class ExchangeSafetyNetTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            public class ExchangeSafetyNetTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
                 /// <summary>Constructs a new ExchangeSafetyNetToken request.</summary>
                 public ExchangeSafetyNetTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest body, string app) : base(service)
@@ -2467,7 +2530,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A challenge should not be reused for
             /// multiple calls.
             /// </summary>
-            public class GenerateAppAttestChallengeRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse>
+            public class GenerateAppAttestChallengeRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse>
             {
                 /// <summary>Constructs a new GenerateAppAttestChallenge request.</summary>
                 public GenerateAppAttestChallengeRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest body, string app) : base(service)
@@ -2826,25 +2889,6 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 }
 namespace Google.Apis.Firebaseappcheck.v1beta.Data
 {
-    /// <summary>Response message for the GenerateAppAttestChallenge method.</summary>
-    public class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A one-time use challenge for the client to pass to the App Attest API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
-        public virtual string Challenge { get; set; }
-
-        /// <summary>
-        /// The duration from the time this challenge is minted until its expiration. This field is intended to ease
-        /// client-side token management, since the client may have clock skew, but is still able to accurately measure
-        /// a duration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
-        public virtual object Ttl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// An app's App Attest configuration object. This configuration controls certain properties of the App Check token
     /// returned by ExchangeAppAttestAttestation and ExchangeAppAttestAssertion, such as its ttl. Note that the Team ID
@@ -2867,6 +2911,39 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
         public virtual object TokenTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encapsulates an *App Check token*, which are used to access Firebase services protected by App Check.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaAppCheckToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
+        /// claims that identify the attested app and Firebase project. This token is used to access Firebase services
+        /// protected by App Check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationToken")]
+        public virtual string AttestationToken { get; set; }
+
+        /// <summary>
+        /// An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
+        /// claims that identify the attested app and Firebase project. This token is used to access Firebase services
+        /// protected by App Check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>
+        /// The duration from the time this token is minted until its expiration. This field is intended to ease
+        /// client-side token management, since the client may have clock skew, but is still able to accurately measure
+        /// a duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3112,6 +3189,10 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     /// <summary>Response message for the ExchangeAppAttestAttestation method.</summary>
     public class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Encapsulates an App Check token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appCheckToken")]
+        public virtual GoogleFirebaseAppcheckV1betaAppCheckToken AppCheckToken { get; set; }
+
         /// <summary>An artifact that can be used in future calls to ExchangeAppAttestAssertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
         public virtual string Artifact { get; set; }
@@ -3194,6 +3275,20 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the ExchangeRecaptchaV3Token method.</summary>
+    public class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The reCAPTCHA token as returned by the [reCAPTCHA v3 JavaScript
+        /// API](https://developers.google.com/recaptcha/docs/v3).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recaptchaV3Token")]
+        public virtual string RecaptchaV3Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the ExchangeSafetyNetToken method.</summary>
     public class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3212,6 +3307,25 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     /// <summary>Request message for the GenerateAppAttestChallenge method.</summary>
     public class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GenerateAppAttestChallenge method.</summary>
+    public class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A one-time use challenge for the client to pass to the App Attest API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual string Challenge { get; set; }
+
+        /// <summary>
+        /// The duration from the time this challenge is minted until its expiration. This field is intended to ease
+        /// client-side token management, since the client may have clock skew, but is still able to accurately measure
+        /// a duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

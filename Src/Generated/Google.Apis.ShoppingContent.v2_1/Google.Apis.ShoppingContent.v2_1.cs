@@ -14797,10 +14797,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
-    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
-    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
-    /// google.type.DateTime * google.protobuf.Timestamp
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
+    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
+    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
+    /// google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15015,16 +15015,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Response message for GetFreeListingsProgramStatus.</summary>
     public class FreeListingsProgramStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>State of the program, It is set to enabled if there are offers for at least one region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("globalState")]
-        public virtual string GlobalState { get; set; }
-
         /// <summary>
         /// Status of the program in each region. Regions with the same status and review eligibility are grouped
         /// together in `regionCodes`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionStatuses")]
         public virtual System.Collections.Generic.IList<FreeListingsProgramStatusRegionStatus> RegionStatuses { get; set; }
+
+        /// <summary>If program is successfully onboarded for at least one region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15035,7 +15035,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It will be present when
-        /// `eligibility_status` is `WARNING`. Date will be provided in ISO 8601 format: YYYY-MM-DD
+        /// `eligibility_status` is `WARNING`. Date will be provided in ISO 8601 format i.e. YYYY-MM-DD
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
         public virtual string DisapprovalDate { get; set; }
@@ -15044,9 +15044,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
         public virtual string EligibilityStatus { get; set; }
 
-        /// <summary>These issues must be fixed to become eligible for the review.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onboardingIssues")]
-        public virtual System.Collections.Generic.IList<string> OnboardingIssues { get; set; }
+        /// <summary>Eligibility status of the enhanced free listing program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedEligibilityStatus")]
+        public virtual string EnhancedEligibilityStatus { get; set; }
+
+        /// <summary>
+        /// Reason if a program in a given country is not eligible for review. Populated only if
+        /// `review_eligibility_status` is `INELIGIBLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ineligibilityReason")]
+        public virtual string IneligibilityReason { get; set; }
 
         /// <summary>
         /// The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all the
@@ -15062,42 +15069,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewEligibilityStatus")]
         public virtual string ReviewEligibilityStatus { get; set; }
 
-        /// <summary>Review ineligibility reason if account is not eligible for review.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReason")]
-        public virtual string ReviewIneligibilityReason { get; set; }
-
-        /// <summary>
-        /// Reason if a program in a given country is not eligible for review. Populated only if
-        /// `review_eligibility_status` is `INELIGIBLE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDescription")]
-        public virtual string ReviewIneligibilityReasonDescription { get; set; }
-
-        /// <summary>
-        /// This contains additional information specific to review ineligibility reasons. If review is ineligible
-        /// because of `IN_COOLDOWN_PERIOD`, it will contain timestamp for cooldown period.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDetails")]
-        public virtual FreeListingsProgramStatusReviewIneligibilityReasonDetails ReviewIneligibilityReasonDetails { get; set; }
-
         /// <summary>
         /// These issues will be evaluated in review process. Fix all the issues before requesting the review.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIssues")]
         public virtual System.Collections.Generic.IList<string> ReviewIssues { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Additional details for review ineligibility reasons.</summary>
-    public class FreeListingsProgramStatusReviewIneligibilityReasonDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cooldownTime")]
-        public virtual object CooldownTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20579,7 +20555,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    ///  The Promotions feature is currently in alpha and is not yet publicly available in Content API for Shopping.
+    ///  The Promotions feature is currently in alpha and is not yet publicly available via Content API for Shopping.
     /// This documentation is provided for reference only may be subject to change. Represents a promotion. See the
     /// following articles for more details. * [Promotions feed
     /// specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed
@@ -20707,10 +20683,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDestinationIds")]
         public virtual System.Collections.Generic.IList<string> PromotionDestinationIds { get; set; }
 
-        /// <summary>
-        /// String representation of the promotion display dates (deprecated: Use promotion_display_time_period
-        /// instead).
-        /// </summary>
+        /// <summary>String representation of the promotion display dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDisplayDates")]
         public virtual string PromotionDisplayDates { get; set; }
 
@@ -20718,10 +20691,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDisplayTimePeriod")]
         public virtual TimePeriod PromotionDisplayTimePeriod { get; set; }
 
-        /// <summary>
-        /// String representation of the promotion effective dates (deprecated: Use promotion_effective_time_period
-        /// instead).
-        /// </summary>
+        /// <summary>Required. String representation of the promotion effective dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionEffectiveDates")]
         public virtual string PromotionEffectiveDates { get; set; }
 
@@ -22922,16 +22892,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Response message for GetShoppingAdsProgramStatus.</summary>
     public class ShoppingAdsProgramStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>State of the program, It is set to enabled if there are offers for at least one region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("globalState")]
-        public virtual string GlobalState { get; set; }
-
         /// <summary>
         /// Status of the program in each region. Regions with the same status and review eligibility are grouped
         /// together in `regionCodes`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionStatuses")]
         public virtual System.Collections.Generic.IList<ShoppingAdsProgramStatusRegionStatus> RegionStatuses { get; set; }
+
+        /// <summary>If program is successfully onboarded for at least one region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22943,7 +22913,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It will be present when
         /// `eligibility_status` is `WARNING`. Date will be provided in [ISO
-        /// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: YYYY-MM-DD
+        /// 8601](https://en.wikipedia.org/wiki/ISO_8601) format i.e. YYYY-MM-DD
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
         public virtual string DisapprovalDate { get; set; }
@@ -22952,9 +22922,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
         public virtual string EligibilityStatus { get; set; }
 
-        /// <summary>These issues must be fixed to become eligible for the review.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onboardingIssues")]
-        public virtual System.Collections.Generic.IList<string> OnboardingIssues { get; set; }
+        /// <summary>
+        /// Reason if a program in a given country is not eligible for review. Populated only if
+        /// `review_eligibility_status` is `INELIGIBLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ineligibilityReason")]
+        public virtual string IneligibilityReason { get; set; }
 
         /// <summary>
         /// The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all the
@@ -22970,42 +22943,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewEligibilityStatus")]
         public virtual string ReviewEligibilityStatus { get; set; }
 
-        /// <summary>Review ineligibility reason if account is not eligible for review.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReason")]
-        public virtual string ReviewIneligibilityReason { get; set; }
-
-        /// <summary>
-        /// Reason if a program in a given country is not eligible for review. Populated only if
-        /// `review_eligibility_status` is `INELIGIBLE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDescription")]
-        public virtual string ReviewIneligibilityReasonDescription { get; set; }
-
-        /// <summary>
-        /// This contains additional information specific to review ineligibility reasons. If review is ineligible
-        /// because of `IN_COOLDOWN_PERIOD`, it will contain timestamp for cooldown period.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDetails")]
-        public virtual ShoppingAdsProgramStatusReviewIneligibilityReasonDetails ReviewIneligibilityReasonDetails { get; set; }
-
         /// <summary>
         /// These issues will be evaluated in review process. Fix all the issues before requesting the review.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIssues")]
         public virtual System.Collections.Generic.IList<string> ReviewIssues { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Additional details for review ineligibility reasons.</summary>
-    public class ShoppingAdsProgramStatusReviewIneligibilityReasonDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cooldownTime")]
-        public virtual object CooldownTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

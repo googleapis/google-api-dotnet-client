@@ -5384,14 +5384,32 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class DynamiteSpacesScoringInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("affinityScore")]
+        public virtual System.Nullable<double> AffinityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("commonContactCountAffinityScore")]
+        public virtual System.Nullable<double> CommonContactCountAffinityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("contactsIntersectionCount")]
+        public virtual System.Nullable<double> ContactsIntersectionCount { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("finalScore")]
         public virtual System.Nullable<double> FinalScore { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessScore")]
         public virtual System.Nullable<double> FreshnessScore { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("joinedSpacesAffinityScore")]
+        public virtual System.Nullable<double> JoinedSpacesAffinityScore { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("messageScore")]
         public virtual System.Nullable<double> MessageScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("smallContactListAffinityScore")]
+        public virtual System.Nullable<double> SmallContactListAffinityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("smallUnjoinedSpacesAffinityScore")]
+        public virtual System.Nullable<double> SmallUnjoinedSpacesAffinityScore { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("spaceAgeInDays")]
         public virtual System.Nullable<double> SpaceAgeInDays { get; set; }
@@ -8095,7 +8113,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual GroupId GroupId { get; set; }
 
-        /// <summary>Whether this is an external space outside of user's organization</summary>
+        /// <summary>Whether this is a space that enables guest access</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isExternal")]
         public virtual System.Nullable<bool> IsExternal { get; set; }
 

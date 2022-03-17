@@ -572,8 +572,8 @@ namespace Google.Apis.Sheets.v4
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             /// <param name="range">
-            /// The A1 notation of a range to search for a logical table of data. Values are appended after the last row
-            /// of the table.
+            /// The [A1 notation](/sheets/api/guides/concepts#cell) of a range to search for a logical table of data.
+            /// Values are appended after the last row of the table.
             /// </param>
             public virtual AppendRequest Append(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
             {
@@ -605,8 +605,8 @@ namespace Google.Apis.Sheets.v4
                 public virtual string SpreadsheetId { get; private set; }
 
                 /// <summary>
-                /// The A1 notation of a range to search for a logical table of data. Values are appended after the last
-                /// row of the table.
+                /// The [A1 notation](/sheets/api/guides/concepts#cell) of a range to search for a logical table of
+                /// data. Values are appended after the last row of the table.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
@@ -811,8 +811,8 @@ namespace Google.Apis.Sheets.v4
 
             /// <summary>
             /// Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and
-            /// one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting,
-            /// data validation, etc..) are kept.
+            /// one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting and
+            /// data validation) are kept.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
@@ -823,8 +823,8 @@ namespace Google.Apis.Sheets.v4
 
             /// <summary>
             /// Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and
-            /// one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting,
-            /// data validation, etc..) are kept.
+            /// one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting and
+            /// data validation) are kept.
             /// </summary>
             public class BatchClearRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchClearValuesResponse>
             {
@@ -992,16 +992,18 @@ namespace Google.Apis.Sheets.v4
 
                 /// <summary>
                 /// The major dimension that results should use. For example, if the spreadsheet data is:
-                /// `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,
-                /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
+                /// `A1=1,B1=2,A2=3,B2=4`, then requesting `ranges=["A1:B2"],majorDimension=ROWS` returns
+                /// `[[1,2],[3,4]]`, whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns
+                /// `[[1,3],[2,4]]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
 
                 /// <summary>
                 /// The major dimension that results should use. For example, if the spreadsheet data is:
-                /// `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,
-                /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
+                /// `A1=1,B1=2,A2=3,B2=4`, then requesting `ranges=["A1:B2"],majorDimension=ROWS` returns
+                /// `[[1,2],[3,4]]`, whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns
+                /// `[[1,3],[2,4]]`.
                 /// </summary>
                 public enum MajorDimensionEnum
                 {
@@ -1018,7 +1020,10 @@ namespace Google.Apis.Sheets.v4
                     COLUMNS = 2,
                 }
 
-                /// <summary>The A1 notation or R1C1 notation of the range to retrieve values from.</summary>
+                /// <summary>
+                /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the range to retrieve values
+                /// from.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
 
@@ -1299,7 +1304,9 @@ namespace Google.Apis.Sheets.v4
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
-            /// <param name="range">The A1 notation or R1C1 notation of the values to clear.</param>
+            /// <param name="range">
+            /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the values to clear.
+            /// </param>
             public virtual ClearRequest Clear(Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range)
             {
                 return new ClearRequest(service, body, spreadsheetId, range);
@@ -1324,7 +1331,9 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation or R1C1 notation of the values to clear.</summary>
+                /// <summary>
+                /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the values to clear.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
@@ -1370,7 +1379,10 @@ namespace Google.Apis.Sheets.v4
             /// Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.
             /// </summary>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
-            /// <param name="range">The A1 notation or R1C1 notation of the range to retrieve values from.</param>
+            /// <param name="range">
+            /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the range to retrieve values
+            /// from.
+            /// </param>
             public virtual GetRequest Get(string spreadsheetId, string range)
             {
                 return new GetRequest(service, spreadsheetId, range);
@@ -1393,7 +1405,10 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation or R1C1 notation of the range to retrieve values from.</summary>
+                /// <summary>
+                /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the range to retrieve values
+                /// from.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
@@ -1553,7 +1568,7 @@ namespace Google.Apis.Sheets.v4
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
-            /// <param name="range">The A1 notation of the values to update.</param>
+            /// <param name="range">The [A1 notation](/sheets/api/guides/concepts#cell) of the values to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
             {
                 return new UpdateRequest(service, body, spreadsheetId, range);
@@ -1578,7 +1593,7 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation of the values to update.</summary>
+                /// <summary>The [A1 notation](/sheets/api/guides/concepts#cell) of the values to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
@@ -2825,8 +2840,9 @@ namespace Google.Apis.Sheets.v4.Data
     public class BatchClearValuesByDataFilterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a ranger larger
-        /// than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the sheet's limits.
+        /// The ranges that were cleared, in [A1 notation](/sheets/api/guides/concepts#cell). If the requests are for an
+        /// unbounded range or a ranger larger than the bounds of the sheet, this is the actual ranges that were
+        /// cleared, bounded to the sheet's limits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
         public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; }
@@ -2842,7 +2858,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The request for clearing more than one range of values in a spreadsheet.</summary>
     public class BatchClearValuesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ranges to clear, in A1 or R1C1 notation.</summary>
+        /// <summary>The ranges to clear, in [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
         public virtual System.Collections.Generic.IList<string> Ranges { get; set; }
 
@@ -5547,13 +5563,13 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>
     /// A range on a sheet. All indexes are zero-based. Indexes are half open, i.e. the start index is inclusive and the
     /// end index is exclusive -- [start_index, end_index). Missing indexes indicate the range is unbounded on that
-    /// side. For example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0, start_row_index: 0,
-    /// end_row_index: 1, start_column_index: 0, end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2,
-    /// end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0, start_column_index: 0,
-    /// end_column_index: 2` `Sheet1!A5:B == sheet_id: 0, start_row_index: 4, start_column_index: 0, end_column_index:
-    /// 2` `Sheet1 == sheet_id:0` The start index must always be less than or equal to the end index. If the start index
-    /// equals the end index, then the range is empty. Empty ranges are typically not meaningful and are usually
-    /// rendered in the UI as `#REF!`.
+    /// side. For example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id: 123456, start_row_index:
+    /// 0, end_row_index: 1, start_column_index: 0, end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456,
+    /// start_row_index: 2, end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id:
+    /// 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 123456, start_row_index: 4,
+    /// start_column_index: 0, end_column_index: 2` `Sheet1 == sheet_id: 123456` The start index must always be less
+    /// than or equal to the end index. If the start index equals the end index, then the range is empty. Empty ranges
+    /// are typically not meaningful and are usually rendered in the UI as `#REF!`.
     /// </summary>
     public class GridRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8356,7 +8372,9 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updatedData")]
         public virtual ValueRange UpdatedData { get; set; }
 
-        /// <summary>The range (in A1 notation) that updates were applied to.</summary>
+        /// <summary>
+        /// The range (in [A1 notation](/sheets/api/guides/concepts#cell)) that updates were applied to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedRange")]
         public virtual string UpdatedRange { get; set; }
 
@@ -8417,9 +8435,10 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string MajorDimension { get; set; }
 
         /// <summary>
-        /// The range the values cover, in A1 notation. For output, this range indicates the entire requested range,
-        /// even though the values will exclude trailing rows and columns. When appending values, this field represents
-        /// the range to search for a table, after which values will be appended.
+        /// The range the values cover, in [A1 notation](/sheets/api/guides/concepts#cell). For output, this range
+        /// indicates the entire requested range, even though the values will exclude trailing rows and columns. When
+        /// appending values, this field represents the range to search for a table, after which values will be
+        /// appended.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual string Range { get; set; }

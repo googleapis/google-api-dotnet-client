@@ -11073,10 +11073,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// The collection of parameters extracted from the query. Depending on your protocol or client library
         /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
-        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
-        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
-        /// a composite entity: map from composite entity property names to property values - Else: parameter value
+        /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue
+        /// type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter
+        /// value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's
+        /// entity type is a composite entity then use map from composite entity property names to property values,
+        /// otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -11429,10 +11430,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// should explicitly set the parameter value to null. You can reference the session parameters in the agent
         /// with the following format: $session.params.parameter-id. Depending on your protocol or client library
         /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
-        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
-        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
-        /// a composite entity: map from composite entity property names to property values - Else: parameter value
+        /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue
+        /// type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter
+        /// value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's
+        /// entity type is a composite entity then use map from composite entity property names to property values,
+        /// otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -11528,10 +11530,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// The collected session parameters. Depending on your protocol or client library language, this is a map,
         /// associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue)
-        /// pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is
-        /// a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean,
-        /// null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite
-        /// entity property names to property values - Else: parameter value
+        /// pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a
+        /// composite entity then use map, otherwise, depending on the parameter value type, it could be one of string,
+        /// number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then
+        /// use map from composite entity property names to property values, otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -12845,9 +12847,9 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
         /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
         /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
-        /// alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req
+        /// alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req
         /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
-        /// "\nsubjectAltName='DNS:www.example.com'")
+        /// "\nsubjectAltName='DNS:www.example.com'") ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
