@@ -12662,6 +12662,35 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    public class LiveChatGiftMembershipReceivedDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ID of the membership gifting message that is related to this gift membership. This ID will always refer
+        /// to a message whose type is 'membershipGiftingEvent'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedMembershipGiftingMessageId")]
+        public virtual string AssociatedMembershipGiftingMessageId { get; set; }
+
+        /// <summary>
+        /// The ID of the user that made the membership gifting purchase. This matches the `snippet.authorChannelId` of
+        /// the associated membership gifting message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gifterChannelId")]
+        public virtual string GifterChannelId { get; set; }
+
+        /// <summary>
+        /// The name of the Level at which the viewer is a member. This matches the
+        /// `snippet.membershipGiftingDetails.giftMembershipsLevelName` of the associated membership gifting message.
+        /// The Level names are defined by the YouTube channel offering the Membership. In some situations this field
+        /// isn't filled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberLevelName")]
+        public virtual string MemberLevelName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class LiveChatMemberMilestoneChatDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12684,6 +12713,23 @@ namespace Google.Apis.YouTube.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
         public virtual string UserComment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LiveChatMembershipGiftingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of gift memberships purchased by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giftMembershipsCount")]
+        public virtual System.Nullable<int> GiftMembershipsCount { get; set; }
+
+        /// <summary>
+        /// The name of the level of the gift memberships purchased by the user. The Level names are defined by the
+        /// YouTube channel offering the Membership. In some situations this field isn't filled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giftMembershipsLevelName")]
+        public virtual string GiftMembershipsLevelName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12821,16 +12867,17 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 31</summary>
+    /// <summary>Next ID: 33</summary>
     public class LiveChatMessageSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user
         /// that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that
-        /// just became a sponsor memberMilestoneChatEvent - the member that sent the message messageDeletedEvent - the
-        /// moderator that took the action messageRetractedEvent - the author that retracted their message
-        /// userBannedEvent - the moderator that took the action superChatEvent - the user that made the purchase
-        /// superStickerEvent - the user that made the purchase
+        /// just became a sponsor memberMilestoneChatEvent - the member that sent the message membershipGiftingEvent -
+        /// the user that made the purchase giftMembershipReceivedEvent - the user that received the gift membership
+        /// messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted
+        /// their message userBannedEvent - the moderator that took the action superChatEvent - the user that made the
+        /// purchase superStickerEvent - the user that made the purchase
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
         public virtual string AuthorChannelId { get; set; }
@@ -12846,6 +12893,13 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fanFundingEventDetails")]
         public virtual LiveChatFanFundingEventDetails FanFundingEventDetails { get; set; }
 
+        /// <summary>
+        /// Details about the Gift Membership Received event, this is only set if the type is
+        /// 'giftMembershipReceivedEvent'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giftMembershipReceivedDetails")]
+        public virtual LiveChatGiftMembershipReceivedDetails GiftMembershipReceivedDetails { get; set; }
+
         /// <summary>Whether the message has display content that should be displayed to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasDisplayContent")]
         public virtual System.Nullable<bool> HasDisplayContent { get; set; }
@@ -12858,6 +12912,12 @@ namespace Google.Apis.YouTube.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberMilestoneChatDetails")]
         public virtual LiveChatMemberMilestoneChatDetails MemberMilestoneChatDetails { get; set; }
+
+        /// <summary>
+        /// Details about the Membership Gifting event, this is only set if the type is 'membershipGiftingEvent'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipGiftingDetails")]
+        public virtual LiveChatMembershipGiftingDetails MembershipGiftingDetails { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("messageDeletedDetails")]
         public virtual LiveChatMessageDeletedDetails MessageDeletedDetails { get; set; }

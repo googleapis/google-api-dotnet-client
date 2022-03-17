@@ -1816,6 +1816,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destDatasetType")]
         public virtual string DestDatasetType { get; set; }
 
+        /// <summary>The destination dataset split type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destSplitType")]
+        public virtual string DestSplitType { get; set; }
+
         /// <summary>The list of response details of each document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualBatchMoveStatuses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus> IndividualBatchMoveStatuses { get; set; }

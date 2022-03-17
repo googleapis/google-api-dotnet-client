@@ -2656,7 +2656,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. Resource name of this secret. This secret may be a child of any type of stream. Format:
-                /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+                /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret body, string name)
                 {
@@ -2677,7 +2677,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     /// <summary>
                     /// Output only. Resource name of this secret. This secret may be a child of any type of stream.
                     /// Format:
-                    /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+                    /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6800,7 +6800,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Output only. Resource name of this secret. This secret may be a child of any type of stream. Format:
-        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6869,10 +6869,19 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Immutable. Resource name of this property's logical parent. Note: The Property-Moving UI can be used to
-        /// change the parent. Format: accounts/{account} Example: "accounts/100"
+        /// change the parent. Format: accounts/{account}, properties/{property} Example: "accounts/100",
+        /// "properties/101"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Immutable. The property type for this Property resource. When creating a property, if the type is
+        /// "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
+        /// types cannot yet be created via Google Analytics Admin API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
+        public virtual string PropertyType { get; set; }
 
         /// <summary>Output only. The Google Analytics service level that applies to this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevel")]
@@ -6903,11 +6912,22 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Resource name of this property's logical parent. Note: The Property-Moving UI can be used to change the
+        /// parent. Format: accounts/{account}, properties/{property} Example: "accounts/100", "properties/200"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
         /// Resource name of property referred to by this property summary Format: properties/{property_id} Example:
         /// "properties/1000"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual string Property { get; set; }
+
+        /// <summary>The property's property type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
+        public virtual string PropertyType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

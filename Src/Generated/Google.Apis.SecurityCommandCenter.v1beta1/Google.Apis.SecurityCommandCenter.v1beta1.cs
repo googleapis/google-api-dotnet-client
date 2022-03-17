@@ -2719,10 +2719,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// supported operators are: * `=` for all value types. * `&amp;gt;`, `&amp;lt;`, `&amp;gt;=`, `&amp;lt;=` for
         /// integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string
         /// literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
-        /// Please see the proto documentation in the finding
-        /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/finding.proto) and in
-        /// the ListFindingsRequest for valid filter syntax.
-        /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/securitycenter_service.proto).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }

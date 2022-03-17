@@ -884,6 +884,13 @@ namespace Google.Apis.VersionHistory.v1.Data
         public virtual System.Nullable<double> Fraction { get; set; }
 
         /// <summary>
+        /// Rollout fraction group. Only fractions with the same fraction_group are statistically comparable: there may
+        /// be non-fractional differences between different fraction groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fractionGroup")]
+        public virtual System.Nullable<long> FractionGroup { get; set; }
+
+        /// <summary>
         /// Release name. Format is
         /// "{product}/platforms/{platform}/channels/{channel}/versions/{version}/releases/{release}"
         /// </summary>
