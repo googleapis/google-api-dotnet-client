@@ -659,6 +659,13 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Nullable<long> NumResponseItems { get; set; }
 
         /// <summary>
+        /// Indicates the policy violations for this request. If the request is denied by the policy, violation
+        /// information will be logged here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationInfo")]
+        public virtual PolicyViolationInfo PolicyViolationInfo { get; set; }
+
+        /// <summary>
         /// The operation request. This may not include all request parameters, such as those that are too large,
         /// privacy-sensitive, or duplicated elsewhere in the log record. It should never include user-generated data,
         /// such as file contents. When the JSON object represented here has a proto equivalent, the proto name will be
@@ -1615,6 +1622,41 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents OrgPolicy Violation information.</summary>
+    public class OrgPolicyViolationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource payload that is currently in scope and is subjected to orgpolicy conditions. This payload
+        /// may be the subset of the actual Resource that may come in the request. This payload should not contain any
+        /// core content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>
+        /// Optional. Tags referenced on the resource at the time of evaluation. These also include the federated tags,
+        /// if they are supplied in the CheckOrgPolicy or CheckCustomConstraints Requests. Optional field as of now.
+        /// These tags are the Cloud tags that are available on the resource during the policy evaluation and will be
+        /// available as part of the OrgPolicy check response for logging purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceTags { get; set; }
+
+        /// <summary>
+        /// Optional. Resource type that the orgpolicy is checked against. Example: compute.googleapis.com/Instance,
+        /// store.googleapis.com/bucket
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>Optional. Policy violations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationInfo")]
+        public virtual System.Collections.Generic.IList<ViolationInfo> ViolationInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// This message defines attributes for a node that handles a network request. The node can be either a service or
     /// an application that sends, forwards, or receives the request. Service peers should fill in `principal` and
@@ -1647,6 +1689,17 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to policy violations for this request.</summary>
+    public class PolicyViolationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the orgpolicy violations for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyViolationInfo")]
+        public virtual OrgPolicyViolationInfo OrgPolicyViolationInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2537,6 +2590,32 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Optional. Line within the source file. 1-based; 0 indicates no line number available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
         public virtual System.Nullable<long> Line { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides information about the Policy violation info for this request.</summary>
+    public class ViolationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Value that is being checked for the policy. This could be in encrypted form (if pii sensitive).
+        /// This field will only be emitted in LIST_POLICY types
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkedValue")]
+        public virtual string CheckedValue { get; set; }
+
+        /// <summary>Optional. Constraint name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
+        public virtual string Constraint { get; set; }
+
+        /// <summary>Optional. Error message that policy is indicating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Optional. Indicates the type of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
+        public virtual string PolicyType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

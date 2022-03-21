@@ -551,7 +551,21 @@ namespace Google.Apis.Spanner.v1
                     /// \ `(metadata.name:howl) AND` \ `(metadata.progress.start_time &amp;lt; \"2018-03-28T14:50:00Z\")
                     /// AND` \ `(error:*)` - Returns operations where: * The operation's metadata type is
                     /// CreateBackupMetadata. * The backup name contains the string "howl". * The operation started
-                    /// before 2018-03-28T14:50:00Z. * The operation resulted in an error.
+                    /// before 2018-03-28T14:50:00Z. * The operation resulted in an error. *
+                    /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata) AND` \
+                    /// `(metadata.source_backup:test) AND` \ `(metadata.progress.start_time &amp;lt;
+                    /// \"2022-01-18T14:50:00Z\") AND` \ `(error:*)` - Returns operations where: * The operation's
+                    /// metadata type is CopyBackupMetadata. * The source backup of the copied backup name contains the
+                    /// string "test". * The operation started before 2022-01-18T14:50:00Z. * The operation resulted in
+                    /// an error. *
+                    /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
+                    /// AND` \ `(metadata.database:test_db)) OR` \
+                    /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata) AND`
+                    /// \ `(metadata.source_backup:test_bkp)) AND` \ `(error:*)` - Returns operations where: * The
+                    /// operation's metadata matches either of criteria: * The operation's metadata type is
+                    /// CreateBackupMetadata AND the database the backup was taken from has name containing string
+                    /// "test_db" * The operation's metadata type is CopyBackupMetadata AND the backup the backup was
+                    /// copied from has name containing string "test_bkp" * The operation resulted in an error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -914,6 +928,79 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+
+                /// <summary>
+                /// Starts copying a Cloud Spanner Backup. The returned backup long-running operation will have a name
+                /// of the format `projects//instances//backups//operations/` and can be used to track copying of the
+                /// backup. The operation is associated with the destination backup. The metadata field type is
+                /// CopyBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
+                /// operation will stop the copying and delete the backup. Concurrent CopyBackup requests can run on the
+                /// same source backup.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The name of the destination instance that will contain the backup copy. Values are of the
+                /// form: `projects//instances/`.
+                /// </param>
+                public virtual CopyRequest Copy(Google.Apis.Spanner.v1.Data.CopyBackupRequest body, string parent)
+                {
+                    return new CopyRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Starts copying a Cloud Spanner Backup. The returned backup long-running operation will have a name
+                /// of the format `projects//instances//backups//operations/` and can be used to track copying of the
+                /// backup. The operation is associated with the destination backup. The metadata field type is
+                /// CopyBackupMetadata. The response field type is Backup, if successful. Cancelling the returned
+                /// operation will stop the copying and delete the backup. Concurrent CopyBackup requests can run on the
+                /// same source backup.
+                /// </summary>
+                public class CopyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Copy request.</summary>
+                    public CopyRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.CopyBackupRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the destination instance that will contain the backup copy. Values are of
+                    /// the form: `projects//instances/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.CopyBackupRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "copy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backups:copy";
+
+                    /// <summary>Initializes Copy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
                     }
                 }
 
@@ -4902,6 +4989,14 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual object ExpireTime { get; set; }
 
         /// <summary>
+        /// Output only. The max allowed expiration time of the backup, with microseconds granularity. A backup's
+        /// expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or
+        /// copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxExpireTime")]
+        public virtual object MaxExpireTime { get; set; }
+
+        /// <summary>
         /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique
         /// identifier for the backup which cannot be changed. Values are of the form
         /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60
@@ -4911,6 +5006,16 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The names of the destination backups being created by copying this source backup. The backup
+        /// names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances.
+        /// The existence of any referencing backup prevents the backup from being deleted. When the copy operation is
+        /// done (either successfully completed or cancelled or the destination backup is deleted), the reference to the
+        /// backup is removed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencingBackups")]
+        public virtual System.Collections.Generic.IList<string> ReferencingBackups { get; set; }
 
         /// <summary>
         /// Output only. The names of the restored databases that reference the backup. The database names are of the
@@ -5189,6 +5294,99 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The value for the context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption configuration for the copied backup.</summary>
+    public class CopyBackupEncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The encryption type of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when
+        /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+        /// `projects//locations//keyRings//cryptoKeys/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata type for the google.longrunning.Operation returned by CopyBackup.</summary>
+    public class CopyBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The time at which cancellation of CopyBackup operation was received. Operations.CancelOperation starts
+        /// asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. Clients can use Operations.GetOperation or other methods to check
+        /// whether the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual object CancelTime { get; set; }
+
+        /// <summary>
+        /// The name of the backup being created through the copy operation. Values are of the form
+        /// `projects//instances//backups/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The progress of the CopyBackup operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; }
+
+        /// <summary>
+        /// The name of the source backup that is being copied. Values are of the form `projects//instances//backups/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
+        public virtual string SourceBackup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for CopyBackup.</summary>
+    public class CopyBackupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The id of the backup copy. The `backup_id` appended to `parent` forms the full backup_uri of the
+        /// form `projects//instances//backups/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual string BackupId { get; set; }
+
+        /// <summary>
+        /// Optional. The encryption configuration used to encrypt the backup. If this field is not specified, the
+        /// backup will use the same encryption configuration as the source backup by default, namely encryption_type =
+        /// `USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual CopyBackupEncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>
+        /// Required. The expiration time of the backup in microsecond granularity. The expiration time must be at least
+        /// 6 hours and at most 366 days from the `create_time` of the source backup. Once the `expire_time` has passed,
+        /// the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the
+        /// backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Required. The source backup to be copied. The source backup needs to be in READY state for it to be copied.
+        /// Once CopyBackup is in progress, the source backup cannot be deleted or cleaned up on expiration until
+        /// CopyBackup is finished. Values are of the form: `projects//instances//backups/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
+        public virtual string SourceBackup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5817,6 +6015,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual string Config { get; set; }
 
+        /// <summary>Output only. The time at which the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// Required. The descriptive name for this instance as it appears in UIs. Must be unique per project and
         /// between 4 and 30 characters in length.
@@ -5877,6 +6079,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Output only. The time at which the instance was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

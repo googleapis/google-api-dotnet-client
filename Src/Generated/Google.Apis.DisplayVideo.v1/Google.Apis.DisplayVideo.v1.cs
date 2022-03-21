@@ -922,6 +922,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -933,6 +941,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>
@@ -1260,6 +1272,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -1271,6 +1291,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>
@@ -3439,6 +3463,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -3450,6 +3482,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>
@@ -3746,6 +3782,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -3757,6 +3801,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>
@@ -4920,6 +4968,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -4931,6 +4987,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -5230,6 +5290,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -5241,6 +5309,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -5537,6 +5609,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -5548,6 +5628,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>
@@ -5840,6 +5924,14 @@ namespace Google.Apis.DisplayVideo.v1
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                             TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 43,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                             TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -5851,6 +5943,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                             TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
                         }
 
                         /// <summary>
@@ -8971,6 +9067,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -8982,6 +9086,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -9259,6 +9367,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -9270,6 +9386,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -9554,6 +9674,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -9565,6 +9693,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>
@@ -9847,6 +9979,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -9858,6 +9998,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>
@@ -15006,6 +15150,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -15017,6 +15169,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -15291,6 +15447,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -15302,6 +15466,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -15583,6 +15751,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -15594,6 +15770,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>
@@ -15873,6 +16053,14 @@ namespace Google.Apis.DisplayVideo.v1
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                         TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                        /// <summary>Target ads to a specific video content duration.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                        TARGETINGTYPECONTENTDURATION = 43,
+
+                        /// <summary>Target ads to a specific video content stream type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                         TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -15884,6 +16072,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                         TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                        /// <summary>Target ads to a specific content genre.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                        TARGETINGTYPECONTENTGENRE = 45,
                     }
 
                     /// <summary>
@@ -16608,6 +16800,14 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                     TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                    /// <summary>Target ads to a specific video content duration.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                    TARGETINGTYPECONTENTDURATION = 43,
+
+                    /// <summary>Target ads to a specific video content stream type.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                    TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                     TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -16619,6 +16819,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Target ads to a specific audio content type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                     TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                    /// <summary>Target ads to a specific content genre.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                    TARGETINGTYPECONTENTGENRE = 45,
                 }
 
                 /// <summary>Required. The ID of the of targeting option to retrieve.</summary>
@@ -16913,6 +17117,14 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                     TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                    /// <summary>Target ads to a specific video content duration.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                    TARGETINGTYPECONTENTDURATION = 43,
+
+                    /// <summary>Target ads to a specific video content stream type.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                    TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                     TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -16924,6 +17136,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Target ads to a specific audio content type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                     TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                    /// <summary>Target ads to a specific content genre.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                    TARGETINGTYPECONTENTGENRE = 45,
                 }
 
                 /// <summary>Required. The Advertiser this request is being made in the context of.</summary>
@@ -17249,6 +17465,14 @@ namespace Google.Apis.DisplayVideo.v1
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
                     TARGETINGTYPEBUSINESSCHAIN = 40,
 
+                    /// <summary>Target ads to a specific video content duration.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                    TARGETINGTYPECONTENTDURATION = 43,
+
+                    /// <summary>Target ads to a specific video content stream type.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                    TARGETINGTYPECONTENTSTREAMTYPE = 44,
+
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
                     TARGETINGTYPENATIVECONTENTPOSITION = 38,
@@ -17260,6 +17484,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Target ads to a specific audio content type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
                     TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+
+                    /// <summary>Target ads to a specific content genre.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                    TARGETINGTYPECONTENTGENRE = 45,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>

@@ -1078,6 +1078,175 @@ namespace Google.Apis.Firestore.v1beta1
                     }
                 }
 
+                /// <summary>Lists documents.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents` or
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                /// `projects/my-project/databases/my-database/documents` or
+                /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                /// </param>
+                /// <param name="collectionId">
+                /// Required. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`.
+                /// </param>
+                public virtual ListDocumentsRequest ListDocuments(string parent, string collectionId)
+                {
+                    return new ListDocumentsRequest(service, parent, collectionId);
+                }
+
+                /// <summary>Lists documents.</summary>
+                public class ListDocumentsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.ListDocumentsResponse>
+                {
+                    /// <summary>Constructs a new ListDocuments request.</summary>
+                    public ListDocumentsRequest(Google.Apis.Services.IClientService service, string parent, string collectionId) : base(service)
+                    {
+                        Parent = parent;
+                        CollectionId = collectionId;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents` or
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                    /// `projects/my-project/databases/my-database/documents` or
+                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The collection ID, relative to `parent`, to list. For example: `chatrooms` or
+                    /// `messages`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CollectionId { get; private set; }
+
+                    /// <summary>
+                    /// The list of field paths in the mask. See Document.fields for a field path syntax reference.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
+                    /// <summary>The order to sort results by. For example: `priority desc, name`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of documents to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Reads documents as they were at the given time. This may not be older than 270 seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
+
+                    /// <summary>
+                    /// If the list should show missing documents. A missing document is a document that does not exist
+                    /// but has sub-documents. These documents will be returned with a key but will not have fields,
+                    /// Document.create_time, or Document.update_time set. Requests with `show_missing` may not specify
+                    /// `where` or `order_by`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowMissing { get; set; }
+
+                    /// <summary>Reads documents in a transaction.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Transaction { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listDocuments";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/{collectionId}";
+
+                    /// <summary>Initializes ListDocuments parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents$",
+                        });
+                        RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "collectionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("transaction", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "transaction",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Listens to changes.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="database">
@@ -3105,6 +3274,12 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>A query result, not set when reporting partial progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; }
+
+        /// <summary>
+        /// If present, Firestore has completely finished the request and no more documents will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>
         /// The time at which the document was read. This may be monotonically increasing; in this case, the previous

@@ -3758,7 +3758,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Deletes a `WorkerPool`.</summary>
                 /// <param name="name">
                 /// Required. The name of the `WorkerPool` to delete. Format:
-                /// `projects/{project}/locations/{workerPool}/workerPools/{workerPool}`.
+                /// `projects/{project}/locations/{location}/workerPools/{workerPool}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3777,7 +3777,7 @@ namespace Google.Apis.CloudBuild.v1
 
                     /// <summary>
                     /// Required. The name of the `WorkerPool` to delete. Format:
-                    /// `projects/{project}/locations/{workerPool}/workerPools/{workerPool}`.
+                    /// `projects/{project}/locations/{location}/workerPools/{workerPool}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }

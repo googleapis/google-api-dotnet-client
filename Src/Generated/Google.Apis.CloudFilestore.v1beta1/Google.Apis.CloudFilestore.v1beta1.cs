@@ -2584,7 +2584,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
 
-        /// <summary>Output only. field indicates all the reasons the instance is in "SUSPENDED" state.</summary>
+        /// <summary>Output only. Field indicates all the reasons the instance is in "SUSPENDED" state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
 
