@@ -341,16 +341,16 @@ namespace Google.Apis.DataFusion.v1beta1
                     /// <summary>Add DNS peering on the given resource.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The resource on which DNS peering will be created.</param>
-                    public virtual AddRequest Add(Google.Apis.DataFusion.v1beta1.Data.AddDnsPeeringRequest body, string parent)
+                    public virtual CreateRequest Create(Google.Apis.DataFusion.v1beta1.Data.DnsPeering body, string parent)
                     {
-                        return new AddRequest(service, body, parent);
+                        return new CreateRequest(service, body, parent);
                     }
 
                     /// <summary>Add DNS peering on the given resource.</summary>
-                    public class AddRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.AddDnsPeeringResponse>
+                    public class CreateRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.DnsPeering>
                     {
-                        /// <summary>Constructs a new Add request.</summary>
-                        public AddRequest(Google.Apis.Services.IClientService service, Google.Apis.DataFusion.v1beta1.Data.AddDnsPeeringRequest body, string parent) : base(service)
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DataFusion.v1beta1.Data.DnsPeering body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -362,21 +362,21 @@ namespace Google.Apis.DataFusion.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DataFusion.v1beta1.Data.AddDnsPeeringRequest Body { get; set; }
+                        Google.Apis.DataFusion.v1beta1.Data.DnsPeering Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
                         /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "add";
+                        public override string MethodName => "create";
 
                         /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/dnsPeerings:add";
+                        public override string RestPath => "v1beta1/{+parent}/dnsPeerings";
 
-                        /// <summary>Initializes Add parameter list.</summary>
+                        /// <summary>Initializes Create parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -391,8 +391,62 @@ namespace Google.Apis.DataFusion.v1beta1
                         }
                     }
 
+                    /// <summary>Remove DNS peering on the given resource.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the DNS peering zone to delete. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Remove DNS peering on the given resource.</summary>
+                    public class DeleteRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the DNS peering zone to delete. Format:
+                        /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/dnsPeerings/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>List DNS peering for a given resource.</summary>
-                    /// <param name="parent">Required. The resource on which dns peering will be listed.</param>
+                    /// <param name="parent">
+                    /// Required. The parent, which owns this collection of dns peerings. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -408,17 +462,25 @@ namespace Google.Apis.DataFusion.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The resource on which dns peering will be listed.</summary>
+                        /// <summary>
+                        /// Required. The parent, which owns this collection of dns peerings. Format:
+                        /// projects/{project}/locations/{location}/instances/{instance}
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of items to return.</summary>
+                        /// <summary>
+                        /// The maximum number of dns peerings to return. The service may return fewer than this value.
+                        /// If unspecified, at most 10 dns peerings will be returned. The maximum value is 50; values
+                        /// above 50 will be coerced to 50.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// The next_page_token value to use if there are additional results to retrieve for this list
-                        /// request.
+                        /// A page token, received from a previous `ListDnsPeerings` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListDnsPeerings` must
+                        /// match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -430,7 +492,7 @@ namespace Google.Apis.DataFusion.v1beta1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/dnsPeerings:list";
+                        public override string RestPath => "v1beta1/{+parent}/dnsPeerings";
 
                         /// <summary>Initializes List parameter list.</summary>
                         protected override void InitParameters()
@@ -459,59 +521,6 @@ namespace Google.Apis.DataFusion.v1beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>Remove DNS peering on the given resource.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The resource on which DNS peering will be removed.</param>
-                    public virtual RemoveRequest Remove(Google.Apis.DataFusion.v1beta1.Data.RemoveDnsPeeringRequest body, string parent)
-                    {
-                        return new RemoveRequest(service, body, parent);
-                    }
-
-                    /// <summary>Remove DNS peering on the given resource.</summary>
-                    public class RemoveRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.RemoveDnsPeeringResponse>
-                    {
-                        /// <summary>Constructs a new Remove request.</summary>
-                        public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.DataFusion.v1beta1.Data.RemoveDnsPeeringRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The resource on which DNS peering will be removed.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DataFusion.v1beta1.Data.RemoveDnsPeeringRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "remove";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/dnsPeerings:remove";
-
-                        /// <summary>Initializes Remove parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                             });
                         }
                     }
@@ -568,11 +577,14 @@ namespace Google.Apis.DataFusion.v1beta1
                         public virtual string Resource { get; private set; }
 
                         /// <summary>
-                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
-                        /// valid value or leave the field unset. To learn which resources support conditions in their
-                        /// IAM policies, see the [IAM
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
                         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -1059,11 +1071,13 @@ namespace Google.Apis.DataFusion.v1beta1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>
-                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
-                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
-                    /// value or leave the field unset. To learn which resources support conditions in their IAM
-                    /// policies, see the [IAM
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
                     /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -2160,24 +2174,6 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message to create dns peering.</summary>
-    public class AddDnsPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Dns peering config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dnsPeering")]
-        public virtual DnsPeering DnsPeering { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for set dns peering method.</summary>
-    public class AddDnsPeeringResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -2309,9 +2305,16 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Required. Name of the dns.</summary>
+        /// <summary>Required. The dns name suffix of the zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the dns peering zone. Format:
+        /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. Optional target network to which dns peering should happen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNetwork")]
@@ -2320,10 +2323,6 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// <summary>Optional. Optional target project to which dns peering should happen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
         public virtual string TargetProject { get; set; }
-
-        /// <summary>Required. Name of the zone.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2557,15 +2556,16 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>List dns peering response.</summary>
+    /// <summary>Response message for list DNS peerings.</summary>
     public class ListDnsPeeringsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of dns peering configs.</summary>
+        /// <summary>List of dns peering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsPeerings")]
         public virtual System.Collections.Generic.IList<DnsPeering> DnsPeerings { get; set; }
 
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2865,24 +2865,6 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
-    }
-
-    /// <summary>Request message to remove dns peering.</summary>
-    public class RemoveDnsPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The zone to be removed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for set dns peering method.</summary>
-    public class RemoveDnsPeeringResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for RemoveIamPolicy method.</summary>

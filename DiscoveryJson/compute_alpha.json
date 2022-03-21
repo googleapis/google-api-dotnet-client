@@ -11345,7 +11345,7 @@
      ]
     },
     "reset": {
-     "description": "Performs a reset on the instance. This is a hard reset the VM does not do a graceful shutdown. For more information, see Resetting an instance.",
+     "description": "Performs a reset on the instance. This is a hard reset. The VM does not do a graceful shutdown. For more information, see Resetting an instance.",
      "flatPath": "projects/{project}/zones/{zone}/instances/{instance}/reset",
      "httpMethod": "POST",
      "id": "compute.instances.reset",
@@ -20042,6 +20042,44 @@
   },
   "publicAdvertisedPrefixes": {
    "methods": {
+    "announce": {
+     "description": "Announces the specified PublicAdvertisedPrefix",
+     "flatPath": "projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}/announce",
+     "httpMethod": "POST",
+     "id": "compute.publicAdvertisedPrefixes.announce",
+     "parameterOrder": [
+      "project",
+      "publicAdvertisedPrefix"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "publicAdvertisedPrefix": {
+       "description": "The name of the public advertised prefix. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}/announce",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "delete": {
      "description": "Deletes the specified PublicAdvertisedPrefix",
      "flatPath": "projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}",
@@ -20246,6 +20284,44 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"
      ]
+    },
+    "withdraw": {
+     "description": "Withdraws the specified PublicAdvertisedPrefix",
+     "flatPath": "projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}/withdraw",
+     "httpMethod": "POST",
+     "id": "compute.publicAdvertisedPrefixes.withdraw",
+     "parameterOrder": [
+      "project",
+      "publicAdvertisedPrefix"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "publicAdvertisedPrefix": {
+       "description": "The name of the public advertised prefix. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}/withdraw",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
     }
    }
   },
@@ -20309,6 +20385,51 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "announce": {
+     "description": "Announces the specified PublicDelegatedPrefix in the given region.",
+     "flatPath": "projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}/announce",
+     "httpMethod": "POST",
+     "id": "compute.publicDelegatedPrefixes.announce",
+     "parameterOrder": [
+      "project",
+      "region",
+      "publicDelegatedPrefix"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "publicDelegatedPrefix": {
+       "description": "The name of the public delegated prefix. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region where the public delegated prefix is located. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}/announce",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     },
     "delete": {
@@ -20548,6 +20669,51 @@
      "request": {
       "$ref": "PublicDelegatedPrefix"
      },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "withdraw": {
+     "description": "Withdraws the specified PublicDelegatedPrefix in the given region.",
+     "flatPath": "projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}/withdraw",
+     "httpMethod": "POST",
+     "id": "compute.publicDelegatedPrefixes.withdraw",
+     "parameterOrder": [
+      "project",
+      "region",
+      "publicDelegatedPrefix"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "publicDelegatedPrefix": {
+       "description": "The name of the public delegated prefix. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region where the public delegated prefix is located. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}/withdraw",
      "response": {
       "$ref": "Operation"
      },
@@ -21933,7 +22099,7 @@
        "type": "string"
       },
       "guestFlush": {
-       "description": "[Input Only] Specifies to create an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).",
+       "description": "[Input Only] Specifies to create an application consistent snapshot by informing the OS to prepare for the snapshot process.",
        "location": "query",
        "type": "boolean"
       },
@@ -38494,7 +38660,7 @@
    }
   }
  },
- "revision": "20220224",
+ "revision": "20220312",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -39639,6 +39805,20 @@
    "description": "An instance-attached disk resource.",
    "id": "AttachedDisk",
    "properties": {
+    "architecture": {
+     "description": "[Output Only] The architecture of the attached disk. Valid values are ARM64 or X86_64.",
+     "enum": [
+      "ARCHITECTURE_UNSPECIFIED",
+      "ARM64",
+      "X86_64"
+     ],
+     "enumDescriptions": [
+      "Default value indicating Architecture is not set.",
+      "Machines with architecture ARM64",
+      "Machines with architecture X86_64"
+     ],
+     "type": "string"
+    },
     "autoDelete": {
      "description": "Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).",
      "type": "boolean"
@@ -41395,7 +41575,7 @@
      "$ref": "Subsetting"
     },
     "timeoutSec": {
-     "description": "The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.",
+     "description": "The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.",
      "format": "int32",
      "type": "integer"
     }
@@ -42648,11 +42828,13 @@
      "description": "[Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.",
      "enum": [
       "ACTIVE",
+      "CANCELLED",
       "CREATING",
       "EXPIRED",
       "NOT_YET_ACTIVE"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -45931,6 +46113,10 @@
      ],
      "type": "string"
     },
+    "noAutomateDnsZone": {
+     "description": "This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.",
+     "type": "boolean"
+    },
     "portRange": {
      "description": "This field can be used only if: - Load balancing scheme is one of EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or SCTP. Packets addressed to ports in the specified range will be forwarded to target or backend_service. You can only use one of ports, port_range, or allPorts. The three are mutually exclusive. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding target have constraints on the acceptable ports. For more information, see [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\\\d+(?:-\\\\d+)?",
      "type": "string"
@@ -46392,6 +46578,7 @@
     },
     "kind": {
      "default": "compute#futureReservation",
+     "description": "[Output Only] Type of the resource. Always compute#futureReservation for future reservations.",
      "type": "string"
     },
     "name": {
@@ -46544,6 +46731,7 @@
     },
     "kind": {
      "default": "compute#futureReservationsAggregatedListResponse",
+     "description": "[Output Only] Type of resource. Always compute#futureReservationsAggregatedListResponse for future resevation aggregated list response.",
      "type": "string"
     },
     "nextPageToken": {
@@ -46668,6 +46856,7 @@
     },
     "kind": {
      "default": "compute#futureReservationsListResponse",
+     "description": "[Output Only] Type of resource.Always compute#FutureReservationsListResponse for lists of reservations",
      "type": "string"
     },
     "nextPageToken": {
@@ -56045,6 +56234,20 @@
      },
      "type": "array"
     },
+    "architecture": {
+     "description": "[Output Only] The architecture of the machine type.",
+     "enum": [
+      "ARCHITECTURE_UNSPECIFIED",
+      "ARM64",
+      "X86_64"
+     ],
+     "enumDescriptions": [
+      "Default value indicating Architecture is not set.",
+      "Machines with architecture ARM64",
+      "Machines with architecture X86_64"
+     ],
+     "type": "string"
+    },
     "creationTimestamp": {
      "description": "[Output Only] Creation timestamp in RFC3339 text format.",
      "type": "string"
@@ -56951,6 +57154,7 @@
     },
     "kind": {
      "default": "compute#networkEdgeSecurityService",
+     "description": "[Output only] Type of the resource. Always compute#networkEdgeSecurityService for NetworkEdgeSecurityServices",
      "type": "string"
     },
     "name": {
@@ -56997,6 +57201,7 @@
     },
     "kind": {
      "default": "compute#networkEdgeSecurityServiceAggregatedList",
+     "description": "[Output Only] Type of resource. Always compute#networkEdgeSecurityServiceAggregatedList for lists of Network Edge Security Services.",
      "type": "string"
     },
     "nextPageToken": {
@@ -58040,7 +58245,7 @@
      "type": "string"
     },
     "name": {
-     "description": "[Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.",
+     "description": "[Output Only] The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.",
      "type": "string"
     },
     "network": {
@@ -66364,15 +66569,13 @@
       "ACTIVE",
       "DROPPED",
       "INACTIVE",
-      "PENDING",
-      "UNKNOWN_ROUTE_STATUS"
+      "PENDING"
      ],
      "enumDescriptions": [
       "This route is processed and active.",
       "The route is dropped due to the VPC exceeding the dynamic route limit. For dynamic route limit, please refer to the Learned route example",
       "This route is processed but inactive due to failure from the backend. The backend may have rejected the route",
-      "This route is being processed internally. The status will change once processed.",
-      ""
+      "This route is being processed internally. The status will change once processed."
      ],
      "type": "string"
     },
@@ -70332,6 +70535,14 @@
     },
     "sourceInstantSnapshotId": {
      "description": "[Output Only] The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.",
+     "type": "string"
+    },
+    "sourceSnapshotSchedulePolicy": {
+     "description": "[Output Only] URL of the resource policy which created this scheduled snapshot.",
+     "type": "string"
+    },
+    "sourceSnapshotSchedulePolicyId": {
+     "description": "[Output Only] ID of the resource policy which created this scheduled snapshot.",
      "type": "string"
     },
     "status": {

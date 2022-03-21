@@ -2155,6 +2155,14 @@ namespace Google.Apis.Eventarc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gke")]
         public virtual GKE Gke { get; set; }
 
+        /// <summary>
+        /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should
+        /// be deployed in the same project as the trigger. Format:
+        /// `projects/{project}/locations/{location}/workflows/{workflow}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflow")]
+        public virtual string Workflow { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

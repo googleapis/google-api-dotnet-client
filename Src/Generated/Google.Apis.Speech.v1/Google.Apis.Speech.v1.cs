@@ -1297,7 +1297,8 @@ namespace Google.Apis.Speech.v1.Data
 
         /// <summary>
         /// Required. The ID to use for the custom class, which will become the final component of the custom class'
-        /// resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        /// resource name. This value should restrict to letters, numbers, and hyphens, with the first character a
+        /// letter, the last a letter or a number, and be 4-63 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customClassId")]
         public virtual string CustomClassId { get; set; }
@@ -1315,7 +1316,8 @@ namespace Google.Apis.Speech.v1.Data
 
         /// <summary>
         /// Required. The ID to use for the phrase set, which will become the final component of the phrase set's
-        /// resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        /// resource name. This value should restrict to letters, numbers, and hyphens, with the first character a
+        /// letter, the last a letter or a number, and be 4-63 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseSetId")]
         public virtual string PhraseSetId { get; set; }

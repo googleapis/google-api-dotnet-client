@@ -1030,7 +1030,11 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
-                        /// <summary>Optional. This field sets the CA to have a pending delete duration of 0.</summary>
+                        /// <summary>
+                        /// Optional. If this flag is set, the Certificate Authority will be deleted as soon as possible
+                        /// without a 30-day grace period where undeletion would have been allowed. If you proceed,
+                        /// there will be no way to recover this CA.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("skipGracePeriod", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> SkipGracePeriod { get; set; }
 

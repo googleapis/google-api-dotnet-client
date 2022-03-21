@@ -4504,6 +4504,31 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class CloneDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] Reference describing the ID of the table that was cloned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTableReference")]
+        public virtual TableReference BaseTableReference { get; set; }
+
+        /// <summary>
+        /// [Required] The time at which the base table was cloned. This value is reported in the JSON response using
+        /// RFC3339 format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloneTime")]
+        public virtual string CloneTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CloneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> CloneTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CloneTimeRaw);
+            set => CloneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message containing the information about one cluster.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4678,6 +4703,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Table reference of the evaluation data after split.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationTable")]
         public virtual TableReference EvaluationTable { get; set; }
+
+        /// <summary>Table reference of the test data after split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTable")]
+        public virtual TableReference TestTable { get; set; }
 
         /// <summary>Table reference of the training data after split.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingTable")]
@@ -5041,6 +5070,17 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Model evaluation metrics for dimensionality reduction models.</summary>
+    public class DimensionalityReductionMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total percentage of variance explained by the selected principal components.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExplainedVarianceRatio")]
+        public virtual System.Nullable<double> TotalExplainedVarianceRatio { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class DmlStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.</summary>
@@ -5054,6 +5094,47 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Number of updated Rows. Populated by DML UPDATE and MERGE statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedRowCount")]
         public virtual System.Nullable<long> UpdatedRowCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Discrete candidates of a double hyperparameter.</summary>
+    public class DoubleCandidates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Candidates for the double parameter in increasing order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Candidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search space for a double hyperparameter.</summary>
+    public class DoubleHparamSearchSpace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Candidates of the double hyperparameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual DoubleCandidates Candidates { get; set; }
+
+        /// <summary>Range of the double hyperparameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual DoubleRange Range { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Range of a double hyperparameter.</summary>
+    public class DoubleRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Max value of the double parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<double> Max { get; set; }
+
+        /// <summary>Min value of the double parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<double> Min { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5129,6 +5210,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Populated for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusteringMetrics")]
         public virtual ClusteringMetrics ClusteringMetrics { get; set; }
+
+        /// <summary>
+        /// Evaluation metrics when the model is a dimensionality reduction model, which currently includes PCA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionalityReductionMetrics")]
+        public virtual DimensionalityReductionMetrics DimensionalityReductionMetrics { get; set; }
 
         /// <summary>Populated for multi-class classification/classifier models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiClassClassificationMetrics")]
@@ -5281,6 +5368,24 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Human-readable stage descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substeps")]
         public virtual System.Collections.Generic.IList<string> Substeps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Explanation for a single feature.</summary>
+    public class Explanation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Attribution of feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attribution")]
+        public virtual System.Nullable<double> Attribution { get; set; }
+
+        /// <summary>
+        /// Full name of the feature. For non-numerical features, will be formatted like .. Overall size of feature name
+        /// will always be truncated to first 120 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
+        public virtual string FeatureName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5576,6 +5681,26 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Global explanations containing the top most important features after training.</summary>
+    public class GlobalExplanation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Class label for this set of global explanations. Will be empty/null for binary logistic and linear
+        /// regression models. Sorted alphabetically in descending order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classLabel")]
+        public virtual string ClassLabel { get; set; }
+
+        /// <summary>
+        /// A list of the top global explanations. Sorted by absolute value of attribution in descending order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanations")]
+        public virtual System.Collections.Generic.IList<Explanation> Explanations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleSheetsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5634,6 +5759,214 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUriPrefix")]
         public virtual string SourceUriPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Hyperparameter search spaces. These should be a subset of training_options.</summary>
+    public class HparamSearchSpaces : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Activation functions of neural network models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationFn")]
+        public virtual StringHparamSearchSpace ActivationFn { get; set; }
+
+        /// <summary>Mini batch sample size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual IntHparamSearchSpace BatchSize { get; set; }
+
+        /// <summary>Booster type for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boosterType")]
+        public virtual StringHparamSearchSpace BoosterType { get; set; }
+
+        /// <summary>Subsample ratio of columns for each level for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colsampleBylevel")]
+        public virtual DoubleHparamSearchSpace ColsampleBylevel { get; set; }
+
+        /// <summary>Subsample ratio of columns for each node(split) for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colsampleBynode")]
+        public virtual DoubleHparamSearchSpace ColsampleBynode { get; set; }
+
+        /// <summary>Subsample ratio of columns when constructing each tree for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colsampleBytree")]
+        public virtual DoubleHparamSearchSpace ColsampleBytree { get; set; }
+
+        /// <summary>Dart normalization type for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dartNormalizeType")]
+        public virtual StringHparamSearchSpace DartNormalizeType { get; set; }
+
+        /// <summary>Dropout probability for dnn model training and boosted tree models using dart booster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropout")]
+        public virtual DoubleHparamSearchSpace Dropout { get; set; }
+
+        /// <summary>Hidden units for neural network models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hiddenUnits")]
+        public virtual IntArrayHparamSearchSpace HiddenUnits { get; set; }
+
+        /// <summary>L1 regularization coefficient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l1Reg")]
+        public virtual DoubleHparamSearchSpace L1Reg { get; set; }
+
+        /// <summary>L2 regularization coefficient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l2Reg")]
+        public virtual DoubleHparamSearchSpace L2Reg { get; set; }
+
+        /// <summary>Learning rate of training jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
+        public virtual DoubleHparamSearchSpace LearnRate { get; set; }
+
+        /// <summary>Maximum depth of a tree for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTreeDepth")]
+        public virtual IntHparamSearchSpace MaxTreeDepth { get; set; }
+
+        /// <summary>Minimum split loss for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minSplitLoss")]
+        public virtual DoubleHparamSearchSpace MinSplitLoss { get; set; }
+
+        /// <summary>Minimum sum of instance weight needed in a child for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTreeChildWeight")]
+        public virtual IntHparamSearchSpace MinTreeChildWeight { get; set; }
+
+        /// <summary>Number of clusters for k-means.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numClusters")]
+        public virtual IntHparamSearchSpace NumClusters { get; set; }
+
+        /// <summary>Number of latent factors to train on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFactors")]
+        public virtual IntHparamSearchSpace NumFactors { get; set; }
+
+        /// <summary>Number of parallel trees for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numParallelTree")]
+        public virtual IntHparamSearchSpace NumParallelTree { get; set; }
+
+        /// <summary>Optimizer of TF models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizer")]
+        public virtual StringHparamSearchSpace Optimizer { get; set; }
+
+        /// <summary>Subsample the training data to grow tree to prevent overfitting for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsample")]
+        public virtual DoubleHparamSearchSpace Subsample { get; set; }
+
+        /// <summary>Tree construction algorithm for boosted tree models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treeMethod")]
+        public virtual StringHparamSearchSpace TreeMethod { get; set; }
+
+        /// <summary>Hyperparameter for matrix factoration when implicit feedback type is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("walsAlpha")]
+        public virtual DoubleHparamSearchSpace WalsAlpha { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Training info of a trial in hyperparameter tuning.</summary>
+    public class HparamTuningTrial : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ending time of the trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeMs")]
+        public virtual System.Nullable<long> EndTimeMs { get; set; }
+
+        /// <summary>Error message for FAILED and INFEASIBLE trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Loss computed on the eval data at the end of trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evalLoss")]
+        public virtual System.Nullable<double> EvalLoss { get; set; }
+
+        /// <summary>Evaluation metrics of this trial calculated on the test data. Empty in Job API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
+        public virtual EvaluationMetrics EvaluationMetrics { get; set; }
+
+        /// <summary>
+        /// Hyperparameter tuning evaluation metrics of this trial calculated on the eval data. Unlike
+        /// evaluation_metrics, only the fields corresponding to the hparam_tuning_objectives are set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hparamTuningEvaluationMetrics")]
+        public virtual EvaluationMetrics HparamTuningEvaluationMetrics { get; set; }
+
+        /// <summary>The hyperprameters selected for this trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hparams")]
+        public virtual TrainingOptions Hparams { get; set; }
+
+        /// <summary>Starting time of the trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeMs")]
+        public virtual System.Nullable<long> StartTimeMs { get; set; }
+
+        /// <summary>The status of the trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Loss computed on the training data at the end of trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
+        public virtual System.Nullable<double> TrainingLoss { get; set; }
+
+        /// <summary>1-based index of the trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trialId")]
+        public virtual System.Nullable<long> TrialId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An array of int.</summary>
+    public class IntArray : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Elements in the int array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Elements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search space for int array.</summary>
+    public class IntArrayHparamSearchSpace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Candidates for the int array parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<IntArray> Candidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Discrete candidates of an int hyperparameter.</summary>
+    public class IntCandidates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Candidates for the int parameter in increasing order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Candidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search space for an int hyperparameter.</summary>
+    public class IntHparamSearchSpace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Candidates of the int hyperparameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual IntCandidates Candidates { get; set; }
+
+        /// <summary>Range of the int hyperparameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual IntRange Range { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Range of an int hyperparameter.</summary>
+    public class IntRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Max value of the int parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<long> Max { get; set; }
+
+        /// <summary>Min value of the int parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<long> Min { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6414,6 +6747,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("completionRatio")]
         public virtual System.Nullable<double> CompletionRatio { get; set; }
 
+        /// <summary>[Output-only] Statistics for a copy job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copy")]
+        public virtual JobStatistics5 Copy { get; set; }
+
         /// <summary>
         /// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all
         /// jobs.
@@ -6762,6 +7099,20 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class JobStatistics5 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] Number of logical bytes copied to the destination table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copied_logical_bytes")]
+        public virtual System.Nullable<long> CopiedLogicalBytes { get; set; }
+
+        /// <summary>[Output-only] Number of rows copied to the destination table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copied_rows")]
+        public virtual System.Nullable<long> CopiedRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class JobStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6912,6 +7263,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
 
+        /// <summary>
+        /// Output only. The default trial_id to use in TVFs when the trial_id is not passed in. For single-objective
+        /// hyperparameter tuning, this is the best trial id. For multi-objective hyperparameter tuning, this is the
+        /// smallest trial id among all Pareto optimal trials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultTrialId")]
+        public virtual System.Nullable<long> DefaultTrialId { get; set; }
+
         /// <summary>Optional. A user-friendly description of this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -6944,6 +7303,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. A descriptive name for this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
         public virtual string FriendlyName { get; set; }
+
+        /// <summary>Output only. All hyperparameter search spaces in this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hparamSearchSpaces")]
+        public virtual HparamSearchSpaces HparamSearchSpaces { get; set; }
+
+        /// <summary>Output only. Trials of a hyperparameter tuning model sorted by trial_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hparamTrials")]
+        public virtual System.Collections.Generic.IList<HparamTuningTrial> HparamTrials { get; set; }
 
         /// <summary>
         /// Output only. Label columns that were used to train this model. The output of the model will have a
@@ -6978,6 +7345,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Type of the model resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
         public virtual string ModelType { get; set; }
+
+        /// <summary>
+        /// Output only. For single-objective hyperparameter tuning, it only contains the best trial. For
+        /// multi-objective hyperparameter tuning, it contains all Pareto optimal trials sorted by trial_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimalTrialIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> OptimalTrialIds { get; set; }
 
         /// <summary>Output only. Information for all training runs in increasing order of start_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
@@ -7142,6 +7516,35 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// Principal component infos, used only for eigen decomposition based models, e.g., PCA. Ordered by
+    /// explained_variance in the descending order.
+    /// </summary>
+    public class PrincipalComponentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The explained_variance is pre-ordered in the descending order to compute the cumulative explained variance
+        /// ratio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cumulativeExplainedVarianceRatio")]
+        public virtual System.Nullable<double> CumulativeExplainedVarianceRatio { get; set; }
+
+        /// <summary>Explained variance by this principal component, which is simply the eigenvalue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainedVariance")]
+        public virtual System.Nullable<double> ExplainedVariance { get; set; }
+
+        /// <summary>Explained_variance over the total explained variance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainedVarianceRatio")]
+        public virtual System.Nullable<double> ExplainedVarianceRatio { get; set; }
+
+        /// <summary>Id of the principal component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalComponentId")]
+        public virtual System.Nullable<long> PrincipalComponentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     public class ProjectList : Google.Apis.Requests.IDirectResponseSchema
@@ -8013,8 +8416,23 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Search space for string and enum.</summary>
+    public class StringHparamSearchSpace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Canididates for the string or enum parameter in lower case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<string> Candidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Output-only] Clone definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloneDefinition")]
+        public virtual CloneDefinition CloneDefinition { get; set; }
+
         /// <summary>
         /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will
         /// be first partitioned and subsequently clustered.
@@ -8613,6 +9031,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boosterType")]
         public virtual string BoosterType { get; set; }
 
+        /// <summary>
+        /// Whether or not p-value test should be computed for this model. Only available for linear and logistic
+        /// regression models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculatePValues")]
+        public virtual System.Nullable<bool> CalculatePValues { get; set; }
+
         /// <summary>If true, clean spikes and dips in the input time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cleanSpikesAndDips")]
         public virtual System.Nullable<bool> CleanSpikesAndDips { get; set; }
@@ -8678,6 +9103,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
         public virtual System.Nullable<bool> EarlyStop { get; set; }
 
+        /// <summary>If true, enable global explanation during training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGlobalExplain")]
+        public virtual System.Nullable<bool> EnableGlobalExplain { get; set; }
+
         /// <summary>Feedback type that specifies which algorithm to run for matrix factorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedbackType")]
         public virtual string FeedbackType { get; set; }
@@ -8697,6 +9126,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("horizon")]
         public virtual System.Nullable<long> Horizon { get; set; }
 
+        /// <summary>The target evaluation metrics to optimize the hyperparameters for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hparamTuningObjectives")]
+        public virtual System.Collections.Generic.IList<string> HparamTuningObjectives { get; set; }
+
         /// <summary>Include drift when fitting an ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeDrift")]
         public virtual System.Nullable<bool> IncludeDrift { get; set; }
@@ -8708,6 +9141,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Name of input label columns in training data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputLabelColumns")]
         public virtual System.Collections.Generic.IList<string> InputLabelColumns { get; set; }
+
+        /// <summary>Number of integral steps for the integrated gradients explain method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integratedGradientsNumSteps")]
+        public virtual System.Nullable<long> IntegratedGradientsNumSteps { get; set; }
 
         /// <summary>Item column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemColumn")]
@@ -8757,6 +9194,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxIterations")]
         public virtual System.Nullable<long> MaxIterations { get; set; }
 
+        /// <summary>Maximum number of trials to run in parallel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxParallelTrials")]
+        public virtual System.Nullable<long> MaxParallelTrials { get; set; }
+
         /// <summary>Maximum depth of a tree for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTreeDepth")]
         public virtual System.Nullable<long> MaxTreeDepth { get; set; }
@@ -8801,6 +9242,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numParallelTree")]
         public virtual System.Nullable<long> NumParallelTree { get; set; }
 
+        /// <summary>Number of trials to run this hyperparameter tuning job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTrials")]
+        public virtual System.Nullable<long> NumTrials { get; set; }
+
         /// <summary>Optimization strategy for training linear regression models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationStrategy")]
         public virtual string OptimizationStrategy { get; set; }
@@ -8811,6 +9256,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveInputStructs")]
         public virtual System.Nullable<bool> PreserveInputStructs { get; set; }
+
+        /// <summary>Number of paths for the sampled shapley explain method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampledShapleyNumPaths")]
+        public virtual System.Nullable<long> SampledShapleyNumPaths { get; set; }
 
         /// <summary>
         /// Subsample fraction of the training data to grow tree to prevent overfitting for boosted tree models.
@@ -8857,6 +9306,13 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Information about a single training query run for the model.</summary>
     public class TrainingRun : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Global explanation contains the explanation of top features on the class level. Applies to classification
+        /// models only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classLevelGlobalExplanations")]
+        public virtual System.Collections.Generic.IList<GlobalExplanation> ClassLevelGlobalExplanations { get; set; }
+
         /// <summary>Data split result of the training run. Only set when the input data is actually split.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitResult")]
         public virtual DataSplitResult DataSplitResult { get; set; }
@@ -8864,6 +9320,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The evaluation metrics over training/eval data that were computed at the end of training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
         public virtual EvaluationMetrics EvaluationMetrics { get; set; }
+
+        /// <summary>
+        /// Global explanation contains the explanation of top features on the model level. Applies to both regression
+        /// and classification models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelLevelGlobalExplanation")]
+        public virtual GlobalExplanation ModelLevelGlobalExplanation { get; set; }
 
         /// <summary>Output of each iteration run, results.size() &lt;= max_iterations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
@@ -8878,6 +9341,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
         public virtual TrainingOptions TrainingOptions { get; set; }
+
+        /// <summary>The model id in Vertex AI Model Registry for this training run</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelId")]
+        public virtual string VertexAiModelId { get; set; }
+
+        /// <summary>The model version in Vertex AI Model Registry for this training run</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelVersion")]
+        public virtual string VertexAiModelVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
