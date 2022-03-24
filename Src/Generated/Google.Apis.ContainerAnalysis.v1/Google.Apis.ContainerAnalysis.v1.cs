@@ -2314,6 +2314,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     /// <summary>Describes the CIS benchmark version that is applicable to a given OS and os version.</summary>
     public class ComplianceVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benchmarkDocument")]
+        public virtual string BenchmarkDocument { get; set; }
+
         /// <summary>The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
@@ -3511,8 +3515,7 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1616,7 +1616,10 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The sort options.</summary>
+    /// <summary>
+    /// Order bys define how rows will be sorted in the response. For example, ordering rows by descending event count
+    /// is one ordering, and ordering rows by the event name string is a different ordering.
+    /// </summary>
     public class OrderBy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, sorts by descending order.</summary>

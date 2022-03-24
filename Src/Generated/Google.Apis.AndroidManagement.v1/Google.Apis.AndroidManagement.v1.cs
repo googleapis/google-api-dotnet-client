@@ -2493,6 +2493,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleTrackIds")]
         public virtual System.Collections.Generic.IList<string> AccessibleTrackIds { get; set; }
 
+        /// <summary>
+        /// Specifies whether the app is allowed networking when the VPN is not connected and
+        /// alwaysOnVpnPackage.lockdownEnabled is enabled. If set to VPN_LOCKDOWN_ENFORCED, the app is not allowed
+        /// networking, and if set to VPN_LOCKDOWN_EXEMPTION, the app is allowed networking. Only supported on devices
+        /// running Android 10 and above. If this is not supported by the device, the device will contain a
+        /// NonComplianceDetail with non_compliance_reason set to API_LEVEL and a fieldPath. If this is not applicable
+        /// to the app, the device will contain a NonComplianceDetail with non_compliance_reason set to UNSUPPORTED and
+        /// a fieldPath. The fieldPath is set to applications[i].alwaysOnVpnLockdownExemption, where i is the index of
+        /// the package in the applications policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alwaysOnVpnLockdownExemption")]
+        public virtual string AlwaysOnVpnLockdownExemption { get; set; }
+
         /// <summary>Controls the auto-update mode for the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateMode")]
         public virtual string AutoUpdateMode { get; set; }
@@ -4124,16 +4137,6 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requirePasswordUnlock")]
         public virtual string RequirePasswordUnlock { get; set; }
 
-        /// <summary>
-        /// Controls whether a unified lock is allowed for the device and the work profile, on devices running Android 9
-        /// and above with a work profile. This has no effect on other devices. This can be set only if password_scope
-        /// is set to SCOPE_PROFILE, the policy will be rejected otherwise. If user has not set a separate work lock and
-        /// this field is set to REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with nonComplianceReason
-        /// set to USER_ACTION.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unifiedLockSettings")]
-        public virtual string UnifiedLockSettings { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4526,7 +4529,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Password requirements. The field password_requirements.require_password_unlock must not be set. DEPRECATED -
         /// Use passwordPolicies.Note:Complexity-based values of PasswordQuality, that is, COMPLEXITY_LOW,
-        /// COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here. unified_lock_settings cannot be used here
+        /// COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordRequirements")]
         public virtual PasswordRequirements PasswordRequirements { get; set; }

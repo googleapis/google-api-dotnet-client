@@ -1643,6 +1643,13 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
+            /// <summary>
+            /// Consistency token of the player id. The call returns a 'not found' result when the token is present and
+            /// invalid. Empty value is ignored. See also GlobalPlayerIdConsistencyTokenProto
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("playerIdConsistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PlayerIdConsistencyToken { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -1667,6 +1674,14 @@ namespace Google.Apis.Games.v1
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("playerIdConsistencyToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerIdConsistencyToken",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

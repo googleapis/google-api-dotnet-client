@@ -4405,8 +4405,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review for Free Listings program in the provided region. Important: This method is only
-        /// whitelisted for selected merchants.
+        /// Requests a review for free listings program in a specific region. Important: This method is only whitelisted
+        /// for selected merchants.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -4416,8 +4416,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review for Free Listings program in the provided region. Important: This method is only
-        /// whitelisted for selected merchants.
+        /// Requests a review for free listings program in a specific region. Important: This method is only whitelisted
+        /// for selected merchants.
         /// </summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -12503,7 +12503,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Requests a review for Shopping Ads program in the provided country.</summary>
+        /// <summary>Requests a review for Shopping Ads program in a specific region.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewShoppingAdsRequest body, long merchantId)
@@ -12511,7 +12511,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new RequestreviewRequest(service, body, merchantId);
         }
 
-        /// <summary>Requests a review for Shopping Ads program in the provided country.</summary>
+        /// <summary>Requests a review for Shopping Ads program in a specific region.</summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Requestreview request.</summary>
@@ -15015,7 +15015,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Response message for GetFreeListingsProgramStatus.</summary>
     public class FreeListingsProgramStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>State of the program, It is set to enabled if there are offers for at least one region.</summary>
+        /// <summary>State of the program. `ENABLED` if there are offers for at least one region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalState")]
         public virtual string GlobalState { get; set; }
 
@@ -15034,8 +15034,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class FreeListingsProgramStatusRegionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It will be present when
-        /// `eligibility_status` is `WARNING`. Date will be provided in ISO 8601 format: YYYY-MM-DD
+        /// Date your `eligibilityStatus` will become `DISAPPROVED`. Only visible when your `eligibilityStatus` is
+        /// `WARNING`. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
         public virtual string DisapprovalDate { get; set; }
@@ -15044,7 +15044,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
         public virtual string EligibilityStatus { get; set; }
 
-        /// <summary>These issues must be fixed to become eligible for the review.</summary>
+        /// <summary>Must be fixed to be eligible for review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingIssues")]
         public virtual System.Collections.Generic.IList<string> OnboardingIssues { get; set; }
 
@@ -15056,7 +15056,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
 
         /// <summary>
-        /// If a program in a given country is eligible for review. It will be present only if eligibility status is
+        /// If a program is eligible for review in a specific region. Only visible if `eligibilityStatus` is
         /// `DISAPPROVED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewEligibilityStatus")]
@@ -15067,22 +15067,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ReviewIneligibilityReason { get; set; }
 
         /// <summary>
-        /// Reason if a program in a given country is not eligible for review. Populated only if
-        /// `review_eligibility_status` is `INELIGIBLE`.
+        /// Reason a program in a specific region isn’t eligible for review. Only visible if `reviewEligibilityStatus`
+        /// is `INELIGIBLE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDescription")]
         public virtual string ReviewIneligibilityReasonDescription { get; set; }
 
         /// <summary>
-        /// This contains additional information specific to review ineligibility reasons. If review is ineligible
-        /// because of `IN_COOLDOWN_PERIOD`, it will contain timestamp for cooldown period.
+        /// Additional information for ineligibility. If `reviewIneligibilityReason` is `IN_COOLDOWN_PERIOD`, a
+        /// timestamp for the end of the cooldown period is provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDetails")]
         public virtual FreeListingsProgramStatusReviewIneligibilityReasonDetails ReviewIneligibilityReasonDetails { get; set; }
 
-        /// <summary>
-        /// These issues will be evaluated in review process. Fix all the issues before requesting the review.
-        /// </summary>
+        /// <summary>Issues evaluated in the review process. Fix all issues before requesting a review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIssues")]
         public virtual System.Collections.Generic.IList<string> ReviewIssues { get; set; }
 
@@ -19690,6 +19688,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
         public virtual string ExpirationDate { get; set; }
 
+        /// <summary>Used by a marketplace to externally identify a seller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSellerId")]
+        public virtual string ExternalSellerId { get; set; }
+
         /// <summary>Target gender of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
@@ -20497,6 +20499,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
 
+        /// <summary>Deprecated: Setting this field has no effect and attributes are never included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeAttributes")]
         public virtual System.Nullable<bool> IncludeAttributes { get; set; }
 
@@ -22922,7 +22925,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Response message for GetShoppingAdsProgramStatus.</summary>
     public class ShoppingAdsProgramStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>State of the program, It is set to enabled if there are offers for at least one region.</summary>
+        /// <summary>State of the program. `ENABLED` if there are offers for at least one region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalState")]
         public virtual string GlobalState { get; set; }
 
@@ -22941,9 +22944,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ShoppingAdsProgramStatusRegionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It will be present when
-        /// `eligibility_status` is `WARNING`. Date will be provided in [ISO
-        /// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: YYYY-MM-DD
+        /// Date your `eligibilityStatus` will become `DISAPPROVED`. Only visible when your `eligibilityStatus` is
+        /// `WARNING`. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
         public virtual string DisapprovalDate { get; set; }
@@ -22952,7 +22954,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
         public virtual string EligibilityStatus { get; set; }
 
-        /// <summary>These issues must be fixed to become eligible for the review.</summary>
+        /// <summary>Must be fixed to be eligible for review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingIssues")]
         public virtual System.Collections.Generic.IList<string> OnboardingIssues { get; set; }
 
@@ -22964,7 +22966,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
 
         /// <summary>
-        /// If a program in a given country is eligible for review. It will be present only if eligibility status is
+        /// If a program is eligible for review in a specific region. Only visible if `eligibilityStatus` is
         /// `DISAPPROVED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewEligibilityStatus")]
@@ -22975,22 +22977,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ReviewIneligibilityReason { get; set; }
 
         /// <summary>
-        /// Reason if a program in a given country is not eligible for review. Populated only if
-        /// `review_eligibility_status` is `INELIGIBLE`.
+        /// Reason a program in a specific region isn’t eligible for review. Only visible if `reviewEligibilityStatus`
+        /// is `INELIGIBLE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDescription")]
         public virtual string ReviewIneligibilityReasonDescription { get; set; }
 
         /// <summary>
-        /// This contains additional information specific to review ineligibility reasons. If review is ineligible
-        /// because of `IN_COOLDOWN_PERIOD`, it will contain timestamp for cooldown period.
+        /// Additional information for ineligibility. If `reviewIneligibilityReason` is `IN_COOLDOWN_PERIOD`, a
+        /// timestamp for the end of the cooldown period is provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIneligibilityReasonDetails")]
         public virtual ShoppingAdsProgramStatusReviewIneligibilityReasonDetails ReviewIneligibilityReasonDetails { get; set; }
 
-        /// <summary>
-        /// These issues will be evaluated in review process. Fix all the issues before requesting the review.
-        /// </summary>
+        /// <summary>Issues evaluated in the review process. Fix all issues before requesting a review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewIssues")]
         public virtual System.Collections.Generic.IList<string> ReviewIssues { get; set; }
 

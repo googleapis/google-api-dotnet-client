@@ -321,6 +321,7 @@ namespace Google.Apis.CloudRetail.v2
                     CompletionData = new CompletionDataResource(service);
                     Operations = new OperationsResource(service);
                     Placements = new PlacementsResource(service);
+                    ServingConfigs = new ServingConfigsResource(service);
                     UserEvents = new UserEventsResource(service);
                 }
 
@@ -1195,10 +1196,12 @@ namespace Google.Apis.CloudRetail.v2
                     }
 
                     /// <summary>
-                    /// Bulk import of processed completion dataset. Request processing may be synchronous. Partial
-                    /// updating is not supported. This feature is only available for users who have Retail Search
-                    /// enabled. Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if
-                    /// you are interested in using Retail Search.
+                    /// Bulk import of processed completion dataset. Request processing is asynchronous. Partial
+                    /// updating is not supported. The operation is successfully finished only after the imported
+                    /// suggestions are indexed successfully and ready for serving. The process takes hours. This
+                    /// feature is only available for users who have Retail Search enabled. Please submit a form
+                    /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in using
+                    /// Retail Search.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1211,10 +1214,12 @@ namespace Google.Apis.CloudRetail.v2
                     }
 
                     /// <summary>
-                    /// Bulk import of processed completion dataset. Request processing may be synchronous. Partial
-                    /// updating is not supported. This feature is only available for users who have Retail Search
-                    /// enabled. Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if
-                    /// you are interested in using Retail Search.
+                    /// Bulk import of processed completion dataset. Request processing is asynchronous. Partial
+                    /// updating is not supported. The operation is successfully finished only after the imported
+                    /// suggestions are indexed successfully and ready for serving. The process takes hours. This
+                    /// feature is only available for users who have Retail Search enabled. Please submit a form
+                    /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in using
+                    /// Retail Search.
                     /// </summary>
                     public class ImportRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleLongrunningOperation>
                     {
@@ -1451,7 +1456,8 @@ namespace Google.Apis.CloudRetail.v2
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
                     /// Recommendations AI placement. Before you can request predictions from your model, you must
                     /// create at least one placement for it. For more information, see [Managing
                     /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
@@ -1476,7 +1482,8 @@ namespace Google.Apis.CloudRetail.v2
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
                         /// Recommendations AI placement. Before you can request predictions from your model, you must
                         /// create at least one placement for it. For more information, see [Managing
                         /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
@@ -1524,9 +1531,10 @@ namespace Google.Apis.CloudRetail.v2
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. The resource name of the search engine placement, such as
-                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
-                    /// used to identify the serving configuration name and the set of models that will be used to make
-                    /// the search.
+                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                    /// This field is used to identify the serving configuration name and the set of models that will be
+                    /// used to make the search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2SearchRequest body, string placement)
                     {
@@ -1550,9 +1558,10 @@ namespace Google.Apis.CloudRetail.v2
 
                         /// <summary>
                         /// Required. The resource name of the search engine placement, such as
-                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
-                        /// is used to identify the serving configuration name and the set of models that will be used
-                        /// to make the search.
+                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                        /// This field is used to identify the serving configuration name and the set of models that
+                        /// will be used to make the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -1583,6 +1592,168 @@ namespace Google.Apis.CloudRetail.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/placements/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the ServingConfigs resource.</summary>
+                public virtual ServingConfigsResource ServingConfigs { get; }
+
+                /// <summary>The "servingConfigs" collection of methods.</summary>
+                public class ServingConfigsResource
+                {
+                    private const string Resource = "servingConfigs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ServingConfigsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Makes a recommendation prediction.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="placement">
+                    /// Required. Full resource name of the format:
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
+                    /// Recommendations AI placement. Before you can request predictions from your model, you must
+                    /// create at least one placement for it. For more information, see [Managing
+                    /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
+                    /// list of available placements can be seen at
+                    /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                    /// </param>
+                    public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2PredictRequest body, string placement)
+                    {
+                        return new PredictRequest(service, body, placement);
+                    }
+
+                    /// <summary>Makes a recommendation prediction.</summary>
+                    public class PredictRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2PredictResponse>
+                    {
+                        /// <summary>Constructs a new Predict request.</summary>
+                        public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2PredictRequest body, string placement) : base(service)
+                        {
+                            Placement = placement;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of the format:
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
+                        /// Recommendations AI placement. Before you can request predictions from your model, you must
+                        /// create at least one placement for it. For more information, see [Managing
+                        /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
+                        /// full list of available placements can be seen at
+                        /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Placement { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2PredictRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "predict";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+placement}:predict";
+
+                        /// <summary>Initializes Predict parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("placement", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "placement",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Performs a search. This feature is only available for users who have Retail Search enabled.
+                    /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
+                    /// interested in using Retail Search.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="placement">
+                    /// Required. The resource name of the search engine placement, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                    /// This field is used to identify the serving configuration name and the set of models that will be
+                    /// used to make the search.
+                    /// </param>
+                    public virtual SearchRequest Search(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2SearchRequest body, string placement)
+                    {
+                        return new SearchRequest(service, body, placement);
+                    }
+
+                    /// <summary>
+                    /// Performs a search. This feature is only available for users who have Retail Search enabled.
+                    /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
+                    /// interested in using Retail Search.
+                    /// </summary>
+                    public class SearchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2SearchResponse>
+                    {
+                        /// <summary>Constructs a new Search request.</summary>
+                        public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2SearchRequest body, string placement) : base(service)
+                        {
+                            Placement = placement;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the search engine placement, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                        /// This field is used to identify the serving configuration name and the set of models that
+                        /// will be used to make the search.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Placement { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2SearchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "search";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+placement}:search";
+
+                        /// <summary>Initializes Search parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("placement", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "placement",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
                             });
                         }
                     }
@@ -3040,7 +3211,9 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// user events imports: * `user_event` (default): One JSON UserEvent per line. * `user_event_ga360`: The schema
         /// is available here: https://support.google.com/analytics/answer/3437719. * `user_event_ga4`: This feature is
         /// in private preview. Please contact the support team for importing Google Analytics 4 events. The schema is
-        /// available here: https://support.google.com/analytics/answer/7029846.
+        /// available here: https://support.google.com/analytics/answer/7029846. Supported values for auto-completion
+        /// imports: * `suggestions` (default): One JSON completion suggestion per line. * `denylist`: One JSON deny
+        /// suggestion per line. * `allowlist`: One JSON allow suggestion per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -3138,8 +3311,8 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2CompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A unique complete token. This should be included in the SearchRequest resulting from this completion, which
-        /// enables accurate attribution of complete model performance.
+        /// A unique complete token. This should be included in the UserEvent.completion_detail for search events
+        /// resulting from this completion, which enables accurate attribution of complete model performance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionToken")]
         public virtual string AttributionToken { get; set; }
@@ -3168,7 +3341,11 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// <summary>Resource that represents completion results.</summary>
     public class GoogleCloudRetailV2CompleteQueryResponseCompletionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional custom attributes ingested through BigQuery.</summary>
+        /// <summary>
+        /// Custom attributes for the suggestion term. * For "user-data", the attributes are additional custom
+        /// attributes ingested through BigQuery. * For "cloud-retail", the attributes are product attributes generated
+        /// by Cloud Retail.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2CustomAttribute> Attributes { get; set; }
 
@@ -3453,9 +3630,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
 
-        /// <summary>
-        /// Id of the request / operation. This is parroting back the requestId that was passed in the request.
-        /// </summary>
+        /// <summary>Deprecated. This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -3498,12 +3673,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciliationMode")]
         public virtual string ReconciliationMode { get; set; }
 
-        /// <summary>
-        /// Unique identifier provided by client, within the ancestor dataset scope. Ensures idempotency and used for
-        /// request deduplication. Server-generated if unspecified. Up to 128 characters long and must match the
-        /// pattern: `[a-zA-Z0-9_]+`. This is returned as Operation.name in ImportMetadata. Only supported when
-        /// ImportProductsRequest.reconciliation_mode is set to `FULL`.
-        /// </summary>
+        /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -5587,9 +5757,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
 
-        /// <summary>
-        /// Id of the request / operation. This is parroting back the requestId that was passed in the request.
-        /// </summary>
+        /// <summary>Deprecated. This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -5953,9 +6121,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
 
-        /// <summary>
-        /// Id of the request / operation. This is parroting back the requestId that was passed in the request.
-        /// </summary>
+        /// <summary>Deprecated. This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -6173,8 +6339,7 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {

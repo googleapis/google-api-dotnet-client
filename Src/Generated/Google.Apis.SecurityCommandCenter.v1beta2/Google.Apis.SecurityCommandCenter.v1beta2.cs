@@ -4096,8 +4096,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual MitreAttack MitreAttack { get; set; }
 
         /// <summary>
-        /// Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined). Unlike other
-        /// attributes of a finding, a finding provider shouldn't set the value of mute.
+        /// Indicates the mute state of a finding (either muted, unmuted or undefined). Unlike other attributes of a
+        /// finding, a finding provider shouldn't set the value of mute.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mute")]
         public virtual string Mute { get; set; }
@@ -4424,7 +4424,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The project id that the resource belongs to.</summary>
+        /// <summary>The project ID that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 

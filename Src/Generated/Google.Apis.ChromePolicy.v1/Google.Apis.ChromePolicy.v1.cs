@@ -1136,6 +1136,12 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nestedFieldDescriptions")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldDescription> NestedFieldDescriptions { get; set; }
 
+        /// <summary>
+        /// Output only. Provides a list of fields that are required to be set if this field has a certain value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredItems")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaRequiredItems> RequiredItems { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1182,6 +1188,24 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noticeValue")]
         public virtual string NoticeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The fields that will become required based on the value of this field.</summary>
+    public class GoogleChromePolicyV1PolicySchemaRequiredItems : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The value(s) of the field that provoke required field enforcement. An empty field_conditions implies that
+        /// any value assigned to this field will provoke required field enforcement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldConditions")]
+        public virtual System.Collections.Generic.IList<string> FieldConditions { get; set; }
+
+        /// <summary>The fields that are required as a consequence of the field conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredFields")]
+        public virtual System.Collections.Generic.IList<string> RequiredFields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1332,8 +1356,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {

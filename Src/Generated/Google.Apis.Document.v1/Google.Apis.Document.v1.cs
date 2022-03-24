@@ -3071,9 +3071,9 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// Document represents the canonical document resource in Document Understanding AI. It is an interchange format
-    /// that provides insights into documents and allows for collaboration between users and Document Understanding AI
-    /// to iterate and optimize for quality.
+    /// Document represents the canonical document resource in Document AI. It is an interchange format that provides
+    /// insights into documents and allows for collaboration between users and Document AI to iterate and optimize for
+    /// quality.
     /// </summary>
     public class GoogleCloudDocumentaiV1Document : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3172,6 +3172,14 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
+
+        /// <summary>
+        /// Optional. This attribute indicates that the processing didn't actually identify this entity, but a
+        /// confidence score was assigned that represent the potential that this could be a false negative. A
+        /// non-present entity should have an empty mention_text and text_anchor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonPresent")]
+        public virtual System.Nullable<bool> NonPresent { get; set; }
 
         /// <summary>
         /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
@@ -4561,9 +4569,9 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// Document represents the canonical document resource in Document Understanding AI. It is an interchange format
-    /// that provides insights into documents and allows for collaboration between users and Document Understanding AI
-    /// to iterate and optimize for quality.
+    /// Document represents the canonical document resource in Document AI. It is an interchange format that provides
+    /// insights into documents and allows for collaboration between users and Document AI to iterate and optimize for
+    /// quality.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1Document : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4662,6 +4670,14 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
+
+        /// <summary>
+        /// Optional. This attribute indicates that the processing didn't actually identify this entity, but a
+        /// confidence score was assigned that represent the potential that this could be a false negative. A
+        /// non-present entity should have an empty mention_text and text_anchor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonPresent")]
+        public virtual System.Nullable<bool> NonPresent { get; set; }
 
         /// <summary>
         /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
@@ -5681,9 +5697,9 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// Document represents the canonical document resource in Document Understanding AI. It is an interchange format
-    /// that provides insights into documents and allows for collaboration between users and Document Understanding AI
-    /// to iterate and optimize for quality.
+    /// Document represents the canonical document resource in Document AI. It is an interchange format that provides
+    /// insights into documents and allows for collaboration between users and Document AI to iterate and optimize for
+    /// quality.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2Document : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5786,6 +5802,14 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
+
+        /// <summary>
+        /// Optional. This attribute indicates that the processing didn't actually identify this entity, but a
+        /// confidence score was assigned that represent the potential that this could be a false negative. A
+        /// non-present entity should have an empty mention_text and text_anchor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonPresent")]
+        public virtual System.Nullable<bool> NonPresent { get; set; }
 
         /// <summary>
         /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
@@ -7206,8 +7230,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
