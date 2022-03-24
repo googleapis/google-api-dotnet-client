@@ -517,9 +517,13 @@ namespace Google.Apis.Auth.OAuth2
 #else
 #error Unsupported target
 #endif
-
+        /// <summary>
+        /// Open a browser and navigate to a URL.
+        /// </summary>
+        /// <param name="url">URL to navigate to</param>
+        /// <returns>true if browser was launched successfully, false otherwise</returns>
 #if NETSTANDARD1_3 || NETSTANDARD2_0
-        private bool OpenBrowser(string url)
+        protected virtual bool OpenBrowser(string url)
         {
             // See https://github.com/dotnet/corefx/issues/10361
             // This is best-effort only, but should work most of the time.
@@ -544,7 +548,7 @@ namespace Google.Apis.Auth.OAuth2
             return false;
         }
 #elif NET45 || NET461
-        private bool OpenBrowser(string url)
+        protected virtual bool OpenBrowser(string url)
         {
             Process.Start(url);
             return true;
@@ -552,7 +556,7 @@ namespace Google.Apis.Auth.OAuth2
 #else
 #error Unsupported target
 #endif
-    
+
         internal class CallbackUriChooser
         {
             /// <summary>Localhost callback URI, expects a port parameter.</summary>
