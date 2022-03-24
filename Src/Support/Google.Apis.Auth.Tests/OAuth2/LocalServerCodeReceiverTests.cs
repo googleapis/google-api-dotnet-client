@@ -15,8 +15,11 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Tests.Mocks;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Google.Apis.Auth.Tests.OAuth2
@@ -250,6 +253,20 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Equal(expectedTemplate, uri1);
             Assert.Equal(expectedTemplate, uri2);
             Assert.Equal(expectedTemplate, uri3);
+        }
+
+        [Fact]
+        public async Task OpenBrowser_ThrowsExceptionOnFailure()
+        {
+            var codeReceiver = new FailingLocalServerCodeReceiver();
+            var authorizationUrl = new AuthorizationCodeRequestUrl(new Uri("https://example.com/"));
+            await Assert.ThrowsAsync<NotSupportedException>(() => 
+                codeReceiver.ReceiveCodeAsync(authorizationUrl, CancellationToken.None));
+        }
+
+        private class FailingLocalServerCodeReceiver : LocalServerCodeReceiver
+        {
+            protected override bool OpenBrowser(string url) => false;
         }
     }
 }
