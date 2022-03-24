@@ -2432,7 +2432,10 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("ADS_PER_IMPRESSION")]
                     ADSPERIMPRESSION = 30,
 
-                    /// <summary>Total earnings.</summary>
+                    /// <summary>
+                    /// Total earnings are the gross estimated earnings from revenue shared traffic before any parent
+                    /// and child account revenue share is applied.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TOTAL_EARNINGS")]
                     TOTALEARNINGS = 31,
 
@@ -3212,7 +3215,10 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("ADS_PER_IMPRESSION")]
                     ADSPERIMPRESSION = 30,
 
-                    /// <summary>Total earnings.</summary>
+                    /// <summary>
+                    /// Total earnings are the gross estimated earnings from revenue shared traffic before any parent
+                    /// and child account revenue share is applied.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TOTAL_EARNINGS")]
                     TOTALEARNINGS = 31,
 
@@ -3847,12 +3853,12 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentAdsSettings")]
         public virtual ContentAdsSettings ContentAdsSettings { get; set; }
 
-        /// <summary>Display name of the ad unit, as provided when the ad unit was created.</summary>
+        /// <summary>Required. Display name of the ad unit, as provided when the ad unit was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+        /// Required. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -2885,7 +2885,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
         public virtual string MatterId { get; set; }
 
-        /// <summary>The export name.</summary>
+        /// <summary>
+        /// The export name. Don't use special characters (~!$'(),;@:/?) in the name, they can prevent you from
+        /// downloading exports.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

@@ -6076,6 +6076,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>How long to keep generated audit files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionInterval")]
+        public virtual object RetentionInterval { get; set; }
+
+        /// <summary>How often to upload generated audit files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadInterval")]
+        public virtual object UploadInterval { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

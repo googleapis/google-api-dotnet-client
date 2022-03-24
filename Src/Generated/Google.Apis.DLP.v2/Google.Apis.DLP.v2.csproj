@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DLP.v2 Client Library</Title>
-    <Version>1.56.0.2620</Version>
+    <Version>1.56.0.2634</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2022 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

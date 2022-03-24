@@ -1221,6 +1221,13 @@ namespace Google.Apis.ApiKeysService.v2.Data
     /// <summary>The representation of a key managed by the API Keys API.</summary>
     public class V2Key : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store
+        /// and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
         /// <summary>Output only. A timestamp identifying the time this key was originally created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

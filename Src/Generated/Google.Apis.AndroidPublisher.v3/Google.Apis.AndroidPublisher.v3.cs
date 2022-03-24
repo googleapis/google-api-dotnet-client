@@ -3529,7 +3529,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 this.service = service;
             }
 
-            /// <summary>Gets testers.</summary>
+            /// <summary>Gets testers. Note: Testers resource does not support email lists.</summary>
             /// <param name="packageName">Package name of the app.</param>
             /// <param name="editId">Identifier of the edit.</param>
             /// <param name="track">The track to read from.</param>
@@ -3538,7 +3538,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 return new GetRequest(service, packageName, editId, track);
             }
 
-            /// <summary>Gets testers.</summary>
+            /// <summary>Gets testers. Note: Testers resource does not support email lists.</summary>
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Testers>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3602,7 +3602,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
-            /// <summary>Patches testers.</summary>
+            /// <summary>Patches testers. Note: Testers resource does not support email lists.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
             /// <param name="editId">Identifier of the edit.</param>
@@ -3612,7 +3612,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 return new PatchRequest(service, body, packageName, editId, track);
             }
 
-            /// <summary>Patches testers.</summary>
+            /// <summary>Patches testers. Note: Testers resource does not support email lists.</summary>
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Testers>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -3683,7 +3683,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
-            /// <summary>Updates testers.</summary>
+            /// <summary>Updates testers. Note: Testers resource does not support email lists.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
             /// <param name="editId">Identifier of the edit.</param>
@@ -3693,7 +3693,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 return new UpdateRequest(service, body, packageName, editId, track);
             }
 
-            /// <summary>Updates testers.</summary>
+            /// <summary>Updates testers. Note: Testers resource does not support email lists.</summary>
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Testers>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -9281,7 +9281,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The testers of an app. The resource for TestersService.</summary>
+    /// <summary>
+    /// The testers of an app. The resource for TestersService. Note: while it is possible in the Play Console UI to add
+    /// testers via email lists, email lists are not supported by this resource.
+    /// </summary>
     public class Testers : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>All testing Google Groups, as email addresses.</summary>

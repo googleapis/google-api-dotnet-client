@@ -451,6 +451,21 @@ namespace Google.Apis.Texttospeech.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Description of the custom voice to be synthesized.</summary>
+    public class CustomVoiceParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the AutoML model that synthesizes the custom voice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>Optional. The usage of the synthesized audio to be reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportedUsage")]
+        public virtual string ReportedUsage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The message returned to the client by the `ListVoices` method.</summary>
     public class ListVoicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -547,6 +562,13 @@ namespace Google.Apis.Texttospeech.v1.Data
     /// <summary>Description of which voice to use for a synthesis request.</summary>
     public class VoiceSelectionParams : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the
+        /// custom voice matching the specified configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customVoice")]
+        public virtual CustomVoiceParams CustomVoice { get; set; }
+
         /// <summary>
         /// Required. The language (and potentially also the region) of the voice expressed as a
         /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. "en-US". This should not include a

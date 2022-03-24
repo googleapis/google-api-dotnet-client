@@ -11124,6 +11124,10 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>Information specific to a store on a merchandising platform linked to a YouTube channel.</summary>
     public class ChannelToStoreLinkDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Google Merchant Center id of the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
+
         /// <summary>Name of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeName")]
         public virtual string StoreName { get; set; }

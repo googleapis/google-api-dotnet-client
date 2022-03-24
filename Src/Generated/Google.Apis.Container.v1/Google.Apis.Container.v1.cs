@@ -8074,7 +8074,10 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Parameters that describe the nodes in a cluster.</summary>
+    /// <summary>
+    /// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in
+    /// `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+    /// </summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

@@ -284,6 +284,7 @@ namespace Google.Apis.CloudIAP.v1
         {
             this.service = service;
             Brands = new BrandsResource(service);
+            IapTunnel = new IapTunnelResource(service);
         }
 
         /// <summary>Gets the Brands resource.</summary>
@@ -819,6 +820,402 @@ namespace Google.Apis.CloudIAP.v1
                 }
             }
         }
+
+        /// <summary>Gets the IapTunnel resource.</summary>
+        public virtual IapTunnelResource IapTunnel { get; }
+
+        /// <summary>The "iap_tunnel" collection of methods.</summary>
+        public class IapTunnelResource
+        {
+            private const string Resource = "iapTunnel";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public IapTunnelResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Locations = new LocationsResource(service);
+            }
+
+            /// <summary>Gets the Locations resource.</summary>
+            public virtual LocationsResource Locations { get; }
+
+            /// <summary>The "locations" collection of methods.</summary>
+            public class LocationsResource
+            {
+                private const string Resource = "locations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LocationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DestGroups = new DestGroupsResource(service);
+                }
+
+                /// <summary>Gets the DestGroups resource.</summary>
+                public virtual DestGroupsResource DestGroups { get; }
+
+                /// <summary>The "destGroups" collection of methods.</summary>
+                public class DestGroupsResource
+                {
+                    private const string Resource = "destGroups";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DestGroupsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new TunnelDestGroup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. GCP Project number/id and location. In the following format:
+                    /// projects/{project_number/id}/iap_tunnel/locations/{location}.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new TunnelDestGroup.</summary>
+                    public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.TunnelDestGroup>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. GCP Project number/id and location. In the following format:
+                        /// projects/{project_number/id}/iap_tunnel/locations/{location}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the TunnelDestGroup, which will become the final component of
+                        /// the resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("tunnelDestGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string TunnelDestGroupId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIAP.v1.Data.TunnelDestGroup Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/destGroups";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/iap_tunnel/locations/[^/]+$",
+                            });
+                            RequestParameters.Add("tunnelDestGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "tunnelDestGroupId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a TunnelDestGroup.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the TunnelDestGroup to be deleted. In the following format:
+                    /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a TunnelDestGroup.</summary>
+                    public class DeleteRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the TunnelDestGroup to be deleted. In the following format:
+                        /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/iap_tunnel/locations/[^/]+/destGroups/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves an existing TunnelDestGroup.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the TunnelDestGroup to be fetched. In the following format:
+                    /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves an existing TunnelDestGroup.</summary>
+                    public class GetRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.TunnelDestGroup>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the TunnelDestGroup to be fetched. In the following format:
+                        /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/iap_tunnel/locations/[^/]+/destGroups/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists the existing TunnelDestGroups. To group across all locations, use a `-` as the location
+                    /// ID. For example: /v1/projects/123/iap_tunnel/locations/-/destGroups
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. GCP Project number/id and location. In the following format:
+                    /// projects/{project_number/id}/iap_tunnel/locations/{location}. A `-` can be used for the location
+                    /// to group across all locations.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists the existing TunnelDestGroups. To group across all locations, use a `-` as the location
+                    /// ID. For example: /v1/projects/123/iap_tunnel/locations/-/destGroups
+                    /// </summary>
+                    public class ListRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ListTunnelDestGroupsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. GCP Project number/id and location. In the following format:
+                        /// projects/{project_number/id}/iap_tunnel/locations/{location}. A `-` can be used for the
+                        /// location to group across all locations.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of groups to return. The service may return fewer than this value. If
+                        /// unspecified, at most 100 groups will be returned. The maximum value is 1000; values above
+                        /// 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListTunnelDestGroups` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other parameters provided to
+                        /// `ListTunnelDestGroups` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/destGroups";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/iap_tunnel/locations/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a TunnelDestGroup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a TunnelDestGroup.</summary>
+                    public class PatchRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.TunnelDestGroup>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The field mask specifying which IAP settings should be updated. If omitted, then all of the
+                        /// settings are updated. See
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIAP.v1.Data.TunnelDestGroup Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/iap_tunnel/locations/[^/]+/destGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>The "v1" collection of methods.</summary>
@@ -1345,8 +1742,7 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1513,6 +1909,24 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from ListTunnelDestGroups.</summary>
+    public class ListTunnelDestGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be send as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>TunnelDestGroup existing in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tunnelDestGroups")]
+        public virtual System.Collections.Generic.IList<TunnelDestGroup> TunnelDestGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1778,6 +2192,27 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A TunnelDestGroup.</summary>
+    public class TunnelDestGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>null List of CIDRs that this group applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrs")]
+        public virtual System.Collections.Generic.IList<string> Cidrs { get; set; }
+
+        /// <summary>null List of FQDNs that this group applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
+        public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

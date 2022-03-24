@@ -605,7 +605,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                 /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
-                /// be smaller or equal to the server time.
+                /// be earlier or equal to the server time.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
@@ -2133,7 +2133,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                     /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
-                    /// Must be smaller or equal to the server time.
+                    /// Must be earlier or equal to the server time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
@@ -2675,7 +2675,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                 /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
-                /// be smaller or equal to the server time.
+                /// be earlier or equal to the server time.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
@@ -4915,7 +4915,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                     /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
-                    /// Must be smaller or equal to the server time.
+                    /// Must be earlier or equal to the server time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
@@ -5876,7 +5876,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                 /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
-                /// be smaller or equal to the server time.
+                /// be earlier or equal to the server time.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
@@ -7404,7 +7404,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
                     /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
-                    /// Must be smaller or equal to the server time.
+                    /// Must be earlier or equal to the server time.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
@@ -7893,8 +7893,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8026,8 +8025,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual MitreAttack MitreAttack { get; set; }
 
         /// <summary>
-        /// Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined). Unlike other
-        /// attributes of a finding, a finding provider shouldn't set the value of mute.
+        /// Indicates the mute state of a finding (either muted, unmuted or undefined). Unlike other attributes of a
+        /// finding, a finding provider shouldn't set the value of mute.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mute")]
         public virtual string Mute { get; set; }
@@ -8384,7 +8383,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The project id that the resource belongs to.</summary>
+        /// <summary>The project ID that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 
@@ -9345,7 +9344,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
         public virtual string ParentName { get; set; }
 
-        /// <summary>The project id that the resource belongs to.</summary>
+        /// <summary>The project ID that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 
