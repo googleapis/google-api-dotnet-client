@@ -2278,8 +2278,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3679,7 +3678,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual string DomainId { get; set; }
 
-        /// <summary>True when the user is deleted or the user's profile is not visible.</summary>
+        /// <summary>When `true`, the user is deleted or their profile is not visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 

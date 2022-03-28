@@ -7421,10 +7421,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year
-    /// (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day
-    /// (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime *
-    /// google.protobuf.Timestamp
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
     /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8403,7 +8403,10 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Parameters that describe the nodes in a cluster.</summary>
+    /// <summary>
+    /// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in
+    /// `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+    /// </summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8426,6 +8429,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
         public virtual string BootDiskKmsKey { get; set; }
+
+        /// <summary>
+        /// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
+        public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
         /// <summary>
         /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
@@ -10269,6 +10278,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
+
+        /// <summary>
+        /// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
+        public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
         /// <summary>GCFS config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]

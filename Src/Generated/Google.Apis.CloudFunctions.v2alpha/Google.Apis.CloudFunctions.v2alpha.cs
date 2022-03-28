@@ -1566,6 +1566,14 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
         public virtual string Attribute { get; set; }
 
+        /// <summary>
+        /// Optional. The operator used for matching the events with the value of the filter. If not specified, only
+        /// events that have an exact key-value pair specified in the filter are matched. The only allowed value is
+        /// `match-path-pattern`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; }
+
         /// <summary>Required. The value for the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -2358,6 +2366,10 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }
+
+        /// <summary>Output only. The name of service revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
 
         /// <summary>
         /// Output only. Name of the service associated with a Function. The format of this field is

@@ -4719,7 +4719,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If
         /// a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property
-        /// accepts up to 80 plain text characters.
+        /// accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderId")]
         public virtual string PurchaseOrderId { get; set; }
@@ -5925,7 +5925,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If
         /// a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property
-        /// accepts up to 80 plain text characters.
+        /// accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderId")]
         public virtual string PurchaseOrderId { get; set; }
