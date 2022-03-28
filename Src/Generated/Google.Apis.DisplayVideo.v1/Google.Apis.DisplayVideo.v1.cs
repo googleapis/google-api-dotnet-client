@@ -18462,6 +18462,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual ChannelAssignedTargetingOptionDetails ChannelDetails { get; set; }
 
         /// <summary>
+        /// Content duration details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_CONTENT_DURATION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentDurationDetails")]
+        public virtual ContentDurationAssignedTargetingOptionDetails ContentDurationDetails { get; set; }
+
+        /// <summary>
+        /// Content genre details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_CONTENT_GENRE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentGenreDetails")]
+        public virtual ContentGenreAssignedTargetingOptionDetails ContentGenreDetails { get; set; }
+
+        /// <summary>
         /// Content instream position details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
         /// </summary>
@@ -18474,6 +18488,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPositionDetails")]
         public virtual ContentOutstreamPositionAssignedTargetingOptionDetails ContentOutstreamPositionDetails { get; set; }
+
+        /// <summary>
+        /// Content duration details. This field will be populated when the TargetingType is
+        /// `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentStreamTypeDetails")]
+        public virtual ContentStreamTypeAssignedTargetingOptionDetails ContentStreamTypeDetails { get; set; }
 
         /// <summary>
         /// Day and time details. This field will be populated when the targeting_type is `TARGETING_TYPE_DAY_AND_TIME`.
@@ -19948,6 +19969,80 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }
 
     /// <summary>
+    /// Details for content duration assigned targeting option. This will be populated in the content_duration_details
+    /// field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting all options is not
+    /// supported. Remove all content duration targeting options to achieve this effect.
+    /// </summary>
+    public class ContentDurationAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The content duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentDuration")]
+        public virtual string ContentDuration { get; set; }
+
+        /// <summary>
+        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable content duration. This will be populated in the content_duration_details field when
+    /// targeting_type is `TARGETING_TYPE_CONTENT_DURATION`.
+    /// </summary>
+    public class ContentDurationTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The content duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentDuration")]
+        public virtual string ContentDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for content genre assigned targeting option. This will be populated in the content_genre_details field
+    /// when targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. Explicitly targeting all options is not supported. Remove
+    /// all content genre targeting options to achieve this effect.
+    /// </summary>
+    public class ContentGenreAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the content genre.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Indicates if this option is being negatively targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negative")]
+        public virtual System.Nullable<bool> Negative { get; set; }
+
+        /// <summary>
+        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_GENRE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable content genre. This will be populated in the content_genre_details field when
+    /// targeting_type is `TARGETING_TYPE_CONTENT_GENRE`.
+    /// </summary>
+    public class ContentGenreTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the content genre</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Assigned content instream position targeting option details. This will be populated in the
     /// content_instream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
     /// </summary>
@@ -20032,6 +20127,41 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The content outstream position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPosition")]
         public virtual string ContentOutstreamPosition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for content stream type assigned targeting option. This will be populated in the
+    /// content_stream_type_details field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. Explicitly
+    /// targeting all options is not supported. Remove all content stream type targeting options to achieve this effect.
+    /// </summary>
+    public class ContentStreamTypeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The content stream type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentStreamType")]
+        public virtual string ContentStreamType { get; set; }
+
+        /// <summary>
+        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable content stream type. This will be populated in the content_stream_type_details field
+    /// when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+    /// </summary>
+    public class ContentStreamTypeTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The content stream type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentStreamType")]
+        public virtual string ContentStreamType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21075,8 +21205,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21779,6 +21908,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
         public virtual BiddingStrategy BidStrategy { get; set; }
+
+        /// <summary>Immutable. The billable outcome of the insertion order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billableOutcome")]
+        public virtual string BillableOutcome { get; set; }
 
         /// <summary>Required. The budget allocation settings of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budget")]
@@ -24602,6 +24735,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categoryDetails")]
         public virtual CategoryTargetingOptionDetails CategoryDetails { get; set; }
 
+        /// <summary>Content duration resource details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentDurationDetails")]
+        public virtual ContentDurationTargetingOptionDetails ContentDurationDetails { get; set; }
+
+        /// <summary>Content genre resource details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentGenreDetails")]
+        public virtual ContentGenreTargetingOptionDetails ContentGenreDetails { get; set; }
+
         /// <summary>Content instream position details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPositionDetails")]
         public virtual ContentInstreamPositionTargetingOptionDetails ContentInstreamPositionDetails { get; set; }
@@ -24609,6 +24750,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Content outstream position details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPositionDetails")]
         public virtual ContentOutstreamPositionTargetingOptionDetails ContentOutstreamPositionDetails { get; set; }
+
+        /// <summary>Content stream type resource details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentStreamTypeDetails")]
+        public virtual ContentStreamTypeTargetingOptionDetails ContentStreamTypeDetails { get; set; }
 
         /// <summary>Device make and model resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMakeModelDetails")]

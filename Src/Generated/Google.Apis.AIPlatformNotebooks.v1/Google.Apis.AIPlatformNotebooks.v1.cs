@@ -2903,6 +2903,69 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>
+                /// Gets an access token for the consumer service account that the customer attached to the runtime.
+                /// Only accessible from the tenant instance.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual RefreshRuntimeTokenInternalRequest RefreshRuntimeTokenInternal(Google.Apis.AIPlatformNotebooks.v1.Data.RefreshRuntimeTokenInternalRequest body, string name)
+                {
+                    return new RefreshRuntimeTokenInternalRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Gets an access token for the consumer service account that the customer attached to the runtime.
+                /// Only accessible from the tenant instance.
+                /// </summary>
+                public class RefreshRuntimeTokenInternalRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.RefreshRuntimeTokenInternalResponse>
+                {
+                    /// <summary>Constructs a new RefreshRuntimeTokenInternal request.</summary>
+                    public RefreshRuntimeTokenInternalRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.RefreshRuntimeTokenInternalRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.RefreshRuntimeTokenInternalRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "refreshRuntimeTokenInternal";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:refreshRuntimeTokenInternal";
+
+                    /// <summary>Initializes RefreshRuntimeTokenInternal parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Report and process a runtime event.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -4012,8 +4075,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5063,6 +5125,35 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Request for getting a new access token.</summary>
+    public class RefreshRuntimeTokenInternalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The VM hardware token for authenticating the VM.
+        /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
+        public virtual string VmId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response with a new access token.</summary>
+    public class RefreshRuntimeTokenInternalResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The OAuth 2.0 access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Output only. Token expiration time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request for registering a notebook instance.</summary>

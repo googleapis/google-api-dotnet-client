@@ -672,6 +672,71 @@ namespace Google.Apis.WorkflowExecutions.v1
                         }
                     }
                 }
+
+                /// <summary>
+                /// Triggers a new execution using the latest revision of the given workflow by a Pub/Sub push
+                /// notification.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="workflow">
+                /// Required. Name of the workflow for which an execution should be created. Format:
+                /// projects/{project}/locations/{location}/workflows/{workflow}
+                /// </param>
+                public virtual TriggerPubsubExecutionRequest TriggerPubsubExecution(Google.Apis.WorkflowExecutions.v1.Data.TriggerPubsubExecutionRequest body, string workflow)
+                {
+                    return new TriggerPubsubExecutionRequest(service, body, workflow);
+                }
+
+                /// <summary>
+                /// Triggers a new execution using the latest revision of the given workflow by a Pub/Sub push
+                /// notification.
+                /// </summary>
+                public class TriggerPubsubExecutionRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.Execution>
+                {
+                    /// <summary>Constructs a new TriggerPubsubExecution request.</summary>
+                    public TriggerPubsubExecutionRequest(Google.Apis.Services.IClientService service, Google.Apis.WorkflowExecutions.v1.Data.TriggerPubsubExecutionRequest body, string workflow) : base(service)
+                    {
+                        Workflow = workflow;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the workflow for which an execution should be created. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("workflow", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Workflow { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.WorkflowExecutions.v1.Data.TriggerPubsubExecutionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "triggerPubsubExecution";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+workflow}:triggerPubsubExecution";
+
+                    /// <summary>Initializes TriggerPubsubExecution parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("workflow", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "workflow",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+$",
+                        });
+                    }
+                }
             }
         }
     }
@@ -802,6 +867,56 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A message that is published by publishers and consumed by subscribers. The message must contain either a
+    /// non-empty data field or at least one attribute. Note that client libraries represent this object differently
+    /// depending on the language. See the corresponding [client library
+    /// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for more information. See [quotas and
+    /// limits] (https://cloud.google.com/pubsub/quotas) for more information about message limits.
+    /// </summary>
+    public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Attributes for this message. If this field is empty, the message must contain non-empty data. This can be
+        /// used to filter messages on the subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
+
+        /// <summary>
+        /// The message data field. If this field is empty, the message must contain at least one attribute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// ID of this message, assigned by the server when the message is published. Guaranteed to be unique within the
+        /// topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        /// delivery. It must not be populated by the publisher in a `Publish` call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>
+        /// If non-empty, identifies related messages for which publish order should be respected. If a `Subscription`
+        /// has `enable_message_ordering` set to `true`, messages published with the same non-empty `ordering_key` value
+        /// will be delivered to subscribers in the order in which they are received by the Pub/Sub system. All
+        /// `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key` value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderingKey")]
+        public virtual string OrderingKey { get; set; }
+
+        /// <summary>
+        /// The time at which the message was published, populated by the server when it receives the `Publish` call. It
+        /// must not be populated by the publisher in a `Publish` call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
+        public virtual object PublishTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A collection of stack elements (frames) where an error occurred.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -827,6 +942,30 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         /// <summary>The step the error occurred at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("step")]
         public virtual string Step { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the TriggerPubsubExecution method.</summary>
+    public class TriggerPubsubExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. LINT: LEGACY_NAMES The query parameter value for __GCP_CloudEventsMode, set by the Eventarc
+        /// service when configuring triggers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("GCPCloudEventsMode")]
+        public virtual string GCPCloudEventsMode { get; set; }
+
+        /// <summary>Required. The message of the Pub/Sub push notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual PubsubMessage Message { get; set; }
+
+        /// <summary>
+        /// Required. The subscription of the Pub/Sub push notification. Format: projects/{project}/subscriptions/{sub}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual string Subscription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

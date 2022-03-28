@@ -602,7 +602,8 @@ namespace Google.Apis.CloudDeploy.v1
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. Filter builds to be returned. See https://google.aip.dev/160 for more details.
+                            /// Optional. Filter rollouts to be returned. See https://google.aip.dev/160 for more
+                            /// details.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -871,7 +872,7 @@ namespace Google.Apis.CloudDeploy.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter builds to be returned. See https://google.aip.dev/160 for more details.
+                        /// Optional. Filter releases to be returned. See https://google.aip.dev/160 for more details.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -1351,7 +1352,7 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Filter builds to be returned. See https://google.aip.dev/160 for more details.
+                    /// Filter pipelines to be returned. See https://google.aip.dev/160 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -2378,7 +2379,7 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filter builds to be returned. See https://google.aip.dev/160 for more details.
+                    /// Optional. Filter targets to be returned. See https://google.aip.dev/160 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }

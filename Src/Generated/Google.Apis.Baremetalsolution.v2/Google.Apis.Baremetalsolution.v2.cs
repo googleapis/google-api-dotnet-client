@@ -2629,8 +2629,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3401,6 +3400,18 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Output only. The name of the provisioning quota.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Network bandwidth, Gbps</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkBandwidth")]
+        public virtual System.Nullable<long> NetworkBandwidth { get; set; }
+
+        /// <summary>Server count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCount")]
+        public virtual System.Nullable<long> ServerCount { get; set; }
+
+        /// <summary>Storage size (GB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageGib")]
+        public virtual System.Nullable<long> StorageGib { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
