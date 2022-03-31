@@ -10675,6 +10675,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
         /// <summary>
+        /// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will
+        /// be rejected except for RestoreAgent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locked")]
+        public virtual System.Nullable<bool> Locked { get; set; }
+
+        /// <summary>
         /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates
         /// the name automatically. Format: `projects//locations//agents/`.
         /// </summary>
@@ -11666,6 +11673,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>Optional. The data format of the exported agent. If not specified, `BLOB` is assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
 
         /// <summary>
         /// Optional. Environment name. If not set, draft environment is assumed. Format:
@@ -19420,8 +19431,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {

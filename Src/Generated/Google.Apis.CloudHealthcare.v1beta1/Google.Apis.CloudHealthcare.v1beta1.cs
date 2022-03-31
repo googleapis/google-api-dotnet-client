@@ -7608,10 +7608,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.13.1),
                         /// [R4](https://hl7.org/implement/standards/fhir/R4/http.html#3.1.0.7.1)). If multiple
                         /// resources match, all matching resources are deleted. Search terms are provided as query
-                        /// parameters following the same pattern as the search method. Note: Unless resource versioning
-                        /// is disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted
-                        /// resources are moved to a history repository that can still be retrieved through vread and
-                        /// related methods, unless they are removed by the purge method. This method requires
+                        /// parameters following the same pattern as the search method. Not all FHIR resources that
+                        /// match the search query might be deleted because, by default, a maximum of 100 FHIR resources
+                        /// can be deleted. The number of FHIR resources that can be deleted depends on the page size of
+                        /// the returned resources, which you can control using the `_count` query parameter. Even when
+                        /// using `_count`, you can delete a maximum 1,000 FHIR resources per each call of
+                        /// `conditionalDelete`. Note: Unless resource versioning is disabled by setting the
+                        /// disable_resource_versioning flag on the FHIR store, the deleted resources are moved to a
+                        /// history repository that can still be retrieved through vread and related methods, unless
+                        /// they are removed by the purge method. This method requires
                         /// the`healthcare.fhirStores.searchResources` and `healthcare.fhirResources.delete` permissions
                         /// on the parent FHIR store. For samples that show how to call `conditionalDelete`, see
                         /// [Conditionally deleting a FHIR
@@ -7637,10 +7642,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.13.1),
                         /// [R4](https://hl7.org/implement/standards/fhir/R4/http.html#3.1.0.7.1)). If multiple
                         /// resources match, all matching resources are deleted. Search terms are provided as query
-                        /// parameters following the same pattern as the search method. Note: Unless resource versioning
-                        /// is disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted
-                        /// resources are moved to a history repository that can still be retrieved through vread and
-                        /// related methods, unless they are removed by the purge method. This method requires
+                        /// parameters following the same pattern as the search method. Not all FHIR resources that
+                        /// match the search query might be deleted because, by default, a maximum of 100 FHIR resources
+                        /// can be deleted. The number of FHIR resources that can be deleted depends on the page size of
+                        /// the returned resources, which you can control using the `_count` query parameter. Even when
+                        /// using `_count`, you can delete a maximum 1,000 FHIR resources per each call of
+                        /// `conditionalDelete`. Note: Unless resource versioning is disabled by setting the
+                        /// disable_resource_versioning flag on the FHIR store, the deleted resources are moved to a
+                        /// history repository that can still be retrieved through vread and related methods, unless
+                        /// they are removed by the purge method. This method requires
                         /// the`healthcare.fhirStores.searchResources` and `healthcare.fhirResources.delete` permissions
                         /// on the parent FHIR store. For samples that show how to call `conditionalDelete`, see
                         /// [Conditionally deleting a FHIR
@@ -13281,6 +13291,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
         public virtual string DestinationDataset { get; set; }
 
+        /// <summary>
+        /// Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the
+        /// default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant
+        /// the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service
+        /// account. Only one of `config` and `gcs_config_uri` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsConfigUri")]
+        public virtual string GcsConfigUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13306,6 +13325,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterConfig")]
         public virtual DicomFilterConfig FilterConfig { get; set; }
 
+        /// <summary>
+        /// Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the
+        /// default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant
+        /// the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service
+        /// account. Only one of `config` and `gcs_config_uri` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsConfigUri")]
+        public virtual string GcsConfigUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13327,6 +13355,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStore")]
         public virtual string DestinationStore { get; set; }
+
+        /// <summary>
+        /// Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the
+        /// default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant
+        /// the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service
+        /// account. Only one of `config` and `gcs_config_uri` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsConfigUri")]
+        public virtual string GcsConfigUri { get; set; }
 
         /// <summary>
         /// A filter specifying the resources to include in the output. If not specified, all resources are included in

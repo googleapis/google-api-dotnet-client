@@ -2761,7 +2761,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentTextAnchor TextAnchor { get; set; }
 
-        /// <summary>Entity type from a schema e.g. `Address`.</summary>
+        /// <summary>Required. Entity type from a schema e.g. `Address`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3893,7 +3893,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; }
 
-        /// <summary>Entity type from a schema e.g. `Address`.</summary>
+        /// <summary>Required. Entity type from a schema e.g. `Address`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -5291,7 +5291,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentTextAnchor TextAnchor { get; set; }
 
-        /// <summary>Entity type from a schema e.g. `Address`.</summary>
+        /// <summary>Required. Entity type from a schema e.g. `Address`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -6434,6 +6434,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The display name of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Denotes that this ProcessorVersion is managed by google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
+        public virtual System.Nullable<bool> GoogleManaged { get; set; }
 
         /// <summary>The KMS key name used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]

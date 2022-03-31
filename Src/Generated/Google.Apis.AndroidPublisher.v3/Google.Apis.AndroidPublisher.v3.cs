@@ -34,6 +34,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="initializer">The service initializer.</param>
         public AndroidPublisherService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Applications = new ApplicationsResource(this);
             Edits = new EditsResource(this);
             Generatedapks = new GeneratedapksResource(this);
             Grants = new GrantsResource(this);
@@ -85,6 +86,9 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>View and manage your Google Play Developer account</summary>
             public const string Androidpublisher = "https://www.googleapis.com/auth/androidpublisher";
         }
+
+        /// <summary>Gets the Applications resource.</summary>
+        public virtual ApplicationsResource Applications { get; }
 
         /// <summary>Gets the Edits resource.</summary>
         public virtual EditsResource Edits { get; }
@@ -298,6 +302,243 @@ namespace Google.Apis.AndroidPublisher.v3
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "applications" collection of methods.</summary>
+    public class ApplicationsResource
+    {
+        private const string Resource = "applications";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ApplicationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            DeviceTierConfigs = new DeviceTierConfigsResource(service);
+        }
+
+        /// <summary>Gets the DeviceTierConfigs resource.</summary>
+        public virtual DeviceTierConfigsResource DeviceTierConfigs { get; }
+
+        /// <summary>The "deviceTierConfigs" collection of methods.</summary>
+        public class DeviceTierConfigsResource
+        {
+            private const string Resource = "deviceTierConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DeviceTierConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a new device tier config for an app.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">Package name of the app.</param>
+            public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.DeviceTierConfig body, string packageName)
+            {
+                return new CreateRequest(service, body, packageName);
+            }
+
+            /// <summary>Creates a new device tier config for an app.</summary>
+            public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.DeviceTierConfig>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.DeviceTierConfig body, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Package name of the app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Whether the service should accept device IDs that are unknown to Play's device catalog.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("allowUnknownDevices", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AllowUnknownDevices { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.DeviceTierConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/deviceTierConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("allowUnknownDevices", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allowUnknownDevices",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Returns a particular device tier config.</summary>
+            /// <param name="packageName">Package name of the app.</param>
+            /// <param name="deviceTierConfigId">Required. Id of an existing device tier config.</param>
+            public virtual GetRequest Get(string packageName, long deviceTierConfigId)
+            {
+                return new GetRequest(service, packageName, deviceTierConfigId);
+            }
+
+            /// <summary>Returns a particular device tier config.</summary>
+            public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.DeviceTierConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, long deviceTierConfigId) : base(service)
+                {
+                    PackageName = packageName;
+                    DeviceTierConfigId = deviceTierConfigId;
+                    InitParameters();
+                }
+
+                /// <summary>Package name of the app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. Id of an existing device tier config.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("deviceTierConfigId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long DeviceTierConfigId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/deviceTierConfigs/{deviceTierConfigId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deviceTierConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceTierConfigId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Returns created device tier configs, ordered by descending creation time.</summary>
+            /// <param name="packageName">Package name of the app.</param>
+            public virtual ListRequest List(string packageName)
+            {
+                return new ListRequest(service, packageName);
+            }
+
+            /// <summary>Returns created device tier configs, ordered by descending creation time.</summary>
+            public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListDeviceTierConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    InitParameters();
+                }
+
+                /// <summary>Package name of the app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// The maximum number of device tier configs to return. The service may return fewer than this value.
+                /// If unspecified, at most 10 device tier configs will be returned. The maximum value for this field is
+                /// 100; values above 100 will be coerced to 100. Device tier configs will be ordered by descending
+                /// creation time.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListDeviceTierConfigs` call. Provide this to retrieve the
+                /// subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/deviceTierConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -7998,6 +8239,41 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// LINT.IfChange A group of devices. A group is defined by a set of device selectors. A device belongs to the group
+    /// if it matches any selector (logical OR).
+    /// </summary>
+    public class DeviceGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Device selectors for this group. A device matching any of the selectors is included in this group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSelectors")]
+        public virtual System.Collections.Generic.IList<DeviceSelector> DeviceSelectors { get; set; }
+
+        /// <summary>The name of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifier of a device.</summary>
+    public class DeviceId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of Build.BRAND.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildBrand")]
+        public virtual string BuildBrand { get; set; }
+
+        /// <summary>Value of Build.DEVICE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildDevice")]
+        public virtual string BuildDevice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Characteristics of the user's device.</summary>
     public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8049,6 +8325,56 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Conditions about a device's RAM capabilities.</summary>
+    public class DeviceRam : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum RAM in bytes (bound excluded).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBytes")]
+        public virtual System.Nullable<long> MaxBytes { get; set; }
+
+        /// <summary>Minimum RAM in bytes (bound included).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minBytes")]
+        public virtual System.Nullable<long> MinBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Selector for a device group. A selector consists of a set of conditions on the device that should all match
+    /// (logical AND) to determine a device group eligibility. For instance, if a selector specifies RAM conditions,
+    /// device model inclusion and device model exclusion, a device is considered to match if: device matches RAM
+    /// conditions AND device matches one of the included device models AND device doesn't match excluded device models
+    /// </summary>
+    public class DeviceSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Conditions on the device's RAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceRam")]
+        public virtual DeviceRam DeviceRam { get; set; }
+
+        /// <summary>Device models excluded by this selector, even if they match all other conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDeviceIds")]
+        public virtual System.Collections.Generic.IList<DeviceId> ExcludedDeviceIds { get; set; }
+
+        /// <summary>
+        /// A device that has any of these system features is excluded by this selector, even if it matches all other
+        /// conditions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forbiddenSystemFeatures")]
+        public virtual System.Collections.Generic.IList<SystemFeature> ForbiddenSystemFeatures { get; set; }
+
+        /// <summary>Device models included by this selector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedDeviceIds")]
+        public virtual System.Collections.Generic.IList<DeviceId> IncludedDeviceIds { get; set; }
+
+        /// <summary>A device needs to have all these system features to be included by the selector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSystemFeatures")]
+        public virtual System.Collections.Generic.IList<SystemFeature> RequiredSystemFeatures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The device spec used to generate a system APK.</summary>
     public class DeviceSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8066,6 +8392,69 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>All installed locales represented as BCP-47 strings, e.g. "en-US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedLocales")]
         public virtual System.Collections.Generic.IList<string> SupportedLocales { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single device tier. Devices matching any of the device groups in device_group_names are considered to match
+    /// the tier.
+    /// </summary>
+    public class DeviceTier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Groups of devices included in this tier. These groups must be defined explicitly under device_groups in this
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceGroupNames")]
+        public virtual System.Collections.Generic.IList<string> DeviceGroupNames { get; set; }
+
+        /// <summary>
+        /// The priority level of the tier. Tiers are evaluated in descending order of level: the highest level tier has
+        /// the highest priority. The highest tier matching a given device is selected for that device. You should use a
+        /// contiguous range of levels for your tiers in a tier set; tier levels in a tier set must be unique. For
+        /// instance, if your tier set has 4 tiers (including the global fallback), you should define tiers 1, 2 and 3
+        /// in this configuration. Note: tier 0 is implicitly defined as a global fallback and selected for devices that
+        /// don't match any of the tiers explicitly defined here. You mustn't define level 0 explicitly in this
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual System.Nullable<int> Level { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LINT.IfChange Configuration describing device targeting criteria for the content of an app.</summary>
+    public class DeviceTierConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Definition of device groups for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceGroups")]
+        public virtual System.Collections.Generic.IList<DeviceGroup> DeviceGroups { get; set; }
+
+        /// <summary>Output only. The device tier config ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTierConfigId")]
+        public virtual System.Nullable<long> DeviceTierConfigId { get; set; }
+
+        /// <summary>Definition of the set of device tiers for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTierSet")]
+        public virtual DeviceTierSet DeviceTierSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of device tiers. A tier set determines what variation of app content gets served to a specific device, for
+    /// device-targeted content. You should assign a priority level to each tier, which determines the ordering by which
+    /// they are evaluated by Play. See the documentation of DeviceTier.level for more details.
+    /// </summary>
+    public class DeviceTierSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Device tiers belonging to the set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTiers")]
+        public virtual System.Collections.Generic.IList<DeviceTier> DeviceTiers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8564,6 +8953,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricePeriod")]
         public virtual string IntroductoryPricePeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response listing existing device tier configs.</summary>
+    public class ListDeviceTierConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Device tier configs created by the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTierConfigs")]
+        public virtual System.Collections.Generic.IList<DeviceTierConfig> DeviceTierConfigs { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9276,6 +9683,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>All system APK variants created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variants")]
         public virtual System.Collections.Generic.IList<Variant> Variants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a system feature.</summary>
+    public class SystemFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

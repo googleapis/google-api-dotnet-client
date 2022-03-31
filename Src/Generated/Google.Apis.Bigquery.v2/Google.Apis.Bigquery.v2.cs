@@ -4819,6 +4819,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>[Optional] Number of hours for the max time travel for all tables in the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTimeTravelHours")]
+        public virtual System.Nullable<long> MaxTimeTravelHours { get; set; }
+
         /// <summary>[Output-only] Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZS")]
         public virtual System.Nullable<bool> SatisfiesPZS { get; set; }

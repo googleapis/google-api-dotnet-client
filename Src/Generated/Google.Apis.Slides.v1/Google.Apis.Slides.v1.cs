@@ -2104,13 +2104,14 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string PageType { get; set; }
 
         /// <summary>
-        /// The revision ID of the presentation containing this page. Can be used in update requests to assert that the
-        /// presentation revision hasn't changed since the last read operation. Only populated if the user has edit
-        /// access to the presentation. The format of the revision ID may change over time, so it should be treated
-        /// opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and
-        /// cannot be shared across users. If the revision ID is unchanged between calls, then the presentation has not
-        /// changed. Conversely, a changed ID (for the same presentation and user) usually means the presentation has
-        /// been updated; however, a changed ID can also be due to internal factors such as ID format changes.
+        /// Output only. The revision ID of the presentation. Can be used in update requests to assert the presentation
+        /// revision hasn't changed since the last read operation. Only populated if the user has edit access to the
+        /// presentation. The revision ID is not a sequential number but an opaque string. The format of the revision ID
+        /// might change over time. A returned revision ID is only guaranteed to be valid for 24 hours after it has been
+        /// returned and cannot be shared across users. If the revision ID is unchanged between calls, then the
+        /// presentation has not changed. Conversely, a changed ID (for the same presentation and user) usually means
+        /// the presentation has been updated. However, a changed ID can also be due to internal factors such as ID
+        /// format changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
@@ -2421,13 +2422,14 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string PresentationId { get; set; }
 
         /// <summary>
-        /// The revision ID of the presentation. Can be used in update requests to assert that the presentation revision
-        /// hasn't changed since the last read operation. Only populated if the user has edit access to the
-        /// presentation. The format of the revision ID may change over time, so it should be treated opaquely. A
-        /// returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be
-        /// shared across users. If the revision ID is unchanged between calls, then the presentation has not changed.
-        /// Conversely, a changed ID (for the same presentation and user) usually means the presentation has been
-        /// updated; however, a changed ID can also be due to internal factors such as ID format changes.
+        /// Output only. The revision ID of the presentation. Can be used in update requests to assert the presentation
+        /// revision hasn't changed since the last read operation. Only populated if the user has edit access to the
+        /// presentation. The revision ID is not a sequential number but a nebulous string. The format of the revision
+        /// ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be
+        /// valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is
+        /// unchanged between calls, then the presentation has not changed. Conversely, a changed ID (for the same
+        /// presentation and user) usually means the presentation has been updated. However, a changed ID can also be
+        /// due to internal factors such as ID format changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
@@ -4355,9 +4357,10 @@ namespace Google.Apis.Slides.v1.Data
     public class WriteControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The revision ID of the presentation required for the write request. If specified and the
-        /// `required_revision_id` doesn't exactly match the presentation's current `revision_id`, the request will not
-        /// be processed and will return a 400 bad request error.
+        /// The revision ID of the presentation required for the write request. If specified and the required revision
+        /// ID doesn't match the presentation's current revision ID, the request is not processed and returns a 400 bad
+        /// request error. When a required revision ID is returned in a response, it indicates the revision ID of the
+        /// document after the request was applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredRevisionId")]
         public virtual string RequiredRevisionId { get; set; }

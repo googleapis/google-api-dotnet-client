@@ -385,6 +385,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 DeviceCheckConfig = new DeviceCheckConfigResource(service);
                 RecaptchaConfig = new RecaptchaConfigResource(service);
                 RecaptchaEnterpriseConfig = new RecaptchaEnterpriseConfigResource(service);
+                RecaptchaV3Config = new RecaptchaV3ConfigResource(service);
                 SafetyNetConfig = new SafetyNetConfigResource(service);
             }
 
@@ -1646,6 +1647,238 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/apps/[^/]+/recaptchaEnterpriseConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the RecaptchaV3Config resource.</summary>
+            public virtual RecaptchaV3ConfigResource RecaptchaV3Config { get; }
+
+            /// <summary>The "recaptchaV3Config" collection of methods.</summary>
+            public class RecaptchaV3ConfigResource
+            {
+                private const string Resource = "recaptchaV3Config";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RecaptchaV3ConfigResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Atomically gets the RecaptchaV3Configs for the specified list of apps. For security reasons, the
+                /// `site_secret` field is never populated in the response.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent project name shared by all RecaptchaV3Configs being retrieved, in the format
+                /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// retrieved must match this field, or the entire batch fails.
+                /// </param>
+                public virtual BatchGetRequest BatchGet(string parent)
+                {
+                    return new BatchGetRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Atomically gets the RecaptchaV3Configs for the specified list of apps. For security reasons, the
+                /// `site_secret` field is never populated in the response.
+                /// </summary>
+                public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project name shared by all RecaptchaV3Configs being retrieved, in the
+                    /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any
+                    /// resource being retrieved must match this field, or the entire batch fails.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The relative resource names of the RecaptchaV3Configs to retrieve, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ``` A maximum of 100 objects can be
+                    /// retrieved in a batch.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchGet";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/apps/-/recaptchaV3Config:batchGet";
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "names",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the RecaptchaV3Config for the specified app. For security reasons, the `site_secret` field is
+                /// never populated in the response.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The relative resource name of the RecaptchaV3Config, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the RecaptchaV3Config for the specified app. For security reasons, the `site_secret` field is
+                /// never populated in the response.
+                /// </summary>
+                public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaV3Config>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the RecaptchaV3Config, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/recaptchaV3Config$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the RecaptchaV3Config for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange reCAPTCHA V3 tokens for App Check tokens. For security
+                /// reasons, the `site_secret` field is never populated in the response.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaV3Config body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the RecaptchaV3Config for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange reCAPTCHA V3 tokens for App Check tokens. For security
+                /// reasons, the `site_secret` field is never populated in the response.
+                /// </summary>
+                public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaV3Config>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaV3Config body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format:
+                    /// ``` projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A comma-separated list of names of fields in the RecaptchaV3Config to update. Example:
+                    /// `site_secret`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaV3Config Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/recaptchaV3Config$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -3018,6 +3251,17 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the BatchGetRecaptchaV3Configs method.</summary>
+    public class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>RecaptchaV3Configs retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaRecaptchaV3Config> Configs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the BatchGetSafetyNetConfigs method.</summary>
     public class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3488,6 +3732,45 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// <summary>
         /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA Enterprise tokens will be valid.
         /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An app's reCAPTCHA v3 configuration object. This configuration is used by ExchangeRecaptchaV3Token to validate
+    /// reCAPTCHA tokens issued to apps by reCAPTCHA v3. It also controls certain properties of the returned App Check
+    /// token, such as its ttl.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaRecaptchaV3Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format: ```
+        /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The site secret used to identify your service for reCAPTCHA v3 verification. For
+        /// security reasons, this field will never be populated in any response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteSecret")]
+        public virtual string SiteSecret { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the `site_secret` field was previously set. Since we will never return the
+        /// `site_secret` field, this field is the only way to find out whether it was previously set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteSecretSet")]
+        public virtual System.Nullable<bool> SiteSecretSet { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA tokens will be valid. If unset, a
+        /// default value of 1 day is assumed. Must be between 30 minutes and 7 days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
         public virtual object TokenTtl { get; set; }
