@@ -5402,8 +5402,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("joinedSpacesAffinityScore")]
         public virtual System.Nullable<double> JoinedSpacesAffinityScore { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMessagePostedTimestampMicros")]
+        public virtual System.Nullable<long> LastMessagePostedTimestampMicros { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memberMetadataCount")]
+        public virtual System.Nullable<double> MemberMetadataCount { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("messageScore")]
         public virtual System.Nullable<double> MessageScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numAucContacts")]
+        public virtual System.Nullable<long> NumAucContacts { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("smallContactListAffinityScore")]
         public virtual System.Nullable<double> SmallContactListAffinityScore { get; set; }
@@ -5413,6 +5422,9 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("spaceAgeInDays")]
         public virtual System.Nullable<double> SpaceAgeInDays { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceCreationTimestampMicros")]
+        public virtual System.Nullable<long> SpaceCreationTimestampMicros { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
         public virtual System.Nullable<double> TopicalityScore { get; set; }
@@ -7495,16 +7507,13 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Information relevant only to a restrict entry. NextId: 12</summary>
     public class RestrictItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// LINT.ThenChange(//depot/google3/java/com/google/apps/search/quality/itemsuggest/utils/SubtypeRerankingUtils.java)
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFollowUpRestrict")]
         public virtual DriveFollowUpRestrict DriveFollowUpRestrict { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("driveLocationRestrict")]
         public virtual DriveLocationRestrict DriveLocationRestrict { get; set; }
 
-        /// <summary>LINT.IfChange Drive Types.</summary>
+        /// <summary>Drive Types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveMimeTypeRestrict")]
         public virtual DriveMimeTypeRestrict DriveMimeTypeRestrict { get; set; }
 
@@ -8487,6 +8496,13 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Primary key for User resource.</summary>
     public class UserId : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Opaque, server-assigned ID of the user profile associated with App/user acting on behalf of the
+        /// human user. This is currently only set when a 3P application is acting on the user's behalf.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actingUserId")]
+        public virtual string ActingUserId { get; set; }
+
         /// <summary>Opaque, server-assigned ID of the User.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }

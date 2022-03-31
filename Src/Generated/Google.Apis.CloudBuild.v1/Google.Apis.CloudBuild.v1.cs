@@ -1623,71 +1623,6 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>
-                /// Add a Bitbucket Server repository to a given BitbucketServerConfig's connected repositories. This
-                /// API is experimental.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="config">
-                /// Required. The name of the `BitbucketServerConfig` to add a connected repository. Format:
-                /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
-                /// </param>
-                public virtual AddBitbucketServerConnectedRepositoryRequest AddBitbucketServerConnectedRepository(Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryRequest body, string config)
-                {
-                    return new AddBitbucketServerConnectedRepositoryRequest(service, body, config);
-                }
-
-                /// <summary>
-                /// Add a Bitbucket Server repository to a given BitbucketServerConfig's connected repositories. This
-                /// API is experimental.
-                /// </summary>
-                public class AddBitbucketServerConnectedRepositoryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryResponse>
-                {
-                    /// <summary>Constructs a new AddBitbucketServerConnectedRepository request.</summary>
-                    public AddBitbucketServerConnectedRepositoryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryRequest body, string config) : base(service)
-                    {
-                        Config = config;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the `BitbucketServerConfig` to add a connected repository. Format:
-                    /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("config", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Config { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudBuild.v1.Data.AddBitbucketServerConnectedRepositoryRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "addBitbucketServerConnectedRepository";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+config}:addBitbucketServerConnectedRepository";
-
-                    /// <summary>Initializes AddBitbucketServerConnectedRepository parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("config", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "config",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/bitbucketServerConfigs/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Creates a new `BitbucketServerConfig`. This API is experimental.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Name of the parent resource.</param>
@@ -4711,35 +4646,6 @@ namespace Google.Apis.CloudBuild.v1
 }
 namespace Google.Apis.CloudBuild.v1.Data
 {
-    /// <summary>RPC request object accepted by the AddBitbucketServerConnectedRepository RPC method.</summary>
-    public class AddBitbucketServerConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The connected repository to add.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
-        public virtual BitbucketServerRepositoryId ConnectedRepository { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>RPC request object returned by the AddBitbucketServerConnectedRepository RPC method.</summary>
-    public class AddBitbucketServerConnectedRepositoryResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The name of the `BitbucketServerConfig` that added connected repository. Format:
-        /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual string Config { get; set; }
-
-        /// <summary>The connected repository.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
-        public virtual BitbucketServerRepositoryId ConnectedRepository { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>ApprovalConfig describes configuration for manual approval of a build.</summary>
     public class ApprovalConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5918,8 +5824,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5992,8 +5897,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string Revision { get; set; }
 
         /// <summary>
-        /// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is
-        /// assumed to be the repo from which to read the specified path.
+        /// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the
+        /// trigger invocation originated is assumed to be the repo from which to read the specified path.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -6166,7 +6071,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repoType")]
         public virtual string RepoType { get; set; }
 
-        /// <summary>The URI of the repo (required).</summary>
+        /// <summary>The URI of the repo. Either uri or repository can be specified and is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 

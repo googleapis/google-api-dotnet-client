@@ -4405,8 +4405,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review for free listings program in a specific region. Important: This method is only whitelisted
-        /// for selected merchants.
+        /// Requests a review of free listings in a specific region Important: This method is only whitelisted for
+        /// selected merchants.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -4416,8 +4416,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review for free listings program in a specific region. Important: This method is only whitelisted
-        /// for selected merchants.
+        /// Requests a review of free listings in a specific region Important: This method is only whitelisted for
+        /// selected merchants.
         /// </summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -12503,7 +12503,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Requests a review for Shopping Ads program in a specific region.</summary>
+        /// <summary>Requests a review of Shopping ads in a specific region.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewShoppingAdsRequest body, long merchantId)
@@ -12511,7 +12511,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new RequestreviewRequest(service, body, merchantId);
         }
 
-        /// <summary>Requests a review for Shopping Ads program in a specific region.</summary>
+        /// <summary>Requests a review of Shopping ads in a specific region.</summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Requestreview request.</summary>
@@ -15034,8 +15034,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class FreeListingsProgramStatusRegionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date your `eligibilityStatus` will become `DISAPPROVED`. Only visible when your `eligibilityStatus` is
-        /// `WARNING`. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
+        /// Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your
+        /// eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
         public virtual string DisapprovalDate { get; set; }
@@ -15044,7 +15044,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
         public virtual string EligibilityStatus { get; set; }
 
-        /// <summary>Must be fixed to be eligible for review.</summary>
+        /// <summary>Issues that must be fixed to be eligible for review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingIssues")]
         public virtual System.Collections.Generic.IList<string> OnboardingIssues { get; set; }
 
@@ -19688,7 +19688,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
         public virtual string ExpirationDate { get; set; }
 
-        /// <summary>Used by a marketplace to externally identify a seller.</summary>
+        /// <summary>
+        /// Required for multi-seller accounts. Use this attribute if you're a marketplace uploading products for
+        /// various sellers to your multi-seller account.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalSellerId")]
         public virtual string ExternalSellerId { get; set; }
 
@@ -20599,7 +20602,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brandExclusion")]
         public virtual System.Collections.Generic.IList<string> BrandExclusion { get; set; }
 
-        /// <summary>Required. The content language used as part of the unique identifier.</summary>
+        /// <summary>
+        /// Required. The content language used as part of the unique identifier. Currently only en value is supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; }
 
@@ -20744,7 +20749,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shippingServiceNames")]
         public virtual System.Collections.Generic.IList<string> ShippingServiceNames { get; set; }
 
-        /// <summary>Required. The target country used as part of the unique identifier.</summary>
+        /// <summary>
+        /// Required. The target country used as part of the unique identifier. Currently only US and CA are supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }
 
@@ -22944,8 +22951,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ShoppingAdsProgramStatusRegionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date your `eligibilityStatus` will become `DISAPPROVED`. Only visible when your `eligibilityStatus` is
-        /// `WARNING`. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
+        /// Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your
+        /// eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
         public virtual string DisapprovalDate { get; set; }
@@ -22954,7 +22961,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
         public virtual string EligibilityStatus { get; set; }
 
-        /// <summary>Must be fixed to be eligible for review.</summary>
+        /// <summary>Issues that must be fixed to be eligible for review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingIssues")]
         public virtual System.Collections.Generic.IList<string> OnboardingIssues { get; set; }
 

@@ -1578,8 +1578,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1777,10 +1776,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX
-    /// filesystem and are ignored for other transfers.
-    /// </summary>
+    /// <summary>Specifies the metadata options for running a transfer.</summary>
     public class MetadataOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1792,7 +1788,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID
-        /// is not preserved.
+        /// is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other
+        /// transfers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gid")]
         public virtual string Gid { get; set; }
@@ -1807,7 +1804,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not
-        /// preserved.
+        /// preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -1820,7 +1817,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string StorageClass { get; set; }
 
         /// <summary>
-        /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+        /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only
+        /// applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symlink")]
         public virtual string Symlink { get; set; }
@@ -1841,7 +1839,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID
-        /// is not preserved.
+        /// is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other
+        /// transfers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -2448,6 +2447,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwriteObjectsAlreadyExistingInSink")]
         public virtual System.Nullable<bool> OverwriteObjectsAlreadyExistingInSink { get; set; }
+
+        /// <summary>
+        /// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by
+        /// overwrite_objects_already_existing_in_sink.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overwriteWhen")]
+        public virtual string OverwriteWhen { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

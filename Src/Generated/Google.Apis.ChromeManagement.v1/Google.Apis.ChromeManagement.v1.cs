@@ -1119,7 +1119,7 @@ namespace Google.Apis.ChromeManagement.v1
 
                     /// <summary>
                     /// Optional. Only include resources that match the filter. Supported filter fields: - org_unit_id -
-                    /// serial_number
+                    /// serial_number - device_id
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }

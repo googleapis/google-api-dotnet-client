@@ -1706,7 +1706,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentTextAnchor TextAnchor { get; set; }
 
-        /// <summary>Entity type from a schema e.g. `Address`.</summary>
+        /// <summary>Required. Entity type from a schema e.g. `Address`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -2866,7 +2866,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; }
 
-        /// <summary>Entity type from a schema e.g. `Address`.</summary>
+        /// <summary>Required. Entity type from a schema e.g. `Address`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

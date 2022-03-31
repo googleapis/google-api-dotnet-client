@@ -3372,8 +3372,8 @@ namespace Google.Apis.Classroom.v1
             /// permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course
             /// ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the
             /// following request errors: * CourseMemberLimitReached * CourseNotModifiable *
-            /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a student or teacher in the
-            /// course.
+            /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
+            /// student or teacher in the course.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -3393,8 +3393,8 @@ namespace Google.Apis.Classroom.v1
             /// permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course
             /// ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the
             /// following request errors: * CourseMemberLimitReached * CourseNotModifiable *
-            /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a student or teacher in the
-            /// course.
+            /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
+            /// student or teacher in the course.
             /// </summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Student>
             {
@@ -3734,8 +3734,8 @@ namespace Google.Apis.Classroom.v1
             /// teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. *
             /// `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: *
             /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
-            /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a teacher or student in the
-            /// course.
+            /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
+            /// teacher or student in the course.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -3754,8 +3754,8 @@ namespace Google.Apis.Classroom.v1
             /// teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. *
             /// `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: *
             /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
-            /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a teacher or student in the
-            /// course.
+            /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
+            /// teacher or student in the course.
             /// </summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Teacher>
             {
@@ -4837,7 +4837,7 @@ namespace Google.Apis.Classroom.v1
         /// if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND`
         /// if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the
         /// update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following request errors: *
-        /// CourseNotModifiable
+        /// CourseNotModifiable * InactiveCourseOwner
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">
@@ -4854,7 +4854,7 @@ namespace Google.Apis.Classroom.v1
         /// if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND`
         /// if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the
         /// update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following request errors: *
-        /// CourseNotModifiable
+        /// CourseNotModifiable * InactiveCourseOwner
         /// </summary>
         public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
