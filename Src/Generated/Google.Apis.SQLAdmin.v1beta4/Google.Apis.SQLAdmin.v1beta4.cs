@@ -5651,6 +5651,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disallowUsernameSubstring")]
         public virtual System.Nullable<bool> DisallowUsernameSubstring { get; set; }
 
+        /// <summary>Whether the password policy is enabled or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePasswordPolicy")]
+        public virtual System.Nullable<bool> EnablePasswordPolicy { get; set; }
+
         /// <summary>Minimum number of characters allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
         public virtual System.Nullable<int> MinLength { get; set; }

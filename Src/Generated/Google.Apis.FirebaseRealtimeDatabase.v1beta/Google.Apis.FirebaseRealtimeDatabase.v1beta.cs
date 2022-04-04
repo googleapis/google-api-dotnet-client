@@ -793,6 +793,71 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                         });
                     }
                 }
+
+                /// <summary>
+                /// Restores a DatabaseInstance that was previously marked to be deleted. This may only be used on a
+                /// DatabaseInstance in the DELETED state. Purged DatabaseInstance's may not be recovered.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The fully qualified resource name of the database instance, in the form:
+                /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                /// </param>
+                public virtual UndeleteRequest Undelete(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.UndeleteDatabaseInstanceRequest body, string name)
+                {
+                    return new UndeleteRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Restores a DatabaseInstance that was previously marked to be deleted. This may only be used on a
+                /// DatabaseInstance in the DELETED state. Purged DatabaseInstance's may not be recovered.
+                /// </summary>
+                public class UndeleteRequest : FirebaseRealtimeDatabaseBaseServiceRequest<Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.UndeleteDatabaseInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The fully qualified resource name of the database instance, in the form:
+                    /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.UndeleteDatabaseInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "undelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}:undelete";
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
             }
         }
     }
@@ -866,6 +931,13 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta.Data
 
     /// <summary>The request sent to the ReenableDatabaseInstance method.</summary>
     public class ReenableDatabaseInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request sent to UndeleteDatabaseInstance method.</summary>
+    public class UndeleteDatabaseInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

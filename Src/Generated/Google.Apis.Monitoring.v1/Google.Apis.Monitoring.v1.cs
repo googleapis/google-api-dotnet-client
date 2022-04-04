@@ -1802,6 +1802,10 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columnLayout")]
         public virtual ColumnLayout ColumnLayout { get; set; }
 
+        /// <summary>Filters to reduce the amount of data charted based on the filter criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashboardFilters")]
+        public virtual System.Collections.Generic.IList<DashboardFilter> DashboardFilters { get; set; }
+
         /// <summary>Required. The mutable, human-readable name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -1841,6 +1845,32 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLayout")]
         public virtual RowLayout RowLayout { get; set; }
+    }
+
+    /// <summary>A filter to reduce the amount of data charted in relevant widgets.</summary>
+    public class DashboardFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specified filter type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
+        public virtual string FilterType { get; set; }
+
+        /// <summary>Required. The key for the label</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelKey")]
+        public virtual string LabelKey { get; set; }
+
+        /// <summary>A variable-length string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>
+        /// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard
+        /// filter will be applied to all relevant widgets in the dashboard.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateVariable")]
+        public virtual string TemplateVariable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Groups a time series query definition with charting options.</summary>

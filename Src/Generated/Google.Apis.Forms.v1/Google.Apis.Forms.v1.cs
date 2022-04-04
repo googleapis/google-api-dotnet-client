@@ -75,6 +75,15 @@ namespace Google.Apis.Forms.v1
 
             /// <summary>See and download all your Google Drive files</summary>
             public static string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
+
+            /// <summary>See, edit, create, and delete all your Google Forms forms</summary>
+            public static string FormsBody = "https://www.googleapis.com/auth/forms.body";
+
+            /// <summary>See all your Google Forms forms</summary>
+            public static string FormsBodyReadonly = "https://www.googleapis.com/auth/forms.body.readonly";
+
+            /// <summary>See all responses to your Google Forms forms</summary>
+            public static string FormsResponsesReadonly = "https://www.googleapis.com/auth/forms.responses.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Forms API.</summary>
@@ -90,6 +99,15 @@ namespace Google.Apis.Forms.v1
 
             /// <summary>See and download all your Google Drive files</summary>
             public const string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
+
+            /// <summary>See, edit, create, and delete all your Google Forms forms</summary>
+            public const string FormsBody = "https://www.googleapis.com/auth/forms.body";
+
+            /// <summary>See all your Google Forms forms</summary>
+            public const string FormsBodyReadonly = "https://www.googleapis.com/auth/forms.body.readonly";
+
+            /// <summary>See all responses to your Google Forms forms</summary>
+            public const string FormsResponsesReadonly = "https://www.googleapis.com/auth/forms.responses.readonly";
         }
 
         /// <summary>Gets the Forms resource.</summary>

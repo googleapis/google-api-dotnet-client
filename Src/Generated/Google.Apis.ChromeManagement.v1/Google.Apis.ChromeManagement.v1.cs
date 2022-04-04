@@ -1320,6 +1320,41 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Audio report.</summary>
+    public class GoogleChromeManagementV1AudioStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Active input device's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputDevice")]
+        public virtual string InputDevice { get; set; }
+
+        /// <summary>Output only. Active input device's gain in [0, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGain")]
+        public virtual System.Nullable<int> InputGain { get; set; }
+
+        /// <summary>Output only. Is active input device mute or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputMute")]
+        public virtual System.Nullable<bool> InputMute { get; set; }
+
+        /// <summary>Output only. Active output device's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputDevice")]
+        public virtual string OutputDevice { get; set; }
+
+        /// <summary>Output only. Is active output device mute or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputMute")]
+        public virtual System.Nullable<bool> OutputMute { get; set; }
+
+        /// <summary>Output only. Active output device's volume in [0, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputVolume")]
+        public virtual System.Nullable<int> OutputVolume { get; set; }
+
+        /// <summary>Output only. Timestamp of when the sample was collected on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Battery info</summary>
     public class GoogleChromeManagementV1BatteryInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1467,9 +1502,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isCwsHosted")]
         public virtual System.Nullable<bool> IsCwsHosted { get; set; }
 
+        /// <summary>Output only. Whether the app is only for Kiosk mode on Chrome OS devices</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isKioskOnly")]
+        public virtual System.Nullable<bool> IsKioskOnly { get; set; }
+
         /// <summary>Output only. Whether the app or extension is a theme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isTheme")]
         public virtual System.Nullable<bool> IsTheme { get; set; }
+
+        /// <summary>Output only. Whether this app is enabled for Kiosk mode on Chrome OS devices</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kioskEnabled")]
+        public virtual System.Nullable<bool> KioskEnabled { get; set; }
 
         /// <summary>Output only. The minimum number of users using this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minUserCount")]
@@ -2089,6 +2132,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Telemetry data collected from a managed device.</summary>
     public class GoogleChromeManagementV1TelemetryDevice : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Audio reports collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AudioStatusReport> AudioStatusReport { get; set; }
+
         /// <summary>Output only. Information on battery specs for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batteryInfo")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BatteryInfo> BatteryInfo { get; set; }

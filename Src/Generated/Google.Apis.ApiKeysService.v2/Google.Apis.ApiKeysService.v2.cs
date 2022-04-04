@@ -825,8 +825,7 @@ namespace Google.Apis.ApiKeysService.v2
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Optional. Indicate that keys are marked as deleted within 30 days should also be returned.
-                    /// Normally only active keys are returned.
+                    /// Optional. Indicate that keys deleted in the past 30 days should also be returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ShowDeleted { get; set; }

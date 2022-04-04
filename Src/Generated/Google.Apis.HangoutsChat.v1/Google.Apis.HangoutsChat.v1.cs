@@ -329,7 +329,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Google Chat thread ID of a thread (created
+                /// relieves Chat apps and webhooks from having to store the Google Chat thread ID of a thread (created
                 /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
                 /// existing thread, is set in message.
                 /// </summary>
@@ -418,10 +418,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.
+            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
+            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
+            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
+            /// in message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -507,10 +507,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.
+            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
+            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
+            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
+            /// in message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -790,7 +790,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Google Chat thread ID of a thread (created
+                /// relieves Chat apps and webhooks from having to store the Google Chat thread ID of a thread (created
                 /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
                 /// existing thread, is set in message.
                 /// </summary>
@@ -879,10 +879,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.
+            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
+            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
+            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
+            /// in message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -968,10 +968,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.
+            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
+            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
+            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
+            /// in message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -1056,7 +1056,10 @@ namespace Google.Apis.HangoutsChat.v1
                 this.service = service;
             }
 
-            /// <summary>Returns a membership.</summary>
+            /// <summary>
+            /// Returns a membership. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             /// <param name="name">
             /// Required. Resource name of the membership to be retrieved, in the form "spaces/*/members/*". Example:
             /// spaces/AAAAAAAAAAAA/members/111111111111111111111
@@ -1066,7 +1069,10 @@ namespace Google.Apis.HangoutsChat.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Returns a membership.</summary>
+            /// <summary>
+            /// Returns a membership. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1107,7 +1113,10 @@ namespace Google.Apis.HangoutsChat.v1
                 }
             }
 
-            /// <summary>Lists human memberships in a space.</summary>
+            /// <summary>
+            /// Lists human memberships in a space. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             /// <param name="parent">
             /// Required. The resource name of the space for which membership list is to be fetched, in the form
             /// "spaces/*". Example: spaces/AAAAAAAAAAAA
@@ -1117,7 +1126,10 @@ namespace Google.Apis.HangoutsChat.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists human memberships in a space.</summary>
+            /// <summary>
+            /// Lists human memberships in a space. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMembershipsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1223,6 +1235,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Gets the metadata of a message attachment. The attachment data is fetched using the media API.
+                /// Requires [service account
+                /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
@@ -1234,6 +1248,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Gets the metadata of a message attachment. The attachment data is fetched using the media API.
+                /// Requires [service account
+                /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
                 /// </summary>
                 public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Attachment>
                 {
@@ -1275,7 +1291,10 @@ namespace Google.Apis.HangoutsChat.v1
                 }
             }
 
-            /// <summary>Creates a message.</summary>
+            /// <summary>
+            /// Creates a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAAAAAAAA
@@ -1285,7 +1304,10 @@ namespace Google.Apis.HangoutsChat.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a message.</summary>
+            /// <summary>
+            /// Creates a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1313,7 +1335,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Optional. Opaque thread identifier string that can be specified to group messages into a single
                 /// thread. If this is the first message with a given thread identifier, a new thread is created.
                 /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Google Chat thread ID of a thread (created
+                /// relieves Chat apps and webhooks from having to store the Google Chat thread ID of a thread (created
                 /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
                 /// existing thread, is set in message.
                 /// </summary>
@@ -1366,7 +1388,10 @@ namespace Google.Apis.HangoutsChat.v1
                 }
             }
 
-            /// <summary>Deletes a message.</summary>
+            /// <summary>
+            /// Deletes a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             /// <param name="name">
             /// Required. Resource name of the message to be deleted, in the form "spaces/*/messages/*" Example:
             /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
@@ -1376,7 +1401,10 @@ namespace Google.Apis.HangoutsChat.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a message.</summary>
+            /// <summary>
+            /// Deletes a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1417,7 +1445,10 @@ namespace Google.Apis.HangoutsChat.v1
                 }
             }
 
-            /// <summary>Returns a message.</summary>
+            /// <summary>
+            /// Returns a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             /// <param name="name">
             /// Required. Resource name of the message to be retrieved, in the form "spaces/*/messages/*". Example:
             /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
@@ -1427,7 +1458,10 @@ namespace Google.Apis.HangoutsChat.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Returns a message.</summary>
+            /// <summary>
+            /// Returns a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1468,7 +1502,10 @@ namespace Google.Apis.HangoutsChat.v1
                 }
             }
 
-            /// <summary>Updates a message.</summary>
+            /// <summary>
+            /// Updates a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Resource name in the form `spaces/*/messages/*`. Example:
@@ -1479,7 +1516,10 @@ namespace Google.Apis.HangoutsChat.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a message.</summary>
+            /// <summary>
+            /// Updates a message. Requires [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+            /// </summary>
             public class UpdateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1543,7 +1583,10 @@ namespace Google.Apis.HangoutsChat.v1
             }
         }
 
-        /// <summary>Returns a space.</summary>
+        /// <summary>
+        /// Returns a space. Requires [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// </summary>
         /// <param name="name">
         /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
         /// </param>
@@ -1552,7 +1595,10 @@ namespace Google.Apis.HangoutsChat.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Returns a space.</summary>
+        /// <summary>
+        /// Returns a space. Requires [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// </summary>
         public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1592,13 +1638,19 @@ namespace Google.Apis.HangoutsChat.v1
             }
         }
 
-        /// <summary>Lists spaces the caller is a member of.</summary>
+        /// <summary>
+        /// Lists spaces the caller is a member of. Requires [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists spaces the caller is a member of.</summary>
+        /// <summary>
+        /// Lists spaces the caller is a member of. Requires [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// </summary>
         public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListSpacesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1685,10 +1737,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
             /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.
+            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
+            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
+            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
+            /// in message.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -1761,17 +1813,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Parameters that a bot can use to configure how it's response is posted.</summary>
+    /// <summary>Parameters that a Chat app can use to configure how it's response is posted.</summary>
     public class ActionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A response to an event related to a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs). Must
-        /// be accompanied by `ResponseType.Dialog`.
+        /// A response to an event related to a [dialog](https://developers.google.com/chat/how-tos/dialogs). Must be
+        /// accompanied by `ResponseType.Dialog`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogAction")]
         public virtual DialogAction DialogAction { get; set; }
 
-        /// <summary>The type of bot response.</summary>
+        /// <summary>The type of Chat app response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -1853,8 +1905,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ContentType { get; set; }
 
         /// <summary>
-        /// Output only. The download URL which should be used to allow a human user to download the attachment. Bots
-        /// should not use this URL to download attachment content.
+        /// Output only. The download URL which should be used to allow a human user to download the attachment. Chat
+        /// apps should not use this URL to download attachment content.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
         public virtual string DownloadUri { get; set; }
@@ -1872,8 +1924,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Source { get; set; }
 
         /// <summary>
-        /// Output only. The thumbnail URL which should be used to preview the attachment to a human user. Bots should
-        /// not use this URL to download attachment content.
+        /// Output only. The thumbnail URL which should be used to preview the attachment to a human user. Chat apps
+        /// should not use this URL to download attachment content.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUri")]
         public virtual string ThumbnailUri { get; set; }
@@ -2043,7 +2095,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// Represents information about the user's client, such as locale, host app, and platform. For Chat apps,
     /// `CommonEventObject` includes data submitted by users interacting with cards, like data entered in
-    /// [dialogs](https://developers.google.com/chat/how-tos/bot-dialogs).
+    /// [dialogs](https://developers.google.com/chat/how-tos/dialogs).
     /// </summary>
     public class CommonEventObject : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2053,7 +2105,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// object represents each input: For single-value widgets, `StringInput`. For multi-value widgets, an array of
         /// `StringInput` objects. For a date-time picker, a `DateTimeInput`. For a date-only picker, a `DateInput`. For
         /// a time-only picker, a `TimeInput`. Corresponds with the data entered by a user on a card in a
-        /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
+        /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInputs")]
         public virtual System.Collections.Generic.IDictionary<string, Inputs> FormInputs { get; set; }
@@ -2140,22 +2192,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Represents information about the user's client, such as locale, host app, and platform. For Chat apps,
         /// `CommonEventObject` includes information submitted by users interacting with
-        /// [dialogs](https://developers.google.com/chat/how-tos/bot-dialogs), like data entered on a card.
+        /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), like data entered on a card.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonEventObject Common { get; set; }
 
         /// <summary>
-        /// The URL the bot should redirect the user to after they have completed an authorization or configuration flow
-        /// outside of Google Chat. See the [Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for more
-        /// information.
+        /// The URL the Chat app should redirect the user to after they have completed an authorization or configuration
+        /// flow outside of Google Chat. See the [Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for
+        /// more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
 
-        /// <summary>
-        /// The type of [dialog](https://developers.google.com/chat/how-tos/bot-dialogs) event received.
-        /// </summary>
+        /// <summary>The type of [dialog](https://developers.google.com/chat/how-tos/dialogs) event received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogEventType")]
         public virtual string DialogEventType { get; set; }
 
@@ -2164,7 +2214,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual object EventTime { get; set; }
 
         /// <summary>
-        /// True when the event is related to [dialogs](https://developers.google.com/chat/how-tos/bot-dialogs).
+        /// True when the event is related to [dialogs](https://developers.google.com/chat/how-tos/dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
         public virtual System.Nullable<bool> IsDialogEvent { get; set; }
@@ -2178,15 +2228,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual Space Space { get; set; }
 
         /// <summary>
-        /// The bot-defined key for the thread related to the event. See the thread_key field of the
+        /// The Chat app-defined key for the thread related to the event. See the thread_key field of the
         /// `spaces.message.create` request for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
         public virtual string ThreadKey { get; set; }
 
         /// <summary>
-        /// A secret value that bots can use to verify if a request is from Google. The token is randomly generated by
-        /// Google, remains static, and can be obtained from the Google Chat API configuration page in the Cloud
+        /// A secret value that Chat apps can use to verify if a request is from Google. The token is randomly generated
+        /// by Google, remains static, and can be obtained from the Google Chat API configuration page in the Cloud
         /// Console. Developers can revoke/regenerate it if needed from the same page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
@@ -2219,19 +2269,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs) and request status code.
+    /// Contains a [dialog](https://developers.google.com/chat/how-tos/dialogs) and request status code.
     /// </summary>
     public class DialogAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Status for a request to either invoke or submit a
-        /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs). Displays a status and message to users, if
+        /// [dialog](https://developers.google.com/chat/how-tos/dialogs). Displays a status and message to users, if
         /// necessary. For example, in case of an error or success.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionStatus")]
         public virtual ActionStatus ActionStatus { get; set; }
 
-        /// <summary>[Dialog](https://developers.google.com/chat/how-tos/bot-dialogs) for the request.</summary>
+        /// <summary>[Dialog](https://developers.google.com/chat/how-tos/dialogs) for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialog")]
         public virtual Dialog Dialog { get; set; }
 
@@ -2294,7 +2344,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// The method name is used to identify which part of the form triggered the form submission. This information
-        /// is echoed back to the bot as part of the card click event. The same method name can be used for several
+        /// is echoed back to the Chat app as part of the card click event. The same method name can be used for several
         /// elements that trigger a common behavior if desired.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionMethodName")]
@@ -3297,7 +3347,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A matched url in a Chat message. Chat bots can unfurl matched URLs. For more information, refer to [Unfurl
+    /// A matched url in a Chat message. Chat apps can unfurl matched URLs. For more information, refer to [Unfurl
     /// links](/chat/how-tos/link-unfurling).
     /// </summary>
     public class MatchedUrl : Google.Apis.Requests.IDirectResponseSchema
@@ -3353,7 +3403,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A message in Google Chat.</summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. Parameters that a bot can use to configure how its response is posted.</summary>
+        /// <summary>Input only. Parameters that a Chat app can use to configure how its response is posted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionResponse")]
         public virtual ActionResponse ActionResponse { get; set; }
 
@@ -3361,7 +3411,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
 
-        /// <summary>Plain-text body of the message with all bot mentions stripped out.</summary>
+        /// <summary>Plain-text body of the message with all Chat app mentions stripped out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argumentText")]
         public virtual string ArgumentText { get; set; }
 
@@ -3408,13 +3458,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Text for generating preview chips. This text will not be displayed to the user, but any links to images, web
-        /// pages, videos, etc. included here will generate preview chips.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("previewText")]
-        public virtual string PreviewText { get; set; }
-
         /// <summary>The user who created the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sender")]
         public virtual User Sender { get; set; }
@@ -3427,7 +3470,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
 
-        /// <summary>Plain-text body of the message.</summary>
+        /// <summary>
+        /// Plain-text body of the message. The first link to an image, video, web page, or other preview-able item
+        /// generates a preview chip.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -3498,7 +3544,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Annotation metadata for slash commands (/).</summary>
     public class SlashCommandMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The bot whose command was invoked.</summary>
+        /// <summary>The Chat app whose command was invoked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bot")]
         public virtual User Bot { get; set; }
 
@@ -3524,7 +3570,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A space in Google Chat. Spaces are conversations between two or more users or 1:1 messages between a user and a
-    /// Chat bot.
+    /// Chat app.
     /// </summary>
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3538,7 +3584,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Whether the space is a DM between a bot and a single human.</summary>
+        /// <summary>Output only. Whether the space is a DM between a Chat app and a single human.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
         public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 
