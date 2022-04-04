@@ -3786,6 +3786,10 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("premium")]
         public virtual System.Nullable<bool> Premium { get; set; }
 
+        /// <summary>Output only. State of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>
         /// The account time zone, as used by reporting. For more information, see [changing the time zone of your
         /// reports](https://support.google.com/adsense/answer/9830725).
@@ -3816,6 +3820,10 @@ namespace Google.Apis.Adsense.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingDimensionId")]
         public virtual string ReportingDimensionId { get; set; }
+
+        /// <summary>Output only. State of the ad client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

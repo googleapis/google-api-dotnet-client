@@ -2863,6 +2863,40 @@ namespace Google.Apis.ArtifactRegistry.v1
 }
 namespace Google.Apis.ArtifactRegistry.v1.Data
 {
+    /// <summary>
+    /// A detailed representation of an Apt artifact. Information in the record is derived from the archive's control
+    /// file. See https://www.debian.org/doc/debian-policy/ch-controlfields.html
+    /// </summary>
+    public class AptArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Operating system architecture of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Output only. Repository component of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("component")]
+        public virtual string Component { get; set; }
+
+        /// <summary>Output only. Contents of the artifact's control metadata file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlFile")]
+        public virtual string ControlFile { get; set; }
+
+        /// <summary>Output only. The Artifact Registry resource name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The Apt package name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Output only. An artifact is a binary or source package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2972,8 +3006,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3075,6 +3108,21 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Error information explaining why a package was not imported.</summary>
+    public class ImportAptArtifactsErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Google Cloud Storage location requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportAptArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
     public class ImportAptArtifactsGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3090,12 +3138,49 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The operation metadata for importing artifacts.</summary>
+    public class ImportAptArtifactsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to import new apt artifacts.</summary>
     public class ImportAptArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Cloud Storage location where input content is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual ImportAptArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message from importing APT artifacts.</summary>
+    public class ImportAptArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apt artifacts imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aptArtifacts")]
+        public virtual System.Collections.Generic.IList<AptArtifact> AptArtifacts { get; set; }
+
+        /// <summary>Detailed error info for packages that were not imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ImportAptArtifactsErrorInfo> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error information explaining why a package was not imported.</summary>
+    public class ImportYumArtifactsErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Google Cloud Storage location requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportYumArtifactsGcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3116,12 +3201,34 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The operation metadata for importing artifacts.</summary>
+    public class ImportYumArtifactsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to import new yum artifacts.</summary>
     public class ImportYumArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Cloud Storage location where input content is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual ImportYumArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message from importing YUM artifacts.</summary>
+    public class ImportYumArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed error info for packages that were not imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ImportYumArtifactsErrorInfo> Errors { get; set; }
+
+        /// <summary>The yum artifacts imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yumArtifacts")]
+        public virtual System.Collections.Generic.IList<YumArtifact> YumArtifacts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3337,6 +3444,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata type for longrunning-operations, currently empty.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Packages are named collections of versions.</summary>
     public class Package : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3491,6 +3605,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. The size, in bytes, of all artifact storage in this repository. Repositories that are generally
+        /// available or in public preview use this to calculate storage costs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
         /// <summary>The time when the repository was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -3613,6 +3734,20 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The response of the completed artifact upload operation. This response is contained in the Operation and
+    /// available to users.
+    /// </summary>
+    public class UploadAptArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apt artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aptArtifacts")]
+        public virtual System.Collections.Generic.IList<AptArtifact> AptArtifacts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response to upload an artifact.</summary>
     public class UploadYumArtifactMediaResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3627,6 +3762,20 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>The request to upload an artifact.</summary>
     public class UploadYumArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The response of the completed artifact upload operation. This response is contained in the Operation and
+    /// available to users.
+    /// </summary>
+    public class UploadYumArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apt artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yumArtifacts")]
+        public virtual System.Collections.Generic.IList<YumArtifact> YumArtifacts { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3669,6 +3818,29 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>The time when the version was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detailed representation of a Yum artifact.</summary>
+    public class YumArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Operating system architecture of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Output only. The Artifact Registry resource name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The yum package name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Output only. An artifact is a binary or source package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

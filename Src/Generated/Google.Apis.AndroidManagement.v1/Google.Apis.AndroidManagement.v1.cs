@@ -3236,8 +3236,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
-    /// object {}.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4545,7 +4544,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// Specifies permitted accessibility services. If the field is not set, any accessibility service can be used.
         /// If the field is set, only the accessibility services in this list and the system's built-in accessibility
         /// service can be used. In particular, if the field is set to empty, only the system's built-in accessibility
-        /// servicess can be used.
+        /// servicess can be used. This can be set on fully managed devices and on work profiles. When applied to a work
+        /// profile, this affects both the personal profile and the work profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permittedAccessibilityServices")]
         public virtual PackageNameList PermittedAccessibilityServices { get; set; }

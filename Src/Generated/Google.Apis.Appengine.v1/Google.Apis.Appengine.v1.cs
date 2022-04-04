@@ -4200,8 +4200,7 @@ namespace Google.Apis.Appengine.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
-    /// object {}.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5526,6 +5525,10 @@ namespace Google.Apis.Appengine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; }
+
+        /// <summary>app_engine_apis allows second generation runtimes to access the App Engine APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineApis")]
+        public virtual System.Nullable<bool> AppEngineApis { get; set; }
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are

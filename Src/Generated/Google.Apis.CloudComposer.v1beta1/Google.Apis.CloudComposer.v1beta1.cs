@@ -616,6 +616,71 @@ namespace Google.Apis.CloudComposer.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of
+                /// environment's specified in LoadSnapshotRequest is loaded into the environment.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the target environment in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual LoadSnapshotRequest LoadSnapshot(Google.Apis.CloudComposer.v1beta1.Data.LoadSnapshotRequest body, string environment)
+                {
+                    return new LoadSnapshotRequest(service, body, environment);
+                }
+
+                /// <summary>
+                /// Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of
+                /// environment's specified in LoadSnapshotRequest is loaded into the environment.
+                /// </summary>
+                public class LoadSnapshotRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new LoadSnapshot request.</summary>
+                    public LoadSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.LoadSnapshotRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the target environment in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.LoadSnapshotRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "loadSnapshot";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:loadSnapshot";
+
+                    /// <summary>Initializes LoadSnapshot parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Update an environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -808,6 +873,71 @@ namespace Google.Apis.CloudComposer.v1beta1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of
+                /// environment's state is stored in a location specified in the SaveSnapshotRequest.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the source environment in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual SaveSnapshotRequest SaveSnapshot(Google.Apis.CloudComposer.v1beta1.Data.SaveSnapshotRequest body, string environment)
+                {
+                    return new SaveSnapshotRequest(service, body, environment);
+                }
+
+                /// <summary>
+                /// Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of
+                /// environment's state is stored in a location specified in the SaveSnapshotRequest.
+                /// </summary>
+                public class SaveSnapshotRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new SaveSnapshot request.</summary>
+                    public SaveSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.SaveSnapshotRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the source environment in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.SaveSnapshotRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "saveSnapshot";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:saveSnapshot";
+
+                    /// <summary>Initializes SaveSnapshot parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -1171,17 +1301,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
         /// functionality and the version of Apache Airflow. It must match the regular expression
-        /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+\.[0-9]+(\.[0-9]+)?)`. When
-        /// used as input, the server also checks if the provided version is supported and denies the request for an
-        /// unsupported version. The Cloud Composer portion of the image version is a full [semantic
+        /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`.
+        /// When used as input, the server also checks if the provided version is supported and denies the request for
+        /// an unsupported version. The Cloud Composer portion of the image version is a full [semantic
         /// version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is
         /// provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The
         /// Apache Airflow portion of the image version is a full semantic version that points to one of the supported
-        /// Apache Airflow versions, or an alias in the form of only major and minor versions specified. When an alias
-        /// is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is
-        /// supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the
-        /// same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning
-        /// overview](/composer/docs/concepts/versioning/composer-versioning-overview).
+        /// Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an
+        /// alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias
+        /// and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in
+        /// the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and
+        /// [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; }
@@ -1283,8 +1413,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1596,6 +1725,24 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to load a snapshot into a Cloud Composer environment.</summary>
+    public class LoadSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not to skip installing Pypi packages when loading the environment's state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipPypiPackagesInstallation")]
+        public virtual System.Nullable<bool> SkipPypiPackagesInstallation { get; set; }
+
+        /// <summary>
+        /// A Cloud Storage path to a snapshot to load, e.g.:
+        /// "gs://my-bucket/snapshots/project_location_environment_timestamp".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
+        public virtual string SnapshotPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to LoadSnapshotRequest.</summary>
     public class LoadSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1660,7 +1807,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB.
+        /// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB.
         /// Cannot be updated. This field is supported for Cloud Composer environments in versions
         /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
@@ -1957,6 +2104,19 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to create a snapshot of a Cloud Composer environment.</summary>
+    public class SaveSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "gs://my-bucket/snapshots".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotLocation")]
+        public virtual string SnapshotLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to SaveSnapshotRequest.</summary>
     public class SaveSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2026,17 +2186,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
         /// functionality and the version of Apache Airflow. It must match the regular expression
-        /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+\.[0-9]+(\.[0-9]+)?)`. When
-        /// used as input, the server also checks if the provided version is supported and denies the request for an
-        /// unsupported version. The Cloud Composer portion of the image version is a full [semantic
+        /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`.
+        /// When used as input, the server also checks if the provided version is supported and denies the request for
+        /// an unsupported version. The Cloud Composer portion of the image version is a full [semantic
         /// version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is
         /// provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The
         /// Apache Airflow portion of the image version is a full semantic version that points to one of the supported
-        /// Apache Airflow versions, or an alias in the form of only major and minor versions specified. When an alias
-        /// is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is
-        /// supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the
-        /// same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning
-        /// overview](/composer/docs/concepts/versioning/composer-versioning-overview).
+        /// Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an
+        /// alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias
+        /// and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in
+        /// the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and
+        /// [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; }
