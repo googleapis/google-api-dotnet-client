@@ -289,10 +289,10 @@ namespace Google.Apis.Services
                 {
                     sr = Serializer.Deserialize<StandardResponse<T>>(text);
                 }
-                catch (JsonReaderException ex)
+                catch (Exception ex)
                 {
                     throw new GoogleApiException(Name,
-                        "Failed to parse response from server as json [" + text + "]", ex);
+                        $"Failed to parse response from server as {Serializer.Format ?? "unknown format"} [" + text + "]", ex);
                 }
 
                 if (sr.Error != null)
@@ -316,9 +316,9 @@ namespace Google.Apis.Services
             {
                 result = Serializer.Deserialize<T>(text);
             }
-            catch (JsonReaderException ex)
+            catch (Exception ex)
             {
-                throw new GoogleApiException(Name, "Failed to parse response from server as json [" + text + "]", ex);
+                throw new GoogleApiException(Name, $"Failed to parse response from server as {Serializer.Format ?? "unknown format"} [" + text + "]", ex);
             }
 
             // TODO(peleyal): is this the right place to check ETag? it isn't part of deserialization!
