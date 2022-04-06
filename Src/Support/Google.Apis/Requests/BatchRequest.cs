@@ -57,8 +57,9 @@ namespace Google.Apis.Requests
 
         /// <summary>A concrete type callback for an individual response.</summary>
         /// <typeparam name="TResponse">The response type.</typeparam>
-        /// <param name="content">The content response or <c>null</c> if the request failed.</param>
-        /// <param name="error">Error or <c>null</c> if the request succeeded.</param>
+        /// <param name="content">The parsed content response or <c>null</c> if the request failed or the response
+        /// could not be parsed using the associated <see cref="IClientService.Serializer"/>.</param>
+        /// <param name="error">Error or <c>null</c> if the request succeeded and response content was parsed succesfully.</param>
         /// <param name="index">The request index.</param>
         /// <param name="message">The HTTP individual response.</param>
         public delegate void OnResponse<in TResponse>
@@ -76,8 +77,9 @@ namespace Google.Apis.Requests
             public Type ResponseType { get; set; }
 
             /// <summary>A callback method which will be called after an individual response was parsed.</summary>
-            /// <param name="content">The content response or <c>null</c> if the request failed.</param>
-            /// <param name="error">Error or <c>null</c> if the request succeeded.</param>
+            /// <param name="content">The parsed content response or <c>null</c> if the request failed or the response
+            /// could not be parsed using the associated <see cref="IClientService.Serializer"/>.</param>
+            /// <param name="error">Error or <c>null</c> if the request succeeded and response content was parsed succesfully.</param>
             /// <param name="index">The request index.</param>
             /// <param name="message">The HTTP individual response.</param>
             public virtual void OnResponse(object content, RequestError error, int index, HttpResponseMessage message)
@@ -212,10 +214,24 @@ namespace Google.Apis.Requests
                 {
                     // Parse the current content object.
                     var responseContent = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var content = service.Serializer.Deserialize(responseContent,
-                        allRequests[requestIndex].ResponseType);
+                    object deserializedContent = null;
+                    RequestError error = null;
+                    try
+                    {
+                        deserializedContent = service.Serializer.Deserialize(responseContent,
+                            allRequests[requestIndex].ResponseType);
+                    }
+                    catch (Exception ex)
+                    {
+                        error = new RequestError
+                        {
+                            Message = $"The response was read but could not be deserialized using the {nameof(service.Serializer)}.{Environment.NewLine}" +
+                                $"The exception thrown on deserializaton was:{Environment.NewLine}" +
+                                $"{ex}",
+                        };
+                    }
 
-                    allRequests[requestIndex].OnResponse(content, null, requestIndex, responseMessage);
+                    allRequests[requestIndex].OnResponse(deserializedContent, error, requestIndex, responseMessage);
                 }
                 else
                 {
