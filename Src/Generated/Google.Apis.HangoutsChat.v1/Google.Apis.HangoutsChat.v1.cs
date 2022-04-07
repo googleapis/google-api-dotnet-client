@@ -1817,17 +1817,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class ActionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A response to an event related to a [dialog](https://developers.google.com/chat/how-tos/dialogs). Must be
-        /// accompanied by `ResponseType.Dialog`.
+        /// Input only. A response to an event related to a
+        /// [dialog](https://developers.google.com/chat/how-tos/dialogs). Must be accompanied by `ResponseType.Dialog`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogAction")]
         public virtual DialogAction DialogAction { get; set; }
 
-        /// <summary>The type of Chat app response.</summary>
+        /// <summary>Input only. The type of Chat app response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>URL for users to auth or config. (Only for REQUEST_CONFIG response types.)</summary>
+        /// <summary>Input only. URL for users to auth or config. (Only for REQUEST_CONFIG response types.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
@@ -2258,8 +2258,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Dialog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Body of the dialog, which is rendered in a modal. Google Chat apps do not support the following card
-        /// entities: `DateTimePicker`, `OnChangeAction`.
+        /// Input only. Body of the dialog, which is rendered in a modal. Google Chat apps do not support the following
+        /// card entities: `DateTimePicker`, `OnChangeAction`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual GoogleAppsCardV1Card Body { get; set; }
@@ -2274,14 +2274,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class DialogAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Status for a request to either invoke or submit a
+        /// Input only. Status for a request to either invoke or submit a
         /// [dialog](https://developers.google.com/chat/how-tos/dialogs). Displays a status and message to users, if
         /// necessary. For example, in case of an error or success.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionStatus")]
         public virtual ActionStatus ActionStatus { get; set; }
 
-        /// <summary>[Dialog](https://developers.google.com/chat/how-tos/dialogs) for the request.</summary>
+        /// <summary>Input only. [Dialog](https://developers.google.com/chat/how-tos/dialogs) for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialog")]
         public virtual Dialog Dialog { get; set; }
 
@@ -3445,8 +3445,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual object LastUpdateTime { get; set; }
 
         /// <summary>
-        /// A URL in `spaces.messages.text` that matches a link unfurling pattern. For more information, refer to
-        /// [Unfurl links](/chat/how-tos/link-unfurling).
+        /// Output only. A URL in `spaces.messages.text` that matches a link unfurling pattern. For more information,
+        /// refer to [Unfurl links](https://developers.google.com/chat/how-tos/link-unfurling).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedUrl")]
         public virtual MatchedUrl MatchedUrl { get; set; }
@@ -3458,11 +3458,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The user who created the message.</summary>
+        /// <summary>Output only. The user who created the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sender")]
         public virtual User Sender { get; set; }
 
-        /// <summary>Slash command information, if applicable.</summary>
+        /// <summary>Output only. Slash command information, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slashCommand")]
         public virtual SlashCommand SlashCommand { get; set; }
 

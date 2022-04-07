@@ -1447,7 +1447,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
         public virtual object ReportTime { get; set; }
 
-        /// <summary>Output only. Sampling data for the battery.</summary>
+        /// <summary>Output only. Sampling data for the battery sorted in a decreasing order of report_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sample")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BatterySampleReport> Sample { get; set; }
 
@@ -2132,7 +2132,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Telemetry data collected from a managed device.</summary>
     public class GoogleChromeManagementV1TelemetryDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Audio reports collected periodically.</summary>
+        /// <summary>
+        /// Output only. Audio reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AudioStatusReport> AudioStatusReport { get; set; }
 
@@ -2148,7 +2150,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuInfo")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1CpuInfo> CpuInfo { get; set; }
 
-        /// <summary>Output only. CPU status reports collected periodically.</summary>
+        /// <summary>
+        /// Output only. CPU status reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1CpuStatusReport> CpuStatusReport { get; set; }
 
@@ -2175,7 +2179,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryInfo")]
         public virtual GoogleChromeManagementV1MemoryInfo MemoryInfo { get; set; }
 
-        /// <summary>Output only. Memory status reports collected periodically.</summary>
+        /// <summary>
+        /// Output only. Memory status reports collected periodically sorted decreasing by report_time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1MemoryStatusReport> MemoryStatusReport { get; set; }
 

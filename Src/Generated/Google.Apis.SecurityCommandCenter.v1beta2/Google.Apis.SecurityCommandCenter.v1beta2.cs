@@ -793,6 +793,59 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Retrieve the OnboardingState of a resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the OnboardingState to retrieve. Formats: *
+        /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
+        /// projects/{project}/onboardingState
+        /// </param>
+        public virtual GetOnboardingStateRequest GetOnboardingState(string name)
+        {
+            return new GetOnboardingStateRequest(service, name);
+        }
+
+        /// <summary>Retrieve the OnboardingState of a resource.</summary>
+        public class GetOnboardingStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.OnboardingState>
+        {
+            /// <summary>Constructs a new GetOnboardingState request.</summary>
+            public GetOnboardingStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the OnboardingState to retrieve. Formats: *
+            /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
+            /// projects/{project}/onboardingState
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getOnboardingState";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetOnboardingState parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/onboardingState$",
+                });
+            }
+        }
+
         /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="name">
         /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
@@ -1838,6 +1891,59 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
+                });
+            }
+        }
+
+        /// <summary>Retrieve the OnboardingState of a resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the OnboardingState to retrieve. Formats: *
+        /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
+        /// projects/{project}/onboardingState
+        /// </param>
+        public virtual GetOnboardingStateRequest GetOnboardingState(string name)
+        {
+            return new GetOnboardingStateRequest(service, name);
+        }
+
+        /// <summary>Retrieve the OnboardingState of a resource.</summary>
+        public class GetOnboardingStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.OnboardingState>
+        {
+            /// <summary>Constructs a new GetOnboardingState request.</summary>
+            public GetOnboardingStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the OnboardingState to retrieve. Formats: *
+            /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
+            /// projects/{project}/onboardingState
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getOnboardingState";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetOnboardingState parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/onboardingState$",
                 });
             }
         }
@@ -3245,6 +3351,59 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Retrieve the OnboardingState of a resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the OnboardingState to retrieve. Formats: *
+        /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
+        /// projects/{project}/onboardingState
+        /// </param>
+        public virtual GetOnboardingStateRequest GetOnboardingState(string name)
+        {
+            return new GetOnboardingStateRequest(service, name);
+        }
+
+        /// <summary>Retrieve the OnboardingState of a resource.</summary>
+        public class GetOnboardingStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.OnboardingState>
+        {
+            /// <summary>Constructs a new GetOnboardingState request.</summary>
+            public GetOnboardingStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the OnboardingState to retrieve. Formats: *
+            /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
+            /// projects/{project}/onboardingState
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getOnboardingState";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetOnboardingState parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/onboardingState$",
+                });
+            }
+        }
+
         /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="name">
         /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
@@ -4081,6 +4240,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
         public virtual string FindingClass { get; set; }
 
+        /// <summary>Represents IAM bindings associated with the Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamBindings")]
+        public virtual System.Collections.Generic.IList<IamBinding> IamBindings { get; set; }
+
         /// <summary>
         /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an
         /// artifact observed on a network or in an operating system that, with high confidence, indicates a computer
@@ -4121,6 +4284,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Next steps associate to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
+        public virtual string NextSteps { get; set; }
 
         /// <summary>
         /// The relative resource name of the source the finding belongs to. See:
@@ -4693,6 +4860,29 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
+    /// Represents a particular IAM binding, which captures a member's role addition, removal, or state.
+    /// </summary>
+    public class IamBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action that was performed on a Binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>A single identity requesting access for a Cloud Platform resource, e.g. "foo@google.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("member")]
+        public virtual string Member { get; set; }
+
+        /// <summary>
+        /// Role that is assigned to "members". For example, "roles/viewer", "roles/editor", or "roles/owner".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an artifact
     /// observed on a network or in an operating system that, with high confidence, indicates a computer intrusion.
     /// Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
@@ -4743,6 +4933,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The MITRE ATT&amp;CK version referenced by the above fields. E.g. "8".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource capturing onboarding information for a given CRM resource.</summary>
+    public class OnboardingState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the OnboardingState. Format: organizations/{organization}/onboardingState Format:
+        /// folders/{folder}/onboardingState Format: projects/{project}/onboardingState
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Describes the level a given organization, folder, or project is onboarded with SCC. If the resource wasn't
+        /// onboarded, NOT_FOUND would have been thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onboardingLevel")]
+        public virtual string OnboardingLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -492,8 +492,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="serviceName">
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Service body, string serviceName)
             {
@@ -517,8 +518,9 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-                /// requirements. For example: `example.googleapis.com`.
+                /// Required. The name of the service. See the
+                /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For
+                /// example: `example.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
@@ -555,8 +557,9 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Gets a service configuration (version) for a managed service.</summary>
             /// <param name="serviceName">
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </param>
             /// <param name="configId">
             /// Required. The id of the service configuration resource. This field must be specified for the server to
@@ -579,8 +582,9 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-                /// requirements. For example: `example.googleapis.com`.
+                /// Required. The name of the service. See the
+                /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For
+                /// example: `example.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
@@ -656,8 +660,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// Lists the history of the service configuration for a managed service, from the newest to the oldest.
             /// </summary>
             /// <param name="serviceName">
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </param>
             public virtual ListRequest List(string serviceName)
             {
@@ -677,8 +682,9 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-                /// requirements. For example: `example.googleapis.com`.
+                /// Required. The name of the service. See the
+                /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For
+                /// example: `example.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
@@ -743,8 +749,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="serviceName">
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </param>
             public virtual SubmitRequest Submit(Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest body, string serviceName)
             {
@@ -769,8 +776,9 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-                /// requirements. For example: `example.googleapis.com`.
+                /// Required. The name of the service. See the
+                /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For
+                /// example: `example.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
@@ -1051,8 +1059,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="serviceName">
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Rollout body, string serviceName)
             {
@@ -1079,8 +1088,9 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-                /// requirements. For example: `example.googleapis.com`.
+                /// Required. The name of the service. See the
+                /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For
+                /// example: `example.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
@@ -1117,8 +1127,9 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Gets a service configuration rollout.</summary>
             /// <param name="serviceName">
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </param>
             /// <param name="rolloutId">Required. The id of the rollout resource.</param>
             public virtual GetRequest Get(string serviceName, string rolloutId)
@@ -1138,8 +1149,9 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-                /// requirements. For example: `example.googleapis.com`.
+                /// Required. The name of the service. See the
+                /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For
+                /// example: `example.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
@@ -1185,8 +1197,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// oldest.
             /// </summary>
             /// <param name="serviceName">
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </param>
             public virtual ListRequest List(string serviceName)
             {
@@ -1207,18 +1220,17 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-                /// requirements. For example: `example.googleapis.com`.
+                /// Required. The name of the service. See the
+                /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For
+                /// example: `example.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
                 /// <summary>
                 /// Required. Use `filter` to return subset of rollouts. The following filters are supported: -- To
-                /// limit the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus)
-                /// 'SUCCESS', use filter='status=SUCCESS' -- To limit the results to those in
-                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
-                /// filter='status=CANCELLED OR status=FAILED'
+                /// limit the results to only those in status 'SUCCESS', use filter='status=SUCCESS' -- To limit the
+                /// results to those in status 'CANCELLED' or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1338,8 +1350,8 @@ namespace Google.Apis.ServiceManagement.v1
         /// service will be permanently deleted. Operation
         /// </summary>
         /// <param name="serviceName">
-        /// Required. The name of the service. See the [overview](/service-management/overview) for naming requirements.
-        /// For example: `example.googleapis.com`.
+        /// Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview)
+        /// for naming requirements. For example: `example.googleapis.com`.
         /// </param>
         public virtual DeleteRequest Delete(string serviceName)
         {
@@ -1361,8 +1373,9 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -1497,8 +1510,8 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Gets a service configuration (version) for a managed service.</summary>
         /// <param name="serviceName">
-        /// Required. The name of the service. See the [overview](/service-management/overview) for naming requirements.
-        /// For example: `example.googleapis.com`.
+        /// Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview)
+        /// for naming requirements. For example: `example.googleapis.com`.
         /// </param>
         public virtual GetConfigRequest GetConfig(string serviceName)
         {
@@ -1516,8 +1529,9 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -1885,8 +1899,8 @@ namespace Google.Apis.ServiceManagement.v1
         /// days. Operation
         /// </summary>
         /// <param name="serviceName">
-        /// Required. The name of the service. See the [overview](/service-management/overview) for naming requirements.
-        /// For example: `example.googleapis.com`.
+        /// Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview)
+        /// for naming requirements. For example: `example.googleapis.com`.
         /// </param>
         public virtual UndeleteRequest Undelete(string serviceName)
         {
@@ -1908,8 +1922,9 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>
-            /// Required. The name of the service. See the [overview](/service-management/overview) for naming
-            /// requirements. For example: `example.googleapis.com`.
+            /// Required. The name of the service. See the
+            /// [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example:
+            /// `example.googleapis.com`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -3426,7 +3441,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ProducerProjectId { get; set; }
 
         /// <summary>
-        /// The name of the service. See the [overview](/service-management/overview) for naming requirements.
+        /// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming
+        /// requirements.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }

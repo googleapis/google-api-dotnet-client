@@ -1719,7 +1719,7 @@ namespace Google.Apis.Document.v1beta3
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -6423,7 +6423,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>
     /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
     /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version
-    /// version. So the processor's behavior (when processing documents) is defined by a default version.
+    /// version. So the processor's behavior (when processing documents) is defined by a default version
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
     {

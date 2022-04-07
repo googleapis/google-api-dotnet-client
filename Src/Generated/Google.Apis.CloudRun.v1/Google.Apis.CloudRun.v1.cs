@@ -617,7 +617,8 @@ namespace Google.Apis.CloudRun.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace
-            /// {namespace_id} with the project ID or number.
+            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
             {
@@ -637,7 +638,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -689,8 +691,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Delete a domain mapping.</summary>
             /// <param name="name">
-            /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id} with the
-            /// project ID or number.
+            /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with the
+            /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -708,8 +710,9 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id} with
-                /// the project ID or number.
+                /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with
+                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -795,8 +798,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a domain mapping.</summary>
             /// <param name="name">
-            /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
-            /// the project ID or number.
+            /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+            /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -814,8 +817,9 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace_id}
-                /// with the project ID or number.
+                /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with
+                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -847,7 +851,8 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>List domain mappings.</summary>
             /// <param name="parent">
             /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace
-            /// {namespace_id} with the project ID or number.
+            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -866,7 +871,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
-                /// replace {namespace_id} with the project ID or number.
+                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                /// example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1010,7 +1016,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Delete an execution.</summary>
             /// <param name="name">
-            /// Required. The name of the execution to delete. Replace {namespace_id} with the project ID or number.
+            /// Required. The name of the execution to delete. Replace {namespace} with the project ID or number. It
+            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1028,7 +1035,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the execution to delete. Replace {namespace_id} with the project ID or number.
+                /// Required. The name of the execution to delete. Replace {namespace} with the project ID or number. It
+                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1099,7 +1107,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about an execution.</summary>
             /// <param name="name">
-            /// Required. The name of the execution to retrieve. Replace {namespace_id} with the project ID or number.
+            /// Required. The name of the execution to retrieve. Replace {namespace} with the project ID or number. It
+            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1117,8 +1126,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the execution to retrieve. Replace {namespace_id} with the project ID or
-                /// number.
+                /// Required. The name of the execution to retrieve. Replace {namespace} with the project ID or number.
+                /// It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1149,8 +1158,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>List executions.</summary>
             /// <param name="parent">
-            /// Required. The namespace from which the executions should be listed. Replace {namespace_id} with the
-            /// project ID or number.
+            /// Required. The namespace from which the executions should be listed. Replace {namespace} with the project
+            /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1168,8 +1177,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The namespace from which the executions should be listed. Replace {namespace_id} with the
-                /// project ID or number.
+                /// Required. The namespace from which the executions should be listed. Replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1315,8 +1324,8 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>Create a job.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The namespace in which the job should be created. Replace {namespace_id} with the project ID
-            /// or number.
+            /// Required. The namespace in which the job should be created. Replace {namespace} with the project ID or
+            /// number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Job body, string parent)
             {
@@ -1335,8 +1344,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The namespace in which the job should be created. Replace {namespace_id} with the project
-                /// ID or number.
+                /// Required. The namespace in which the job should be created. Replace {namespace} with the project ID
+                /// or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1373,7 +1382,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Delete a job.</summary>
             /// <param name="name">
-            /// Required. The name of the job to delete. Replace {namespace_id} with the project ID or number.
+            /// Required. The name of the job to delete. Replace {namespace} with the project ID or number. It takes the
+            /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1391,7 +1401,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the job to delete. Replace {namespace_id} with the project ID or number.
+                /// Required. The name of the job to delete. Replace {namespace} with the project ID or number. It takes
+                /// the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1462,7 +1473,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a job.</summary>
             /// <param name="name">
-            /// Required. The name of the job to retrieve. Replace {namespace_id} with the project ID or number.
+            /// Required. The name of the job to retrieve. Replace {namespace} with the project ID or number. It takes
+            /// the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1480,7 +1492,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the job to retrieve. Replace {namespace_id} with the project ID or number.
+                /// Required. The name of the job to retrieve. Replace {namespace} with the project ID or number. It
+                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1511,8 +1524,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>List jobs.</summary>
             /// <param name="parent">
-            /// Required. The namespace from which the jobs should be listed. Replace {namespace_id} with the project ID
-            /// or number.
+            /// Required. The namespace from which the jobs should be listed. Replace {namespace} with the project ID or
+            /// number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1530,8 +1543,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The namespace from which the jobs should be listed. Replace {namespace_id} with the
-                /// project ID or number.
+                /// Required. The namespace from which the jobs should be listed. Replace {namespace} with the project
+                /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1663,7 +1676,8 @@ namespace Google.Apis.CloudRun.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The name of the service being replaced. Replace {namespace_id} with the project ID or number.
+            /// Required. The name of the service being replaced. Replace {namespace} with the project ID or number. It
+            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual ReplaceJobRequest ReplaceJob(Google.Apis.CloudRun.v1.Data.Job body, string name)
             {
@@ -1686,8 +1700,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the service being replaced. Replace {namespace_id} with the project ID or
-                /// number.
+                /// Required. The name of the service being replaced. Replace {namespace} with the project ID or number.
+                /// It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1725,7 +1739,8 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>Trigger creation of a new execution of this job.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The name of the job to run. Replace {namespace_id} with the project ID or number.
+            /// Required. The name of the job to run. Replace {namespace} with the project ID or number. It takes the
+            /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual RunRequest Run(Google.Apis.CloudRun.v1.Data.RunJobRequest body, string name)
             {
@@ -1744,7 +1759,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the job to run. Replace {namespace_id} with the project ID or number.
+                /// Required. The name of the job to run. Replace {namespace} with the project ID or number. It takes
+                /// the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1799,8 +1815,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Delete a revision.</summary>
             /// <param name="name">
-            /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with the
-            /// project ID or number.
+            /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the project
+            /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1818,8 +1834,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1905,8 +1921,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a revision.</summary>
             /// <param name="name">
-            /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-            /// project ID or number.
+            /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+            /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1924,8 +1940,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1957,7 +1973,8 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>List revisions.</summary>
             /// <param name="parent">
             /// The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
-            /// {namespace_id} with the project ID or number.
+            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1976,7 +1993,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2120,8 +2138,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a route.</summary>
             /// <param name="name">
-            /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-            /// project ID or number.
+            /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the project
+            /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2139,8 +2157,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2171,8 +2189,9 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>List routes.</summary>
             /// <param name="parent">
-            /// The namespace from which the routes should be listed. For Cloud Run (fully managed), replace
-            /// {namespace_id} with the project ID or number.
+            /// The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace}
+            /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2191,7 +2210,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// The namespace from which the routes should be listed. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2336,8 +2356,9 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>Create a service.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// The namespace in which the service should be created. For Cloud Run (fully managed), replace
-            /// {namespace_id} with the project ID or number.
+            /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed),
+            /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+            /// example: namespaces/PROJECT_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
             {
@@ -2356,8 +2377,9 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The namespace in which the service should be created. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed),
+                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                /// example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2365,6 +2387,7 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
                 /// the request. Supported values: `all`
+                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -2412,8 +2435,8 @@ namespace Google.Apis.CloudRun.v1
             /// like Routes, Configurations and Revisions.
             /// </summary>
             /// <param name="name">
-            /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with the
-            /// project ID or number.
+            /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace} with the project
+            /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -2434,8 +2457,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2521,8 +2544,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a service.</summary>
             /// <param name="name">
-            /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-            /// project ID or number.
+            /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace} with the project
+            /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2540,8 +2563,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2573,7 +2596,8 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>List services.</summary>
             /// <param name="parent">
             /// The namespace from which the services should be listed. For Cloud Run (fully managed), replace
-            /// {namespace_id} with the project ID or number.
+            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2592,7 +2616,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// The namespace from which the services should be listed. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2723,8 +2748,9 @@ namespace Google.Apis.CloudRun.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id} with the
-            /// project ID or number.
+            /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
+            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
             {
@@ -2747,8 +2773,9 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id} with
-                /// the project ID or number.
+                /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2756,6 +2783,7 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
                 /// the request. Supported values: `all`
+                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -2818,7 +2846,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a task.</summary>
             /// <param name="name">
-            /// Required. The name of the task to retrieve. Replace {namespace_id} with the project ID or number.
+            /// Required. The name of the task to retrieve. Replace {namespace} with the project ID or number. It takes
+            /// the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2836,7 +2865,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the task to retrieve. Replace {namespace_id} with the project ID or number.
+                /// Required. The name of the task to retrieve. Replace {namespace} with the project ID or number. It
+                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2867,8 +2897,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>List tasks.</summary>
             /// <param name="parent">
-            /// Required. The namespace from which the tasks should be listed. Replace {namespace_id} with the project
-            /// ID or number.
+            /// Required. The namespace from which the tasks should be listed. Replace {namespace} with the project ID
+            /// or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2886,8 +2916,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The namespace from which the tasks should be listed. Replace {namespace_id} with the
-                /// project ID or number.
+                /// Required. The namespace from which the tasks should be listed. Replace {namespace} with the project
+                /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3465,7 +3495,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
                 {
@@ -3485,7 +3516,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed),
-                    /// replace {namespace_id} with the project ID or number.
+                    /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3537,8 +3569,9 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Delete a domain mapping.</summary>
                 /// <param name="name">
-                /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id} with
-                /// the project ID or number.
+                /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with
+                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3556,8 +3589,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id}
-                    /// with the project ID or number.
+                    /// The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace}
+                    /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3643,8 +3677,9 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Get information about a domain mapping.</summary>
                 /// <param name="name">
-                /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace_id}
-                /// with the project ID or number.
+                /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with
+                /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3662,8 +3697,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace
-                    /// {namespace_id} with the project ID or number.
+                    /// The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace}
+                    /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3695,7 +3731,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>List domain mappings.</summary>
                 /// <param name="parent">
                 /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
-                /// replace {namespace_id} with the project ID or number.
+                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                /// example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3714,7 +3751,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
-                    /// replace {namespace_id} with the project ID or number.
+                    /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4083,8 +4121,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Delete a revision.</summary>
                 /// <param name="name">
-                /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -4102,8 +4140,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with
-                    /// the project ID or number.
+                    /// The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the
+                    /// project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4189,8 +4228,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Get information about a revision.</summary>
                 /// <param name="name">
-                /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -4208,8 +4247,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
-                    /// the project ID or number.
+                    /// The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with
+                    /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4241,7 +4281,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>List revisions.</summary>
                 /// <param name="parent">
                 /// The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4260,7 +4301,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
-                    /// {namespace_id} with the project ID or number.
+                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4405,8 +4447,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Get information about a route.</summary>
                 /// <param name="name">
-                /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -4424,8 +4466,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
-                    /// the project ID or number.
+                    /// The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                    /// project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4457,7 +4500,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>List routes.</summary>
                 /// <param name="parent">
                 /// The namespace from which the routes should be listed. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4476,7 +4520,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// The namespace from which the routes should be listed. For Cloud Run (fully managed), replace
-                    /// {namespace_id} with the project ID or number.
+                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4622,8 +4667,9 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Create a service.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// The namespace in which the service should be created. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed),
+                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                /// example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
                 {
@@ -4642,8 +4688,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The namespace in which the service should be created. For Cloud Run (fully managed), replace
-                    /// {namespace_id} with the project ID or number.
+                    /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully
+                    /// managed), replace {namespace} with the project ID or number. It takes the form
+                    /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4651,6 +4698,7 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
                     /// persisting the request. Supported values: `all`
+                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -4698,8 +4746,8 @@ namespace Google.Apis.CloudRun.v1
                 /// entities like Routes, Configurations and Revisions.
                 /// </summary>
                 /// <param name="name">
-                /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -4720,8 +4768,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with
-                    /// the project ID or number.
+                    /// The name of the service to delete. For Cloud Run (fully managed), replace {namespace} with the
+                    /// project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4807,8 +4856,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Get information about a service.</summary>
                 /// <param name="name">
-                /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
-                /// project ID or number.
+                /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -4826,8 +4875,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
-                    /// the project ID or number.
+                    /// The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace} with the
+                    /// project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4937,7 +4987,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>List services.</summary>
                 /// <param name="parent">
                 /// The namespace from which the services should be listed. For Cloud Run (fully managed), replace
-                /// {namespace_id} with the project ID or number.
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4956,7 +5007,8 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// The namespace from which the services should be listed. For Cloud Run (fully managed), replace
-                    /// {namespace_id} with the project ID or number.
+                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5088,8 +5140,9 @@ namespace Google.Apis.CloudRun.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id} with
-                /// the project ID or number.
+                /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
                 {
@@ -5112,8 +5165,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id}
-                    /// with the project ID or number.
+                    /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
+                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5121,6 +5175,7 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
                     /// persisting the request. Supported values: `all`
+                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -5315,7 +5370,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -6112,11 +6167,11 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ExecutionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the maximum desired number of tasks the execution should run at any given time. Must be
-        /// &amp;lt;= task_count. If not specified, defaults to -1. When the job is run, this field is passed to the
-        /// execution, and if -1 it will be set to the maximum possible value. The actual number of tasks running in
-        /// steady state will be less than this number when there are fewer tasks waiting to be completed remaining,
-        /// i.e. when the work left to do is less than max parallelism. +optional
+        /// Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be
+        /// &amp;lt;= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be
+        /// used for that execution. The actual number of tasks running in steady state will be less than this number
+        /// when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max
+        /// parallelism. +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelism")]
         public virtual System.Nullable<int> Parallelism { get; set; }

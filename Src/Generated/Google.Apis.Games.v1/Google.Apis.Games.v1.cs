@@ -3869,6 +3869,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("friendStatus")]
         public virtual string FriendStatus { get; set; }
 
+        /// <summary>Per-application unique player identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gamePlayerId")]
+        public virtual string GamePlayerId { get; set; }
+
         /// <summary>
         /// Uniquely identifies the type of this resource. Value is always the fixed string `games#player`
         /// </summary>

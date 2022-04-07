@@ -2537,6 +2537,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
         public virtual string FindingClass { get; set; }
 
+        /// <summary>Represents IAM bindings associated with the Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamBindings")]
+        public virtual System.Collections.Generic.IList<IamBinding> IamBindings { get; set; }
+
         /// <summary>
         /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an
         /// artifact observed on a network or in an operating system that, with high confidence, indicates a computer
@@ -2577,6 +2581,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Next steps associate to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
+        public virtual string NextSteps { get; set; }
 
         /// <summary>
         /// The relative resource name of the source the finding belongs to. See:
@@ -3461,6 +3469,29 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>Properties matching the groupBy fields in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, object> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a particular IAM binding, which captures a member's role addition, removal, or state.
+    /// </summary>
+    public class IamBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action that was performed on a Binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>A single identity requesting access for a Cloud Platform resource, e.g. "foo@google.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("member")]
+        public virtual string Member { get; set; }
+
+        /// <summary>
+        /// Role that is assigned to "members". For example, "roles/viewer", "roles/editor", or "roles/owner".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

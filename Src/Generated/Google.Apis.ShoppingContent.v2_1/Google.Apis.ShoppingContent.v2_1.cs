@@ -35,7 +35,9 @@ namespace Google.Apis.ShoppingContent.v2_1
         public ShoppingContentService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
+            Accountsbyexternalsellerid = new AccountsbyexternalselleridResource(this);
             Accountstatuses = new AccountstatusesResource(this);
+            Accountstatusesbyexternalsellerid = new AccountstatusesbyexternalselleridResource(this);
             Accounttax = new AccounttaxResource(this);
             Buyongoogleprograms = new BuyongoogleprogramsResource(this);
             Collections = new CollectionsResource(this);
@@ -111,8 +113,14 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
 
+        /// <summary>Gets the Accountsbyexternalsellerid resource.</summary>
+        public virtual AccountsbyexternalselleridResource Accountsbyexternalsellerid { get; }
+
         /// <summary>Gets the Accountstatuses resource.</summary>
         public virtual AccountstatusesResource Accountstatuses { get; }
+
+        /// <summary>Gets the Accountstatusesbyexternalsellerid resource.</summary>
+        public virtual AccountstatusesbyexternalselleridResource Accountstatusesbyexternalsellerid { get; }
 
         /// <summary>Gets the Accounttax resource.</summary>
         public virtual AccounttaxResource Accounttax { get; }
@@ -1990,6 +1998,88 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
     }
 
+    /// <summary>The "accountsbyexternalsellerid" collection of methods.</summary>
+    public class AccountsbyexternalselleridResource
+    {
+        private const string Resource = "accountsbyexternalsellerid";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccountsbyexternalselleridResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Gets data of the account with the specified external_seller_id belonging to the MCA with the specified
+        /// merchant_id.
+        /// </summary>
+        /// <param name="merchantId">Required. The ID of the MCA containing the seller.</param>
+        /// <param name="externalSellerId">
+        /// Required. The External Seller ID of the seller account to be retrieved.
+        /// </param>
+        public virtual GetRequest Get(long merchantId, string externalSellerId)
+        {
+            return new GetRequest(service, merchantId, externalSellerId);
+        }
+
+        /// <summary>
+        /// Gets data of the account with the specified external_seller_id belonging to the MCA with the specified
+        /// merchant_id.
+        /// </summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Account>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string externalSellerId) : base(service)
+            {
+                MerchantId = merchantId;
+                ExternalSellerId = externalSellerId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the MCA containing the seller.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The External Seller ID of the seller account to be retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalSellerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExternalSellerId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/accountsbyexternalsellerid/{externalSellerId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("externalSellerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalSellerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "accountstatuses" collection of methods.</summary>
     public class AccountstatusesResource
     {
@@ -2217,6 +2307,103 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "accountstatusesbyexternalsellerid" collection of methods.</summary>
+    public class AccountstatusesbyexternalselleridResource
+    {
+        private const string Resource = "accountstatusesbyexternalsellerid";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccountstatusesbyexternalselleridResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Gets status of the account with the specified external_seller_id belonging to the MCA with the specified
+        /// merchant_id.
+        /// </summary>
+        /// <param name="merchantId">Required. The ID of the MCA containing the seller.</param>
+        /// <param name="externalSellerId">
+        /// Required. The External Seller ID of the seller account to be retrieved.
+        /// </param>
+        public virtual GetRequest Get(long merchantId, string externalSellerId)
+        {
+            return new GetRequest(service, merchantId, externalSellerId);
+        }
+
+        /// <summary>
+        /// Gets status of the account with the specified external_seller_id belonging to the MCA with the specified
+        /// merchant_id.
+        /// </summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountStatus>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string externalSellerId) : base(service)
+            {
+                MerchantId = merchantId;
+                ExternalSellerId = externalSellerId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the MCA containing the seller.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The External Seller ID of the seller account to be retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalSellerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExternalSellerId { get; private set; }
+
+            /// <summary>
+            /// If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping
+            /// destination.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinations", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/accountstatusesbyexternalsellerid/{externalSellerId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("externalSellerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "externalSellerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinations", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinations",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2507,7 +2694,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Reactivates the BoG program in your Merchant Center account. Moves the program to the active state when
-        /// allowed, e.g. when paused. Important: This method is only whitelisted for selected merchants.
+        /// allowed, for example, when paused. This method is only available to selected merchants.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -2522,7 +2709,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Reactivates the BoG program in your Merchant Center account. Moves the program to the active state when
-        /// allowed, e.g. when paused. Important: This method is only whitelisted for selected merchants.
+        /// allowed, for example, when paused. This method is only available to selected merchants.
         /// </summary>
         public class ActivateRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -2821,8 +3008,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Pauses the BoG program in your Merchant Center account. Important: This method is only whitelisted for
-        /// selected merchants.
+        /// Pauses the BoG program in your Merchant Center account. This method is only available to selected merchants.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -2836,8 +3022,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Pauses the BoG program in your Merchant Center account. Important: This method is only whitelisted for
-        /// selected merchants.
+        /// Pauses the BoG program in your Merchant Center account. This method is only available to selected merchants.
         /// </summary>
         public class PauseRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -2901,7 +3086,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Requests review and then activates the BoG program in your Merchant Center account for the first time. Moves
-        /// the program to the REVIEW_PENDING state. Important: This method is only whitelisted for selected merchants.
+        /// the program to the REVIEW_PENDING state. This method is only available to selected merchants.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -2916,7 +3101,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Requests review and then activates the BoG program in your Merchant Center account for the first time. Moves
-        /// the program to the REVIEW_PENDING state. Important: This method is only whitelisted for selected merchants.
+        /// the program to the REVIEW_PENDING state. This method is only available to selected merchants.
         /// </summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -4405,8 +4590,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review of free listings in a specific region Important: This method is only whitelisted for
-        /// selected merchants.
+        /// Requests a review of free listings in a specific region. This method is only available to selected
+        /// merchants.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -4416,8 +4601,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review of free listings in a specific region Important: This method is only whitelisted for
-        /// selected merchants.
+        /// Requests a review of free listings in a specific region. This method is only available to selected
+        /// merchants.
         /// </summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -12503,7 +12688,9 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Requests a review of Shopping ads in a specific region.</summary>
+        /// <summary>
+        /// Requests a review of Shopping ads in a specific region. This method is only available to selected merchants.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewShoppingAdsRequest body, long merchantId)
@@ -12511,7 +12698,9 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new RequestreviewRequest(service, body, merchantId);
         }
 
-        /// <summary>Requests a review of Shopping ads in a specific region.</summary>
+        /// <summary>
+        /// Requests a review of Shopping ads in a specific region. This method is only available to selected merchants.
+        /// </summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Requestreview request.</summary>

@@ -383,6 +383,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 AppAttestConfig = new AppAttestConfigResource(service);
                 DebugTokens = new DebugTokensResource(service);
                 DeviceCheckConfig = new DeviceCheckConfigResource(service);
+                PlayIntegrityConfig = new PlayIntegrityConfigResource(service);
                 RecaptchaConfig = new RecaptchaConfigResource(service);
                 RecaptchaEnterpriseConfig = new RecaptchaEnterpriseConfigResource(service);
                 RecaptchaV3Config = new RecaptchaV3ConfigResource(service);
@@ -1197,6 +1198,224 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/apps/[^/]+/deviceCheckConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the PlayIntegrityConfig resource.</summary>
+            public virtual PlayIntegrityConfigResource PlayIntegrityConfig { get; }
+
+            /// <summary>The "playIntegrityConfig" collection of methods.</summary>
+            public class PlayIntegrityConfigResource
+            {
+                private const string Resource = "playIntegrityConfig";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PlayIntegrityConfigResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Atomically gets the PlayIntegrityConfigs for the specified list of apps.</summary>
+                /// <param name="parent">
+                /// Required. The parent project name shared by all PlayIntegrityConfigs being retrieved, in the format
+                /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// retrieved must match this field, or the entire batch fails.
+                /// </param>
+                public virtual BatchGetRequest BatchGet(string parent)
+                {
+                    return new BatchGetRequest(service, parent);
+                }
+
+                /// <summary>Atomically gets the PlayIntegrityConfigs for the specified list of apps.</summary>
+                public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project name shared by all PlayIntegrityConfigs being retrieved, in the
+                    /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any
+                    /// resource being retrieved must match this field, or the entire batch fails.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The relative resource names of the PlayIntegrityConfigs to retrieve, in the format ```
+                    /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ``` A maximum of 100 objects can be
+                    /// retrieved in a batch.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchGet";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/apps/-/playIntegrityConfig:batchGet";
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "names",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the PlayIntegrityConfig for the specified app.</summary>
+                /// <param name="name">
+                /// Required. The relative resource name of the PlayIntegrityConfig, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the PlayIntegrityConfig for the specified app.</summary>
+                public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the PlayIntegrityConfig, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/playIntegrityConfig$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the PlayIntegrityConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange Play Integrity tokens for App Check tokens.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the Play Integrity configuration object, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaPlayIntegrityConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the PlayIntegrityConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange Play Integrity tokens for App Check tokens.
+                /// </summary>
+                public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaPlayIntegrityConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the Play Integrity configuration object, in the format:
+                    /// ``` projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A comma-separated list of names of fields in the PlayIntegrityConfig Gets to update.
+                    /// Example: `token_ttl`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaPlayIntegrityConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/playIntegrityConfig$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -2462,6 +2681,77 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
+            /// Validates an [integrity verdict response token from Play
+            /// Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify). If valid,
+            /// returns an AppCheckToken.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The relative resource name of the Android app, in the format: ```
+            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </param>
+            public virtual ExchangePlayIntegrityTokenRequest ExchangePlayIntegrityToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest body, string app)
+            {
+                return new ExchangePlayIntegrityTokenRequest(service, body, app);
+            }
+
+            /// <summary>
+            /// Validates an [integrity verdict response token from Play
+            /// Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify). If valid,
+            /// returns an AppCheckToken.
+            /// </summary>
+            public class ExchangePlayIntegrityTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
+            {
+                /// <summary>Constructs a new ExchangePlayIntegrityToken request.</summary>
+                public ExchangePlayIntegrityTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The relative resource name of the Android app, in the format: ```
+                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
+                /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exchangePlayIntegrityToken";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+app}:exchangePlayIntegrityToken";
+
+                /// <summary>Initializes ExchangePlayIntegrityToken parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Validates a [reCAPTCHA Enterprise response
             /// token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token). If valid,
             /// returns an App Check token AppCheckToken.
@@ -2798,6 +3088,79 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 public override string RestPath => "v1beta/{+app}:generateAppAttestChallenge";
 
                 /// <summary>Initializes GenerateAppAttestChallenge parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Generates a challenge that protects the integrity of an immediately following integrity verdict request
+            /// to the Play Integrity API. The next call to ExchangePlayIntegrityToken using the resulting integrity
+            /// token will verify the presence and validity of the challenge. A challenge should not be reused for
+            /// multiple calls.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The relative resource name of the app, in the format: ```
+            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </param>
+            public virtual GeneratePlayIntegrityChallengeRequest GeneratePlayIntegrityChallenge(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest body, string app)
+            {
+                return new GeneratePlayIntegrityChallengeRequest(service, body, app);
+            }
+
+            /// <summary>
+            /// Generates a challenge that protects the integrity of an immediately following integrity verdict request
+            /// to the Play Integrity API. The next call to ExchangePlayIntegrityToken using the resulting integrity
+            /// token will verify the presence and validity of the challenge. A challenge should not be reused for
+            /// multiple calls.
+            /// </summary>
+            public class GeneratePlayIntegrityChallengeRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse>
+            {
+                /// <summary>Constructs a new GeneratePlayIntegrityChallenge request.</summary>
+                public GeneratePlayIntegrityChallengeRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The relative resource name of the app, in the format: ```
+                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
+                /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generatePlayIntegrityChallenge";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+app}:generatePlayIntegrityChallenge";
+
+                /// <summary>Initializes GeneratePlayIntegrityChallenge parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -3229,6 +3592,17 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the BatchGetPlayIntegrityConfigs method.</summary>
+    public class GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PlayIntegrityConfigs retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig> Configs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the BatchGetRecaptchaConfigs method.</summary>
     public class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3491,6 +3865,20 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the ExchangePlayIntegrityToken method.</summary>
+    public class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The [integrity verdict response token from Play
+        /// Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify) issued to your app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playIntegrityToken")]
+        public virtual string PlayIntegrityToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the ExchangeRecaptchaEnterpriseToken method.</summary>
     public class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3574,6 +3962,36 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the GeneratePlayIntegrityChallenge method.</summary>
+    public class GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GeneratePlayIntegrityChallenge method.</summary>
+    public class GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A one-time use
+        /// [challenge](https://developer.android.com/google/play/integrity/verdict#protect-against-replay-attacks) for
+        /// the client to pass to the Play Integrity API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual string Challenge { get; set; }
+
+        /// <summary>
+        /// The duration from the time this challenge is minted until its expiration. This field is intended to ease
+        /// client-side token management, since the client may have clock skew, but is still able to accurately measure
+        /// a duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the ListDebugTokens method.</summary>
     public class GoogleFirebaseAppcheckV1betaListDebugTokensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3609,6 +4027,33 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// <summary>The Services retrieved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaService> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An app's Play Integrity configuration object. This configuration controls certain properties of the App Check
+    /// token returned by ExchangePlayIntegrityToken, such as its ttl. Note that your registered SHA-256 certificate
+    /// fingerprints are used to validate tokens issued by the Play Integrity API; please register them via the Firebase
+    /// Console or programmatically via the [Firebase Management
+    /// Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.androidApps.sha/create).
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaPlayIntegrityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The relative resource name of the Play Integrity configuration object, in the format: ```
+        /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which App Check tokens exchanged from Play Integrity tokens will be valid. If
+        /// unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
