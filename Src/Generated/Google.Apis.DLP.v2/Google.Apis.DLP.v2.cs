@@ -9980,6 +9980,136 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A task to execute when a data profile has been generated.</summary>
+    public class GooglePrivacyDlpV2DataProfileAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Export data profiles into a provided location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportData")]
+        public virtual GooglePrivacyDlpV2Export ExportData { get; set; }
+
+        /// <summary>Publish a message into the Pub/Sub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSubNotification")]
+        public virtual GooglePrivacyDlpV2PubSubNotification PubSubNotification { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Snapshot of the configurations used to generate the profile.</summary>
+    public class GooglePrivacyDlpV2DataProfileConfigSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A copy of the configuration used to generate this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProfileJob")]
+        public virtual GooglePrivacyDlpV2DataProfileJobConfig DataProfileJob { get; set; }
+
+        /// <summary>
+        /// A copy of the inspection config used to generate this profile. This is a copy of the inspect_template
+        /// specified in `DataProfileJobConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
+        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for setting up a job to scan resources for profile generation. Only one data profile configuration
+    /// may exist per organization, folder, or project. The generated data profiles are retained according to the [data
+    /// retention policy] (https://cloud.google.com/dlp/docs/data-profiles#retention).
+    /// </summary>
+    public class GooglePrivacyDlpV2DataProfileJobConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Actions to execute at the completion of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProfileActions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DataProfileAction> DataProfileActions { get; set; }
+
+        /// <summary>
+        /// Detection logic for profile generation. Not all template features are used by profiles. FindingLimits,
+        /// include_quote and exclude_info_types have no impact on data profiling. Multiple templates may be provided if
+        /// there is data in multiple regions. At most one template must be specified per-region (including "global").
+        /// Each region is scanned using the applicable template. If no region-specific template is specified, but a
+        /// "global" template is specified, it will be copied to that region and used instead. If no global or
+        /// region-specific template is provided for a region with data, that region's data will not be scanned. For
+        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data_residency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplates")]
+        public virtual System.Collections.Generic.IList<string> InspectTemplates { get; set; }
+
+        /// <summary>The data to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GooglePrivacyDlpV2DataProfileLocation Location { get; set; }
+
+        /// <summary>
+        /// The project that will run the scan. The DLP service account that exists within this project must have access
+        /// to all resources that are profiled, and the Cloud DLP API must be enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data that will be profiled.</summary>
+    public class GooglePrivacyDlpV2DataProfileLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the Folder within an organization to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
+        public virtual System.Nullable<long> FolderId { get; set; }
+
+        /// <summary>The ID of an organization to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual System.Nullable<long> OrganizationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A condition for determining whether a PubSub should be triggered.</summary>
+    public class GooglePrivacyDlpV2DataProfilePubSubCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
+        public virtual GooglePrivacyDlpV2PubSubExpressions Expressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The message that will be published to a Pub/Sub topic. To receive a message of protocol buffer schema type,
+    /// convert the message data to an object of this proto class.
+    /// https://cloud.google.com/pubsub/docs/samples/pubsub-subscribe-proto-messages
+    /// </summary>
+    public class GooglePrivacyDlpV2DataProfilePubSubMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The event that caused the Pub/Sub message to be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
+
+        /// <summary>
+        /// If `DetailLevel` is `TABLE_PROFILE` this will be fully populated. Otherwise, if `DetailLevel` is
+        /// `RESOURCE_NAME`, then only `name` and `full_resource` will be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profile")]
+        public virtual GooglePrivacyDlpV2TableDataProfile Profile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Score is a summary of all elements in the data profile. A higher number means more risky.</summary>
+    public class GooglePrivacyDlpV2DataRiskLevel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The score applied to the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual string Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Record key for a finding in Cloud Datastore.</summary>
     public class GooglePrivacyDlpV2DatastoreKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10472,6 +10602,22 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Regular expression which defines the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
         public virtual GooglePrivacyDlpV2Regex Regex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+    /// </summary>
+    public class GooglePrivacyDlpV2Export : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Store all table and column profiles in an existing table or a new table in an existing dataset. Each
+        /// re-generation will result in a new row in BigQuery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileTable")]
+        public virtual GooglePrivacyDlpV2BigQueryTable ProfileTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11003,6 +11149,17 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>The type of finding this stat is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The infoType details for this column.</summary>
+    public class GooglePrivacyDlpV2InfoTypeSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
@@ -11935,6 +12092,17 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Infotype details for other infoTypes found within a column.</summary>
+    public class GooglePrivacyDlpV2OtherInfoTypeSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The other infoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud repository for storing output.</summary>
     public class GooglePrivacyDlpV2OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12101,6 +12269,20 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GooglePrivacyDlpV2ProfileStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Profiling status code and optional message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>Time when the profile generation status was updated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual object Timestamp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for specifying a window around a finding to apply a detection rule.</summary>
     public class GooglePrivacyDlpV2Proximity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12111,6 +12293,69 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Number of characters before the finding to consider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowBefore")]
         public virtual System.Nullable<int> WindowBefore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A condition consisting of a value.</summary>
+    public class GooglePrivacyDlpV2PubSubCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The minimum data risk score that triggers the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumRiskScore")]
+        public virtual string MinimumRiskScore { get; set; }
+
+        /// <summary>The minimum sensitivity level that triggers the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumSensitivityScore")]
+        public virtual string MinimumSensitivityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An expression, consisting of an operator and conditions.</summary>
+    public class GooglePrivacyDlpV2PubSubExpressions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Conditions to apply to the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2PubSubCondition> Conditions { get; set; }
+
+        /// <summary>The operator to apply to the collection of conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalOperator")]
+        public virtual string LogicalOperator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The
+    /// message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+    /// </summary>
+    public class GooglePrivacyDlpV2PubSubNotification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they
+        /// can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailOfMessage")]
+        public virtual string DetailOfMessage { get; set; }
+
+        /// <summary>
+        /// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
+
+        /// <summary>Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubCondition")]
+        public virtual GooglePrivacyDlpV2DataProfilePubSubCondition PubsubCondition { get; set; }
+
+        /// <summary>
+        /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12644,6 +12889,17 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Score is a summary of all elements in the data profile. A higher number means more sensitive.</summary>
+    public class GooglePrivacyDlpV2SensitivityScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The score applied to the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual string Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers
     /// values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of
@@ -12879,6 +13135,121 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Rows of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Row> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The profile for a scanned table.</summary>
+    public class GooglePrivacyDlpV2TableDataProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The snapshot of the configurations used to generate the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configSnapshot")]
+        public virtual GooglePrivacyDlpV2DataProfileConfigSnapshot ConfigSnapshot { get; set; }
+
+        /// <summary>The time at which the table was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The data risk level of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
+        public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
+
+        /// <summary>The BigQuery dataset ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>
+        /// The BigQuery location where the dataset's data is stored. See
+        /// https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetLocation")]
+        public virtual string DatasetLocation { get; set; }
+
+        /// <summary>The GCP project ID that owns the BigQuery dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetProjectId")]
+        public virtual string DatasetProjectId { get; set; }
+
+        /// <summary>How the table is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionStatus")]
+        public virtual string EncryptionStatus { get; set; }
+
+        /// <summary>Optional. The time when this table expires.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual object ExpirationTime { get; set; }
+
+        /// <summary>The number of columns skipped in the table because of an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedColumnCount")]
+        public virtual System.Nullable<long> FailedColumnCount { get; set; }
+
+        /// <summary>
+        /// The resource name of the table. https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResource")]
+        public virtual string FullResource { get; set; }
+
+        /// <summary>The time when this table was last modified</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual object LastModifiedTime { get; set; }
+
+        /// <summary>The name of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Other infoTypes found in this table's data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherInfoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2OtherInfoTypeSummary> OtherInfoTypes { get; set; }
+
+        /// <summary>The infoTypes predicted from this table's data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedInfoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeSummary> PredictedInfoTypes { get; set; }
+
+        /// <summary>The last time the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileLastGenerated")]
+        public virtual object ProfileLastGenerated { get; set; }
+
+        /// <summary>
+        /// Success or error status from the most recent profile generation attempt. May be empty if the profile is
+        /// still being generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileStatus")]
+        public virtual GooglePrivacyDlpV2ProfileStatus ProfileStatus { get; set; }
+
+        /// <summary>The resource name to the project data profile for this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectDataProfile")]
+        public virtual string ProjectDataProfile { get; set; }
+
+        /// <summary>The labels applied to the resource at the time the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabels { get; set; }
+
+        /// <summary>How broadly a resource has been shared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceVisibility")]
+        public virtual string ResourceVisibility { get; set; }
+
+        /// <summary>Number of rows in the table when the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<long> RowCount { get; set; }
+
+        /// <summary>The number of columns profiled in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scannedColumnCount")]
+        public virtual System.Nullable<long> ScannedColumnCount { get; set; }
+
+        /// <summary>The sensitivity score of this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>State of a profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The BigQuery table ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The size of the table when the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableSizeBytes")]
+        public virtual System.Nullable<long> TableSizeBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

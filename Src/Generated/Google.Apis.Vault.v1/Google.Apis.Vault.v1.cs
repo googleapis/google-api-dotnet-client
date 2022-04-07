@@ -2826,6 +2826,14 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Additional options for Drive search</summary>
     public class DriveOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Set whether the results include only content encrypted with [Google Workspace Client-side
+        /// encryption](https://support.google.com/a?p=cse_ov) content, only unencrypted content, or both. Defaults to
+        /// both. Currently supported for Drive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSideEncryptedOption")]
+        public virtual string ClientSideEncryptedOption { get; set; }
+
         /// <summary>Set to **true** to include shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSharedDrives")]
         public virtual System.Nullable<bool> IncludeSharedDrives { get; set; }
@@ -2848,8 +2856,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {

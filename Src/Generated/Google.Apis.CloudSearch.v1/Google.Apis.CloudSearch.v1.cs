@@ -502,8 +502,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>
-                /// Checks whether an item is accessible by specified principal. **Note:** This API requires an admin
-                /// account to execute.
+                /// Checks whether an item is accessible by specified principal. Principal must be a user; groups and
+                /// domain values aren't supported. **Note:** This API requires an admin account to execute.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Item name, format: datasources/{source_id}/items/{item_id}</param>
@@ -513,8 +513,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>
-                /// Checks whether an item is accessible by specified principal. **Note:** This API requires an admin
-                /// account to execute.
+                /// Checks whether an item is accessible by specified principal. Principal must be a user; groups and
+                /// domain values aren't supported. **Note:** This API requires an admin account to execute.
                 /// </summary>
                 public class CheckAccessRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.CheckAccessResponse>
                 {

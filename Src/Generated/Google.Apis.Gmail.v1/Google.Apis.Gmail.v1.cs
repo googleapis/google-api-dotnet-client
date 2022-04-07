@@ -3790,7 +3790,7 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Deletes a filter.</summary>
+                /// <summary>Immediately and permanently deletes the specified filter.</summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
                 /// </param>
@@ -3800,7 +3800,7 @@ namespace Google.Apis.Gmail.v1
                     return new DeleteRequest(service, userId, id);
                 }
 
-                /// <summary>Deletes a filter.</summary>
+                /// <summary>Immediately and permanently deletes the specified filter.</summary>
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>

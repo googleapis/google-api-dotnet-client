@@ -468,73 +468,6 @@ namespace Google.Apis.ApiKeysService.v2
                 }
 
                 /// <summary>
-                /// DEPRECATED: API customers can call `GetKey` and then `CreateKey` methods to create a copy of an
-                /// existing key. Retire `CloneKey` method to eliminate the unnessary method from API Keys API. Clones
-                /// the existing key's restriction and display name to a new API key. The service account must have the
-                /// `apikeys.keys.get` and `apikeys.keys.create` permissions in the project. NOTE: Key is a global
-                /// resource; hence the only supported value for location is `global`.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The resource name of the API key to be cloned in the same project.
-                /// </param>
-                public virtual CloneRequest Clone(Google.Apis.ApiKeysService.v2.Data.V2CloneKeyRequest body, string name)
-                {
-                    return new CloneRequest(service, body, name);
-                }
-
-                /// <summary>
-                /// DEPRECATED: API customers can call `GetKey` and then `CreateKey` methods to create a copy of an
-                /// existing key. Retire `CloneKey` method to eliminate the unnessary method from API Keys API. Clones
-                /// the existing key's restriction and display name to a new API key. The service account must have the
-                /// `apikeys.keys.get` and `apikeys.keys.create` permissions in the project. NOTE: Key is a global
-                /// resource; hence the only supported value for location is `global`.
-                /// </summary>
-                public class CloneRequest : ApiKeysServiceBaseServiceRequest<Google.Apis.ApiKeysService.v2.Data.Operation>
-                {
-                    /// <summary>Constructs a new Clone request.</summary>
-                    public CloneRequest(Google.Apis.Services.IClientService service, Google.Apis.ApiKeysService.v2.Data.V2CloneKeyRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The resource name of the API key to be cloned in the same project.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.ApiKeysService.v2.Data.V2CloneKeyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "clone";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}:clone";
-
-                    /// <summary>Initializes Clone parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/keys/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
                 /// Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location
                 /// is `global`.
                 /// </summary>
@@ -808,14 +741,6 @@ namespace Google.Apis.ApiKeysService.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Optional. Deprecated: Use `show_deleted` instead. Only list keys that conform to the specified
-                    /// filter. The allowed filter strings are `state:ACTIVE` and `state:DELETED`. By default, ListKeys
-                    /// returns only active keys.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. Specifies the maximum number of results to be returned at a time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -850,14 +775,6 @@ namespace Google.Apis.ApiKeysService.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -1174,22 +1091,6 @@ namespace Google.Apis.ApiKeysService.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedReferrers")]
         public virtual System.Collections.Generic.IList<string> AllowedReferrers { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for `CloneKey` method.</summary>
-    public class V2CloneKeyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// User specified key id (optional). If specified, it will become the final component of the key resource name.
-        /// The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters,
-        /// and has a maximum length of 63 characters. In another word, the id must match the regular expression:
-        /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
-        public virtual string KeyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3429,6 +3429,270 @@ namespace Google.Apis.CloudResourceManager.v3
         public TagValuesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            TagHolds = new TagHoldsResource(service);
+        }
+
+        /// <summary>Gets the TagHolds resource.</summary>
+        public virtual TagHoldsResource TagHolds { get; }
+
+        /// <summary>The "tagHolds" collection of methods.</summary>
+        public class TagHoldsResource
+        {
+            private const string Resource = "tagHolds";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TagHoldsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a TagHold. Returns ALREADY_EXISTS if a TagHold with the same resource and origin exists under
+            /// the same TagValue.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the TagHold's parent TagValue. Must be of the form:
+            /// `tagValues/{tag-value-id}`.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.TagHold body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a TagHold. Returns ALREADY_EXISTS if a TagHold with the same resource and origin exists under
+            /// the same TagValue.
+            /// </summary>
+            public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.TagHold body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the TagHold's parent TagValue. Must be of the form:
+                /// `tagValues/{tag-value-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Set to true to perform the validations necessary for creating the resource, but not
+                /// actually perform the action.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.TagHold Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/tagHolds";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^tagValues/[^/]+$",
+                    });
+                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes a TagHold.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the TagHold to delete. Must be of the form:
+            /// `tagValues/{tag-value-id}/tagHolds/{tag-hold-id}`.
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a TagHold.</summary>
+            public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the TagHold to delete. Must be of the form:
+                /// `tagValues/{tag-value-id}/tagHolds/{tag-hold-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Set to true to perform the validations necessary for deleting the resource, but not
+                /// actually perform the action.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^tagValues/[^/]+/tagHolds/[^/]+$",
+                    });
+                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists TagHolds under a TagValue.</summary>
+            /// <param name="parent">
+            /// Required. The resource name of the parent TagValue. Must be of the form: `tagValues/{tag-value-id}`.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists TagHolds under a TagValue.</summary>
+            public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListTagHoldsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the parent TagValue. Must be of the form: `tagValues/{tag-value-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Criteria used to select a subset of TagHolds parented by the TagValue to return. This
+                /// field follows the syntax defined by aip.dev/160; the `holder` and `origin` fields are supported for
+                /// filtering. Currently only `AND` syntax is supported. Some example queries are: * `holder =
+                /// //compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group`
+                /// * `origin = 35678234` * `holder =
+                /// //compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group
+                /// AND origin = 35678234`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of TagHolds to return in the response. The server allows a maximum of
+                /// 300 TagHolds to return. If unspecified, the server will use 100 as the default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A pagination token returned from a previous call to `ListTagHolds` that indicates where
+                /// this listing should continue from.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/tagHolds";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^tagValues/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>
@@ -4045,7 +4309,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -4551,6 +4815,27 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The ListTagHolds response.</summary>
+    public class ListTagHoldsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Pagination token. If the result set is too large to fit in a single response, this token is returned. It
+        /// encodes the position of the current result cursor. Feeding this value into a new list request with the
+        /// `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is
+        /// no next page and the list returned is the last page in the result set. Pagination tokens have a limited
+        /// lifetime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A possibly paginated list of TagHolds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagHolds")]
+        public virtual System.Collections.Generic.IList<TagHold> TagHolds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ListTagKeys response message.</summary>
     public class ListTagKeysResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4963,7 +5248,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -5034,6 +5319,50 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// <summary>The TagValue of the TagBinding. Must be of the form `tagValues/456`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValue")]
         public virtual string TagValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A TagHold represents the use of a TagValue that is not captured by TagBindings. If a TagValue has any TagHolds,
+    /// deletion will be blocked. This resource is intended to be created in the same cloud location as the `holder`.
+    /// </summary>
+    public class TagHold : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time this TagHold was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. A URL where an end user can learn more about removing this hold. E.g.
+        /// `https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpLink")]
+        public virtual string HelpLink { get; set; }
+
+        /// <summary>
+        /// Required. The name of the resource where the TagValue is being used. Must be less than 200 characters. E.g.
+        /// `//compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holder")]
+        public virtual string Holder { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of a TagHold. This is a String of the form:
+        /// `tagValues/{tag-value-id}/tagHolds/{tag-hold-id}` (e.g. `tagValues/123/tagHolds/456`). This resource name is
+        /// generated by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. An optional string representing the origin of this request. This field should include
+        /// human-understandable information to distinguish origins from each other. Must be less than 200 characters.
+        /// E.g. `migs-35678234`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5147,7 +5476,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

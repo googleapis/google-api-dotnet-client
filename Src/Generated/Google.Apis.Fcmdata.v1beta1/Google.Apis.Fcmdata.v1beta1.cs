@@ -538,8 +538,8 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
     public class GoogleFirebaseFcmDataV1beta1MessageInsightPercents : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The percentage of accepted messages that had their priority lowered from high to normal due to [app standby
-        /// buckets](https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message).
+        /// The percentage of accepted messages that had their priority lowered from high to normal. See [documentation
+        /// for setting message priority](https://firebase.google.com/docs/cloud-messaging/android/message-priority).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priorityLowered")]
         public virtual System.Nullable<float> PriorityLowered { get; set; }
