@@ -50,11 +50,6 @@ namespace Google.Apis.Auth.OAuth2
             public IEnumerable<string> DelegateAccounts { get; set; }
 
             /// <summary>
-            /// Gets the scopes to request during the authorization grant. May be null or empty.
-            /// </summary>
-            public IEnumerable<string> Scopes { get; set; }
-
-            /// <summary>
             /// Gets or sets for how long the delegated credential should be valid.
             /// Defaults to 1 hour or 3600 seconds.
             /// </summary>
@@ -73,7 +68,6 @@ namespace Google.Apis.Auth.OAuth2
             {
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts;
-                Scopes = other.Scopes;
                 Lifetime = other.Lifetime;
             }
 
@@ -81,7 +75,6 @@ namespace Google.Apis.Auth.OAuth2
             {
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts?.ToList().AsReadOnly() ?? Enumerable.Empty<string>();
-                Scopes = other.Scopes?.ToList().AsReadOnly() ?? Enumerable.Empty<string>();
                 Lifetime = other.Lifetime;
             }
         }
@@ -100,11 +93,6 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets the chained list of delegate service accounts. May be empty.
         /// </summary>
         public IEnumerable<string> DelegateAccounts { get; }
-
-        /// <summary>
-        /// Gets the scopes to request during the authorization grant. May be empty.
-        /// </summary>
-        public IEnumerable<string> Scopes { get; }
 
         /// <summary>
         /// Gets the lifetime of the delegated credential.
@@ -146,7 +134,6 @@ namespace Google.Apis.Auth.OAuth2
             // We just copied tha initializer on the Create method so we know this
             // to be our own local copy. We can avoid copying these collections here.
             DelegateAccounts = initializer.DelegateAccounts;
-            Scopes = initializer.Scopes;
             Lifetime = initializer.Lifetime;
         }
 

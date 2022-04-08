@@ -20,6 +20,7 @@ using Google.Apis.Logging;
 using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -85,6 +86,15 @@ namespace Google.Apis.Auth.OAuth2
             public string QuotaProject { get; set; }
 
             /// <summary>
+            /// Scopes to request during the authorization grant. May be null or empty.
+            /// </summary>
+            /// <remarks>
+            /// If the scopes are pre-granted through the environement, like in GCE where scopes are granted to the VM,
+            /// scopes set here will be ignored.
+            /// </remarks>
+            public IEnumerable<string> Scopes { get; set; }
+
+            /// <summary>
             /// Initializers to be sent to the <see cref="HttpClientFactory"/> to be set
             /// on the <see cref="HttpClient"/> that will be used by the credential to perform
             /// token operations.
@@ -112,6 +122,7 @@ namespace Google.Apis.Auth.OAuth2
                 DefaultExponentialBackOffPolicy = other.DefaultExponentialBackOffPolicy;
                 QuotaProject = other.QuotaProject;
                 HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(other.HttpClientInitializers);
+                Scopes = other.Scopes;
             }
 
             internal Initializer(Initializer other)
@@ -123,6 +134,7 @@ namespace Google.Apis.Auth.OAuth2
                 DefaultExponentialBackOffPolicy = other.DefaultExponentialBackOffPolicy;
                 QuotaProject = other.QuotaProject;
                 HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(other.HttpClientInitializers);
+                Scopes = other.Scopes;
             }
         }
 
@@ -137,6 +149,21 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Gets the HTTP client used to make authentication requests to the server.</summary>
         public ConfigurableHttpClient HttpClient { get; }
+
+        /// <summary>
+        /// Scopes to request during the authorization grant. May be null or empty.
+        /// </summary>
+        /// <remarks>
+        /// If the scopes are pre-granted through the environement, like in GCE where scopes are granted to the VM,
+        /// scopes set here will be ignored.
+        /// </remarks>
+        public IEnumerable<string> Scopes { get; set; }
+
+        /// <summary>
+        /// Returns true if this credential scopes have been explicitly set via this library.
+        /// Returns false otherwise.
+        /// </summary>
+        internal bool HasExplicitScopes => Scopes?.Any() == true;
 
         internal IHttpClientFactory HttpClientFactory { get; }
 
@@ -170,6 +197,8 @@ namespace Google.Apis.Auth.OAuth2
             TokenServerUrl = initializer.TokenServerUrl;
             AccessMethod = initializer.AccessMethod.ThrowIfNull("initializer.AccessMethod");
             Clock = initializer.Clock.ThrowIfNull("initializer.Clock");
+            Scopes = initializer.Scopes?.Where(scope => !string.IsNullOrWhiteSpace(scope)).ToList().AsReadOnly()
+                ?? Enumerable.Empty<string>();
 
             // Set the HTTP client.
             var httpArgs = new CreateHttpClientArgs();
