@@ -2139,6 +2139,81 @@ namespace Google.Apis.Firestore.v1
                     }
                 }
 
+                /// <summary>
+                /// Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API
+                /// allows running an aggregation to produce a series of AggregationResult server-side. High-Level
+                /// Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
+                /// SELECT * FROM k where a = true ); ```
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents` or
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                /// `projects/my-project/databases/my-database/documents` or
+                /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                /// </param>
+                public virtual RunAggregationQueryRequest RunAggregationQuery(Google.Apis.Firestore.v1.Data.RunAggregationQueryRequest body, string parent)
+                {
+                    return new RunAggregationQueryRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API
+                /// allows running an aggregation to produce a series of AggregationResult server-side. High-Level
+                /// Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
+                /// SELECT * FROM k where a = true ); ```
+                /// </summary>
+                public class RunAggregationQueryRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.RunAggregationQueryResponse>
+                {
+                    /// <summary>Constructs a new RunAggregationQuery request.</summary>
+                    public RunAggregationQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RunAggregationQueryRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents` or
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                    /// `projects/my-project/databases/my-database/documents` or
+                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.RunAggregationQueryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "runAggregationQuery";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:runAggregationQuery";
+
+                    /// <summary>Initializes RunAggregationQuery parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
+                    }
+                }
+
                 /// <summary>Runs a query.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2938,7 +3013,7 @@ namespace Google.Apis.Firestore.v1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -3008,6 +3083,43 @@ namespace Google.Apis.Firestore.v1
 }
 namespace Google.Apis.Firestore.v1.Data
 {
+    /// <summary>Defines a aggregation that produces a single result.</summary>
+    public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the field to store the result of the aggregation into. Requires: * Must be present. *
+        /// Must be unique across all aggregation aliases. * Conform to existing document field name limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>Count aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual Count Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of a single bucket from a Firestore aggregation query. The keys of `aggregate_fields` are the same
+    /// for all results in an aggregation query, unlike document queries which can have different fields present for
+    /// each result.
+    /// </summary>
+    public class AggregationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The result of the aggregation functions, ex: `COUNT(*) AS total_docs`. The key is the alias assigned to the
+        /// aggregation function on input and the size of this map equals the number of aggregation functions in the
+        /// query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateFields")]
+        public virtual System.Collections.Generic.IDictionary<string, Value> AggregateFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An array value.</summary>
     public class ArrayValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3203,13 +3315,31 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>A filter that merges multiple other filters using the given operator.</summary>
     public class CompositeFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of filters to combine. Must contain at least one filter.</summary>
+        /// <summary>The list of filters to combine. Requires: * At least one filter is present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<Filter> Filters { get; set; }
 
         /// <summary>The operator for combining multiple filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("op")]
         public virtual string Op { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Count of documents that match the query. The `COUNT(*)` aggregation function operates on the entire document so
+    /// it does not require a field reference.
+    /// </summary>
+    public class Count : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional constraint on the maximum number of documents to count. This provides a way to set an
+        /// upper bound on the number of documents to scan, limiting latency and cost. High-Level Example: ``` SELECT
+        /// COUNT_UP_TO(1000) FROM ( SELECT * FROM k ); ``` Requires: * Must be greater than zero when present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upTo")]
+        public virtual System.Nullable<int> UpTo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4441,6 +4571,62 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for Firestore.RunAggregationQuery.</summary>
+    public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Starts a new transaction as part of the query, defaulting to read-only. The new transaction ID will be
+        /// returned as the first response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newTransaction")]
+        public virtual TransactionOptions NewTransaction { get; set; }
+
+        /// <summary>
+        /// Executes the query at the given timestamp. Requires: * Cannot be more than 270 seconds in the past.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>An aggregation query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredAggregationQuery")]
+        public virtual StructuredAggregationQuery StructuredAggregationQuery { get; set; }
+
+        /// <summary>
+        /// Run the aggregation within an already active transaction. The value here is the opaque transaction ID to
+        /// execute the query in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for Firestore.RunAggregationQuery.</summary>
+    public class RunAggregationQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the aggregate value is valid for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>
+        /// A single aggregation result. Not present when reporting partial progress or when the query produced zero
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual AggregationResult Result { get; set; }
+
+        /// <summary>
+        /// The transaction that was started as part of this request. Only present on the first response when the
+        /// request requested to start a new transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Firestore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4476,12 +4662,6 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>A query result, not set when reporting partial progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; }
-
-        /// <summary>
-        /// If present, Firestore has completely finished the request and no more documents will be returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>
         /// The time at which the document was read. This may be monotonically increasing; in this case, the previous
@@ -4535,6 +4715,21 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Firestore query for running an aggregation over a StructuredQuery.</summary>
+    public class StructuredAggregationQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Series of aggregations to apply on top of the `structured_query`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
+        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
+
+        /// <summary>Nested structured query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
+        public virtual StructuredQuery StructuredQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

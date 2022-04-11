@@ -1328,7 +1328,7 @@ namespace Google.Apis.CloudFunctions.v2alpha
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2319,6 +2319,40 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from
+    /// secret manager and expose it as an environment variable.
+    /// </summary>
+    public class SecretEnvVar : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Project identifier (preferably project number but can also be the project ID) of the project that contains
+        /// the secret. If not set, it will be populated with the function's project assuming that the secret exists in
+        /// the same project as of the function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the secret in secret manager (not the full resource name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; }
+
+        /// <summary>
+        /// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version
+        /// for secret environment variables as any updates to the secret value is not reflected until new instances
+        /// start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).</summary>
     public class ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2370,6 +2404,10 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// <summary>Output only. The name of service revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
+
+        /// <summary>Secret environment variables configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnvironmentVariables")]
+        public virtual System.Collections.Generic.IList<SecretEnvVar> SecretEnvironmentVariables { get; set; }
 
         /// <summary>
         /// Output only. Name of the service associated with a Function. The format of this field is

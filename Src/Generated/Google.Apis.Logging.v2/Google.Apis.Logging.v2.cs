@@ -14149,6 +14149,33 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for an indexed field.</summary>
+    public class IndexConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The timestamp when the index was last modified.This is used to return the timestamp, and will
+        /// be ignored if supplied during update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Required. The LogEntry field path to index.Note that some paths are automatically indexed, and other paths
+        /// are not eligible for indexing. See indexing documentation(
+        /// https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields) for details.For example:
+        /// jsonPayload.request.status
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; }
+
+        /// <summary>Required. The type of data in this index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A description of a label.</summary>
     public class LabelDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14489,6 +14516,10 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Describes this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>A list of indexed fields and related configuration data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexConfigs")]
+        public virtual System.Collections.Generic.IList<IndexConfig> IndexConfigs { get; set; }
 
         /// <summary>Output only. The bucket lifecycle state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]

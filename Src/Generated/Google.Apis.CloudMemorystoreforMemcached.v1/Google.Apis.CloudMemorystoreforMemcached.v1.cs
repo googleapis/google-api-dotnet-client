@@ -1501,12 +1501,12 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. notification_parameters are information that service producers may like to include that is not
+        /// Optional. notification_parameter are information that service producers may like to include that is not
         /// relevant to Rollout. This parameter will only be passed to Gamma and Cloud Logging for notification/logging
         /// purpose.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationParameters")]
-        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParameters { get; set; }
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter> NotificationParameters { get; set; }
 
         /// <summary>
         /// Output only. Custom string attributes used primarily to expose producer-specific information in monitoring
@@ -1653,6 +1653,17 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perSliEligibility")]
         public virtual GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility PerSliEligibility { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains notification related data.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Array of string values. e.g. instance's replica information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

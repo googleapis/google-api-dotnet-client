@@ -1835,7 +1835,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the status of a request.</summary>
+    /// <summary>
+    /// Represents the status for a request to either invoke or submit a
+    /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
+    /// </summary>
     public class ActionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code.</summary>
@@ -2235,9 +2238,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ThreadKey { get; set; }
 
         /// <summary>
-        /// A secret value that Chat apps can use to verify if a request is from Google. The token is randomly generated
-        /// by Google, remains static, and can be obtained from the Google Chat API configuration page in the Cloud
-        /// Console. Developers can revoke/regenerate it if needed from the same page.
+        /// A secret value that legacy Chat apps can use to verify if a request is from Google. Google randomly
+        /// generates the token, and its value remains static. You can obtain, revoke, or regenerate the token from the
+        /// [Chat API configuration page](https://console.cloud.google.com/apis/api/chat.googleapis.com/hangouts-chat)
+        /// in the Google Cloud Console. Modern Chat apps don't use this field. It is absent from API responses and the
+        /// [Chat API configuration page](https://console.cloud.google.com/apis/api/chat.googleapis.com/hangouts-chat).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
@@ -3348,11 +3353,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A matched url in a Chat message. Chat apps can unfurl matched URLs. For more information, refer to [Unfurl
-    /// links](/chat/how-tos/link-unfurling).
+    /// links](https://developers.google.com/chat/how-tos/link-unfurling).
     /// </summary>
     public class MatchedUrl : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The url that was matched.</summary>
+        /// <summary>Output only. The url that was matched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
@@ -3382,9 +3387,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// A user in Google Chat. Represents a [person](https://developers.google.com/people/api/rest/v1/people) in the
-        /// People API or a [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the
-        /// Admin SDK Directory API. Format: `users/{user}`
+        /// Output only. A user in Google Chat. Represents a
+        /// [person](https://developers.google.com/people/api/rest/v1/people) in the People API or a
+        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
+        /// API. Format: `users/{user}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
@@ -3588,11 +3594,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
         public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 
-        /// <summary>Output only. Whether the messages are threaded in this space.</summary>
+        /// <summary>Output only. Output only. Whether the messages are threaded in this space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threaded")]
         public virtual System.Nullable<bool> Threaded { get; set; }
 
-        /// <summary>Deprecated. Use `single_user_bot_dm` instead. Output only. The type of a space.</summary>
+        /// <summary>
+        /// Output only. Deprecated: Use `single_user_bot_dm` instead. Output only. The type of a space.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3716,7 +3724,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A user in Google Chat.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user's display name.</summary>
+        /// <summary>Output only. The user's display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -3724,7 +3732,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual string DomainId { get; set; }
 
-        /// <summary>When `true`, the user is deleted or their profile is not visible.</summary>
+        /// <summary>Output only. When `true`, the user is deleted or their profile is not visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 

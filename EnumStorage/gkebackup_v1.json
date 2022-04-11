@@ -1,0 +1,11 @@
+{
+  "Google.Apis.BackupforGKE.v1.BackupforGKEBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BackupforGKE.v1.BackupforGKEBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

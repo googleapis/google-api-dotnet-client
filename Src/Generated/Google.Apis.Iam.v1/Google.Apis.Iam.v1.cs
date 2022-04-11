@@ -3682,7 +3682,11 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
-                /// <summary>Creates a ServiceAccountKey, using a public key that you provide.</summary>
+                /// <summary>
+                /// Uploads the public key portion of a key pair that you manage, and associates the public key with a
+                /// ServiceAccount. After you upload the public key, you can use the private key from the key pair as a
+                /// service account key.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The resource name of the service account in the following format:
@@ -3695,7 +3699,11 @@ namespace Google.Apis.Iam.v1
                     return new UploadRequest(service, body, name);
                 }
 
-                /// <summary>Creates a ServiceAccountKey, using a public key that you provide.</summary>
+                /// <summary>
+                /// Uploads the public key portion of a key pair that you manage, and associates the public key with a
+                /// ServiceAccount. After you upload the public key, you can use the private key from the key pair as a
+                /// service account key.
+                /// </summary>
                 public class UploadRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccountKey>
                 {
                     /// <summary>Constructs a new Upload request.</summary>
@@ -6264,8 +6272,9 @@ namespace Google.Apis.Iam.v1.Data
     public class UploadServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A field that allows clients to upload their own public key. If set, use this public key data to create a
-        /// service account key for given service account. Please note, the expected format for this field is X509_PEM.
+        /// The public key to associate with the service account. Must be an RSA public key that is wrapped in an X.509
+        /// v3 certificate. Include the first line, `-----BEGIN CERTIFICATE-----`, and the last line, `-----END
+        /// CERTIFICATE-----`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyData")]
         public virtual string PublicKeyData { get; set; }

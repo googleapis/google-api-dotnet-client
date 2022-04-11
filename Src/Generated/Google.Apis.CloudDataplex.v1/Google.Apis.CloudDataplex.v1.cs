@@ -5859,8 +5859,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
-    /// object {}.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6549,6 +6548,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The name to the partition resource. The name is the fully-qualified resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partition")]
         public virtual string Partition { get; set; }
+
+        /// <summary>
+        /// The locations of the data items (e.g., a Cloud Storage objects) sampled for metadata inference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampledDataLocations")]
+        public virtual System.Collections.Generic.IList<string> SampledDataLocations { get; set; }
 
         /// <summary>The type of the containing entity resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

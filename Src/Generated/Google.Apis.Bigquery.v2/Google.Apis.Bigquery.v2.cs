@@ -5385,7 +5385,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<double> Attribution { get; set; }
 
         /// <summary>
-        /// Full name of the feature. For non-numerical features, will be formatted like .. Overall size of feature name
+        /// The full feature name. For non-numerical features, will be formatted like `.`. Overall size of feature name
         /// will always be truncated to first 120 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
@@ -5863,7 +5863,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Training info of a trial in hyperparameter tuning.</summary>
+    /// <summary>
+    /// Training info of a trial in [hyperparameter
+    /// tuning](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models.
+    /// </summary>
     public class HparamTuningTrial : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Ending time of the trial.</summary>
@@ -7269,8 +7272,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Output only. The default trial_id to use in TVFs when the trial_id is not passed in. For single-objective
-        /// hyperparameter tuning, this is the best trial id. For multi-objective hyperparameter tuning, this is the
-        /// smallest trial id among all Pareto optimal trials.
+        /// [hyperparameter tuning](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+        /// models, this is the best trial ID. For multi-objective [hyperparameter
+        /// tuning](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, this is the
+        /// smallest trial ID among all Pareto optimal trials.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTrialId")]
         public virtual System.Nullable<long> DefaultTrialId { get; set; }
@@ -7312,7 +7317,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hparamSearchSpaces")]
         public virtual HparamSearchSpaces HparamSearchSpaces { get; set; }
 
-        /// <summary>Output only. Trials of a hyperparameter tuning model sorted by trial_id.</summary>
+        /// <summary>
+        /// Output only. Trials of a [hyperparameter
+        /// tuning](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) model sorted by
+        /// trial_id.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hparamTrials")]
         public virtual System.Collections.Generic.IList<HparamTuningTrial> HparamTrials { get; set; }
 
@@ -7351,8 +7360,11 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ModelType { get; set; }
 
         /// <summary>
-        /// Output only. For single-objective hyperparameter tuning, it only contains the best trial. For
-        /// multi-objective hyperparameter tuning, it contains all Pareto optimal trials sorted by trial_id.
+        /// Output only. For single-objective [hyperparameter
+        /// tuning](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, it only
+        /// contains the best trial. For multi-objective [hyperparameter
+        /// tuning](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, it contains
+        /// all Pareto optimal trials sorted by trial_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimalTrialIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> OptimalTrialIds { get; set; }
@@ -8550,6 +8562,53 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
         public virtual System.Nullable<ulong> NumRows { get; set; }
+
+        /// <summary>[Output-only] Number of logical bytes that are less than 90 days old.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_active_logical_bytes")]
+        public virtual System.Nullable<long> NumActiveLogicalBytes { get; set; }
+
+        /// <summary>
+        /// [Output-only] Number of physical bytes less than 90 days old. This data is not kept in real time, and might
+        /// be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_active_physical_bytes")]
+        public virtual System.Nullable<long> NumActivePhysicalBytes { get; set; }
+
+        /// <summary>[Output-only] Number of logical bytes that are more than 90 days old.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_long_term_logical_bytes")]
+        public virtual System.Nullable<long> NumLongTermLogicalBytes { get; set; }
+
+        /// <summary>
+        /// [Output-only] Number of physical bytes more than 90 days old. This data is not kept in real time, and might
+        /// be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_long_term_physical_bytes")]
+        public virtual System.Nullable<long> NumLongTermPhysicalBytes { get; set; }
+
+        /// <summary>
+        /// [Output-only] The number of partitions present in the table or materialized view. This data is not kept in
+        /// real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_partitions")]
+        public virtual System.Nullable<long> NumPartitions { get; set; }
+
+        /// <summary>
+        /// [Output-only] Number of physical bytes used by time travel storage (deleted or changed data). This data is
+        /// not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_time_travel_physical_bytes")]
+        public virtual System.Nullable<long> NumTimeTravelPhysicalBytes { get; set; }
+
+        /// <summary>[Output-only] Total number of logical bytes in the table or materialized view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_total_logical_bytes")]
+        public virtual System.Nullable<long> NumTotalLogicalBytes { get; set; }
+
+        /// <summary>
+        /// [Output-only] The physical size of this table in bytes. This also includes storage used for time travel.
+        /// This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("num_total_physical_bytes")]
+        public virtual System.Nullable<long> NumTotalPhysicalBytes { get; set; }
 
         /// <summary>
         /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
