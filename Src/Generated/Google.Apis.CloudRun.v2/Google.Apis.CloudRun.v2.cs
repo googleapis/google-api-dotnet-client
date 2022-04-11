@@ -1432,6 +1432,12 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string BreakglassJustification { get; set; }
 
         /// <summary>
+        /// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>
         /// If True, indicates to use the default project's binary authorization policy. If False, binary authorization
         /// will be disabled.
         /// </summary>

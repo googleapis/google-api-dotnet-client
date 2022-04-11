@@ -759,6 +759,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>The response for Datastore.Commit.</summary>
     public class CommitResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The transaction commit timestamp. Not set for non-transactional commits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
+        public virtual object CommitTime { get; set; }
+
         /// <summary>The number of index entries updated during the commit, or zero if none were updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexUpdates")]
         public virtual System.Nullable<int> IndexUpdates { get; set; }
@@ -828,6 +832,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// <summary>The resulting entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
         public virtual Entity Entity { get; set; }
+
+        /// <summary>
+        /// The time at which the entity was last changed. This field is set for `FULL` entity results. If this entity
+        /// is missing, this field will not be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// The version of the entity, a strictly positive number that monotonically increases with changes to the
@@ -1412,6 +1423,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("missing")]
         public virtual System.Collections.Generic.IList<EntityResult> Missing { get; set; }
 
+        /// <summary>The time at which these entities were read or found missing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1445,6 +1460,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual Entity Update { get; set; }
 
         /// <summary>
+        /// The update time of the entity that this mutation is being applied to. If this does not match the current
+        /// update time on the server, the mutation conflicts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
         /// The entity to upsert. The entity may or may not already exist. The entity key's final path element may be
         /// incomplete.
         /// </summary>
@@ -1468,6 +1490,14 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// <summary>The automatically allocated key. Set only when the mutation allocated a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual Key Key { get; set; }
+
+        /// <summary>
+        /// The update time of the entity on the server after processing the mutation. If the mutation doesn't change
+        /// anything on the server, then the timestamp will be the update timestamp of the current entity. This field
+        /// will not be set after a 'delete'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// The version of the entity on the server after processing the mutation. If the mutation doesn't change
@@ -1676,6 +1706,16 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string MoreResults { get; set; }
 
         /// <summary>
+        /// Read timestamp this batch was returned from. This applies to the range of results from the query's
+        /// `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the
+        /// query's `end_cursor`). In a single transaction, subsequent query result batches for the same query can have
+        /// a greater timestamp. Each batch's read timestamp is valid for all preceding batches. This value will not be
+        /// set for eventually consistent queries in Cloud Datastore.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>
         /// A cursor that points to the position after the last skipped result. Will be set when `skipped_results` != 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedCursor")]
@@ -1702,6 +1742,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>Options specific to read-only transactions.</summary>
     public class ReadOnly : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Reads entities at the given time. This may not be older than 60 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1714,6 +1758,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readConsistency")]
         public virtual string ReadConsistency { get; set; }
+
+        /// <summary>
+        /// Reads entities as they were at the given time. This may not be older than 270 seconds. This value is only
+        /// supported for Cloud Firestore in Datastore mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
 
         /// <summary>
         /// The identifier of the transaction in which to read. A transaction identifier is returned by a call to

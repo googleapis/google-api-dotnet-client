@@ -4838,9 +4838,8 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual System.Nullable<bool> AnyoneCanAddSelf { get; set; }
 
         /// <summary>
-        /// File attachments for the event. Currently only Google Drive attachments are supported. In order to modify
-        /// attachments the supportsAttachments request parameter should be set to true. There can be at most 25
-        /// attachments per event,
+        /// File attachments for the event. In order to modify attachments the supportsAttachments request parameter
+        /// should be set to true. There can be at most 25 attachments per event,
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
         public virtual System.Collections.Generic.IList<EventAttachment> Attachments { get; set; }
@@ -5273,7 +5272,9 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileUrl")]
         public virtual string FileUrl { get; set; }
 
-        /// <summary>URL link to the attachment's icon. Read-only.</summary>
+        /// <summary>
+        /// URL link to the attachment's icon. This field can only be modified for custom third-party attachments.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconLink")]
         public virtual string IconLink { get; set; }
 

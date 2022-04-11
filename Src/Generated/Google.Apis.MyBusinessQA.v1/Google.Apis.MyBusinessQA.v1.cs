@@ -297,6 +297,51 @@ namespace Google.Apis.MyBusinessQA.v1
                     this.service = service;
                 }
 
+                /// <summary>Deletes the answer written by the current user to a question.</summary>
+                /// <param name="name">Required. The name of the question to delete an answer for.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes the answer written by the current user to a question.</summary>
+                public class DeleteRequest : MyBusinessQABaseServiceRequest<Google.Apis.MyBusinessQA.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the question to delete an answer for.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}/answers:delete";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^locations/[^/]+/questions/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Returns the paginated list of answers for a specified question.</summary>
                 /// <param name="parent">Required. The name of the question to fetch answers for.</param>
                 public virtual ListRequest List(string parent)
@@ -343,7 +388,7 @@ namespace Google.Apis.MyBusinessQA.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}";
+                    public override string RestPath => "v1/{+parent}/answers";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -355,7 +400,7 @@ namespace Google.Apis.MyBusinessQA.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^locations/[^/]+/questions/[^/]+/answers$",
+                            Pattern = @"^locations/[^/]+/questions/[^/]+$",
                         });
                         RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
                         {
@@ -528,51 +573,6 @@ namespace Google.Apis.MyBusinessQA.v1
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^locations/[^/]+/questions/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Deletes the answer written by the current user to a question.</summary>
-            /// <param name="name">Required. The name of the question to delete an answer for.</param>
-            public virtual DeleteAnswersRequest DeleteAnswers(string name)
-            {
-                return new DeleteAnswersRequest(service, name);
-            }
-
-            /// <summary>Deletes the answer written by the current user to a question.</summary>
-            public class DeleteAnswersRequest : MyBusinessQABaseServiceRequest<Google.Apis.MyBusinessQA.v1.Data.Empty>
-            {
-                /// <summary>Constructs a new DeleteAnswers request.</summary>
-                public DeleteAnswersRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The name of the question to delete an answer for.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "deleteAnswers";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "DELETE";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+name}/answers";
-
-                /// <summary>Initializes DeleteAnswers parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
