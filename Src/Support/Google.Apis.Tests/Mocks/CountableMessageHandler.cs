@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 
@@ -22,19 +24,22 @@ namespace Google.Apis.Tests.Mocks
     /// <summary>Base mock message handler which counts the number of calls.</summary>
     public abstract class CountableMessageHandler : HttpMessageHandler
     {
-        private int calls;
+        private int _calls;
+        private readonly ConcurrentQueue<HttpRequestMessage> _requests = new ConcurrentQueue<HttpRequestMessage>();
 
         /// <summary>Gets or sets the calls counter.</summary>
         public int Calls
         {
-            get { return calls; }
-            set { calls = value; }
+            get { return _calls; }
         }
+
+        public IEnumerable<HttpRequestMessage> Requests => _requests;
 
         sealed protected override System.Threading.Tasks.Task<HttpResponseMessage> SendAsync(HttpRequestMessage
             request, CancellationToken cancellationToken)
         {
-            Interlocked.Increment(ref calls);
+            Interlocked.Increment(ref _calls);
+            _requests.Enqueue(request);
             return SendAsyncCore(request, cancellationToken);
         }
 

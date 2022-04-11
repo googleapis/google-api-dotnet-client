@@ -218,8 +218,12 @@ namespace Google.Apis.Auth.OAuth2
         /// <list type="number">
         /// <item>
         /// <description>
-        /// <see cref="ComputeCredential"/> is scoped by default. This library doesn't currently
-        /// support explicit scopes to be set on a <see cref="ComputeCredential"/>.
+        /// <see cref="ComputeCredential"/> is scoped by default but in some environments it may be scoped
+        /// explicitly, for instance when running on GKE with Workload Identity or on AppEngine Flex.
+        /// It's possible to create a <see cref="ComputeCredential"/> with explicit scopes set by calling
+        /// <see cref="CreateScoped(IEnumerable{string})"/>. If running on an environment that does not
+        /// accept explicit scoping, for instance GCE where scopes are set on the VM, explicit scopes
+        /// will be ignored.
         /// </description>
         /// </item>
         /// <item>
