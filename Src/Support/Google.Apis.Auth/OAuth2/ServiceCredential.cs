@@ -154,7 +154,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Scopes to request during the authorization grant. May be null or empty.
         /// </summary>
         /// <remarks>
-        /// If the scopes are pre-granted through the environement, like in GCE where scopes are granted to the VM,
+        /// If the scopes are pre-granted through the environment, like in GCE where scopes are granted to the VM,
         /// scopes set here will be ignored.
         /// </remarks>
         public IEnumerable<string> Scopes { get; set; }

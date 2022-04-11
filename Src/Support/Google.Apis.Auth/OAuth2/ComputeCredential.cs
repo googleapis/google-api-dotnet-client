@@ -68,10 +68,12 @@ namespace Google.Apis.Auth.OAuth2
         public string OidcTokenUrl { get; }
 
         /// <inheritdoc/>
-        bool IGoogleCredential.HasExplicitScopes => false;
+        bool IGoogleCredential.HasExplicitScopes => HasExplicitScopes;
 
         /// <inheritdoc/>
-        bool IGoogleCredential.SupportsExplicitScopes => false;
+        bool IGoogleCredential.SupportsExplicitScopes => true;
+
+        internal string EffectiveTokenServerUrl { get; }
 
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
@@ -107,14 +109,38 @@ namespace Google.Apis.Auth.OAuth2
         public ComputeCredential() : this(new Initializer()) { }
 
         /// <summary>Constructs a new Compute credential instance.</summary>
-        public ComputeCredential(Initializer initializer) : base(initializer) => OidcTokenUrl = initializer.OidcTokenUrl;
+        public ComputeCredential(Initializer initializer) : base(initializer)
+        {
+            OidcTokenUrl = initializer.OidcTokenUrl;
+            if (HasExplicitScopes)
+            {
+                var uriBuilder = new UriBuilder(TokenServerUrl);
+                string scopesQuery = $"scopes={string.Join(",", Scopes)}";
+
+                // As per https://docs.microsoft.com/en-us/dotnet/api/system.uribuilder.query?view=net-6.0#examples
+                if (uriBuilder.Query is null || uriBuilder.Query.Length <= 1)
+                {
+                    uriBuilder.Query = scopesQuery;
+                }
+                else
+                {
+                    uriBuilder.Query = $"{uriBuilder.Query.Substring(1)}&{scopesQuery}";
+                }
+                EffectiveTokenServerUrl = uriBuilder.Uri.AbsoluteUri;
+            }
+            else
+            {
+                EffectiveTokenServerUrl = TokenServerUrl;
+            }
+        }
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
             new ComputeCredential(new Initializer(this) { QuotaProject = quotaProject });
 
         /// <inheritdoc/>
-        IGoogleCredential IGoogleCredential.MaybeWithScopes(IEnumerable<string> scopes) => this;
+        IGoogleCredential IGoogleCredential.MaybeWithScopes(IEnumerable<string> scopes) =>
+            new ComputeCredential(new Initializer(this) { Scopes = scopes });
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
@@ -130,7 +156,7 @@ namespace Google.Apis.Auth.OAuth2
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
             // Create and send the HTTP request to compute server token URL.
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, TokenServerUrl);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, EffectiveTokenServerUrl);
             httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
             var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
             Token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);

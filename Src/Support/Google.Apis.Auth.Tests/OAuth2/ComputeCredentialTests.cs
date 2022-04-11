@@ -18,6 +18,8 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Http;
 using Google.Apis.Tests.Mocks;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 using static Google.Apis.Auth.JsonWebSignature;
@@ -152,6 +154,96 @@ namespace Google.Apis.Auth.Tests.OAuth2
             await oidcToken.GetAccessTokenAsync();
 
             Assert.Equal(expectedQueryString, messageHandler.LatestRequest.RequestUri.Query);
+        }
+
+        public static TheoryData<string[], string> Scoped_WithDefaultTokenUrl_Data =>
+            new TheoryData<string[], string>
+            {
+                // explicit scopes, expected token URL
+                { null, GoogleAuthConsts.EffectiveComputeTokenUrl },
+                { new string[] { "scope1", "scope2"}, $"{GoogleAuthConsts.EffectiveComputeTokenUrl}?scopes=scope1,scope2" }
+            };
+
+        public static TheoryData<string[], string, string> Scoped_WithCustomTokenUrl_Data =>
+            new TheoryData<string[], string, string>
+            {
+                // explicit scopes, custom token URL, expected token URL
+                { null, "https://custom.metadata.server/compute/token", "https://custom.metadata.server/compute/token" },
+                { null, "https://custom.metadata.server/compute/token?parameter=value", "https://custom.metadata.server/compute/token?parameter=value" },
+                { new string[] { "scope1", "scope2" }, "https://custom.metadata.server/compute/token", "https://custom.metadata.server/compute/token?scopes=scope1,scope2" },
+                { new string[] { "scope1", "scope2" }, "https://custom.metadata.server/compute/token?parameter=value", "https://custom.metadata.server/compute/token?parameter=value&scopes=scope1,scope2" }
+            };
+
+        private void AssertScoped(ComputeCredential credential, string[] scopes, string expectedTokenUrl)
+        {
+            Assert.Collection(credential.Scopes ?? Enumerable.Empty<string>(),
+                (scopes?.Select<string, Action<string>>(expectedScope => actualScope => Assert.Equal(expectedScope, actualScope)) ?? Enumerable.Empty<Action<string>>()).ToArray());
+            Assert.Equal(expectedTokenUrl, credential.EffectiveTokenServerUrl);
+        }
+
+        private async Task AssertUsesScopedUrl(ComputeCredential credential, FetchesTokenMessageHandler fakeMessageHandler, string expectedTokenUrl)
+        {
+            Assert.NotNull(await credential.GetAccessTokenForRequestAsync());
+            Assert.Equal(1, fakeMessageHandler.Calls);
+            Assert.Equal(expectedTokenUrl, fakeMessageHandler.Requests.First().RequestUri.AbsoluteUri);
+        }
+
+        [Theory]
+        [MemberData(nameof(Scoped_WithDefaultTokenUrl_Data))]
+        public async Task Scoped_Initializer_WithDefaultTokenUrl(string[] scopes, string expectedTokenUrl)
+        {
+            var fakeMessageHandler = new FetchesTokenMessageHandler();
+            var credential = new ComputeCredential(new ComputeCredential.Initializer()
+            {
+                Scopes = scopes,
+                HttpClientFactory = new MockHttpClientFactory(fakeMessageHandler)
+            });
+
+            AssertScoped(credential, scopes, expectedTokenUrl);
+            await AssertUsesScopedUrl(credential, fakeMessageHandler, expectedTokenUrl);
+        }
+
+        [Theory]
+        [MemberData(nameof(Scoped_WithDefaultTokenUrl_Data))]
+        public async Task Scoped_MaybeWithScopes_WithDefaultTokenUrl(string[] scopes, string expectedTokenUrl)
+        {
+            var fakeMessageHandler = new FetchesTokenMessageHandler();
+            var credential = (new ComputeCredential(new ComputeCredential.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(fakeMessageHandler)
+            }) as IGoogleCredential).MaybeWithScopes(scopes) as ComputeCredential;
+            
+            AssertScoped(credential, scopes, expectedTokenUrl);
+            await AssertUsesScopedUrl(credential, fakeMessageHandler, expectedTokenUrl);
+        }
+
+        [Theory]
+        [MemberData(nameof(Scoped_WithCustomTokenUrl_Data))]
+        public async Task Scoped_Initializer_WithCustomTokenUrl(string[] scopes, string customTokenUrl, string expectedTokenUrl)
+        {
+            var fakeMessageHandler = new FetchesTokenMessageHandler();
+            var credential = new ComputeCredential(new ComputeCredential.Initializer(customTokenUrl)
+            {
+                Scopes = scopes,
+                HttpClientFactory = new MockHttpClientFactory(fakeMessageHandler)
+            });
+
+            AssertScoped(credential, scopes, expectedTokenUrl);
+            await AssertUsesScopedUrl(credential, fakeMessageHandler, expectedTokenUrl);
+        }
+
+        [Theory]
+        [MemberData(nameof(Scoped_WithCustomTokenUrl_Data))]
+        public async Task Scoped_MaybeWithScopes_WithCustomTokenUrl(string[] scopes, string customTokenUrl, string expectedTokenUrl)
+        {
+            var fakeMessageHandler = new FetchesTokenMessageHandler();
+            var credential = (new ComputeCredential(new ComputeCredential.Initializer(customTokenUrl)
+            {
+                HttpClientFactory = new MockHttpClientFactory(fakeMessageHandler)
+            }) as IGoogleCredential).MaybeWithScopes(scopes) as ComputeCredential;
+
+            AssertScoped(credential, scopes, expectedTokenUrl);
+            await AssertUsesScopedUrl(credential, fakeMessageHandler, expectedTokenUrl);
         }
     }
 }
