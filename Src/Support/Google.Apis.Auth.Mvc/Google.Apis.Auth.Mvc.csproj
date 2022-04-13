@@ -1,20 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
-  <!--
-    - Google.Apis.Auth.Mvc is only supported for net45 on Windows.
-    - When built on Linux the project is modifed to remove all source files,
-    - remove all references, and to target netstandard1.3
-    - This allows the build to 'succeed', by building a completely empty project.
-    - There may well be a better way to conditionally disable a build.
-    -->
-
   <Import Project="..\CommonProjectProperties.xml" />
 
   <!-- build configuration -->
   <PropertyGroup>
-    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net45</TargetFrameworks>
-    <!-- If not on Windows, target netstandard1.3, just to allow the empty build to succeed -->
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>net45</TargetFrameworks>
   </PropertyGroup>
 
   <!-- nupkg information -->
@@ -30,19 +20,14 @@ Supported Platforms:
     </Description>
   </PropertyGroup>
 
-  <!-- If not on Windows the build is effectively disabled by removing all sources and references -->
-  <ItemGroup Condition="'$(OS)' != 'Windows_NT'">
-    <Compile Remove="**/*.cs" />
-  </ItemGroup>
-
-  <!-- package references, only on Windows -->
-  <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.8" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
     <Reference Include="System.Web" />
 
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
