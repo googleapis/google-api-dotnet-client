@@ -1888,6 +1888,17 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The long running operation metadata for DeleteDataLabelingJob.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for DeleteLabelerPool.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6431,6 +6442,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>If set, information about the eventual deprecation of this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo DeprecationInfo { get; set; }
+
         /// <summary>The display name of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -6457,6 +6472,21 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The state of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the upcoming deprecation of this processor version.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which this processor version will be deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationTime")]
+        public virtual object DeprecationTime { get; set; }
+
+        /// <summary>If set, the processor version that will be used as a replacement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementProcessorVersion")]
+        public virtual string ReplacementProcessorVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

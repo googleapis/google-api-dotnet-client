@@ -3296,82 +3296,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
                 }
 
-                /// <summary>Updates the parameters of a single ServiceBinding.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Name of the ServiceBinding resource. It matches pattern
-                /// `projects/*/locations/global/serviceBindings/service_binding_name&amp;gt;`.
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding body, string name)
-                {
-                    return new PatchRequest(service, body, name);
-                }
-
-                /// <summary>Updates the parameters of a single ServiceBinding.</summary>
-                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Name of the ServiceBinding resource. It matches pattern
-                    /// `projects/*/locations/global/serviceBindings/service_binding_name&amp;gt;`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. Field mask is used to specify the fields to be overwritten in the ServiceBinding
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all fields will be overwritten.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceBindings/[^/]+$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
                 /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -4267,7 +4191,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -4402,7 +4326,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -4446,8 +4370,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6013,13 +5936,6 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// Optional. The endpoint filter associated with the Service Binding. The syntax is described in
-        /// http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpointFilter")]
-        public virtual string EndpointFilter { get; set; }
-
         /// <summary>Optional. Set of label tags associated with the ServiceBinding resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -6051,7 +5967,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -6247,7 +6163,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>
@@ -6356,7 +6272,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
-    /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are “AND”ed for
+    /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "AND"ed for
     /// evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
     /// </summary>
     public class TlsRouteRouteMatch : Google.Apis.Requests.IDirectResponseSchema
@@ -6390,7 +6306,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Required. RouteMatch defines the predicate used to match requests to a given action. Multiple match types
-        /// are “OR”ed for evaluation.
+        /// are "OR"ed for evaluation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matches")]
         public virtual System.Collections.Generic.IList<TlsRouteRouteMatch> Matches { get; set; }

@@ -2364,11 +2364,11 @@ namespace Google.Apis.CloudAsset.v1
             /// ResourceSearchResult. Only '*' or combination of top level fields can be specified. Field names of both
             /// snake_case and camelCase are supported. Examples: `"*"`, `"name,location"`, `"name,versionedResources"`.
             /// The read_mask paths must be valid field paths listed but not limited to (both snake_case and camelCase
-            /// are supported): * name * assetType * project * displayName * description * location * labels *
-            /// networkTags * kmsKey * createTime * updateTime * state * additionalAttributes * versionedResources If
-            /// read_mask is not specified, all fields except versionedResources will be returned. If only '*' is
-            /// specified, all fields including versionedResources will be returned. Any invalid field path will trigger
-            /// INVALID_ARGUMENT error.
+            /// are supported): * name * assetType * project * displayName * description * location * tagKeys *
+            /// tagValues * tagValueIds * labels * networkTags * kmsKey * createTime * updateTime * state *
+            /// additionalAttributes * versionedResources If read_mask is not specified, all fields except
+            /// versionedResources will be returned. If only '*' is specified, all fields including versionedResources
+            /// will be returned. Any invalid field path will trigger INVALID_ARGUMENT error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -2839,7 +2839,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -5496,6 +5496,31 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: *
+        /// use a field query. Example: - `tagKeys:"123456789/e*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * use a
+        /// free text query. Example: - `env`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKeys")]
+        public virtual System.Collections.Generic.IList<string> TagKeys { get; set; }
+
+        /// <summary>
+        /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * use a field
+        /// query. Example: - `tagValueIds:"456"` - `tagValueIds="tagValues/456"` * use a free text query. Example: -
+        /// `456`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValueIds")]
+        public virtual System.Collections.Generic.IList<string> TagValueIds { get; set; }
+
+        /// <summary>
+        /// TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search
+        /// against the `tagValues`: * use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` -
+        /// `tagValues:"123456789/env/pr*"` - `tagValues="123456789/env/prod"` * use a free text query. Example: -
+        /// `prod`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
+        public virtual System.Collections.Generic.IList<string> TagValues { get; set; }
 
         /// <summary>
         /// The last update timestamp of this resource, at which the resource was last modified or deleted. The

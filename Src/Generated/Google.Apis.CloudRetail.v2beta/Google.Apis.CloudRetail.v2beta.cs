@@ -1247,7 +1247,9 @@ namespace Google.Apis.CloudRetail.v2beta
                             /// Indicates which fields in the provided Product to update. The immutable and output only
                             /// fields are NOT supported. If not set, all supported fields (the fields that are neither
                             /// immutable nor output only) are updated. If an unsupported or unknown field is provided,
-                            /// an INVALID_ARGUMENT error is returned.
+                            /// an INVALID_ARGUMENT error is returned. The attribute key can be updated by setting the
+                            /// mask path as "attributes.${key_name}". If a key name is present in the mask but not in
+                            /// the patching product from the request, this key will be deleted after the update.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -2205,13 +2207,14 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
-                    /// Recommendations AI placement. Before you can request predictions from your model, you must
-                    /// create at least one placement for it. For more information, see [Managing
-                    /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
-                    /// list of available placements can be seen at
-                    /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend using the
+                    /// `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI
+                    /// serving config or placement. Before you can request predictions from your model, you must create
+                    /// at least one serving config or placement for it. For more information, see [Managing serving
+                    /// configurations]. (https://cloud.google.com/retail/docs/manage-configs). The full list of
+                    /// available serving configs can be seen at
+                    /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement)
                     {
@@ -2231,13 +2234,15 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
-                        /// Recommendations AI placement. Before you can request predictions from your model, you must
-                        /// create at least one placement for it. For more information, see [Managing
-                        /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
-                        /// full list of available placements can be seen at
-                        /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend using
+                        /// the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
+                        /// Recommendations AI serving config or placement. Before you can request predictions from your
+                        /// model, you must create at least one serving config or placement for it. For more
+                        /// information, see [Managing serving configurations].
+                        /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
+                        /// configs can be seen at
+                        /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -2278,11 +2283,12 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
-                    /// Required. The resource name of the search engine placement, such as
-                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
-                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
-                    /// This field is used to identify the serving configuration name and the set of models that will be
-                    /// used to make the search.
+                    /// Required. The resource name of the Retail Search serving config, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
+                    /// the name of the legacy placement resource, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
+                    /// used to identify the serving configuration name and the set of models that will be used to make
+                    /// the search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchRequest body, string placement)
                     {
@@ -2304,11 +2310,12 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the search engine placement, such as
-                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                        /// Required. The resource name of the Retail Search serving config, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
-                        /// This field is used to identify the serving configuration name and the set of models that
-                        /// will be used to make the search.
+                        /// or the name of the legacy placement resource, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
+                        /// is used to identify the serving configuration name and the set of models that will be used
+                        /// to make the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -2780,13 +2787,14 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
-                    /// Recommendations AI placement. Before you can request predictions from your model, you must
-                    /// create at least one placement for it. For more information, see [Managing
-                    /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
-                    /// list of available placements can be seen at
-                    /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend using the
+                    /// `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI
+                    /// serving config or placement. Before you can request predictions from your model, you must create
+                    /// at least one serving config or placement for it. For more information, see [Managing serving
+                    /// configurations]. (https://cloud.google.com/retail/docs/manage-configs). The full list of
+                    /// available serving configs can be seen at
+                    /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement)
                     {
@@ -2806,13 +2814,15 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} or
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} The ID of the
-                        /// Recommendations AI placement. Before you can request predictions from your model, you must
-                        /// create at least one placement for it. For more information, see [Managing
-                        /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
-                        /// full list of available placements can be seen at
-                        /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend using
+                        /// the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
+                        /// Recommendations AI serving config or placement. Before you can request predictions from your
+                        /// model, you must create at least one serving config or placement for it. For more
+                        /// information, see [Managing serving configurations].
+                        /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
+                        /// configs can be seen at
+                        /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -2918,11 +2928,12 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
-                    /// Required. The resource name of the search engine placement, such as
-                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
-                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
-                    /// This field is used to identify the serving configuration name and the set of models that will be
-                    /// used to make the search.
+                    /// Required. The resource name of the Retail Search serving config, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
+                    /// the name of the legacy placement resource, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
+                    /// used to identify the serving configuration name and the set of models that will be used to make
+                    /// the search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchRequest body, string placement)
                     {
@@ -2944,11 +2955,12 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the search engine placement, such as
-                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                        /// Required. The resource name of the Retail Search serving config, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
-                        /// This field is used to identify the serving configuration name and the set of models that
-                        /// will be used to make the search.
+                        /// or the name of the legacy placement resource, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
+                        /// is used to identify the serving configuration name and the set of models that will be used
+                        /// to make the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -5907,14 +5919,6 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual GoogleCloudRetailV2betaRule Rule { get; set; }
 
         /// <summary>
-        /// Required. Specifies the use case for the control. Affects what condition fields can be set. Only settable by
-        /// search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one
-        /// search_solution_use_case per control.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchSolutionUseCase")]
-        public virtual System.Collections.Generic.IList<string> SearchSolutionUseCase { get; set; }
-
-        /// <summary>
         /// Required. Immutable. The solution types that the serving config is used for. Currently we support setting
         /// only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If
         /// no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
@@ -6600,7 +6604,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// Required. Context about the user, what they are looking at and what action they took to trigger the predict
         /// request. Note that this user event detail won't be ingested to userEvent logs. Thus, a separate userEvent
-        /// write request is required for event logging.
+        /// write request is required for event logging. Don't set UserEvent.visitor_id or UserInfo.user_id to the same
+        /// fixed ID for different users. If you are trying to receive non-personalized recommendations (not
+        /// recommended; this can negatively impact model performance), instead set UserEvent.visitor_id to a random
+        /// unique ID and leave UserInfo.user_id unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEvent")]
         public virtual GoogleCloudRetailV2betaUserEvent UserEvent { get; set; }
@@ -7136,11 +7143,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// The type of Products allowed to be ingested into the catalog. Acceptable values are: * `primary` (default):
         /// You can ingest Products of all types. When ingesting a Product, its type will default to
-        /// Product.Type.PRIMARY if unset. * `variant`: You can only ingest Product.Type.VARIANT Products. This means
-        /// Product.primary_product_id cannot be empty. If this field is set to an invalid value other than these, an
-        /// INVALID_ARGUMENT error is returned. If this field is `variant` and merchant_center_product_id_field is
-        /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See [Using product
-        /// levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels) for more details.
+        /// Product.Type.PRIMARY if unset. * `variant` (incompatible with Retail Search): You can only ingest
+        /// Product.Type.VARIANT Products. This means Product.primary_product_id cannot be empty. If this field is set
+        /// to an invalid value other than these, an INVALID_ARGUMENT error is returned. If this field is `variant` and
+        /// merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT error is returned. See [Product
+        /// levels](https://cloud.google.com/retail/docs/catalog#product-levels) for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionProductType")]
         public virtual string IngestionProductType { get; set; }
@@ -7151,8 +7158,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// `itemGroupId`: Import `itemGroupId` as the product ID. Notice that Retail API will choose one item from the
         /// ones with the same `itemGroupId`, and use it to represent the item group. If this field is set to an invalid
         /// value other than these, an INVALID_ARGUMENT error is returned. If this field is `itemGroupId` and
-        /// ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned. See [Using product
-        /// levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels) for more details.
+        /// ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned. See [Product
+        /// levels](https://cloud.google.com/retail/docs/catalog#product-levels) for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterProductIdField")]
         public virtual string MerchantCenterProductIdField { get; set; }
@@ -7799,7 +7806,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
         public virtual GoogleCloudRetailV2betaSearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
 
-        /// <summary>Raw search query.</summary>
+        /// <summary>
+        /// Raw search query. If this field is empty, the request is considered a category browsing request and returned
+        /// results are based on filter and page_categories.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
@@ -8682,9 +8692,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// Required. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
         /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
-        /// should not change if the visitor log in/out of the website. The field must be a UTF-8 encoded string with a
-        /// length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. The field should not
-        /// contain PII or user-data. We recommend to use Google Analystics [Client
+        /// should not change if the visitor log in/out of the website. Don't set the field to the same fixed ID for
+        /// different users. This mixes the event history of those users together, which results in degraded model
+        /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        /// INVALID_ARGUMENT error is returned. The field should not contain PII or user-data. We recommend to use
+        /// Google Analystics [Client
         /// ID](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#clientId) for
         /// this field.
         /// </summary>
@@ -8776,9 +8788,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string UserAgent { get; set; }
 
         /// <summary>
-        /// Highly recommended for logged-in users. Unique identifier for logged-in user, such as a user name. Always
-        /// use a hashed value for this ID. The field must be a UTF-8 encoded string with a length limit of 128
-        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Highly recommended for logged-in users. Unique identifier for logged-in user, such as a user name. Don't set
+        /// for anonymous users. Always use a hashed value for this ID. Don't set the field to the same fixed ID for
+        /// different users. This mixes the event history of those users together, which results in degraded model
+        /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        /// INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }

@@ -1622,6 +1622,76 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Precinct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ID of the AdministrationRegion message for this precinct. Corresponds to LocalityId xml tag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrationRegionId")]
+        public virtual string AdministrationRegionId { get; set; }
+
+        /// <summary>ID(s) of the Contest message(s) for this precinct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contestId")]
+        public virtual System.Collections.Generic.IList<string> ContestId { get; set; }
+
+        /// <summary>Required. Dataset ID. What datasets our Precincts come from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual System.Nullable<long> DatasetId { get; set; }
+
+        /// <summary>ID(s) of the PollingLocation message(s) for this precinct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyVoteSiteId")]
+        public virtual System.Collections.Generic.IList<string> EarlyVoteSiteId { get; set; }
+
+        /// <summary>ID(s) of the ElectoralDistrict message(s) for this precinct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("electoralDistrictId")]
+        public virtual System.Collections.Generic.IList<string> ElectoralDistrictId { get; set; }
+
+        /// <summary>Required. A unique identifier for this precinct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Specifies if the precinct runs mail-only elections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mailOnly")]
+        public virtual System.Nullable<bool> MailOnly { get; set; }
+
+        /// <summary>Required. The name of the precinct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The number of the precinct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("number")]
+        public virtual string Number { get; set; }
+
+        /// <summary>Encouraged. The OCD ID of the precinct</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocdId")]
+        public virtual System.Collections.Generic.IList<string> OcdId { get; set; }
+
+        /// <summary>ID(s) of the PollingLocation message(s) for this precinct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingLocationId")]
+        public virtual System.Collections.Generic.IList<string> PollingLocationId { get; set; }
+
+        /// <summary>
+        /// ID(s) of the SpatialBoundary message(s) for this precinct. Used to specify a geometrical boundary of the
+        /// precinct.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spatialBoundaryId")]
+        public virtual System.Collections.Generic.IList<string> SpatialBoundaryId { get; set; }
+
+        /// <summary>
+        /// If present, this proto corresponds to one portion of split precinct. Other portions of this precinct are
+        /// guaranteed to have the same `name`. If not present, this proto represents a full precicnt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitName")]
+        public virtual string SplitName { get; set; }
+
+        /// <summary>Specifies the ward the precinct is contained within.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ward")]
+        public virtual string Ward { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class RepresentativeInfoData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1793,6 +1863,13 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("precinctId")]
         public virtual string PrecinctId { get; set; }
+
+        /// <summary>
+        /// The precincts that match this voter's address. Will only be returned for project IDs which have been
+        /// whitelisted as "partner projects".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precincts")]
+        public virtual System.Collections.Generic.IList<Precinct> Precincts { get; set; }
 
         /// <summary>
         /// Local Election Information for the state that the voter votes in. For the US, there will only be one element

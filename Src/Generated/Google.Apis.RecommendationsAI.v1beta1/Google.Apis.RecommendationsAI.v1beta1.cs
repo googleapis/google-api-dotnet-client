@@ -2800,7 +2800,10 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// <summary>
         /// Required. Context about the user, what they are looking at and what action they took to trigger the predict
         /// request. Note that this user event detail won't be ingested to userEvent logs. Thus, a separate userEvent
-        /// write request is required for event logging.
+        /// write request is required for event logging. Don't set UserInfo.visitor_id or UserInfo.user_id to the same
+        /// fixed ID for different users. If you are trying to receive non-personalized recommendations (not
+        /// recommended; this can negatively impact model performance), instead set UserInfo.visitor_id to a random
+        /// unique ID and leave UserInfo.user_id unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEvent")]
         public virtual GoogleCloudRecommendationengineV1beta1UserEvent UserEvent { get; set; }
@@ -3331,7 +3334,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
 
         /// <summary>
         /// Optional. Unique identifier for logged-in user with a length limit of 128 bytes. Required only for logged-in
-        /// users.
+        /// users. Don't set for anonymous users. Don't set the field to the same fixed ID for different users. This
+        /// mixes the event history of those users together, which results in degraded model quality.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
@@ -3340,7 +3344,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// Required. A unique identifier for tracking visitors with a length limit of 128 bytes. For example, this
         /// could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single
         /// device. This unique identifier should not change if the visitor logs in or out of the website. Maximum
-        /// length 128 bytes. Cannot be empty.
+        /// length 128 bytes. Cannot be empty. Don't set the field to the same fixed ID for different users. This mixes
+        /// the event history of those users together, which results in degraded model quality.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
         public virtual string VisitorId { get; set; }
@@ -3410,8 +3415,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
