@@ -19464,8 +19464,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction> SetParameterActions { get; set; }
 
         /// <summary>
-        /// The tag used by the webhook to identify which fulfillment is being called. This field is required if
-        /// `webhook` is specified.
+        /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow
+        /// when the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
@@ -19844,7 +19846,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3Page : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The human-readable name of the page, unique within the agent.</summary>
+        /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -20647,7 +20649,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents fulfillment information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Always present. The tag used to identify which fulfillment is being called.</summary>
+        /// <summary>
+        /// Always present. The value of the Fulfillment.tag field will be populated in this field by Dialogflow when
+        /// the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 
@@ -21330,8 +21336,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction> SetParameterActions { get; set; }
 
         /// <summary>
-        /// The tag used by the webhook to identify which fulfillment is being called. This field is required if
-        /// `webhook` is specified.
+        /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow
+        /// when the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
@@ -21710,7 +21718,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1Page : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The human-readable name of the page, unique within the agent.</summary>
+        /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -22513,7 +22521,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents fulfillment information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Always present. The tag used to identify which fulfillment is being called.</summary>
+        /// <summary>
+        /// Always present. The value of the Fulfillment.tag field will be populated in this field by Dialogflow when
+        /// the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 

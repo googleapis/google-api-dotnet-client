@@ -1803,15 +1803,19 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Whether the enterprise admin has seen and agreed to the managed Google Play Agreement
-            /// (https://www.android.com/enterprise/terms/). Always set this to true when creating an EMM-managed
-            /// enterprise. Do not create the enterprise until the admin has viewed and accepted the agreement.
+            /// (https://www.android.com/enterprise/terms/). Do not set this field for any customer-managed enterprise
+            /// (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises). Set
+            /// this to field to true for all EMM-managed enterprises
+            /// (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("agreementAccepted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AgreementAccepted { get; set; }
 
             /// <summary>
-            /// The enterprise token appended to the callback URL. Only set this when creating a customer-managed
-            /// enterprise.
+            /// The enterprise token appended to the callback URL. Set this when creating a customer-managed enterprise
+            /// (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and
+            /// not when creating a deprecated EMM-managed enterprise
+            /// (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
@@ -1821,8 +1825,11 @@ namespace Google.Apis.AndroidManagement.v1
             public virtual string ProjectId { get; set; }
 
             /// <summary>
-            /// The name of the SignupUrl used to sign up for the enterprise. Only set this when creating a
-            /// customer-managed enterprise.
+            /// The name of the SignupUrl used to sign up for the enterprise. Set this when creating a customer-managed
+            /// enterprise
+            /// (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and
+            /// not when creating a deprecated EMM-managed enterprise
+            /// (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
@@ -2315,13 +2322,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>This represents a single version of the app.</summary>
     public class AppVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if this version is a production track.</summary>
+        /// <summary>If the value is True, it indicates that this version is a production track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("production")]
         public virtual System.Nullable<bool> Production { get; set; }
 
         /// <summary>
-        /// Track ids that the app version is published in. This doesn't include the production track (see production
-        /// instead).
+        /// Track identifiers that the app version is published in. This does not include the production track (see
+        /// production instead).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackIds")]
         public virtual System.Collections.Generic.IList<string> TrackIds { get; set; }
@@ -2392,8 +2399,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string FullDescription { get; set; }
 
         /// <summary>
-        /// A link to an image that can be used as an icon for the app. This image is suitable for use at up to 512px x
-        /// 512px
+        /// A link to an image that can be used as an icon for the app. This image is suitable for use up to a pixel
+        /// size of 512 x 512.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
         public virtual string IconUrl { get; set; }
@@ -2427,8 +2434,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<string> ScreenshotUrls { get; set; }
 
         /// <summary>
-        /// A link to a smaller image that can be used as an icon for the app. This image is suitable for use at up to
-        /// 128px x 128px.
+        /// A link to a smaller image that can be used as an icon for the app. This image is suitable for use up to a
+        /// pixel size of 128 x 128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallIconUrl")]
         public virtual string SmallIconUrl { get; set; }
@@ -3371,8 +3378,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<int> PrimaryColor { get; set; }
 
         /// <summary>
-        /// The topic that Cloud Pub/Sub notifications are published to, in the form projects/{project}/topics/{topic}.
-        /// This field is only required if Pub/Sub notifications are enabled.
+        /// The topic which Pub/Sub notifications are published to, in the form projects/{project}/topics/{topic}. This
+        /// field is only required if Pub/Sub notifications are enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
@@ -3406,7 +3413,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string NotificationReceiver { get; set; }
 
         /// <summary>
-        /// Hex-encoded SHA256 hash of the signing certificate of the extension app. Only hexadecimal string
+        /// Hex-encoded SHA-256 hash of the signing certificate of the extension app. Only hexadecimal string
         /// representations of 64 characters are valid.If not specified, the signature for the corresponding package
         /// name is obtained from the Play Store instead.If this list is empty, the signature of the extension app on
         /// the device must match the signature obtained from the Play Store for the app to be able to communicate with
@@ -4689,6 +4696,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unmuteMicrophoneDisabled")]
         public virtual System.Nullable<bool> UnmuteMicrophoneDisabled { get; set; }
 
+        /// <summary>Configuration of device activity logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageLog")]
+        public virtual UsageLog UsageLog { get; set; }
+
         /// <summary>Whether transferring files over USB is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbFileTransferDisabled")]
         public virtual System.Nullable<bool> UsbFileTransferDisabled { get; set; }
@@ -5153,6 +5164,30 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>A short header which appears above the HTML content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual UserFacingMessage Header { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Controls types of device activity logs collected from the device and reported via Pub/Sub notification
+    /// (https://developers.google.com/android/management/notifications).
+    /// </summary>
+    public class UsageLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies which log types are enabled. Note that users will receive on-device messaging when usage logging
+        /// is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledLogTypes")]
+        public virtual System.Collections.Generic.IList<string> EnabledLogTypes { get; set; }
+
+        /// <summary>
+        /// Specifies which of the enabled log types can be uploaded over mobile data. By default logs are queued for
+        /// upload when the device connects to WiFi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadOnCellularAllowed")]
+        public virtual System.Collections.Generic.IList<string> UploadOnCellularAllowed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

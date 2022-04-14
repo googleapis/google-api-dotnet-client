@@ -2131,12 +2131,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string JwksUri { get; set; }
 
         /// <summary>
-        /// Defines the locations to extract the JWT. JWT locations can be either from HTTP headers or URL query
-        /// parameters. The rule is that the first match wins. The checking order is: checking all headers first, then
-        /// URL query parameters. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2)
-        /// x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings:
-        /// jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query:
-        /// access_token
+        /// Defines the locations to extract the JWT. For now it is only used by the Cloud Endpoints to store the
+        /// OpenAPI extension [x-google-jwt-locations]
+        /// (https://cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-locations) JWT locations
+        /// can be one of HTTP headers, URL query parameters or cookies. The rule is that the first match wins. If not
+        /// specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3)
+        /// access_token query parameter Default locations can be specified as followings: jwt_locations: - header:
+        /// Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtLocations")]
         public virtual System.Collections.Generic.IList<JwtLocation> JwtLocations { get; set; }
@@ -2368,7 +2369,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -3239,6 +3240,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Specifies a location to extract JWT from an API request.</summary>
     public class JwtLocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies cookie name to extract JWT token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cookie")]
+        public virtual string Cookie { get; set; }
+
         /// <summary>Specifies HTTP header name to extract JWT token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
@@ -4407,7 +4412,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -4596,7 +4601,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

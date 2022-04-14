@@ -6300,6 +6300,17 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An authentication URL configuration for the authenticator app of an identity provider.</summary>
+    public class EnterpriseAuthenticationAppLinkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An authentication url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class EnterprisesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An enterprise.</summary>
@@ -7204,6 +7215,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The auto-update mode for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateMode")]
         public virtual string AutoUpdateMode { get; set; }
+
+        /// <summary>
+        /// An authentication URL configuration for the authenticator app of an identity provider. This helps to launch
+        /// the identity provider's authenticator app during the authentication happening in a private app using Android
+        /// WebView. Authenticator app should already be the [default
+        /// handler](https://developer.android.com/training/app-links/verify-site-associations) for the authentication
+        /// url on the device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseAuthenticationAppLinkConfigs")]
+        public virtual System.Collections.Generic.IList<EnterpriseAuthenticationAppLinkConfig> EnterpriseAuthenticationAppLinkConfigs { get; set; }
 
         /// <summary>The managed configuration for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]

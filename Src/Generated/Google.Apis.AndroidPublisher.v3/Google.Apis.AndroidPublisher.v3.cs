@@ -4999,7 +4999,8 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Required. Resource name for this grant, following the pattern
-        /// "developers/{developer}/users/{email}/grants/{package_name}".
+        /// "developers/{developer}/users/{email}/grants/{package_name}". If this grant is for a draft app, the app ID
+        /// will be used in this resource name instead of the package name.
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Grant body, string name)
         {
@@ -5019,7 +5020,8 @@ namespace Google.Apis.AndroidPublisher.v3
 
             /// <summary>
             /// Required. Resource name for this grant, following the pattern
-            /// "developers/{developer}/users/{email}/grants/{package_name}".
+            /// "developers/{developer}/users/{email}/grants/{package_name}". If this grant is for a draft app, the app
+            /// ID will be used in this resource name instead of the package name.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -8708,12 +8710,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// Required. Resource name for this grant, following the pattern
-        /// "developers/{developer}/users/{email}/grants/{package_name}".
+        /// "developers/{developer}/users/{email}/grants/{package_name}". If this grant is for a draft app, the app ID
+        /// will be used in this resource name instead of the package name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Immutable. The package name of the app.</summary>
+        /// <summary>Immutable. The package name of the app. This will be empty for draft apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
 
@@ -9892,7 +9895,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>The time at which the user's access expires, if set.</summary>
+        /// <summary>
+        /// The time at which the user's access expires, if set. When setting this value, it must always be in the
+        /// future.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual object ExpirationTime { get; set; }
 
@@ -9907,7 +9913,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Whether there are more permissions for the user that are not represented here.
+        /// Output only. Whether there are more permissions for the user that are not represented here. This can happen
+        /// if the caller does not have permission to manage all apps in the account. This is also `true` if this user
+        /// is the account owner. If this field is `true`, it should be taken as a signal that this user cannot be fully
+        /// managed via the API. That is, the API caller is not be able to manage all of the permissions this user
+        /// holds, either because it doesn't know about them or because the user is the account owner.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partial")]
         public virtual System.Nullable<bool> Partial { get; set; }

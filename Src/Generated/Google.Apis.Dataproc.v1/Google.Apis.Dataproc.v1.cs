@@ -6012,6 +6012,21 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Auxiliary services configuration for a Cluster.</summary>
+    public class AuxiliaryServicesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Hive Metastore configuration for this workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metastoreConfig")]
+        public virtual MetastoreConfig MetastoreConfig { get; set; }
+
+        /// <summary>Optional. The Spark History Server configuration for the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkHistoryServerConfig")]
+        public virtual SparkHistoryServerConfig SparkHistoryServerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Basic algorithm for autoscaling.</summary>
     public class BasicAutoscalingAlgorithm : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6225,7 +6240,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. members can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. members can have the following
         /// values: allUsers: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with
         /// a Google account or a service account. user:{emailid}: An email address that represents a specific Google
@@ -6284,7 +6299,8 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default
-        /// values, and values may change when clusters are updated.
+        /// values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig
+        /// must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ClusterConfig Config { get; set; }
@@ -6316,6 +6332,16 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. The previous cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; }
+
+        /// <summary>
+        /// Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control
+        /// the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster
+        /// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note
+        /// that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config
+        /// or virtualClusterConfig must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualClusterConfig")]
+        public virtual VirtualClusterConfig VirtualClusterConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6359,9 +6385,10 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual GceClusterConfig GceClusterConfig { get; set; }
 
         /// <summary>
-        /// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is
-        /// considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config,
-        /// worker_config, secondary_worker_config, and autoscaling_config.
+        /// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config
+        /// for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute
+        /// Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and
+        /// autoscaling_config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterConfig")]
         public virtual GkeClusterConfig GkeClusterConfig { get; set; }
@@ -6921,9 +6948,175 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The cluster's GKE config.</summary>
     public class GkeClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A target for the deployment.</summary>
+        /// <summary>
+        /// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc
+        /// cluster (the GKE cluster can be zonal or regional). Format:
+        /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterTarget")]
+        public virtual string GkeClusterTarget { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedGkeDeploymentTarget")]
         public virtual NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTarget { get; set; }
+
+        /// <summary>
+        /// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the
+        /// 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same
+        /// location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolTarget")]
+        public virtual System.Collections.Generic.IList<GkeNodePoolTarget> NodePoolTarget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters that describe cluster nodes.</summary>
+    public class GkeNodeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each
+        /// node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<GkeNodePoolAcceleratorConfig> Accelerators { get; set; }
+
+        /// <summary>
+        /// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of
+        /// disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
+        public virtual System.Nullable<int> LocalSsdCount { get; set; }
+
+        /// <summary>
+        /// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to
+        /// be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify
+        /// the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the nodes are created as preemptible VM instances
+        /// (https://cloud.google.com/compute/docs/instances/preemptible).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
+        public virtual System.Nullable<bool> Preemptible { get; set; }
+
+        /// <summary>
+        /// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spot")]
+        public virtual System.Nullable<bool> Spot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.</summary>
+    public class GkeNodePoolAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of accelerator cards exposed to an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
+        public virtual System.Nullable<long> AcceleratorCount { get; set; }
+
+        /// <summary>The accelerator type resource namename (see GPUs on Compute Engine).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; }
+
+        /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide
+        /// (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuPartitionSize")]
+        public virtual string GpuPartitionSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to
+    /// the current cluster usage.
+    /// </summary>
+    public class GkeNodePoolAutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The maximum number of nodes in the NodePool. Must be &amp;gt;= min_node_count. Note: Quota must be
+        /// sufficient to scale up the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
+        public virtual System.Nullable<int> MaxNodeCount { get; set; }
+
+        /// <summary>The minimum number of nodes in the NodePool. Must be &gt;= 0 and &lt;= max_node_count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
+        public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster
+    /// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+    /// </summary>
+    public class GkeNodePoolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid
+        /// configuration is present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
+        public virtual GkeNodePoolAutoscalingConfig Autoscaling { get; set; }
+
+        /// <summary>Optional. The node pool configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GkeNodeConfig Config { get; set; }
+
+        /// <summary>
+        /// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where
+        /// NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not
+        /// specified during NodePool creation, Dataproc will choose a location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GKE NodePools that Dataproc workloads run on.</summary>
+    public class GkeNodePoolTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target GKE NodePool. Format:
+        /// 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
+        public virtual string NodePool { get; set; }
+
+        /// <summary>
+        /// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with
+        /// the specified shape. If one with the same name already exists, it is verified against all specified fields.
+        /// If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name
+        /// is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default
+        /// values.This is an input only field. It will not be returned by the API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolConfig")]
+        public virtual GkeNodePoolConfig NodePoolConfig { get; set; }
+
+        /// <summary>Required. The types of role for a GKE NodePool</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7573,6 +7766,53 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for running the Dataproc cluster on Kubernetes.</summary>
+    public class KubernetesClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The configuration for running the Dataproc cluster on GKE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterConfig")]
+        public virtual GkeClusterConfig GkeClusterConfig { get; set; }
+
+        /// <summary>
+        /// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is
+        /// created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If
+        /// not specified, the name of the Dataproc Cluster is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesNamespace")]
+        public virtual string KubernetesNamespace { get; set; }
+
+        /// <summary>Optional. The software configuration for this Dataproc cluster running on Kubernetes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesSoftwareConfig")]
+        public virtual KubernetesSoftwareConfig KubernetesSoftwareConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The software configuration for this Dataproc cluster running on Kubernetes.</summary>
+    public class KubernetesSoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The components that should be installed in this Dataproc cluster. The key must be a string from the
+        /// KubernetesComponent enumeration. The value is the version of the software to be installed. At least one
+        /// entry must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentVersion")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ComponentVersion { get; set; }
+
+        /// <summary>
+        /// The properties to set on daemon config files.Property keys are specified in prefix:property format, for
+        /// example spark:spark.kubernetes.container.image. The following are supported prefixes and their mappings:
+        /// spark: spark-defaults.confFor more information, see Cluster properties
+        /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies the cluster auto-delete schedule configuration.</summary>
     public class LifecycleConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7803,7 +8043,10 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A full, namespace-isolated deployment target for an existing GKE cluster.</summary>
+    /// <summary>
+    /// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE
+    /// cluster.
+    /// </summary>
     public class NamespacedGkeDeploymentTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A namespace within the GKE cluster to deploy into.</summary>
@@ -8447,7 +8690,7 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s
-        /// of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject
+        /// of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject
         /// them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -8983,9 +9226,8 @@ namespace Google.Apis.Dataproc.v1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the resource. Permissions with wildcards (such as '*' or 'storage.*')
-        /// are not allowed. For more information see IAM Overview
-        /// (https://cloud.google.com/iam/docs/overview#permissions).
+        /// The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are
+        /// not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
@@ -9011,6 +9253,36 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Required. List of allowed values for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a
+    /// Dataproc-on-GKE cluster
+    /// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+    /// </summary>
+    public class VirtualClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration of auxiliary services used by this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryServicesConfig")]
+        public virtual AuxiliaryServicesConfig AuxiliaryServicesConfig { get; set; }
+
+        /// <summary>Required. The configuration for running the Dataproc cluster on Kubernetes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesClusterConfig")]
+        public virtual KubernetesClusterConfig KubernetesClusterConfig { get; set; }
+
+        /// <summary>
+        /// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If
+        /// you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or
+        /// EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed,
+        /// and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
+        /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stagingBucket")]
+        public virtual string StagingBucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

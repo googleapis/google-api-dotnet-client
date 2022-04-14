@@ -6588,7 +6588,7 @@ namespace Google.Apis.Dialogflow.v3
 
                     /// <summary>
                     /// Imports the test cases from a Cloud Storage bucket or a local file. It always creates new test
-                    /// cases and won't overwite any existing ones. The provided ID in the imported test case is
+                    /// cases and won't overwrite any existing ones. The provided ID in the imported test case is
                     /// neglected. This method is a [long-running
                     /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
                     /// `Operation` type has the following method-specific fields: - `metadata`: ImportTestCasesMetadata
@@ -6605,7 +6605,7 @@ namespace Google.Apis.Dialogflow.v3
 
                     /// <summary>
                     /// Imports the test cases from a Cloud Storage bucket or a local file. It always creates new test
-                    /// cases and won't overwite any existing ones. The provided ID in the imported test case is
+                    /// cases and won't overwrite any existing ones. The provided ID in the imported test case is
                     /// neglected. This method is a [long-running
                     /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
                     /// `Operation` type has the following method-specific fields: - `metadata`: ImportTestCasesMetadata
@@ -10023,7 +10023,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// utterances in the flow. * They are inherited by every page's transition routes and can support use cases
         /// such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless
         /// of the current page. Transition routes defined in the page have higher priority than those defined in the
-        /// flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. *
+        /// flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. *
         /// TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by
         /// pages in the flow.
         /// </summary>
@@ -10237,8 +10237,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction> SetParameterActions { get; set; }
 
         /// <summary>
-        /// The tag used by the webhook to identify which fulfillment is being called. This field is required if
-        /// `webhook` is specified.
+        /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow
+        /// when the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
@@ -11225,7 +11227,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3Page : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The human-readable name of the page, unique within the agent.</summary>
+        /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -12564,7 +12566,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     public class GoogleCloudDialogflowCxV3TransitionRouteGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The human-readable name of the transition route group, unique within the Agent. The display name
+        /// Required. The human-readable name of the transition route group, unique within the flow. The display name
         /// can be no longer than 30 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -12966,7 +12968,11 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Represents fulfillment information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Always present. The tag used to identify which fulfillment is being called.</summary>
+        /// <summary>
+        /// Always present. The value of the Fulfillment.tag field will be populated in this field by Dialogflow when
+        /// the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 
@@ -13670,8 +13676,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction> SetParameterActions { get; set; }
 
         /// <summary>
-        /// The tag used by the webhook to identify which fulfillment is being called. This field is required if
-        /// `webhook` is specified.
+        /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow
+        /// when the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
@@ -14050,7 +14058,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1Page : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The human-readable name of the page, unique within the agent.</summary>
+        /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -14853,7 +14861,11 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Represents fulfillment information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Always present. The tag used to identify which fulfillment is being called.</summary>
+        /// <summary>
+        /// Always present. The value of the Fulfillment.tag field will be populated in this field by Dialogflow when
+        /// the associated webhook is called. The tag is typically used by the webhook service to identify which
+        /// fulfillment is being called, but it could be used for other purposes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 
