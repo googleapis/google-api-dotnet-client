@@ -297,6 +297,7 @@ namespace Google.Apis.Baremetalsolution.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                InstanceProvisioningSettings = new InstanceProvisioningSettingsResource(service);
                 Instances = new InstancesResource(service);
                 Networks = new NetworksResource(service);
                 NfsShares = new NfsSharesResource(service);
@@ -304,6 +305,77 @@ namespace Google.Apis.Baremetalsolution.v2
                 ProvisioningQuotas = new ProvisioningQuotasResource(service);
                 SnapshotSchedulePolicies = new SnapshotSchedulePoliciesResource(service);
                 Volumes = new VolumesResource(service);
+            }
+
+            /// <summary>Gets the InstanceProvisioningSettings resource.</summary>
+            public virtual InstanceProvisioningSettingsResource InstanceProvisioningSettings { get; }
+
+            /// <summary>The "instanceProvisioningSettings" collection of methods.</summary>
+            public class InstanceProvisioningSettingsResource
+            {
+                private const string Resource = "instanceProvisioningSettings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InstanceProvisioningSettingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Get instance provisioning settings for a given project. This is hidden method used by UI only.
+                /// </summary>
+                /// <param name="location">
+                /// Required. The parent project and location containing the ProvisioningSettings.
+                /// </param>
+                public virtual FetchRequest Fetch(string location)
+                {
+                    return new FetchRequest(service, location);
+                }
+
+                /// <summary>
+                /// Get instance provisioning settings for a given project. This is hidden method used by UI only.
+                /// </summary>
+                public class FetchRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.FetchInstanceProvisioningSettingsResponse>
+                {
+                    /// <summary>Constructs a new Fetch request.</summary>
+                    public FetchRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                    {
+                        Location = location;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project and location containing the ProvisioningSettings.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+location}/instanceProvisioningSettings:fetch";
+
+                    /// <summary>Initializes Fetch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Instances resource.</summary>
@@ -2518,7 +2590,7 @@ namespace Google.Apis.Baremetalsolution.v2
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2633,6 +2705,17 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response with all provisioning settings.</summary>
+    public class FetchInstanceProvisioningSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The OS images available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("images")]
+        public virtual System.Collections.Generic.IList<OSImage> Images { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2997,6 +3080,28 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Logical interface.</summary>
+    public class LogicalInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Interface name. This is not a globally unique identifier. Name is unique only inside the
+        /// ServerNetworkTemplate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>If true, interface must have network connected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>Interface type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A storage volume logical unit number (LUN).</summary>
     public class Lun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3275,6 +3380,36 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation System image.</summary>
+    public class OSImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Instance types this image is applicable to. [Available
+        /// types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstanceTypes")]
+        public virtual System.Collections.Generic.IList<string> ApplicableInstanceTypes { get; set; }
+
+        /// <summary>OS Image code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>OS Image description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. OS Image's unique name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Network templates that can be used with this OS Image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedNetworkTemplates")]
+        public virtual System.Collections.Generic.IList<ServerNetworkTemplate> SupportedNetworkTemplates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3456,6 +3591,25 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The maximum number of snapshots to retain in this schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionCount")]
         public virtual System.Nullable<int> RetentionCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network template.</summary>
+    public class ServerNetworkTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Instance types this template is applicable to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstanceTypes")]
+        public virtual System.Collections.Generic.IList<string> ApplicableInstanceTypes { get; set; }
+
+        /// <summary>Logical interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
+        public virtual System.Collections.Generic.IList<LogicalInterface> LogicalInterfaces { get; set; }
+
+        /// <summary>Output only. Template's unique name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

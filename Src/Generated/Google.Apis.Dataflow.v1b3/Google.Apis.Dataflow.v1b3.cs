@@ -1026,7 +1026,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>
             /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with
             /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
-            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter
+            /// confidential information when you supply string values using the API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -1038,7 +1039,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>
             /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with
             /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
-            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter
+            /// confidential information when you supply string values using the API.
             /// </summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
@@ -2738,7 +2740,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>
                 /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create`
                 /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
-                /// Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+                /// Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do
+                /// not enter confidential information when you supply string values using the API.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -2754,7 +2757,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>
                 /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create`
                 /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
-                /// Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+                /// Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do
+                /// not enter confidential information when you supply string values using the API.
                 /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
@@ -3946,7 +3950,10 @@ namespace Google.Apis.Dataflow.v1b3
                     this.service = service;
                 }
 
-                /// <summary>Creates a Cloud Dataflow job from a template.</summary>
+                /// <summary>
+                /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
+                /// string values using the API.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. The ID of the Cloud Platform project that the job belongs to.
@@ -3960,7 +3967,10 @@ namespace Google.Apis.Dataflow.v1b3
                     return new CreateRequest(service, body, projectId, location);
                 }
 
-                /// <summary>Creates a Cloud Dataflow job from a template.</summary>
+                /// <summary>
+                /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
+                /// string values using the API.
+                /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -4509,7 +4519,10 @@ namespace Google.Apis.Dataflow.v1b3
                 this.service = service;
             }
 
-            /// <summary>Creates a Cloud Dataflow job from a template.</summary>
+            /// <summary>
+            /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
+            /// string values using the API.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId)
@@ -4517,7 +4530,10 @@ namespace Google.Apis.Dataflow.v1b3
                 return new CreateRequest(service, body, projectId);
             }
 
-            /// <summary>Creates a Cloud Dataflow job from a template.</summary>
+            /// <summary>
+            /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
+            /// string values using the API.
+            /// </summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -5207,6 +5223,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Name of the docker container image. E.g., gcr.io/project/some-image</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
+
+        /// <summary>Cloud Storage path to self-signed certificate of private registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRepositoryCertPath")]
+        public virtual string ImageRepositoryCertPath { get; set; }
+
+        /// <summary>Secret Manager secret id for password to authenticate to private registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRepositoryPasswordSecretId")]
+        public virtual string ImageRepositoryPasswordSecretId { get; set; }
+
+        /// <summary>Secret Manager secret id for username to authenticate to private registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRepositoryUsernameSecretId")]
+        public virtual string ImageRepositoryUsernameSecretId { get; set; }
 
         /// <summary>Metadata describing a template including description and validation rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
@@ -6251,7 +6279,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines a job to be run by the Cloud Dataflow service.</summary>
+    /// <summary>
+    /// Defines a job to be run by the Cloud Dataflow service. Do not enter confidential information when you supply
+    /// string values using the API.
+    /// </summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6694,7 +6725,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Parameters to provide to the template being launched.</summary>
+    /// <summary>
+    /// Parameters to provide to the template being launched. Note that the [metadata in the pipeline code]
+    /// (https://cloud.google.com/dataflow/docs/guides/templates/creating-templates#metadata) determines which runtime
+    /// parameters are valid.
+    /// </summary>
     public class LaunchTemplateParameters : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The runtime environment for the job.</summary>
@@ -7600,7 +7635,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>The initial number of Google Compute Engine instnaces for the job.</summary>
+        /// <summary>The initial number of Google Compute Engine instances for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numWorkers")]
         public virtual System.Nullable<int> NumWorkers { get; set; }
 

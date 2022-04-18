@@ -2154,7 +2154,7 @@ namespace Google.Apis.CertificateManager.v1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2795,6 +2795,35 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// <summary>Reason for provisioning failures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResourcesCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of certificates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificates")]
+        public virtual System.Nullable<ulong> Certificates { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The time of the computation. The field is input only, used in Create and Update calls.
+        /// For Update call, new values of selected resources are set if their compute_time is younger than the
+        /// persisted ones, e.g.: If you support 3 types of resources: A, B and C, and you have: 'A' resource count
+        /// computed at timestamp = 3 'B' resource count computed at timestamp = 10 'C' resource count computed at
+        /// timestamp = 5 And you're going to update all of them with compute_time = 8, only 'A' and 'C' will be
+        /// updated, as 'B' already has fresher data. For Get call a ResourcesCount instance contains the freshest
+        /// values for every type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeTime")]
+        public virtual object ComputeTime { get; set; }
+
+        /// <summary>
+        /// The singleton resource of the resources count. Must be in the format
+        /// `projects/*/locations/*/resourcesCounts/single`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

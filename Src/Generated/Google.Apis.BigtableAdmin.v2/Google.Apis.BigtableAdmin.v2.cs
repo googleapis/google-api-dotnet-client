@@ -1075,6 +1075,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 {
                     this.service = service;
                     Backups = new BackupsResource(service);
+                    HotTablets = new HotTabletsResource(service);
                 }
 
                 /// <summary>Gets the Backups resource.</summary>
@@ -1686,6 +1687,141 @@ namespace Google.Apis.BigtableAdmin.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the HotTablets resource.</summary>
+                public virtual HotTabletsResource HotTablets { get; }
+
+                /// <summary>The "hotTablets" collection of methods.</summary>
+                public class HotTabletsResource
+                {
+                    private const string Resource = "hotTablets";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public HotTabletsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Lists hot tablets in a cluster, within the time range provided. Hot tablets are ordered based on
+                    /// CPU usage.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The cluster name to list hot tablets. Value is in the following form:
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists hot tablets in a cluster, within the time range provided. Hot tablets are ordered based on
+                    /// CPU usage.
+                    /// </summary>
+                    public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.ListHotTabletsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The cluster name to list hot tablets. Value is in the following form:
+                        /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The end time to list hot tablets.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object EndTime { get; set; }
+
+                        /// <summary>
+                        /// Maximum number of results per page. A page_size that is empty or zero lets the server choose
+                        /// the number of items to return. A page_size which is strictly positive will return at most
+                        /// that many items. A negative page_size will cause an error. Following the first request,
+                        /// subsequent paginated calls do not need a page_size field. If a page_size is set in
+                        /// subsequent calls, it must match the page_size given in the first request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The value of `next_page_token` returned by a previous call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// The start time to list hot tablets. The hot tablets in the response will have start times
+                        /// between the requested start time and end time. Start time defaults to Now if it is unset,
+                        /// and end time defaults to Now - 24 hours if it is unset. The start time should be less than
+                        /// the end time, and the maximum allowed time range between start time and end time is 48
+                        /// hours. Start time and end time should have values between Now and Now - 14 days.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object StartTime { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/hotTablets";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -4172,7 +4308,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>
         /// Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just
         /// `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked
-        /// `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        /// `OutputOnly` must be left blank.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IDictionary<string, Cluster> Clusters { get; set; }
@@ -4420,6 +4556,56 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     }
 
     /// <summary>
+    /// A tablet is a defined by a start and end key and is explained in
+    /// https://cloud.google.com/bigtable/docs/overview#architecture and
+    /// https://cloud.google.com/bigtable/docs/performance#optimization. A Hot tablet is a tablet that exhibits high
+    /// average cpu usage during the time interval from start time to end time.
+    /// </summary>
+    public class HotTablet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tablet End Key (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endKey")]
+        public virtual string EndKey { get; set; }
+
+        /// <summary>Output only. The end time of the hot tablet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// The unique name of the hot tablet. Values are of the form
+        /// `projects/{project}/instances/{instance}/clusters/{cluster}/hotTablets/[a-zA-Z0-9_-]*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The average CPU usage spent by a node on this tablet over the start_time to end_time time
+        /// range. The percentage is the amount of CPU used by the node to serve the tablet, from 0% (tablet was not
+        /// interacted with) to 100% (the node spent all cycles serving the hot tablet).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCpuUsagePercent")]
+        public virtual System.Nullable<float> NodeCpuUsagePercent { get; set; }
+
+        /// <summary>Tablet Start Key (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startKey")]
+        public virtual string StartKey { get; set; }
+
+        /// <summary>Output only. The start time of the hot tablet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>
+        /// Name of the table that contains the tablet. Values are of the form
+        /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableName")]
+        public virtual string TableName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all
     /// Clusters in the instance.
     /// </summary>
@@ -4538,6 +4724,29 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; }
 
         /// <summary>DEPRECATED: This field is unused and ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BigtableInstanceAdmin.ListHotTablets.</summary>
+    public class ListHotTabletsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of hot tablets in the tables of the requested cluster that fall within the requested time range. Hot
+        /// tablets are ordered by node cpu usage percent. If there are multiple hot tablets that correspond to the same
+        /// tablet within a 15-minute interval, only the hot tablet with the highest node cpu usage will be included in
+        /// the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotTablets")]
+        public virtual System.Collections.Generic.IList<HotTablet> HotTablets { get; set; }
+
+        /// <summary>
+        /// Set if not all hot tablets could be returned in a single response. Pass this value to `page_token` in
+        /// another request to get the next page of results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

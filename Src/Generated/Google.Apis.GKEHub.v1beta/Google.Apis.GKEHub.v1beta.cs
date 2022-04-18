@@ -1736,7 +1736,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -2774,6 +2774,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
         public virtual IdentityServiceMembershipSpec Identityservice { get; set; }
 
+        /// <summary>Anthos Service Mesh-specific spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
+        public virtual ServiceMeshMembershipSpec Mesh { get; set; }
+
         /// <summary>Policy Controller spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
         public virtual PolicyControllerMembershipSpec Policycontroller { get; set; }
@@ -2804,6 +2808,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Policycontroller-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
         public virtual PolicyControllerMembershipState Policycontroller { get; set; }
+
+        /// <summary>Service Mesh-specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
+        public virtual ServiceMeshMembershipState Servicemesh { get; set; }
 
         /// <summary>The high-level state of this Feature for a single membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3147,12 +3155,66 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Status of control plane management.</summary>
+    public class ServiceMeshControlPlaneManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explanation of state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<ServiceMeshStatusDetails> Details { get; set; }
+
+        /// <summary>LifecycleState of control plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Service Mesh**: Spec for a single Membership for the servicemesh feature</summary>
+    public class ServiceMeshMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables automatic control plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlane")]
+        public virtual string ControlPlane { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// **Service Mesh**: State for a single Membership, as analyzed by the Service Mesh Hub Controller.
+    /// </summary>
+    public class ServiceMeshMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Status of control plane management</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneManagement")]
+        public virtual ServiceMeshControlPlaneManagement ControlPlaneManagement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Structured and human-readable details for a status.</summary>
+    public class ServiceMeshStatusDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A machine-readable code that further describes a broad status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Human-readable explanation of code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -3188,7 +3250,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

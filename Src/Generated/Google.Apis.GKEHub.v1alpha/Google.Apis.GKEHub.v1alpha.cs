@@ -2925,7 +2925,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -4995,6 +4995,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlane")]
         public virtual string ControlPlane { get; set; }
 
+        /// <summary>Determines which release channel to use for default injection and service mesh APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultChannel")]
+        public virtual string DefaultChannel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5007,6 +5011,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. Results of running Service Mesh analyzers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisMessages")]
         public virtual System.Collections.Generic.IList<ServiceMeshAnalysisMessage> AnalysisMessages { get; set; }
+
+        /// <summary>
+        /// The API version (i.e. Istio CRD version) for configuring service mesh in this cluster. This version is
+        /// influenced by the `default_channel` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configApiVersion")]
+        public virtual string ConfigApiVersion { get; set; }
 
         /// <summary>Output only. Status of control plane management</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneManagement")]
@@ -5061,7 +5072,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -5097,7 +5108,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

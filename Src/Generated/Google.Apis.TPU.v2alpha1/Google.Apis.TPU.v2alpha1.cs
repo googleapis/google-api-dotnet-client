@@ -1507,7 +1507,7 @@ namespace Google.Apis.TPU.v2alpha1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1627,8 +1627,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1904,7 +1903,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
     /// <summary>A TPU instance.</summary>
     public class Node : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The type of hardware accelerators associated with this node.</summary>
+        /// <summary>The type of hardware accelerators associated with this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 

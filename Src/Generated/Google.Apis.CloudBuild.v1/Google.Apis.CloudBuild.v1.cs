@@ -1929,7 +1929,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Remove a Bitbucket Server repository from an given BitbucketServerConfig’s connected repositories.
+                /// Remove a Bitbucket Server repository from a given BitbucketServerConfig's connected repositories.
                 /// This API is experimental.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -1943,7 +1943,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Remove a Bitbucket Server repository from an given BitbucketServerConfig’s connected repositories.
+                /// Remove a Bitbucket Server repository from a given BitbucketServerConfig's connected repositories.
                 /// This API is experimental.
                 /// </summary>
                 public class RemoveBitbucketServerConnectedRepositoryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
