@@ -4306,6 +4306,17 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represent the source AWS VM details.</summary>
+    public class AwsSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The firmware type of the source VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
+        public virtual string Firmware { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'CancelCloneJob' request.</summary>
     public class CancelCloneJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5043,6 +5054,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// </summary>
     public class MigratingVm : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Details of the VM from an AWS source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsSourceVmDetails")]
+        public virtual AwsSourceVmDetails AwsSourceVmDetails { get; set; }
+
         /// <summary>Details of the target VM in Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTargetDefaults")]
         public virtual ComputeEngineTargetDefaults ComputeEngineTargetDefaults { get; set; }

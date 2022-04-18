@@ -2636,7 +2636,7 @@ namespace Google.Apis.Datastream.v1alpha1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2883,6 +2883,13 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleRdbms")]
         public virtual OracleRdbms OracleRdbms { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to drop large object values.</summary>
+    public class DropLargeObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3532,13 +3539,6 @@ namespace Google.Apis.Datastream.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration to drop large object values.</summary>
-    public class OracleDropLargeObjects : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Oracle data source object identifier.</summary>
     public class OracleObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3620,7 +3620,7 @@ namespace Google.Apis.Datastream.v1alpha1.Data
 
         /// <summary>Drop large object values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dropLargeObjects")]
-        public virtual OracleDropLargeObjects DropLargeObjects { get; set; }
+        public virtual DropLargeObjects DropLargeObjects { get; set; }
 
         /// <summary>Oracle objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectlist")]
