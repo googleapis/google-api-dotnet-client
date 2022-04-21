@@ -638,7 +638,9 @@ namespace Google.Apis.AnalyticsData.v1beta
 
         /// <summary>
         /// The Google Analytics Realtime API returns a customized report of realtime event data for your property.
-        /// These reports show events and usage from the last 30 minutes.
+        /// These reports show events and usage from the last 30 minutes. For a guide to constructing realtime requests
+        /// &amp;amp; understanding responses, see [Creating a Realtime
+        /// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-basics).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="property">
@@ -654,7 +656,9 @@ namespace Google.Apis.AnalyticsData.v1beta
 
         /// <summary>
         /// The Google Analytics Realtime API returns a customized report of realtime event data for your property.
-        /// These reports show events and usage from the last 30 minutes.
+        /// These reports show events and usage from the last 30 minutes. For a guide to constructing realtime requests
+        /// &amp;amp; understanding responses, see [Creating a Realtime
+        /// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-basics).
         /// </summary>
         public class RunRealtimeReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.RunRealtimeReportResponse>
         {
@@ -710,7 +714,9 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// data collected by the Google Analytics tracking code. The data returned from the API is as a table with
         /// columns for the requested dimensions and metrics. Metrics are individual measurements of user activity on
         /// your property, such as active users or event count. Dimensions break down metrics across some common
-        /// criteria, such as country or event name.
+        /// criteria, such as country or event name. For a guide to constructing requests &amp;amp; understanding
+        /// responses, see [Creating a
+        /// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/basics).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="property">
@@ -730,7 +736,9 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// data collected by the Google Analytics tracking code. The data returned from the API is as a table with
         /// columns for the requested dimensions and metrics. Metrics are individual measurements of user activity on
         /// your property, such as active users or event count. Dimensions break down metrics across some common
-        /// criteria, such as country or event name.
+        /// criteria, such as country or event name. For a guide to constructing requests &amp;amp; understanding
+        /// responses, see [Creating a
+        /// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/basics).
         /// </summary>
         public class RunReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.RunReportResponse>
         {

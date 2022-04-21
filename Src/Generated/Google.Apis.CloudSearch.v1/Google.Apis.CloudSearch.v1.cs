@@ -8122,6 +8122,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual GroupId GroupId { get; set; }
 
+        /// <summary>
+        /// The email address of the user that invited the calling user to the room, if available. This field will only
+        /// be populated for direct invites, it will be empty if the user was indirectly invited to the group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inviterEmail")]
+        public virtual string InviterEmail { get; set; }
+
         /// <summary>Whether this is a space that enables guest access</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isExternal")]
         public virtual System.Nullable<bool> IsExternal { get; set; }

@@ -7798,6 +7798,33 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about the IP connection associated with the finding.</summary>
+    public class Connection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Destination IP address. Not present for sockets that are listening and not connected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationIp")]
+        public virtual string DestinationIp { get; set; }
+
+        /// <summary>Destination port. Not present for sockets that are listening and not connected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPort")]
+        public virtual System.Nullable<int> DestinationPort { get; set; }
+
+        /// <summary>IANA Internet Protocol Number such as TCP(6) and UDP(17).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>Source IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
+        public virtual string SourceIp { get; set; }
+
+        /// <summary>Source port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePort")]
+        public virtual System.Nullable<int> SourcePort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CVE stands for Common Vulnerabilities and Exposures. More information: https://cve.mitre.org</summary>
     public class Cve : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7977,9 +8004,17 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>Contains information about the IP connection associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connections")]
+        public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
+
         /// <summary>The time at which the finding was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Contains more detail about the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>
         /// The time the finding was first detected. If an existing finding is updated, then this is the time the update

@@ -1241,36 +1241,38 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>
                     /// Optional OAuth2 authorization code to use with this transfer configuration. This is required
                     /// only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as
-                    /// indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to
-                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code
-                    /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                    /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method.
-                    /// Note that this should not be set when `service_account_name` is used to create the transfer
-                    /// config.
+                    /// indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the
+                    /// following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                    /// client_id=client_id&amp;amp;scope=data_source_scopes
+                    /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code * The
+                    /// client_id is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                    /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not
+                    /// be set when `service_account_name` is used to create the transfer config.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizationCode { get; set; }
 
                     /// <summary>
-                    /// Optional service account name. If this field is set, transfer config will be created with this
-                    /// service account credential. It requires that requesting user calling this API has permissions to
-                    /// act as this service account. Note that not all data sources support service account credentials
-                    /// when creating transfer config. Please refer to this public guide for the latest list of data
-                    /// sources with service account support:
-                    /// https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+                    /// Optional service account name. If this field is set, the transfer config will be created with
+                    /// this service account's credentials. It requires that the requesting user calling this API has
+                    /// permissions to act as this service account. Note that not all data sources support service
+                    /// account credentials when creating a transfer config. For the latest list of data sources, read
+                    /// about [using service
+                    /// accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceAccountName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceAccountName { get; set; }
 
                     /// <summary>
-                    /// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else
-                    /// but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In
-                    /// order to obtain version info, please make a request to
-                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info
-                    /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                    /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method.
-                    /// Note that this should not be set when `service_account_name` is used to create the transfer
-                    /// config.
+                    /// Optional version info. This is required only if `transferConfig.dataSourceId` is not
+                    /// 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to
+                    /// obtain version info, make a request to the following URL:
+                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                    /// client_id=client_id&amp;amp;scope=data_source_scopes
+                    /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info * The
+                    /// client_id is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                    /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not
+                    /// be set when `service_account_name` is used to create the transfer config.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionInfo { get; set; }
@@ -1574,23 +1576,24 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>
                     /// Optional OAuth2 authorization code to use with this transfer configuration. This is required
                     /// only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as
-                    /// indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to
-                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code
-                    /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                    /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method.
-                    /// Note that this should not be set when `service_account_name` is used to create the transfer
-                    /// config.
+                    /// indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the
+                    /// following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                    /// client_id=client_id&amp;amp;scope=data_source_scopes
+                    /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code * The
+                    /// client_id is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                    /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not
+                    /// be set when `service_account_name` is used to update the transfer config.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizationCode { get; set; }
 
                     /// <summary>
-                    /// Optional service account name. If this field is set and "service_account_name" is set in
-                    /// update_mask, transfer config will be created with this service account credential. It requires
-                    /// that requesting user calling this API has permissions to act as this service account. Note that
-                    /// not all data sources support service account credentials when creating transfer config. Please
-                    /// refer to this public guide for the latest list of data sources with service account support:
-                    /// https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+                    /// Optional service account name. If this field is set, the transfer config will be created with
+                    /// this service account's credentials. It requires that the requesting user calling this API has
+                    /// permissions to act as this service account. Note that not all data sources support service
+                    /// account credentials when creating a transfer config. For the latest list of data sources, read
+                    /// about [using service
+                    /// accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceAccountName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceAccountName { get; set; }
@@ -1600,14 +1603,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else
-                    /// but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In
-                    /// order to obtain version info, please make a request to
-                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info
-                    /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                    /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method.
-                    /// Note that this should not be set when `service_account_name` is used to create the transfer
-                    /// config.
+                    /// Optional version info. This is required only if `transferConfig.dataSourceId` is not
+                    /// 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to
+                    /// obtain version info, make a request to the following URL:
+                    /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                    /// client_id=client_id&amp;amp;scope=data_source_scopes
+                    /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info * The
+                    /// client_id is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                    /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not
+                    /// be set when `service_account_name` is used to update the transfer config.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionInfo { get; set; }
@@ -1813,10 +1817,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
             /// <summary>
             /// Enroll data sources in a user project. This allows users to create transfer configurations for these
-            /// data sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery
-            /// UI 'https://bigquery.cloud.google.com' (and the documents can be found at
-            /// https://cloud.google.com/bigquery/bigquery-web-ui and
-            /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+            /// data sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery
+            /// UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for
+            /// [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer
+            /// Service](https://cloud.google.com/bigquery/docs/working-with-transfers).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
@@ -1827,10 +1831,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
             /// <summary>
             /// Enroll data sources in a user project. This allows users to create transfer configurations for these
-            /// data sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery
-            /// UI 'https://bigquery.cloud.google.com' (and the documents can be found at
-            /// https://cloud.google.com/bigquery/bigquery-web-ui and
-            /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+            /// data sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery
+            /// UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for
+            /// [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer
+            /// Service](https://cloud.google.com/bigquery/docs/working-with-transfers).
             /// </summary>
             public class EnrollDataSourcesRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
             {
@@ -1944,7 +1948,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2496,33 +2500,37 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>
                 /// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if
                 /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by
-                /// `CheckValidCreds`. In order to obtain authorization_code, please make a request to
-                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code
-                /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note
-                /// that this should not be set when `service_account_name` is used to create the transfer config.
+                /// `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL:
+                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                /// client_id=client_id&amp;amp;scope=data_source_scopes
+                /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code * The
+                /// client_id is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be
+                /// set when `service_account_name` is used to create the transfer config.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AuthorizationCode { get; set; }
 
                 /// <summary>
-                /// Optional service account name. If this field is set, transfer config will be created with this
-                /// service account credential. It requires that requesting user calling this API has permissions to act
-                /// as this service account. Note that not all data sources support service account credentials when
-                /// creating transfer config. Please refer to this public guide for the latest list of data sources with
-                /// service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+                /// Optional service account name. If this field is set, the transfer config will be created with this
+                /// service account's credentials. It requires that the requesting user calling this API has permissions
+                /// to act as this service account. Note that not all data sources support service account credentials
+                /// when creating a transfer config. For the latest list of data sources, read about [using service
+                /// accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceAccountName", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceAccountName { get; set; }
 
                 /// <summary>
-                /// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but
+                /// Optional version info. This is required only if `transferConfig.dataSourceId` is not
                 /// 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to
-                /// obtain version info, please make a request to
-                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info
-                /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note
-                /// that this should not be set when `service_account_name` is used to create the transfer config.
+                /// obtain version info, make a request to the following URL:
+                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                /// client_id=client_id&amp;amp;scope=data_source_scopes
+                /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info * The client_id
+                /// is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be
+                /// set when `service_account_name` is used to create the transfer config.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionInfo { get; set; }
@@ -2825,22 +2833,23 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>
                 /// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if
                 /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by
-                /// `CheckValidCreds`. In order to obtain authorization_code, please make a request to
-                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code
-                /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note
-                /// that this should not be set when `service_account_name` is used to create the transfer config.
+                /// `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL:
+                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                /// client_id=client_id&amp;amp;scope=data_source_scopes
+                /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=authorization_code * The
+                /// client_id is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be
+                /// set when `service_account_name` is used to update the transfer config.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AuthorizationCode { get; set; }
 
                 /// <summary>
-                /// Optional service account name. If this field is set and "service_account_name" is set in
-                /// update_mask, transfer config will be created with this service account credential. It requires that
-                /// requesting user calling this API has permissions to act as this service account. Note that not all
-                /// data sources support service account credentials when creating transfer config. Please refer to this
-                /// public guide for the latest list of data sources with service account support:
-                /// https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+                /// Optional service account name. If this field is set, the transfer config will be created with this
+                /// service account's credentials. It requires that the requesting user calling this API has permissions
+                /// to act as this service account. Note that not all data sources support service account credentials
+                /// when creating a transfer config. For the latest list of data sources, read about [using service
+                /// accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceAccountName", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceAccountName { get; set; }
@@ -2850,13 +2859,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>
-                /// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but
+                /// Optional version info. This is required only if `transferConfig.dataSourceId` is not
                 /// 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to
-                /// obtain version info, please make a request to
-                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;amp;scope=&amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info
-                /// * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by
-                /// ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note
-                /// that this should not be set when `service_account_name` is used to create the transfer config.
+                /// obtain version info, make a request to the following URL:
+                /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
+                /// client_id=client_id&amp;amp;scope=data_source_scopes
+                /// &amp;amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;amp;response_type=version_info * The client_id
+                /// is the OAuth client_id of the a data source as returned by ListDataSources method. *
+                /// data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be
+                /// set when `service_account_name` is used to update the transfer config.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionInfo { get; set; }
@@ -3061,10 +3072,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
         /// <summary>
         /// Enroll data sources in a user project. This allows users to create transfer configurations for these data
-        /// sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery UI
-        /// 'https://bigquery.cloud.google.com' (and the documents can be found at
-        /// https://cloud.google.com/bigquery/bigquery-web-ui and
-        /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+        /// sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery
+        /// UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for
+        /// [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer
+        /// Service](https://cloud.google.com/bigquery/docs/working-with-transfers).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
@@ -3075,10 +3086,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
         /// <summary>
         /// Enroll data sources in a user project. This allows users to create transfer configurations for these data
-        /// sources. They will also appear in the ListDataSources RPC and as such, will appear in the BigQuery UI
-        /// 'https://bigquery.cloud.google.com' (and the documents can be found at
-        /// https://cloud.google.com/bigquery/bigquery-web-ui and
-        /// https://cloud.google.com/bigquery/docs/working-with-transfers).
+        /// sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery
+        /// UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for
+        /// [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer
+        /// Service](https://cloud.google.com/bigquery/docs/working-with-transfers).
         /// </summary>
         public class EnrollDataSourcesRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
         {
