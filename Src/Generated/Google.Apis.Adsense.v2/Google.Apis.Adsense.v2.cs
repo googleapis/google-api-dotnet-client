@@ -3857,7 +3857,7 @@ namespace Google.Apis.Adsense.v2.Data
     /// </summary>
     public class AdUnit : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Settings specific to content ads (AFC).</summary>
+        /// <summary>Required. Settings specific to content ads (AFC).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentAdsSettings")]
         public virtual ContentAdsSettings ContentAdsSettings { get; set; }
 
@@ -3866,7 +3866,7 @@ namespace Google.Apis.Adsense.v2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+        /// Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3938,11 +3938,11 @@ namespace Google.Apis.Adsense.v2.Data
     /// <summary>Settings specific to content ads (AFC).</summary>
     public class ContentAdsSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Size of the ad unit. e.g. "728x90", "1x3" (for responsive ad units).</summary>
+        /// <summary>Required. Size of the ad unit. e.g. "728x90", "1x3" (for responsive ad units).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual string Size { get; set; }
 
-        /// <summary>Type of the ad unit.</summary>
+        /// <summary>Required. Type of the ad unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3953,7 +3953,7 @@ namespace Google.Apis.Adsense.v2.Data
     /// <summary>Representation of a custom channel.</summary>
     public class CustomChannel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Display name of the custom channel.</summary>
+        /// <summary>Required. Display name of the custom channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 

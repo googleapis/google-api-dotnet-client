@@ -7272,8 +7272,7 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7666,9 +7665,9 @@ namespace Google.Apis.Container.v1.Data
     {
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
-        /// parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
-        /// net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
-        /// net.ipv4.tcp_tw_reuse
+        /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
+        /// net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn
+        /// net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
         public virtual System.Collections.Generic.IDictionary<string, string> Sysctls { get; set; }
@@ -8306,6 +8305,28 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
         public virtual string CpuManagerPolicy { get; set; }
 
+        /// <summary>
+        /// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls
+        /// the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and
+        /// less than 4194304.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podPidsLimit")]
+        public virtual System.Nullable<long> PodPidsLimit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of node-level [Kubernetes
+    /// labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
+    /// </summary>
+    public class NodeLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Map of node label keys and node label values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8551,6 +8572,19 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Value for taint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
+    /// </summary>
+    public class NodeTaints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of node taints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taints")]
+        public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9861,6 +9895,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kubeletConfig")]
         public virtual NodeKubeletConfig KubeletConfig { get; set; }
 
+        /// <summary>
+        /// The desired node labels to be applied to all nodes in the node pool. If this field is not present, the
+        /// labels will not be changed. Otherwise, the existing node labels will be *replaced* with the provided labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual NodeLabels Labels { get; set; }
+
         /// <summary>Parameters that can be configured on Linux nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
         public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
@@ -9905,6 +9946,20 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// The desired network tags to be applied to all nodes in the node pool. If this field is not present, the tags
+        /// will not be changed. Otherwise, the existing network tags will be *replaced* with the provided tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual NetworkTags Tags { get; set; }
+
+        /// <summary>
+        /// The desired node taints to be applied to all nodes in the node pool. If this field is not present, the
+        /// taints will not be changed. Otherwise, the existing node taints will be *replaced* with the provided taints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taints")]
+        public virtual NodeTaints Taints { get; set; }
 
         /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]

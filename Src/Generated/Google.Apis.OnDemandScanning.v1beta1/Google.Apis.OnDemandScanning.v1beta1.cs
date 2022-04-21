@@ -1899,6 +1899,13 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
         public virtual string PackageType { get; set; }
 
+        /// <summary>
+        /// The path to the jar file / go binary file. The same jar file can be in multiple locations - all of them will
+        /// be listed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathToFile")]
+        public virtual System.Collections.Generic.IList<string> PathToFile { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("unused")]
         public virtual string Unused { get; set; }
 

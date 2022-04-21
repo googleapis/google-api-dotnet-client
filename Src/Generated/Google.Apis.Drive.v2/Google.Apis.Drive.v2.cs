@@ -2027,6 +2027,20 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DriveId { get; private set; }
 
+            /// <summary>
+            /// Whether any items inside the shared drive should also be deleted. This option is only supported when
+            /// useDomainAdminAccess is also set to true.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("allowItemDeletion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AllowItemDeletion { get; set; }
+
+            /// <summary>
+            /// Issue the request as a domain administrator; if set to true, then the requester will be granted access
+            /// if they are an administrator of the domain to which the shared drive belongs.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -2046,6 +2060,22 @@ namespace Google.Apis.Drive.v2
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("allowItemDeletion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "allowItemDeletion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
                     Pattern = null,
                 });
             }

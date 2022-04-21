@@ -6357,9 +6357,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string Location { get; set; }
 
         /// <summary>
-        /// The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any
-        /// given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt
-        /// returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+        /// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one
+        /// region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a
+        /// Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match
+        /// the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7718,12 +7719,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines a SDK harness container for executing Dataflow pipelines.</summary>
+    /// <summary>Defines an SDK harness container for executing Dataflow pipelines.</summary>
     public class SdkHarnessContainerImage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The set of capabilities enumerated in the above Environment proto. See also
-        /// https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+        /// [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual System.Collections.Generic.IList<string> Capabilities { get; set; }
