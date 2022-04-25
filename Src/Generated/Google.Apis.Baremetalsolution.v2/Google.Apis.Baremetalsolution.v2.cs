@@ -557,6 +557,7 @@ namespace Google.Apis.Baremetalsolution.v2
 
                     /// <summary>
                     /// The list of fields to update. The only currently supported fields are: `labels`
+                    /// `hyperthreading_enabled`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -697,6 +698,59 @@ namespace Google.Apis.Baremetalsolution.v2
                     public override string RestPath => "v2/{+name}:start";
 
                     /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Stop a running server.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual StopRequest Stop(Google.Apis.Baremetalsolution.v2.Data.StopInstanceRequest body, string name)
+                {
+                    return new StopRequest(service, body, name);
+                }
+
+                /// <summary>Stop a running server.</summary>
+                public class StopRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.StopInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.StopInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2771,6 +2825,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<Network> Networks { get; set; }
 
+        /// <summary>The OS image currently installed on the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osImage")]
+        public virtual string OsImage { get; set; }
+
         /// <summary>The state of the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -3715,6 +3773,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message requesting to stop a server.</summary>
+    public class StopInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for SubmitProvisioningConfig.</summary>
     public class SubmitProvisioningConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3799,6 +3864,12 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSizeGib")]
         public virtual System.Nullable<long> CurrentSizeGib { get; set; }
+
+        /// <summary>
+        /// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emergencySizeGib")]
+        public virtual System.Nullable<long> EmergencySizeGib { get; set; }
 
         /// <summary>An identifier for the `Volume`, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

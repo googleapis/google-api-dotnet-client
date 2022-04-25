@@ -297,8 +297,1122 @@ namespace Google.Apis.CloudRun.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Jobs = new JobsResource(service);
                 Operations = new OperationsResource(service);
                 Services = new ServicesResource(service);
+            }
+
+            /// <summary>Gets the Jobs resource.</summary>
+            public virtual JobsResource Jobs { get; }
+
+            /// <summary>The "jobs" collection of methods.</summary>
+            public class JobsResource
+            {
+                private const string Resource = "jobs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public JobsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Executions = new ExecutionsResource(service);
+                }
+
+                /// <summary>Gets the Executions resource.</summary>
+                public virtual ExecutionsResource Executions { get; }
+
+                /// <summary>The "executions" collection of methods.</summary>
+                public class ExecutionsResource
+                {
+                    private const string Resource = "executions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ExecutionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Tasks = new TasksResource(service);
+                    }
+
+                    /// <summary>Gets the Tasks resource.</summary>
+                    public virtual TasksResource Tasks { get; }
+
+                    /// <summary>The "tasks" collection of methods.</summary>
+                    public class TasksResource
+                    {
+                        private const string Resource = "tasks";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public TasksResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets information about a Task.</summary>
+                        /// <param name="name">
+                        /// Required. The full name of the Task. Format:
+                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}/tasks/{task}
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets information about a Task.</summary>
+                        public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Task>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The full name of the Task. Format:
+                            /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}/tasks/{task}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+/tasks/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>List Tasks from an Execution of a Job.</summary>
+                        /// <param name="parent">
+                        /// Required. The Execution from which the Tasks should be listed. To list all Tasks across
+                        /// Executions of a Job, use "-" instead of Execution name. To list all Tasks across Jobs, use
+                        /// "-" instead of Job name. Format:
+                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>List Tasks from an Execution of a Job.</summary>
+                        public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListTasksResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The Execution from which the Tasks should be listed. To list all Tasks across
+                            /// Executions of a Job, use "-" instead of Execution name. To list all Tasks across Jobs,
+                            /// use "-" instead of Job name. Format:
+                            /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Maximum number of Tasks to return in this call.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token received from a previous call to ListTasks. All other parameters must
+                            /// match.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>
+                            /// If true, returns deleted (but unexpired) resources along with active ones.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/tasks";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "showDeleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Delete an Execution.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the Execution to delete. Format:
+                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Delete an Execution.</summary>
+                    public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Execution to delete. Format:
+                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// A system-generated fingerprint for this version of the resource. This may be used to detect
+                        /// modification conflict during updates.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Etag { get; set; }
+
+                        /// <summary>
+                        /// Indicates that the request should be validated without actually deleting any resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
+                            });
+                            RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "etag",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets information about a Execution.</summary>
+                    /// <param name="name">
+                    /// Required. The full name of the Execution. Format:
+                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets information about a Execution.</summary>
+                    public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Execution>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The full name of the Execution. Format:
+                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List Executions from a Job.</summary>
+                    /// <param name="parent">
+                    /// Required. The Execution from which the Executions should be listed. To list all Executions
+                    /// across Jobs, use "-" instead of Job name. Format:
+                    /// projects/{project}/locations/{location}/jobs/{job}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List Executions from a Job.</summary>
+                    public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListExecutionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Execution from which the Executions should be listed. To list all Executions
+                        /// across Jobs, use "-" instead of Job name. Format:
+                        /// projects/{project}/locations/{location}/jobs/{job}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Maximum number of Executions to return in this call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token received from a previous call to ListExecutions. All other parameters must
+                        /// match.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// If true, returns deleted (but unexpired) resources along with active ones.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/executions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showDeleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Create a Job.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location and project in which this Job should be created. Format:
+                /// projects/{projectnumber}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create a Job.</summary>
+                public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location and project in which this Job should be created. Format:
+                    /// projects/{projectnumber}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string JobId { get; set; }
+
+                    /// <summary>
+                    /// Indicates that the request should be validated and default values populated, without persisting
+                    /// the request or creating any resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/jobs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a Job.</summary>
+                /// <param name="name">
+                /// Required. The full name of the Job. Format: projects/{projectnumber}/locations/{location}/jobs/{job}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a Job.</summary>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name of the Job. Format:
+                    /// projects/{projectnumber}/locations/{location}/jobs/{job}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// A system-generated fingerprint for this version of the resource. May be used to detect
+                    /// modification conflict during updates.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// If set to true, the Job and its Executions will be deleted no matter whether any Executions are
+                    /// still running or not. If set to false or unset, the Job and its Executions can only be deleted
+                    /// if there are no running Executions. Any running Execution will fail the deletion.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
+                    /// Indicates that the request should be validated without actually deleting any resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets information about a Job.</summary>
+                /// <param name="name">
+                /// Required. The full name of the Job. Format: projects/{projectnumber}/locations/{location}/jobs/{job}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets information about a Job.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name of the Job. Format:
+                    /// projects/{projectnumber}/locations/{location}/jobs/{job}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Get the IAM Access Control policy currently in effect for the given Job. This result does not
+                /// include any inherited policies.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Get the IAM Access Control policy currently in effect for the given Job. This result does not
+                /// include any inherited policies.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List Jobs.</summary>
+                /// <param name="parent">
+                /// Required. The location and project to list resources on. Format:
+                /// projects/{projectnumber}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List Jobs.</summary>
+                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListJobsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location and project to list resources on. Format:
+                    /// projects/{projectnumber}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of Jobs to return in this call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token received from a previous call to ListJobs. All other parameters must match.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>If true, returns deleted (but unexpired) resources along with active ones.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/jobs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a Job.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a Job.</summary>
+                public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// If set to true, and if the Job does not exist, it will create a new one. Caller must have both
+                    /// create and update permissions for this call if this is set to true.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Indicates that the request should be validated and default values populated, without persisting
+                    /// the request or updating any resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Job Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Triggers creation of a new Execution of this Job.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The full name of the Job. Format: projects/{projectnumber}/locations/{location}/jobs/{job}
+                /// </param>
+                public virtual RunRequest Run(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2RunJobRequest body, string name)
+                {
+                    return new RunRequest(service, body, name);
+                }
+
+                /// <summary>Triggers creation of a new Execution of this Job.</summary>
+                public class RunRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Run request.</summary>
+                    public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2RunJobRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name of the Job. Format:
+                    /// projects/{projectnumber}/locations/{location}/jobs/{job}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2RunJobRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "run";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:run";
+
+                    /// <summary>Initializes Run parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the IAM Access control policy for the specified Job. Overwrites any existing policy.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudRun.v2.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the IAM Access control policy for the specified Job. Overwrites any existing policy.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified Project. There are no permissions required
+                /// for making this API call.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified Project. There are no permissions required
+                /// for making this API call.
+                /// </summary>
+                public class TestIamPermissionsRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                    /// documentation for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -1601,6 +2715,24 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
+    public class GoogleCloudRunV2ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ImageDigest holds the resolved digest for the image specified, regardless of whether a tag or digest was
+        /// originally specified in the Container object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
+        public virtual string ImageDigest { get; set; }
+
+        /// <summary>The name of the container, if specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>EnvVar represents an environment variable present in a Container.</summary>
     public class GoogleCloudRunV2EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1639,6 +2771,400 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Execution represents the configuration of a single execution. A execution an immutable resource that references
+    /// a container image which is run to completion.
+    /// </summary>
+    public class GoogleCloudRunV2Execution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>KRM-style annotations for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
+        /// Output only. Represents time when the execution was completed. It is not guaranteed to be set in
+        /// happens-before order across separate operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual object CompletionTime { get; set; }
+
+        /// <summary>
+        /// Output only. The Condition of this Execution, containing its readiness status, and detailed error
+        /// information in case it did not reach the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
+
+        /// <summary>
+        /// Output only. Represents time when the execution was acknowledged by the execution controller. It is not
+        /// guaranteed to be set in happens-before order across separate operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. For a deleted resource, the deletion time. It is only populated as a response to a Delete
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// modification conflict during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. For a deleted resource, the time after which it will be permamently deleted. It is only
+        /// populated as a response to a Delete request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>Output only. The number of tasks which reached phase Failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedCount")]
+        public virtual System.Nullable<int> FailedCount { get; set; }
+
+        /// <summary>
+        /// Output only. A number that monotonically increases every time the user modifies the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Output only. The name of the parent Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual string Job { get; set; }
+
+        /// <summary>
+        /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
+        /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
+        /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
+        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
+        /// not be preserved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Set the launch stage to a preview stage on write to allow use of preview features in that stage. On read,
+        /// describes whether the resource uses preview features. Launch Stages are defined at [Google Cloud Platform
+        /// Launch Stages](https://cloud.google.com/terms/launch-stages).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
+        /// <summary>Output only. The unique name of this Execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The generation of this Execution. See comments in `reconciling` for additional information on
+        /// reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
+        public virtual System.Nullable<long> ObservedGeneration { get; set; }
+
+        /// <summary>
+        /// Output only. Specifies the maximum desired number of tasks the execution should run at any given time. Must
+        /// be &amp;lt;= task_count. The actual number of tasks running in steady state will be less than this number
+        /// when ((.spec.task_count - .status.successful) &amp;lt; .spec.parallelism), i.e. when the work left to do is
+        /// less than max parallelism. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parallelism")]
+        public virtual System.Nullable<int> Parallelism { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the resource's reconciliation is still in progress. See comments in
+        /// `Job.reconciling` for additional information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. The number of actively running tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runningCount")]
+        public virtual System.Nullable<int> RunningCount { get; set; }
+
+        /// <summary>
+        /// Output only. Represents time when the execution started to run. It is not guaranteed to be set in
+        /// happens-before order across separate operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>Output only. The number of tasks which reached phase Succeeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("succeededCount")]
+        public virtual System.Nullable<int> SucceededCount { get; set; }
+
+        /// <summary>
+        /// Output only. Specifies the desired number of tasks the execution should run. Setting to 1 means that
+        /// parallelism is limited to 1 and the success of that task signals the success of the execution. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
+        public virtual System.Nullable<int> TaskCount { get; set; }
+
+        /// <summary>Output only. Describes the task(s) that will be created when executing an execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual GoogleCloudRunV2TaskTemplate Template { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+    }
+
+    /// <summary>
+    /// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the
+    /// latest status.
+    /// </summary>
+    public class GoogleCloudRunV2ExecutionReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation timestamp of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Name of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExecutionTemplate describes the data an execution should have when created from a template.</summary>
+    public class GoogleCloudRunV2ExecutionTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>KRM-style annotations for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>KRM-style labels for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Specifies the maximum desired number of tasks the execution should run at given time. Must be &amp;lt;=
+        /// task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for
+        /// that execution. The actual number of tasks running in steady state will be less than this number when there
+        /// are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max
+        /// parallelism.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parallelism")]
+        public virtual System.Nullable<int> Parallelism { get; set; }
+
+        /// <summary>
+        /// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is
+        /// limited to 1 and the success of that task signals the success of the execution. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
+        public virtual System.Nullable<int> TaskCount { get; set; }
+
+        /// <summary>Required. Describes the task(s) that will be created when executing an execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual GoogleCloudRunV2TaskTemplate Template { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Job represents the configuration of a single job. A job an immutable resource that references a container image
+    /// which is run to completion.
+    /// </summary>
+    public class GoogleCloudRunV2Job : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// KRM-style annotations for the resource. Unstructured key value map that may be set by external tools to
+        /// store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud
+        /// Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This
+        /// field follows Kubernetes annotations' namespacing, limits, and rules. More info:
+        /// https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Settings for the Binary Authorization feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
+        public virtual GoogleCloudRunV2BinaryAuthorization BinaryAuthorization { get; set; }
+
+        /// <summary>Arbitrary identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Arbitrary version identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
+        public virtual string ClientVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The Conditions of all other associated sub-resources. They contain additional diagnostics
+        /// information in case the Job does not reach its desired state. See comments in `reconciling` for additional
+        /// information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
+
+        /// <summary>Output only. Status information for each of the containers specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerStatus> ContainerStatuses { get; set; }
+
+        /// <summary>Output only. The creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Email address of the authenticated creator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
+
+        /// <summary>Output only. The deletion time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// modification conflict during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Number of executions created for this job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionCount")]
+        public virtual System.Nullable<int> ExecutionCount { get; set; }
+
+        /// <summary>Output only. For a deleted resource, the time after which it will be permamently deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Output only. A number that monotonically increases every time the user modifies the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>
+        /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
+        /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
+        /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
+        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
+        /// not be preserved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Email address of the last authenticated modifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifier")]
+        public virtual string LastModifier { get; set; }
+
+        /// <summary>Output only. Name of the last created execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestCreatedExecution")]
+        public virtual GoogleCloudRunV2ExecutionReference LatestCreatedExecution { get; set; }
+
+        /// <summary>
+        /// The launch stage as defined by [Google Cloud Platform Launch
+        /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
+        /// value is specified, GA is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
+        /// <summary>
+        /// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The generation of this Job. See comments in `reconciling` for additional information on
+        /// reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
+        public virtual System.Nullable<long> ObservedGeneration { get; set; }
+
+        /// <summary>
+        /// Output only. Returns true if the Job is currently being acted upon by the system to bring it into the
+        /// desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously
+        /// perform all necessary steps to bring the Job to the desired state. This process is called reconciliation.
+        /// While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have
+        /// transient values that might mismatch the intended state: Once reconciliation is over (and this field is
+        /// false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there
+        /// was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If
+        /// reconciliation succeeded, the following fields will match: `observed_generation` and `generation`,
+        /// `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation`
+        /// and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly
+        /// created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Required. The template used to create executions for this Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual GoogleCloudRunV2ExecutionTemplate Template { get; set; }
+
+        /// <summary>
+        /// Output only. The Condition of this Job, containing its readiness status, and detailed error information in
+        /// case it did not reach the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminalCondition")]
+        public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+    }
+
+    /// <summary>Response message containing a list of Executions.</summary>
+    public class GoogleCloudRunV2ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting list of Executions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Execution> Executions { get; set; }
+
+        /// <summary>
+        /// A token indicating there are more items than page_size. Use it in the next ListExecutions request to
+        /// continue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message containing a list of Jobs.</summary>
+    public class GoogleCloudRunV2ListJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting list of Jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Job> Jobs { get; set; }
+
+        /// <summary>
+        /// A token indicating there are more items than page_size. Use it in the next ListJobs request to continue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message containing a list of Revisions.</summary>
     public class GoogleCloudRunV2ListRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1669,6 +3195,23 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>The resulting list of Services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Service> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message containing a list of Tasks.</summary>
+    public class GoogleCloudRunV2ListTasksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token indicating there are more items than page_size. Use it in the next ListTasks request to continue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resulting list of Tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Task> Tasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1934,6 +3477,21 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message to create a new Execution of a Job.</summary>
+    public class GoogleCloudRunV2RunJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict
+        /// during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Indicates that the request should be validated without actually deleting any resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
     /// <summary>SecretEnvVarSource represents a source for the value of an EnvVar.</summary>
     public class GoogleCloudRunV2SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2181,6 +3739,259 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. The main URI in which this Service is serving traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+    }
+
+    /// <summary>Task represents a single run of a container to completion.</summary>
+    public class GoogleCloudRunV2Task : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>KRM-style annotations for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
+        /// Output only. Represents time when the Task was completed. It is not guaranteed to be set in happens-before
+        /// order across separate operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual object CompletionTime { get; set; }
+
+        /// <summary>
+        /// Output only. The Condition of this Task, containing its readiness status, and detailed error information in
+        /// case it did not reach the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
+
+        /// <summary>Holds the single container that defines the unit of execution for this task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
+
+        /// <summary>
+        /// Output only. Represents time when the task was created by the job controller. It is not guaranteed to be set
+        /// in happens-before order across separate operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. For a deleted resource, the deletion time. It is only populated as a response to a Delete
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// Output only. A reference to a customer managed encryption key (CMEK) to use to encrypt this container image.
+        /// For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual string EncryptionKey { get; set; }
+
+        /// <summary>
+        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// modification conflict during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. The name of the parent Execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("execution")]
+        public virtual string Execution { get; set; }
+
+        /// <summary>The execution environment being used to host this Task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
+        public virtual string ExecutionEnvironment { get; set; }
+
+        /// <summary>
+        /// Output only. For a deleted resource, the time after which it will be permamently deleted. It is only
+        /// populated as a response to a Delete request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Output only. A number that monotonically increases every time the user modifies the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Output only. Index of the Task, unique per execution, and beginning at 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>Output only. The name of the parent Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual string Job { get; set; }
+
+        /// <summary>
+        /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can
+        /// be used to filter, or break down billing charges by team, component, environment, state, etc. For more
+        /// information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with
+        /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will
+        /// not be preserved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Result of the last attempt of this Task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptResult")]
+        public virtual GoogleCloudRunV2TaskAttemptResult LastAttemptResult { get; set; }
+
+        /// <summary>
+        /// Set the launch stage to a preview stage on write to allow use of preview features in that stage. On read,
+        /// describes whether the resource uses preview features. Launch Stages are defined at [Google Cloud Platform
+        /// Launch Stages](https://cloud.google.com/terms/launch-stages).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
+        /// <summary>Number of retries allowed per Task, before marking this Task failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
+        public virtual System.Nullable<int> MaxRetries { get; set; }
+
+        /// <summary>Output only. The unique name of this Task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The generation of this Task. See comments in `Job.reconciling` for additional information on
+        /// reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
+        public virtual System.Nullable<long> ObservedGeneration { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the resource's reconciliation is still in progress. See comments in
+        /// `Job.reconciling` for additional information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>
+        /// Output only. The number of times this Task was retried. Tasks are retried when they fail up to the
+        /// maxRetries limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retried")]
+        public virtual System.Nullable<int> Retried { get; set; }
+
+        /// <summary>
+        /// Email address of the IAM service account associated with the Task of a Job. The service account represents
+        /// the identity of the running task, and determines what permissions the task has. If not provided, the task
+        /// will use the project's default service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Output only. Represents time when the task started to run. It is not guaranteed to be set in happens-before
+        /// order across separate operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>
+        /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and
+        /// kill associated containers. This applies per attempt of a task, meaning each retry can run for the full
+        /// timeout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the Task. The value is a UUID4 string and guaranteed to
+        /// remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>A list of Volumes to make available to containers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Volume> Volumes { get; set; }
+
+        /// <summary>
+        /// Output only. VPC Access configuration to use for this Task. For more information, visit
+        /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
+        public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
+    }
+
+    /// <summary>Result of a task attempt.</summary>
+    public class GoogleCloudRunV2TaskAttemptResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The exit code of this attempt. This may be unset if the container was unable to exit cleanly
+        /// with a code due to some other failure. See status field for possible failure details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
+        public virtual System.Nullable<int> ExitCode { get; set; }
+
+        /// <summary>
+        /// Output only. The status of this attempt. If the status code is OK, then the attempt succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TaskTemplate describes the data a task should have when created from a template.</summary>
+    public class GoogleCloudRunV2TaskTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Holds the single container that defines the unit of execution for this task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
+
+        /// <summary>
+        /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more
+        /// information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual string EncryptionKey { get; set; }
+
+        /// <summary>The execution environment being used to host this Task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
+        public virtual string ExecutionEnvironment { get; set; }
+
+        /// <summary>Number of retries allowed per Task, before marking this Task failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
+        public virtual System.Nullable<int> MaxRetries { get; set; }
+
+        /// <summary>
+        /// Email address of the IAM service account associated with the Task of a Job. The service account represents
+        /// the identity of the running task, and determines what permissions the task has. If not provided, the task
+        /// will use the project's default service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and
+        /// kill associated containers. This applies per attempt of a task, meaning each retry can run for the full
+        /// timeout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>A list of Volumes to make available to containers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Volume> Volumes { get; set; }
+
+        /// <summary>
+        /// VPC Access configuration to use for this Task. For more information, visit
+        /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
+        public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>

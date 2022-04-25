@@ -2812,7 +2812,7 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesFilterRatio")]
         public virtual TimeSeriesFilterRatio TimeSeriesFilterRatio { get; set; }
 
-        /// <summary>A query used to fetch time series.</summary>
+        /// <summary>A query used to fetch time series with MQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQueryLanguage")]
         public virtual string TimeSeriesQueryLanguage { get; set; }
 

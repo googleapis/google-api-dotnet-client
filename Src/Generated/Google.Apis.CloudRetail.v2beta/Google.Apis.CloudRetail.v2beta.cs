@@ -2212,7 +2212,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI
                     /// serving config or placement. Before you can request predictions from your model, you must create
                     /// at least one serving config or placement for it. For more information, see [Managing serving
-                    /// configurations]. (https://cloud.google.com/retail/docs/manage-configs). The full list of
+                    /// configurations] (https://cloud.google.com/retail/docs/manage-configs). The full list of
                     /// available serving configs can be seen at
                     /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                     /// </param>
@@ -2239,7 +2239,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
                         /// Recommendations AI serving config or placement. Before you can request predictions from your
                         /// model, you must create at least one serving config or placement for it. For more
-                        /// information, see [Managing serving configurations].
+                        /// information, see [Managing serving configurations]
                         /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
                         /// configs can be seen at
                         /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
@@ -2792,7 +2792,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI
                     /// serving config or placement. Before you can request predictions from your model, you must create
                     /// at least one serving config or placement for it. For more information, see [Managing serving
-                    /// configurations]. (https://cloud.google.com/retail/docs/manage-configs). The full list of
+                    /// configurations] (https://cloud.google.com/retail/docs/manage-configs). The full list of
                     /// available serving configs can be seen at
                     /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                     /// </param>
@@ -2819,7 +2819,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
                         /// Recommendations AI serving config or placement. Before you can request predictions from your
                         /// model, you must create at least one serving config or placement for it. For more
-                        /// information, see [Managing serving configurations].
+                        /// information, see [Managing serving configurations]
                         /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
                         /// configs can be seen at
                         /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
@@ -6251,10 +6251,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual GoogleCloudRetailV2betaProductInputConfig InputConfig { get; set; }
 
         /// <summary>
-        /// Pub/Sub topic for receiving notification. If this field is set, when the import is finished, a notification
-        /// will be sent to specified Pub/Sub topic. The message data will be JSON string of a Operation. Format of the
-        /// Pub/Sub topic is `projects/{project}/topics/{topic}`. Only supported when
-        /// ImportProductsRequest.reconciliation_mode is set to `FULL`.
+        /// Full Pub/Sub topic name for receiving notification. If this field is set, when the import is finished, a
+        /// notification will be sent to specified Pub/Sub topic. The message data will be JSON string of a Operation.
+        /// Format of the Pub/Sub topic is `projects/{project}/topics/{topic}`. It has to be within the same project as
+        /// ImportProductsRequest.parent. Make sure that both
+        /// `cloud-retail-customer-data-access@system.gserviceaccount.com` and
+        /// `service-@gcp-sa-retail.iam.gserviceaccount.com` have the `pubsub.topics.publish` IAM permission on the
+        /// topic. Only supported when ImportProductsRequest.reconciliation_mode is set to `FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -6692,7 +6695,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
 
-        /// <summary>Price of the product without any discount. If zero, by default set to be the price.</summary>
+        /// <summary>
+        /// Price of the product without any discount. If zero, by default set to be the price. If set, original_price
+        /// should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPrice")]
         public virtual System.Nullable<float> OriginalPrice { get; set; }
 
@@ -7757,6 +7763,20 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// The labels applied to a resource must meet the following requirements: * Each resource can have multiple
+        /// labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length of 1
+        /// character and a maximum length of 63 characters, and cannot be empty. Values can be empty, and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the
