@@ -809,7 +809,8 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Id of the category that best describes the core business this location engages in.
+        /// Required. Id of the category that best describes the core business this location engages in. e.g.
+        /// gcid:bakery.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryCategoryId")]
         public virtual string PrimaryCategoryId { get; set; }

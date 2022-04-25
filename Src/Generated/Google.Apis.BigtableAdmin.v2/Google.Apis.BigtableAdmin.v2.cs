@@ -3750,7 +3750,7 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -4038,7 +4038,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -4398,9 +4398,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The
         /// requirements for this key are: 1) The Cloud Bigtable service account associated with the project that
         /// contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2)
-        /// Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All
-        /// clusters within an instance must use the same CMEK key. Values are of the form
-        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        /// Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values
+        /// are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
@@ -5193,7 +5192,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -5344,7 +5343,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

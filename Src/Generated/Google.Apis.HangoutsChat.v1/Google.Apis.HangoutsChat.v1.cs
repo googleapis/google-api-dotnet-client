@@ -326,12 +326,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Optional. Opaque thread identifier string that can be specified to group messages into a single
-                /// thread. If this is the first message with a given thread identifier, a new thread is created.
-                /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves Chat apps and webhooks from having to store the Google Chat thread ID of a thread (created
-                /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
-                /// existing thread, is set in message.
+                /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+                /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a
+                /// given `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the
+                /// same thread.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -416,12 +414,10 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
-            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
-            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
-            /// in message.
+            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
+            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
+            /// thread.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -505,12 +501,10 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
-            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
-            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
-            /// in message.
+            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
+            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
+            /// thread.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -787,12 +781,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Optional. Opaque thread identifier string that can be specified to group messages into a single
-                /// thread. If this is the first message with a given thread identifier, a new thread is created.
-                /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves Chat apps and webhooks from having to store the Google Chat thread ID of a thread (created
-                /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
-                /// existing thread, is set in message.
+                /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+                /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a
+                /// given `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the
+                /// same thread.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -877,12 +869,10 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
-            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
-            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
-            /// in message.
+            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
+            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
+            /// thread.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -966,12 +956,10 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
-            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
-            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
-            /// in message.
+            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
+            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
+            /// thread.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -1332,12 +1320,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Optional. Opaque thread identifier string that can be specified to group messages into a single
-                /// thread. If this is the first message with a given thread identifier, a new thread is created.
-                /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves Chat apps and webhooks from having to store the Google Chat thread ID of a thread (created
-                /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
-                /// existing thread, is set in message.
+                /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+                /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a
+                /// given `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the
+                /// same thread.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -1735,12 +1721,10 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string RequestId { get; set; }
 
             /// <summary>
-            /// Optional. Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves Chat apps
-            /// and webhooks from having to store the Google Chat thread ID of a thread (created earlier by them) to
-            /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set
-            /// in message.
+            /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a
+            /// `threadKey` instead of thread.name. (Setting thread.name has no effect.) The first message with a given
+            /// `threadKey` starts a new thread. Subsequent messages with the same `threadKey` post into the same
+            /// thread.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
@@ -2032,6 +2016,31 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
+    /// JSON payload of error messages. If the Cloud Logging API is enabled, these error messages are logged to [Google
+    /// Cloud Logging](https://cloud.google.com/logging/docs).
+    /// </summary>
+    public class ChatAppLogEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The deployment that caused the error. For Chat bots built in Apps Script, this is the deployment ID defined
+        /// by Apps Script.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>The unencrypted `callback_method` name that was running when the error was encountered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentFunction")]
+        public virtual string DeploymentFunction { get; set; }
+
+        /// <summary>The error code and message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from
     /// color representations in various languages over compactness. For example, the fields of this representation can
     /// be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
@@ -2300,31 +2309,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The id for the drive file, for use with the Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFileId")]
         public virtual string DriveFileId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// JSON payload of error messages. If the Cloud Logging API is enabled, these error messages are logged to [Google
-    /// Cloud Logging](https://cloud.google.com/logging/docs).
-    /// </summary>
-    public class DynamiteIntegrationLogEntry : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The deployment that caused the error. For Chat bots built in Apps Script, this is the deployment ID defined
-        /// by Apps Script.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
-        public virtual string Deployment { get; set; }
-
-        /// <summary>The unencrypted `callback_method` name that was running when the error was encountered.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deploymentFunction")]
-        public virtual string DeploymentFunction { get; set; }
-
-        /// <summary>The error code and message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3584,9 +3568,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>
-        /// Optional. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
-        /// </summary>
+        /// <summary>Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

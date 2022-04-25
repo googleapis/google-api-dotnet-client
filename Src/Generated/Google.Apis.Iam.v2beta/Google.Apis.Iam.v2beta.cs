@@ -790,8 +790,8 @@ namespace Google.Apis.Iam.v2beta.Data
         public virtual GoogleTypeExpr Condition { get; set; }
 
         /// <summary>
-        /// A single identity requesting access for a Cloud Platform resource. Follows the same format of
-        /// Binding.members. Required
+        /// A single identity requesting access for a Google Cloud resource. Follows the same format of Binding.members.
+        /// Required
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual string Member { get; set; }

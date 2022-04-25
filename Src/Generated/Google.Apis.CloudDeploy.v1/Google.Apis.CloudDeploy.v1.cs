@@ -2836,7 +2836,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -3003,7 +3003,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -3195,6 +3195,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Most recent time at which the pipeline was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+    }
+
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/deliverypipeline_notification" Platform Log event that describes
+    /// the failure to send delivery pipeline status change Pub/Sub notification.
+    /// </summary>
+    public class DeliveryPipelineNotificationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the `Delivery Pipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryPipeline")]
+        public virtual string DeliveryPipeline { get; set; }
+
+        /// <summary>Debug message for when a notification fails to send.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -3783,6 +3805,49 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/release_notification" Platform Log event that describes the
+    /// failure to send release status change Pub/Sub notification.
+    /// </summary>
+    public class ReleaseNotificationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Debug message for when a notification fails to send.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The name of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("release")]
+        public virtual string Release { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/release_render" Platform Log event that describes the render
+    /// status change.
+    /// </summary>
+    public class ReleaseRenderEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Debug message for when a render transition occurs. Provides further details as rendering progresses through
+        /// render states.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The name of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("release")]
+        public virtual string Release { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains information around a specific
     /// deployment to a `Target`.
     /// </summary>
@@ -3877,6 +3942,40 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string Uid { get; set; }
     }
 
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/rollout_notification" Platform Log event that describes the
+    /// failure to send rollout status change Pub/Sub notification.
+    /// </summary>
+    public class RolloutNotificationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Debug message for when a notification fails to send.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Unique identifier of the `DeliveryPipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
+        /// <summary>Unique identifier of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseUid")]
+        public virtual string ReleaseUid { get; set; }
+
+        /// <summary>The name of the `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
+
+        /// <summary>ID of the `Target` that the rollout is deployed to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.</summary>
     public class SerialPipeline : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3895,7 +3994,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -4077,6 +4176,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/target_notification" Platform Log event that describes the failure
+    /// to send target status change Pub/Sub notification.
+    /// </summary>
+    public class TargetNotificationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Debug message for when a notification fails to send.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The name of the `Target`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of rendering for a single target.</summary>
     public class TargetRender : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4130,7 +4251,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

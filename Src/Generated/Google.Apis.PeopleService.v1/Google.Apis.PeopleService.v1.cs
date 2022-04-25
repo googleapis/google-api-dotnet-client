@@ -1017,6 +1017,9 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// Possible values for this field are: * READ_SOURCE_TYPE_CONTACT *
+            /// READ_SOURCE_TYPE_CONTACT,READ_SOURCE_TYPE_PROFILE Specifying READ_SOURCE_TYPE_PROFILE without specifying
+            /// READ_SOURCE_TYPE_CONTACT is not permitted.
             /// </summary>
             /// <remarks>
             /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to set multiple
@@ -1027,6 +1030,9 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// Possible values for this field are: * READ_SOURCE_TYPE_CONTACT *
+            /// READ_SOURCE_TYPE_CONTACT,READ_SOURCE_TYPE_PROFILE Specifying READ_SOURCE_TYPE_PROFILE without specifying
+            /// READ_SOURCE_TYPE_CONTACT is not permitted.
             /// </summary>
             /// <remarks>
             /// Use this property to set one or more values for the parameter. Do not set both this property and
@@ -1037,6 +1043,9 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// Possible values for this field are: * READ_SOURCE_TYPE_CONTACT *
+            /// READ_SOURCE_TYPE_CONTACT,READ_SOURCE_TYPE_PROFILE Specifying READ_SOURCE_TYPE_PROFILE without specifying
+            /// READ_SOURCE_TYPE_CONTACT is not permitted.
             /// </summary>
             public enum SourcesEnum
             {

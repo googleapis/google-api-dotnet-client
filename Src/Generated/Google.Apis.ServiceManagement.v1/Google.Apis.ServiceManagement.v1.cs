@@ -1228,9 +1228,9 @@ namespace Google.Apis.ServiceManagement.v1
                 public virtual string ServiceName { get; private set; }
 
                 /// <summary>
-                /// Required. Use `filter` to return subset of rollouts. The following filters are supported: -- To
-                /// limit the results to only those in status 'SUCCESS', use filter='status=SUCCESS' -- To limit the
-                /// results to those in status 'CANCELLED' or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
+                /// Required. Use `filter` to return subset of rollouts. The following filters are supported: -- By
+                /// status. For example, `filter='status=SUCCESS'` -- By strategy. For example,
+                /// `filter='strategy=TrafficPercentStrategy'`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
