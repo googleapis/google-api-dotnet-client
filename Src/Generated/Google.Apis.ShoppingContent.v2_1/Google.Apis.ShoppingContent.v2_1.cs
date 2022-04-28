@@ -54,6 +54,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Orders = new OrdersResource(this);
             Ordertrackingsignals = new OrdertrackingsignalsResource(this);
             Pos = new PosResource(this);
+            Productdeliverytime = new ProductdeliverytimeResource(this);
             Products = new ProductsResource(this);
             Productstatuses = new ProductstatusesResource(this);
             Promotions = new PromotionsResource(this);
@@ -169,6 +170,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Pos resource.</summary>
         public virtual PosResource Pos { get; }
+
+        /// <summary>Gets the Productdeliverytime resource.</summary>
+        public virtual ProductdeliverytimeResource Productdeliverytime { get; }
 
         /// <summary>Gets the Products resource.</summary>
         public virtual ProductsResource Products { get; }
@@ -8880,6 +8884,218 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
     }
 
+    /// <summary>The "productdeliverytime" collection of methods.</summary>
+    public class ProductdeliverytimeResource
+    {
+        private const string Resource = "productdeliverytime";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProductdeliverytimeResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates or updates the delivery time of a product.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// The Google merchant ID of the account that contains the product. This account cannot be a multi-client
+        /// account.
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ProductDeliveryTime body, long merchantId)
+        {
+            return new CreateRequest(service, body, merchantId);
+        }
+
+        /// <summary>Creates or updates the delivery time of a product.</summary>
+        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductDeliveryTime>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ProductDeliveryTime body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The Google merchant ID of the account that contains the product. This account cannot be a multi-client
+            /// account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.ProductDeliveryTime Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/productdeliverytime";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Deletes the delivery time of a product.</summary>
+        /// <param name="merchantId">
+        /// Required. The Google merchant ID of the account that contains the product. This account cannot be a
+        /// multi-client account.
+        /// </param>
+        /// <param name="productId">
+        /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+        /// </param>
+        public virtual DeleteRequest Delete(long merchantId, string productId)
+        {
+            return new DeleteRequest(service, merchantId, productId);
+        }
+
+        /// <summary>Deletes the delivery time of a product.</summary>
+        public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, long merchantId, string productId) : base(service)
+            {
+                MerchantId = merchantId;
+                ProductId = productId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The Google merchant ID of the account that contains the product. This account cannot be a
+            /// multi-client account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProductId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/productdeliverytime/{productId}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Gets productDeliveryTime by productId</summary>
+        /// <param name="merchantId">
+        /// Required. The Google merchant ID of the account that contains the product. This account cannot be a
+        /// multi-client account.
+        /// </param>
+        /// <param name="productId">
+        /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+        /// </param>
+        public virtual GetRequest Get(long merchantId, string productId)
+        {
+            return new GetRequest(service, merchantId, productId);
+        }
+
+        /// <summary>Gets productDeliveryTime by productId</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductDeliveryTime>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string productId) : base(service)
+            {
+                MerchantId = merchantId;
+                ProductId = productId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The Google merchant ID of the account that contains the product. This account cannot be a
+            /// multi-client account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProductId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/productdeliverytime/{productId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "products" collection of methods.</summary>
     public class ProductsResource
     {
@@ -15077,6 +15293,64 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A delivery area for the product. Only one of administrativeAreaCode or postalCodeRange must be set.
+    /// </summary>
+    public class DeliveryArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The country that the product can be delivered to. Submit an [unicode CLDR
+        /// region](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) such as US or CH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>
+        /// A postal code, postal code range or postal code prefix that defines this area. Limited to US and AUS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRange")]
+        public virtual DeliveryAreaPostalCodeRange PostalCodeRange { get; set; }
+
+        /// <summary>
+        /// A state, territory, or prefecture. This is supported for the United States, Australia, and Japan. Provide a
+        /// subdivision code from the ISO 3166-2 code tables ([US](https://en.wikipedia.org/wiki/ISO_3166-2:US),
+        /// [AU](https://en.wikipedia.org/wiki/ISO_3166-2:AU), or [JP](https://en.wikipedia.org/wiki/ISO_3166-2:JP))
+        /// without country prefix (for example, NY, NSW, 03).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A range of postal codes that defines the delivery area. Only set firstPostalCode when specifying a single postal
+    /// code.
+    /// </summary>
+    public class DeliveryAreaPostalCodeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range
+        /// defining the area. Examples values: "94108", "9410*", "9*".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPostalCode")]
+        public virtual string FirstPostalCode { get; set; }
+
+        /// <summary>
+        /// A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range defining the
+        /// area (for example [070* - 078*] results in the range [07000 - 07899]). It must have the same length as
+        /// firstPostalCode: if firstPostalCode is a postal code then lastPostalCode must be a postal code too; if
+        /// firstPostalCode is a pattern then lastPostalCode must be a pattern with the same prefix length. Ignored if
+        /// not set, then the area is defined as being all the postal codes matching firstPostalCode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastPostalCode")]
+        public virtual string LastPostalCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class DeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -16385,6 +16659,32 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Number of clicks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clicks")]
         public virtual System.Nullable<long> Clicks { get; set; }
+
+        /// <summary>
+        /// Number of conversions divided by the number of clicks, reported on the impression date. The metric is
+        /// currently available only for the FREE_PRODUCT_LISTING program.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionRate")]
+        public virtual System.Nullable<double> ConversionRate { get; set; }
+
+        /// <summary>
+        /// Value of conversions in micros attributed to the product, reported on the conversion date. The metric is
+        /// currently available only for the FREE_PRODUCT_LISTING program. The currency of the returned value is stored
+        /// in the currency_code segment. If this metric is selected, 'segments.currency_code' is automatically added to
+        /// the SELECT clause in the search query (unless it is explicitly selected by the user) and the currency_code
+        /// segment is populated in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValueMicros")]
+        public virtual System.Nullable<long> ConversionValueMicros { get; set; }
+
+        /// <summary>
+        /// Number of conversions attributed to the product, reported on the conversion date. Depending on the
+        /// attribution model, a conversion might be distributed across multiple clicks, where each click gets its own
+        /// credit assigned. This metric is a sum of all such credits. The metric is currently available only for the
+        /// FREE_PRODUCT_LISTING program.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversions")]
+        public virtual System.Nullable<double> Conversions { get; set; }
 
         /// <summary>
         /// Click-through rate - the number of clicks merchant's products receive (clicks) divided by the number of
@@ -20197,6 +20497,79 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The estimated days to deliver for this product. These methods are intended for authorized partners working with
+    /// a merchant. Merchants should use the [product
+    /// API](https://developers.google.com/shopping-content/reference/rest/v2.1/products#productshipping) instead. To
+    /// obtain authorization from a merchant refer to
+    /// </summary>
+    public class ProductDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A set of associations between DeliveryAreas and DeliveryTimes. The total number of
+        /// areaDeliveryTimes can be at most 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("areaDeliveryTimes")]
+        public virtual System.Collections.Generic.IList<ProductDeliveryTimeAreaDeliveryTime> AreaDeliveryTimes { get; set; }
+
+        /// <summary>Required. The id of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual ProductId ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A pairing of DeliveryArea associated with a DeliveryTime for this product.</summary>
+    public class ProductDeliveryTimeAreaDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The delivery area associated with deliveryTime for this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryArea")]
+        public virtual DeliveryArea DeliveryArea { get; set; }
+
+        /// <summary>Required. The delivery time associated with deliveryArea for this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryTime")]
+        public virtual ProductDeliveryTimeAreaDeliveryTimeDeliveryTime DeliveryTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A delivery time for this product.</summary>
+    public class ProductDeliveryTimeAreaDeliveryTimeDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The maximum number of business days (inclusive) between when an order is placed and when the
+        /// product ships. If a product ships in the same day, set this value to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTimeDays")]
+        public virtual System.Nullable<int> MaxHandlingTimeDays { get; set; }
+
+        /// <summary>
+        /// Required. The maximum number of business days (inclusive) between when the product ships and when the
+        /// product is delivered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeDays")]
+        public virtual System.Nullable<int> MaxTransitTimeDays { get; set; }
+
+        /// <summary>
+        /// Required. The minimum number of business days (inclusive) between when an order is placed and when the
+        /// product ships. If a product ships in the same day, set this value to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTimeDays")]
+        public virtual System.Nullable<int> MinHandlingTimeDays { get; set; }
+
+        /// <summary>
+        /// Required. The minimum number of business days (inclusive) between when the product ships and when the
+        /// product is delivered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeDays")]
+        public virtual System.Nullable<int> MinTransitTimeDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ProductDimension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The length units. Acceptable values are: - "`in`" - "`cm`" </summary>
@@ -20209,6 +20582,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Content API ID of the product.</summary>
+    public class ProductId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductIdValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20774,9 +21160,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    ///  The Promotions feature is currently in alpha and is not yet publicly available in Content API for Shopping.
-    /// This documentation is provided for reference only may be subject to change. Represents a promotion. See the
-    /// following articles for more details. * [Promotions feed
+    ///  The Promotions feature is publicly available for the US and CA locale (en language only) in Content API for
+    /// Shopping. Represents a promotion. See the following articles for more details. * [Promotions feed
     /// specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed
     /// specification](https://support.google.com/merchants/answer/10146130) * [Promotions on Buy on Google product data
     /// specification](https://support.google.com/merchants/answer/9173673)
@@ -20854,7 +21239,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("limitValue")]
         public virtual PriceAmount LimitValue { get; set; }
 
-        /// <summary>Long title for the promotion.</summary>
+        /// <summary>Required. Long title for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
         public virtual string LongTitle { get; set; }
 

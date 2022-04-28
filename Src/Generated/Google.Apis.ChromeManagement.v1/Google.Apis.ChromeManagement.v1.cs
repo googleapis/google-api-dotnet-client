@@ -1502,7 +1502,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isCwsHosted")]
         public virtual System.Nullable<bool> IsCwsHosted { get; set; }
 
-        /// <summary>Output only. Whether the app is only for Kiosk mode on Chrome OS devices</summary>
+        /// <summary>Output only. Whether the app is only for Kiosk mode on ChromeOS devices</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isKioskOnly")]
         public virtual System.Nullable<bool> IsKioskOnly { get; set; }
 
@@ -1510,7 +1510,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isTheme")]
         public virtual System.Nullable<bool> IsTheme { get; set; }
 
-        /// <summary>Output only. Whether this app is enabled for Kiosk mode on Chrome OS devices</summary>
+        /// <summary>Output only. Whether this app is enabled for Kiosk mode on ChromeOS devices</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kioskEnabled")]
         public virtual System.Nullable<bool> KioskEnabled { get; set; }
 
@@ -2162,7 +2162,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
 
         /// <summary>
         /// Output only. The unique Directory API ID of the device. This value is the same as the Admin Console's
-        /// Directory API ID in the Chrome OS Devices tab
+        /// Directory API ID in the ChromeOS Devices tab
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; }
@@ -2202,8 +2202,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1OsUpdateStatus> OsUpdateStatus { get; set; }
 
         /// <summary>
-        /// Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the Chrome
-        /// OS Devices tab.
+        /// Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the
+        /// ChromeOS Devices tab.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; }

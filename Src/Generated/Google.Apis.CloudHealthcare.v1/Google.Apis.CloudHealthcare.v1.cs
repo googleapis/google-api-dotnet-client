@@ -10294,7 +10294,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -10584,7 +10584,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -10972,7 +10972,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Redacts identifying information from the specified dataset.</summary>
     public class DeidentifyDatasetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deidentify configuration.</summary>
+        /// <summary>Deidentify configuration. Only one of `config` and `gcs_config_uri` can be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual DeidentifyConfig Config { get; set; }
 
@@ -10984,6 +10984,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
         public virtual string DestinationDataset { get; set; }
 
+        /// <summary>
+        /// Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the
+        /// default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant
+        /// the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service
+        /// account. Only one of `config` and `gcs_config_uri` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsConfigUri")]
+        public virtual string GcsConfigUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10991,7 +11000,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Creates a new DICOM store with sensitive information de-identified.</summary>
     public class DeidentifyDicomStoreRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deidentify configuration.</summary>
+        /// <summary>Deidentify configuration. Only one of `config` and `gcs_config_uri` can be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual DeidentifyConfig Config { get; set; }
 
@@ -11009,6 +11018,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterConfig")]
         public virtual DicomFilterConfig FilterConfig { get; set; }
 
+        /// <summary>
+        /// Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the
+        /// default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant
+        /// the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service
+        /// account. Only one of `config` and `gcs_config_uri` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsConfigUri")]
+        public virtual string GcsConfigUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11016,7 +11034,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Creates a new FHIR store with sensitive information de-identified.</summary>
     public class DeidentifyFhirStoreRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deidentify configuration.</summary>
+        /// <summary>Deidentify configuration. Only one of `config` and `gcs_config_uri` can be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual DeidentifyConfig Config { get; set; }
 
@@ -11030,6 +11048,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStore")]
         public virtual string DestinationStore { get; set; }
+
+        /// <summary>
+        /// Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the
+        /// default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant
+        /// the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service
+        /// account. Only one of `config` and `gcs_config_uri` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsConfigUri")]
+        public virtual string GcsConfigUri { get; set; }
 
         /// <summary>
         /// A filter specifying the resources to include in the output. If not specified, all resources are included in
@@ -13208,7 +13235,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -13338,7 +13365,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

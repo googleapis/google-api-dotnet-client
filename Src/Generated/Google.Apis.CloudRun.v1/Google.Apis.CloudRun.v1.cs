@@ -2387,7 +2387,7 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
                 /// the request. Supported values: `all`
-                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
+                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:create_internal_service_request)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -2783,7 +2783,7 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
                 /// the request. Supported values: `all`
-                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
+                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:replace_internal_service_request)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -4698,7 +4698,7 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
                     /// persisting the request. Supported values: `all`
-                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
+                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:create_internal_service_request)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -5175,7 +5175,7 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
                     /// persisting the request. Supported values: `all`
-                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
+                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:replace_internal_service_request)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }

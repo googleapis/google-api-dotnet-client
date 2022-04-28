@@ -3446,8 +3446,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ProducerProjectId { get; set; }
 
         /// <summary>
-        /// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming
-        /// requirements.
+        /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview)
+        /// for naming requirements.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }

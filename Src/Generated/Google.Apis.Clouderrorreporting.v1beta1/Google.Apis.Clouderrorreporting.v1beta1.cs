@@ -630,10 +630,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
                     /// <summary>
                     /// The time periods shall be consecutive, have width equal to the requested duration, and be
-                    /// aligned at the `alignment_time` provided in the request. The `alignment_time` does not have to
-                    /// be inside the query period but even if it is outside, only time periods are returned which
-                    /// overlap with the query period. A rounded alignment will typically result in a different size of
-                    /// the first or the last time period.
+                    /// aligned at the alignment_time provided in the request. The alignment_time does not have to be
+                    /// inside the query period but even if it is outside, only time periods are returned which overlap
+                    /// with the query period. A rounded alignment will typically result in a different size of the
+                    /// first or the last time period.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGNMENT_EQUAL_ROUNDED")]
                     ALIGNMENTEQUALROUNDED = 1,
@@ -697,7 +697,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Optional. A `next_page_token` provided by a previous response. To view additional results, pass this
+                /// Optional. A next_page_token provided by a previous response. To view additional results, pass this
                 /// token along with the identical query parameters as the first request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -767,7 +767,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
                 /// <summary>
-                /// Optional. The preferred duration for a single returned `TimedCount`. If not set, no timed counts are
+                /// Optional. The preferred duration for a single returned TimedCount. If not set, no timed counts are
                 /// returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
@@ -906,8 +906,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// <summary>Get the specified group.</summary>
             /// <param name="groupName">
             /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`. Call
-            /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
-            /// to return a list of groups belonging to this project. Example: `projects/my-project-123/groups/my-group`
+            /// groupStats.list to return a list of groups belonging to this project. Example:
+            /// `projects/my-project-123/groups/my-group`
             /// </param>
             public virtual GetRequest Get(string groupName)
             {
@@ -926,8 +926,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
                 /// <summary>
                 /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`. Call
-                /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
-                /// to return a list of groups belonging to this project. Example:
+                /// groupStats.list to return a list of groups belonging to this project. Example:
                 /// `projects/my-project-123/groups/my-group`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupName", Google.Apis.Util.RequestParameterType.Path)]
@@ -1182,11 +1181,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>
         /// Approximate number of affected users in the given group that match the filter criteria. Users are
-        /// distinguished by data in the `ErrorContext` of the individual error events, such as their login name or
-        /// their remote IP address in case of HTTP requests. The number of affected users can be zero even if the
-        /// number of errors is non-zero if no data was provided from which the affected user could be deduced. Users
-        /// are counted based on data in the request context that was provided in the error report. If more users are
-        /// implicitly affected, such as due to a crash of the whole service, this is not reflected here.
+        /// distinguished by data in the ErrorContext of the individual error events, such as their login name or their
+        /// remote IP address in case of HTTP requests. The number of affected users can be zero even if the number of
+        /// errors is non-zero if no data was provided from which the affected user could be deduced. Users are counted
+        /// based on data in the request context that was provided in the error report. If more users are implicitly
+        /// affected, such as due to a crash of the whole service, this is not reflected here.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedUsersCount")]
         public virtual System.Nullable<long> AffectedUsersCount { get; set; }
@@ -1360,8 +1359,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace). * **C#**: Must
         /// be the return value of
         /// [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). *
-        /// **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)` and contain the result of
-        /// [`(string)$exception`](http://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value
+        /// **PHP**: Must be prefixed with `"PHP (Notice|Parse error|Fatal error|Warning): "` and contain the result of
+        /// [`(string)$exception`](https://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value
         /// of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]

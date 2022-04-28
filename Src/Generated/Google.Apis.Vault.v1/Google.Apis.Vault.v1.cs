@@ -3552,6 +3552,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveInfo")]
         public virtual SharedDriveInfo SharedDriveInfo { get; set; }
 
+        /// <summary>Required when **SearchMethod** is **SITES_URL**.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sitesUrlInfo")]
+        public virtual SitesUrlInfo SitesUrlInfo { get; set; }
+
         /// <summary>
         /// The start time for the search query. Specify in GMT. The value is rounded to 12 AM on the specified date.
         /// </summary>
@@ -3680,6 +3684,17 @@ namespace Google.Apis.Vault.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveIds")]
         public virtual System.Collections.Generic.IList<string> SharedDriveIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The published site URLs of new Google Sites to search</summary>
+    public class SitesUrlInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of published site URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urls")]
+        public virtual System.Collections.Generic.IList<string> Urls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

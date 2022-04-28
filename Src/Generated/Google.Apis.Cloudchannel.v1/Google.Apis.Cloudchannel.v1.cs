@@ -301,7 +301,455 @@ namespace Google.Apis.Cloudchannel.v1
             public ChannelPartnerLinksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                ChannelPartnerRepricingConfigs = new ChannelPartnerRepricingConfigsResource(service);
                 Customers = new CustomersResource(service);
+            }
+
+            /// <summary>Gets the ChannelPartnerRepricingConfigs resource.</summary>
+            public virtual ChannelPartnerRepricingConfigsResource ChannelPartnerRepricingConfigs { get; }
+
+            /// <summary>The "channelPartnerRepricingConfigs" collection of methods.</summary>
+            public class ChannelPartnerRepricingConfigsResource
+            {
+                private const string Resource = "channelPartnerRepricingConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ChannelPartnerRepricingConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific
+                /// ChannelPartner's bill. You can only create configs if the RepricingConfig.effective_invoice_month is
+                /// a future month. If needed, you can create a config for the current month, with some restrictions.
+                /// When creating a config for a future month, make sure there are no existing configs for that
+                /// RepricingConfig.effective_invoice_month. The following restrictions are for creating configs in the
+                /// current month. * This functionality is reserved for recovering from an erroneous config, and should
+                /// not be used for regular business cases. * The new config will not modify exports used with other
+                /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
+                /// ten configs for any ChannelPartner or RepricingConfig.effective_invoice_month. * The contained
+                /// ChannelPartnerRepricingConfig.repricing_config vaule must be different from the value used in the
+                /// current config for a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account
+                /// making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or
+                /// invalid required parameters in the request. Also displays if the updated config is for the current
+                /// month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is
+                /// not associated with the given account. * INTERNAL: Any non-user error related to technical issues in
+                /// the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated
+                /// ChannelPartnerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the ChannelPartner that will receive the repricing config. Parent
+                /// uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific
+                /// ChannelPartner's bill. You can only create configs if the RepricingConfig.effective_invoice_month is
+                /// a future month. If needed, you can create a config for the current month, with some restrictions.
+                /// When creating a config for a future month, make sure there are no existing configs for that
+                /// RepricingConfig.effective_invoice_month. The following restrictions are for creating configs in the
+                /// current month. * This functionality is reserved for recovering from an erroneous config, and should
+                /// not be used for regular business cases. * The new config will not modify exports used with other
+                /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
+                /// ten configs for any ChannelPartner or RepricingConfig.effective_invoice_month. * The contained
+                /// ChannelPartnerRepricingConfig.repricing_config vaule must be different from the value used in the
+                /// current config for a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account
+                /// making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or
+                /// invalid required parameters in the request. Also displays if the updated config is for the current
+                /// month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is
+                /// not associated with the given account. * INTERNAL: Any non-user error related to technical issues in
+                /// the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated
+                /// ChannelPartnerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                public class CreateRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the ChannelPartner that will receive the repricing config. Parent
+                    /// uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/channelPartnerRepricingConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the given ChannelPartnerRepricingConfig permanently. You can only delete configs if their
+                /// RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error
+                /// codes: * PERMISSION_DENIED: The account making the request does not own this customer. *
+                /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The
+                /// ChannelPartnerRepricingConfig is active or in the past. * NOT_FOUND: No
+                /// ChannelPartnerRepricingConfig found for the name in the request.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the channel partner repricing config rule to delete.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the given ChannelPartnerRepricingConfig permanently. You can only delete configs if their
+                /// RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error
+                /// codes: * PERMISSION_DENIED: The account making the request does not own this customer. *
+                /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The
+                /// ChannelPartnerRepricingConfig is active or in the past. * NOT_FOUND: No
+                /// ChannelPartnerRepricingConfig found for the name in the request.
+                /// </summary>
+                public class DeleteRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the channel partner repricing config rule to delete.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+/channelPartnerRepricingConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner.
+                /// Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being
+                /// queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any
+                /// non-user error related to technical issues in the backend. In this case, contact Cloud Channel
+                /// support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns
+                /// an error.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the ChannelPartnerRepricingConfig Format:
+                /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner.
+                /// Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being
+                /// queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any
+                /// non-user error related to technical issues in the backend. In this case, contact Cloud Channel
+                /// support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns
+                /// an error.
+                /// </summary>
+                public class GetRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the ChannelPartnerRepricingConfig Format:
+                    /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+/channelPartnerRepricingConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists information about how a Reseller modifies their bill before sending it to a ChannelPartner.
+                /// Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being
+                /// queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is
+                /// not associated with the given account. * INTERNAL: Any non-user error related to technical issues in
+                /// the backend. In this case, contact Cloud Channel support. Return Value: If successful, the
+                /// ChannelPartnerRepricingConfig resources. The data for each resource is displayed in the ascending
+                /// order of: * channel partner ID * RepricingConfig.effective_invoice_month *
+                /// ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an error.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of the account's ChannelPartnerLink. Parent uses the format:
+                /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}. Supports
+                /// accounts/{account_id}/channelPartnerLinks/- to retrieve configs for all channel partners.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists information about how a Reseller modifies their bill before sending it to a ChannelPartner.
+                /// Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being
+                /// queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is
+                /// not associated with the given account. * INTERNAL: Any non-user error related to technical issues in
+                /// the backend. In this case, contact Cloud Channel support. Return Value: If successful, the
+                /// ChannelPartnerRepricingConfig resources. The data for each resource is displayed in the ascending
+                /// order of: * channel partner ID * RepricingConfig.effective_invoice_month *
+                /// ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an error.
+                /// </summary>
+                public class ListRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the account's ChannelPartnerLink. Parent uses the format:
+                    /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}. Supports
+                    /// accounts/{account_id}/channelPartnerLinks/- to retrieve configs for all channel partners.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter for [CloudChannelService.ListChannelPartnerRepricingConfigs] results
+                    /// (channel_partner_link only). You can use this filter when you support a BatchGet-like query. To
+                    /// use the filter, you must set `parent=accounts/{account_id}/channelPartnerLinks/-`. Example:
+                    /// `channel_partner_link = accounts/account_id/channelPartnerLinks/c1` OR `channel_partner_link =
+                    /// accounts/account_id/channelPartnerLinks/c2`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of repricing configs to return. The service may return fewer than
+                    /// this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values
+                    /// above 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying a page of results beyond the first page. Obtained through
+                    /// ListChannelPartnerRepricingConfigsResponse.next_page_token of the previous
+                    /// CloudChannelService.ListChannelPartnerRepricingConfigs call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/channelPartnerRepricingConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific
+                /// ChannelPartner's bill. This method overwrites the existing CustomerRepricingConfig. You can only
+                /// update configs if the RepricingConfig.effective_invoice_month is a future month. To make changes to
+                /// configs for the current month, use CreateChannelPartnerRepricingConfig, taking note of its
+                /// restrictions. You cannot update the RepricingConfig.effective_invoice_month. When updating a config
+                /// in the future: * This config must already exist. Possible Error Codes: * PERMISSION_DENIED: If the
+                /// account making the request and the account being queried are different. * INVALID_ARGUMENT: Missing
+                /// or invalid required parameters in the request. Also displays if the updated config is for the
+                /// current month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not
+                /// exist or is not associated with the given account. * INTERNAL: Any non-user error related to
+                /// technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If
+                /// successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the ChannelPartnerRepricingConfig. Format:
+                /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific
+                /// ChannelPartner's bill. This method overwrites the existing CustomerRepricingConfig. You can only
+                /// update configs if the RepricingConfig.effective_invoice_month is a future month. To make changes to
+                /// configs for the current month, use CreateChannelPartnerRepricingConfig, taking note of its
+                /// restrictions. You cannot update the RepricingConfig.effective_invoice_month. When updating a config
+                /// in the future: * This config must already exist. Possible Error Codes: * PERMISSION_DENIED: If the
+                /// account making the request and the account being queried are different. * INVALID_ARGUMENT: Missing
+                /// or invalid required parameters in the request. Also displays if the updated config is for the
+                /// current month or past months. * NOT_FOUND: The ChannelPartnerRepricingConfig specified does not
+                /// exist or is not associated with the given account. * INTERNAL: Any non-user error related to
+                /// technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If
+                /// successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                public class PatchRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the ChannelPartnerRepricingConfig. Format:
+                    /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+/channelPartnerRepricingConfigs/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Customers resource.</summary>
@@ -1167,7 +1615,458 @@ namespace Google.Apis.Cloudchannel.v1
             public CustomersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                CustomerRepricingConfigs = new CustomerRepricingConfigsResource(service);
                 Entitlements = new EntitlementsResource(service);
+            }
+
+            /// <summary>Gets the CustomerRepricingConfigs resource.</summary>
+            public virtual CustomerRepricingConfigsResource CustomerRepricingConfigs { get; }
+
+            /// <summary>The "customerRepricingConfigs" collection of methods.</summary>
+            public class CustomerRepricingConfigsResource
+            {
+                private const string Resource = "customerRepricingConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomerRepricingConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a CustomerRepricingConfig. Call this method to set modifications for a specific customer's
+                /// bill. You can only create configs if the RepricingConfig.effective_invoice_month is a future month.
+                /// If needed, you can create a config for the current month, with some restrictions. When creating a
+                /// config for a future month, make sure there are no existing configs for that
+                /// RepricingConfig.effective_invoice_month. The following restrictions are for creating configs in the
+                /// current month. * This functionality is reserved for recovering from an erroneous config, and should
+                /// not be used for regular business cases. * The new config will not modify exports used with other
+                /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
+                /// ten configs for any RepricingConfig.EntitlementGranularity.entitlement or
+                /// RepricingConfig.effective_invoice_month. * The contained CustomerRepricingConfig.repricing_config
+                /// vaule must be different from the value used in the current config for a
+                /// RepricingConfig.EntitlementGranularity.entitlement. Possible Error Codes: * PERMISSION_DENIED: If
+                /// the account making the request and the account being queried are different. * INVALID_ARGUMENT:
+                /// Missing or invalid required parameters in the request. Also displays if the updated config is for
+                /// the current month or past months. * NOT_FOUND: The CustomerRepricingConfig specified does not exist
+                /// or is not associated with the given account. * INTERNAL: Any non-user error related to technical
+                /// issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the
+                /// updated CustomerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the customer that will receive this repricing config. Parent uses the
+                /// format: accounts/{account_id}/customers/{customer_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a CustomerRepricingConfig. Call this method to set modifications for a specific customer's
+                /// bill. You can only create configs if the RepricingConfig.effective_invoice_month is a future month.
+                /// If needed, you can create a config for the current month, with some restrictions. When creating a
+                /// config for a future month, make sure there are no existing configs for that
+                /// RepricingConfig.effective_invoice_month. The following restrictions are for creating configs in the
+                /// current month. * This functionality is reserved for recovering from an erroneous config, and should
+                /// not be used for regular business cases. * The new config will not modify exports used with other
+                /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
+                /// ten configs for any RepricingConfig.EntitlementGranularity.entitlement or
+                /// RepricingConfig.effective_invoice_month. * The contained CustomerRepricingConfig.repricing_config
+                /// vaule must be different from the value used in the current config for a
+                /// RepricingConfig.EntitlementGranularity.entitlement. Possible Error Codes: * PERMISSION_DENIED: If
+                /// the account making the request and the account being queried are different. * INVALID_ARGUMENT:
+                /// Missing or invalid required parameters in the request. Also displays if the updated config is for
+                /// the current month or past months. * NOT_FOUND: The CustomerRepricingConfig specified does not exist
+                /// or is not associated with the given account. * INTERNAL: Any non-user error related to technical
+                /// issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the
+                /// updated CustomerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                public class CreateRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the customer that will receive this repricing config. Parent uses
+                    /// the format: accounts/{account_id}/customers/{customer_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customerRepricingConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the given CustomerRepricingConfig permanently. You can only delete configs if their
+                /// RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error
+                /// codes: * PERMISSION_DENIED: The account making the request does not own this customer. *
+                /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The
+                /// CustomerRepricingConfig is active or in the past. * NOT_FOUND: No CustomerRepricingConfig found for
+                /// the name in the request.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the customer repricing config rule to delete. Format:
+                /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the given CustomerRepricingConfig permanently. You can only delete configs if their
+                /// RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error
+                /// codes: * PERMISSION_DENIED: The account making the request does not own this customer. *
+                /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * FAILED_PRECONDITION: The
+                /// CustomerRepricingConfig is active or in the past. * NOT_FOUND: No CustomerRepricingConfig found for
+                /// the name in the request.
+                /// </summary>
+                public class DeleteRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the customer repricing config rule to delete. Format:
+                    /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/customers/[^/]+/customerRepricingConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible
+                /// Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried
+                /// are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user
+                /// error related to technical issues in the backend. In this case, contact Cloud Channel support.
+                /// Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the CustomerRepricingConfig. Format:
+                /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible
+                /// Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried
+                /// are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user
+                /// error related to technical issues in the backend. In this case, contact Cloud Channel support.
+                /// Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error.
+                /// </summary>
+                public class GetRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the CustomerRepricingConfig. Format:
+                    /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/customers/[^/]+/customerRepricingConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists information about how a Reseller modifies their bill before sending it to a Customer. Possible
+                /// Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried
+                /// are different. * NOT_FOUND: The CustomerRepricingConfig specified does not exist or is not
+                /// associated with the given account. * INTERNAL: Any non-user error related to technical issues in the
+                /// backend. In this case, contact Cloud Channel support. Return Value: If successful, the
+                /// CustomerRepricingConfig resources. The data for each resource is displayed in the ascending order
+                /// of: * customer ID * RepricingConfig.EntitlementGranularity.entitlement *
+                /// RepricingConfig.effective_invoice_month * CustomerRepricingConfig.update_time If unsuccessful,
+                /// returns an error.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of the customer. Parent uses the format:
+                /// accounts/{account_id}/customers/{customer_id}. Supports accounts/{account_id}/customers/- to
+                /// retrieve configs for all customers.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists information about how a Reseller modifies their bill before sending it to a Customer. Possible
+                /// Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried
+                /// are different. * NOT_FOUND: The CustomerRepricingConfig specified does not exist or is not
+                /// associated with the given account. * INTERNAL: Any non-user error related to technical issues in the
+                /// backend. In this case, contact Cloud Channel support. Return Value: If successful, the
+                /// CustomerRepricingConfig resources. The data for each resource is displayed in the ascending order
+                /// of: * customer ID * RepricingConfig.EntitlementGranularity.entitlement *
+                /// RepricingConfig.effective_invoice_month * CustomerRepricingConfig.update_time If unsuccessful,
+                /// returns an error.
+                /// </summary>
+                public class ListRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListCustomerRepricingConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the customer. Parent uses the format:
+                    /// accounts/{account_id}/customers/{customer_id}. Supports accounts/{account_id}/customers/- to
+                    /// retrieve configs for all customers.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter for [CloudChannelService.ListCustomerRepricingConfigs] results (customer
+                    /// only). You can use this filter when you support a BatchGet-like query. To use the filter, you
+                    /// must set `parent=accounts/{account_id}/customers/-`. Example: customer =
+                    /// accounts/account_id/customers/c1 OR customer = accounts/account_id/customers/c2.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of repricing configs to return. The service may return fewer than
+                    /// this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values
+                    /// above 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying a page of results beyond the first page. Obtained through
+                    /// ListCustomerRepricingConfigsResponse.next_page_token of the previous
+                    /// CloudChannelService.ListCustomerRepricingConfigs call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customerRepricingConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/customers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a CustomerRepricingConfig. Call this method to set modifications for a specific customer's
+                /// bill. This method overwrites the existing CustomerRepricingConfig. You can only update configs if
+                /// the RepricingConfig.effective_invoice_month is a future month. To make changes to configs for the
+                /// current month, use CreateCustomerRepricingConfig, taking note of its restrictions. You cannot update
+                /// the RepricingConfig.effective_invoice_month. When updating a config in the future: * This config
+                /// must already exist. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and
+                /// the account being queried are different. * INVALID_ARGUMENT: Missing or invalid required parameters
+                /// in the request. Also displays if the updated config is for the current month or past months. *
+                /// NOT_FOUND: The CustomerRepricingConfig specified does not exist or is not associated with the given
+                /// account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case,
+                /// contact Cloud Channel support. Return Value: If successful, the updated CustomerRepricingConfig
+                /// resource, otherwise returns an error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the CustomerRepricingConfig. Format:
+                /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a CustomerRepricingConfig. Call this method to set modifications for a specific customer's
+                /// bill. This method overwrites the existing CustomerRepricingConfig. You can only update configs if
+                /// the RepricingConfig.effective_invoice_month is a future month. To make changes to configs for the
+                /// current month, use CreateCustomerRepricingConfig, taking note of its restrictions. You cannot update
+                /// the RepricingConfig.effective_invoice_month. When updating a config in the future: * This config
+                /// must already exist. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and
+                /// the account being queried are different. * INVALID_ARGUMENT: Missing or invalid required parameters
+                /// in the request. Also displays if the updated config is for the current month or past months. *
+                /// NOT_FOUND: The CustomerRepricingConfig specified does not exist or is not associated with the given
+                /// account. * INTERNAL: Any non-user error related to technical issues in the backend. In this case,
+                /// contact Cloud Channel support. Return Value: If successful, the updated CustomerRepricingConfig
+                /// resource, otherwise returns an error.
+                /// </summary>
+                public class PatchRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the CustomerRepricingConfig. Format:
+                    /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/customers/[^/]+/customerRepricingConfigs/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Entitlements resource.</summary>
@@ -4356,6 +5255,36 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for how a distributor will rebill a channel partner (also known as a distributor-authorized
+    /// reseller).
+    /// </summary>
+    public class GoogleCloudChannelV1ChannelPartnerRepricingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Resource name of the ChannelPartnerRepricingConfig. Format:
+        /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The configuration for bill modifications made by a reseller before sending it to ChannelPartner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repricingConfig")]
+        public virtual GoogleCloudChannelV1RepricingConfig RepricingConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp of an update to the repricing rule. If `update_time` is after
+        /// RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CloudChannelService.CheckCloudIdentityAccountsExist.</summary>
     public class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4651,6 +5580,33 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for how a reseller will reprice a Customer.</summary>
+    public class GoogleCloudChannelV1CustomerRepricingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Resource name of the CustomerRepricingConfig. Format:
+        /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The configuration for bill modifications made by a reseller before sending it to customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repricingConfig")]
+        public virtual GoogleCloudChannelV1RepricingConfig RepricingConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Timestamp of an update to the repricing rule. If `update_time` is after
+        /// RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Required Edu Attributes</summary>
     public class GoogleCloudChannelV1EduData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4813,6 +5769,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// A token to retrieve the next page of results. Pass to ListChannelPartnerLinksRequest.page_token to obtain
         /// that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CloudChannelService.ListChannelPartnerRepricingConfigs.</summary>
+    public class GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The repricing configs for this channel partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerRepricingConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1ChannelPartnerRepricingConfig> ChannelPartnerRepricingConfigs { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListChannelPartnerRepricingConfigsRequest.page_token
+        /// to obtain that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CloudChannelService.ListCustomerRepricingConfigs.</summary>
+    public class GoogleCloudChannelV1ListCustomerRepricingConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The repricing configs for this channel partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerRepricingConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1CustomerRepricingConfig> CustomerRepricingConfigs { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListCustomerRepricingConfigsRequest.page_token to
+        /// obtain that page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5239,6 +6231,20 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An adjustment that applies a flat markup or markdown to an entire bill.</summary>
+    public class GoogleCloudChannelV1PercentageAdjustment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The percentage of the bill to adjust. For example: Mark down by 1% =&amp;gt; "-1.00" Mark up by 1% =&amp;gt;
+        /// "1.00" Pass-Through =&amp;gt; "0.00"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual GoogleTypeDecimal Percentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents period in days/months/years.</summary>
     public class GoogleCloudChannelV1Period : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5512,6 +6518,80 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resizeUnitCount")]
         public virtual System.Nullable<bool> ResizeUnitCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A type that represents the various adjustments you can apply to a bill.</summary>
+    public class GoogleCloudChannelV1RepricingAdjustment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flat markup or markdown on an entire bill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentageAdjustment")]
+        public virtual GoogleCloudChannelV1PercentageAdjustment PercentageAdjustment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for repricing a Google bill over a period of time.</summary>
+    public class GoogleCloudChannelV1RepricingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Information about the adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustment")]
+        public virtual GoogleCloudChannelV1RepricingAdjustment Adjustment { get; set; }
+
+        /// <summary>
+        /// Applies the repricing configuration at the channel partner level. This is the only supported value for
+        /// ChannelPartnerRepricingConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerGranularity")]
+        public virtual GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity ChannelPartnerGranularity { get; set; }
+
+        /// <summary>
+        /// Required. The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept
+        /// YearMonth repricing boundaries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveInvoiceMonth")]
+        public virtual GoogleTypeDate EffectiveInvoiceMonth { get; set; }
+
+        /// <summary>
+        /// Applies the repricing configuration at the entitlement level. This is the only supported value for
+        /// CustomerRepricingConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementGranularity")]
+        public virtual GoogleCloudChannelV1RepricingConfigEntitlementGranularity EntitlementGranularity { get; set; }
+
+        /// <summary>
+        /// Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you
+        /// will apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rebillingBasis")]
+        public virtual string RebillingBasis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the
+    /// resource name. Takes an empty json object.
+    /// </summary>
+    public class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Applies the repricing configuration at the entitlement level.</summary>
+    public class GoogleCloudChannelV1RepricingConfigEntitlementGranularity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the entitlement. Format:
+        /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
+        public virtual string Entitlement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6250,6 +7330,77 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal
+    /// formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]:
+    /// https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]:
+    /// https://docs.python.org/3/library/decimal.html
+    /// </summary>
+    public class GoogleTypeDecimal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or
+        /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed
+        /// by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero
+        /// or more decimal digits. The string must contain at least one digit in either the integer or the fraction.
+        /// The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent
+        /// consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services
+        /// **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign
+        /// (`+2.5` -&amp;gt; `2.5`). - Replacing a zero-length integer value with `0` (`.5` -&amp;gt; `0.5`). -
+        /// Coercing the exponent character to lower-case (`2.5E8` -&amp;gt; `2.5e8`). - Removing an explicitly-provided
+        /// zero exponent (`2.5e0` -&amp;gt; `2.5`). Services **may** perform additional normalization based on its own
+        /// needs and the internal decimal implementation selected, such as shifting the decimal point and exponent
+        /// value together (example: `2.5e-1` &amp;lt;-&amp;gt; `0.25`). Additionally, services **may** preserve
+        /// trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that
+        /// only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported
+        /// regardless of locale. Additionally, thousand separators **should not** be supported. If a service does
+        /// support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand
+        /// [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign]
+        /// Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly
+        /// document the range of supported values, the maximum supported precision (total number of digits), and, if
+        /// applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving
+        /// out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a
+        /// higher precision or scale than the service supports, and **should** round the value to fit the supported
+        /// scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if
+        /// precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if
+        /// the service receives a value outside of the supported range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

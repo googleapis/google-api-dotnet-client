@@ -951,10 +951,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
-        /// <summary>
-        /// URL of a thumbnail image (photo) of the device. e.g.
-        /// https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...
-        /// </summary>
+        /// <summary>URL of a thumbnail image (photo) of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; }
 
@@ -1982,7 +1979,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shardIndex")]
         public virtual System.Nullable<int> ShardIndex { get; set; }
 
-        /// <summary>Output only. Test targets for each shard.</summary>
+        /// <summary>Output only. Test targets for each shard. Only set for manual sharding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual TestTargetsForShard TestTargetsForShard { get; set; }
 
