@@ -34,6 +34,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// <param name="initializer">The service initializer.</param>
         public CloudResourceManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            EffectiveTags = new EffectiveTagsResource(this);
             Folders = new FoldersResource(this);
             Liens = new LiensResource(this);
             Operations = new OperationsResource(this);
@@ -98,6 +99,9 @@ namespace Google.Apis.CloudResourceManager.v3
             /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
+
+        /// <summary>Gets the EffectiveTags resource.</summary>
+        public virtual EffectiveTagsResource EffectiveTags { get; }
 
         /// <summary>Gets the Folders resource.</summary>
         public virtual FoldersResource Folders { get; }
@@ -302,6 +306,97 @@ namespace Google.Apis.CloudResourceManager.v3
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "effectiveTags" collection of methods.</summary>
+    public class EffectiveTagsResource
+    {
+        private const string Resource = "effectiveTags";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EffectiveTagsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Return a list of effective tags for the given cloud resource, as specified in `parent`.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Return a list of effective tags for the given cloud resource, as specified in `parent`.</summary>
+        public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListEffectiveTagsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of effective tags to return in the response. The server allows a maximum of
+            /// 300 effective tags to return in a single page. If unspecified, the server will use 100 as the default.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A pagination token returned from a previous call to `ListEffectiveTags` that indicates from
+            /// where this listing should continue.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Required. The full resource name of a resource for which you want to list the effective tags. E.g.
+            /// "//cloudresourcemanager.googleapis.com/projects/123"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/effectiveTags";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
     }
 
@@ -4509,6 +4604,47 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
+    /// An EffectiveTag represents a tag that applies to a resource during policy evaluation. Tags can be either
+    /// directly bound to a resource or inherited from its ancestor. EffectiveTag contains the name and namespaced_name
+    /// of the tag value and tag key, with additional fields of `inherited` to indicate the inheritance status of the
+    /// effective tag.
+    /// </summary>
+    public class EffectiveTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates the inheritance status of a tag value attached to the given resource. If the tag value is
+        /// inherited from one of the resource's ancestors, inherited will be true. If false, then the tag value is
+        /// directly attached to the resource, inherited will be false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inherited")]
+        public virtual System.Nullable<bool> Inherited { get; set; }
+
+        /// <summary>
+        /// The namespaced_name of the TagKey, in the format of `{organization_id}/{tag_key_short_name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagKey")]
+        public virtual string NamespacedTagKey { get; set; }
+
+        /// <summary>
+        /// Namespaced name of the TagValue. Must be in the format
+        /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagValue")]
+        public virtual string NamespacedTagValue { get; set; }
+
+        /// <summary>The name of the TagKey, in the format `tagKeys/{id}`, such as `tagKeys/123`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKey")]
+        public virtual string TagKey { get; set; }
+
+        /// <summary>Resource name for TagValue in the format `tagValues/456`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValue")]
+        public virtual string TagValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -4726,6 +4862,27 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
         public virtual System.Collections.Generic.IList<string> Restrictions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of ListEffectiveTags.</summary>
+    public class ListEffectiveTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A possibly paginated list of effective tags for the specified resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
+        public virtual System.Collections.Generic.IList<EffectiveTag> EffectiveTags { get; set; }
+
+        /// <summary>
+        /// Pagination token. If the result set is too large to fit in a single response, this token is returned. It
+        /// encodes the position of the current result cursor. Feeding this value into a new list request with the
+        /// `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is
+        /// no next page and the list returned is the last page in the result set. Pagination tokens have a limited
+        /// lifetime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -831,6 +831,169 @@ namespace Google.Apis.Doubleclicksearch.v2
             #endif
         }
 
+        /// <summary>
+        /// Downloads a csv file(encoded in UTF-8) that contains ID mappings between legacy SA360 and new SA360. The
+        /// file includes all children entities of the given advertiser(e.g. engine accounts, campaigns, ad groups,
+        /// etc.) that exist in both legacy SA360 and new SA360.
+        /// </summary>
+        /// <param name="agencyId">Legacy SA360 agency ID.</param>
+        /// <param name="advertiserId">Legacy SA360 advertiser ID.</param>
+        public virtual GetIdMappingFileRequest GetIdMappingFile(long agencyId, long advertiserId)
+        {
+            return new GetIdMappingFileRequest(service, agencyId, advertiserId);
+        }
+
+        /// <summary>
+        /// Downloads a csv file(encoded in UTF-8) that contains ID mappings between legacy SA360 and new SA360. The
+        /// file includes all children entities of the given advertiser(e.g. engine accounts, campaigns, ad groups,
+        /// etc.) that exist in both legacy SA360 and new SA360.
+        /// </summary>
+        public class GetIdMappingFileRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.IdMappingFile>
+        {
+            /// <summary>Constructs a new GetIdMappingFile request.</summary>
+            public GetIdMappingFileRequest(Google.Apis.Services.IClientService service, long agencyId, long advertiserId) : base(service)
+            {
+                AgencyId = agencyId;
+                AdvertiserId = advertiserId;
+                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                InitParameters();
+            }
+
+            /// <summary>Legacy SA360 agency ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("agencyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AgencyId { get; private set; }
+
+            /// <summary>Legacy SA360 advertiser ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AdvertiserId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIdMappingFile";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping";
+
+            /// <summary>Initializes GetIdMappingFile parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("agencyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agencyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <summary>Gets the media downloader.</summary>
+            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+            /// <summary>
+            /// <para>Synchronously download the media into the given stream.</para>
+            /// <para>
+            /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+            /// instead.
+            /// </para>
+            /// </summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual void Download(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Synchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                #if !NET40
+                mediaDownloader.Range = null;
+                #endif
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+
+            #if !NET40
+            /// <summary>Synchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                System.Net.Http.Headers.RangeHeaderValue range,
+                System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+            #endif
+        }
+
         /// <summary>Inserts a report request into the reporting system.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual RequestRequest Request(Google.Apis.Doubleclicksearch.v2.Data.ReportRequest body)
@@ -1199,6 +1362,15 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// File returned to https://developers.google.com/search-ads/v2/reference/reports/getIdMappingFile.
+    /// </summary>
+    public class IdMappingFile : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -279,10 +279,108 @@ namespace Google.Apis.AdMob.v1beta
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AdSources = new AdSourcesResource(service);
             AdUnits = new AdUnitsResource(service);
             Apps = new AppsResource(service);
             MediationReport = new MediationReportResource(service);
             NetworkReport = new NetworkReportResource(service);
+        }
+
+        /// <summary>Gets the AdSources resource.</summary>
+        public virtual AdSourcesResource AdSources { get; }
+
+        /// <summary>The "adSources" collection of methods.</summary>
+        public class AdSourcesResource
+        {
+            private const string Resource = "adSources";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdSourcesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>List the ad sources.</summary>
+            /// <param name="parent">
+            /// Required. The parent which owns this collection of ad sources. Format: accounts/{publisher_id}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List the ad sources.</summary>
+            public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListAdSourcesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent which owns this collection of ad sources. Format: accounts/{publisher_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of ad sources to return. If unspecified or 0, at most 1000 ad sources will be
+                /// returned. The maximum value is 10,000; values above 10,000 will be coerced to 10,000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListAdSources` call. Provide this to retrieve the subsequent
+                /// page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/adSources";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the AdUnits resource.</summary>
@@ -757,6 +855,27 @@ namespace Google.Apis.AdMob.v1beta
 }
 namespace Google.Apis.AdMob.v1beta.Data
 {
+    /// <summary>Definition of a mediation ad source.</summary>
+    public class AdSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of this ad source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adSourceId")]
+        public virtual string AdSourceId { get; set; }
+
+        /// <summary>
+        /// Resource name of this ad source. Format is: accounts/{publisher_id}/adSources/{ad_source_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Display name of this ad source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes an AdMob ad unit.</summary>
     public class AdUnit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1011,6 +1130,24 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// <summary>Actual report data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("row")]
         public virtual ReportRow Row { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the ListAdSourcesRequest.</summary>
+    public class ListAdSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ad sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adSources")]
+        public virtual System.Collections.Generic.IList<AdSource> AdSources { get; set; }
+
+        /// <summary>
+        /// Used to set the `page_token` in the `ListAdSourcesRequest` to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

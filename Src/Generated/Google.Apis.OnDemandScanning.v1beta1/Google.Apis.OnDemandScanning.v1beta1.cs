@@ -1402,6 +1402,20 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Indicates the location at which a package was found.</summary>
+    public class FileLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with
+        /// the path to jar file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A set of properties that uniquely identify a given Docker image.</summary>
     public class Fingerprint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1881,6 +1895,17 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
 
+        /// <summary>The path to the jar file / go binary file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileLocation")]
+        public virtual System.Collections.Generic.IList<FileLocation> FileLocation { get; set; }
+
+        /// <summary>
+        /// HashDigest stores the SHA512 hash digest of the jar file if the package is of type Maven. This field will be
+        /// unset for non Maven packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashDigest")]
+        public virtual string HashDigest { get; set; }
+
         /// <summary>
         /// The OS affected by a vulnerability This field is deprecated and the information is in cpe_uri
         /// </summary>
@@ -1898,13 +1923,6 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>The type of package: os, maven, go, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
         public virtual string PackageType { get; set; }
-
-        /// <summary>
-        /// The path to the jar file / go binary file. The same jar file can be in multiple locations - all of them will
-        /// be listed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathToFile")]
-        public virtual System.Collections.Generic.IList<string> PathToFile { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("unused")]
         public virtual string Unused { get; set; }

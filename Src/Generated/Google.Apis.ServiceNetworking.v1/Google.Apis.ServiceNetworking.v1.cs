@@ -1579,6 +1579,15 @@ namespace Google.Apis.ServiceNetworking.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. When true, include the used IP ranges as part of the GetConsumerConfig output.
+                        /// This includes routes created inside the service networking network, consumer network, peers
+                        /// of the consumer network, and reserved ranges inside the service networking network. By
+                        /// default, this is false
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("includeUsedIpRanges", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> IncludeUsedIpRanges { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -1599,6 +1608,14 @@ namespace Google.Apis.ServiceNetworking.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                            });
+                            RequestParameters.Add("includeUsedIpRanges", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeUsedIpRanges",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -2759,6 +2776,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>Output only. The reserved ranges associated with this private service access connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedRanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange> ReservedRanges { get; set; }
+
+        /// <summary>Output only. The IP ranges already in use by consumer or producer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedIpRanges")]
+        public virtual System.Collections.Generic.IList<string> UsedIpRanges { get; set; }
 
         /// <summary>
         /// Output only. Indicates whether the VPC Service Controls reference architecture is configured for the

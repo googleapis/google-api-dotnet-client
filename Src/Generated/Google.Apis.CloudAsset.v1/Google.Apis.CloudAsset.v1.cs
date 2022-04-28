@@ -5499,8 +5499,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: *
-        /// use a field query. Example: - `tagKeys:"123456789/e*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * use a
-        /// free text query. Example: - `env`
+        /// use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * use
+        /// a free text query. Example: - `env`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagKeys")]
         public virtual System.Collections.Generic.IList<string> TagKeys { get; set; }
@@ -5516,7 +5516,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search
         /// against the `tagValues`: * use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` -
-        /// `tagValues:"123456789/env/pr*"` - `tagValues="123456789/env/prod"` * use a free text query. Example: -
+        /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * use a free text query. Example: -
         /// `prod`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]

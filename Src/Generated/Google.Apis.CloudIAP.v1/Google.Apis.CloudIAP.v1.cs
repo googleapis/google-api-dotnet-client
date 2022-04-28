@@ -877,8 +877,8 @@ namespace Google.Apis.CloudIAP.v1
                     /// <summary>Creates a new TunnelDestGroup.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. GCP Project number/id and location. In the following format:
-                    /// projects/{project_number/id}/iap_tunnel/locations/{location}.
+                    /// Required. Google Cloud Project ID and location. In the following format:
+                    /// `projects/{project_number/id}/iap_tunnel/locations/{location}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string parent)
                     {
@@ -897,15 +897,15 @@ namespace Google.Apis.CloudIAP.v1
                         }
 
                         /// <summary>
-                        /// Required. GCP Project number/id and location. In the following format:
-                        /// projects/{project_number/id}/iap_tunnel/locations/{location}.
+                        /// Required. Google Cloud Project ID and location. In the following format:
+                        /// `projects/{project_number/id}/iap_tunnel/locations/{location}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Required. The ID to use for the TunnelDestGroup, which will become the final component of
-                        /// the resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+                        /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the
+                        /// resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("tunnelDestGroupId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TunnelDestGroupId { get; set; }
@@ -950,8 +950,8 @@ namespace Google.Apis.CloudIAP.v1
 
                     /// <summary>Deletes a TunnelDestGroup.</summary>
                     /// <param name="name">
-                    /// Required. Name of the TunnelDestGroup to be deleted. In the following format:
-                    /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                    /// Required. Name of the TunnelDestGroup to delete. In the following format:
+                    /// `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -969,8 +969,8 @@ namespace Google.Apis.CloudIAP.v1
                         }
 
                         /// <summary>
-                        /// Required. Name of the TunnelDestGroup to be deleted. In the following format:
-                        /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                        /// Required. Name of the TunnelDestGroup to delete. In the following format:
+                        /// `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1002,7 +1002,7 @@ namespace Google.Apis.CloudIAP.v1
                     /// <summary>Retrieves an existing TunnelDestGroup.</summary>
                     /// <param name="name">
                     /// Required. Name of the TunnelDestGroup to be fetched. In the following format:
-                    /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                    /// `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1021,7 +1021,7 @@ namespace Google.Apis.CloudIAP.v1
 
                         /// <summary>
                         /// Required. Name of the TunnelDestGroup to be fetched. In the following format:
-                        /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+                        /// `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1052,12 +1052,12 @@ namespace Google.Apis.CloudIAP.v1
 
                     /// <summary>
                     /// Lists the existing TunnelDestGroups. To group across all locations, use a `-` as the location
-                    /// ID. For example: /v1/projects/123/iap_tunnel/locations/-/destGroups
+                    /// ID. For example: `/v1/projects/123/iap_tunnel/locations/-/destGroups`
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. GCP Project number/id and location. In the following format:
-                    /// projects/{project_number/id}/iap_tunnel/locations/{location}. A `-` can be used for the location
-                    /// to group across all locations.
+                    /// Required. Google Cloud Project ID and location. In the following format:
+                    /// `projects/{project_number/id}/iap_tunnel/locations/{location}`. A `-` can be used for the
+                    /// location to group across all locations.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1066,7 +1066,7 @@ namespace Google.Apis.CloudIAP.v1
 
                     /// <summary>
                     /// Lists the existing TunnelDestGroups. To group across all locations, use a `-` as the location
-                    /// ID. For example: /v1/projects/123/iap_tunnel/locations/-/destGroups
+                    /// ID. For example: `/v1/projects/123/iap_tunnel/locations/-/destGroups`
                     /// </summary>
                     public class ListRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ListTunnelDestGroupsResponse>
                     {
@@ -1078,17 +1078,17 @@ namespace Google.Apis.CloudIAP.v1
                         }
 
                         /// <summary>
-                        /// Required. GCP Project number/id and location. In the following format:
-                        /// projects/{project_number/id}/iap_tunnel/locations/{location}. A `-` can be used for the
+                        /// Required. Google Cloud Project ID and location. In the following format:
+                        /// `projects/{project_number/id}/iap_tunnel/locations/{location}`. A `-` can be used for the
                         /// location to group across all locations.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The maximum number of groups to return. The service may return fewer than this value. If
-                        /// unspecified, at most 100 groups will be returned. The maximum value is 1000; values above
-                        /// 1000 will be coerced to 1000.
+                        /// The maximum number of groups to return. The service might return fewer than this value. If
+                        /// unspecified, at most 100 groups are returned. The maximum value is 1000; values above 1000
+                        /// are coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1169,7 +1169,7 @@ namespace Google.Apis.CloudIAP.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// The field mask specifying which IAP settings should be updated. If omitted, then all of the
+                        /// A field mask that specifies which IAP settings to update. If omitted, then all of the
                         /// settings are updated. See
                         /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                         /// </summary>
@@ -1918,7 +1918,7 @@ namespace Google.Apis.CloudIAP.v1.Data
     public class ListTunnelDestGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token, which can be send as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// A token that you can send as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]

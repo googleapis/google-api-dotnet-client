@@ -740,6 +740,25 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualBatchDeleteStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus> IndividualBatchDeleteStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the batch delete process.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The document id of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
+
+        /// <summary>The status of deleting the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

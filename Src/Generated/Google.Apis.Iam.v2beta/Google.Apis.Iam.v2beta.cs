@@ -357,7 +357,7 @@ namespace Google.Apis.Iam.v2beta
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
         /// Required. The resource that the policy is attached to, along with the kind of policy to create. Format:
-        /// `policies/{attachment-point}/denypolicies` The attachment point is identified by its URL-encoded full
+        /// `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full
         /// resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example,
         /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and
         /// folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the
@@ -381,7 +381,7 @@ namespace Google.Apis.Iam.v2beta
 
             /// <summary>
             /// Required. The resource that the policy is attached to, along with the kind of policy to create. Format:
-            /// `policies/{attachment-point}/denypolicies` The attachment point is identified by its URL-encoded full
+            /// `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full
             /// resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example,
             /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations
             /// and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or
@@ -439,7 +439,7 @@ namespace Google.Apis.Iam.v2beta
         /// <summary>Deletes a policy. This action is permanent.</summary>
         /// <param name="name">
         /// Required. The resource name of the policy to delete. Format:
-        /// `policies/{attachment-point}/denypolicies/{policy-id}` Use the URL-encoded full resource name, which means
+        /// `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means
         /// that the forward-slash character, `/`, must be written as `%2F`. For example,
         /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For
         /// organizations and folders, use the numeric ID in the full resource name. For projects, you can use the
@@ -462,7 +462,7 @@ namespace Google.Apis.Iam.v2beta
 
             /// <summary>
             /// Required. The resource name of the policy to delete. Format:
-            /// `policies/{attachment-point}/denypolicies/{policy-id}` Use the URL-encoded full resource name, which
+            /// `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which
             /// means that the forward-slash character, `/`, must be written as `%2F`. For example,
             /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For
             /// organizations and folders, use the numeric ID in the full resource name. For projects, you can use the
@@ -514,7 +514,7 @@ namespace Google.Apis.Iam.v2beta
         /// <summary>Gets a policy.</summary>
         /// <param name="name">
         /// Required. The resource name of the policy to retrieve. Format:
-        /// `policies/{attachment-point}/denypolicies/{policy-id}` Use the URL-encoded full resource name, which means
+        /// `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means
         /// that the forward-slash character, `/`, must be written as `%2F`. For example,
         /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For
         /// organizations and folders, use the numeric ID in the full resource name. For projects, you can use the
@@ -537,7 +537,7 @@ namespace Google.Apis.Iam.v2beta
 
             /// <summary>
             /// Required. The resource name of the policy to retrieve. Format:
-            /// `policies/{attachment-point}/denypolicies/{policy-id}` Use the URL-encoded full resource name, which
+            /// `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which
             /// means that the forward-slash character, `/`, must be written as `%2F`. For example,
             /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For
             /// organizations and folders, use the numeric ID in the full resource name. For projects, you can use the
@@ -576,7 +576,7 @@ namespace Google.Apis.Iam.v2beta
         /// </summary>
         /// <param name="parent">
         /// Required. The resource that the policy is attached to, along with the kind of policy to list. Format:
-        /// `policies/{attachment-point}/denypolicies` The attachment point is identified by its URL-encoded full
+        /// `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full
         /// resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example,
         /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and
         /// folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the
@@ -602,7 +602,7 @@ namespace Google.Apis.Iam.v2beta
 
             /// <summary>
             /// Required. The resource that the policy is attached to, along with the kind of policy to list. Format:
-            /// `policies/{attachment-point}/denypolicies` The attachment point is identified by its URL-encoded full
+            /// `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full
             /// resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example,
             /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations
             /// and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or
@@ -672,7 +672,7 @@ namespace Google.Apis.Iam.v2beta
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Immutable. The resource name of the `Policy`, which must be unique. Format:
-        /// `policies/{attachment-point}/denypolicies/{policy-id}` The attachment point is identified by its URL-encoded
+        /// `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded
         /// full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For
         /// example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`.
         /// For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use
@@ -701,7 +701,7 @@ namespace Google.Apis.Iam.v2beta
 
             /// <summary>
             /// Immutable. The resource name of the `Policy`, which must be unique. Format:
-            /// `policies/{attachment-point}/denypolicies/{policy-id}` The attachment point is identified by its
+            /// `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its
             /// URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as
             /// `%2F`. For example,
             /// `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For
@@ -847,7 +847,7 @@ namespace Google.Apis.Iam.v2beta.Data
 
         /// <summary>
         /// The permissions that are explicitly denied by this rule. Each permission uses the format
-        /// `{service-fqdn}/{resource}.{verb}`, where `{service-fqdn}` is the fully qualified domain name for the
+        /// `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the
         /// service. For example, `iam.googleapis.com/roles.list`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deniedPermissions")]
@@ -857,24 +857,24 @@ namespace Google.Apis.Iam.v2beta.Data
         /// The identities that are prevented from using one or more permissions on Google Cloud resources. This field
         /// can contain the following values: * `principalSet://goog/public:all`: A special identifier that represents
         /// any user who is on the internet, even if they do not have a Google Account or are not logged in. *
-        /// `principal://goog/subject/{email-id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google
+        /// `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google
         /// Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. *
-        /// `deleted:principal://goog/subject/{email-id}?uid={uid}`: A specific Google Account that was deleted
+        /// `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted
         /// recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google
         /// Account is recovered, this identifier reverts to the standard identifier for a Google Account. *
-        /// `principalSet://goog/group/{group-id}`: A Google group. For example,
-        /// `principalSet://goog/group/admins@example.com`. * `deleted:principalSet://goog/group/{group-id}?uid={uid}`:
+        /// `principalSet://goog/group/{group_id}`: A Google group. For example,
+        /// `principalSet://goog/group/admins@example.com`. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`:
         /// A Google group that was deleted recently. For example,
         /// `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this
         /// identifier reverts to the standard identifier for a Google group. *
-        /// `principal://iam.googleapis.com/projects/-/serviceAccounts/{service-account-id}`: A Google Cloud service
+        /// `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service
         /// account. For example,
         /// `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. *
-        /// `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service-account-id}?uid={uid}`: A Google
+        /// `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google
         /// Cloud service account that was deleted recently. For example,
         /// `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
         /// If the service account is undeleted, this identifier reverts to the standard identifier for a service
-        /// account. * `principalSet://goog/cloudIdentityCustomerId/{customer-id}`: All of the principals associated
+        /// account. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated
         /// with the specified Google Workspace or Cloud Identity customer ID. For example,
         /// `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
         /// </summary>
@@ -957,7 +957,7 @@ namespace Google.Apis.Iam.v2beta.Data
 
         /// <summary>
         /// Immutable. The resource name of the `Policy`, which must be unique. Format:
-        /// `policies/{attachment-point}/denypolicies/{policy-id}` The attachment point is identified by its URL-encoded
+        /// `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded
         /// full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For
         /// example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`.
         /// For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use

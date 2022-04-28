@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Verifiedaccess.v2.VerifiedaccessBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Verifiedaccess.v2.VerifiedaccessBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -492,7 +492,8 @@ namespace Google.Apis.Speech.v1
                 /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
                 /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
                 /// endpoint, use the `global` location. To specify a region, use a [regional
-                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                /// location value.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Speech.v1.Data.CreateCustomClassRequest body, string parent)
                 {
@@ -515,7 +516,8 @@ namespace Google.Apis.Speech.v1
                     /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
                     /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the
                     /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
-                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                    /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us`
+                    /// or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -556,7 +558,8 @@ namespace Google.Apis.Speech.v1
                 /// `projects/{project}/locations/{location}/customClasses/{custom_class}` Speech-to-Text supports three
                 /// locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
                 /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional
-                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                /// location value.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -578,7 +581,8 @@ namespace Google.Apis.Speech.v1
                     /// `projects/{project}/locations/{location}/customClasses/{custom_class}` Speech-to-Text supports
                     /// three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
                     /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
-                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                    /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us`
+                    /// or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -664,7 +668,8 @@ namespace Google.Apis.Speech.v1
                 /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
                 /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
                 /// endpoint, use the `global` location. To specify a region, use a [regional
-                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                /// location value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -686,7 +691,8 @@ namespace Google.Apis.Speech.v1
                     /// `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations:
                     /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the
                     /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
-                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                    /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us`
+                    /// or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -841,7 +847,8 @@ namespace Google.Apis.Speech.v1
                 /// `projects/{project}/locations/{location}/phraseSets` Speech-to-Text supports three locations:
                 /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
                 /// endpoint, use the `global` location. To specify a region, use a [regional
-                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                /// location value.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Speech.v1.Data.CreatePhraseSetRequest body, string parent)
                 {
@@ -868,7 +875,8 @@ namespace Google.Apis.Speech.v1
                     /// `projects/{project}/locations/{location}/phraseSets` Speech-to-Text supports three locations:
                     /// `global`, `us` (US North America), and `eu` (Europe). If you are calling the
                     /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
-                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                    /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us`
+                    /// or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -960,7 +968,8 @@ namespace Google.Apis.Speech.v1
                 /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three
                 /// locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
                 /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional
-                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                /// location value.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -982,7 +991,8 @@ namespace Google.Apis.Speech.v1
                     /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three
                     /// locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the
                     /// `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a
-                    /// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                    /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us`
+                    /// or `eu` location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1017,7 +1027,8 @@ namespace Google.Apis.Speech.v1
                 /// `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us`
                 /// (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use
                 /// the `global` location. To specify a region, use a [regional
-                /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                /// location value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1039,7 +1050,8 @@ namespace Google.Apis.Speech.v1
                     /// `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`,
                     /// `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com`
                     /// endpoint, use the `global` location. To specify a region, use a [regional
-                    /// endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+                    /// endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu`
+                    /// location value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
