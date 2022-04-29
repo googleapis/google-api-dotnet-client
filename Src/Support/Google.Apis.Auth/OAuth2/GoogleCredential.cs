@@ -352,8 +352,13 @@ namespace Google.Apis.Auth.OAuth2
         /// can be scoped on demand. When using a <see cref="UserCredential"/> the credential needs to have been obtained
         /// with the required scope, else, when attempting and impersonated request, you'll receive an authorization error.
         /// </remarks>
-        public GoogleCredential Impersonate(ImpersonatedCredential.Initializer initializer) =>
-            new GoogleCredential(ImpersonatedCredential.Create(this, initializer));
+        public GoogleCredential Impersonate(ImpersonatedCredential.Initializer initializer)
+        {
+            // We copy the initializer so we can safely modify it.
+            initializer = new ImpersonatedCredential.Initializer(initializer);
+            initializer.SetSourceCredentialFrom(this);
+            return new GoogleCredential(new ImpersonatedCredential(initializer));
+        }
 
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
         public static GoogleCredential FromServiceAccountCredential(ServiceAccountCredential credential)

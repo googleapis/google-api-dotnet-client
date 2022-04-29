@@ -194,6 +194,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceCredential(Initializer initializer)
         {
+            initializer.ThrowIfNull(nameof(initializer));
             TokenServerUrl = initializer.TokenServerUrl;
             AccessMethod = initializer.AccessMethod.ThrowIfNull("initializer.AccessMethod");
             Clock = initializer.Clock.ThrowIfNull("initializer.Clock");

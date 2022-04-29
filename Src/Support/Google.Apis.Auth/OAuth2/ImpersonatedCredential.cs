@@ -34,11 +34,16 @@ namespace Google.Apis.Auth.OAuth2
     /// and https://cloud.google.com/iam/docs/impersonating-service-accounts
     /// for more information.
     /// </summary>
-    public sealed class ImpersonatedCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
+    public sealed class ImpersonatedCredential : ImpersonatedCredentialBase, IGoogleCredential, IOidcTokenProvider, IBlobSigner
     {
         /// <summary>An initializer class for the impersonated credential. </summary>
-        new public sealed class Initializer : ServiceCredential.Initializer
+        new public sealed class Initializer : ImpersonatedCredentialBase.Initializer
         {
+            /// <summary>
+            /// Gets or sets the source credential used to acquire the impersonated credentials.
+            /// </summary>
+            internal new GoogleCredential SourceCredential => base.SourceCredential as GoogleCredential;
+
             /// <summary>
             /// Gets the service account to impersonate.
             /// </summary>
@@ -49,40 +54,43 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public IEnumerable<string> DelegateAccounts { get; set; }
 
-            /// <summary>
-            /// Gets or sets for how long the delegated credential should be valid.
-            /// Defaults to 1 hour or 3600 seconds.
-            /// </summary>
-            public TimeSpan Lifetime { get; set; }
-
             /// <summary>Constructs a new initializer.</summary>
             /// <param name="targetPrincipal">The principal that will be impersonated. Must not be null.</param>
             public Initializer(string targetPrincipal)
-                : base(string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, targetPrincipal.ThrowIfNull(nameof(targetPrincipal))))
-            {
+                : base(string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, targetPrincipal.ThrowIfNull(nameof(targetPrincipal)))) =>
                 TargetPrincipal = targetPrincipal;
-                Lifetime = TimeSpan.FromHours(1);
-            }
 
             internal Initializer(ImpersonatedCredential other) : base(other)
             {
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts;
-                Lifetime = other.Lifetime;
             }
 
             internal Initializer(Initializer other) : base (other)
             {
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts?.ToList().AsReadOnly() ?? Enumerable.Empty<string>();
-                Lifetime = other.Lifetime;
             }
+
+            /// <inheritdoc/>
+            private protected override ICredential ValidateAndScopeForImpersonation(ICredential credential) => credential switch
+            {
+                null => null,
+                GoogleCredential googleCred
+                    when googleCred.UnderlyingCredential is ServiceAccountCredential || googleCred.UnderlyingCredential is UserCredential =>
+                    googleCred.CreateScoped(ImpersonationScopes),
+                ServiceAccountCredential saCred =>
+                    new GoogleCredential((saCred as IGoogleCredential).MaybeWithScopes(ImpersonationScopes)),
+                UserCredential userCred =>
+                    new GoogleCredential((userCred as IGoogleCredential).MaybeWithScopes(ImpersonationScopes)),
+                _ => throw new InvalidOperationException($"Only {nameof(ServiceAccountCredential)} and {nameof(UserCredential)} support impersonation.")
+            };
         }
 
         /// <summary>
         /// Gets the source credential used to acquire the impersonated credentials.
         /// </summary>
-        public GoogleCredential SourceCredential => HttpClientInitializers.OfType<GoogleCredential>().Single();
+        public new GoogleCredential SourceCredential => base.SourceCredential as GoogleCredential;
 
         /// <summary>
         /// Gets the service account to impersonate.
@@ -94,47 +102,17 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public IEnumerable<string> DelegateAccounts { get; }
 
-        /// <summary>
-        /// Gets the lifetime of the delegated credential.
-        /// This is how long the delegated credential should be valid from the time
-        /// of the first request made with this credential.
-        /// </summary>
-        public TimeSpan Lifetime { get; }
-
         /// <inheritdoc/>
-        bool IGoogleCredential.HasExplicitScopes => Scopes?.Any() == true;
+        bool IGoogleCredential.HasExplicitScopes => HasExplicitScopes;
 
         /// <inheritdoc/>
         bool IGoogleCredential.SupportsExplicitScopes => true;
 
-        internal static ImpersonatedCredential Create(GoogleCredential sourceCredential, Initializer initializer)
-        {
-            initializer.ThrowIfNull(nameof(initializer));
-            sourceCredential.ThrowIfNull(nameof(sourceCredential));
-            if (initializer.Lifetime < TimeSpan.Zero)
-            {
-                throw new ArgumentOutOfRangeException(nameof(initializer.Lifetime), $"Must be greater or equal to {nameof(TimeSpan.Zero)}");
-            }
-            if (!(sourceCredential.UnderlyingCredential is ServiceAccountCredential || sourceCredential.UnderlyingCredential is UserCredential))
-            {
-                throw new InvalidOperationException($"Only {nameof(ServiceAccountCredential)} and {nameof(UserCredential)} support impersonation.");
-            }
-
-            // We ourselves modify the client supplied initializer, so let's make a copy first.
-            initializer = new Initializer(initializer);
-
-            initializer.HttpClientInitializers.Add(sourceCredential.CreateScoped(new string[] { GoogleAuthConsts.IamScope }));
-            return new ImpersonatedCredential(initializer);
-        }
-
         /// <summary>Constructs a new impersonated credential using the given initializer.</summary>
-        private ImpersonatedCredential(Initializer initializer) : base(initializer)
+        internal ImpersonatedCredential(Initializer initializer) : base(initializer)
         {
             TargetPrincipal = initializer.TargetPrincipal;
-            // We just copied tha initializer on the Create method so we know this
-            // to be our own local copy. We can avoid copying these collections here.
-            DelegateAccounts = initializer.DelegateAccounts;
-            Lifetime = initializer.Lifetime;
+            DelegateAccounts = initializer.DelegateAccounts?.ToList().AsReadOnly() ?? Enumerable.Empty<string>();
         }
 
         /// <inheritdoc/>
@@ -153,20 +131,11 @@ namespace Google.Apis.Auth.OAuth2
         IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
             new ImpersonatedCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
-        /// <inheritdoc/>
-        public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
+        internal override ImpersonationAccessTokenRequest CreateImpersonationAccessTokenRequest()
         {
-            var request = new ImpersonationAccessTokenRequest
-            {
-                DelegateAccounts = DelegateAccounts,
-                Scopes = Scopes,
-                Lifetime = $"{(int)Lifetime.TotalSeconds}s"
-            };
-
-            Token = await request.ExecuteAsync(HttpClient, TokenServerUrl, Clock, Logger, taskCancellationToken)
-                .ConfigureAwait(false);
-
-            return true;
+            var request = base.CreateImpersonationAccessTokenRequest();
+            request.DelegateAccounts = DelegateAccounts;
+            return request;
         }
 
         /// <inheritdoc/>

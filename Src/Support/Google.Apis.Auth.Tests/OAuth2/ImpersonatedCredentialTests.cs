@@ -94,14 +94,15 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 serializeBody ? NewtonsoftJsonSerializer.Instance.Serialize(body) : body.ToString(),
                 requestValidator);
 
-            return ImpersonatedCredential.Create(
-                sourceCredential,
-                new ImpersonatedCredential.Initializer("principal")
-                {
-                    Scopes = new string[] { "scope" },
-                    Clock = _clock,
-                    HttpClientFactory = new MockHttpClientFactory(messageHandler)
-                });
+            var initializer = new ImpersonatedCredential.Initializer("principal")
+            {
+                Scopes = new string[] { "scope" },
+                Clock = _clock,
+                HttpClientFactory = new MockHttpClientFactory(messageHandler),
+            };
+            initializer.SetSourceCredentialFrom(sourceCredential);
+
+            return new ImpersonatedCredential(initializer);
         }
 
         private static ImpersonatedCredential CreateImpersonatedCredentialWithIdTokenResponse() =>
@@ -120,15 +121,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
             CreateImpersonatedCredentialForBody(ErrorResponseContent, false, HttpStatusCode.NotFound);
 
         [Fact]
-        public void Create_InvalidSourceCredential() =>
-            Assert.Throws<InvalidOperationException>(() => ImpersonatedCredential.Create(
-                GoogleCredential.FromComputeCredential(),
-                new ImpersonatedCredential.Initializer("principal")));
+        public void Create_InvalidSourceCredential()
+        {
+            var initializer = new ImpersonatedCredential.Initializer("principal");
+            Assert.Throws<InvalidOperationException>(() => initializer.SetSourceCredentialFrom(GoogleCredential.FromComputeCredential()));
+        }
 
         [Fact]
         public void WithHttpClientFactory()
         {
-            var credential = ImpersonatedCredential.Create(CreateSourceCredential(), new ImpersonatedCredential.Initializer("principal"));
+            var initializer = new ImpersonatedCredential.Initializer("principal");
+            initializer.SetSourceCredentialFrom(CreateSourceCredential());
+            var credential = new ImpersonatedCredential(initializer);
             var factory = new HttpClientFactory();
             var credentialWithFactory = Assert.IsType<ImpersonatedCredential>(((IGoogleCredential)credential).WithHttpClientFactory(factory));
 
