@@ -687,7 +687,7 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
     public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The destination for writing trace data. Currently only BigQuery is supported. E.g.:
+        /// The destination for writing trace data. Supported formats include:
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]

@@ -353,7 +353,15 @@ namespace Google.Apis.GKEHub.v1alpha
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `ListFleets` call. Provide this to retrieve the
+                    /// Optional. The maximum number of fleets to return. The service may return fewer than this value.
+                    /// If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above
+                    /// 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the
                     /// subsequent page. When paginating, all other parameters provided to `ListFleets` must match the
                     /// call that provided the page token.
                     /// </summary>
@@ -380,6 +388,14 @@ namespace Google.Apis.GKEHub.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
@@ -1298,7 +1314,15 @@ namespace Google.Apis.GKEHub.v1alpha
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `ListFleets` call. Provide this to retrieve the
+                    /// Optional. The maximum number of fleets to return. The service may return fewer than this value.
+                    /// If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above
+                    /// 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the
                     /// subsequent page. When paginating, all other parameters provided to `ListFleets` must match the
                     /// call that provided the page token.
                     /// </summary>
@@ -1325,6 +1349,14 @@ namespace Google.Apis.GKEHub.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
@@ -4184,7 +4216,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
+        /// subsequent pages. The token is only valid for 1h.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

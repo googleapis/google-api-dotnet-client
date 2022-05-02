@@ -12033,6 +12033,17 @@ namespace Google.Apis.Dialogflow.v3.Data
     public class GoogleCloudDialogflowCxV3SecuritySettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations via
+        /// Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to
+        /// REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio
+        /// export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention
+        /// policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via
+        /// Sessions.DetectIntent or Sessions.StreamingDetectIntent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioExportSettings")]
+        public virtual GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings AudioExportSettings { get; set; }
+
+        /// <summary>
         /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define
         /// de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on
         /// the Dialogflow service identity service account (has the form
@@ -12098,6 +12109,32 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionWindowDays")]
         public virtual System.Nullable<int> RetentionWindowDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for exporting audio.</summary>
+    public class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filename pattern for exported audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioExportPattern")]
+        public virtual string AudioExportPattern { get; set; }
+
+        /// <summary>File format for exported audio file. Currently only in telephony recordings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioFormat")]
+        public virtual string AudioFormat { get; set; }
+
+        /// <summary>Enable audio redaction if it is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAudioRedaction")]
+        public virtual System.Nullable<bool> EnableAudioRedaction { get; set; }
+
+        /// <summary>
+        /// Cloud Storage bucket to export audio record to. You need to grant
+        /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
+        public virtual string GcsBucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
