@@ -1585,6 +1585,14 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
     /// <summary>Describes EventTrigger, used to request events to be sent from another service.</summary>
     public class EventTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The name of the channel associated with the trigger in
+        /// `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive
+        /// events from Eventarc SaaS partners.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
         /// <summary>Criteria used to filter events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
         public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }

@@ -6026,14 +6026,6 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to
-        /// route the requests served by the gateway. Each gateway reference should match the pattern:
-        /// `projects/*/locations/global/gateways/`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
-        public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
-
         /// <summary>Optional. Set of label tags associated with the TcpRoute resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

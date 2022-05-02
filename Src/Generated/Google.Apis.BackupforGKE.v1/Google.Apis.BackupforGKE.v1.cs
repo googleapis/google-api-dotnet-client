@@ -358,7 +358,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Retrieve the details of a single VolumeBackup.</summary>
                         /// <param name="name">
                         /// Required. Full name of the VolumeBackup resource. Format:
-                        /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}/volumeBackups/{volume_backup}
+                        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -377,7 +377,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. Full name of the VolumeBackup resource. Format:
-                            /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}/volumeBackups/{volume_backup}
+                            /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -488,7 +488,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Lists the VolumeBackups for a given Backup.</summary>
                         /// <param name="parent">
                         /// Required. The Backup that contains the VolumeBackups to list. Format:
-                        /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+                        /// projects/*/locations/*/backupPlans/*/backups/*
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -507,16 +507,16 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. The Backup that contains the VolumeBackups to list. Format:
-                            /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+                            /// projects/*/locations/*/backupPlans/*/backups/*
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>List filter.</summary>
+                            /// <summary>Field match expression used to filter the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Sort results.</summary>
+                            /// <summary>Field by which to sort the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
@@ -733,7 +733,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The BackupPlan within which to create the Backup. Format:
-                    /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                    /// projects/*/locations/*/backupPlans/*
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.Backup body, string parent)
                     {
@@ -753,16 +753,16 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The BackupPlan within which to create the Backup. Format:
-                        /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                        /// projects/*/locations/*/backupPlans/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The client-provided short name for the Backup resource. This name must: a. be between 1 and
-                        /// 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and
-                        /// dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be
-                        /// unique within the set of Backups in this BackupPlan
+                        /// The client-provided short name for the Backup resource. This name must: - be between 1 and
+                        /// 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and
+                        /// dashes - start with a lower-case letter - end with a lower-case letter or number - be unique
+                        /// within the set of Backups in this BackupPlan
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("backupId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string BackupId { get; set; }
@@ -807,8 +807,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>Deletes an existing Backup.</summary>
                     /// <param name="name">
-                    /// Required. Name of the Backup resource. Format:
-                    /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+                    /// Required. Name of the Backup resource. Format: projects/*/locations/*/backupPlans/*/backups/*
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -827,20 +826,21 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. Name of the Backup resource. Format:
-                        /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+                        /// projects/*/locations/*/backupPlans/*/backups/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// etag, if provided, it must match the server's etag for the delete to happen.
+                        /// If provided, this value must match the current value of the target Backup's etag field or
+                        /// the request is rejected.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// If set to true, any volumeBackups below this backup will also be deleted. Otherwise, the
-                        /// request will only succeed if the backup has no volumeBackups.
+                        /// If set to true, any VolumeBackups below this Backup will also be deleted. Otherwise, the
+                        /// request will only succeed if the Backup has no VolumeBackups.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -888,7 +888,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <summary>Retrieve the details of a single Backup.</summary>
                     /// <param name="name">
                     /// Required. Full name of the Backup resource. Format:
-                    /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+                    /// projects/*/locations/*/backupPlans/*/backups/*
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -907,7 +907,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. Full name of the Backup resource. Format:
-                        /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+                        /// projects/*/locations/*/backupPlans/*/backups/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1018,7 +1018,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <summary>Lists the Backups for a given BackupPlan.</summary>
                     /// <param name="parent">
                     /// Required. The BackupPlan that contains the Backups to list. Format:
-                    /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                    /// projects/*/locations/*/backupPlans/*
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1037,16 +1037,16 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The BackupPlan that contains the Backups to list. Format:
-                        /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                        /// projects/*/locations/*/backupPlans/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>List filter.</summary>
+                        /// <summary>Field match expression used to filter the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Sort results.</summary>
+                        /// <summary>Field by which to sort the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -1339,8 +1339,7 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <summary>Creates a new BackupPlan in a given location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The location within which to create the BackupPlan. Format:
-                /// projects/{project}/locations/{location}
+                /// Required. The location within which to create the BackupPlan. Format: projects/*/locations/*
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.BackupPlan body, string parent)
                 {
@@ -1359,17 +1358,16 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location within which to create the BackupPlan. Format:
-                    /// projects/{project}/locations/{location}
+                    /// Required. The location within which to create the BackupPlan. Format: projects/*/locations/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The client-provided short name for the BackupPlan resource. This name must: a. be
-                    /// between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters,
-                    /// numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number
-                    /// e. be unique within the set of BackupPlans in this location
+                    /// Required. The client-provided short name for the BackupPlan resource. This name must: - be
+                    /// between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters,
+                    /// numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number -
+                    /// be unique within the set of BackupPlans in this location
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("backupPlanId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BackupPlanId { get; set; }
@@ -1414,8 +1412,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Deletes an existing BackupPlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified BackupPlan name. Format:
-                /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1433,14 +1430,14 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified BackupPlan name. Format:
-                    /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                    /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If provided, this value must match the value currently assigned to the target resource.
+                    /// If provided, this value must match the current value of the target BackupPlan's etag field or
+                    /// the request is rejected.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -1479,8 +1476,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Retrieve the details of a single BackupPlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified BackupPlan name. Format:
-                /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1498,8 +1494,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified BackupPlan name. Format:
-                    /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+                    /// Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/backupPlans/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1608,8 +1603,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Lists BackupPlans in a given location.</summary>
                 /// <param name="parent">
-                /// Required. The location that contains the BackupPlans to list. Format:
-                /// projects/{project}/locations/{location}
+                /// Required. The location that contains the BackupPlans to list. Format: projects/*/locations/*
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1627,17 +1621,16 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location that contains the BackupPlans to list. Format:
-                    /// projects/{project}/locations/{location}
+                    /// Required. The location that contains the BackupPlans to list. Format: projects/*/locations/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>List filter.</summary>
+                    /// <summary>Field match expression used to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Sort results.</summary>
+                    /// <summary>Field by which to sort the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1717,8 +1710,7 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <summary>Update a BackupPlan.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. [Output Only] The full name of the BackupPlan resource. Format:
-                /// projects/*/locations/*/backupPlans/*
+                /// Output only. The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.BackupPlan body, string name)
                 {
@@ -1737,7 +1729,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Output only. [Output Only] The full name of the BackupPlan resource. Format:
+                    /// Output only. The full name of the BackupPlan resource. Format:
                     /// projects/*/locations/*/backupPlans/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2216,7 +2208,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Retrieve the details of a single VolumeRestore.</summary>
                         /// <param name="name">
                         /// Required. Full name of the VolumeRestore resource. Format:
-                        /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}/volumeRestores/{volume_restore}
+                        /// projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -2235,7 +2227,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. Full name of the VolumeRestore resource. Format:
-                            /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}/volumeRestores/{volume_restore}
+                            /// projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2346,7 +2338,7 @@ namespace Google.Apis.BackupforGKE.v1
                         /// <summary>Lists the VolumeRestores for a given Restore.</summary>
                         /// <param name="parent">
                         /// Required. The Restore that contains the VolumeRestores to list. Format:
-                        /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+                        /// projects/*/locations/*/restorePlans/*/restores/*
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -2365,16 +2357,16 @@ namespace Google.Apis.BackupforGKE.v1
 
                             /// <summary>
                             /// Required. The Restore that contains the VolumeRestores to list. Format:
-                            /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+                            /// projects/*/locations/*/restorePlans/*/restores/*
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>List filter.</summary>
+                            /// <summary>Field match expression used to filter the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Sort results.</summary>
+                            /// <summary>Field by which to sort the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
@@ -2591,7 +2583,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The RestorePlan within which to create the Restore. Format:
-                    /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                    /// projects/*/locations/*/restorePlans/*
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.Restore body, string parent)
                     {
@@ -2611,16 +2603,16 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The RestorePlan within which to create the Restore. Format:
-                        /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                        /// projects/*/locations/*/restorePlans/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Required. The client-provided short name for the Restore resource. This name must: a. be
-                        /// between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters,
-                        /// numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or
-                        /// number e. be unique within the set of Restores in this RestorePlan.
+                        /// Required. The client-provided short name for the Restore resource. This name must: - be
+                        /// between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters,
+                        /// numbers, and dashes - start with a lower-case letter - end with a lower-case letter or
+                        /// number - be unique within the set of Restores in this RestorePlan.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("restoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RestoreId { get; set; }
@@ -2665,8 +2657,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>Deletes an existing Restore.</summary>
                     /// <param name="name">
-                    /// Required. Full name of the Restore Format:
-                    /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+                    /// Required. Full name of the Restore Format: projects/*/locations/*/restorePlans/*/restores/*
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -2684,19 +2675,21 @@ namespace Google.Apis.BackupforGKE.v1
                         }
 
                         /// <summary>
-                        /// Required. Full name of the Restore Format:
-                        /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+                        /// Required. Full name of the Restore Format: projects/*/locations/*/restorePlans/*/restores/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>etag, if provided, it must match the server's etag for delete to happen.</summary>
+                        /// <summary>
+                        /// If provided, this value must match the current value of the target Restore's etag field or
+                        /// the request is rejected.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// If set to true, any volumeRestores below this restore will also be deleted. Otherwise, the
-                        /// request will only succeed if the restore has no volumeRestores.
+                        /// If set to true, any VolumeRestores below this restore will also be deleted. Otherwise, the
+                        /// request will only succeed if the restore has no VolumeRestores.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -2743,8 +2736,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                     /// <summary>Retrieves the details of a single Restore.</summary>
                     /// <param name="name">
-                    /// Required. Name of the restore resource. Format:
-                    /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+                    /// Required. Name of the restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2763,7 +2755,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. Name of the restore resource. Format:
-                        /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+                        /// projects/*/locations/*/restorePlans/*/restores/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2874,7 +2866,7 @@ namespace Google.Apis.BackupforGKE.v1
                     /// <summary>Lists the Restores for a given RestorePlan.</summary>
                     /// <param name="parent">
                     /// Required. The RestorePlan that contains the Restores to list. Format:
-                    /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                    /// projects/*/locations/*/restorePlans/*
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2893,16 +2885,16 @@ namespace Google.Apis.BackupforGKE.v1
 
                         /// <summary>
                         /// Required. The RestorePlan that contains the Restores to list. Format:
-                        /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                        /// projects/*/locations/*/restorePlans/*
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>List filter.</summary>
+                        /// <summary>Field match expression used to filter the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Sort results.</summary>
+                        /// <summary>Field by which to sort the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -3195,8 +3187,7 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <summary>Creates a new RestorePlan in a given location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The location within which to create the RestorePlan. Format:
-                /// projects/{project}/locations/{location}
+                /// Required. The location within which to create the RestorePlan. Format: projects/*/locations/*
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.RestorePlan body, string parent)
                 {
@@ -3215,17 +3206,16 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location within which to create the RestorePlan. Format:
-                    /// projects/{project}/locations/{location}
+                    /// Required. The location within which to create the RestorePlan. Format: projects/*/locations/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The client-provided short name for the RestorePlan resource. This name must: a. be
-                    /// between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters,
-                    /// numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number
-                    /// e. be unique within the set of RestorePlans in this location
+                    /// Required. The client-provided short name for the RestorePlan resource. This name must: - be
+                    /// between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters,
+                    /// numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number -
+                    /// be unique within the set of RestorePlans in this location
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("restorePlanId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RestorePlanId { get; set; }
@@ -3270,8 +3260,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Deletes an existing RestorePlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified RestorePlan name. Format:
-                /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3289,21 +3278,21 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified RestorePlan name. Format:
-                    /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                    /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If provided, this value must match the value currently assigned to the target resource.
+                    /// If provided, this value must match the current value of the target RestorePlan's etag field or
+                    /// the request is rejected.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// If set to true, any restores below this restorePlan will also be deleted. Otherwise, the request
-                    /// will only succeed if the restorePlan has no restores.
+                    /// If set to true, any Restores below this RestorePlan will also be deleted. Otherwise, the request
+                    /// will only succeed if the RestorePlan has no Restores.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
@@ -3350,8 +3339,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Retrieve the details of a single RestorePlan.</summary>
                 /// <param name="name">
-                /// Required. Fully qualified RestorePlan name. Format:
-                /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3369,8 +3357,7 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. Fully qualified RestorePlan name. Format:
-                    /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+                    /// Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/restorePlans/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3479,8 +3466,7 @@ namespace Google.Apis.BackupforGKE.v1
 
                 /// <summary>Lists RestorePlans in a given location.</summary>
                 /// <param name="parent">
-                /// Required. The location that contains the RestorePlans to list. Format:
-                /// projects/{project}/locations/{location}
+                /// Required. The location that contains the RestorePlans to list. Format: projects/*/locations/*
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3498,17 +3484,16 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Required. The location that contains the RestorePlans to list. Format:
-                    /// projects/{project}/locations/{location}
+                    /// Required. The location that contains the RestorePlans to list. Format: projects/*/locations/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>List filter.</summary>
+                    /// <summary>Field match expression used to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Sort results.</summary>
+                    /// <summary>Field by which to sort the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -3588,8 +3573,8 @@ namespace Google.Apis.BackupforGKE.v1
                 /// <summary>Update a RestorePlan.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. [Output Only] The full name of the RestorePlan resource. Format:
-                /// projects/*/locations/*/restorePlans/*
+                /// Output only. The full name of the RestorePlan resource. Format:
+                /// projects/*/locations/*/restorePlans/*.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.RestorePlan body, string name)
                 {
@@ -3608,8 +3593,8 @@ namespace Google.Apis.BackupforGKE.v1
                     }
 
                     /// <summary>
-                    /// Output only. [Output Only] The full name of the RestorePlan resource. Format:
-                    /// projects/*/locations/*/restorePlans/*
+                    /// Output only. The full name of the RestorePlan resource. Format:
+                    /// projects/*/locations/*/restorePlans/*.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4059,38 +4044,34 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
         public virtual object CompleteTime { get; set; }
 
-        /// <summary>Output only. cluster config backup size in bytes.</summary>
+        /// <summary>Output only. The size of the config backup in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBackupSizeBytes")]
         public virtual System.Nullable<long> ConfigBackupSizeBytes { get; set; }
 
         /// <summary>
-        /// Output only. Whether or not the Backup contains Kubernetes Secrets. Inherited from the parent BackupPlan's
-        /// backup_config.include_secrets.
+        /// Output only. Whether or not the Backup contains Kubernetes Secrets. Controlled by the parent BackupPlan's
+        /// include_secrets value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containsSecrets")]
         public virtual System.Nullable<bool> ContainsSecrets { get; set; }
 
         /// <summary>
-        /// Output only. Whether or not the Backup contains volume data. Inherited from the parent BackupPlan's
-        /// backup_config.include_volume_data.
+        /// Output only. Whether or not the Backup contains volume data. Controlled by the parent BackupPlan's
+        /// include_volume_data value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containsVolumeData")]
         public virtual System.Nullable<bool> ContainsVolumeData { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this Backup resource was created - can be converted to and
-        /// from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this Backup resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked"
         /// against deletion (either manual or automatic deletion) for the number of days provided (measured from the
-        /// creation time of the Backup). This value is inherited from the parent BackupPlan's
-        /// retention_policy.backup_delete_lock_days value and may only be increased (either at creation time or in a
-        /// subsequent update). This field MUST be an integer value between 0-90 (inclusive). Default: inherited from
-        /// BackupPlan.
+        /// creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent
+        /// BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a
+        /// subsequent update).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteLockDays")]
         public virtual System.Nullable<int> DeleteLockDays { get; set; }
@@ -4108,7 +4089,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// Output only. The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited
-        /// from the parent BackupPlan's backup_config.encryption_key.
+        /// from the parent BackupPlan's encryption_key value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual EncryptionKey EncryptionKey { get; set; }
@@ -4118,7 +4099,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup`
-        /// to ensure that their change will be applied to the same version.
+        /// or `DeleteBackup` to ensure that their change will be applied to the same version of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4149,11 +4130,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> ResourceCount { get; set; }
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. If not specified at Backup creation
-        /// time, this value is inherited from the parent BackupPlan's retention_policy.backup_retain_days value. Once a
-        /// Backup is created, this value may only be increased. This must be an integer value &amp;gt;= 0. If 0, no
-        /// automatic deletion will occur for this Backup. If not 0, this must be &amp;gt;= delete_lock_days. Default:
-        /// inherited from BackupPlan.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &amp;gt;=
+        /// 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &amp;gt;=
+        /// delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent
+        /// BackupPlan's backup_retain_days value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainDays")]
         public virtual System.Nullable<int> RetainDays { get; set; }
@@ -4190,16 +4170,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string StateReason { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] Server generated global unique identifier of
+        /// Output only. Server generated global unique identifier of
         /// [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this Backup resource was last updated - can be converted to
-        /// and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this Backup resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
@@ -4216,8 +4193,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<bool> AllNamespaces { get; set; }
 
         /// <summary>
-        /// This defines a customer managed encryption key that will be used to encrypt the Backup artifacts for Backups
-        /// created via this BackupPlan.
+        /// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the
+        /// Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be
+        /// encrypted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual EncryptionKey EncryptionKey { get; set; }
@@ -4240,7 +4218,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selectedApplications")]
         public virtual NamespacedNames SelectedApplications { get; set; }
 
-        /// <summary>If set, include just the resources in the listed namespaces</summary>
+        /// <summary>If set, include just the resources in the listed namespaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedNamespaces")]
         public virtual Namespaces SelectedNamespaces { get; set; }
 
@@ -4260,23 +4238,21 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual Schedule BackupSchedule { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible
-        /// formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        /// Required. Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid
+        /// formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this BackupPlan resource was created - can be converted to and
-        /// from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this BackupPlan resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the
-        /// BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents
-        /// any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        /// BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field
+        /// itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled
+        /// Backups). Default: False
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deactivated")]
         public virtual System.Nullable<bool> Deactivated { get; set; }
@@ -4290,7 +4266,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag'
         /// in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is
         /// returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to
-        /// `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+        /// `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of
+        /// the resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -4300,15 +4277,14 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] The full name of the BackupPlan resource. Format:
-        /// projects/*/locations/*/backupPlans/*
+        /// Output only. The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] Represents the number of Kubernetes Pods backed up in the last successful Backup
-        /// created underneath this BackupPlan.
+        /// Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this
+        /// BackupPlan.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedPodCount")]
         public virtual System.Nullable<int> ProtectedPodCount { get; set; }
@@ -4318,16 +4294,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual RetentionPolicy RetentionPolicy { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] Server generated global unique identifier of
+        /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this BackupPlan resource was last updated - can be converted
-        /// to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this BackupPlan resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
     }
@@ -4392,9 +4365,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> BackupCrdVersions { get; set; }
 
         /// <summary>
-        /// The source cluster from which this Backup was created. Possible formats: 1.
-        /// projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* This will be the same value as the parent
-        /// BackupPlan's cluster field.
+        /// The source cluster from which this Backup was created. Valid formats: - projects/*/locations/*/clusters/* -
+        /// projects/*/zones/*/clusters/* This is inherited from the parent BackupPlan's cluster field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
@@ -4440,7 +4412,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Defined a customer managed encryption key that will be used to encrypt Backup artifacts.</summary>
     public class EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud KMS encryption key. Format: projects//locations//keyRings//cryptoKeys/</summary>
+        /// <summary>Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpKmsEncryptionKey")]
         public virtual string GcpKmsEncryptionKey { get; set; }
 
@@ -4611,13 +4583,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Response message for ListBackupPlans.</summary>
     public class ListBackupPlansResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of BackupPlans.</summary>
+        /// <summary>The list of BackupPlans matching the given criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlans")]
         public virtual System.Collections.Generic.IList<BackupPlan> BackupPlans { get; set; }
 
         /// <summary>
-        /// A token which may be sent as `page_token` in a subsequent `ListBackupPlans` call to retrieve the next page
-        /// of results. If this field is omitted or empty, then there are no more results to return.
+        /// A token which may be sent as page_token in a subsequent `ListBackupPlans` call to retrieve the next page of
+        /// results. If this field is omitted or empty, then there are no more results to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4633,12 +4605,12 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Response message for ListBackups.</summary>
     public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of restore resources within the parent.</summary>
+        /// <summary>The list of Backups matching the given criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backups")]
         public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
 
         /// <summary>
-        /// A token which may be sent as `page_token` in a subsequent `ListBackups` call to retrieve the next page of
+        /// A token which may be sent as page_token in a subsequent `ListBackups` call to retrieve the next page of
         /// results. If this field is omitted or empty, then there are no more results to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -4667,13 +4639,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class ListRestorePlansResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token which may be sent as `page_token` in a subsequent `ListRestorePlans` call to retrieve the next page
-        /// of results. If this field is omitted or empty, then there are no more results to return.
+        /// A token which may be sent as page_token in a subsequent `ListRestorePlans` call to retrieve the next page of
+        /// results. If this field is omitted or empty, then there are no more results to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of RestorePlans.</summary>
+        /// <summary>The list of RestorePlans matching the given criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restorePlans")]
         public virtual System.Collections.Generic.IList<RestorePlan> RestorePlans { get; set; }
 
@@ -4689,13 +4661,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class ListRestoresResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token which may be sent as `page_token` in a subsequent `ListRestores` call to retrieve the next page of
+        /// A token which may be sent as page_token in a subsequent `ListRestores` call to retrieve the next page of
         /// results. If this field is omitted or empty, then there are no more results to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of restore resources within the parent.</summary>
+        /// <summary>The list of Restores matching the given criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restores")]
         public virtual System.Collections.Generic.IList<Restore> Restores { get; set; }
 
@@ -4711,13 +4683,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class ListVolumeBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token which may be sent as `page_token` in a subsequent `ListVolumeBackups` call to retrieve the next page
+        /// A token which may be sent as page_token in a subsequent `ListVolumeBackups` call to retrieve the next page
         /// of results. If this field is omitted or empty, then there are no more results to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of VolumeBackups resources within the parent.</summary>
+        /// <summary>The list of VolumeBackups matching the given criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBackups")]
         public virtual System.Collections.Generic.IList<VolumeBackup> VolumeBackups { get; set; }
 
@@ -4729,13 +4701,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class ListVolumeRestoresResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token which may be sent as `page_token` in a subsequent `ListVolumeRestores` call to retrieve the next
-        /// page of results. If this field is omitted or empty, then there are no more results to return.
+        /// A token which may be sent as page_token in a subsequent `ListVolumeRestores` call to retrieve the next page
+        /// of results. If this field is omitted or empty, then there are no more results to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of VolumeRestores resources within the parent.</summary>
+        /// <summary>The list of VolumeRestores matching the given criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeRestores")]
         public virtual System.Collections.Generic.IList<VolumeRestore> VolumeRestores { get; set; }
 
@@ -4927,29 +4899,26 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class Restore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. The Backup used as the source from which this Restore will restore. Note that this
-        /// Backup must be a sub-resource of the RestorePlan's backup_plan. Format:
+        /// Required. Immutable. A reference to the Backup used as the source from which this Restore will restore. Note
+        /// that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format:
         /// projects/*/locations/*/backupPlans/*/backups/*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
         public virtual string Backup { get; set; }
 
         /// <summary>
-        /// Output only. The target cluster into which this Restore will restore data. Possible formats: 1.
-        /// projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's
-        /// cluster field.
+        /// Output only. The target cluster into which this Restore will restore data. Valid formats: -
+        /// projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's
+        /// cluster value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        /// <summary>Output only. When the restore operation either successfully completed or failed.</summary>
+        /// <summary>Output only. Timestamp of when the restore operation completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
         public virtual object CompleteTime { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this Restore resource was created - can be converted to and
-        /// from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this Restore resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -4962,12 +4931,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in
         /// the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is
         /// returned in the response to `GetRestore`, and systems are expected to put that etag in the request to
-        /// `UpdateRestore` to ensure that their change will be applied to the same version.
+        /// `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the
+        /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>GCP Labels.</summary>
+        /// <summary>A set of custom labels supplied by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -4977,15 +4947,15 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Number of resources excluded in this restore action.</summary>
+        /// <summary>Output only. Number of resources excluded during the restore execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcesExcludedCount")]
         public virtual System.Nullable<int> ResourcesExcludedCount { get; set; }
 
-        /// <summary>Output only. Number of resources failed to be restored in this restore action.</summary>
+        /// <summary>Output only. Number of resources that failed to be restored during the restore execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcesFailedCount")]
         public virtual System.Nullable<int> ResourcesFailedCount { get; set; }
 
-        /// <summary>Output only. Number of resources restored in this restore action.</summary>
+        /// <summary>Output only. Number of resources restored during the restore execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcesRestoredCount")]
         public virtual System.Nullable<int> ResourcesRestoredCount { get; set; }
 
@@ -5004,20 +4974,17 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string StateReason { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] Server generated global unique identifier of
+        /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this Restore resource was last updated - can be converted to
-        /// and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this Restore resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>Output only. Number of volumes restored in this restore action.</summary>
+        /// <summary>Output only. Number of volumes restored during the restore execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumesRestoredCount")]
         public virtual System.Nullable<int> VolumesRestoredCount { get; set; }
     }
@@ -5050,8 +5017,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>
         /// Defines the behavior for handling the situation where sets of namespaced resources being restored already
         /// exist in the target cluster. This MUST be set to a value other than
-        /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via
-        /// namespaced_resource_restore_scope .
+        /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedResourceRestoreMode")]
         public virtual string NamespacedResourceRestoreMode { get; set; }
@@ -5096,24 +5062,21 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class RestorePlan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. The BackupPlan from which Backups may be used as the source for Restores created via
-        /// this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        /// Required. Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores
+        /// created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
         public virtual string BackupPlan { get; set; }
 
         /// <summary>
         /// Required. Immutable. The target cluster into which Restores created via this RestorePlan will restore data.
-        /// NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1.
-        /// projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        /// NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: -
+        /// projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this RestorePlan resource was created - can be converted to
-        /// and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this RestorePlan resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -5126,7 +5089,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in
         /// the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is
         /// returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to
-        /// `UpdateRestorePlan` to ensure that their change will be applied to the same version.
+        /// `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version
+        /// of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -5136,8 +5100,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] The full name of the RestorePlan resource. Format:
-        /// projects/*/locations/*/restorePlans/*
+        /// Output only. The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5147,34 +5110,26 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual RestoreConfig RestoreConfig { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] Server generated global unique identifier of
+        /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this RestorePlan resource was last updated - can be converted
-        /// to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this RestorePlan resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
     }
 
-    /// <summary>
-    /// RentionPolicy is an inner message type to define: 1. Minimum age for Backups created via this BackupPlan -
-    /// deletion (either manual or automatic) of Backups younger than this age will be blocked 2. Default maximum age of
-    /// Backups created via this BackupPlan, after which automatic deletion will occur 3. Lock to disallow any changes
-    /// to any RetentionPolicy settings
-    /// </summary>
+    /// <summary>RetentionPolicy defines a Backup retention policy for a BackupPlan.</summary>
     public class RetentionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between
-        /// 0-90(inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's
-        /// create_time + backup_delete_lock_days. Updating this field of a BackupPlan does NOT affect existing Backups
-        /// under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete
-        /// blocking)
+        /// 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's
+        /// (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing
+        /// Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no
+        /// delete blocking)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupDeleteLockDays")]
         public virtual System.Nullable<int> BackupDeleteLockDays { get; set; }
@@ -5182,11 +5137,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>
         /// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value
         /// &amp;gt;= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its
-        /// age reaches create_time + backup_retain_days. If not specified, Backups created under this BackupPlan will
+        /// age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will
         /// NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups
-        /// created AFTER a successful update will automatically pick up the new value. NOTE: Specifying a
-        /// backup_retain_days smaller than backup_delete_lock_days at creation/updating time will be considered as
-        /// invalid, and the request will be rejected immediately. Default: 0 (no automatic deletion)
+        /// created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be
+        /// &amp;gt;= backup_delete_lock_days. Default: 0 (no automatic deletion)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetainDays")]
         public virtual System.Nullable<int> BackupRetainDays { get; set; }
@@ -5208,7 +5162,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A standard cron-style string that defines a repeating schedule for creating Backups via this BackupPlan.
+        /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating
+        /// Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
@@ -5334,16 +5289,12 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class VolumeBackup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. [Output Only] The timestamp when the associated underlying volume backup operation completes -
-        /// can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// Output only. The timestamp when the associated underlying volume backup operation completed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
         public virtual object CompleteTime { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this VolumeBackup resource was created - can be converted to
-        /// and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this VolumeBackup resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -5354,9 +5305,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>
         /// Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates
         /// of a volume backup from overwriting each other. It is strongly suggested that systems make use of the `etag`
-        /// in the read-modify-write cycle to perform volume backup updates in order to avoid race conditions: An `etag`
-        /// is returned in the response to `GetVolumeBackup', and systems are expected to put that etag in the request
-        /// to `UpdateVolumeBackup` to ensure that their change will be applied to the same version.
+        /// in the read-modify-write cycle to perform volume backup updates in order to avoid race conditions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -5366,9 +5315,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string Format { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] The full name of the VolumeBackup resource. Format:
-        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/* Note that the last segment of the name will
-        /// have the format: 'pvc-'.
+        /// Output only. The full name of the VolumeBackup resource. Format:
+        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5399,23 +5347,17 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<long> StorageBytes { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] Server generated global unique identifier of
+        /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this VolumeBackup resource was last updated - can be converted
-        /// to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this VolumeBackup resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>
-        /// Output only. A storage system-specific opaque handle to the underlying volume backup. This field is
-        /// interpreted by the volume backup and restore drivers running in the GKE cluster and not by the service.
-        /// </summary>
+        /// <summary>Output only. A storage system-specific opaque handle to the underlying volume backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBackupHandle")]
         public virtual string VolumeBackupHandle { get; set; }
     }
@@ -5423,39 +5365,30 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Represents the operation of restoring a volume from a VolumeBackup. Next id: 13</summary>
     public class VolumeRestore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when the associated underlying volume restoration completed - can
-        /// be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when the associated underlying volume restoration completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
         public virtual object CompleteTime { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this VolumeRestore resource was created - can be converted to
-        /// and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this VolumeRestore resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates
         /// of a volume restore from overwriting each other. It is strongly suggested that systems make use of the
-        /// `etag` in the read-modify-write cycle to perform volume restore updates in order to avoid race conditions:
-        /// An `etag` is returned in the response to `GetVolumeRestore', and systems are expected to put that etag in
-        /// the request to `UpdateVolumeRestore` to ensure that their change will be applied to the same version.
+        /// `etag` in the read-modify-write cycle to perform volume restore updates in order to avoid race conditions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
         /// Output only. Full name of the VolumeRestore resource. Format:
-        /// projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/* Note that the last segment of the name
-        /// will have the format: 'pvc-'.
+        /// projects/*/locations/*/restorePlans/*/restores/*/volumeRestores/*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The current state of this VolumeRestore</summary>
+        /// <summary>Output only. The current state of this VolumeRestore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -5470,30 +5403,26 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual NamespacedName TargetPvc { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] Server generated global unique identifier of
+        /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>
-        /// Output only. [Output Only] The timestamp when this VolumeRestore resource was last updated - can be
-        /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        /// </summary>
+        /// <summary>Output only. The timestamp when this VolumeRestore resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// Output only. The full name of the VolumeBackup from which the volume will be restored. Format:
-        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*
+        /// projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBackup")]
         public virtual string VolumeBackup { get; set; }
 
         /// <summary>
         /// Output only. A storage system-specific opaque handler to the underlying volume created for the target PVC
-        /// from the volume backup. This field is interpreted by the volume backup and restore drivers running in the
-        /// GKE cluster and not by the service.
+        /// from the volume backup.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeHandle")]
         public virtual string VolumeHandle { get; set; }

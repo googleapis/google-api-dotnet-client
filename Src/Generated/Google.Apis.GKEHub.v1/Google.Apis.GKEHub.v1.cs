@@ -3160,6 +3160,129 @@ namespace Google.Apis.GKEHub.v1.Data
     }
 
     /// <summary>
+    /// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can
+    /// be set per AuthMethod.
+    /// </summary>
+    public class IdentityServiceAuthMethod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier for auth config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>OIDC specific configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcConfig")]
+        public virtual IdentityServiceOidcConfig OidcConfig { get; set; }
+
+        /// <summary>Proxy server address to use for auth method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxy")]
+        public virtual string Proxy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Anthos Identity Service**: Configuration for a single Membership.</summary>
+    public class IdentityServiceMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A member may support multiple auth methods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authMethods")]
+        public virtual System.Collections.Generic.IList<IdentityServiceAuthMethod> AuthMethods { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Anthos Identity Service**: State for a single Membership.</summary>
+    public class IdentityServiceMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason of the failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
+
+        /// <summary>
+        /// Installed AIS version. This is the AIS version installed on this member. The values makes sense iff state is
+        /// OK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedVersion")]
+        public virtual string InstalledVersion { get; set; }
+
+        /// <summary>Last reconciled membership configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberConfig")]
+        public virtual IdentityServiceMembershipSpec MemberConfig { get; set; }
+
+        /// <summary>Deployment state on this member</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for OIDC Auth flow.</summary>
+    public class IdentityServiceOidcConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PEM-encoded CA for OIDC provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAuthorityData")]
+        public virtual string CertificateAuthorityData { get; set; }
+
+        /// <summary>ID for OIDC client application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when
+        /// provider is not reachable by Google Cloud Console.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployCloudConsoleProxy")]
+        public virtual System.Nullable<bool> DeployCloudConsoleProxy { get; set; }
+
+        /// <summary>Output only. Encrypted OIDC Client secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]
+        public virtual string EncryptedClientSecret { get; set; }
+
+        /// <summary>Comma-separated list of key-value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraParams")]
+        public virtual string ExtraParams { get; set; }
+
+        /// <summary>Prefix to prepend to group name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupPrefix")]
+        public virtual string GroupPrefix { get; set; }
+
+        /// <summary>Claim in OIDC ID token that holds group information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupsClaim")]
+        public virtual string GroupsClaim { get; set; }
+
+        /// <summary>
+        /// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
+        public virtual string IssuerUri { get; set; }
+
+        /// <summary>Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubectlRedirectUri")]
+        public virtual string KubectlRedirectUri { get; set; }
+
+        /// <summary>Comma-separated list of identifiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual string Scopes { get; set; }
+
+        /// <summary>Claim in OIDC ID token that holds username.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userClaim")]
+        public virtual string UserClaim { get; set; }
+
+        /// <summary>Prefix to prepend to user name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrefix")]
+        public virtual string UserPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
     /// </summary>
     public class KubernetesMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -3474,6 +3597,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
 
+        /// <summary>Identity Service-specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
+        public virtual IdentityServiceMembershipSpec Identityservice { get; set; }
+
         /// <summary>Anthos Service Mesh-specific spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual ServiceMeshMembershipSpec Mesh { get; set; }
@@ -3492,6 +3619,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Config Management-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipState Configmanagement { get; set; }
+
+        /// <summary>Identity Service-specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
+        public virtual IdentityServiceMembershipState Identityservice { get; set; }
 
         /// <summary>Service Mesh-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]

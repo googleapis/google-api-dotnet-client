@@ -4327,7 +4327,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -4824,8 +4824,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> MaxTimeTravelHours { get; set; }
 
         /// <summary>[Output-only] Reserved for future use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZS")]
-        public virtual System.Nullable<bool> SatisfiesPZS { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
         /// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update
@@ -7228,6 +7228,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
         public virtual System.Nullable<long> LastRefreshTime { get; set; }
 
+        /// <summary>
+        /// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as
+        /// Google SQL Interval type).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxStaleness")]
+        public virtual string MaxStaleness { get; set; }
+
         /// <summary>[Required] A query whose result is persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -8039,6 +8046,41 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for a remote user-defined function.</summary>
+    public class RemoteFunctionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Fully qualified name of the user-provided connection object which holds the authentication information to
+        /// send requests to the remote service.
+        /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual string Connection { get; set; }
+
+        /// <summary>
+        /// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBatchingRows")]
+        public virtual System.Nullable<long> MaxBatchingRows { get; set; }
+
+        /// <summary>
+        /// User-defined context as a set of key/value pairs, which will be sent as function invocation context together
+        /// with batched arguments in the requests to the remote service. The total number of bytes of keys and values
+        /// must be less than 8KB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedContext")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserDefinedContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A user-defined function or a stored procedure.</summary>
     public class Routine : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8089,6 +8131,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
+
+        /// <summary>Optional. Remote function specific options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteFunctionOptions")]
+        public virtual RemoteFunctionOptions RemoteFunctionOptions { get; set; }
 
         /// <summary>
         /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is
@@ -8300,7 +8346,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -8793,8 +8839,19 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual CategoriesData Categories { get; set; }
 
         /// <summary>Optional. Collation specification of the field. It only can be set on string type field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("collationSpec")]
-        public virtual string CollationSpec { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("collation")]
+        public virtual string Collation { get; set; }
+
+        /// <summary>
+        /// Optional. A SQL expression to specify the default value for this field. It can only be set for top level
+        /// fields (columns). You can use struct or array expression to specify default value for the entire struct or
+        /// array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following
+        /// functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND -
+        /// SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example,
+        /// [CURRENT_DATE(), DATE '2020-01-01']
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValueExpression")]
+        public virtual string DefaultValueExpression { get; set; }
 
         /// <summary>[Optional] The field description. The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -9017,7 +9074,7 @@ namespace Google.Apis.Bigquery.v2.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

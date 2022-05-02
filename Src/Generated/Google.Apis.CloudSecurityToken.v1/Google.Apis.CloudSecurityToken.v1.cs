@@ -550,7 +550,12 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// {"key": "x-goog-cloud-target-resource", "value":
         /// "//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/"}, {"key": "host",
         /// "value": "sts.amazonaws.com"} . ], "method": "POST", "url":
-        /// "https://sts.amazonaws.com?Action=GetCallerIdentity&amp;amp;Version=2011-06-15" } ``` You can also use a
+        /// "https://sts.amazonaws.com?Action=GetCallerIdentity&amp;amp;Version=2011-06-15" } ``` If the token is a SAML
+        /// 2.0 assertion, it must use the format defined in [the SAML 2.0
+        /// spec](https://www.oasis-open.org/committees/download.php/56776/sstc-saml-core-errata-2.0-wd-07.pdf), and the
+        /// `subject_token_type` must be `urn:ietf:params:oauth:token-type:saml2`. See [Verification of external
+        /// credentials](https://cloud.google.com/iam/docs/using-workload-identity-federation#verification_of_external_credentials)
+        /// for details on how SAML 2.0 assertions are validated during token exchanges. You can also use a
         /// Google-issued OAuth 2.0 access token with this field to obtain an access token with new security attributes
         /// applied, such as a Credential Access Boundary. In this case, set `subject_token_type` to
         /// `urn:ietf:params:oauth:token-type:access_token`. If an access token already contains security attributes,
@@ -562,7 +567,8 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>
         /// Required. An identifier that indicates the type of the security token in the `subject_token` parameter.
         /// Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:oauth:token-type:id_token`,
-        /// `urn:ietf:params:aws:token-type:aws4_request`, and `urn:ietf:params:oauth:token-type:access_token`.
+        /// `urn:ietf:params:aws:token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, and
+        /// `urn:ietf:params:oauth:token-type:saml2`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectTokenType")]
         public virtual string SubjectTokenType { get; set; }

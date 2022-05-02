@@ -807,6 +807,67 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                     }
                 }
 
+                /// <summary>Performs the apply phase of the RescheduleMaintenance verb.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="instance">
+                /// Required. Memcache instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers
+                /// to a GCP region.
+                /// </param>
+                public virtual RescheduleMaintenanceRequest RescheduleMaintenance(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.RescheduleMaintenanceRequest body, string instance)
+                {
+                    return new RescheduleMaintenanceRequest(service, body, instance);
+                }
+
+                /// <summary>Performs the apply phase of the RescheduleMaintenance verb.</summary>
+                public class RescheduleMaintenanceRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new RescheduleMaintenance request.</summary>
+                    public RescheduleMaintenanceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.RescheduleMaintenanceRequest body, string instance) : base(service)
+                    {
+                        Instance = instance;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Memcache instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Instance { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.RescheduleMaintenanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rescheduleMaintenance";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta2/{+instance}:rescheduleMaintenance";
+
+                    /// <summary>Initializes RescheduleMaintenance parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Updates the defined Memcached parameters for an existing instance. This method only stages the
                 /// parameters, it must be followed by `ApplyParameters` to apply the parameters to nodes of the
@@ -1227,7 +1288,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1422,8 +1483,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1535,8 +1595,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
 
         /// <summary>
         /// Optional. The instance_type of this instance of format:
-        /// projects/{project_id}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a
-        /// high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout),
+        /// projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents
+        /// a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout),
         /// Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or
         /// not.
         /// </summary>
@@ -1571,8 +1631,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
 
         /// <summary>
         /// Unique name of the resource. It uses the form:
-        /// `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}` Note: Either
-        /// project_id or project_number can be used, but keep it consistent with other APIs (e.g. RescheduleUpdate)
+        /// `projects/{project_number}/locations/{location_id}/instances/{instance_id}` Note: This name is passed,
+        /// stored and logged across the rollout system. So use of consumer project_id or any other consumer PII in the
+        /// name is strongly discouraged for wipeout (go/wipeout) compliance. See
+        /// go/elysium/project_ids#storage-guidance for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2294,6 +2356,24 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for RescheduleMaintenance.</summary>
+    public class RescheduleMaintenanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rescheduleType")]
+        public virtual string RescheduleType { get; set; }
+
+        /// <summary>
+        /// Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC 3339 format,
+        /// for example `2012-11-15T16:19:00.094Z`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1163,10 +1163,6 @@ namespace Google.Apis.CloudRun.v2
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
-                    /// <summary>The list of fields to be updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
                     /// <summary>
                     /// Indicates that the request should be validated and default values populated, without persisting
                     /// the request or updating any resources.
@@ -1204,14 +1200,6 @@ namespace Google.Apis.CloudRun.v2
                         RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                         {
                             Name = "allowMissing",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2336,10 +2324,6 @@ namespace Google.Apis.CloudRun.v2
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
-                    /// <summary>The list of fields to be updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
                     /// <summary>
                     /// Indicates that the request should be validated and default values populated, without persisting
                     /// the request or updating any resources.
@@ -2377,14 +2361,6 @@ namespace Google.Apis.CloudRun.v2
                         RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                         {
                             Name = "allowMissing",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2544,12 +2520,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakglassJustification")]
         public virtual string BreakglassJustification { get; set; }
-
-        /// <summary>
-        /// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual string Policy { get; set; }
 
         /// <summary>
         /// If True, indicates to use the default project's binary authorization policy. If False, binary authorization

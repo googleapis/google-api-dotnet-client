@@ -1119,8 +1119,9 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Gets the configuration details of a snapshot. Snapshots are used in Seek operations, which allow you to
-            /// manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+            /// Gets the configuration details of a snapshot. Snapshots are used in
+            /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
             /// existing subscription to the state captured by a snapshot.
             /// </summary>
             /// <param name="snapshot">
@@ -1132,8 +1133,9 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Gets the configuration details of a snapshot. Snapshots are used in Seek operations, which allow you to
-            /// manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+            /// Gets the configuration details of a snapshot. Snapshots are used in
+            /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
             /// existing subscription to the state captured by a snapshot.
             /// </summary>
             public class GetRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
@@ -1340,9 +1342,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing snapshot. Snapshots are used in Seek operations, which allow you to manage message
-            /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing
-            /// subscription to the state captured by a snapshot.
+            /// Updates an existing snapshot. Snapshots are used in
+            /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+            /// existing subscription to the state captured by a snapshot.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the snapshot.</param>
@@ -1352,9 +1355,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing snapshot. Snapshots are used in Seek operations, which allow you to manage message
-            /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing
-            /// subscription to the state captured by a snapshot.
+            /// Updates an existing snapshot. Snapshots are used in
+            /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+            /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
+            /// existing subscription to the state captured by a snapshot.
             /// </summary>
             public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
@@ -3671,7 +3675,9 @@ namespace Google.Apis.Pubsub.v1.Data
 
     /// <summary>
     /// Contains information needed for generating an [OpenID Connect
-    /// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+    /// token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account
+    /// email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more
+    /// information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
     /// </summary>
     public class OidcToken : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3685,11 +3691,6 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
 
-        /// <summary>
-        /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the
-        /// OIDC token. See [Setting up push authentication](/pubsub/docs/push#setting_up_for_push_authentication) for
-        /// more details.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
@@ -3821,7 +3822,8 @@ namespace Google.Apis.Pubsub.v1.Data
         /// If non-empty, identifies related messages for which publish order should be respected. If a `Subscription`
         /// has `enable_message_ordering` set to `true`, messages published with the same non-empty `ordering_key` value
         /// will be delivered to subscribers in the order in which they are received by the Pub/Sub system. All
-        /// `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key` value.
+        /// `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key` value. For more
+        /// information, see [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderingKey")]
         public virtual string OrderingKey { get; set; }
