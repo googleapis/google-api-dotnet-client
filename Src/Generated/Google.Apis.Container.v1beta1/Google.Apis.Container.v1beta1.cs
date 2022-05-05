@@ -8356,23 +8356,6 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration of all network bandwidth tiers</summary>
-    public class NetworkPerformanceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("externalIpEgressBandwidthTier")]
-        public virtual string ExternalIpEgressBandwidthTier { get; set; }
-
-        /// <summary>Specifies the total network bandwidth tier for the NodePool.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalEgressBandwidthTier")]
-        public virtual string TotalEgressBandwidthTier { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Configuration options for the NetworkPolicy feature.
     /// https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
@@ -8721,10 +8704,6 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createPodRange")]
         public virtual System.Nullable<bool> CreatePodRange { get; set; }
-
-        /// <summary>Network bandwidth tier configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
-        public virtual NetworkPerformanceConfig NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to

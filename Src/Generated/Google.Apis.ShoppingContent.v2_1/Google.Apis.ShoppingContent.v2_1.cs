@@ -8963,7 +8963,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// multi-client account.
         /// </param>
         /// <param name="productId">
-        /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+        /// Required. The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`.
         /// </param>
         public virtual DeleteRequest Delete(long merchantId, string productId)
         {
@@ -8989,7 +8989,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+            /// Required. The Content API ID of the product, in the form
+            /// `channel:contentLanguage:targetCountry:offerId`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
@@ -9026,20 +9027,20 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Gets productDeliveryTime by productId</summary>
+        /// <summary>Gets `productDeliveryTime` by `productId`.</summary>
         /// <param name="merchantId">
         /// Required. The Google merchant ID of the account that contains the product. This account cannot be a
         /// multi-client account.
         /// </param>
         /// <param name="productId">
-        /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+        /// Required. The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`.
         /// </param>
         public virtual GetRequest Get(long merchantId, string productId)
         {
             return new GetRequest(service, merchantId, productId);
         }
 
-        /// <summary>Gets productDeliveryTime by productId</summary>
+        /// <summary>Gets `productDeliveryTime` by `productId`.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ProductDeliveryTime>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -9058,7 +9059,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// Required. The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+            /// Required. The Content API ID of the product, in the form
+            /// `channel:contentLanguage:targetCountry:offerId`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
@@ -15293,14 +15295,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A delivery area for the product. Only one of administrativeAreaCode or postalCodeRange must be set.
-    /// </summary>
+    /// <summary>A delivery area for the product. Only one of `countryCode` or `postalCodeRange` must be set.</summary>
     public class DeliveryArea : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The country that the product can be delivered to. Submit an [unicode CLDR
-        /// region](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) such as US or CH.
+        /// Required. The country that the product can be delivered to. Submit a [unicode CLDR
+        /// region](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) such as `US` or `CH`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
@@ -15315,7 +15315,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// A state, territory, or prefecture. This is supported for the United States, Australia, and Japan. Provide a
         /// subdivision code from the ISO 3166-2 code tables ([US](https://en.wikipedia.org/wiki/ISO_3166-2:US),
         /// [AU](https://en.wikipedia.org/wiki/ISO_3166-2:AU), or [JP](https://en.wikipedia.org/wiki/ISO_3166-2:JP))
-        /// without country prefix (for example, NY, NSW, 03).
+        /// without country prefix (for example, `"NY"`, `"NSW"`, `"03"`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
@@ -15325,14 +15325,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// A range of postal codes that defines the delivery area. Only set firstPostalCode when specifying a single postal
-    /// code.
+    /// A range of postal codes that defines the delivery area. Only set `firstPostalCode` when specifying a single
+    /// postal code.
     /// </summary>
     public class DeliveryAreaPostalCodeRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range
-        /// defining the area. Examples values: "94108", "9410*", "9*".
+        /// defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPostalCode")]
         public virtual string FirstPostalCode { get; set; }
@@ -15340,9 +15340,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range defining the
         /// area (for example [070* - 078*] results in the range [07000 - 07899]). It must have the same length as
-        /// firstPostalCode: if firstPostalCode is a postal code then lastPostalCode must be a postal code too; if
-        /// firstPostalCode is a pattern then lastPostalCode must be a pattern with the same prefix length. Ignored if
-        /// not set, then the area is defined as being all the postal codes matching firstPostalCode.
+        /// `firstPostalCode`: if `firstPostalCode` is a postal code then `lastPostalCode` must be a postal code too; if
+        /// firstPostalCode is a pattern then `lastPostalCode` must be a pattern with the same prefix length. Ignored if
+        /// not set, then the area is defined as being all the postal codes matching `firstPostalCode`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastPostalCode")]
         public virtual string LastPostalCode { get; set; }
@@ -20307,6 +20307,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
 
+        /// <summary>Publication of this item should be temporarily paused. Acceptable values are: - "`ads`" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pause")]
+        public virtual string Pause { get; set; }
+
         /// <summary>
         /// The pick up option for the item. Acceptable values are: - "`buy`" - "`reserve`" - "`ship to store`" - "`not
         /// supported`"
@@ -20498,21 +20502,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// The estimated days to deliver for this product. These methods are intended for authorized partners working with
-    /// a merchant. Merchants should use the [product
-    /// API](https://developers.google.com/shopping-content/reference/rest/v2.1/products#productshipping) instead. To
-    /// obtain authorization from a merchant refer to
+    /// The estimated days to deliver a product after an order is placed. Only authorized shipping signals partners
+    /// working with a merchant can use this resource. Merchants should use the
+    /// [`products`](https://developers.google.com/shopping-content/reference/rest/v2.1/products#productshipping)
+    /// resource instead.
     /// </summary>
     public class ProductDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A set of associations between DeliveryAreas and DeliveryTimes. The total number of
-        /// areaDeliveryTimes can be at most 100.
+        /// Required. A set of associations between `DeliveryArea` and `DeliveryTime` entries. The total number of
+        /// `areaDeliveryTimes` can be at most 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("areaDeliveryTimes")]
         public virtual System.Collections.Generic.IList<ProductDeliveryTimeAreaDeliveryTime> AreaDeliveryTimes { get; set; }
 
-        /// <summary>Required. The id of the product.</summary>
+        /// <summary>Required. The `id` of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual ProductId ProductId { get; set; }
 
@@ -20520,14 +20524,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A pairing of DeliveryArea associated with a DeliveryTime for this product.</summary>
+    /// <summary>A pairing of `DeliveryArea` associated with a `DeliveryTime` for this product.</summary>
     public class ProductDeliveryTimeAreaDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The delivery area associated with deliveryTime for this product.</summary>
+        /// <summary>Required. The delivery area associated with `deliveryTime` for this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryArea")]
         public virtual DeliveryArea DeliveryArea { get; set; }
 
-        /// <summary>Required. The delivery time associated with deliveryArea for this product.</summary>
+        /// <summary>Required. The delivery time associated with `deliveryArea` for this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryTime")]
         public virtual ProductDeliveryTimeAreaDeliveryTimeDeliveryTime DeliveryTime { get; set; }
 
@@ -20591,7 +20595,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ProductId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Content API ID of the product, in the form channel:contentLanguage:targetCountry:offerId.
+        /// The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductIdValue { get; set; }
@@ -21209,7 +21213,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// Required. Output only. The REST promotion id to uniquely identify the promotion. Content API methods that
         /// operate on promotions take this as their promotionId parameter. The REST ID for a promotion is of the form
-        /// channel:contentLanguage:targetCountry:promotionId The channel field will have a value of "online",
+        /// [channel]:contentLanguage:targetCountry:promotionId The channel field will have a value of "online",
         /// "in_store", or "online_in_store".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

@@ -550,8 +550,8 @@ namespace Google.Apis.Licensing.v1
         /// and SKUs.
         /// </param>
         /// <param name="customerId">
-        /// Customer's `customerId`. A previous version of this API accepted the primary domain name as a value for this
-        /// field. If the customer is suspended, the server returns an error.
+        /// The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended,
+        /// the server returns an error.
         /// </param>
         public virtual ListForProductRequest ListForProduct(string productId, string customerId)
         {
@@ -577,8 +577,8 @@ namespace Google.Apis.Licensing.v1
             public virtual string ProductId { get; private set; }
 
             /// <summary>
-            /// Customer's `customerId`. A previous version of this API accepted the primary domain name as a value for
-            /// this field. If the customer is suspended, the server returns an error.
+            /// The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is
+            /// suspended, the server returns an error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; private set; }
@@ -656,8 +656,8 @@ namespace Google.Apis.Licensing.v1
         /// Products and SKUs.
         /// </param>
         /// <param name="customerId">
-        /// Customer's `customerId`. A previous version of this API accepted the primary domain name as a value for this
-        /// field. If the customer is suspended, the server returns an error.
+        /// The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended,
+        /// the server returns an error.
         /// </param>
         public virtual ListForProductAndSkuRequest ListForProductAndSku(string productId, string skuId, string customerId)
         {
@@ -691,8 +691,8 @@ namespace Google.Apis.Licensing.v1
             public virtual string SkuId { get; private set; }
 
             /// <summary>
-            /// Customer's `customerId`. A previous version of this API accepted the primary domain name as a value for
-            /// this field. If the customer is suspended, the server returns an error.
+            /// The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is
+            /// suspended, the server returns an error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; private set; }

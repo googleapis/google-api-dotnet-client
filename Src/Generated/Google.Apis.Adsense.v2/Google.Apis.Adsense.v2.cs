@@ -844,6 +844,57 @@ namespace Google.Apis.Adsense.v2
                     this.service = service;
                 }
 
+                /// <summary>Gets information about the selected url channel.</summary>
+                /// <param name="name">
+                /// Required. The name of the url channel to retrieve. Format:
+                /// accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets information about the selected url channel.</summary>
+                public class GetRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.UrlChannel>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the url channel to retrieve. Format:
+                    /// accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adclients/[^/]+/urlchannels/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists active url channels.</summary>
                 /// <param name="parent">
                 /// Required. The ad client which owns the collection of url channels. Format:
@@ -925,6 +976,55 @@ namespace Google.Apis.Adsense.v2
                             Pattern = null,
                         });
                     }
+                }
+            }
+
+            /// <summary>Gets the ad client from the given resource name.</summary>
+            /// <param name="name">
+            /// Required. The name of the ad client to retrieve. Format: accounts/{account}/adclients/{adclient}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the ad client from the given resource name.</summary>
+            public class GetRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.AdClient>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the ad client to retrieve. Format: accounts/{account}/adclients/{adclient}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/adclients/[^/]+$",
+                    });
                 }
             }
 
@@ -3422,6 +3522,55 @@ namespace Google.Apis.Adsense.v2
                     });
                 }
             }
+
+            /// <summary>Gets the saved report from the given resource name.</summary>
+            /// <param name="name">
+            /// Required. The name of the saved report to retrieve. Format: accounts/{account}/reports/{report}
+            /// </param>
+            public virtual GetSavedRequest GetSaved(string name)
+            {
+                return new GetSavedRequest(service, name);
+            }
+
+            /// <summary>Gets the saved report from the given resource name.</summary>
+            public class GetSavedRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.SavedReport>
+            {
+                /// <summary>Constructs a new GetSaved request.</summary>
+                public GetSavedRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the saved report to retrieve. Format: accounts/{account}/reports/{report}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSaved";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}/saved";
+
+                /// <summary>Initializes GetSaved parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/reports/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Sites resource.</summary>
@@ -3810,7 +3959,10 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Product code of the ad client. For example, "AFC" for AdSense for Content.</summary>
+        /// <summary>
+        /// Output only. Reporting product code of the ad client. For example, "AFC" for AdSense for Content.
+        /// Corresponds to the `PRODUCT_CODE` dimension, and present only if the ad client supports reporting.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCode")]
         public virtual string ProductCode { get; set; }
 

@@ -2117,7 +2117,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Status data for storage.</summary>
     public class GoogleChromeManagementV1StorageStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Reports on disk</summary>
+        /// <summary>Output only. Reports on disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disk")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DiskInfo> Disk { get; set; }
 

@@ -284,6 +284,7 @@ namespace Google.Apis.RealTimeBidding.v1
             Creatives = new CreativesResource(service);
             Endpoints = new EndpointsResource(service);
             PretargetingConfigs = new PretargetingConfigsResource(service);
+            PublisherConnections = new PublisherConnectionsResource(service);
         }
 
         /// <summary>Gets the Creatives resource.</summary>
@@ -1557,6 +1558,311 @@ namespace Google.Apis.RealTimeBidding.v1
             }
         }
 
+        /// <summary>Gets the PublisherConnections resource.</summary>
+        public virtual PublisherConnectionsResource PublisherConnections { get; }
+
+        /// <summary>The "publisherConnections" collection of methods.</summary>
+        public class PublisherConnectionsResource
+        {
+            private const string Resource = "publisherConnections";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PublisherConnectionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Batch approves multiple publisher connections.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The bidder for whom publisher connections will be approved. Format: `bidders/{bidder}` where
+            /// `{bidder}` is the account ID of the bidder.
+            /// </param>
+            public virtual BatchApproveRequest BatchApprove(Google.Apis.RealTimeBidding.v1.Data.BatchApprovePublisherConnectionsRequest body, string parent)
+            {
+                return new BatchApproveRequest(service, body, parent);
+            }
+
+            /// <summary>Batch approves multiple publisher connections.</summary>
+            public class BatchApproveRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.BatchApprovePublisherConnectionsResponse>
+            {
+                /// <summary>Constructs a new BatchApprove request.</summary>
+                public BatchApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.BatchApprovePublisherConnectionsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The bidder for whom publisher connections will be approved. Format: `bidders/{bidder}`
+                /// where `{bidder}` is the account ID of the bidder.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.BatchApprovePublisherConnectionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchApprove";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/publisherConnections:batchApprove";
+
+                /// <summary>Initializes BatchApprove parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Batch rejects multiple publisher connections.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The bidder for whom publisher connections will be rejected. Format: `bidders/{bidder}` where
+            /// `{bidder}` is the account ID of the bidder.
+            /// </param>
+            public virtual BatchRejectRequest BatchReject(Google.Apis.RealTimeBidding.v1.Data.BatchRejectPublisherConnectionsRequest body, string parent)
+            {
+                return new BatchRejectRequest(service, body, parent);
+            }
+
+            /// <summary>Batch rejects multiple publisher connections.</summary>
+            public class BatchRejectRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.BatchRejectPublisherConnectionsResponse>
+            {
+                /// <summary>Constructs a new BatchReject request.</summary>
+                public BatchRejectRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.BatchRejectPublisherConnectionsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The bidder for whom publisher connections will be rejected. Format: `bidders/{bidder}`
+                /// where `{bidder}` is the account ID of the bidder.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.BatchRejectPublisherConnectionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchReject";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/publisherConnections:batchReject";
+
+                /// <summary>Initializes BatchReject parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a publisher connection.</summary>
+            /// <param name="name">
+            /// Required. Name of the publisher whose connection information is to be retrieved. In the pattern
+            /// `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder,
+            /// and `{publisher}` is the ads.txt/app-ads.txt publisher ID. See publisherConnection.name.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a publisher connection.</summary>
+            public class GetRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PublisherConnection>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the publisher whose connection information is to be retrieved. In the pattern
+                /// `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the
+                /// bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. See publisherConnection.name.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/publisherConnections/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists publisher connections for a given bidder.</summary>
+            /// <param name="parent">
+            /// Required. Name of the bidder for which publishers have initiated connections. The pattern for this
+            /// resource is `bidders/{bidder}` where `{bidder}` represents the account ID of the bidder.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists publisher connections for a given bidder.</summary>
+            public class ListRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.ListPublisherConnectionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the bidder for which publishers have initiated connections. The pattern for this
+                /// resource is `bidders/{bidder}` where `{bidder}` represents the account ID of the bidder.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Query string to filter publisher connections. Connections can be filtered by `displayName`,
+                /// `publisherPlatform`, and `biddingState`. If no filter is specified, all publisher connections will
+                /// be returned. Example: 'displayName="Great Publisher*" AND publisherPlatform=ADMOB AND biddingState
+                /// != PENDING' See https://google.aip.dev/160 for more information about filtering syntax.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Order specification by which results should be sorted. If no sort order is specified, the results
+                /// will be returned in an arbitrary order. Currently results can be sorted by `createTime`. Example:
+                /// 'createTime DESC'.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Requested page size. The server may return fewer results than requested (due to timeout constraint)
+                /// even if more are available via another call. If unspecified, the server will pick an appropriate
+                /// default. Acceptable values are 1 to 5000, inclusive.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying a page of results the server should return. Typically, this is the value of
+                /// ListPublisherConnectionsResponse.nextPageToken returned from the previous call to the
+                /// 'ListPublisherConnections' method.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/publisherConnections";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets a bidder account by its name.</summary>
         /// <param name="name">Required. Name of the bidder to get. Format: `bidders/{bidderAccountId}`</param>
         public virtual GetRequest Get(string name)
@@ -2716,7 +3022,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>
         /// The detected IAB Global Vendor List (GVL) IDs for this creative. See the IAB Global Vendor List at
-        /// https://vendorlist.consensu.org/v2/vendor-list.json for details about the vendors.
+        /// https://vendor-list.consensu.org/v2/vendor-list.json for details about the vendors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedGvlIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedGvlIds { get; set; }
@@ -2868,6 +3174,58 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileAppTargeting")]
         public virtual StringTargetingDimension MobileAppTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to approve a batch of publisher connections.</summary>
+    public class BatchApprovePublisherConnectionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the publishers with which connections will be approved. In the pattern
+        /// `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and
+        /// `{publisher}` is the ads.txt/app-ads.txt publisher ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response for the request to approve a batch of publisher connections.</summary>
+    public class BatchApprovePublisherConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The publisher connections that have been approved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherConnections")]
+        public virtual System.Collections.Generic.IList<PublisherConnection> PublisherConnections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to reject a batch of publisher connections.</summary>
+    public class BatchRejectPublisherConnectionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the publishers with whom connection will be rejected. In the pattern
+        /// `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and
+        /// `{publisher}` is the ads.txt/app-ads.txt publisher ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response for the request to reject a batch of publisher connections.</summary>
+    public class BatchRejectPublisherConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The publisher connections that have been rejected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherConnections")]
+        public virtual System.Collections.Generic.IList<PublisherConnection> PublisherConnections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3610,6 +3968,25 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response to a request for listing publisher connections.</summary>
+    public class ListPublisherConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the
+        /// ListPublisherConnectionsRequest.pageToken field in the subsequent call to the `ListPublisherConnections`
+        /// method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of publisher connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherConnections")]
+        public virtual System.Collections.Generic.IList<PublisherConnection> PublisherConnections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The list user list response.</summary>
     public class ListUserListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3995,6 +4372,44 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webTargeting")]
         public virtual StringTargetingDimension WebTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Open Bidding exchange's connection to a publisher. This is initiated by the publisher for the bidder to
+    /// review. If approved by the bidder, this means that the bidder agrees to receive bid requests from the publisher.
+    /// </summary>
+    public class PublisherConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the publisher has been approved by the bidder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biddingState")]
+        public virtual string BiddingState { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the publisher initiated a connection with the bidder (irrespective of if or
+        /// when the bidder approves it). This is subsequently updated if the publisher revokes and re-initiates the
+        /// connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Publisher display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the publisher connection. This follows the pattern
+        /// `bidders/{bidder}/publisherConnections/{publisher}`, where `{bidder}` represents the account ID of the
+        /// bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether the publisher is an Ad Manager or AdMob publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherPlatform")]
+        public virtual string PublisherPlatform { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

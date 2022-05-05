@@ -2356,9 +2356,9 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>Create a service.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed),
-            /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-            /// example: namespaces/PROJECT_ID
+            /// The namespace in which the service should be created. For Cloud Run (fully managed), replace {namespace}
+            /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
+            /// namespaces/PROJECT_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
             {
@@ -2377,9 +2377,9 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed),
-                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-                /// example: namespaces/PROJECT_ID
+                /// The namespace in which the service should be created. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2387,7 +2387,6 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
                 /// the request. Supported values: `all`
-                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:create_internal_service_request)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -2748,9 +2747,8 @@ namespace Google.Apis.CloudRun.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
-            /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
-            /// namespaces/PROJECT_ID
+            /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace} with the
+            /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
             /// </param>
             public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
             {
@@ -2773,9 +2771,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
-                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
-                /// namespaces/PROJECT_ID
+                /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2783,7 +2780,6 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
                 /// the request. Supported values: `all`
-                /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:replace_internal_service_request)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -4667,9 +4663,9 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Create a service.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed),
-                /// replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-                /// example: namespaces/PROJECT_ID
+                /// The namespace in which the service should be created. For Cloud Run (fully managed), replace
+                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
+                /// namespaces/PROJECT_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
                 {
@@ -4688,9 +4684,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully
-                    /// managed), replace {namespace} with the project ID or number. It takes the form
-                    /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                    /// The namespace in which the service should be created. For Cloud Run (fully managed), replace
+                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
+                    /// example: namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4698,7 +4694,6 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
                     /// persisting the request. Supported values: `all`
-                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:create_internal_service_request)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -5140,9 +5135,8 @@ namespace Google.Apis.CloudRun.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
-                /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
-                /// namespaces/PROJECT_ID
+                /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
                 /// </param>
                 public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
                 {
@@ -5165,9 +5159,9 @@ namespace Google.Apis.CloudRun.v1
                     }
 
                     /// <summary>
-                    /// LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace
-                    /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For
-                    /// example: namespaces/PROJECT_ID
+                    /// The name of the service being replaced. For Cloud Run (fully managed), replace {namespace} with
+                    /// the project ID or number. It takes the form namespaces/{namespace}. For example:
+                    /// namespaces/PROJECT_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5175,7 +5169,6 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
                     /// persisting the request. Supported values: `all`
-                    /// LINT.ThenChange(//depot/google3/google/cloud/serverless/internal/internal_service.proto:replace_internal_service_request)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -5460,7 +5453,8 @@ namespace Google.Apis.CloudRun.v1.Data
     /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
     /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
     /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
     /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5910,24 +5904,6 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
-    public class ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// ImageDigest holds the resolved digest for the image specified, regardless of whether a tag or digest was
-        /// originally specified in the Container object.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
-        public virtual string ImageDigest { get; set; }
-
-        /// <summary>The name of the container, if specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Resource to hold the state and status of a user's domain mapping. NOTE: This resource is currently in Beta.
     /// </summary>
@@ -6317,6 +6293,25 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.</summary>
+    public class GRPCAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Port number of the gRPC service. Number must be in the range 1 to 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
+        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
+        /// behavior is defined by gRPC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Condition defines a generic condition for a Resource.</summary>
     public class GoogleCloudRunV1Condition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6489,13 +6484,6 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
-
-        /// <summary>
-        /// Status information for each of the specified containers. The status includes the resolved digest for
-        /// specified images, which occurs during creation of the job.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
-        public virtual System.Collections.Generic.IList<ContainerStatus> ContainerStatuses { get; set; }
 
         /// <summary>Number of executions created for this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionCount")]
@@ -7156,6 +7144,12 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
         public virtual System.Nullable<int> FailureThreshold { get; set; }
+
+        /// <summary>
+        /// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
+        public virtual GRPCAction Grpc { get; set; }
 
         /// <summary>
         /// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
