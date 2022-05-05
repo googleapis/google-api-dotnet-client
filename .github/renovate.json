@@ -25,6 +25,17 @@
         "Microsoft.AspNetCore."
       ],
       "allowedVersions": "<3.1.0"
+    },
+    {
+      "matchPaths": [
+        "Src/Support/Google.Apis.Tests/**",
+        "Src/Support/Google.Apis.Auth.Tests/**",
+        "Src/Support/IntegrationTests/**"
+      ],
+      "matchPackageNames": [
+        "xunit.runner.visualstudio"
+      ],
+      "allowedVersions": "<2.4.4"
     }
   ],
   "schedule": ["before 8am every weekday"],
