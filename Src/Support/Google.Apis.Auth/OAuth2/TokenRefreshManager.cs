@@ -121,6 +121,14 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             refreshTask = refreshTask.WithCancellationToken(cancellationToken);
+            // Note that strictly speaking, the token returned here may already be soft, hard or really expired.
+            // This may happen for tokens that are short lived enough, or in systems with significant load
+            // where maybe the token itself was obtained quickly but the task could not acquire a thread fast enough
+            // in which to resume.
+            // We don't retry as the conditions under which this may happen are not inmediately recoverable and possibly rare,
+            // and the token will be refreshed again on a subsequent token request.
+            // Also, note that the token is unusable only if it's really expired, if it's soft/hard expire it still may be valid
+            // if used fast enough.
             return (await refreshTask.ConfigureAwait(false)).AccessToken;
         }
 

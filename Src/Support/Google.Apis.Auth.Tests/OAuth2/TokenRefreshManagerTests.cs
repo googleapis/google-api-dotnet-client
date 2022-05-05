@@ -137,11 +137,14 @@ namespace Google.Apis.Auth.Tests.OAuth2
             trm = new TokenRefreshManager(async ct =>
             {
                 await Interlocked.CompareExchange(ref delayTask, null, null).Task;
+                var utcNow = clock.UtcNow;
                 trm.Token = new TokenResponse
                 {
-                    AccessToken = clock.UtcNow.ToString("O"),
+                    AccessToken = utcNow.ToString("O"),
+                    // Soft expires on the iteration after the one it was issued in.
+                    // Hard expires on the second iteration after the one it was issued in.
                     ExpiresInSeconds = TokenResponse.TokenRefreshTimeWindowSeconds + 1,
-                    IssuedUtc = clock.UtcNow
+                    IssuedUtc = utcNow
                 };
                 return true;
             }, clock, logger);
@@ -160,13 +163,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 Interlocked.CompareExchange(ref delayTask, null, null).SetResult(0);
                 var tokens = await Task.WhenAll(tokenTasks);
 
-                // Check all tokens are the same
+                // We cannot be certain that all the tokens obtained during an iteration
+                // are the same. The refresh task started on a previous iteration may
+                // finish during this one, as we don't wait for refresh tasks to be done
+                // before starting a new iteration.
                 foreach (var token in tokens)
                 {
-                    Assert.Equal(tokens[0], token);
+                    distinctTokens.Add(token);
                 }
-                distinctTokens.Add(tokens[0]);
             }
+            // But, because the tokens soft expire on the next iteration they are issued
+            // and hard expire 2 iterations after they are issued, we know that we at least
+            // get iterations / 2 distinct tokens.
             Assert.InRange(distinctTokens.Count, refreshIterations / 2, refreshIterations);
         }
 
@@ -339,11 +347,12 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var refreshCompletionSource = new TaskCompletionSource<bool>();
             var clock = new MockClock(new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             var logger = new NullLogger();
+            var utcNow = clock.UtcNow;
             var softExpiredToken = new TokenResponse
             {
-                AccessToken = clock.UtcNow.ToString("O"),
+                AccessToken = utcNow.ToString("O"),
                 ExpiresInSeconds = TokenResponse.TokenRefreshTimeWindowSeconds,
-                IssuedUtc = clock.UtcNow
+                IssuedUtc = utcNow
             };
             TokenRefreshManager trm = new TokenRefreshManager(ThrowsWhenRefreshing, clock, logger)
             {
