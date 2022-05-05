@@ -22794,6 +22794,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
         public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
 
+        /// <summary>
+        /// Additional parameters to be put into Dialogflow CX session parameters. To remove a parameter from the
+        /// session, clients should explicitly set the parameter value to null. Note: this field should only be used if
+        /// you are connecting to a Dialogflow CX agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cxParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CxParameters { get; set; }
+
         /// <summary>An input event to send to Dialogflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventInput")]
         public virtual GoogleCloudDialogflowV2EventInput EventInput { get; set; }

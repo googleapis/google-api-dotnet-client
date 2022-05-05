@@ -282,8 +282,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to list products that can be resold to their customers. It should be called directly by
-            /// the partner using service accounts.
+            /// To retrieve the products that can be resold by the partner. It should be autenticated with a service
+            /// account.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -294,8 +294,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to list products that can be resold to their customers. It should be called directly by
-            /// the partner using service accounts.
+            /// To retrieve the products that can be resold by the partner. It should be autenticated with a service
+            /// account.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse>
             {
@@ -309,6 +309,16 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 /// <summary>Required. The parent, the partner that can resell. Format: partners/{partner}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Specifies the filters for the products results. The syntax defined in the EBNF grammar:
+                /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be thrown if any specified
+                /// parameter is not supported. Currently, it can only be used by Youtube partners. Allowed parameters
+                /// are: - regionCodes - zipCode - eligibilityId Multiple parameters can be specified, for example:
+                /// "regionCodes=US zipCode=94043 eligibilityId=2022H1Campaign"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
                 /// <summary>
                 /// Optional. The maximum number of products to return. The service may return fewer than this value. If
@@ -346,6 +356,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^partners/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -385,8 +403,69 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to list promotions, such as free trial, that can be applied on subscriptions. It should
-            /// be called directly by the partner using service accounts.
+            /// To find eligible promotions for the current user. The API requires user authorization via OAuth. The
+            /// user is inferred from the authenticated OAuth credential.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent, the partner that can resell. Format: partners/{partner}
+            /// </param>
+            public virtual FindEligibleRequest FindEligible(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest body, string parent)
+            {
+                return new FindEligibleRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// To find eligible promotions for the current user. The API requires user authorization via OAuth. The
+            /// user is inferred from the authenticated OAuth credential.
+            /// </summary>
+            public class FindEligibleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse>
+            {
+                /// <summary>Constructs a new FindEligible request.</summary>
+                public FindEligibleRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent, the partner that can resell. Format: partners/{partner}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "findEligible";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/promotions:findEligible";
+
+                /// <summary>Initializes FindEligible parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^partners/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// To retrieve the promotions, such as free trial, that can be used by the partner. It should be
+            /// autenticated with a service account.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -397,8 +476,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to list promotions, such as free trial, that can be applied on subscriptions. It should
-            /// be called directly by the partner using service accounts.
+            /// To retrieve the promotions, such as free trial, that can be used by the partner. It should be
+            /// autenticated with a service account.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse>
             {
@@ -415,8 +494,11 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
                 /// <summary>
                 /// Optional. Specifies the filters for the promotion results. The syntax defined in the EBNF grammar:
-                /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. Examples: - applicable_products: "sku1" -
-                /// region_codes: "US" - applicable_products: "sku1" AND region_codes: "US"
+                /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be thrown if the specified
+                /// parameter(s) is not supported. Currently, it can only be used by Youtube partners. Allowed
+                /// parameters are: - region_codes: "US" - zip_code: "94043" - eligibility_id: "2022H1Campaign" Multiple
+                /// parameters can be specified, for example: "region_codes=US zip_code=94043
+                /// eligibility_id=2022H1Campaign"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1131,6 +1213,57 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the filters for the promotion results. The syntax defined in the EBNF grammar:
+        /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be thrown if any specified parameter is
+        /// not supported. Currently, it can only be used by Youtube partners. Allowed parameters are: - regionCodes -
+        /// zipCode - eligibilityId - applicableProducts Multiple parameters can be specified, for example:
+        /// "regionCodes=US zipCode=94043 eligibilityId=2022H1Campaign", or
+        /// "applicableProducts=partners/p1/products/product2"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of promotions to return. The service may return fewer than this value. If
+        /// unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be
+        /// coerced to 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the
+        /// subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that
+        /// provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing the found promotions for the current user.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The promotions for the current user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1Promotion> Promotions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1326,6 +1459,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrialEndTime")]
         public virtual object FreeTrialEndTime { get; set; }
 
+        /// <summary>Required. The line items of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem> LineItems { get; set; }
+
         /// <summary>
         /// Output only. Response only. Resource name of the subscription. It will have the format of
         /// "partners/{partner_id}/subscriptions/{subscription_id}"
@@ -1348,16 +1485,24 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ProcessingState { get; set; }
 
         /// <summary>
-        /// Required. Required. Resource name that identifies the purchased products. The format will be
-        /// 'partners/{partner_id}/products/{product_id}'.
+        /// Required. Deprecated: consider using `line_items` as the input. Required. Resource name that identifies the
+        /// purchased products. The format will be 'partners/{partner_id}/products/{product_id}'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<string> Products { get; set; }
 
         /// <summary>
-        /// Optional. Optional. Resource name that identifies one or more promotions that can be applied on the product.
-        /// A typical promotion for a subscription is Free trial. The format will be
-        /// 'partners/{partner_id}/promotions/{promotion_id}'.
+        /// Optional. Subscription-level promotions. Only free trial is supported on this level. It determines the first
+        /// renewal time of the subscription to be the end of the free trial period. Specify the promotion resource name
+        /// only when used as input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec> PromotionSpecs { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: consider using the top-level `promotion_specs` as the input. Optional. Resource name
+        /// that identifies one or more promotions that can be applied on the product. A typical promotion for a
+        /// subscription is Free trial. The format will be 'partners/{partner_id}/promotions/{promotion_id}'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<string> Promotions { get; set; }
@@ -1413,6 +1558,68 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>The reason of the cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Individual line item definition of a subscription. Next id: 5</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. It is set only if the line item has its own free trial applied. End time of the line item free
+        /// trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It will be set the same as
+        /// createTime if no free trial promotion is specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemFreeTrialEndTime")]
+        public virtual object LineItemFreeTrialEndTime { get; set; }
+
+        /// <summary>
+        /// Optional. The promotions applied on the line item. It can be: - a free trial promotion, which overrides the
+        /// subscription-level free trial promotion. - an introductory pricing promotion. When used as input in Create
+        /// or Provision API, specify its resource name only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemPromotionSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec> LineItemPromotionSpecs { get; set; }
+
+        /// <summary>
+        /// Required. Product resource name that identifies one the line item The format is
+        /// 'partners/{partner_id}/products/{product_id}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; }
+
+        /// <summary>Output only. The state of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the spec for one promotion.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The duration of the free trial if the promotion is of type FREE_TRIAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTrialDuration")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration FreeTrialDuration { get; set; }
+
+        /// <summary>
+        /// Output only. The details of the introductory pricing spec if the promotion is of type INTRODUCTORY_PRICING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricingDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails IntroductoryPricingDetails { get; set; }
+
+        /// <summary>
+        /// Required. Promotion resource name that identifies a promotion. The format is
+        /// 'partners/{partner_id}/promotions/{promotion_id}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotion")]
+        public virtual string Promotion { get; set; }
+
+        /// <summary>Output only. The type of the promotion for the spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

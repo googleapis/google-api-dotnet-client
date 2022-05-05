@@ -2986,17 +2986,21 @@ namespace Google.Apis.DisplayVideo.v1
                 /// combined by `OR` for the same field. * A restriction has the form of `{field} {operator} {value}`. *
                 /// The operator must be `EQUALS (=)` for the following fields: - `entityStatus` - `creativeType`. -
                 /// `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` - `exchangeReviewStatus` - `dynamic`
-                /// - `creativeId` * The operator must be `HAS (:)` for the following fields: - `lineItemIds` * For
-                /// `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may be at most one restriction. *
-                /// For `dimensions`, the value is in the form of `"{width}x{height}"`. * For `exchangeReviewStatus`,
-                /// the value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration` and `maxDuration`, the
+                /// - `creativeId` - `minModifiedTime` - `maxModifiedTime` * The operator must be `HAS (:)` for the
+                /// following fields: - `lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`,
+                /// `minModifiedTime`, `maxModifiedTime`, and `dynamic`, there may be at most one restriction. * For
+                /// `dimensions`, the value is in the form of `"{width}x{height}"`. * For `exchangeReviewStatus`, the
+                /// value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration` and `maxDuration`, the
                 /// value is in the form of `"{duration}s"`. Only seconds are supported with millisecond granularity. *
-                /// There may be multiple `lineItemIds` restrictions in order to search against multiple possible line
-                /// item IDs. * There may be multiple `creativeId` restrictions in order to search against multiple
-                /// possible creative IDs. Examples: * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All
-                /// active creatives with 300x400 or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND
-                /// (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives that are approved by AdX or
-                /// AppNexus, with a minimum duration of 5 seconds and 200ms. `dynamic="true" AND minDuration="5.2s" AND
+                /// For `minModifiedTime` and `maxModifiedTime`, the value is a unix timestamp (GMT) in seconds. The
+                /// time filtered is against the update_time field in the creative, which includes system updates to the
+                /// creative (e.g. creative review updates). * There may be multiple `lineItemIds` restrictions in order
+                /// to search against multiple possible line item IDs. * There may be multiple `creativeId` restrictions
+                /// in order to search against multiple possible creative IDs. Examples: * All native creatives:
+                /// `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100 dimensions:
+                /// `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR dimensions="50x100")` * All
+                /// dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and
+                /// 200ms. `dynamic="true" AND minDuration="5.2s" AND
                 /// (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR
                 /// exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All video creatives that are
                 /// associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR
@@ -19960,7 +19964,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
     public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of ContactInfo objects defining Customer Match audience members.</summary>
+        /// <summary>
+        /// A list of ContactInfo objects defining Customer Match audience members. The size of contact_infos mustn't be
+        /// greater than 500,000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactInfos")]
         public virtual System.Collections.Generic.IList<ContactInfo> ContactInfos { get; set; }
 
@@ -20612,7 +20619,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("universalAdId")]
         public virtual UniversalAdId UniversalAdId { get; set; }
 
-        /// <summary>Output only. The timestamp when the creative was last updated. Assigned by the system.</summary>
+        /// <summary>
+        /// Output only. The timestamp when the creative was last updated, either by the user or system (e.g. creative
+        /// review). Assigned by the system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
@@ -23448,7 +23458,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
     public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of mobile device IDs defining Customer Match audience members.</summary>
+        /// <summary>
+        /// A list of mobile device IDs defining Customer Match audience members. The size of mobile_device_ids mustn't
+        /// be greater than 500,000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceIds")]
         public virtual System.Collections.Generic.IList<string> MobileDeviceIds { get; set; }
 

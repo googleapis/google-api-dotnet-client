@@ -997,6 +997,25 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.</summary>
+    public class GRPCAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Port number of the gRPC service. Number must be in the range 1 to 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
+        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
+        /// behavior is defined by gRPC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1731,6 +1750,12 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
         public virtual System.Nullable<int> FailureThreshold { get; set; }
+
+        /// <summary>
+        /// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
+        public virtual GRPCAction Grpc { get; set; }
 
         /// <summary>
         /// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.

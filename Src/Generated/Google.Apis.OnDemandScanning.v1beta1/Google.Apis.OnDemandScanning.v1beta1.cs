@@ -1094,9 +1094,8 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
 
     /// <summary>
     /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is
-    /// a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of
-    /// CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version
-    /// of the score.
+    /// a message we will try to use for storing various versions of CVSS rather than making a separate proto for
+    /// storing a specific version.
     /// </summary>
     public class CVSS : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1476,6 +1475,20 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>Git repository URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates the location at which a package was found.</summary>
+    public class GrafeasV1FileLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with
+        /// the path to jar file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1963,6 +1976,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
+
+        /// <summary>The location at which this package was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileLocation")]
+        public virtual System.Collections.Generic.IList<GrafeasV1FileLocation> FileLocation { get; set; }
 
         /// <summary>Output only. Whether a fix is available for this package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixAvailable")]

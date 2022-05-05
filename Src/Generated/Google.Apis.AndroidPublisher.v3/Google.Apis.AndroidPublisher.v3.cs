@@ -9195,7 +9195,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; }
 
-        /// <summary>The inapp product SKU.</summary>
+        /// <summary>The inapp product SKU. May not be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
 
@@ -9207,7 +9207,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
         public virtual System.Nullable<long> PurchaseTimeMillis { get; set; }
 
-        /// <summary>The purchase token generated to identify this purchase.</summary>
+        /// <summary>The purchase token generated to identify this purchase. May not be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; }
 
@@ -9219,7 +9219,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; }
 
-        /// <summary>The quantity associated with the purchase of the inapp product.</summary>
+        /// <summary>
+        /// The quantity associated with the purchase of the inapp product. If not present, the quantity is 1.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
 

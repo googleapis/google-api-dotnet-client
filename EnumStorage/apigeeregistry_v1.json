@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ApigeeRegistry.v1.ApigeeRegistryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ApigeeRegistry.v1.ApigeeRegistryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
