@@ -2645,8 +2645,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual AbortInfo Abort { get; set; }
 
         /// <summary>Display information of an App Engine service version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appEngineVersionInfo")]
-        public virtual AppEngineVersionInfo AppEngineVersionInfo { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineVersion")]
+        public virtual AppEngineVersionInfo AppEngineVersion { get; set; }
 
         /// <summary>This is a step that leads to the final state Drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]

@@ -5950,6 +5950,21 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for using injectable credentials or service account</summary>
+    public class AuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authentication type for session execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>Configuration for using end user authentication</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("injectableCredentialsConfig")]
+        public virtual InjectableCredentialsConfig InjectableCredentialsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Autoscaling Policy config associated with the cluster.</summary>
     public class AutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6240,7 +6255,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. members can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. members can have the following
         /// values: allUsers: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with
         /// a Google account or a service account. user:{emailid}: An email address that represents a specific Google
@@ -6334,11 +6349,11 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; }
 
         /// <summary>
-        /// Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control
+        /// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control
         /// the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster
-        /// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note
-        /// that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config
-        /// or virtualClusterConfig must be specified.
+        /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and
+        /// values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualClusterConfig")]
         public virtual VirtualClusterConfig VirtualClusterConfig { get; set; }
@@ -6368,7 +6383,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; }
 
-        /// <summary>Optional. The configuration(s) for a dataproc metric(s).</summary>
+        /// <summary>Optional. The config for Dataproc metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetricConfig")]
         public virtual DataprocMetricConfig DataprocMetricConfig { get; set; }
 
@@ -6385,9 +6400,9 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual GceClusterConfig GceClusterConfig { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config
-        /// for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute
-        /// Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and
+        /// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to The Kubernetes Engine config
+        /// for Dataproc clusters deployed to Kubernetes. These config settings are mutually exclusive with Compute
+        /// Engine-based options, such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and
         /// autoscaling_config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterConfig")]
@@ -6457,7 +6472,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hdfsMetrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> HdfsMetrics { get; set; }
 
-        /// <summary>The YARN metrics.</summary>
+        /// <summary>YARN metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnMetrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> YarnMetrics { get; set; }
 
@@ -6604,10 +6619,10 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains dataproc metric config.</summary>
+    /// <summary>Dataproc metric config.</summary>
     public class DataprocMetricConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Metrics to be enabled.</summary>
+        /// <summary>Required. Metrics to enable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
@@ -6963,9 +6978,10 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTarget { get; set; }
 
         /// <summary>
-        /// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the
-        /// 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same
-        /// location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+        /// Optional. GKE node pools where workloads will be scheduled. At least one node pool must be assigned the
+        /// DEFAULT GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a DEFAULT
+        /// GkeNodePoolTarget. Each role can be given to only one GkeNodePoolTarget. All node pools must have the same
+        /// location settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolTarget")]
         public virtual System.Collections.Generic.IList<GkeNodePoolTarget> NodePoolTarget { get; set; }
@@ -7007,7 +7023,9 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. Whether the nodes are created as preemptible VM instances
-        /// (https://cloud.google.com/compute/docs/instances/preemptible).
+        /// (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node
+        /// pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the
+        /// DEFAULT node pool will assume the CONTROLLER role).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; }
@@ -7022,7 +7040,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.</summary>
+    /// <summary>A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a node pool.</summary>
     public class GkeNodePoolAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of accelerator cards exposed to an instance.</summary>
@@ -7051,13 +7069,13 @@ namespace Google.Apis.Dataproc.v1.Data
     public class GkeNodePoolAutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The maximum number of nodes in the NodePool. Must be &amp;gt;= min_node_count. Note: Quota must be
-        /// sufficient to scale up the cluster.
+        /// The maximum number of nodes in the node pool. Must be &amp;gt;= min_node_count, and must be &amp;gt; 0.
+        /// Note: Quota must be sufficient to scale up the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
         public virtual System.Nullable<int> MaxNodeCount { get; set; }
 
-        /// <summary>The minimum number of nodes in the NodePool. Must be &gt;= 0 and &lt;= max_node_count.</summary>
+        /// <summary>The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= max_node_count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
 
@@ -7066,13 +7084,13 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
-    /// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster
+    /// The configuration of a GKE node pool used by a Dataproc-on-GKE cluster
     /// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
     /// </summary>
     public class GkeNodePoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid
+        /// Optional. The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid
         /// configuration is present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
@@ -7084,8 +7102,10 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where
-        /// NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not
-        /// specified during NodePool creation, Dataproc will choose a location.
+        /// node pool nodes associated with a Dataproc on GKE virtual cluster will be located.Note: All node pools
+        /// associated with a virtual cluster must be located in the same region as the virtual cluster, and they must
+        /// be located in the same zone within that region.If a location is not specified during node pool creation,
+        /// Dataproc on GKE will choose the zone.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
@@ -7094,27 +7114,27 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GKE NodePools that Dataproc workloads run on.</summary>
+    /// <summary>GKE node pools that Dataproc workloads run on.</summary>
     public class GkeNodePoolTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The target GKE NodePool. Format:
+        /// Required. The target GKE node pool. Format:
         /// 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
         public virtual string NodePool { get; set; }
 
         /// <summary>
-        /// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with
-        /// the specified shape. If one with the same name already exists, it is verified against all specified fields.
-        /// If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name
-        /// is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default
-        /// values.This is an input only field. It will not be returned by the API.
+        /// Input only. The configuration for the GKE node pool.If specified, Dataproc attempts to create a node pool
+        /// with the specified shape. If one with the same name already exists, it is verified against all specified
+        /// fields. If a field differs, the virtual cluster creation will fail.If omitted, any node pool with the
+        /// specified name is used. If a node pool with the specified name does not exist, Dataproc create a node pool
+        /// with default values.This is an input only field. It will not be returned by the API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolConfig")]
         public virtual GkeNodePoolConfig NodePoolConfig { get; set; }
 
-        /// <summary>Required. The types of role for a GKE NodePool</summary>
+        /// <summary>Required. The roles associated with the GKE node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
@@ -7257,6 +7277,13 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("credentialsCiphertext")]
         public virtual string CredentialsCiphertext { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific injectable credentials authentication parameters</summary>
+    public class InjectableCredentialsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8024,18 +8051,16 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
-    /// </summary>
+    /// <summary>The metric source to enable, with any optional metrics, to override Dataproc default metrics.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        /// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricOverrides")]
         public virtual System.Collections.Generic.IList<string> MetricOverrides { get; set; }
 
-        /// <summary>Required. MetricSource that should be enabled</summary>
+        /// <summary>Required. MetricSource to enable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricSource")]
         public virtual string MetricSource { get; set; }
 
@@ -8599,6 +8624,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
+        /// <summary>Optional. Authentication configuration for the session execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAuthenticationConfig")]
+        public virtual AuthenticationConfig SessionAuthenticationConfig { get; set; }
+
         /// <summary>Optional. Version of the batch runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -8690,7 +8719,7 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s
-        /// of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject
+        /// of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject
         /// them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -9226,9 +9255,8 @@ namespace Google.Apis.Dataproc.v1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the resource. Permissions with wildcards (such as '*' or 'storage.*')
-        /// are not allowed. For more information see IAM Overview
-        /// (https://cloud.google.com/iam/docs/overview#permissions).
+        /// The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are
+        /// not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
@@ -9260,9 +9288,8 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
-    /// Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a
-    /// Dataproc-on-GKE cluster
-    /// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+    /// The Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such
+    /// as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke).
     /// </summary>
     public class VirtualClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9275,12 +9302,12 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual KubernetesClusterConfig KubernetesClusterConfig { get; set; }
 
         /// <summary>
-        /// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If
-        /// you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or
-        /// EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed,
-        /// and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets
-        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
-        /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
+        /// output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US,
+        /// ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is
+        /// deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp
+        /// buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        /// requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stagingBucket")]
         public virtual string StagingBucket { get; set; }

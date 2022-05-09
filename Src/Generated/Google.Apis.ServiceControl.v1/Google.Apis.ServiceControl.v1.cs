@@ -1537,10 +1537,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Unimplemented.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
-
         /// <summary>DO NOT USE. This is an experimental field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importance")]
         public virtual string Importance { get; set; }

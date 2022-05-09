@@ -2948,7 +2948,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
     /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
     /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
     /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3244,6 +3245,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Optional. Use default Cloud Build pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPool")]
         public virtual DefaultPool DefaultPool { get; set; }
+
+        /// <summary>
+        /// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format.
+        /// If unspecified, a default timeout of 1h is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionTimeout")]
+        public virtual object ExecutionTimeout { get; set; }
 
         /// <summary>Optional. Use private Cloud Build pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privatePool")]

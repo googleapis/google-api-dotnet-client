@@ -806,8 +806,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
-            /// for the appropriate value for this field.
+            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AccessContextManager.v1.Data.TestIamPermissionsRequest body, string resource)
             {
@@ -830,8 +830,9 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -1373,8 +1374,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
-            /// for the appropriate value for this field.
+            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AccessContextManager.v1.Data.TestIamPermissionsRequest body, string resource)
             {
@@ -1397,8 +1398,9 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -1588,8 +1590,8 @@ namespace Google.Apis.AccessContextManager.v1
         /// <summary>Gets the IAM policy for the specified Access Context Manager access policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
-        /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
-        /// appropriate value for this field.
+        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.AccessContextManager.v1.Data.GetIamPolicyRequest body, string resource)
         {
@@ -1608,8 +1610,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
-            /// appropriate value for this field.
+            /// REQUIRED: The resource for which the policy is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
@@ -1798,8 +1800,8 @@ namespace Google.Apis.AccessContextManager.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
-        /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
-        /// appropriate value for this field.
+        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AccessContextManager.v1.Data.SetIamPolicyRequest body, string resource)
         {
@@ -1822,8 +1824,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
-            /// appropriate value for this field.
+            /// REQUIRED: The resource for which the policy is being specified. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
@@ -1865,8 +1867,8 @@ namespace Google.Apis.AccessContextManager.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
-        /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for
-        /// the appropriate value for this field.
+        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AccessContextManager.v1.Data.TestIamPermissionsRequest body, string resource)
         {
@@ -1889,8 +1891,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
-            /// for the appropriate value for this field.
+            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
@@ -2679,7 +2681,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
     /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
     /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
     /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
     /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {

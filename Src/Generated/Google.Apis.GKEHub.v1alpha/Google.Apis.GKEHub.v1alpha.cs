@@ -2859,7 +2859,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
     /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
     /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
     /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4039,6 +4040,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployCloudConsoleProxy")]
         public virtual System.Nullable<bool> DeployCloudConsoleProxy { get; set; }
+
+        /// <summary>Enable access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAccessToken")]
+        public virtual System.Nullable<bool> EnableAccessToken { get; set; }
 
         /// <summary>Output only. Encrypted OIDC Client secret</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]

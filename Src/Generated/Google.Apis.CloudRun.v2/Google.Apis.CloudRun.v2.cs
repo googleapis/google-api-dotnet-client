@@ -2550,17 +2550,9 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Defines a status condition for a resource.</summary>
     public class GoogleCloudRunV2Condition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A reason for the domain mapping condition.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domainMappingReason")]
-        public virtual string DomainMappingReason { get; set; }
-
         /// <summary>A reason for the execution condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionReason")]
         public virtual string ExecutionReason { get; set; }
-
-        /// <summary>A reason for the internal condition.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("internalReason")]
-        public virtual string InternalReason { get; set; }
 
         /// <summary>Last time the condition transitioned from one status to another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastTransitionTime")]
@@ -2632,7 +2624,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> Env { get; set; }
 
         /// <summary>
-        /// Required. URL of the Container image in Google Container Registry or Docker More info:
+        /// Required. URL of the Container image in Google Container Registry or Google Artifact Registry. More info:
         /// https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
@@ -2678,24 +2670,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
-    public class GoogleCloudRunV2ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// ImageDigest holds the resolved digest for the image specified, regardless of whether a tag or digest was
-        /// originally specified in the Container object.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
-        public virtual string ImageDigest { get; set; }
-
-        /// <summary>The name of the container, if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2984,10 +2958,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
 
-        /// <summary>Output only. Status information for each of the containers specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerStatus> ContainerStatuses { get; set; }
-
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -3223,14 +3193,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
 
-        /// <summary>Indicates whether Confidential Cloud Run is enabled in this Revision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidential")]
-        public virtual System.Nullable<bool> Confidential { get; set; }
-
-        /// <summary>Sets the maximum number of requests that each serving instance can receive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerConcurrency")]
-        public virtual System.Nullable<int> ContainerConcurrency { get; set; }
-
         /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
@@ -3299,6 +3261,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. The Google Console URI to obtain logs for the Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logUri")]
         public virtual string LogUri { get; set; }
+
+        /// <summary>Sets the maximum number of requests that each serving instance can receive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
+        public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
 
         /// <summary>Output only. The unique name of this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3382,14 +3348,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>Enables Confidential Cloud Run in Revisions created using this template.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidential")]
-        public virtual System.Nullable<bool> Confidential { get; set; }
-
-        /// <summary>Sets the maximum number of requests that each serving instance can receive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerConcurrency")]
-        public virtual System.Nullable<int> ContainerConcurrency { get; set; }
-
         /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
@@ -3408,6 +3366,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>KRM-style labels for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Sets the maximum number of requests that each serving instance can receive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
+        public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
 
         /// <summary>
         /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the
@@ -3587,7 +3549,9 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual object ExpireTime { get; set; }
 
         /// <summary>
-        /// Output only. A number that monotonically increases every time the user modifies the desired state.
+        /// Output only. A number that monotonically increases every time the user modifies the desired state. Please
+        /// note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a
+        /// `string` instead of an `integer`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
@@ -3647,7 +3611,8 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Output only. The generation of this Service currently serving traffic. See comments in `reconciling` for
-        /// additional information on reconciliation process in Cloud Run.
+        /// additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64
+        /// value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<long> ObservedGeneration { get; set; }
@@ -4127,7 +4092,8 @@ namespace Google.Apis.CloudRun.v2.Data
     /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
     /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
     /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
     /// </summary>
     public class GoogleIamV1AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {

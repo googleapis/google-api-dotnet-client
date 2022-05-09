@@ -303,7 +303,6 @@ namespace Google.Apis.Baremetalsolution.v2
                 NfsShares = new NfsSharesResource(service);
                 ProvisioningConfigs = new ProvisioningConfigsResource(service);
                 ProvisioningQuotas = new ProvisioningQuotasResource(service);
-                SnapshotSchedulePolicies = new SnapshotSchedulePoliciesResource(service);
                 Volumes = new VolumesResource(service);
             }
 
@@ -393,6 +392,59 @@ namespace Google.Apis.Baremetalsolution.v2
                 public InstancesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>Detach LUN from Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="instance">Required. Name of the instance.</param>
+                public virtual DetachLunRequest DetachLun(Google.Apis.Baremetalsolution.v2.Data.DetachLunRequest body, string instance)
+                {
+                    return new DetachLunRequest(service, body, instance);
+                }
+
+                /// <summary>Detach LUN from Instance.</summary>
+                public class DetachLunRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new DetachLun request.</summary>
+                    public DetachLunRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.DetachLunRequest body, string instance) : base(service)
+                    {
+                        Instance = instance;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the instance.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Instance { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.DetachLunRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "detachLun";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+instance}:detachLun";
+
+                    /// <summary>Initializes DetachLun parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>Get details about a single server.</summary>
@@ -1606,329 +1658,6 @@ namespace Google.Apis.Baremetalsolution.v2
                 }
             }
 
-            /// <summary>Gets the SnapshotSchedulePolicies resource.</summary>
-            public virtual SnapshotSchedulePoliciesResource SnapshotSchedulePolicies { get; }
-
-            /// <summary>The "snapshotSchedulePolicies" collection of methods.</summary>
-            public class SnapshotSchedulePoliciesResource
-            {
-                private const string Resource = "snapshotSchedulePolicies";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public SnapshotSchedulePoliciesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Create a snapshot schedule policy in the specified project.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent project and location containing the SnapshotSchedulePolicy.
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Create a snapshot schedule policy in the specified project.</summary>
-                public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent project and location containing the SnapshotSchedulePolicy.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Required. Snapshot policy ID</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("snapshotSchedulePolicyId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string SnapshotSchedulePolicyId { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/snapshotSchedulePolicies";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("snapshotSchedulePolicyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "snapshotSchedulePolicyId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Delete a named snapshot schedule policy.</summary>
-                /// <param name="name">Required. The name of the snapshot schedule policy to delete.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>Delete a named snapshot schedule policy.</summary>
-                public class DeleteRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Empty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The name of the snapshot schedule policy to delete.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/snapshotSchedulePolicies/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Get details of a single snapshot schedule policy.</summary>
-                /// <param name="name">Required. Name of the resource.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Get details of a single snapshot schedule policy.</summary>
-                public class GetRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/snapshotSchedulePolicies/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>List snapshot schedule policies in a given project and location.</summary>
-                /// <param name="parent">Required. The parent project containing the Snapshot Schedule Policies.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>List snapshot schedule policies in a given project and location.</summary>
-                public class ListRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ListSnapshotSchedulePoliciesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent project containing the Snapshot Schedule Policies.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>List filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>The maximum number of items to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/snapshotSchedulePolicies";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Update a snapshot schedule policy in the specified project.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The name of the snapshot schedule policy.</param>
-                public virtual PatchRequest Patch(Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy body, string name)
-                {
-                    return new PatchRequest(service, body, name);
-                }
-
-                /// <summary>Update a snapshot schedule policy in the specified project.</summary>
-                public class PatchRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Output only. The name of the snapshot schedule policy.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Required. The list of fields to update.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Baremetalsolution.v2.Data.SnapshotSchedulePolicy Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/snapshotSchedulePolicies/[^/]+$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-            }
-
             /// <summary>Gets the Volumes resource.</summary>
             public virtual VolumesResource Volumes { get; }
 
@@ -1945,7 +1674,6 @@ namespace Google.Apis.Baremetalsolution.v2
                 {
                     this.service = service;
                     Luns = new LunsResource(service);
-                    Snapshots = new SnapshotsResource(service);
                 }
 
                 /// <summary>Gets the Luns resource.</summary>
@@ -2078,292 +1806,6 @@ namespace Google.Apis.Baremetalsolution.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Gets the Snapshots resource.</summary>
-                public virtual SnapshotsResource Snapshots { get; }
-
-                /// <summary>The "snapshots" collection of methods.</summary>
-                public class SnapshotsResource
-                {
-                    private const string Resource = "snapshots";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public SnapshotsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Create a storage volume snapshot in a containing volume.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The volume to snapshot.</param>
-                    public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot body, string parent)
-                    {
-                        return new CreateRequest(service, body, parent);
-                    }
-
-                    /// <summary>Create a storage volume snapshot in a containing volume.</summary>
-                    public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot>
-                    {
-                        /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The volume to snapshot.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "create";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+parent}/snapshots";
-
-                        /// <summary>Initializes Create parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Deletes a storage volume snapshot for a given volume.</summary>
-                    /// <param name="name">Required. The name of the snapshot to delete.</param>
-                    public virtual DeleteRequest Delete(string name)
-                    {
-                        return new DeleteRequest(service, name);
-                    }
-
-                    /// <summary>Deletes a storage volume snapshot for a given volume.</summary>
-                    public class DeleteRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Empty>
-                    {
-                        /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The name of the snapshot to delete.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "delete";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "DELETE";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+name}";
-
-                        /// <summary>Initializes Delete parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/snapshots/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Get details of a single storage volume snapshot.</summary>
-                    /// <param name="name">Required. Name of the resource.</param>
-                    public virtual GetRequest Get(string name)
-                    {
-                        return new GetRequest(service, name);
-                    }
-
-                    /// <summary>Get details of a single storage volume snapshot.</summary>
-                    public class GetRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.VolumeSnapshot>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. Name of the resource.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+name}";
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/snapshots/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>List storage volume snapshots for given storage volume.</summary>
-                    /// <param name="parent">Required. Parent value for ListVolumesRequest.</param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(service, parent);
-                    }
-
-                    /// <summary>List storage volume snapshots for given storage volume.</summary>
-                    public class ListRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ListVolumeSnapshotsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. Parent value for ListVolumesRequest.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// Requested page size. The server might return fewer items than requested. If unspecified,
-                        /// server will pick an appropriate default.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>A token identifying a page of results from the server.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+parent}/snapshots";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>Restore a storage volume snapshot to its containing volume.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="volumeSnapshot">Required. Name of the resource.</param>
-                    public virtual RestoreVolumeSnapshotRequest RestoreVolumeSnapshot(Google.Apis.Baremetalsolution.v2.Data.RestoreVolumeSnapshotRequest body, string volumeSnapshot)
-                    {
-                        return new RestoreVolumeSnapshotRequest(service, body, volumeSnapshot);
-                    }
-
-                    /// <summary>Restore a storage volume snapshot to its containing volume.</summary>
-                    public class RestoreVolumeSnapshotRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
-                    {
-                        /// <summary>Constructs a new RestoreVolumeSnapshot request.</summary>
-                        public RestoreVolumeSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.RestoreVolumeSnapshotRequest body, string volumeSnapshot) : base(service)
-                        {
-                            VolumeSnapshot = volumeSnapshot;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. Name of the resource.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("volumeSnapshot", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string VolumeSnapshot { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Baremetalsolution.v2.Data.RestoreVolumeSnapshotRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "restoreVolumeSnapshot";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+volumeSnapshot}:restoreVolumeSnapshot";
-
-                        /// <summary>Initializes RestoreVolumeSnapshot parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("volumeSnapshot", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "volumeSnapshot",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+/snapshots/[^/]+$",
                             });
                         }
                     }
@@ -2752,13 +2194,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
-    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    /// </summary>
-    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Message for detach specific LUN from an Instance.</summary>
+    public class DetachLunRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. Name of the Lun to detach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lun")]
+        public virtual string Lun { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3051,42 +2493,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message containing the list of snapshot schedule policies.</summary>
-    public class ListSnapshotSchedulePoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The snapshot schedule policies registered in this project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshotSchedulePolicies")]
-        public virtual System.Collections.Generic.IList<SnapshotSchedulePolicy> SnapshotSchedulePolicies { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message containing the list of storage volume snapshots.</summary>
-    public class ListVolumeSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A token identifying a page of results from the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The list of storage volumes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volumeSnapshots")]
-        public virtual System.Collections.Generic.IList<VolumeSnapshot> VolumeSnapshots { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message containing the list of storage volumes.</summary>
     public class ListVolumesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3255,6 +2661,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// List of IP address reservations in this network. When updating this field, an error will be generated if a
+        /// reservation conflicts with an IP address already allocated to a physical server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
+        public virtual System.Collections.Generic.IList<NetworkAddressReservation> Reservations { get; set; }
+
         /// <summary>IP range for reserved for services (e.g. NFS).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesCidr")]
         public virtual string ServicesCidr { get; set; }
@@ -3293,6 +2706,31 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Id of the network to use, within the same ProvisioningConfig request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
         public virtual string NetworkId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reservation of one or more addresses in a network.</summary>
+    public class NetworkAddressReservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The last address of this reservation block, inclusive. I.e., for cases when reservations are only single
+        /// addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g.
+        /// 10.1.2.2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endAddress")]
+        public virtual string EndAddress { get; set; }
+
+        /// <summary>A note about this reservation, intended for human consumption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual string Note { get; set; }
+
+        /// <summary>
+        /// The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startAddress")]
+        public virtual string StartAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3628,32 +3066,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for restoring a volume snapshot.</summary>
-    public class RestoreVolumeSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A snapshot schedule.</summary>
-    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A crontab-like specification that the schedule uses to take snapshots.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("crontabSpec")]
-        public virtual string CrontabSpec { get; set; }
-
-        /// <summary>A list of snapshot names created in this schedule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
-        public virtual string Prefix { get; set; }
-
-        /// <summary>The maximum number of snapshots to retain in this schedule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retentionCount")]
-        public virtual System.Nullable<int> RetentionCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Network template.</summary>
     public class ServerNetworkTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3699,39 +3111,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedSpaceUsedPercent")]
         public virtual System.Nullable<int> ReservedSpaceUsedPercent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A snapshot schedule policy.</summary>
-    public class SnapshotSchedulePolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The description of the snapshot schedule policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>An identifier for the snapshot schedule policy, generated by the backend.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Labels as key value pairs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Output only. The name of the snapshot schedule policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schedules")]
-        public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; }
-
-        /// <summary>The state of the snapshot schedule policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3977,37 +3356,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userNote")]
         public virtual string UserNote { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Snapshot registered for a given storage volume.</summary>
-    public class VolumeSnapshot : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The creation time of the storage volume snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>The description of the storage volume snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>An identifier for the snapshot, generated by the backend.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Output only. The name of the storage volume snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The size of the storage volume snapshot, in bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
-        public virtual System.Nullable<long> SizeBytes { get; set; }
-
-        /// <summary>The storage volume this snapshot belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storageVolume")]
-        public virtual string StorageVolume { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
