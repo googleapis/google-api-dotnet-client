@@ -575,8 +575,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ProjectId { get; set; }
@@ -688,8 +688,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ProjectId { get; set; }
@@ -794,8 +794,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the parent field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the parent field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ProjectId { get; set; }
@@ -1419,8 +1419,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
@@ -1517,8 +1517,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
@@ -1665,8 +1665,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the parent field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the parent field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
@@ -2554,8 +2554,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
@@ -2645,8 +2645,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the parent field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the parent field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
@@ -2729,8 +2729,8 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
@@ -2891,8 +2891,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -2928,8 +2928,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                        /// replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3014,8 +3014,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the parent field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the parent field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3046,8 +3046,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the parent field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the parent field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3116,8 +3116,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <summary>Deletes a node pool from a cluster.</summary>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3152,8 +3152,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3246,8 +3246,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <summary>Retrieves the requested node pool.</summary>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3282,8 +3282,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3376,8 +3376,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <summary>Lists the node pools for a cluster.</summary>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the parent field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the parent field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3407,8 +3407,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the parent field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the parent field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3490,8 +3490,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3530,8 +3530,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                        /// replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3616,8 +3616,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3653,8 +3653,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                        /// replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3742,8 +3742,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3782,8 +3782,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                        /// replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3868,8 +3868,8 @@ namespace Google.Apis.Container.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </param>
                     /// <param name="zone">
                     /// Required. Deprecated. The name of the Google Compute Engine
@@ -3905,8 +3905,8 @@ namespace Google.Apis.Container.v1beta1
 
                         /// <summary>
                         /// Required. Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                        /// replaced by the name field.
+                        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This
+                        /// field has been deprecated and replaced by the name field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -3992,8 +3992,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4024,8 +4024,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4095,8 +4095,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                /// deprecated and replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4127,8 +4127,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4205,8 +4205,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the parent field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the parent field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4239,8 +4239,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the parent field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the parent field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4299,8 +4299,8 @@ namespace Google.Apis.Container.v1beta1
                 /// </summary>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4335,8 +4335,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4414,8 +4414,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <summary>Gets the details for a specific cluster.</summary>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4445,8 +4445,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4525,8 +4525,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4557,8 +4557,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4627,8 +4627,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <summary>Lists all clusters owned by a project in either the specified zone or all zones.</summary>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the parent field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the parent field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4653,8 +4653,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the parent field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the parent field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4722,8 +4722,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4758,8 +4758,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4829,8 +4829,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4861,8 +4861,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4932,8 +4932,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -4964,8 +4964,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5035,8 +5035,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5067,8 +5067,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5138,8 +5138,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                /// deprecated and replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5170,8 +5170,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5241,7 +5241,7 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840).
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
                 /// </param>
                 /// <param name="zone">
                 /// Required. The name of the Google Compute Engine
@@ -5268,7 +5268,7 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840).
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5337,8 +5337,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5372,8 +5372,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5443,8 +5443,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                /// deprecated and replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5475,8 +5475,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5546,8 +5546,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                /// deprecated and replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5578,8 +5578,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                    /// deprecated and replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5649,8 +5649,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5681,8 +5681,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5770,8 +5770,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5802,8 +5802,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5872,8 +5872,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <summary>Gets the specified operation.</summary>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -5903,8 +5903,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the name field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -5982,8 +5982,8 @@ namespace Google.Apis.Container.v1beta1
                 /// <summary>Lists all operations in a project in the specified zone or all zones.</summary>
                 /// <param name="projectId">
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the parent field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the parent field.
                 /// </param>
                 /// <param name="zone">
                 /// Required. Deprecated. The name of the Google Compute Engine
@@ -6008,8 +6008,8 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Required. Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the parent field.
+                    /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field
+                    /// has been deprecated and replaced by the parent field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -6073,8 +6073,8 @@ namespace Google.Apis.Container.v1beta1
             /// <summary>Returns configuration info about the Google Kubernetes Engine service.</summary>
             /// <param name="projectId">
             /// Required. Deprecated. The Google Developers Console [project ID or project
-            /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by
-            /// the name field.
+            /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+            /// deprecated and replaced by the name field.
             /// </param>
             /// <param name="zone">
             /// Required. Deprecated. The name of the Google Compute Engine
@@ -6099,8 +6099,8 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>
                 /// Required. Deprecated. The Google Developers Console [project ID or project
-                /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                /// replaced by the name field.
+                /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has
+                /// been deprecated and replaced by the name field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -6467,8 +6467,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -7225,8 +7225,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
-        /// replaced by the name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -7301,8 +7301,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// parent field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the parent field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -7342,8 +7342,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
-        /// replaced by the parent field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the parent field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -8356,6 +8356,23 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of all network bandwidth tiers</summary>
+    public class NetworkPerformanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIpEgressBandwidthTier")]
+        public virtual string ExternalIpEgressBandwidthTier { get; set; }
+
+        /// <summary>Specifies the total network bandwidth tier for the NodePool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalEgressBandwidthTier")]
+        public virtual string TotalEgressBandwidthTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration options for the NetworkPolicy feature.
     /// https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
@@ -8704,6 +8721,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createPodRange")]
         public virtual System.Nullable<bool> CreatePodRange { get; set; }
+
+        /// <summary>Network bandwidth tier configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
+        public virtual NetworkPerformanceConfig NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to
@@ -9331,8 +9352,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9499,8 +9520,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9548,8 +9569,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
-        /// replaced by the name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9593,8 +9614,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9640,8 +9661,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9687,8 +9708,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9728,7 +9749,7 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840).
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9767,8 +9788,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9819,8 +9840,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9860,8 +9881,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
-        /// replaced by the name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9908,8 +9929,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -9956,8 +9977,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -10004,8 +10025,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -10078,8 +10099,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
-        /// replaced by the name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -10207,8 +10228,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -10258,8 +10279,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -10354,8 +10375,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project
-        /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
-        /// name field.
+        /// number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been
+        /// deprecated and replaced by the name field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }

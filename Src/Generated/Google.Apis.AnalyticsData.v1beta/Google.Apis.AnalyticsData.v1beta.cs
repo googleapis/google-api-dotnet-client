@@ -637,9 +637,11 @@ namespace Google.Apis.AnalyticsData.v1beta
         }
 
         /// <summary>
-        /// The Google Analytics Realtime API returns a customized report of realtime event data for your property.
-        /// These reports show events and usage from the last 30 minutes. For a guide to constructing realtime requests
-        /// &amp;amp; understanding responses, see [Creating a Realtime
+        /// Returns a customized report of realtime event data for your property. Events appear in realtime reports
+        /// seconds after they have been sent to the Google Analytics. Realtime reports show events and usage data for
+        /// the periods of time ranging from the present moment to 30 minutes ago (up to 60 minutes for Google Analytics
+        /// 360 properties). For a guide to constructing realtime requests &amp;amp; understanding responses, see
+        /// [Creating a Realtime
         /// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-basics).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -655,9 +657,11 @@ namespace Google.Apis.AnalyticsData.v1beta
         }
 
         /// <summary>
-        /// The Google Analytics Realtime API returns a customized report of realtime event data for your property.
-        /// These reports show events and usage from the last 30 minutes. For a guide to constructing realtime requests
-        /// &amp;amp; understanding responses, see [Creating a Realtime
+        /// Returns a customized report of realtime event data for your property. Events appear in realtime reports
+        /// seconds after they have been sent to the Google Analytics. Realtime reports show events and usage data for
+        /// the periods of time ranging from the present moment to 30 minutes ago (up to 60 minutes for Google Analytics
+        /// 360 properties). For a guide to constructing realtime requests &amp;amp; understanding responses, see
+        /// [Creating a Realtime
         /// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-basics).
         /// </summary>
         public class RunRealtimeReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.RunRealtimeReportResponse>

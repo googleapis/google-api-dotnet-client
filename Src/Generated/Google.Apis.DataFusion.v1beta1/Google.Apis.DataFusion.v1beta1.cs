@@ -338,7 +338,7 @@ namespace Google.Apis.DataFusion.v1beta1
                         this.service = service;
                     }
 
-                    /// <summary>Add DNS peering on the given resource.</summary>
+                    /// <summary>Creates DNS peering on the given resource.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The resource on which DNS peering will be created.</param>
                     public virtual CreateRequest Create(Google.Apis.DataFusion.v1beta1.Data.DnsPeering body, string parent)
@@ -346,7 +346,7 @@ namespace Google.Apis.DataFusion.v1beta1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Add DNS peering on the given resource.</summary>
+                    /// <summary>Creates DNS peering on the given resource.</summary>
                     public class CreateRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.DnsPeering>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -360,6 +360,10 @@ namespace Google.Apis.DataFusion.v1beta1
                         /// <summary>Required. The resource on which DNS peering will be created.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The name of the peering to create.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dnsPeeringId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DnsPeeringId { get; set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.DataFusion.v1beta1.Data.DnsPeering Body { get; set; }
@@ -388,10 +392,18 @@ namespace Google.Apis.DataFusion.v1beta1
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                             });
+                            RequestParameters.Add("dnsPeeringId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dnsPeeringId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
                     }
 
-                    /// <summary>Remove DNS peering on the given resource.</summary>
+                    /// <summary>Deletes DNS peering on the given resource.</summary>
                     /// <param name="name">
                     /// Required. The name of the DNS peering zone to delete. Format:
                     /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
@@ -401,7 +413,7 @@ namespace Google.Apis.DataFusion.v1beta1
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Remove DNS peering on the given resource.</summary>
+                    /// <summary>Deletes DNS peering on the given resource.</summary>
                     public class DeleteRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -442,7 +454,7 @@ namespace Google.Apis.DataFusion.v1beta1
                         }
                     }
 
-                    /// <summary>List DNS peering for a given resource.</summary>
+                    /// <summary>Lists DNS peerings for a given resource.</summary>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of dns peerings. Format:
                     /// projects/{project}/locations/{location}/instances/{instance}
@@ -452,7 +464,7 @@ namespace Google.Apis.DataFusion.v1beta1
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>List DNS peering for a given resource.</summary>
+                    /// <summary>Lists DNS peerings for a given resource.</summary>
                     public class ListRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.ListDnsPeeringsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -471,8 +483,8 @@ namespace Google.Apis.DataFusion.v1beta1
 
                         /// <summary>
                         /// The maximum number of dns peerings to return. The service may return fewer than this value.
-                        /// If unspecified, at most 10 dns peerings will be returned. The maximum value is 50; values
-                        /// above 50 will be coerced to 50.
+                        /// If unspecified, at most 50 dns peerings will be returned. The maximum value is 200; values
+                        /// above 200 will be coerced to 200.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -548,8 +560,9 @@ namespace Google.Apis.DataFusion.v1beta1
                     /// and does not have a policy set.
                     /// </summary>
                     /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
@@ -570,8 +583,9 @@ namespace Google.Apis.DataFusion.v1beta1
                         }
 
                         /// <summary>
-                        /// REQUIRED: The resource for which the policy is being requested. See the operation
-                        /// documentation for the appropriate value for this field.
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
@@ -736,8 +750,9 @@ namespace Google.Apis.DataFusion.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DataFusion.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
@@ -759,8 +774,9 @@ namespace Google.Apis.DataFusion.v1beta1
                         }
 
                         /// <summary>
-                        /// REQUIRED: The resource for which the policy is being specified. See the operation
-                        /// documentation for the appropriate value for this field.
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
@@ -803,8 +819,9 @@ namespace Google.Apis.DataFusion.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                    /// documentation for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataFusion.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
@@ -828,8 +845,9 @@ namespace Google.Apis.DataFusion.v1beta1
                         }
 
                         /// <summary>
-                        /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                        /// documentation for the appropriate value for this field.
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
@@ -1042,8 +1060,9 @@ namespace Google.Apis.DataFusion.v1beta1
                 /// does not have a policy set.
                 /// </summary>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
@@ -1064,8 +1083,9 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -1364,8 +1384,9 @@ namespace Google.Apis.DataFusion.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DataFusion.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
@@ -1387,8 +1408,9 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -1431,8 +1453,9 @@ namespace Google.Apis.DataFusion.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataFusion.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
@@ -1456,8 +1479,9 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                    /// documentation for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -2028,7 +2052,7 @@ namespace Google.Apis.DataFusion.v1beta1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2184,7 +2208,8 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
     /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
     /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
     /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2239,7 +2264,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -2331,8 +2356,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2893,7 +2917,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -2943,7 +2967,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

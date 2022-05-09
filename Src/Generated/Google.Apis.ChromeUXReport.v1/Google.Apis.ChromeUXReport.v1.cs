@@ -439,7 +439,7 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         /// <summary>
         /// The metrics that should be included in the response. If none are specified then any metrics found will be
         /// returned. Allowed values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint",
-        /// "cumulative_layout_shift"]
+        /// "cumulative_layout_shift", "experimental_time_to_first_byte", "experimental_interaction_to_next_paint"]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }

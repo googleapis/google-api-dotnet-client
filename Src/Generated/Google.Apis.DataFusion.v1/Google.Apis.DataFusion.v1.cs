@@ -317,6 +317,224 @@ namespace Google.Apis.DataFusion.v1
                 public InstancesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    DnsPeerings = new DnsPeeringsResource(service);
+                }
+
+                /// <summary>Gets the DnsPeerings resource.</summary>
+                public virtual DnsPeeringsResource DnsPeerings { get; }
+
+                /// <summary>The "dnsPeerings" collection of methods.</summary>
+                public class DnsPeeringsResource
+                {
+                    private const string Resource = "dnsPeerings";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DnsPeeringsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates DNS peering on the given resource.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The resource on which DNS peering will be created.</param>
+                    public virtual CreateRequest Create(Google.Apis.DataFusion.v1.Data.DnsPeering body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates DNS peering on the given resource.</summary>
+                    public class CreateRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1.Data.DnsPeering>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DataFusion.v1.Data.DnsPeering body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The resource on which DNS peering will be created.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The name of the peering to create.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dnsPeeringId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DnsPeeringId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DataFusion.v1.Data.DnsPeering Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dnsPeerings";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("dnsPeeringId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dnsPeeringId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes DNS peering on the given resource.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the DNS peering zone to delete. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes DNS peering on the given resource.</summary>
+                    public class DeleteRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the DNS peering zone to delete. Format:
+                        /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/dnsPeerings/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists DNS peerings for a given resource.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent, which owns this collection of dns peerings. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists DNS peerings for a given resource.</summary>
+                    public class ListRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1.Data.ListDnsPeeringsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent, which owns this collection of dns peerings. Format:
+                        /// projects/{project}/locations/{location}/instances/{instance}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of dns peerings to return. The service may return fewer than this value.
+                        /// If unspecified, at most 50 dns peerings will be returned. The maximum value is 200; values
+                        /// above 200 will be coerced to 200.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListDnsPeerings` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListDnsPeerings` must
+                        /// match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dnsPeerings";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new Data Fusion instance in the specified project and location.</summary>
@@ -496,8 +714,9 @@ namespace Google.Apis.DataFusion.v1
                 /// does not have a policy set.
                 /// </summary>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
@@ -518,8 +737,9 @@ namespace Google.Apis.DataFusion.v1
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -818,8 +1038,9 @@ namespace Google.Apis.DataFusion.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DataFusion.v1.Data.SetIamPolicyRequest body, string resource)
                 {
@@ -841,8 +1062,9 @@ namespace Google.Apis.DataFusion.v1
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -885,8 +1107,9 @@ namespace Google.Apis.DataFusion.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataFusion.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
@@ -910,8 +1133,9 @@ namespace Google.Apis.DataFusion.v1
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                    /// documentation for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -1417,7 +1641,7 @@ namespace Google.Apis.DataFusion.v1
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
-                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1524,7 +1748,8 @@ namespace Google.Apis.DataFusion.v1.Data
     /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
     /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
     /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
     /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1579,7 +1804,7 @@ namespace Google.Apis.DataFusion.v1.Data
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
         /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
         /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
         /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
@@ -1637,13 +1862,63 @@ namespace Google.Apis.DataFusion.v1.Data
     }
 
     /// <summary>
+    /// DNS peering configuration. These configurations are used to create DNS peering with the customer Cloud DNS.
+    /// </summary>
+    public class DnsPeering : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional description of the dns zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The dns name suffix of the zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the dns peering zone. Format:
+        /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Optional target network to which dns peering should happen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNetwork")]
+        public virtual string TargetNetwork { get; set; }
+
+        /// <summary>Optional. Optional target project to which dns peering should happen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-    /// object `{}`.
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Confirguration of PubSubEventWriter.</summary>
+    public class EventPublishConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Option to enable Event Publishing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventPublishEnabled")]
+        public virtual System.Nullable<bool> EventPublishEnabled { get; set; }
+
+        /// <summary>Project name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>Required. Pub/Sub Topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1749,6 +2024,10 @@ namespace Google.Apis.DataFusion.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverMonitoring")]
         public virtual System.Nullable<bool> EnableStackdriverMonitoring { get; set; }
 
+        /// <summary>Option to enable and pass metadata for event publishing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventPublishConfig")]
+        public virtual EventPublishConfig EventPublishConfig { get; set; }
+
         /// <summary>Output only. Cloud Storage bucket generated by Data Fusion in the customer project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
         public virtual string GcsBucket { get; set; }
@@ -1841,6 +2120,24 @@ namespace Google.Apis.DataFusion.v1.Data
 
         /// <summary>
         /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for list DNS peerings.</summary>
+    public class ListDnsPeeringsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of dns peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsPeerings")]
+        public virtual System.Collections.Generic.IList<DnsPeering> DnsPeerings { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2130,7 +2427,7 @@ namespace Google.Apis.DataFusion.v1.Data
     {
         /// <summary>
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
         /// reject them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
@@ -2180,7 +2477,7 @@ namespace Google.Apis.DataFusion.v1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
         /// are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
         /// </summary>

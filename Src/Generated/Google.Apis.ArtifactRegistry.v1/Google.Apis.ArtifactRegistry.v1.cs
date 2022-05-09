@@ -2902,7 +2902,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     {
         /// <summary>The versions the operation failed to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedVersions")]
-        public virtual System.Collections.Generic.IList<Version> FailedVersions { get; set; }
+        public virtual System.Collections.Generic.IList<string> FailedVersions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
