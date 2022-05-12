@@ -36,6 +36,15 @@
         "xunit.runner.visualstudio"
       ],
       "allowedVersions": "<2.4.4"
+    },
+    {
+      "matchPaths": [
+        "Src/Support/Google.Apis.Auth.Tests/**"
+      ],
+      "matchPackageNames": [
+        "Moq"
+      ],
+      "allowedVersions": "<4.18.0"
     }
   ],
   "schedule": ["before 8am every weekday"],
