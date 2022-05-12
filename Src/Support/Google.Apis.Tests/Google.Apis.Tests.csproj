@@ -3,8 +3,6 @@
   <PropertyGroup>
     <!-- net452 is the earliest desktop version supported by xunit runner -->
     <TargetFrameworks>netcoreapp3.1;net452;net46</TargetFrameworks>
-    <!-- On non-Windows platforms only net core can be built -->
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp3.1</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
@@ -19,6 +17,8 @@
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
     <Compile Include="..\..\Generated\Google.Apis.Translate.v2\Google.Apis.Translate.v2.cs" Link="Apis\Services\Google.Apis.Translate.v2.cs" />
     <Compile Include="..\..\Generated\/Google.Apis.ManufacturerCenter.v1\Google.Apis.ManufacturerCenter.v1.cs" Link="Apis\Services\Google.Apis.ManufacturerCenter.v1.cs" />
+
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
   </ItemGroup>
 
   <PropertyGroup>
