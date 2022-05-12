@@ -13085,7 +13085,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Street-level part of the address.</summary>
+        /// <summary>Street-level part of the address. Use `\n` to add a second line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual string StreetAddress { get; set; }
 
@@ -13159,7 +13159,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class AccountBusinessInformation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The address of the business.</summary>
+        /// <summary>The address of the business. Use `\n` to add a second address line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual AccountAddress Address { get; set; }
 
@@ -13712,6 +13712,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paymentsManager")]
         public virtual System.Nullable<bool> PaymentsManager { get; set; }
 
+        /// <summary>Whether user is a reporting manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingManager")]
+        public virtual System.Nullable<bool> ReportingManager { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14250,7 +14254,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
-        /// <summary>Street-level part of the address.</summary>
+        /// <summary>Street-level part of the address. Use `\n` to add a second line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual string StreetAddress { get; set; }
 
@@ -17032,7 +17036,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Street-level part of the address.</summary>
+        /// <summary>Street-level part of the address. Use `\n` to add a second line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; }
 
@@ -23735,7 +23739,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Street-level part of the address.</summary>
+        /// <summary>Street-level part of the address. Use `\n` to add a second line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; }
 

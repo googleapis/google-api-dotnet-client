@@ -4408,6 +4408,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>The hostname to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
         /// <summary>A map of labels to associate with the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -4490,6 +4494,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The disk type to use in the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>The hostname to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
 
         /// <summary>A map of labels to associate with the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

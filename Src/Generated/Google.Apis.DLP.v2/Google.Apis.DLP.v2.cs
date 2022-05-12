@@ -11159,6 +11159,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>The infoType details for this column.</summary>
     public class GooglePrivacyDlpV2InfoTypeSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Approximate percentage of non-null rows that contained data detected by this infotype.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedPrevalence")]
+        public virtual System.Nullable<int> EstimatedPrevalence { get; set; }
+
         /// <summary>The infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
@@ -12095,6 +12099,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Infotype details for other infoTypes found within a column.</summary>
     public class GooglePrivacyDlpV2OtherInfoTypeSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Approximate percentage of non-null rows that contained data detected by this infotype.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedPrevalence")]
+        public virtual System.Nullable<int> EstimatedPrevalence { get; set; }
+
         /// <summary>The other infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }

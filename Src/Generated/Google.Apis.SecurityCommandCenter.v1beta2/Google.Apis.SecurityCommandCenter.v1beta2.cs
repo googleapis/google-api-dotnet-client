@@ -846,6 +846,59 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Get the SecurityCenterSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the SecurityCenterSettings to retrieve. Format:
+        /// organizations/{organization}/securityCenterSettings Format: folders/{folder}/securityCenterSettings Format:
+        /// projects/{project}/securityCenterSettings
+        /// </param>
+        public virtual GetSecurityCenterSettingsRequest GetSecurityCenterSettings(string name)
+        {
+            return new GetSecurityCenterSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the SecurityCenterSettings resource.</summary>
+        public class GetSecurityCenterSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityCenterSettings>
+        {
+            /// <summary>Constructs a new GetSecurityCenterSettings request.</summary>
+            public GetSecurityCenterSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the SecurityCenterSettings to retrieve. Format:
+            /// organizations/{organization}/securityCenterSettings Format: folders/{folder}/securityCenterSettings
+            /// Format: projects/{project}/securityCenterSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSecurityCenterSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetSecurityCenterSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/securityCenterSettings$",
+                });
+            }
+        }
+
         /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="name">
         /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
@@ -1951,7 +2004,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Get the SecurityCenterSettings resource.</summary>
         /// <param name="name">
         /// Required. The name of the SecurityCenterSettings to retrieve. Format:
-        /// organizations/{organization}/securityCenterSettings
+        /// organizations/{organization}/securityCenterSettings Format: folders/{folder}/securityCenterSettings Format:
+        /// projects/{project}/securityCenterSettings
         /// </param>
         public virtual GetSecurityCenterSettingsRequest GetSecurityCenterSettings(string name)
         {
@@ -1970,7 +2024,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
 
             /// <summary>
             /// Required. The name of the SecurityCenterSettings to retrieve. Format:
-            /// organizations/{organization}/securityCenterSettings
+            /// organizations/{organization}/securityCenterSettings Format: folders/{folder}/securityCenterSettings
+            /// Format: projects/{project}/securityCenterSettings
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3400,6 +3455,59 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/onboardingState$",
+                });
+            }
+        }
+
+        /// <summary>Get the SecurityCenterSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the SecurityCenterSettings to retrieve. Format:
+        /// organizations/{organization}/securityCenterSettings Format: folders/{folder}/securityCenterSettings Format:
+        /// projects/{project}/securityCenterSettings
+        /// </param>
+        public virtual GetSecurityCenterSettingsRequest GetSecurityCenterSettings(string name)
+        {
+            return new GetSecurityCenterSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the SecurityCenterSettings resource.</summary>
+        public class GetSecurityCenterSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityCenterSettings>
+        {
+            /// <summary>Constructs a new GetSecurityCenterSettings request.</summary>
+            public GetSecurityCenterSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the SecurityCenterSettings to retrieve. Format:
+            /// organizations/{organization}/securityCenterSettings Format: folders/{folder}/securityCenterSettings
+            /// Format: projects/{project}/securityCenterSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSecurityCenterSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetSecurityCenterSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/securityCenterSettings$",
                 });
             }
         }
@@ -5025,6 +5133,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// The resource name of the SecurityCenterSettings. Format: organizations/{organization}/securityCenterSettings
+        /// Format: folders/{folder}/securityCenterSettings Format: projects/{project}/securityCenterSettings
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

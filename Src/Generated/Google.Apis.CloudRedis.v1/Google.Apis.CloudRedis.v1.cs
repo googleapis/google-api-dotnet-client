@@ -1726,6 +1726,12 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
 
+        /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
+        public virtual string MaintenanceVersion { get; set; }
+
         /// <summary>Required. Redis memory size in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
         public virtual System.Nullable<int> MemorySizeGb { get; set; }

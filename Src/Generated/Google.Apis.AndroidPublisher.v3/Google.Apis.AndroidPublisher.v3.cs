@@ -5967,6 +5967,1697 @@ namespace Google.Apis.AndroidPublisher.v3
         public MonetizationResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Subscriptions = new SubscriptionsResource(service);
+        }
+
+        /// <summary>Gets the Subscriptions resource.</summary>
+        public virtual SubscriptionsResource Subscriptions { get; }
+
+        /// <summary>The "subscriptions" collection of methods.</summary>
+        public class SubscriptionsResource
+        {
+            private const string Resource = "subscriptions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SubscriptionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                BasePlans = new BasePlansResource(service);
+            }
+
+            /// <summary>Gets the BasePlans resource.</summary>
+            public virtual BasePlansResource BasePlans { get; }
+
+            /// <summary>The "basePlans" collection of methods.</summary>
+            public class BasePlansResource
+            {
+                private const string Resource = "basePlans";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BasePlansResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Offers = new OffersResource(service);
+                }
+
+                /// <summary>Gets the Offers resource.</summary>
+                public virtual OffersResource Offers { get; }
+
+                /// <summary>The "offers" collection of methods.</summary>
+                public class OffersResource
+                {
+                    private const string Resource = "offers";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OffersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Activates a subscription offer. Once activated, subscription offers will be available to new
+                    /// subscribers.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the offer to activate.
+                    /// </param>
+                    /// <param name="productId">Required. The parent subscription (ID) of the offer to activate.</param>
+                    /// <param name="basePlanId">Required. The parent base plan (ID) of the offer to activate.</param>
+                    /// <param name="offerId">Required. The unique offer ID of the offer to activate.</param>
+                    public virtual ActivateRequest Activate(Google.Apis.AndroidPublisher.v3.Data.ActivateSubscriptionOfferRequest body, string packageName, string productId, string basePlanId, string offerId)
+                    {
+                        return new ActivateRequest(service, body, packageName, productId, basePlanId, offerId);
+                    }
+
+                    /// <summary>
+                    /// Activates a subscription offer. Once activated, subscription offers will be available to new
+                    /// subscribers.
+                    /// </summary>
+                    public class ActivateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer>
+                    {
+                        /// <summary>Constructs a new Activate request.</summary>
+                        public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ActivateSubscriptionOfferRequest body, string packageName, string productId, string basePlanId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            OfferId = offerId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent app (package name) of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>Required. The parent subscription (ID) of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>Required. The parent base plan (ID) of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>Required. The unique offer ID of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.ActivateSubscriptionOfferRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "activate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:activate";
+
+                        /// <summary>Initializes Activate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a new subscription offer. Only auto-renewing base plans can have subscription offers.
+                    /// The offer state will be DRAFT until it is activated.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) for which the offer should be created. Must be equal to
+                    /// the package_name field on the Subscription resource.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The parent subscription (ID) for which the offer should be created. Must be equal to
+                    /// the product_id field on the SubscriptionOffer resource.
+                    /// </param>
+                    /// <param name="basePlanId">
+                    /// Required. The parent base plan (ID) for which the offer should be created. Must be equal to the
+                    /// base_plan_id field on the SubscriptionOffer resource.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer body, string packageName, string productId, string basePlanId)
+                    {
+                        return new CreateRequest(service, body, packageName, productId, basePlanId);
+                    }
+
+                    /// <summary>
+                    /// Creates a new subscription offer. Only auto-renewing base plans can have subscription offers.
+                    /// The offer state will be DRAFT until it is activated.
+                    /// </summary>
+                    public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer body, string packageName, string productId, string basePlanId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) for which the offer should be created. Must be equal
+                        /// to the package_name field on the Subscription resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent subscription (ID) for which the offer should be created. Must be equal
+                        /// to the product_id field on the SubscriptionOffer resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent base plan (ID) for which the offer should be created. Must be equal to
+                        /// the base_plan_id field on the SubscriptionOffer resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the offer. For the requirements on this format, see the
+                        /// documentation of the offer_id field on the SubscriptionOffer resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OfferId { get; set; }
+
+                        /// <summary>
+                        /// Required. A string representing version of the available regions being used for the
+                        /// specified resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RegionsVersionVersion { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("regionsVersion.version", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "regionsVersion.version",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deactivates a subscription offer. Once deactivated, existing subscribers will maintain their
+                    /// subscription, but the offer will become unavailable to new subscribers.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the offer to deactivate.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The parent subscription (ID) of the offer to deactivate.
+                    /// </param>
+                    /// <param name="basePlanId">Required. The parent base plan (ID) of the offer to deactivate.</param>
+                    /// <param name="offerId">Required. The unique offer ID of the offer to deactivate.</param>
+                    public virtual DeactivateRequest Deactivate(Google.Apis.AndroidPublisher.v3.Data.DeactivateSubscriptionOfferRequest body, string packageName, string productId, string basePlanId, string offerId)
+                    {
+                        return new DeactivateRequest(service, body, packageName, productId, basePlanId, offerId);
+                    }
+
+                    /// <summary>
+                    /// Deactivates a subscription offer. Once deactivated, existing subscribers will maintain their
+                    /// subscription, but the offer will become unavailable to new subscribers.
+                    /// </summary>
+                    public class DeactivateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer>
+                    {
+                        /// <summary>Constructs a new Deactivate request.</summary>
+                        public DeactivateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.DeactivateSubscriptionOfferRequest body, string packageName, string productId, string basePlanId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            OfferId = offerId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent app (package name) of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>Required. The parent subscription (ID) of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>Required. The parent base plan (ID) of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>Required. The unique offer ID of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.DeactivateSubscriptionOfferRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deactivate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:deactivate";
+
+                        /// <summary>Initializes Deactivate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a subscription offer. Can only be done for draft offers. This action is irreversible.
+                    /// </summary>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the offer to delete.
+                    /// </param>
+                    /// <param name="productId">Required. The parent subscription (ID) of the offer to delete.</param>
+                    /// <param name="basePlanId">Required. The parent base plan (ID) of the offer to delete.</param>
+                    /// <param name="offerId">Required. The unique offer ID of the offer to delete.</param>
+                    public virtual DeleteRequest Delete(string packageName, string productId, string basePlanId, string offerId)
+                    {
+                        return new DeleteRequest(service, packageName, productId, basePlanId, offerId);
+                    }
+
+                    /// <summary>
+                    /// Deletes a subscription offer. Can only be done for draft offers. This action is irreversible.
+                    /// </summary>
+                    public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string basePlanId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            OfferId = offerId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent app (package name) of the offer to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>Required. The parent subscription (ID) of the offer to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>Required. The parent base plan (ID) of the offer to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>Required. The unique offer ID of the offer to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Reads a single offer</summary>
+                    /// <param name="packageName">Required. The parent app (package name) of the offer to get.</param>
+                    /// <param name="productId">Required. The parent subscription (ID) of the offer to get.</param>
+                    /// <param name="basePlanId">Required. The parent base plan (ID) of the offer to get.</param>
+                    /// <param name="offerId">Required. The unique offer ID of the offer to get.</param>
+                    public virtual GetRequest Get(string packageName, string productId, string basePlanId, string offerId)
+                    {
+                        return new GetRequest(service, packageName, productId, basePlanId, offerId);
+                    }
+
+                    /// <summary>Reads a single offer</summary>
+                    public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string basePlanId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            OfferId = offerId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent app (package name) of the offer to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>Required. The parent subscription (ID) of the offer to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>Required. The parent base plan (ID) of the offer to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>Required. The unique offer ID of the offer to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all offers under a given subscription.</summary>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) for which the subscriptions should be read.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The parent subscription (ID) for which the offers should be read.
+                    /// </param>
+                    /// <param name="basePlanId">
+                    /// Required. The parent base plan (ID) for which the offers should be read. May be specified as '-'
+                    /// to read all offers under a subscription.
+                    /// </param>
+                    public virtual ListRequest List(string packageName, string productId, string basePlanId)
+                    {
+                        return new ListRequest(service, packageName, productId, basePlanId);
+                    }
+
+                    /// <summary>Lists all offers under a given subscription.</summary>
+                    public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListSubscriptionOffersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string basePlanId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) for which the subscriptions should be read.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent subscription (ID) for which the offers should be read.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent base plan (ID) for which the offers should be read. May be specified as
+                        /// '-' to read all offers under a subscription.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of subscriptions to return. The service may return fewer than this value.
+                        /// If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values
+                        /// above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListSubscriptionsOffers` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListSubscriptionOffers` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an existing subscription offer.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. Immutable. The package name of the app the parent subscription belongs to.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. Immutable. The ID of the parent subscription this offer belongs to.
+                    /// </param>
+                    /// <param name="basePlanId">
+                    /// Required. Immutable. The ID of the base plan to which this offer is an extension.
+                    /// </param>
+                    /// <param name="offerId">
+                    /// Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer body, string packageName, string productId, string basePlanId, string offerId)
+                    {
+                        return new PatchRequest(service, body, packageName, productId, basePlanId, offerId);
+                    }
+
+                    /// <summary>Updates an existing subscription offer.</summary>
+                    public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer body, string packageName, string productId, string basePlanId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            OfferId = offerId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Immutable. The package name of the app the parent subscription belongs to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. Immutable. The ID of the parent subscription this offer belongs to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Immutable. The ID of the base plan to which this offer is an extension.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Immutable. Unique ID of this subscription offer. Must be unique within the base
+                        /// plan.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>
+                        /// Required. A string representing version of the available regions being used for the
+                        /// specified resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RegionsVersionVersion { get; set; }
+
+                        /// <summary>Required. The list of fields to be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("regionsVersion.version", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "regionsVersion.version",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Activates a base plan. Once activated, base plans will be available to new subscribers.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="packageName">
+                /// Required. The parent app (package name) of the base plan to activate.
+                /// </param>
+                /// <param name="productId">Required. The parent subscription (ID) of the base plan to activate.</param>
+                /// <param name="basePlanId">Required. The unique base plan ID of the base plan to activate.</param>
+                public virtual ActivateRequest Activate(Google.Apis.AndroidPublisher.v3.Data.ActivateBasePlanRequest body, string packageName, string productId, string basePlanId)
+                {
+                    return new ActivateRequest(service, body, packageName, productId, basePlanId);
+                }
+
+                /// <summary>
+                /// Activates a base plan. Once activated, base plans will be available to new subscribers.
+                /// </summary>
+                public class ActivateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Subscription>
+                {
+                    /// <summary>Constructs a new Activate request.</summary>
+                    public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ActivateBasePlanRequest body, string packageName, string productId, string basePlanId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        BasePlanId = basePlanId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent app (package name) of the base plan to activate.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>Required. The parent subscription (ID) of the base plan to activate.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Required. The unique base plan ID of the base plan to activate.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string BasePlanId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AndroidPublisher.v3.Data.ActivateBasePlanRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "activate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:activate";
+
+                    /// <summary>Initializes Activate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "basePlanId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers,
+                /// but existing subscribers will maintain their subscription
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="packageName">
+                /// Required. The parent app (package name) of the base plan to deactivate.
+                /// </param>
+                /// <param name="productId">
+                /// Required. The parent subscription (ID) of the base plan to deactivate.
+                /// </param>
+                /// <param name="basePlanId">Required. The unique base plan ID of the base plan to deactivate.</param>
+                public virtual DeactivateRequest Deactivate(Google.Apis.AndroidPublisher.v3.Data.DeactivateBasePlanRequest body, string packageName, string productId, string basePlanId)
+                {
+                    return new DeactivateRequest(service, body, packageName, productId, basePlanId);
+                }
+
+                /// <summary>
+                /// Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers,
+                /// but existing subscribers will maintain their subscription
+                /// </summary>
+                public class DeactivateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Subscription>
+                {
+                    /// <summary>Constructs a new Deactivate request.</summary>
+                    public DeactivateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.DeactivateBasePlanRequest body, string packageName, string productId, string basePlanId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        BasePlanId = basePlanId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent app (package name) of the base plan to deactivate.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>Required. The parent subscription (ID) of the base plan to deactivate.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Required. The unique base plan ID of the base plan to deactivate.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string BasePlanId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AndroidPublisher.v3.Data.DeactivateBasePlanRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "deactivate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:deactivate";
+
+                    /// <summary>Initializes Deactivate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "basePlanId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a base plan. Can only be done for draft base plans. This action is irreversible.
+                /// </summary>
+                /// <param name="packageName">
+                /// Required. The parent app (package name) of the base plan to delete.
+                /// </param>
+                /// <param name="productId">Required. The parent subscription (ID) of the base plan to delete.</param>
+                /// <param name="basePlanId">Required. The unique offer ID of the base plan to delete.</param>
+                public virtual DeleteRequest Delete(string packageName, string productId, string basePlanId)
+                {
+                    return new DeleteRequest(service, packageName, productId, basePlanId);
+                }
+
+                /// <summary>
+                /// Deletes a base plan. Can only be done for draft base plans. This action is irreversible.
+                /// </summary>
+                public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string basePlanId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        BasePlanId = basePlanId;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent app (package name) of the base plan to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>Required. The parent subscription (ID) of the base plan to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Required. The unique offer ID of the base plan to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string BasePlanId { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "basePlanId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Migrates subscribers who are receiving an historical subscription price to the currently-offered
+                /// price for the specified region. Requests will cause price change notifications to be sent to users
+                /// who are currently receiving an historical price older than the supplied timestamp. Subscribers who
+                /// do not agree to the new price will have their subscription ended at the next renewal.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="packageName">
+                /// Required. Package name of the parent app. Must be equal to the package_name field on the
+                /// Subscription resource.
+                /// </param>
+                /// <param name="productId">
+                /// Required. The ID of the subscription to update. Must be equal to the product_id field on the
+                /// Subscription resource.
+                /// </param>
+                /// <param name="basePlanId">
+                /// Required. The unique base plan ID of the base plan to update prices on.
+                /// </param>
+                public virtual MigratePricesRequest MigratePrices(Google.Apis.AndroidPublisher.v3.Data.MigrateBasePlanPricesRequest body, string packageName, string productId, string basePlanId)
+                {
+                    return new MigratePricesRequest(service, body, packageName, productId, basePlanId);
+                }
+
+                /// <summary>
+                /// Migrates subscribers who are receiving an historical subscription price to the currently-offered
+                /// price for the specified region. Requests will cause price change notifications to be sent to users
+                /// who are currently receiving an historical price older than the supplied timestamp. Subscribers who
+                /// do not agree to the new price will have their subscription ended at the next renewal.
+                /// </summary>
+                public class MigratePricesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.MigrateBasePlanPricesResponse>
+                {
+                    /// <summary>Constructs a new MigratePrices request.</summary>
+                    public MigratePricesRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.MigrateBasePlanPricesRequest body, string packageName, string productId, string basePlanId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        BasePlanId = basePlanId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Package name of the parent app. Must be equal to the package_name field on the
+                    /// Subscription resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the subscription to update. Must be equal to the product_id field on the
+                    /// Subscription resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Required. The unique base plan ID of the base plan to update prices on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string BasePlanId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AndroidPublisher.v3.Data.MigrateBasePlanPricesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "migratePrices";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:migratePrices";
+
+                    /// <summary>Initializes MigratePrices parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "basePlanId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Archives a subscription. Can only be done if at least one base plan was active in the past, and no base
+            /// plan is available for new or existing subscribers currently. This action is irreversible, and the
+            /// subscription ID will remain reserved.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) of the app of the subscription to delete.
+            /// </param>
+            /// <param name="productId">Required. The unique product ID of the subscription to delete.</param>
+            public virtual ArchiveRequest Archive(Google.Apis.AndroidPublisher.v3.Data.ArchiveSubscriptionRequest body, string packageName, string productId)
+            {
+                return new ArchiveRequest(service, body, packageName, productId);
+            }
+
+            /// <summary>
+            /// Archives a subscription. Can only be done if at least one base plan was active in the past, and no base
+            /// plan is available for new or existing subscribers currently. This action is irreversible, and the
+            /// subscription ID will remain reserved.
+            /// </summary>
+            public class ArchiveRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Subscription>
+            {
+                /// <summary>Constructs a new Archive request.</summary>
+                public ArchiveRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ArchiveSubscriptionRequest body, string packageName, string productId) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent app (package name) of the app of the subscription to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. The unique product ID of the subscription to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.ArchiveSubscriptionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "archive";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}:archive";
+
+                /// <summary>Initializes Archive parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Creates a new subscription. Newly added base plans will remain in draft state until activated.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the subscription should be created. Must be equal to
+            /// the package_name field on the Subscription resource.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.Subscription body, string packageName)
+            {
+                return new CreateRequest(service, body, packageName);
+            }
+
+            /// <summary>
+            /// Creates a new subscription. Newly added base plans will remain in draft state until activated.
+            /// </summary>
+            public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Subscription>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Subscription body, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the subscription should be created. Must be equal
+                /// to the package_name field on the Subscription resource.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. The ID to use for the subscription. For the requirements on this format, see the
+                /// documentation of the product_id field on the Subscription resource.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ProductId { get; set; }
+
+                /// <summary>
+                /// Required. A string representing version of the available regions being used for the specified
+                /// resource.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RegionsVersionVersion { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.Subscription Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("regionsVersion.version", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "regionsVersion.version",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a subscription. A subscription can only be deleted if it has never had a base plan published.
+            /// </summary>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) of the app of the subscription to delete.
+            /// </param>
+            /// <param name="productId">Required. The unique product ID of the subscription to delete.</param>
+            public virtual DeleteRequest Delete(string packageName, string productId)
+            {
+                return new DeleteRequest(service, packageName, productId);
+            }
+
+            /// <summary>
+            /// Deletes a subscription. A subscription can only be deleted if it has never had a base plan published.
+            /// </summary>
+            public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string productId) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent app (package name) of the app of the subscription to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. The unique product ID of the subscription to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Reads a single subscription.</summary>
+            /// <param name="packageName">Required. The parent app (package name) of the subscription to get.</param>
+            /// <param name="productId">Required. The unique product ID of the subscription to get.</param>
+            public virtual GetRequest Get(string packageName, string productId)
+            {
+                return new GetRequest(service, packageName, productId);
+            }
+
+            /// <summary>Reads a single subscription.</summary>
+            public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Subscription>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string productId) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent app (package name) of the subscription to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. The unique product ID of the subscription to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists all subscriptions under a given app.</summary>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the subscriptions should be read.
+            /// </param>
+            public virtual ListRequest List(string packageName)
+            {
+                return new ListRequest(service, packageName);
+            }
+
+            /// <summary>Lists all subscriptions under a given app.</summary>
+            public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListSubscriptionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the subscriptions should be read.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// The maximum number of subscriptions to return. The service may return fewer than this value. If
+                /// unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values above 1000
+                /// will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Whether archived subscriptions should be included in the response. Defaults to false.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showArchived", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowArchived { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showArchived", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showArchived",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates an existing subscription.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">Immutable. Package name of the parent app.</param>
+            /// <param name="productId">
+            /// Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed
+            /// of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a
+            /// lower-case letter or number, and be between 1 and 40 (inclusive) characters in length.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Subscription body, string packageName, string productId)
+            {
+                return new PatchRequest(service, body, packageName, productId);
+            }
+
+            /// <summary>Updates an existing subscription.</summary>
+            public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Subscription>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.Subscription body, string packageName, string productId) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Immutable. Package name of the parent app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be
+                /// composed of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start
+                /// with a lower-case letter or number, and be between 1 and 40 (inclusive) characters in length.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>
+                /// Required. A string representing version of the available regions being used for the specified
+                /// resource.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RegionsVersionVersion { get; set; }
+
+                /// <summary>Required. The list of fields to be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.Subscription Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("regionsVersion.version", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "regionsVersion.version",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>
@@ -6147,6 +7838,7 @@ namespace Google.Apis.AndroidPublisher.v3
             this.service = service;
             Products = new ProductsResource(service);
             Subscriptions = new SubscriptionsResource(service);
+            Subscriptionsv2 = new Subscriptionsv2Resource(service);
             Voidedpurchases = new VoidedpurchasesResource(service);
         }
 
@@ -6841,6 +8533,93 @@ namespace Google.Apis.AndroidPublisher.v3
                     RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "subscriptionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Subscriptionsv2 resource.</summary>
+        public virtual Subscriptionsv2Resource Subscriptionsv2 { get; }
+
+        /// <summary>The "subscriptionsv2" collection of methods.</summary>
+        public class Subscriptionsv2Resource
+        {
+            private const string Resource = "subscriptionsv2";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public Subscriptionsv2Resource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Get metadata about a subscription</summary>
+            /// <param name="packageName">
+            /// The package of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="token">
+            /// Required. The token provided to the user's device when the subscription was purchased.
+            /// </param>
+            public virtual GetRequest Get(string packageName, string token)
+            {
+                return new GetRequest(service, packageName, token);
+            }
+
+            /// <summary>Get metadata about a subscription</summary>
+            public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchaseV2>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    Token = token;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The package of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. The token provided to the user's device when the subscription was purchased.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -7954,6 +9733,34 @@ namespace Google.Apis.AndroidPublisher.v3
 }
 namespace Google.Apis.AndroidPublisher.v3.Data
 {
+    /// <summary>Represents a targeting rule of the form: User never had {scope} before.</summary>
+    public class AcquisitionTargetingRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The scope of subscriptions this rule considers. Only allows "this subscription" and "any
+        /// subscription in app".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual TargetingRuleScope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ActivateBasePlan.</summary>
+    public class ActivateBasePlanRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ActivateSubscriptionOffer.</summary>
+    public class ActivateSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about an APK. The resource for ApksService.</summary>
     public class Apk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8066,6 +9873,118 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ArchiveSubscription.</summary>
+    public class ArchiveSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a base plan that automatically renews at the end of its subscription period.</summary>
+    public class AutoRenewingBasePlanType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer
+        /// to the help center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingPeriodDuration")]
+        public virtual string BillingPeriodDuration { get; set; }
+
+        /// <summary>
+        /// Grace period of the subscription, specified in ISO 8601 format. Acceptable values are P0D (zero days), P3D
+        /// (3 days), P7D (7 days), P14D (14 days), and P30D (30 days). If not specified, a default value will be used
+        /// based on the recurring period duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gracePeriodDuration")]
+        public virtual string GracePeriodDuration { get; set; }
+
+        /// <summary>
+        /// Whether the renewing base plan is compatible with legacy version of the Play Billing Library (prior to
+        /// version 3) or not. Only one renewing base plan can be marked as legacy compatible for a given subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyCompatible")]
+        public virtual System.Nullable<bool> LegacyCompatible { get; set; }
+
+        /// <summary>
+        /// The proration mode for the base plan determines what happens when a user switches to this plan from another
+        /// base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prorationMode")]
+        public virtual string ProrationMode { get; set; }
+
+        /// <summary>
+        /// Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to
+        /// RESUBSCRIBE_STATE_ACTIVE if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resubscribeState")]
+        public virtual string ResubscribeState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to an auto renewing plan.</summary>
+    public class AutoRenewingPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the subscription is currently set to auto-renew, e.g. the user has not canceled the subscription
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenewEnabled")]
+        public virtual System.Nullable<bool> AutoRenewEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single base plan for a subscription.</summary>
+    public class BasePlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set when the base plan automatically renews at a regular interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenewingBasePlanType")]
+        public virtual AutoRenewingBasePlanType AutoRenewingBasePlanType { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The unique identifier of this base plan. Must be unique within the subscription, and
+        /// conform with RFC-1034. That is, this ID can only contain lower-case letters (a-z), numbers (0-9), and
+        /// hyphens (-), and be at most 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// List of up to 20 custom tags specified for this base plan, and returned to the app through the billing
+        /// library. Subscription offers for this base plan will also receive these offer tags in the billing library.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
+        public virtual System.Collections.Generic.IList<OfferTag> OfferTags { get; set; }
+
+        /// <summary>
+        /// Pricing information for any new locations Play may launch in the future. If omitted, the BasePlan will not
+        /// be automatically available any new locations Play may launch in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherRegionsConfig")]
+        public virtual OtherRegionsBasePlanConfig OtherRegionsConfig { get; set; }
+
+        /// <summary>Set when the base plan does not automatically renew at the end of the billing period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prepaidBasePlanType")]
+        public virtual PrepaidBasePlanType PrepaidBasePlanType { get; set; }
+
+        /// <summary>Region-specific information for this base plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalConfigs")]
+        public virtual System.Collections.Generic.IList<RegionalBasePlanConfig> RegionalConfigs { get; set; }
+
+        /// <summary>
+        /// Output only. The state of the base plan, i.e. whether it's active. Draft and inactive base plans can be
+        /// activated or deleted. Active base plans can be made inactive. Inactive base plans can be canceled. This
+        /// field cannot be changed by updating the resource. Use the dedicated endpoints instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about an app bundle. The resource for BundlesService.</summary>
     public class Bundle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8103,6 +10022,46 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The kind of this response ("androidpublisher#bundlesListResponse").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of the cancel survey when the subscription was canceled by the user.</summary>
+    public class CancelSurveyResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason the user selected in the cancel survey.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>
+        /// Only set for CANCEL_SURVEY_REASON_OTHERS. This is the user's freeform response to the survey.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasonUserInput")]
+        public virtual string ReasonUserInput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to a subscription in canceled state.</summary>
+    public class CanceledStateContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subscription was canceled by the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerInitiatedCancellation")]
+        public virtual DeveloperInitiatedCancellation DeveloperInitiatedCancellation { get; set; }
+
+        /// <summary>Subscription was replaced by a new subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementCancellation")]
+        public virtual ReplacementCancellation ReplacementCancellation { get; set; }
+
+        /// <summary>Subscription was canceled by the system, for example because of a billing problem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInitiatedCancellation")]
+        public virtual SystemInitiatedCancellation SystemInitiatedCancellation { get; set; }
+
+        /// <summary>Subscription was canceled by user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInitiatedCancellation")]
+        public virtual UserInitiatedCancellation UserInitiatedCancellation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8204,6 +10163,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for DeactivateBasePlan.</summary>
+    public class DeactivateBasePlanRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for DeactivateSubscriptionOffer.</summary>
+    public class DeactivateSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a deobfuscation file.</summary>
     public class DeobfuscationFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8237,6 +10210,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to cancellations initiated by developers.</summary>
+    public class DeveloperInitiatedCancellation : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8489,6 +10469,39 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The uploaded expansion file configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expansionFile")]
         public virtual ExpansionFile ExpansionFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User account identifier in the third-party service.</summary>
+    public class ExternalAccountIdentifiers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User account identifier in the third-party service. Only present if account linking happened as part of the
+        /// subscription purchase flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; }
+
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for
+        /// the following purchases: * If account linking happened as part of the subscription purchase flow. * It was
+        /// specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+        /// when the purchase was made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalAccountId")]
+        public virtual string ObfuscatedExternalAccountId { get; set; }
+
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only
+        /// present if specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+        /// when the purchase was made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalProfileId")]
+        public virtual string ObfuscatedExternalProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8979,6 +10992,42 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListSubscriptionOffers.</summary>
+    public class ListSubscriptionOffersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The subscription offers from the specified subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionOffers")]
+        public virtual System.Collections.Generic.IList<SubscriptionOffer> SubscriptionOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListSubscriptions.</summary>
+    public class ListSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The subscriptions from the specified app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A response containing one or more users with access to an account.</summary>
     public class ListUsersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9080,6 +11129,30 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for MigrateBasePlanPrices.</summary>
+    public class MigrateBasePlanPricesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The regional prices to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalPriceMigrations")]
+        public virtual System.Collections.Generic.IList<RegionalPriceMigrationConfig> RegionalPriceMigrations { get; set; }
+
+        /// <summary>
+        /// Required. The version of the available regions being used for the regional_price_migrations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsVersion")]
+        public virtual RegionsVersion RegionsVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for MigrateBasePlanPrices.</summary>
+    public class MigrateBasePlanPricesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an amount of money with its currency type.</summary>
     public class Money : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9106,6 +11179,107 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a custom tag specified for base plans and subscription offers.</summary>
+    public class OfferTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Must conform with RFC-1034. That is, this string can only contain lower-case letters (a-z), numbers (0-9),
+        /// and hyphens (-), and be at most 20 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pricing information for any new locations Play may launch in.</summary>
+    public class OtherRegionsBasePlanConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Price in EUR to use for any new locations Play may launch in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eurPrice")]
+        public virtual Money EurPrice { get; set; }
+
+        /// <summary>
+        /// Whether the base plan is available for new subscribers in any new locations Play may launch in. If not
+        /// specified, this will default to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSubscriberAvailability")]
+        public virtual System.Nullable<bool> NewSubscriberAvailability { get; set; }
+
+        /// <summary>Required. Price in USD to use for any new locations Play may launch in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usdPrice")]
+        public virtual Money UsdPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for any new locations Play may launch in specified on a subscription offer.</summary>
+    public class OtherRegionsSubscriptionOfferConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the subscription offer in any new locations Play may launch in the future. If not specified, this
+        /// will default to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherRegionsNewSubscriberAvailability")]
+        public virtual System.Nullable<bool> OtherRegionsNewSubscriberAvailability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for any new locations Play may launch in for a single offer phase.</summary>
+    public class OtherRegionsSubscriptionOfferPhaseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The absolute amount of money subtracted from the base plan price prorated over the phase duration that the
+        /// user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1
+        /// year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2.
+        /// The resulting price may not be smaller than the minimum price allowed for any new locations Play may launch
+        /// in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absoluteDiscounts")]
+        public virtual OtherRegionsSubscriptionOfferPhasePrices AbsoluteDiscounts { get; set; }
+
+        /// <summary>
+        /// The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price
+        /// allowed for any new locations Play may launch in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherRegionsPrices")]
+        public virtual OtherRegionsSubscriptionOfferPhasePrices OtherRegionsPrices { get; set; }
+
+        /// <summary>
+        /// The fraction of the base plan price prorated over the phase duration that the user pays for this offer
+        /// phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50%
+        /// discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be
+        /// specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be
+        /// rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if
+        /// the discounted price ends up being smaller than the minimum price allowed in any new locations Play may
+        /// launch in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
+        public virtual System.Nullable<double> RelativeDiscount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pricing information for any new locations Play may launch in.</summary>
+    public class OtherRegionsSubscriptionOfferPhasePrices : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Price in EUR to use for any new locations Play may launch in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eurPrice")]
+        public virtual Money EurPrice { get; set; }
+
+        /// <summary>Required. Price in USD to use for any new locations Play may launch in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usdPrice")]
+        public virtual Money UsdPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Information about the current page. List operations that supports paging return only one "page" of results. This
     /// protocol buffer message describes the page that has been returned.
@@ -9127,6 +11301,55 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
         public virtual System.Nullable<int> TotalResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to a subscription in paused state.</summary>
+    public class PausedStateContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time at which the subscription will be automatically resumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoResumeTime")]
+        public virtual object AutoResumeTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a base plan that does not automatically renew at the end of the base plan, and must be manually
+    /// renewed by the user.
+    /// </summary>
+    public class PrepaidBasePlanType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer
+        /// to the help center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingPeriodDuration")]
+        public virtual string BillingPeriodDuration { get; set; }
+
+        /// <summary>
+        /// Whether users should be able to extend this prepaid base plan in Google Play surfaces. Defaults to
+        /// TIME_EXTENSION_ACTIVE if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeExtension")]
+        public virtual string TimeExtension { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to a prepaid plan.</summary>
+    public class PrepaidPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// After this time, the subscription is allowed for a new top-up purchase. Not present if the subscription is
+        /// already extended by a top-up purchase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowExtendAfterTime")]
+        public virtual object AllowExtendAfterTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9244,6 +11467,111 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a base plan specific to a region.</summary>
+    public class RegionalBasePlanConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the base plan in the specified region is available for new subscribers. Existing subscribers will
+        /// not have their subscription canceled if this value is set to false. If not specified, this will default to
+        /// false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSubscriberAvailability")]
+        public virtual System.Nullable<bool> NewSubscriberAvailability { get; set; }
+
+        /// <summary>
+        /// The price of the base plan in the specified region. Must be set if the base plan is available to new
+        /// subscribers. Must be set in the currency that is linked to the specified region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Money Price { get; set; }
+
+        /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a price migration.</summary>
+    public class RegionalPriceMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The cutoff time for historical prices that subscribers can remain paying. Subscribers who are on a
+        /// price that was created before this cutoff time will be migrated to the currently-offered price. These
+        /// subscribers will receive a notification that they will be paying a different price. Subscribers who do not
+        /// agree to the new price will have their subscription ended at the next renewal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldestAllowedPriceVersionTime")]
+        public virtual object OldestAllowedPriceVersionTime { get; set; }
+
+        /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a subscription offer in a single region.</summary>
+    public class RegionalSubscriptionOfferConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the subscription offer in the specified region is available for new subscribers. Existing
+        /// subscribers will not have their subscription cancelled if this value is set to false. If not specified, this
+        /// will default to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSubscriberAvailability")]
+        public virtual System.Nullable<bool> NewSubscriberAvailability { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a single phase of a subscription offer in a single region.</summary>
+    public class RegionalSubscriptionOfferPhaseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The absolute amount of money subtracted from the base plan price prorated over the phase duration that the
+        /// user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1
+        /// year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2.
+        /// The resulting price may not be smaller than the minimum price allowed for this region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absoluteDiscount")]
+        public virtual Money AbsoluteDiscount { get; set; }
+
+        /// <summary>
+        /// The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price
+        /// allowed for this region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Money Price { get; set; }
+
+        /// <summary>Required. Immutable. The region to which this config applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// The fraction of the base plan price prorated over the phase duration that the user pays for this offer
+        /// phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50%
+        /// discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be
+        /// specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be
+        /// rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if
+        /// the discounted price ends up being smaller than the minimum price allowed in this region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
+        public virtual System.Nullable<double> RelativeDiscount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specified details about taxation in a given geographical region.</summary>
     public class RegionalTaxRateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9262,6 +11590,26 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taxTier")]
         public virtual string TaxTier { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The version of the available regions being used for the specified resource.</summary>
+    public class RegionsVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A string representing version of the available regions being used for the specified resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to cancellations caused by subscription replacement.</summary>
+    public class ReplacementCancellation : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9344,6 +11692,78 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information associated with purchases made with 'Subscribe with Google'.</summary>
+    public class SubscribeWithGoogleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email address of the user when the subscription was purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
+
+        /// <summary>The family name of the user when the subscription was purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
+        public virtual string FamilyName { get; set; }
+
+        /// <summary>The given name of the user when the subscription was purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
+        public virtual string GivenName { get; set; }
+
+        /// <summary>The Google profile id of the user when the subscription was purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
+        public virtual string ProfileId { get; set; }
+
+        /// <summary>The profile name of the user when the subscription was purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
+        public virtual string ProfileName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single subscription for an app.</summary>
+    public class Subscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether this subscription is archived. Archived subscriptions are not available to any
+        /// subscriber any longer, cannot be updated, and are not returned in list requests unless the show archived
+        /// flag is passed in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archived")]
+        public virtual System.Nullable<bool> Archived { get; set; }
+
+        /// <summary>
+        /// The set of base plans for this subscription. Represents the prices and duration of the subscription if no
+        /// other offers apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlans")]
+        public virtual System.Collections.Generic.IList<BasePlan> BasePlans { get; set; }
+
+        /// <summary>
+        /// Required. List of localized listings for this subscription. Must contain at least an entry for the default
+        /// language of the parent app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listings")]
+        public virtual System.Collections.Generic.IList<SubscriptionListing> Listings { get; set; }
+
+        /// <summary>Immutable. Package name of the parent app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>
+        /// Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed of
+        /// lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a lower-case
+        /// letter or number, and be between 1 and 40 (inclusive) characters in length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Details about taxes and legal compliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAndComplianceSettings")]
+        public virtual SubscriptionTaxAndComplianceSettings TaxAndComplianceSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Information provided by the user when they complete the subscription cancellation flow (cancellation reason
     /// survey).
@@ -9383,6 +11803,146 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedExpiryTimeMillis")]
         public virtual System.Nullable<long> ExpectedExpiryTimeMillis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The consumer-visible metadata of a subscription.</summary>
+    public class SubscriptionListing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of benefits shown to the user on platforms such as the Play Store and in restoration flows in the
+        /// language of this listing. Plain text. Ordered list of at most four benefits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
+        public virtual System.Collections.Generic.IList<string> Benefits { get; set; }
+
+        /// <summary>
+        /// The description of this subscription in the language of this listing. Maximum length - 80 characters. Plain
+        /// text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The language of this listing, as defined by BCP-47, e.g. "en-US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Required. The title of this subscription in the language of this listing. Plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single, temporary offer</summary>
+    public class SubscriptionOffer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The ID of the base plan to which this offer is an extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Unique ID of this subscription offer. Must be unique within the base plan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>
+        /// List of up to 20 custom tags specified for this offer, and returned to the app through the billing library.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
+        public virtual System.Collections.Generic.IList<OfferTag> OfferTags { get; set; }
+
+        /// <summary>The configuration for any new locations Play may launch in the future.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherRegionsConfig")]
+        public virtual OtherRegionsSubscriptionOfferConfig OtherRegionsConfig { get; set; }
+
+        /// <summary>Required. Immutable. The package name of the app the parent subscription belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>
+        /// Required. The phases of this subscription offer. Must contain at least one entry, and may contain at most
+        /// five. Users will always receive all these phases in the specified order. Phases may not be added, removed,
+        /// or reordered after initial creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phases")]
+        public virtual System.Collections.Generic.IList<SubscriptionOfferPhase> Phases { get; set; }
+
+        /// <summary>Required. Immutable. The ID of the parent subscription this offer belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// Required. The region-specific configuration of this offer. Must contain at least one entry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalConfigs")]
+        public virtual System.Collections.Generic.IList<RegionalSubscriptionOfferConfig> RegionalConfigs { get; set; }
+
+        /// <summary>
+        /// Output only. The current state of this offer. Can be changed using Activate and Deactivate actions. NB: the
+        /// base plan state supersedes this state, so an active offer may not be available if the base plan is not
+        /// active.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The requirements that users need to fulfil to be eligible for this offer. Represents the requirements that
+        /// Play will evaluate to decide whether an offer should be returned. Developers may further filter these offers
+        /// themselves.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual SubscriptionOfferTargeting Targeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single phase of a subscription offer.</summary>
+    public class SubscriptionOfferPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The duration of a single recurrence of this phase. Specified in ISO 8601 format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual string Duration { get; set; }
+
+        /// <summary>Pricing information for any new locations Play may launch in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherRegionsConfig")]
+        public virtual OtherRegionsSubscriptionOfferPhaseConfig OtherRegionsConfig { get; set; }
+
+        /// <summary>
+        /// Required. The number of times this phase repeats. If this offer phase is not free, each recurrence charges
+        /// the user the price of this offer phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrenceCount")]
+        public virtual System.Nullable<int> RecurrenceCount { get; set; }
+
+        /// <summary>
+        /// Required. The region-specific configuration of this offer phase. This list must contain exactly one entry
+        /// for each region for which the subscription offer has a regional config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalConfigs")]
+        public virtual System.Collections.Generic.IList<RegionalSubscriptionOfferPhaseConfig> RegionalConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the rule a user needs to satisfy to receive this offer.</summary>
+    public class SubscriptionOfferTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Offer targeting rule for new user acquisition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acquisitionRule")]
+        public virtual AcquisitionTargetingRule AcquisitionRule { get; set; }
+
+        /// <summary>Offer targeting rule for upgrading users' existing plans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeRule")]
+        public virtual UpgradeTargetingRule UpgradeRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9627,6 +12187,114 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Item-level info for a subscription purchase.</summary>
+    public class SubscriptionPurchaseLineItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The item is auto renewing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenewingPlan")]
+        public virtual AutoRenewingPlan AutoRenewingPlan { get; set; }
+
+        /// <summary>
+        /// Time at which the subscription expired or will expire unless the access is extended (ex. renews).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
+        public virtual object ExpiryTime { get; set; }
+
+        /// <summary>The item is prepaid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prepaidPlan")]
+        public virtual PrepaidPlan PrepaidPlan { get; set; }
+
+        /// <summary>The purchased product ID (for example, 'monthly001').</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates the status of a user's subscription purchase.</summary>
+    public class SubscriptionPurchaseV2 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The acknowledgement state of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
+        public virtual string AcknowledgementState { get; set; }
+
+        /// <summary>
+        /// Additional context around canceled subscriptions. Only present if the subscription currently has
+        /// subscription_state SUBSCRIPTION_STATE_CANCELED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canceledStateContext")]
+        public virtual CanceledStateContext CanceledStateContext { get; set; }
+
+        /// <summary>User account identifier in the third-party service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountIdentifiers")]
+        public virtual ExternalAccountIdentifiers ExternalAccountIdentifiers { get; set; }
+
+        /// <summary>This kind represents a SubscriptionPurchaseV2 object in the androidpublisher service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The order id of the latest order associated with the purchase of the subscription. For autoRenewing
+        /// subscription, this is the order id of signup order if it is not renewed yet, or the last recurring order id
+        /// (success, pending, or declined order). For prepaid subscription, this is the order id associated with the
+        /// queried purchase token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestOrderId")]
+        public virtual string LatestOrderId { get; set; }
+
+        /// <summary>
+        /// Item-level info for a subscription purchase. The items in the same purchase should be either all with
+        /// AutoRenewingPlan or all with PrepaidPlan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
+        public virtual System.Collections.Generic.IList<SubscriptionPurchaseLineItem> LineItems { get; set; }
+
+        /// <summary>
+        /// The purchase token of the old subscription if this subscription is one of the following: * Re-signup of a
+        /// canceled but non-lapsed subscription * Upgrade/downgrade from a previous subscription. * Convert from
+        /// prepaid to auto renewing subscription. * Convert from an auto renewing subscription to prepaid. * Topup a
+        /// prepaid subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedPurchaseToken")]
+        public virtual string LinkedPurchaseToken { get; set; }
+
+        /// <summary>
+        /// Additional context around paused subscriptions. Only present if the subscription currently has
+        /// subscription_state SUBSCRIPTION_STATE_PAUSED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pausedStateContext")]
+        public virtual PausedStateContext PausedStateContext { get; set; }
+
+        /// <summary>
+        /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// Time at which the subscription was granted. Not set for pending subscriptions (subscription was created but
+        /// awaiting payment during signup).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>User profile associated with purchases made with 'Subscribe with Google'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscribeWithGoogleInfo")]
+        public virtual SubscribeWithGoogleInfo SubscribeWithGoogleInfo { get; set; }
+
+        /// <summary>The current state of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionState")]
+        public virtual string SubscriptionState { get; set; }
+
+        /// <summary>Only present if this subscription purchase is a test purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testPurchase")]
+        public virtual TestPurchase TestPurchase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the purchases.subscriptions.acknowledge API.</summary>
     public class SubscriptionPurchasesAcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9700,6 +12368,37 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to cancellations initiated by Google system.</summary>
+    public class SystemInitiatedCancellation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the scope of subscriptions which a targeting rule can match to target offers to users based on past or
+    /// current entitlement.
+    /// </summary>
+    public class TargetingRuleScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The scope of the current targeting rule is the subscription with the specified subscription ID. Must be a
+        /// subscription within the same parent app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specificSubscriptionInApp")]
+        public virtual string SpecificSubscriptionInApp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Whether this subscription purchase is a test purchase.</summary>
+    public class TestPurchase : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9882,6 +12581,36 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a targeting rule of the form: User currently has {scope} [with billing period {billing_period}].
+    /// </summary>
+    public class UpgradeTargetingRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The specific billing period duration, specified in ISO 8601 format, that a user must be currently subscribed
+        /// to to be eligible for this rule. If not specified, users subscribed to any billing period are matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingPeriodDuration")]
+        public virtual string BillingPeriodDuration { get; set; }
+
+        /// <summary>
+        /// Limit this offer to only once per user. If set to true, a user can never be eligible for this offer again if
+        /// they ever subscribed to this offer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oncePerUser")]
+        public virtual System.Nullable<bool> OncePerUser { get; set; }
+
+        /// <summary>
+        /// Required. The scope of subscriptions this rule considers. Only allows "this subscription" and "specific
+        /// subscription in app".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual TargetingRuleScope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A user resource.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9995,6 +12724,27 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Number of users who have given this review a thumbs up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbsUpCount")]
         public virtual System.Nullable<int> ThumbsUpCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to cancellations initiated by users.</summary>
+    public class UserInitiatedCancellation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Information provided by the user when they complete the subscription cancellation flow (cancellation reason
+        /// survey).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyResult")]
+        public virtual CancelSurveyResult CancelSurveyResult { get; set; }
+
+        /// <summary>
+        /// The time at which the subscription was canceled by the user. The user might still have access to the
+        /// subscription after this time. Use line_items.expiry_time to determine if a user still has access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual object CancelTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

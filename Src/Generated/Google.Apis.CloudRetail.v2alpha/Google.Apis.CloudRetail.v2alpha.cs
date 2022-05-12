@@ -1562,9 +1562,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// for this product will be used. If no inventory fields are set in
                         /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
-                        /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
-                        /// who have Retail Search enabled. Please enable Retail Search on Cloud Console before using
-                        /// this feature.
+                        /// ProductService.AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only
+                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
+                        /// Console before using this feature.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
@@ -1590,9 +1590,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// for this product will be used. If no inventory fields are set in
                         /// SetInventoryRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
-                        /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
-                        /// who have Retail Search enabled. Please enable Retail Search on Cloud Console before using
-                        /// this feature.
+                        /// ProductService.AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only
+                        /// available for users who have Retail Search enabled. Please enable Retail Search on Cloud
+                        /// Console before using this feature.
                         /// </summary>
                         public class SetInventoryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
                         {
@@ -4545,7 +4545,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Metadata related to the progress of the AddFulfillmentPlaces operation. Currently empty because there is no
-    /// meaningful metadata populated from the AddFulfillmentPlaces method.
+    /// meaningful metadata populated from the ProductService.AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2AddFulfillmentPlacesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4555,7 +4555,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated
-    /// from the AddFulfillmentPlaces method.
+    /// from the ProductService.AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2AddFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4565,7 +4565,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Metadata related to the progress of the AddLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the AddLocalInventories method.
+    /// meaningful metadata populated from the ProductService.AddLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2AddLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4574,8 +4574,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Response of the AddLocalInventories API. Currently empty because there is no meaningful response populated from
-    /// the AddLocalInventories method.
+    /// Response of the ProductService.AddLocalInventories API. Currently empty because there is no meaningful response
+    /// populated from the ProductService.AddLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2AddLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4838,7 +4838,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Metadata related to the progress of the AddFulfillmentPlaces operation. Currently empty because there is no
-    /// meaningful metadata populated from the AddFulfillmentPlaces method.
+    /// meaningful metadata populated from the ProductService.AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4846,7 +4846,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for AddFulfillmentPlaces method.</summary>
+    /// <summary>Request message for ProductService.AddFulfillmentPlaces method.</summary>
     public class GoogleCloudRetailV2alphaAddFulfillmentPlacesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4891,7 +4891,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated
-    /// from the AddFulfillmentPlaces method.
+    /// from the ProductService.AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4901,7 +4901,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Metadata related to the progress of the AddLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the AddLocalInventories method.
+    /// meaningful metadata populated from the ProductService.AddLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2alphaAddLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4909,7 +4909,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for AddLocalInventories method.</summary>
+    /// <summary>Request message for ProductService.AddLocalInventories method.</summary>
     public class GoogleCloudRetailV2alphaAddLocalInventoriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4950,8 +4950,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Response of the AddLocalInventories API. Currently empty because there is no meaningful response populated from
-    /// the AddLocalInventories method.
+    /// Response of the ProductService.AddLocalInventories API. Currently empty because there is no meaningful response
+    /// populated from the ProductService.AddLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2alphaAddLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5117,11 +5117,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
-        /// pre-loaded by using AddCatalogAttribute, ImportCatalogAttributes, or UpdateAttributesConfig APIs. This field
-        /// is `False` for pre-loaded CatalogAttributes. Only CatalogAttributes that are not in use by products can be
-        /// deleted. CatalogAttributes that are in use by products cannot be deleted; however, their configuration
-        /// properties will reset to default values upon removal request. After catalog changes, it takes about 10
-        /// minutes for this field to update.
+        /// pre-loaded by using CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
+        /// CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-loaded CatalogAttributes. Only
+        /// CatalogAttributes that are not in use by products can be deleted. CatalogAttributes that are in use by
+        /// products cannot be deleted; however, their configuration properties will reset to default values upon
+        /// removal request. After catalog changes, it takes about 10 minutes for this field to update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inUse")]
         public virtual System.Nullable<bool> InUse { get; set; }
@@ -5486,10 +5486,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the
-        /// deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. You may learn more on [configuration mode]
-        /// (https://cloud.google.com/retail/docs/attribute-config#config-modes). if true, custom attribute values are
-        /// indexed, so that it can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a
-        /// UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more
+        /// deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute
+        /// configuration, see [Configuration
+        /// modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values
+        /// are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored
+        /// in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more
         /// details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexable")]
@@ -5504,10 +5505,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the
-        /// deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. You may learn more on [configuration mode]
-        /// (https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are
-        /// searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type
-        /// text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+        /// deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute
+        /// configuration, see [Configuration
+        /// modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values
+        /// are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if
+        /// type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchable")]
         public virtual System.Nullable<bool> Searchable { get; set; }
@@ -5567,7 +5569,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
-        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
+        /// <summary>This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2alphaExportErrorsConfig ErrorsConfig { get; set; }
 
@@ -5585,7 +5587,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
-        /// <summary>Echoes the destination for the complete errors if this field was set in the request.</summary>
+        /// <summary>This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2alphaExportErrorsConfig ErrorsConfig { get; set; }
 
@@ -6133,8 +6135,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The labels applied to a resource must meet the following requirements: * Each resource can have multiple
         /// labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length of 1
-        /// character and a maximum length of 63 characters, and cannot be empty. Values can be empty, and have a
-        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a maximum
+        /// length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
         /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
         /// must start with a lowercase letter or international character. See [Google Cloud
@@ -6235,8 +6237,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Additional product metadata / annotations. Possible values: * `product`: JSON representation of the product.
-        /// Will be set if `returnProduct` is set to true in `PredictRequest.params`. * `score`: Prediction score in
-        /// double value. Will be set if `returnScore` is set to true in `PredictRequest.params`.
+        /// Is set if `returnProduct` is set to true in `PredictRequest.params`. * `score`: Prediction score in double
+        /// value. Is set if `returnScore` is set to true in `PredictRequest.params`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -6570,8 +6572,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom
         /// attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always
         /// returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in
-        /// by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
-        /// returned. Note: Returning more fields in SearchResponse may increase response payload size and serving
+        /// by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
+        /// returned. Note: Returning more fields in SearchResponse can increase response payload size and serving
         /// latency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievableFields")]
@@ -7364,7 +7366,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Boost specification to boost certain products. See more details at this [user
         /// guide](https://cloud.google.com/retail/docs/boosting). Notice that if both ServingConfig.boost_control_ids
-        /// and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search
+        /// and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search
         /// request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores
         /// from all matched boost conditions.
         /// </summary>
@@ -7415,8 +7417,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The labels applied to a resource must meet the following requirements: * Each resource can have multiple
         /// labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length of 1
-        /// character and a maximum length of 63 characters, and cannot be empty. Values can be empty, and have a
-        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a maximum
+        /// length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
         /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
         /// must start with a lowercase letter or international character. See [Google Cloud
@@ -7503,6 +7505,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchMode")]
         public virtual string SearchMode { get; set; }
 
+        /// <summary>
+        /// The spell correction specification that specifies the mode under which spell correction will take effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spellCorrectionSpec")]
+        public virtual GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
+
         /// <summary>User information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudRetailV2alphaUserInfo UserInfo { get; set; }
@@ -7515,7 +7523,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// "fulfillmentType.fulfillmentId". E.g., in "pickupInStore.store123", "pickupInStore" is fulfillment type and
         /// "store123" is the store ID. Supported keys are: * colorFamilies * price * originalPrice * discount *
         /// variantId * inventory(place_id,price) * inventory(place_id,original_price) *
-        /// inventory(place_id,attributes.key), where key is any key in the Product.inventories.attributes map. *
+        /// inventory(place_id,attributes.key), where key is any key in the Product.local_inventories.attributes map. *
         /// attributes.key, where key is any key in the Product.attributes map. * pickupInStore.id, where id is any
         /// FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". * shipToStore.id, where id is any
         /// FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". * sameDayDelivery.id, where id is any
@@ -7764,6 +7772,20 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The specification for query spell correction.</summary>
+    public class GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The mode under which spell correction should take effect to replace the original search query. Default to
+        /// Mode.AUTO.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for SearchService.Search method.</summary>
     public class GoogleCloudRetailV2alphaSearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7783,7 +7805,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Contains the spell corrected query, if found. If the spell correction type is AUTOMATIC, then the search
-        /// results will be based on corrected_query, otherwise the original query will be used for search.
+        /// results are based on corrected_query. Otherwise the original query will be used for search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("correctedQuery")]
         public virtual string CorrectedQuery { get; set; }
@@ -7810,8 +7832,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual GoogleCloudRetailV2alphaSearchResponseQueryExpansionInfo QueryExpansionInfo { get; set; }
 
         /// <summary>
-        /// The URI of a customer-defined redirect page. If redirect action is triggered, no search will be performed,
-        /// and only redirect_uri and attribution_token will be set in the response.
+        /// The URI of a customer-defined redirect page. If redirect action is triggered, no search is performed, and
+        /// only redirect_uri and attribution_token are set in the response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
@@ -7946,10 +7968,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores
         /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
-        /// is 100. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the
-        /// boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the
-        /// final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set
-        /// if solution_types is SOLUTION_TYPE_SEARCH.
+        /// is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost
+        /// conditions from both places are evaluated. If a search request matches multiple boost conditions, the final
+        /// boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if
+        /// solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostControlIds")]
         public virtual System.Collections.Generic.IList<string> BoostControlIds { get; set; }
@@ -8482,7 +8504,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Metadata related to the progress of the AddFulfillmentPlaces operation. Currently empty because there is no
-    /// meaningful metadata populated from the AddFulfillmentPlaces method.
+    /// meaningful metadata populated from the ProductService.AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8492,7 +8514,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated
-    /// from the AddFulfillmentPlaces method.
+    /// from the ProductService.AddFulfillmentPlaces method.
     /// </summary>
     public class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8502,7 +8524,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// Metadata related to the progress of the AddLocalInventories operation. Currently empty because there is no
-    /// meaningful metadata populated from the AddLocalInventories method.
+    /// meaningful metadata populated from the ProductService.AddLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2betaAddLocalInventoriesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8511,8 +8533,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Response of the AddLocalInventories API. Currently empty because there is no meaningful response populated from
-    /// the AddLocalInventories method.
+    /// Response of the ProductService.AddLocalInventories API. Currently empty because there is no meaningful response
+    /// populated from the ProductService.AddLocalInventories method.
     /// </summary>
     public class GoogleCloudRetailV2betaAddLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8563,7 +8585,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
-        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
+        /// <summary>This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2betaExportErrorsConfig ErrorsConfig { get; set; }
 
@@ -8581,7 +8603,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
-        /// <summary>Echoes the destination for the complete errors if this field was set in the request.</summary>
+        /// <summary>This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
         public virtual GoogleCloudRetailV2betaExportErrorsConfig ErrorsConfig { get; set; }
 
