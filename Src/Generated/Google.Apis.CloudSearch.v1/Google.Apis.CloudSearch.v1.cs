@@ -4871,7 +4871,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// Proto representation of a custom emoji. May be used in both APIs and in Spanner, but certain fields should be
-    /// restricted to one or the other. See the per-field documentation for details. NEXT_TAG: 11
+    /// restricted to one or the other. See the per-field documentation for details. NEXT_TAG: 13
     /// </summary>
     public class CustomEmoji : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4883,6 +4883,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string BlobId { get; set; }
 
         /// <summary>
+        /// Content type of the file used to upload the emoji. Used for takeout. Written to Spanner when the emoji is
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>
         /// Time when the Emoji was created, in microseconds. This field may be present in Spanner, within the server,
         /// or in public APIs.
         /// </summary>
@@ -4892,6 +4899,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>This field should *never* be persisted to Spanner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
         public virtual UserId CreatorUserId { get; set; }
+
+        /// <summary>
+        /// Output only. A short-lived URL clients can use for directly accessing a custom emoji image. This field is
+        /// intended for API consumption, and should *never* be persisted to Spanner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralUrl")]
+        public virtual string EphemeralUrl { get; set; }
 
         /// <summary>This field should *never* be persisted to Spanner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
@@ -5402,8 +5416,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("joinedSpacesAffinityScore")]
         public virtual System.Nullable<double> JoinedSpacesAffinityScore { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("lastMessagePostedTimestampMicros")]
-        public virtual System.Nullable<long> LastMessagePostedTimestampMicros { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMessagePostedTimestampSecs")]
+        public virtual System.Nullable<long> LastMessagePostedTimestampSecs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lastReadTimestampSecs")]
+        public virtual System.Nullable<long> LastReadTimestampSecs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("memberMetadataCount")]
         public virtual System.Nullable<double> MemberMetadataCount { get; set; }
@@ -5423,8 +5440,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spaceAgeInDays")]
         public virtual System.Nullable<double> SpaceAgeInDays { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceCreationTimestampMicros")]
-        public virtual System.Nullable<long> SpaceCreationTimestampMicros { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceCreationTimestampSecs")]
+        public virtual System.Nullable<long> SpaceCreationTimestampSecs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
         public virtual System.Nullable<double> TopicalityScore { get; set; }

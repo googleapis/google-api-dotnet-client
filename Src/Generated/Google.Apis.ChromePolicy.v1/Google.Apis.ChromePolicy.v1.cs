@@ -1114,7 +1114,8 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string Field { get; set; }
 
         /// <summary>
-        /// Output only. Provides a list of fields and the values they must have for this field to be allowed to be set.
+        /// Output only. Provides a list of fields and values. At least one of the fields must have the corresponding
+        /// value in order for this field to be allowed to be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDependencies")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldDependencies> FieldDependencies { get; set; }

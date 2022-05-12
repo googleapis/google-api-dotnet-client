@@ -2816,6 +2816,13 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namedStyleType")]
         public virtual string NamedStyleType { get; set; }
 
+        /// <summary>
+        /// Whether the current paragraph should always start at the beginning of a page. If unset, the value is
+        /// inherited from the parent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageBreakBefore")]
+        public virtual System.Nullable<bool> PageBreakBefore { get; set; }
+
         /// <summary>The shading of the paragraph. If unset, the value is inherited from the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shading")]
         public virtual Shading Shading { get; set; }
@@ -2916,6 +2923,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Indicates if there was a suggested change to named_style_type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedStyleTypeSuggested")]
         public virtual System.Nullable<bool> NamedStyleTypeSuggested { get; set; }
+
+        /// <summary>Indicates if there was a suggested change to page_break_before.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageBreakBeforeSuggested")]
+        public virtual System.Nullable<bool> PageBreakBeforeSuggested { get; set; }
 
         /// <summary>
         /// A mask that indicates which of the fields in shading have been changed in this suggestion.

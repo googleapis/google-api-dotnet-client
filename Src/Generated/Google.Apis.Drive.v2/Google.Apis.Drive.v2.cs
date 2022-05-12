@@ -9149,6 +9149,10 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canRenameDrive")]
             public virtual System.Nullable<bool> CanRenameDrive { get; set; }
 
+            /// <summary>Whether the current user can reset the shared drive restrictions to defaults.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canResetDriveRestrictions")]
+            public virtual System.Nullable<bool> CanResetDriveRestrictions { get; set; }
+
             /// <summary>Whether the current user can share files or folders in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
             public virtual System.Nullable<bool> CanShare { get; set; }
@@ -10838,6 +10842,10 @@ namespace Google.Apis.Drive.v2.Data
             /// <summary>Whether the current user can rename this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRenameTeamDrive")]
             public virtual System.Nullable<bool> CanRenameTeamDrive { get; set; }
+
+            /// <summary>Whether the current user can reset the Team Drive restrictions to defaults.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canResetTeamDriveRestrictions")]
+            public virtual System.Nullable<bool> CanResetTeamDriveRestrictions { get; set; }
 
             /// <summary>Whether the current user can share files or folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]

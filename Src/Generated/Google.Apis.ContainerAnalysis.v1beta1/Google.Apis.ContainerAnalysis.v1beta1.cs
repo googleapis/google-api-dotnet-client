@@ -650,8 +650,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
-            /// appropriate value for this field.
+            /// REQUIRED: The resource for which the policy is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.GetIamPolicyRequest body, string resource)
             {
@@ -676,8 +676,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -878,8 +879,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
-            /// appropriate value for this field.
+            /// REQUIRED: The resource for which the policy is being specified. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
@@ -904,8 +905,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -948,8 +950,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
-            /// for the appropriate value for this field.
+            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
@@ -973,8 +975,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -1260,8 +1263,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
-            /// appropriate value for this field.
+            /// REQUIRED: The resource for which the policy is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.GetIamPolicyRequest body, string resource)
             {
@@ -1286,8 +1289,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -1608,8 +1612,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
-            /// appropriate value for this field.
+            /// REQUIRED: The resource for which the policy is being specified. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
@@ -1634,8 +1638,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -1678,8 +1683,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
-            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
-            /// for the appropriate value for this field.
+            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
@@ -1703,8 +1708,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 }
 
                 /// <summary>
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -2308,7 +2314,57 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     }
 
     /// <summary>
-    /// Common Vulnerability Scoring System version 3. For details, see
+    /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document
+    /// </summary>
+    public class CVSS : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
+        public virtual string AttackComplexity { get; set; }
+
+        /// <summary>
+        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
+        /// across user environments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
+        public virtual string AttackVector { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual string Authentication { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
+        public virtual string AvailabilityImpact { get; set; }
+
+        /// <summary>The base score is a function of the base metric scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
+        public virtual System.Nullable<float> BaseScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
+        public virtual string ConfidentialityImpact { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitabilityScore")]
+        public virtual System.Nullable<float> ExploitabilityScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
+        public virtual System.Nullable<float> ImpactScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
+        public virtual string IntegrityImpact { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
+        public virtual string PrivilegesRequired { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
+        public virtual string UserInteraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deprecated. Common Vulnerability Scoring System version 3. For details, see
     /// https://www.first.org/cvss/specification-document
     /// </summary>
     public class CVSSv3 : Google.Apis.Requests.IDirectResponseSchema
@@ -3472,6 +3528,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Digest information.</summary>
+    public class Digest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>`SHA1`, `SHA512` etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("algo")]
+        public virtual string Algo { get; set; }
+
+        /// <summary>Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digestValue")]
+        public virtual string DigestValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Provides information about the analysis status of a discovered resource.</summary>
     public class Discovered : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3550,7 +3621,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     }
 
     /// <summary>
-    /// DocumentNote represents an SPDX Document Creation Infromation section:
+    /// DocumentNote represents an SPDX Document Creation Information section:
     /// https://spdx.github.io/spdx-spec/2-document-creation-information/
     /// </summary>
     public class DocumentNote : Google.Apis.Requests.IDirectResponseSchema
@@ -3645,6 +3716,37 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of
+    /// arbitrary type.
+    /// </summary>
+    public class Envelope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual string Payload { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadType")]
+        public virtual string PayloadType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<EnvelopeSignature> Signatures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnvelopeSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("keyid")]
+        public virtual string Keyid { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sig")]
+        public virtual string Sig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4236,14 +4338,40 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     public class Installation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. All of the places within the filesystem versions of this package have been found.
+        /// Output only. The CPU architecture for which packages in this distribution channel were built. Architecture
+        /// will be blank for language packages.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>
+        /// Output only. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager
+        /// version distributing a package. The cpe_uri will be blank for language packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
+        public virtual string CpeUri { get; set; }
+
+        /// <summary>Licenses that have been declared by the authors of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual License License { get; set; }
+
+        /// <summary>All of the places within the filesystem versions of this package have been found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual System.Collections.Generic.IList<Location> Location { get; set; }
 
-        /// <summary>Output only. The name of the installed package.</summary>
+        /// <summary>Required. Output only. The name of the installed package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
+
+        /// <summary>Output only. The version of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual Version Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4280,16 +4408,18 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
-    /// </summary>
+    /// <summary>License information.</summary>
     public class License : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Comments</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
         public virtual string Comments { get; set; }
 
-        /// <summary>Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/</summary>
+        /// <summary>
+        /// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a
+        /// choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT",
+        /// "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
 
@@ -4420,7 +4550,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager
+        /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager
         /// version distributing a package.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
@@ -4430,7 +4560,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>The version installed at this location.</summary>
+        /// <summary>Deprecated. The version installed at this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual Version Version { get; set; }
 
@@ -4562,6 +4692,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discovered")]
         public virtual GrafeasV1beta1DiscoveryDetails Discovered { get; set; }
 
+        /// <summary>https://github.com/secure-systems-lab/dsse</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envelope")]
+        public virtual Envelope Envelope { get; set; }
+
         /// <summary>Describes the installation of a package on the linked resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installation")]
         public virtual GrafeasV1beta1PackageDetails Installation { get; set; }
@@ -4626,19 +4760,62 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is
-    /// distributed by many, at various versions.
-    /// </summary>
+    /// <summary>Package represents a particular package version.</summary>
     public class Package : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank
+        /// for language packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>
+        /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version
+        /// distributing a package. The cpe_uri will be blank for language packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
+        public virtual string CpeUri { get; set; }
+
+        /// <summary>The description of this package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Hash value, typically a file digest, that allows unique identification a specific package.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IList<Digest> Digest { get; set; }
+
         /// <summary>The various channels by which a package is distributed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
         public virtual System.Collections.Generic.IList<Distribution> Distribution { get; set; }
 
+        /// <summary>Licenses that have been declared by the authors of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual License License { get; set; }
+
+        /// <summary>A freeform text denoting the maintainer of this package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintainer")]
+        public virtual string Maintainer { get; set; }
+
         /// <summary>Required. Immutable. The name of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
+
+        /// <summary>The homepage for this package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The version of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual Version Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4863,7 +5040,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>
         /// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg
         /// --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character
-        /// hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may
+        /// hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may
         /// choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is
         /// guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling
         /// --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \
@@ -5344,9 +5521,17 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
 
-        /// <summary>The full description of the CVSSv3.</summary>
+        /// <summary>The full description of the CVSS for version 2.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV2")]
+        public virtual CVSS CvssV2 { get; set; }
+
+        /// <summary>The full description of the CVSS for version 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
         public virtual CVSSv3 CvssV3 { get; set; }
+
+        /// <summary>A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cwe")]
+        public virtual System.Collections.Generic.IList<string> Cwe { get; set; }
 
         /// <summary>
         /// All information about the package to specifically identify this vulnerability. One entry per (version range

@@ -6352,6 +6352,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>
+        /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to
+        /// enable/disable. If unspecified, defaults to DISABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
+        public virtual string EvaluationMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

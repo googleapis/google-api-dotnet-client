@@ -2946,7 +2946,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageToken> Tokens { get; set; }
 
         /// <summary>
-        /// Transformation matrices that were applied to the original document image to produce Page.image.
+        /// Transformation matrices (both already applied and not) to the original document image to produce Page.image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageMatrix> Transforms { get; set; }
@@ -3189,6 +3189,13 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Has the transformation already been applied to the current Document? Needed to disambiguate pre-processing
+        /// transformations already applied vs transformations added at annotation time by HITL operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applied")]
+        public virtual System.Nullable<bool> Applied { get; set; }
+
         /// <summary>Number of columns in the matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cols")]
         public virtual System.Nullable<int> Cols { get; set; }
@@ -4107,7 +4114,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageToken> Tokens { get; set; }
 
         /// <summary>
-        /// Transformation matrices that were applied to the original document image to produce Page.image.
+        /// Transformation matrices (both already applied and not) to the original document image to produce Page.image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageMatrix> Transforms { get; set; }
@@ -4350,6 +4357,13 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Has the transformation already been applied to the current Document? Needed to disambiguate pre-processing
+        /// transformations already applied vs transformations added at annotation time by HITL operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applied")]
+        public virtual System.Nullable<bool> Applied { get; set; }
+
         /// <summary>Number of columns in the matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cols")]
         public virtual System.Nullable<int> Cols { get; set; }
@@ -5498,7 +5512,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageToken> Tokens { get; set; }
 
         /// <summary>
-        /// Transformation matrices that were applied to the original document image to produce Page.image.
+        /// Transformation matrices (both already applied and not) to the original document image to produce Page.image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageMatrix> Transforms { get; set; }
@@ -5741,6 +5755,13 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Has the transformation already been applied to the current Document? Needed to disambiguate pre-processing
+        /// transformations already applied vs transformations added at annotation time by HITL operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applied")]
+        public virtual System.Nullable<bool> Applied { get; set; }
+
         /// <summary>Number of columns in the matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cols")]
         public virtual System.Nullable<int> Cols { get; set; }
