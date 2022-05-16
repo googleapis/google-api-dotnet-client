@@ -1049,8 +1049,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the membership to be retrieved, in the form "spaces/*/members/*". Example:
-            /// spaces/AAAAAAAAAAAA/members/111111111111111111111
+            /// Required. Resource name of the membership to retrieve. Format: spaces/{space}/members/{member}
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1071,8 +1070,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the membership to be retrieved, in the form "spaces/*/members/*".
-                /// Example: spaces/AAAAAAAAAAAA/members/111111111111111111111
+                /// Required. Resource name of the membership to retrieve. Format: spaces/{space}/members/{member}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1106,8 +1104,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
             /// </summary>
             /// <param name="parent">
-            /// Required. The resource name of the space for which membership list is to be fetched, in the form
-            /// "spaces/*". Example: spaces/AAAAAAAAAAAA
+            /// Required. The resource name of the space for which to fetch a membership list. Format: spaces/{space}
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1128,8 +1125,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. The resource name of the space for which membership list is to be fetched, in the form
-                /// "spaces/*". Example: spaces/AAAAAAAAAAAA
+                /// Required. The resource name of the space for which to fetch a membership list. Format:
+                /// spaces/{space}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1574,7 +1571,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
         /// </summary>
         /// <param name="name">
-        /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
+        /// Required. Resource name of the space, in the form "spaces/*". Format: spaces/{space}
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -1594,9 +1591,7 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
-            /// </summary>
+            /// <summary>Required. Resource name of the space, in the form "spaces/*". Format: spaces/{space}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2022,7 +2017,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class ChatAppLogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The deployment that caused the error. For Chat bots built in Apps Script, this is the deployment ID defined
+        /// The deployment that caused the error. For Chat apps built in Apps Script, this is the deployment ID defined
         /// by Apps Script.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
@@ -3336,8 +3331,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A matched url in a Chat message. Chat apps can unfurl matched URLs. For more information, refer to [Unfurl
-    /// links](https://developers.google.com/chat/how-tos/link-unfurling).
+    /// A matched url in a Chat message. Chat apps can preview matched URLs. For more information, refer to [Preview
+    /// links](https://developers.google.com/chat/how-tos/preview-links).
     /// </summary>
     public class MatchedUrl : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3360,26 +3355,29 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a membership relation in Google Chat.</summary>
+    /// <summary>
+    /// Represents a membership relation in Google Chat, such as whether a user or Chat app is invited to, part of, or
+    /// absent from a space.
+    /// </summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The creation time of the membership a.k.a. the time at which the member joined the space, if
-        /// applicable.
+        /// Output only. The creation time of the membership, such as when a member joined or was invited to join a
+        /// space.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// A Google Chat user or app. Format: `users/{person}` or `users/app` When `users/{person}`, represents a
+        /// A Google Chat user or app. Format: `users/{user}` or `users/app` When `users/{user}`, represents a
         /// [person](https://developers.google.com/people/api/rest/v1/people) in the People API or a
         /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
-        /// API. Format: `users/{user}` When `users/app`, represents a Chat app creating membership for itself. Creating
-        /// membership is available as a [developer preview](https://developers.google.com/workspace/preview).
+        /// API. When `users/app`, represents a Chat app creating membership for itself.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
 
+        /// <summary>Resource name of the membership. Format: spaces/{space}/members/{member}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3436,8 +3434,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual object LastUpdateTime { get; set; }
 
         /// <summary>
-        /// Output only. A URL in `spaces.messages.text` that matches a link unfurling pattern. For more information,
-        /// refer to [Unfurl links](https://developers.google.com/chat/how-tos/link-unfurling).
+        /// Output only. A URL in `spaces.messages.text` that matches a link preview pattern. For more information,
+        /// refer to [Preview links](https://developers.google.com/chat/how-tos/preview-links).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedUrl")]
         public virtual MatchedUrl MatchedUrl { get; set; }
@@ -3569,7 +3567,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Resource name of the space, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA</summary>
+        /// <summary>Resource name of the space. Format: spaces/{space}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3577,12 +3575,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
         public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 
-        /// <summary>Output only. Output only. Whether the messages are threaded in this space.</summary>
+        /// <summary>Output only. Whether messages are threaded in this space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threaded")]
         public virtual System.Nullable<bool> Threaded { get; set; }
 
         /// <summary>
-        /// Output only. Deprecated: Use `single_user_bot_dm` instead. Output only. The type of a space.
+        /// Output only. Deprecated: Use `single_user_bot_dm` or `space_type` (developer preview) instead. The type of a
+        /// space.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

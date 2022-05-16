@@ -5588,7 +5588,7 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; }
 
-        /// <summary>app_engine_apis allows second generation runtimes to access the App Engine APIs.</summary>
+        /// <summary>Allows App Engine second generation runtimes to access the legacy bundled services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineApis")]
         public virtual System.Nullable<bool> AppEngineApis { get; set; }
 
