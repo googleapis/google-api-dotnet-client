@@ -1128,6 +1128,17 @@ namespace Google.Apis.CloudDataplex.v1
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
+                            /// Optional. Filter request. The following mode filter is supported to return only the
+                            /// sessions belonging to the requester when the mode is USER and return sessions of all the
+                            /// users when the mode is ADMIN. When no filter is sent default to USER mode. NOTE: When
+                            /// the mode is ADMIN, the requester should have dataplex.environments.listAllSessions
+                            /// permission to list all sessions, in absence of the permission, the request fails.mode =
+                            /// ADMIN | USER
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
                             /// Optional. Maximum number of sessions to return. The service may return fewer than this
                             /// value. If unspecified, at most 10 sessions will be returned. The maximum value is 1000;
                             /// values above 1000 will be coerced to 1000.
@@ -1163,6 +1174,14 @@ namespace Google.Apis.CloudDataplex.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/environments/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                 {
@@ -7743,13 +7762,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Batch compute resources associated with the task.</summary>
     public class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Total number of job executors.</summary>
+        /// <summary>
+        /// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executorsCount")]
         public virtual System.Nullable<int> ExecutorsCount { get; set; }
 
         /// <summary>
         /// Optional. Max configurable executors. If max_executors_count &amp;gt; executors_count, then auto-scaling is
-        /// enabled.
+        /// enabled. Max Executor Count should be between 2 and 1000. Default=1000
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxExecutorsCount")]
         public virtual System.Nullable<int> MaxExecutorsCount { get; set; }

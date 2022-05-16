@@ -2307,9 +2307,9 @@ namespace Google.Apis.Monitoring.v3
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the
             /// alerting policy. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent
             /// container in which the alerting policy will be written, not the name of the created policy. |name| must
-            /// be a host project of a workspace, otherwise INVALID_ARGUMENT error will return. The alerting policy that
-            /// is returned will have a name that contains a normalized representation of this name as a prefix but adds
-            /// a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
+            /// be a host project of a Metrics Scope, otherwise INVALID_ARGUMENT error will return. The alerting policy
+            /// that is returned will have a name that contains a normalized representation of this name as a prefix but
+            /// adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
@@ -2331,7 +2331,7 @@ namespace Google.Apis.Monitoring.v3
                 /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create
                 /// the alerting policy. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the
                 /// parent container in which the alerting policy will be written, not the name of the created policy.
-                /// |name| must be a host project of a workspace, otherwise INVALID_ARGUMENT error will return. The
+                /// |name| must be a host project of a Metrics Scope, otherwise INVALID_ARGUMENT error will return. The
                 /// alerting policy that is returned will have a name that contains a normalized representation of this
                 /// name as a prefix but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the
                 /// policy in the container.
@@ -2596,9 +2596,9 @@ namespace Google.Apis.Monitoring.v3
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required if the policy exists. The resource name for this policy. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by
-            /// Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not
-            /// include the name field in the alerting policy passed as part of the request.
+            /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud
+            /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the
+            /// name field in the alerting policy passed as part of the request.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
@@ -2623,8 +2623,8 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>
                 /// Required if the policy exists. The resource name for this policy. The format is:
                 /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by
-                /// Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do
-                /// not include the name field in the alerting policy passed as part of the request.
+                /// Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not
+                /// include the name field in the alerting policy passed as part of the request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2703,8 +2703,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
-            /// Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.
+            /// Cloud Monitoring Agent only: Creates a new time series.This method is only for use by the Cloud
+            /// Monitoring Agent. Use projects.timeSeries.create instead.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2717,8 +2717,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
-            /// Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.
+            /// Cloud Monitoring Agent only: Creates a new time series.This method is only for use by the Cloud
+            /// Monitoring Agent. Use projects.timeSeries.create instead.
             /// </summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesResponse>
             {
@@ -6342,7 +6342,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>List the ServiceLevelObjectives for the given Service.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent containing the listed SLOs, either a project or a Monitoring
-            /// Workspace. The formats are: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+            /// Metrics Scope. The formats are: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
             /// workspaces/[HOST_PROJECT_ID_OR_NUMBER]/services/-
             /// </param>
             public virtual ListRequest List(string parent)
@@ -6362,7 +6362,7 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>
                 /// Required. Resource name of the parent containing the listed SLOs, either a project or a Monitoring
-                /// Workspace. The formats are: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+                /// Metrics Scope. The formats are: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
                 /// workspaces/[HOST_PROJECT_ID_OR_NUMBER]/services/-
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6553,8 +6553,8 @@ namespace Google.Apis.Monitoring.v3
         /// <summary>Create a Service.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Resource name (https://cloud.google.com/monitoring/api/v3#project_name) of the parent workspace.
-        /// The format is: projects/[PROJECT_ID_OR_NUMBER]
+        /// Required. Resource name (https://cloud.google.com/monitoring/api/v3#project_name) of the parent Metrics
+        /// Scope. The format is: projects/[PROJECT_ID_OR_NUMBER]
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Service body, string parent)
         {
@@ -6573,8 +6573,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Required. Resource name (https://cloud.google.com/monitoring/api/v3#project_name) of the parent
-            /// workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. Resource name (https://cloud.google.com/monitoring/api/v3#project_name) of the parent Metrics
+            /// Scope. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -6726,10 +6726,10 @@ namespace Google.Apis.Monitoring.v3
             }
         }
 
-        /// <summary>List Services for this workspace.</summary>
+        /// <summary>List Services for this Metrics Scope.</summary>
         /// <param name="parent">
         /// Required. Resource name of the parent containing the listed services, either a project
-        /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring Workspace. The formats are:
+        /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring Metrics Scope. The formats are:
         /// projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
         /// </param>
         public virtual ListRequest List(string parent)
@@ -6737,7 +6737,7 @@ namespace Google.Apis.Monitoring.v3
             return new ListRequest(service, parent);
         }
 
-        /// <summary>List Services for this workspace.</summary>
+        /// <summary>List Services for this Metrics Scope.</summary>
         public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListServicesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -6749,22 +6749,25 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>
             /// Required. Resource name of the parent containing the listed services, either a project
-            /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring Workspace. The formats are:
-            /// projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
+            /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring Metrics Scope. The formats
+            /// are: projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// A filter specifying what Services to return. The filter currently supports the following fields: -
-            /// `identifier_case` - `app_engine.module_id` - `cloud_endpoints.service` (reserved for future use) -
-            /// `mesh_istio.mesh_uid` - `mesh_istio.service_namespace` - `mesh_istio.service_name` -
-            /// `cluster_istio.location` (deprecated) - `cluster_istio.cluster_name` (deprecated) -
-            /// `cluster_istio.service_namespace` (deprecated) - `cluster_istio.service_name` (deprecated)
-            /// identifier_case refers to which option in the identifier oneof is populated. For example, the filter
-            /// identifier_case = "CUSTOM" would match all services with a value for the custom field. Valid options are
-            /// "CUSTOM", "APP_ENGINE", "MESH_ISTIO", plus "CLUSTER_ISTIO" (deprecated) and "CLOUD_ENDPOINTS" (reserved
-            /// for future use).
+            /// A filter specifying what Services to return. The filter supports filtering on a particular
+            /// service-identifier type or one of its attributes.To filter on a particular service-identifier type, the
+            /// identifier_case refers to which option in the identifier field is populated. For example, the filter
+            /// identifier_case = "CUSTOM" would match all services with a value for the custom field. Valid options
+            /// include "CUSTOM", "APP_ENGINE", "MESH_ISTIO", and the other options listed at
+            /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#ServiceTo filter on an attribute of a
+            /// service-identifier type, apply the filter name by using the snake case of the service-identifier type
+            /// and the attribute of that service-identifier type, and join the two with a period. For example, to
+            /// filter by the meshUid field of the MeshIstio service-identifier type, you must filter on
+            /// mesh_istio.mesh_uid = "123" to match all services with mesh UID "123". Service-identifier types and
+            /// their attributes are described at
+            /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#Service
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -7122,7 +7125,7 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>
         /// Required if the policy exists. The resource name for this policy. The format is:
-        /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
+        /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud
         /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name
         /// field in the alerting policy passed as part of the request.
         /// </summary>
@@ -7313,6 +7316,27 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud Run service. Learn more at https://cloud.google.com/run.</summary>
+    public class CloudRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The location the service is run. Corresponds to the location resource label in the cloud_run_revision
+        /// monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision
+        /// monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio
     /// will have their services ingested as this type.
@@ -7495,14 +7519,14 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// Required if the condition exists. The unique resource name for this condition. Its format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is
-        /// assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting
-        /// policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the
-        /// requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the
-        /// new policy.When calling the alertPolicies.update method to update a policy, including a condition name
-        /// causes the existing condition to be updated. Conditions without names are added to the updated policy.
-        /// Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you
-        /// make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise,
-        /// treat the change as a new condition and let the existing condition be deleted.
+        /// assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When
+        /// calling the alertPolicies.create method, do not include the name field in the conditions of the requested
+        /// alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When
+        /// calling the alertPolicies.update method to update a policy, including a condition name causes the existing
+        /// condition to be updated. Conditions without names are added to the updated policy. Existing conditions are
+        /// deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes,
+        /// such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new
+        /// condition and let the existing condition be deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7944,6 +7968,106 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under
+    /// a namespace (e.g. k8s_container, k8s_pod).
+    /// </summary>
+    public class GkeNamespace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the parent cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>The location of the parent cluster. This may be a zone or region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The name of this namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceName")]
+        public virtual string NamespaceName { get; set; }
+
+        /// <summary>
+        /// Output only. The project this resource lives in. For legacy services migrated from the Custom type, this may
+        /// be a distinct project from the one parenting the service itself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GKE Service. The "service" here represents a Kubernetes service object
+    /// (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource
+    /// labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+    /// </summary>
+    public class GkeService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the parent cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>The location of the parent cluster. This may be a zone or region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The name of the parent namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceName")]
+        public virtual string NamespaceName { get; set; }
+
+        /// <summary>
+        /// Output only. The project this resource lives in. For legacy services migrated from the Custom type, this may
+        /// be a distinct project from the one parenting the service itself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The name of this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored
+    /// resources that fall under a workload (e.g. k8s_container, k8s_pod).
+    /// </summary>
+    public class GkeWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the parent cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>The location of the parent cluster. This may be a zone or region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The name of the parent namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceName")]
+        public virtual string NamespaceName { get; set; }
+
+        /// <summary>
+        /// Output only. The project this resource lives in. For legacy services migrated from the Custom type, this may
+        /// be a distinct project from the one parenting the service itself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The name of this workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topLevelControllerName")]
+        public virtual string TopLevelControllerName { get; set; }
+
+        /// <summary>The type of this workload (e.g. "Deployment" or "DaemonSet")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topLevelControllerType")]
+        public virtual string TopLevelControllerType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Range of numerical values within min and max.</summary>
     public class GoogleMonitoringV3Range : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8101,8 +8225,8 @@ namespace Google.Apis.Monitoring.v3.Data
     public class InternalChecker : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order
-        /// to make it easier to identify; however, uniqueness is not enforced.
+        /// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope
+        /// in order to make it easier to identify; however, uniqueness is not enforced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -8116,8 +8240,8 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>
         /// A unique resource name for this InternalChecker. The format is:
-        /// projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the
-        /// Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+        /// projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud
+        /// Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8130,7 +8254,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+        /// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerProjectId")]
         public virtual string PeerProjectId { get; set; }
@@ -9466,6 +9590,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudEndpoints")]
         public virtual CloudEndpoints CloudEndpoints { get; set; }
 
+        /// <summary>Type used for Cloud Run services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
+        public virtual CloudRun CloudRun { get; set; }
+
         /// <summary>Type used for Istio services that live in a Kubernetes cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIstio")]
         public virtual ClusterIstio ClusterIstio { get; set; }
@@ -9477,6 +9605,18 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Name used for UI elements listing this Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Type used for GKE Namespaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeNamespace")]
+        public virtual GkeNamespace GkeNamespace { get; set; }
+
+        /// <summary>Type used for GKE Services (the Kubernetes concept of a service).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeService")]
+        public virtual GkeService GkeService { get; set; }
+
+        /// <summary>Type used for GKE Workloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeWorkload")]
+        public virtual GkeWorkload GkeWorkload { get; set; }
 
         /// <summary>
         /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here
@@ -9973,8 +10113,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<ContentMatcher> ContentMatchers { get; set; }
 
         /// <summary>
-        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a
-        /// Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud
+        /// Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

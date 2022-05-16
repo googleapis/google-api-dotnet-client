@@ -696,8 +696,9 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// does not have a policy set.
                 /// </summary>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
@@ -718,8 +719,9 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -979,8 +981,9 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEHub.v1alpha.Data.SetIamPolicyRequest body, string resource)
                 {
@@ -1002,8 +1005,9 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -1046,8 +1050,9 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEHub.v1alpha.Data.TestIamPermissionsRequest body, string resource)
                 {
@@ -1071,8 +1076,9 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                    /// documentation for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -1843,8 +1849,9 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// does not have a policy set.
                 /// </summary>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
@@ -1865,8 +1872,9 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -2242,8 +2250,9 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
-                /// the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEHub.v1alpha.Data.SetIamPolicyRequest body, string resource)
                 {
@@ -2265,8 +2274,9 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
-                    /// for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -2309,8 +2319,9 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEHub.v1alpha.Data.TestIamPermissionsRequest body, string resource)
                 {
@@ -2334,8 +2345,9 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
-                    /// documentation for the appropriate value for this field.
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -2826,6 +2838,84 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>the version of stackdriver operator used by this feature</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AnthosVMMembershipSpec contains the AnthosVM feature configuration for a membership/cluster.</summary>
+    public class AnthosVMMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of configurations of the Anthos For VM subfeatures that are to be enabled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subfeaturesSpec")]
+        public virtual System.Collections.Generic.IList<AnthosVMSubFeatureSpec> SubfeaturesSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AnthosVMFeatureState contains the state of the AnthosVM feature. It represents the actual state in the cluster,
+    /// while the AnthosVMMembershipSpec represents the desired state.
+    /// </summary>
+    public class AnthosVMMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>State of the local PE-controller inside the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localControllerState")]
+        public virtual LocalControllerState LocalControllerState { get; set; }
+
+        /// <summary>List of AnthosVM subfeature states</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subfeatureState")]
+        public virtual System.Collections.Generic.IList<AnthosVMSubFeatureState> SubfeatureState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AnthosVMSubFeatureSpec contains the subfeature configuration for a membership/cluster.</summary>
+    public class AnthosVMSubFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether the subfeature should be enabled on the cluster or not. If set to true, the subfeature's
+        /// control plane and resources will be installed in the cluster. If set to false, the oneof spec if present
+        /// will be ignored and nothing will be installed in the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>MigrateSpec repsents the configuration for Migrate subfeature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrateSpec")]
+        public virtual MigrateSpec MigrateSpec { get; set; }
+
+        /// <summary>ServiceMeshSpec repsents the configuration for Service Mesh subfeature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceMeshSpec")]
+        public virtual ServiceMeshSpec ServiceMeshSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AnthosVMSubFeatureState contains the state of the AnthosVM subfeatures.</summary>
+    public class AnthosVMSubFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Description represents human readable description of the subfeature state. If the deployment failed, this
+        /// should also contain the reason for the failure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>InstallationState represents the state of installation of the subfeature in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installationState")]
+        public virtual string InstallationState { get; set; }
+
+        /// <summary>MigrateState represents the state of the Migrate subfeature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrateState")]
+        public virtual MigrateState MigrateState { get; set; }
+
+        /// <summary>ServiceMeshState represents the state of the Service Mesh subfeature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceMeshState")]
+        public virtual ServiceMeshState ServiceMeshState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4282,6 +4372,25 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LocalControllerState contains the state of the local controller deployed in the cluster.</summary>
+    public class LocalControllerState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Description represents the human readable description of the current state of the local PE controller
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// InstallationState represents the state of deployment of the local PE controller in the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installationState")]
+        public virtual string InstallationState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4442,6 +4551,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
         public virtual AnthosObservabilityMembershipSpec Anthosobservability { get; set; }
 
+        /// <summary>AnthosVM spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosvm")]
+        public virtual AnthosVMMembershipSpec Anthosvm { get; set; }
+
         /// <summary>Cloud Build-specific spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudbuild")]
         public virtual CloudBuildMembershipSpec Cloudbuild { get; set; }
@@ -4473,6 +4586,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>MembershipFeatureState contains Feature status information for a single Membership.</summary>
     public class MembershipFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>AnthosVM state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosvm")]
+        public virtual AnthosVMMembershipState Anthosvm { get; set; }
+
         /// <summary>Appdevexperience specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
@@ -4540,6 +4657,20 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preciseLastMeasuredClusterVcpuCapacity")]
         public virtual System.Nullable<float> PreciseLastMeasuredClusterVcpuCapacity { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MigrateSpec contains the migrate subfeature configuration.</summary>
+    public class MigrateSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MigrateState contains the state of Migrate subfeature</summary>
+    public class MigrateState : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5060,6 +5191,20 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneManagement")]
         public virtual ServiceMeshControlPlaneManagement ControlPlaneManagement { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ServiceMeshSpec contains the serviceMesh subfeature configuration.</summary>
+    public class ServiceMeshSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ServiceMeshState contains the state of Service Mesh subfeature</summary>
+    public class ServiceMeshState : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
