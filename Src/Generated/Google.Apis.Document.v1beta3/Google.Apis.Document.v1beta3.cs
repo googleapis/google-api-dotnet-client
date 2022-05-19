@@ -6331,6 +6331,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual GoogleCloudDocumentaiV1beta3Document Document { get; set; }
 
+        /// <summary>Specifies which fields to include in ProcessResponse's document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
+        public virtual object FieldMask { get; set; }
+
         /// <summary>An inline document proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineDocument")]
         public virtual GoogleCloudDocumentaiV1beta3Document InlineDocument { get; set; }

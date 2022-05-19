@@ -3814,6 +3814,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Unique identifier for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
         /// <summary>Output only. Type of device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; }

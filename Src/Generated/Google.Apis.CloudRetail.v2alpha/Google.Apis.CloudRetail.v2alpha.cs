@@ -1008,9 +1008,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                         }
 
                         /// <summary>
-                        /// Bulk import of multiple Products. Request processing may be synchronous. No partial updating
-                        /// is supported. Non-existing items are created. Note that it is possible for a subset of the
-                        /// Products to be successfully updated.
+                        /// Bulk import of multiple Products. Request processing may be synchronous. Non-existing items
+                        /// are created. Note that it is possible for a subset of the Products to be successfully
+                        /// updated.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -1024,9 +1024,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                         }
 
                         /// <summary>
-                        /// Bulk import of multiple Products. Request processing may be synchronous. No partial updating
-                        /// is supported. Non-existing items are created. Note that it is possible for a subset of the
-                        /// Products to be successfully updated.
+                        /// Bulk import of multiple Products. Request processing may be synchronous. Non-existing items
+                        /// are created. Note that it is possible for a subset of the Products to be successfully
+                        /// updated.
                         /// </summary>
                         public class ImportRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
                         {
@@ -5226,7 +5226,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Custom attributes for the suggestion term. * For "user-data", the attributes are additional custom
         /// attributes ingested through BigQuery. * For "cloud-retail", the attributes are product attributes generated
-        /// by Cloud Retail.
+        /// by Cloud Retail. This is an experimental feature. Contact Retail Search support team if you are interested
+        /// in enabling it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaCustomAttribute> Attributes { get; set; }
@@ -7559,7 +7560,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Condition boost specifications. If a product matches multiple conditions in the specifictions, boost scores
         /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
-        /// is 10.
+        /// is 20.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaSearchRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
@@ -7638,12 +7639,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is
-        /// listed in this field. For example, suppose there are 100 products with color facet "Red" and 200 products
-        /// with color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and have "colorFamilies"
-        /// as FacetKey.key will by default return the "Red" with count 100. If this field contains "colorFamilies",
-        /// then the query returns both the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies"
-        /// key is now excluded from the filter. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT
-        /// error is returned.
+        /// listed in this field. Listing a facet key in this field allows its values to appear as facet results, even
+        /// when they are filtered out of search results. Using this field does not affect what search results are
+        /// returned. For example, suppose there are 100 products with the color facet "Red" and 200 products with the
+        /// color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and having "colorFamilies" as
+        /// FacetKey.key would by default return only "Red" products in the search results, and also return "Red" with
+        /// count 100 as the only color facet. Although there are also blue products available, "Blue" would not be
+        /// shown as an available facet value. If "colorFamilies" is listed in "excludedFilterKeys", then the query
+        /// returns the facet values "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is
+        /// now excluded from the filter. Because this field doesn't affect search results, the search results are still
+        /// correctly filtered to return only "Red" products. A maximum of 100 values are allowed. Otherwise, an
+        /// INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFilterKeys")]
         public virtual System.Collections.Generic.IList<string> ExcludedFilterKeys { get; set; }
@@ -8397,7 +8403,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// different users. This mixes the event history of those users together, which results in degraded model
         /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
         /// INVALID_ARGUMENT error is returned. The field should not contain PII or user-data. We recommend to use
-        /// Google Analystics [Client
+        /// Google Analytics [Client
         /// ID](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#clientId) for
         /// this field.
         /// </summary>

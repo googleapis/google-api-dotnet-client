@@ -3136,22 +3136,30 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common Vulnerability Scoring System.</summary>
+    /// <summary>
+    /// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see
+    /// https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For
+    /// CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator:
+    /// https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+    /// </summary>
     public class CVSS : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Defined in CVSS v3, CVSS v2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
         public virtual string AttackComplexity { get; set; }
 
         /// <summary>
         /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
-        /// across user environments.
+        /// across user environments. Defined in CVSS v3, CVSS v2
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
         public virtual string AttackVector { get; set; }
 
+        /// <summary>Defined in CVSS v2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual string Authentication { get; set; }
 
+        /// <summary>Defined in CVSS v3, CVSS v2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
         public virtual string AvailabilityImpact { get; set; }
 
@@ -3159,6 +3167,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
         public virtual System.Nullable<float> BaseScore { get; set; }
 
+        /// <summary>Defined in CVSS v3, CVSS v2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
         public virtual string ConfidentialityImpact { get; set; }
 
@@ -3168,15 +3177,19 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
         public virtual System.Nullable<float> ImpactScore { get; set; }
 
+        /// <summary>Defined in CVSS v3, CVSS v2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
         public virtual string IntegrityImpact { get; set; }
 
+        /// <summary>Defined in CVSS v3</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
         public virtual string PrivilegesRequired { get; set; }
 
+        /// <summary>Defined in CVSS v3</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
 
+        /// <summary>Defined in CVSS v3</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
         public virtual string UserInteraction { get; set; }
 

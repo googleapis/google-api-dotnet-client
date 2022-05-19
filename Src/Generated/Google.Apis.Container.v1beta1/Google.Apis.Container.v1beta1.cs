@@ -6864,6 +6864,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
         public virtual PrivateClusterConfig PrivateClusterConfig { get; set; }
 
+        /// <summary>Enable/Disable Protect API features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectConfig")]
+        public virtual ProtectConfig ProtectConfig { get; set; }
+
         /// <summary>Release channel configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseChannel")]
         public virtual ReleaseChannel ReleaseChannel { get; set; }
@@ -7170,6 +7174,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired state of IPv6 connectivity to Google Services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateIpv6GoogleAccess")]
         public virtual string DesiredPrivateIpv6GoogleAccess { get; set; }
+
+        /// <summary>Enable/Disable Protect API features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredProtectConfig")]
+        public virtual ProtectConfig DesiredProtectConfig { get; set; }
 
         /// <summary>The desired release channel configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredReleaseChannel")]
@@ -7734,6 +7742,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
         public virtual System.Nullable<bool> CreateSubnetwork { get; set; }
 
+        /// <summary>The ipv6 access type (internal or external) when create_subnetwork is true</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6AccessType")]
+        public virtual string Ipv6AccessType { get; set; }
+
         /// <summary>This field is deprecated, use node_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
         public virtual string NodeIpv4Cidr { get; set; }
@@ -7771,6 +7783,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
         public virtual string ServicesSecondaryRangeName { get; set; }
+
+        /// <summary>IP stack type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
+        public virtual string StackType { get; set; }
 
         /// <summary>
         /// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an
@@ -9166,6 +9182,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whenever master is accessible globally or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ProtectConfig defines the flags needed to enable/disable features for the Protect API.</summary>
+    public class ProtectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>WorkloadConfig defines which actions are enabled for a cluster's workload configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadConfig")]
+        public virtual WorkloadConfig WorkloadConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10642,6 +10669,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableCertificates")]
         public virtual System.Nullable<bool> EnableCertificates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+    /// </summary>
+    public class WorkloadConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sets which mode of auditing should be used for the cluster's workloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditMode")]
+        public virtual string AuditMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

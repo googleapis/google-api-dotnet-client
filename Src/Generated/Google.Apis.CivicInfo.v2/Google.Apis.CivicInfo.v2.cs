@@ -1281,6 +1281,9 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ocdDivisionId")]
         public virtual string OcdDivisionId { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("shapeLookupBehavior")]
+        public virtual string ShapeLookupBehavior { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

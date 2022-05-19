@@ -2626,6 +2626,18 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osInventory")]
         public virtual Inventory OsInventory { get; set; }
 
+        /// <summary>One related asset of the current asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedAsset")]
+        public virtual RelatedAsset RelatedAsset { get; set; }
+
+        /// <summary>
+        /// DEPRECATED. This field only presents for the purpose of backward-compatibility. The server will never
+        /// generate responses with this field. The related assets of the asset of one relationship type. One asset only
+        /// represents one type of relationship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedAssets")]
+        public virtual RelatedAssets RelatedAssets { get; set; }
+
         /// <summary>A representation of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual Resource Resource { get; set; }
@@ -5147,6 +5159,66 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An asset identifier in Google Cloud which contains its name, type and ancestors. An asset can be any resource in
+    /// the Google Cloud [resource
+    /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
+    /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+    /// Cloud IAM policy). See [Supported asset
+    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// </summary>
+    public class RelatedAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ancestors of an asset in Google Cloud [resource
+        /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as
+        /// a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and
+        /// ends at root. Example: `["projects/123456789", "folders/5432", "organizations/1234"]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
+        public virtual System.Collections.Generic.IList<string> Ancestors { get; set; }
+
+        /// <summary>
+        /// The full name of the asset. Example:
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The unique identifier of the relationship type. Example: `INSTANCE_TO_INSTANCEGROUP`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipType")]
+        public virtual string RelationshipType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DEPRECATED. This message only presents for the purpose of backward-compatibility. The server will never populate
+    /// this message in responses. The detailed related assets with the `relationship_type`.
+    /// </summary>
+    public class RelatedAssets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The peer resources of the relationship.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assets")]
+        public virtual System.Collections.Generic.IList<RelatedAsset> Assets { get; set; }
+
+        /// <summary>The detailed relationship attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipAttributes")]
+        public virtual RelationshipAttributes RelationshipAttributes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The detailed related resource.</summary>
     public class RelatedResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5171,6 +5243,33 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>The detailed related resources of the primary resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedResources")]
         public virtual System.Collections.Generic.IList<RelatedResource> RelatedResourcesValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DEPRECATED. This message only presents for the purpose of backward-compatibility. The server will never populate
+    /// this message in responses. The relationship attributes which include `type`, `source_resource_type`,
+    /// `target_resource_type` and `action`.
+    /// </summary>
+    public class RelationshipAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detail of the relationship, e.g. `contains`, `attaches`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>The source asset type. Example: `compute.googleapis.com/Instance`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceType")]
+        public virtual string SourceResourceType { get; set; }
+
+        /// <summary>The target asset type. Example: `compute.googleapis.com/Disk`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceType")]
+        public virtual string TargetResourceType { get; set; }
+
+        /// <summary>The unique identifier of the relationship type. Example: `INSTANCE_TO_INSTANCEGROUP`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
