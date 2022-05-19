@@ -1351,14 +1351,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CidrBlock contains an optional name and one CIDR block.</summary>
+    /// <summary>CIDR block with an optional name.</summary>
     public class CidrBlock : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>cidr_block must be specified in CIDR notation.</summary>
+        /// <summary>CIDR block that must be specified in CIDR notation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrBlock")]
         public virtual string CidrBlockValue { get; set; }
 
-        /// <summary>display_name is a field for users to identify CIDR blocks.</summary>
+        /// <summary>User-defined name that identifies the CIDR block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -1538,9 +1538,9 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// Optional. The configuration options for GKE clusters master authorized networks. By default master
-        /// authorized networks feature is: - in case of private environment: enabled with no external networks
-        /// allowlisted. - in case of public environment: disabled.
+        /// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized
+        /// networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in
+        /// case of public environment: disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
@@ -1787,13 +1787,11 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// </summary>
     public class MasterAuthorizedNetworksConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
-        /// </summary>
+        /// <summary>Up to 50 external networks that could access Kubernetes master through HTTPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrBlocks")]
         public virtual System.Collections.Generic.IList<CidrBlock> CidrBlocks { get; set; }
 
-        /// <summary>Whether or not master authorized networks is enabled.</summary>
+        /// <summary>Whether or not master authorized networks feature is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 

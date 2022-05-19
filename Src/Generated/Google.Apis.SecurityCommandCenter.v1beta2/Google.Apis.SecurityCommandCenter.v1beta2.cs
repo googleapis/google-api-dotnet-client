@@ -5138,6 +5138,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Timestamp of when the customer organization was onboarded to SCC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onboardingTime")]
+        public virtual object OnboardingTime { get; set; }
+
         /// <summary>The organization level service account to be used for security center components.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgServiceAccount")]
         public virtual string OrgServiceAccount { get; set; }

@@ -4236,6 +4236,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Request message for the process document method.</summary>
     public class GoogleCloudDocumentaiV1ProcessRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies which fields to include in ProcessResponse's document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
+        public virtual object FieldMask { get; set; }
+
         /// <summary>An inline document proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineDocument")]
         public virtual GoogleCloudDocumentaiV1Document InlineDocument { get; set; }

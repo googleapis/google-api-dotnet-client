@@ -1062,6 +1062,21 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CIDR block with an optional name.</summary>
+    public class CidrBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CIDR block that must be specified in CIDR notation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrBlock")]
+        public virtual string CidrBlockValue { get; set; }
+
+        /// <summary>User-defined name that identifies the CIDR block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1232,6 +1247,14 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized
+        /// networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in
+        /// case of public environment: disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
+        public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>The configuration used for the Kubernetes Engine cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
@@ -1436,6 +1459,25 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>Required. Start time of the first recurrence of the maintenance window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration options for the master authorized networks feature. Enabled master authorized networks will
+    /// disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR
+    /// blocks, Google Compute Engine Public IPs and Google Prod IPs.
+    /// </summary>
+    public class MasterAuthorizedNetworksConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Up to 50 external networks that could access Kubernetes master through HTTPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrBlocks")]
+        public virtual System.Collections.Generic.IList<CidrBlock> CidrBlocks { get; set; }
+
+        /// <summary>Whether or not master authorized networks feature is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1684,6 +1726,13 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEnvironment")]
         public virtual System.Nullable<bool> EnablePrivateEnvironment { get; set; }
+
+        /// <summary>
+        /// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for
+        /// `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivatelyUsedPublicIps")]
+        public virtual System.Nullable<bool> EnablePrivatelyUsedPublicIps { get; set; }
 
         /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.

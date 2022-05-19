@@ -2220,11 +2220,11 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>
         /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves
         /// as the unit of parallelism. Queries using this reservation might use more slots during runtime if
-        /// ignore_idle_slots is set to false. If the new reservation's slot capacity exceeds the project's slot
-        /// capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot
-        /// capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or
-        /// EU multi-regions, slot capacity constraints are checked separately for default and auxiliary regions. See
-        /// multi_region_auxiliary flag for more details.
+        /// ignore_idle_slots is set to false. If total slot_capacity of the reservation and its siblings exceeds the
+        /// total slot_count of all capacity commitments, the request will fail with
+        /// `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions, slot capacity
+        /// constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for
+        /// more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCapacity")]
         public virtual System.Nullable<long> SlotCapacity { get; set; }

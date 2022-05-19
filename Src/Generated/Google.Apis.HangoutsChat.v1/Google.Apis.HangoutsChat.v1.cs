@@ -3427,8 +3427,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string FallbackText { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the message was last updated in Google Chat server. If the message was never
-        /// updated, this field will be same as create_time.
+        /// Output only. The time at which the message was last updated. If the message was never updated, this field
+        /// matches `create_time`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual object LastUpdateTime { get; set; }

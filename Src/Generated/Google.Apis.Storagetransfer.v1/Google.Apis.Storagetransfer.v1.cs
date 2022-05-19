@@ -2449,7 +2449,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual System.Nullable<bool> OverwriteObjectsAlreadyExistingInSink { get; set; }
 
         /// <summary>
-        /// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by
+        /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by
         /// overwrite_objects_already_existing_in_sink.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwriteWhen")]

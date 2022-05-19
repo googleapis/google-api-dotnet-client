@@ -914,14 +914,22 @@ namespace Google.Apis.CloudSupport.v2beta
             }
         }
 
-        /// <summary>Retrieve all cases under the specified parent.</summary>
+        /// <summary>
+        /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the
+        /// cases directly parented by that organization. To retrieve all cases under an organization, including cases
+        /// parented by projects under that organization, use `cases.search`.
+        /// </summary>
         /// <param name="parent">Required. The fully qualified name of parent resource to list cases under.</param>
         public virtual ListRequest List(string parent)
         {
             return new ListRequest(service, parent);
         }
 
-        /// <summary>Retrieve all cases under the specified parent.</summary>
+        /// <summary>
+        /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the
+        /// cases directly parented by that organization. To retrieve all cases under an organization, including cases
+        /// parented by projects under that organization, use `cases.search`.
+        /// </summary>
         public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListCasesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -936,11 +944,14 @@ namespace Google.Apis.CloudSupport.v2beta
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// An expression written in the Cloud filter language. If non-empty, then only cases whose fields match the
-            /// filter are returned. If empty, then no messages are filtered out. Filter strings can use the following
-            /// fields: - state (Accepted values: OPEN or CLOSED) - severity (Accepted values: S0, S1, S2, S3, or S4) -
-            /// creator.email with the operators equals (=) and AND. Additionally, a global restriction (with no
-            /// operator) can be used to search across displayName, description, and comments (e.g. "my search").
+            /// An expression written in filter language. If non-empty, the query returns the cases that match the
+            /// filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the
+            /// operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`:
+            /// The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority
+            /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The
+            /// accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case
+            /// creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` - `state=OPEN
+            /// AND (priority=P0 OR priority=P1)`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1108,12 +1119,21 @@ namespace Google.Apis.CloudSupport.v2beta
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// An expression written in the Cloud filter language. Filter strings can use the following fields: -
-            /// organization (A name of the form organizations/) - project (A name of the form projects/) - customer (A
-            /// name of the form customers/) - state (Accepted values: OPEN or CLOSED) - severity (Accepted values: S0,
-            /// S1, S2, S3, or S4) - creator.email with the operators equals (=) and AND. Additionally, a global
-            /// restriction (with no key/operator) can be used to search across display_name, description, and comments
-            /// (e.g. "my search"). One of organization, project, or customer field must be specified.
+            /// An expression written in filter language. A query uses the following fields with the operators equals
+            /// (`=`) and `AND`: - `organization`: An organization name in the form `organizations/`. - `project`: A
+            /// project name in the form `projects/`. - `state`: The accepted values are `OPEN` or `CLOSED`. -
+            /// `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for
+            /// priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`:
+            /// The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the
+            /// case creator. You must specify eitehr `organization` or `project`. To search across `displayName`,
+            /// `description`, and comments, use a global restriction with no keyword or operator. For example, `"my
+            /// search"`. To search only cases updated after a certain date, use `update_time` retricted with that
+            /// particular date, time, and timezone in ISO datetime format. For example,
+            /// `update_time&amp;gt;"2020-01-01T00:00:00-05:00"`. `update_time` only supports the greater than operator
+            /// (`&amp;gt;`). Examples: - `organization="organizations/123456789"` - `project="projects/my-project-id"`
+            /// - `project="projects/123456789"` - `organization="organizations/123456789" AND state=CLOSED` -
+            /// `project="projects/my-project-id" AND creator.email="tester@example.com"` -
+            /// `project="projects/my-project-id" AND (priority=P0 OR priority=P1)`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1681,7 +1701,10 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The unique ID for a classification. Must be specified for case creation.</summary>
+        /// <summary>
+        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification
+        /// IDs for case creation, use `caseClassifications.search`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 

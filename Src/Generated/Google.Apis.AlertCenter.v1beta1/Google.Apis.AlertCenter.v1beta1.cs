@@ -1920,6 +1920,28 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Event occurred when primary admin changed in customer's account. The event are being received from insight
+    /// forwarder
+    /// </summary>
+    public class PrimaryAdminChangedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>domain in which actioned occurred</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>Email of person who was the primary admin before the action</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousAdminEmail")]
+        public virtual string PreviousAdminEmail { get; set; }
+
+        /// <summary>Email of person who is the primary admin after the action</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedAdminEmail")]
+        public virtual string UpdatedAdminEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Alerts from Reporting Rules configured by Admin.</summary>
     public class ReportingRule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2048,6 +2070,87 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Event occurred when SSO Profile created in customer's account. The event are being received from insight
+    /// forwarder
+    /// </summary>
+    public class SSOProfileCreatedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>sso profile name which got created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundSsoProfileName")]
+        public virtual string InboundSsoProfileName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Event occurred when SSO Profile deleted in customer's account. The event are being received from insight
+    /// forwarder
+    /// </summary>
+    public class SSOProfileDeletedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>sso profile name which got deleted</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundSsoProfileName")]
+        public virtual string InboundSsoProfileName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Event occurred when SSO Profile updated in customer's account. The event are being received from insight
+    /// forwarder
+    /// </summary>
+    public class SSOProfileUpdatedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>changes made to sso profile</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundSsoProfileChanges")]
+        public virtual string InboundSsoProfileChanges { get; set; }
+
+        /// <summary>sso profile name which got updated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundSsoProfileName")]
+        public virtual string InboundSsoProfileName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Alert that is triggered when Sensitive Admin Action occur in customer account.</summary>
+    public class SensitiveAdminAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email of person who performed the action</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorEmail")]
+        public virtual string ActorEmail { get; set; }
+
+        /// <summary>The time at which event occurred</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; }
+
+        /// <summary>Event occurred when primary admin changed in customer's account</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryAdminChangedEvent")]
+        public virtual PrimaryAdminChangedEvent PrimaryAdminChangedEvent { get; set; }
+
+        /// <summary>Event occurred when SSO Profile created in customer's account</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ssoProfileCreatedEvent")]
+        public virtual SSOProfileCreatedEvent SsoProfileCreatedEvent { get; set; }
+
+        /// <summary>Event occurred when SSO Profile deleted in customer's account</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ssoProfileDeletedEvent")]
+        public virtual SSOProfileDeletedEvent SsoProfileDeletedEvent { get; set; }
+
+        /// <summary>Event occurred when SSO Profile updated in customer's account</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ssoProfileUpdatedEvent")]
+        public virtual SSOProfileUpdatedEvent SsoProfileUpdatedEvent { get; set; }
+
+        /// <summary>Event occurred when password was reset for super admin in customer's account</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superAdminPasswordResetEvent")]
+        public virtual SuperAdminPasswordResetEvent SuperAdminPasswordResetEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Customer-level settings.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2094,6 +2197,20 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Event occurred when password was reset for super admin in customer's account. The event are being received from
+    /// insight forwarder
+    /// </summary>
+    public class SuperAdminPasswordResetEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>email of person whose password was reset</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
