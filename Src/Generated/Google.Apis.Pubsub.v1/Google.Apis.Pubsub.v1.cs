@@ -3343,6 +3343,46 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a BigQuery subscription.</summary>
+    public class BigQueryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of
+        /// the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+        /// and any messages with extra fields are not written and remain in the subscription's backlog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropUnknownFields")]
+        public virtual System.Nullable<bool> DropUnknownFields { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates whether or not the subscription can receive messages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>When true, use the topic's schema as the columns to write to in BigQuery, if it exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useTopicSchema")]
+        public virtual System.Nullable<bool> UseTopicSchema { get; set; }
+
+        /// <summary>
+        /// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional
+        /// columns in the table. The subscription name, message_id, and publish_time fields are put in their own
+        /// columns while all other message properties (other than data) are written to a JSON object in the attributes
+        /// column.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeMetadata")]
+        public virtual System.Nullable<bool> WriteMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4130,6 +4170,14 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
+
+        /// <summary>
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of
+        /// `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack
+        /// messages using API methods.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryConfig")]
+        public virtual BigQueryConfig BigqueryConfig { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in this subscription. If

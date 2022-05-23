@@ -7549,6 +7549,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
+        /// <summary>Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonPathMatcher")]
+        public virtual JsonPathMatcher JsonPathMatcher { get; set; }
+
         /// <summary>
         /// The type of content matcher that will be applied to the server output, compared to the content string when
         /// the check is run.
@@ -8295,6 +8299,28 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshUid")]
         public virtual string MeshUid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and
+    /// ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+    /// </summary>
+    public class JsonPathMatcher : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonMatcher")]
+        public virtual string JsonMatcher { get; set; }
+
+        /// <summary>
+        /// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonPath")]
+        public virtual string JsonPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

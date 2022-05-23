@@ -894,7 +894,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Creates a new Gateway in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the Gateway. Must be in the format `projects/*/locations/global`.
+                /// Required. The parent resource of the Gateway. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.Gateway body, string parent)
                 {
@@ -913,8 +913,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the Gateway. Must be in the format
-                    /// `projects/*/locations/global`.
+                    /// Required. The parent resource of the Gateway. Must be in the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -964,7 +963,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Deletes a single Gateway.</summary>
                 /// <param name="name">
                 /// Required. A name of the Gateway to delete. Must be in the format
-                /// `projects/*/locations/global/gateways/*`.
+                /// `projects/*/locations/*/gateways/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -983,7 +982,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. A name of the Gateway to delete. Must be in the format
-                    /// `projects/*/locations/global/gateways/*`.
+                    /// `projects/*/locations/*/gateways/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1014,8 +1013,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Gets details of a single Gateway.</summary>
                 /// <param name="name">
-                /// Required. A name of the Gateway to get. Must be in the format
-                /// `projects/*/locations/global/gateways/*`.
+                /// Required. A name of the Gateway to get. Must be in the format `projects/*/locations/*/gateways/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1034,7 +1032,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. A name of the Gateway to get. Must be in the format
-                    /// `projects/*/locations/global/gateways/*`.
+                    /// `projects/*/locations/*/gateways/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1146,7 +1144,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Lists Gateways in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the Gateways should be listed, specified in the format
-                /// `projects/*/locations/global`.
+                /// `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1165,7 +1163,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. The project and location from which the Gateways should be listed, specified in the
-                    /// format `projects/*/locations/global`.
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1224,7 +1222,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of a single Gateway.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+                /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.Gateway body, string name)
                 {
@@ -1243,8 +1241,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the Gateway resource. It matches pattern
-                    /// `projects/*/locations/global/gateways/`.
+                    /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4556,7 +4553,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -5697,28 +5697,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for `CreateGitLabConfig` operation.</summary>
-    public class CreateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time the operation was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual object CompleteTime { get; set; }
-
-        /// <summary>Time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// The resource name of the GitLabConfig to be created. Format:
-        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
-        public virtual string GitlabConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata for the `CreateWorkerPool` operation.</summary>
     public class CreateWorkerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5780,28 +5758,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for `DeleteGitLabConfig` operation.</summary>
-    public class DeleteGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time the operation was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual object CompleteTime { get; set; }
-
-        /// <summary>Time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// The resource name of the GitLabConfig to be created. Format:
-        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
-        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7165,28 +7121,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for `UpdateGitLabConfig` operation.</summary>
-    public class UpdateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time the operation was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual object CompleteTime { get; set; }
-
-        /// <summary>Time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// The resource name of the GitLabConfig to be created. Format:
-        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
-        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

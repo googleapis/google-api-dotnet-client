@@ -608,8 +608,8 @@ namespace Google.Apis.Baremetalsolution.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The list of fields to update. The only currently supported fields are: `labels`
-                    /// `hyperthreading_enabled`
+                    /// The list of fields to update. The currently supported fields are: `labels`
+                    /// `hyperthreading_enabled` `os_image`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2271,6 +2271,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osImage")]
         public virtual string OsImage { get; set; }
 
+        /// <summary>
+        /// Immutable. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets
+        /// (networks, volumes) allocated in the same pod only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
+        public virtual string Pod { get; set; }
+
         /// <summary>The state of the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -3265,6 +3272,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Immutable. Pod name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
+        public virtual string Pod { get; set; }
 
         /// <summary>
         /// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.

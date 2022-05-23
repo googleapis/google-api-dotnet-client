@@ -5930,9 +5930,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
         /// <summary>
-        /// If true, save a heap dump before killing a thread or process which is GC thrashing or out of memory. The
-        /// location of the heap file will either be echoed back to the user, or the user will be given the opportunity
-        /// to download the heap file.
+        /// If true, when processing time is spent almost entirely on garbage collection (GC), saves a heap dump before
+        /// ending the thread or process. If false, ends the thread or process without saving a heap dump. Does not save
+        /// a heap dump when the Java Virtual Machine (JVM) has an out of memory error during processing. The location
+        /// of the heap file is either echoed back to the user, or the user is given the opportunity to download the
+        /// heap file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dumpHeapOnOom")]
         public virtual System.Nullable<bool> DumpHeapOnOom { get; set; }
@@ -5983,8 +5985,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual System.Nullable<int> NumWorkers { get; set; }
 
         /// <summary>
-        /// Cloud Storage bucket (directory) to upload heap dumps to the given location. Enabling this implies that heap
-        /// dumps should be generated on OOM (dump_heap_on_oom is set to true).
+        /// Cloud Storage bucket (directory) to upload heap dumps to. Enabling this field implies that
+        /// `dump_heap_on_oom` is set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saveHeapDumpsToGcsPath")]
         public virtual string SaveHeapDumpsToGcsPath { get; set; }

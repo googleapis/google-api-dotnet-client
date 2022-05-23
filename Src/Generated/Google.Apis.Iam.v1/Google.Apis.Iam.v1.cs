@@ -3355,7 +3355,7 @@ namespace Google.Apis.Iam.v1
                 }
 
                 /// <summary>
-                /// Disable a ServiceAccountKey. A disabled service account key can be enabled through
+                /// Disable a ServiceAccountKey. A disabled service account key can be re-enabled with
                 /// EnableServiceAccountKey.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -3371,7 +3371,7 @@ namespace Google.Apis.Iam.v1
                 }
 
                 /// <summary>
-                /// Disable a ServiceAccountKey. A disabled service account key can be enabled through
+                /// Disable a ServiceAccountKey. A disabled service account key can be re-enabled with
                 /// EnableServiceAccountKey.
                 /// </summary>
                 public class DisableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
@@ -5613,8 +5613,8 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
-    /// The request for PatchServiceAccount. You can patch only the `display_name` and `description` fields. You must
-    /// use the `update_mask` field to specify which of these fields you want to patch. Only the fields specified in the
+    /// The service account patch request. You can patch only the `display_name` and `description` fields. You must use
+    /// the `update_mask` field to specify which of these fields you want to patch. Only the fields specified in the
     /// request are guaranteed to be returned in the response. Other fields may be empty in the response.
     /// </summary>
     public class PatchServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema

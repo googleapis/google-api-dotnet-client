@@ -2852,7 +2852,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
         public virtual string QueryRecord { get; set; }
@@ -3670,7 +3670,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}.
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
         public virtual string QueryRecord { get; set; }
@@ -4305,7 +4305,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
         public virtual string QueryRecord { get; set; }
@@ -4335,7 +4335,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
         public virtual string QueryRecord { get; set; }

@@ -1447,9 +1447,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config. Please use
-                /// BatchGetRecaptchaV3Configs instead. Atomically gets the RecaptchaConfigs for the specified list of
-                /// apps. For security reasons, the `site_secret` field is never populated in the response.
+                /// Atomically gets the RecaptchaConfigs for the specified list of apps. For security reasons, the
+                /// `site_secret` field is never populated in the response.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all RecaptchaConfigs being retrieved, in the format ```
@@ -1462,9 +1461,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config. Please use
-                /// BatchGetRecaptchaV3Configs instead. Atomically gets the RecaptchaConfigs for the specified list of
-                /// apps. For security reasons, the `site_secret` field is never populated in the response.
+                /// Atomically gets the RecaptchaConfigs for the specified list of apps. For security reasons, the
+                /// `site_secret` field is never populated in the response.
                 /// </summary>
                 public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse>
                 {
@@ -1524,9 +1522,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config. Please use
-                /// GetRecaptchaV3Config instead. Gets the RecaptchaConfig for the specified app. For security reasons,
-                /// the `site_secret` field is never populated in the response.
+                /// Gets the RecaptchaConfig for the specified app. For security reasons, the `site_secret` field is
+                /// never populated in the response.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The relative resource name of the RecaptchaConfig, in the format: ```
@@ -1538,9 +1535,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config. Please use
-                /// GetRecaptchaV3Config instead. Gets the RecaptchaConfig for the specified app. For security reasons,
-                /// the `site_secret` field is never populated in the response.
+                /// Gets the RecaptchaConfig for the specified app. For security reasons, the `site_secret` field is
+                /// never populated in the response.
                 /// </summary>
                 public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaConfig>
                 {
@@ -1583,10 +1579,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config. Please use
-                /// UpdateRecaptchaV3Config instead. Updates the RecaptchaConfig for the specified app. While this
-                /// configuration is incomplete or invalid, the app will be unable to exchange reCAPTCHA tokens for App
-                /// Check tokens. For security reasons, the `site_secret` field is never populated in the response.
+                /// Updates the RecaptchaConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange reCAPTCHA tokens for App Check tokens. For security
+                /// reasons, the `site_secret` field is never populated in the response.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1599,10 +1594,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
 
                 /// <summary>
-                /// The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config. Please use
-                /// UpdateRecaptchaV3Config instead. Updates the RecaptchaConfig for the specified app. While this
-                /// configuration is incomplete or invalid, the app will be unable to exchange reCAPTCHA tokens for App
-                /// Check tokens. For security reasons, the `site_secret` field is never populated in the response.
+                /// Updates the RecaptchaConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange reCAPTCHA tokens for App Check tokens. For security
+                /// reasons, the `site_secret` field is never populated in the response.
                 /// </summary>
                 public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaConfig>
                 {
@@ -2829,8 +2823,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
-            /// This method has been renamed to ExchangeRecaptchaV3Token. Validates a [reCAPTCHA v3 response
-            /// token](https://developers.google.com/recaptcha/docs/v3). If valid, returns an AppCheckToken.
+            /// Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid,
+            /// returns an AppCheckToken.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
@@ -2845,8 +2839,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
-            /// This method has been renamed to ExchangeRecaptchaV3Token. Validates a [reCAPTCHA v3 response
-            /// token](https://developers.google.com/recaptcha/docs/v3). If valid, returns an AppCheckToken.
+            /// Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid,
+            /// returns an AppCheckToken.
             /// </summary>
             public class ExchangeRecaptchaTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
             {
@@ -3524,9 +3518,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     public class GoogleFirebaseAppcheckV1betaAppCheckToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// This field has been renamed to `token`. An App Check token. App Check tokens are signed
-        /// [JWTs](https://tools.ietf.org/html/rfc7519) containing claims that identify the attested app and Firebase
-        /// project. This token is used to access Firebase services protected by App Check.
+        /// An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
+        /// claims that identify the attested app and Firebase project. This token is used to access Firebase services
+        /// protected by App Check.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestationToken")]
         public virtual string AttestationToken { get; set; }
@@ -3821,7 +3815,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
         public virtual string Artifact { get; set; }
 
-        /// <summary>This field has been renamed to `app_check_token`. Encapsulates an App Check token.</summary>
+        /// <summary>Encapsulates an App Check token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestationToken")]
         public virtual GoogleFirebaseAppcheckV1betaAttestationTokenResponse AttestationToken { get; set; }
 
@@ -4117,9 +4111,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     }
 
     /// <summary>
-    /// This REST resource has been renamed to RecaptchaV3Config. An app's reCAPTCHA v3 configuration object. This
-    /// configuration is used by ExchangeRecaptchaToken to validate reCAPTCHA tokens issued to apps by reCAPTCHA v3. It
-    /// also controls certain properties of the returned `AppCheckToken`, such as its ttl.
+    /// An app's reCAPTCHA v3 configuration object. This configuration is used by ExchangeRecaptchaToken to validate
+    /// reCAPTCHA tokens issued to apps by reCAPTCHA v3. It also controls certain properties of the returned
+    /// `AppCheckToken`, such as its ttl.
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaRecaptchaConfig : Google.Apis.Requests.IDirectResponseSchema
     {

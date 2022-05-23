@@ -38709,7 +38709,7 @@
    }
   }
  },
- "revision": "20220506",
+ "revision": "20220510",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -49711,7 +49711,7 @@
     },
     "sourceType": {
      "default": "RAW",
-     "description": "The type of the image used to create this disk. The default and only value is RAW",
+     "description": "The type of the image used to create this disk. The default and only valid value is RAW.",
      "enum": [
       "RAW"
      ],
@@ -54038,6 +54038,10 @@
      "description": "[Output Only] Number of links actually provisioned in this interconnect.",
      "format": "int32",
      "type": "integer"
+    },
+    "remoteLocation": {
+     "description": "Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.",
+     "type": "string"
     },
     "requestedLinkCount": {
      "description": "Target number of physical links in the link bundle, as requested by the customer.",
