@@ -2734,7 +2734,7 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The GQL query to run.</summary>
+        /// <summary>The GQL query to run. This query must be a non-aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
         public virtual GqlQuery GqlQuery { get; set; }
 

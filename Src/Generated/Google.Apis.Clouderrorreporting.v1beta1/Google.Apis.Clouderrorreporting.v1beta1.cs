@@ -586,7 +586,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// <param name="projectName">
             /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}` or
             /// `projects/{projectNumber}`, where `{projectID}` and `{projectNumber}` can be found in the [Google Cloud
-            /// Console](https://support.google.com/cloud/answer/6158840). Examples: `projects/my-project-123`,
+            /// console](https://support.google.com/cloud/answer/6158840). Examples: `projects/my-project-123`,
             /// `projects/5551234`.
             /// </param>
             public virtual ListRequest List(string projectName)
@@ -607,7 +607,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 /// <summary>
                 /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`
                 /// or `projects/{projectNumber}`, where `{projectID}` and `{projectNumber}` can be found in the [Google
-                /// Cloud Console](https://support.google.com/cloud/answer/6158840). Examples:
+                /// Cloud console](https://support.google.com/cloud/answer/6158840). Examples:
                 /// `projects/my-project-123`, `projects/5551234`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]

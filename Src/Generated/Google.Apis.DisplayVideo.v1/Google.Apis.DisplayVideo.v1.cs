@@ -19965,8 +19965,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of ContactInfo objects defining Customer Match audience members. The size of contact_infos mustn't be
-        /// greater than 500,000.
+        /// A list of ContactInfo objects defining Customer Match audience members. The size of members after splitting
+        /// the contact_infos mustn't be greater than 500,000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactInfos")]
         public virtual System.Collections.Generic.IList<ContactInfo> ContactInfos { get; set; }
@@ -20707,6 +20707,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
+        /// <summary>
+        /// Output only. The custom bidding model readiness state for each advertiser who have access. This field may
+        /// only include the state of the queried advertiser if the algorithm
+        /// [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner)
+        /// is a partner and is being retrieved using an advertiser
+        /// [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelReadiness")]
+        public virtual System.Collections.Generic.IList<CustomBiddingModelReadinessState> ModelReadiness { get; set; }
+
         /// <summary>Output only. The resource name of the custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -20724,6 +20734,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedAdvertiserIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAdvertiserIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The custom bidding algorithm model readiness state for a single shared advertiser.</summary>
+    public class CustomBiddingModelReadinessState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique ID of the advertiser with access to the custom bidding algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>The readiness state of custom bidding model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readinessState")]
+        public virtual string ReadinessState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21644,7 +21669,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     /// <summary>
     /// Details for assigned gender targeting option. This will be populated in the details field of an
-    /// AssignedTargetingOption when targeting_type is `TARTGETING_TYPE_GENDER`.
+    /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_GENDER`.
     /// </summary>
     public class GenderAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23870,7 +23895,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
     /// <summary>
     /// Details for assigned parental status targeting option. This will be populated in the details field of an
-    /// AssignedTargetingOption when targeting_type is `TARTGETING_TYPE_PARENTAL_STATUS`.
+    /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`.
     /// </summary>
     public class ParentalStatusAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {

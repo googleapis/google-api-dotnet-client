@@ -2367,6 +2367,64 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a single version.</summary>
+    public class SecretVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Relative path of the file under the mount path where the secret value for this version will be fetched and
+        /// made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount
+        /// the secret value file at `/etc/secrets/secret_foo`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with
+        /// secret volumes as secret value changes are reflected immediately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret
+    /// manager and make it available as files mounted at the requested paths within the application container.
+    /// </summary>
+    public class SecretVolume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The path within the container to mount the secret volume. For example, setting the mount_path as
+        /// `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will
+        /// also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
+        public virtual string MountPath { get; set; }
+
+        /// <summary>
+        /// Project identifier (preferably project number but can also be the project ID) of the project that contains
+        /// the secret. If not set, it is assumed that the secret is in the same project as the function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the secret in secret manager (not the full resource name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; }
+
+        /// <summary>
+        /// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made
+        /// available in a file named after the secret under the mount point.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<SecretVersion> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).</summary>
     public class ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2422,6 +2480,10 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         /// <summary>Secret environment variables configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnvironmentVariables")]
         public virtual System.Collections.Generic.IList<SecretEnvVar> SecretEnvironmentVariables { get; set; }
+
+        /// <summary>Secret volumes configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVolumes")]
+        public virtual System.Collections.Generic.IList<SecretVolume> SecretVolumes { get; set; }
 
         /// <summary>
         /// Output only. Name of the service associated with a Function. The format of this field is
