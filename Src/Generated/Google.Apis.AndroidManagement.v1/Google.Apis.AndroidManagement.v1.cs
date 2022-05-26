@@ -4143,6 +4143,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requirePasswordUnlock")]
         public virtual string RequirePasswordUnlock { get; set; }
 
+        /// <summary>
+        /// Controls whether a unified lock is allowed for the device and the work profile, on devices running Android 9
+        /// and above with a work profile. This can be set only if password_scope is set to SCOPE_PROFILE, the policy
+        /// will be rejected otherwise. If user has not set a separate work lock and this field is set to
+        /// REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with nonComplianceReason set to USER_ACTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unifiedLockSettings")]
+        public virtual string UnifiedLockSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4535,7 +4544,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Password requirements. The field password_requirements.require_password_unlock must not be set. DEPRECATED -
         /// Use passwordPolicies.Note:Complexity-based values of PasswordQuality, that is, COMPLEXITY_LOW,
-        /// COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here.
+        /// COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here. unified_lock_settings cannot be used here.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordRequirements")]
         public virtual PasswordRequirements PasswordRequirements { get; set; }

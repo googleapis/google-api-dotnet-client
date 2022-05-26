@@ -17794,12 +17794,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Malaysia) - "`postnl`" (PostNL) - "`ptt`" (PTT Turkish Post) - "`eub`" (ePacket) - "`chukou1`" (Chukou1
         /// Logistics) - "`bestex`" (Best Express) - "`canada post`" (Canada Post) - "`purolator`" (Purolator) -
         /// "`canpar`" (Canpar) - "`india post`" (India Post) - "`blue dart`" (Blue Dart) - "`delhivery`" (Delhivery) -
-        /// "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`lso`" (Lone Star Overnight) - "`tww`" (Team Worldwide)
-        /// Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status updates * - "`colissimo`"
-        /// (Colissimo by La Poste) *automatic status updates* - "`ups`" (United Parcel Service) *automatic status
-        /// updates * - "`chronopost`" (Chronopost by La Poste) - "`gls`" (General Logistics Systems France) - "`dpd`"
-        /// (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (Colis Privé) - "`boxtal`"
-        /// (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) - "`aramex`" (Aramex)
+        /// "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`lso`" (Lone Star Overnight) - "`tww`" (Team Worldwide) -
+        /// "`deliver-it`" (Deliver-IT) Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status
+        /// updates * - "`colissimo`" (Colissimo by La Poste) *automatic status updates* - "`ups`" (United Parcel
+        /// Service) *automatic status updates * - "`chronopost`" (Chronopost by La Poste) - "`gls`" (General Logistics
+        /// Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (Colis
+        /// Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) -
+        /// "`aramex`" (Aramex)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; }
@@ -21168,7 +21169,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    ///  The Promotions feature is publicly available for the US, CA, IN, UK, AU target countries (en language only) in
+    ///  The Promotions feature is publicly available for the US, CA, IN, GB, AU target countries (en language only) in
     /// Content API for Shopping. Represents a promotion. See the following articles for more details. * [Promotions
     /// feed specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed
     /// specification](https://support.google.com/merchants/answer/10146130) * [Promotions on Buy on Google product data

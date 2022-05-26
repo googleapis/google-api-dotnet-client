@@ -1692,6 +1692,12 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocationId")]
         public virtual string CurrentLocationId { get; set; }
 
+        /// <summary>
+        /// Optional. The KMS key reference that the customer provides when trying to create the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedKey")]
+        public virtual string CustomerManagedKey { get; set; }
+
         /// <summary>An arbitrary and optional user-provided name for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -1725,12 +1731,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. Date and time of upcoming maintenance events which have been scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
-
-        /// <summary>
-        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
-        public virtual string MaintenanceVersion { get; set; }
 
         /// <summary>Required. Redis memory size in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
@@ -1842,6 +1842,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
+
+        /// <summary>Optional. reasons that causes instance in "SUSPENDED" state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
+        public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
 
         /// <summary>Required. The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]

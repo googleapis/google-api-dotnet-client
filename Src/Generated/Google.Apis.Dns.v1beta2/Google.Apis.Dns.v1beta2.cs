@@ -5111,6 +5111,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClustersPerManagedZone")]
         public virtual System.Nullable<int> GkeClustersPerManagedZone { get; set; }
 
+        /// <summary>Maximum allowed number of GKE clusters per policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClustersPerPolicy")]
+        public virtual System.Nullable<int> GkeClustersPerPolicy { get; set; }
+
         /// <summary>Maximum allowed number of GKE clusters per response policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClustersPerResponsePolicy")]
         public virtual System.Nullable<int> GkeClustersPerResponsePolicy { get; set; }
@@ -5142,6 +5146,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networksPerPolicy")]
         public virtual System.Nullable<int> NetworksPerPolicy { get; set; }
 
+        /// <summary>Maximum allowed number of networks per response policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networksPerResponsePolicy")]
+        public virtual System.Nullable<int> NetworksPerResponsePolicy { get; set; }
+
         /// <summary>
         /// Maximum allowed number of consumer peering zones per target network owned by this producer project
         /// </summary>
@@ -5155,6 +5163,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>Maximum allowed number of ResourceRecords per ResourceRecordSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecordsPerRrset")]
         public virtual System.Nullable<int> ResourceRecordsPerRrset { get; set; }
+
+        /// <summary>Maximum allowed number of response policies per project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsePolicies")]
+        public virtual System.Nullable<int> ResponsePolicies { get; set; }
 
         /// <summary>Maximum allowed number of rules per response policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyRulesPerResponsePolicy")]

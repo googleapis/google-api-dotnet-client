@@ -3010,6 +3010,21 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Updates the number of pinned table header rows in a table.</summary>
+    public class PinTableHeaderRowsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of table rows to pin, where 0 implies that all rows are unpinned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinnedHeaderRowsCount")]
+        public virtual System.Nullable<int> PinnedHeaderRowsCount { get; set; }
+
+        /// <summary>The location where the table starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableStartLocation")]
+        public virtual Location TableStartLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An object that is tethered to a Paragraph and positioned relative to the beginning of the paragraph. A
     /// PositionedObject contains an EmbeddedObject such as an image.
@@ -3336,6 +3351,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Merges cells in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mergeTableCells")]
         public virtual MergeTableCellsRequest MergeTableCells { get; set; }
+
+        /// <summary>Updates the number of pinned header rows in a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinTableHeaderRows")]
+        public virtual PinTableHeaderRowsRequest PinTableHeaderRows { get; set; }
 
         /// <summary>Replaces all instances of the specified text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllText")]
@@ -4421,6 +4440,14 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minRowHeight")]
         public virtual Dimension MinRowHeight { get; set; }
+
+        /// <summary>Whether the row cannot overflow across page or column boundaries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preventOverflow")]
+        public virtual System.Nullable<bool> PreventOverflow { get; set; }
+
+        /// <summary>Whether the row is a table header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableHeader")]
+        public virtual System.Nullable<bool> TableHeader { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

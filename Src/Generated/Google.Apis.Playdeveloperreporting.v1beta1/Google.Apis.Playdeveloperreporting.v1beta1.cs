@@ -981,6 +981,15 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
+        /// <summary>
+        /// Optional. Human-friendly label for the value, always in English. For example, 'Spain' for the 'ES' country
+        /// code. Whereas the dimension value is stable, this value label is subject to change. Do not assume that the
+        /// (value, value_label) relationship is stable. For example, the ISO country code 'MK' changed its name
+        /// recently to 'North Macedonia'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueLabel")]
+        public virtual string ValueLabel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

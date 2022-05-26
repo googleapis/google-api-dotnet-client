@@ -1498,7 +1498,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and
     /// populated this provenance.
     /// </summary>
-    public class GrafeasV1SlsaProvenance02SlsaBuilder : Google.Apis.Requests.IDirectResponseSchema
+    public class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -1508,7 +1508,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     }
 
     /// <summary>Indicates that the builder claims certain fields in this message to be complete.</summary>
-    public class GrafeasV1SlsaProvenance02SlsaCompleteness : Google.Apis.Requests.IDirectResponseSchema
+    public class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual System.Nullable<bool> Environment { get; set; }
@@ -1527,7 +1527,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     /// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source
     /// where buildConfig came from.
     /// </summary>
-    public class GrafeasV1SlsaProvenance02SlsaConfigSource : Google.Apis.Requests.IDirectResponseSchema
+    public class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
@@ -1543,10 +1543,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     }
 
     /// <summary>Identifies the event that kicked off the build.</summary>
-    public class GrafeasV1SlsaProvenance02SlsaInvocation : Google.Apis.Requests.IDirectResponseSchema
+    public class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("configSource")]
-        public virtual GrafeasV1SlsaProvenance02SlsaConfigSource ConfigSource { get; set; }
+        public virtual GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource ConfigSource { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual System.Collections.Generic.IDictionary<string, object> Environment { get; set; }
@@ -1562,7 +1562,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images,
     /// and so on.
     /// </summary>
-    public class GrafeasV1SlsaProvenance02SlsaMaterial : Google.Apis.Requests.IDirectResponseSchema
+    public class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
@@ -1575,7 +1575,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     }
 
     /// <summary>Other properties of the build.</summary>
-    public class GrafeasV1SlsaProvenance02SlsaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    public class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("buildFinishedOn")]
         public virtual object BuildFinishedOn { get; set; }
@@ -1587,7 +1587,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual object BuildStartedOn { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("completeness")]
-        public virtual GrafeasV1SlsaProvenance02SlsaCompleteness Completeness { get; set; }
+        public virtual GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness Completeness { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("reproducible")]
         public virtual System.Nullable<bool> Reproducible { get; set; }
@@ -1706,8 +1706,8 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("slsaProvenance")]
         public virtual SlsaProvenance SlsaProvenance { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("slsaProvenance02")]
-        public virtual SlsaProvenance02 SlsaProvenance02 { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("slsaProvenanceZeroTwo")]
+        public virtual SlsaProvenanceZeroTwo SlsaProvenanceZeroTwo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual System.Collections.Generic.IList<Subject> Subject { get; set; }
@@ -2415,7 +2415,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     }
 
     /// <summary>See full explanation of fields at slsa.dev/provenance/v0.2.</summary>
-    public class SlsaProvenance02 : Google.Apis.Requests.IDirectResponseSchema
+    public class SlsaProvenanceZeroTwo : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
         public virtual System.Collections.Generic.IDictionary<string, object> BuildConfig { get; set; }
@@ -2424,16 +2424,16 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string BuildType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("builder")]
-        public virtual GrafeasV1SlsaProvenance02SlsaBuilder Builder { get; set; }
+        public virtual GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder Builder { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("invocation")]
-        public virtual GrafeasV1SlsaProvenance02SlsaInvocation Invocation { get; set; }
+        public virtual GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation Invocation { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("materials")]
-        public virtual System.Collections.Generic.IList<GrafeasV1SlsaProvenance02SlsaMaterial> Materials { get; set; }
+        public virtual System.Collections.Generic.IList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial> Materials { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual GrafeasV1SlsaProvenance02SlsaMetadata Metadata { get; set; }
+        public virtual GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

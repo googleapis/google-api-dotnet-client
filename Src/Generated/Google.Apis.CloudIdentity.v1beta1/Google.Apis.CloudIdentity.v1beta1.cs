@@ -4304,21 +4304,6 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message containing first admin invitation info for customers</summary>
-    public class FirstAdminInvitationInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. To enable First Admin Invitation for Domained Customer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isFirstAdmin")]
-        public virtual System.Nullable<bool> IsFirstAdmin { get; set; }
-
-        /// <summary>Optional. Domain information of first admin invited</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryDomain")]
-        public virtual string PrimaryDomain { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The response message for MembershipsService.GetMembershipGraph.</summary>
     public class GetMembershipGraphResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5527,10 +5512,6 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>A request to send email for inviting target user corresponding to the UserInvitation.</summary>
     public class SendUserInvitationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. First admin invitation info for customers</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstAdminInvitationInfo")]
-        public virtual FirstAdminInvitationInfo FirstAdminInvitationInfo { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1701,7 +1701,7 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>
             /// The max number of items to include in the response list. Page size is 50 if not specified. Maximum value
-            /// is 100.
+            /// is 500.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -3640,6 +3640,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// </summary>
     public class MetricRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is
+        /// the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased
+        /// for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicMetricCosts")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DynamicMetricCosts { get; set; }
+
         /// <summary>
         /// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The
         /// key of the map is the metric name, and the values are the amount increased for the metric against which the

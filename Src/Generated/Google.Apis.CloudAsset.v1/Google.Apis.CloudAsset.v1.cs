@@ -2162,11 +2162,11 @@ namespace Google.Apis.CloudAsset.v1
             /// for more information. If not specified or empty, it will search all the IAM policies within the
             /// specified `scope`. Note that the query string is compared against each Cloud IAM policy binding,
             /// including its principals, roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
-            /// contain the bindings that match your query. To learn more about the IAM policy structure, see [IAM
-            /// policy doc](https://cloud.google.com/iam/docs/policies#structure). Examples: * `policy:amy@gmail.com` to
-            /// find IAM policy bindings that specify user "amy@gmail.com". * `policy:roles/compute.admin` to find IAM
-            /// policy bindings that specify the Compute Admin role. * `policy:comp*` to find IAM policy bindings that
-            /// contain "comp" as a prefix of any word in the binding. *
+            /// contain the bindings that match your query. To learn more about the IAM policy structure, see the [IAM
+            /// policy documentation](https://cloud.google.com/iam/help/allow-policies/structure). Examples: *
+            /// `policy:amy@gmail.com` to find IAM policy bindings that specify user "amy@gmail.com". *
+            /// `policy:roles/compute.admin` to find IAM policy bindings that specify the Compute Admin role. *
+            /// `policy:comp*` to find IAM policy bindings that contain "comp" as a prefix of any word in the binding. *
             /// `policy.role.permissions:storage.buckets.update` to find IAM policy bindings that specify a role
             /// containing "storage.buckets.update" permission. Note that if callers don't have `iam.roles.get` access
             /// to a role's included permissions, policy bindings that specify this role will be dropped from the search
@@ -2597,8 +2597,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access scope
         /// from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is
         /// the union of both the policy set on this resource and each policy set on all of the resource's ancestry
-        /// resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/docs/policies#inheritance)
-        /// for more information.
+        /// resource levels in the hierarchy. See [this
+        /// topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
         public virtual Policy IamPolicy { get; set; }
@@ -3465,8 +3465,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access scope
         /// from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is
         /// the union of both the policy set on this resource and each policy set on all of the resource's ancestry
-        /// resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/docs/policies#inheritance)
-        /// for more information.
+        /// resource levels in the hierarchy. See [this
+        /// topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
         public virtual Policy IamPolicy { get; set; }
