@@ -49,7 +49,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         /// <returns>A task which completes with the application default credentials.</returns>
         public static Task<GoogleCredential> GetApplicationDefaultAsync() =>
-            defaultCredentialProvider.GetDefaultCredentialAsync();
+            GetApplicationDefaultAsync(default(CancellationToken));
 
         /// <summary>
         /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize
@@ -94,7 +94,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="cancellationToken">Cancellation token for the operation.</param>
         /// <returns>A task which completes with the application default credentials.</returns>
         public static Task<GoogleCredential> GetApplicationDefaultAsync(CancellationToken cancellationToken) =>
-            defaultCredentialProvider.GetDefaultCredentialAsync().WithCancellationToken(cancellationToken);
+            GetApplicationDefaultAsync(GetDefaultDiscoveryMechanisms(), cancellationToken);
 
         /// <summary>
         /// <para>Synchronously returns the Application Default Credentials which are ambient credentials that identify and authorize
@@ -103,7 +103,32 @@ namespace Google.Apis.Auth.OAuth2
         /// It is highly preferable to call <see cref="GetApplicationDefaultAsync(CancellationToken)"/> where possible.</para>
         /// </summary>
         /// <returns>The application default credentials.</returns>
-        public static GoogleCredential GetApplicationDefault() => Task.Run(() => GetApplicationDefaultAsync()).Result;
+        public static GoogleCredential GetApplicationDefault() => GetApplicationDefault(GetDefaultDiscoveryMechanisms());
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public static GoogleCredential GetApplicationDefault(AdcDiscoveryMechanisms mechanisms) =>
+            Task.Run(() => GetApplicationDefaultAsync(mechanisms, default)).Result;
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public static Task<GoogleCredential> GetApplicationDefaultAsync(AdcDiscoveryMechanisms mechanisms, CancellationToken cancellationToken) =>
+            defaultCredentialProvider.GetDefaultCredentialAsync(mechanisms).WithCancellationToken(cancellationToken);
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public static AdcDiscoveryMechanisms GetDefaultDiscoveryMechanisms()
+        {
+            var mechanisms =
+                AdcDiscoveryMechanisms.FileEnvironmentVariable |
+                AdcDiscoveryMechanisms.GCloudAuthLoginFile |
+                AdcDiscoveryMechanisms.MetadataServerPing;
+            // TODO: On Linux, include MetadataServerBios?
+            return mechanisms;
+        }
 
         /// <summary>
         /// Loads credential from stream containing JSON credential data.
@@ -192,7 +217,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>
         /// Create a <see cref="GoogleCredential"/> from a <see cref="ComputeCredential"/>.
-        /// In general, do not use this method. Call <see cref="GetApplicationDefault"/> or
+        /// In general, do not use this method. Call <see cref="GetApplicationDefault()"/> or
         /// <see cref="GetApplicationDefaultAsync(CancellationToken)"/>, which will provide the most suitable
         /// credentials for the current platform.
         /// </summary>

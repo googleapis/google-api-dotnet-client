@@ -15,6 +15,8 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -57,19 +59,36 @@ namespace Google.Apis.Auth.OAuth2
         private const string CloudSDKConfigDirectoryWindows = "gcloud";
 
         /// <summary>Help link to the application default credentials feature.</summary>
-        private const string HelpPermalink = 
+        private const string HelpPermalink =
             "https://developers.google.com/accounts/docs/application-default-credentials";
 
         /// <summary>GCloud configuration directory on Linux/Mac, relative to $HOME.</summary>
         private static readonly string CloudSDKConfigDirectoryUnix = Path.Combine(".config", "gcloud");
 
-        /// <summary>Caches result from first call to <c>GetApplicationDefaultCredentialAsync</c> </summary>
-        private readonly Lazy<Task<GoogleCredential>> cachedCredentialTask;
+        /// <summary>
+        /// A dictionary of tasks, from each individual flag in <see cref="AdcDiscoveryMechanisms"/>
+        /// to a task representing the work of evaluating that mechanism. The task may be completed but return null,
+        /// in which case the discovery mechanism has been successfully evaluated, but without discovering a credential.
+        /// </summary>
+        private readonly ConcurrentDictionary<AdcDiscoveryMechanisms, Task<GoogleCredential>> _tasksByMechanism = new ConcurrentDictionary<AdcDiscoveryMechanisms, Task<GoogleCredential>>();
+
+        private readonly List<KeyValuePair<AdcDiscoveryMechanisms, Func<AdcDiscoveryMechanisms, Task<GoogleCredential>>>> _taskProviders = new List<KeyValuePair<AdcDiscoveryMechanisms, Func<AdcDiscoveryMechanisms, Task<GoogleCredential>>>>();
 
         /// <summary>Constructs a new default credential provider.</summary>
         public DefaultCredentialProvider()
         {
-            cachedCredentialTask = new Lazy<Task<GoogleCredential>>(CreateDefaultCredentialAsync);
+            AddProvider(AdcDiscoveryMechanisms.FileEnvironmentVariable, FromCredentialEnvironmentVariable);
+            AddProvider(AdcDiscoveryMechanisms.GCloudAuthLoginFile, FromWellKnownFile);
+            AddProvider(AdcDiscoveryMechanisms.MetadataServerPing, FromComputeCredential);
+            // TODO: Add more providers (e.g. TLS, metadata server BIOS)
+
+            void AddProvider(AdcDiscoveryMechanisms mechanism, Func<Task<GoogleCredential>> provider)
+            {
+                // We need a Func<AdcDiscoveryMechanisms, Task<GoogleCredential>> for ConcurrentDictionary.GetOrAdd,
+                // but we actually want to ignore the key. We can do that here, in one place, instead of
+                // creating a new delegate on every call.
+                _taskProviders.Add(new KeyValuePair<AdcDiscoveryMechanisms, Func<AdcDiscoveryMechanisms, Task<GoogleCredential>>>(mechanism, _ => provider()));
+            }
         }
 
         /// <summary>
@@ -77,12 +96,32 @@ namespace Google.Apis.Auth.OAuth2
         /// first invocation.
         /// See <see cref="M:Google.Apis.Auth.OAuth2.GoogleCredential.GetApplicationDefaultAsync"/> for details.
         /// </summary>
-        public Task<GoogleCredential> GetDefaultCredentialAsync() => cachedCredentialTask.Value;
-
-        /// <summary>Creates a new default credential.</summary>
-        private async Task<GoogleCredential> CreateDefaultCredentialAsync()
+        /// <param name="mechanisms">TODO</param>
+        public async Task<GoogleCredential> GetDefaultCredentialAsync(AdcDiscoveryMechanisms mechanisms)
         {
-            // 1. First try the environment variable.
+            foreach (var pair in _taskProviders)
+            {
+                if ((mechanisms & pair.Key) != 0)
+                {
+                    var task = _tasksByMechanism.GetOrAdd(pair.Key, pair.Value);
+                    var credential = await task.ConfigureAwait(false);
+                    if (credential is object)
+                    {
+                        return credential;
+                    }
+                }
+            }
+            // TODO: Rewrite this text
+            throw new InvalidOperationException(
+                String.Format("The Application Default Credentials are not available. They are available if running"
+                    + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
+                    + " pointing to a file defining the credentials. See {1} for more information.",
+                    CredentialEnvironmentVariable,
+                    HelpPermalink));
+        }
+
+        private async Task<GoogleCredential> FromCredentialEnvironmentVariable()
+        {
             string credentialPath = GetEnvironmentVariable(CredentialEnvironmentVariable);
             if (!string.IsNullOrWhiteSpace(credentialPath))
             {
@@ -102,9 +141,12 @@ namespace Google.Apis.Auth.OAuth2
                             CredentialEnvironmentVariable), e);
                 }
             }
-            
-            // 2. Then try the well known file.
-            credentialPath = GetWellKnownCredentialFilePath();
+            return null;
+        }
+
+        private async Task<GoogleCredential> FromWellKnownFile()
+        {
+            var credentialPath = GetWellKnownCredentialFilePath();
             if (!string.IsNullOrWhiteSpace(credentialPath))
             {
                 try
@@ -130,22 +172,18 @@ namespace Google.Apis.Auth.OAuth2
                             e.Message), e);
                 }
             }
+            return null;
+        }
 
-            // 3. Then try the compute engine.
+        private async Task<GoogleCredential> FromComputeCredential()
+        {
             Logger.Debug("Checking whether the application is running on ComputeEngine.");
             if (await ComputeCredential.IsRunningOnComputeEngine().ConfigureAwait(false))
             {
                 Logger.Debug("ComputeEngine check passed. Using ComputeEngine Credentials.");
                 return new GoogleCredential(new ComputeCredential());
             }
-
-            // If everything we tried has failed, throw an exception.
-            throw new InvalidOperationException(
-                String.Format("The Application Default Credentials are not available. They are available if running"
-                    + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
-                    + " pointing to a file defining the credentials. See {1} for more information.",
-                    CredentialEnvironmentVariable,
-                    HelpPermalink));
+            return null;
         }
 
         private async Task<GoogleCredential> CreateDefaultCredentialFromFileAsync(string credentialPath, CancellationToken cancellationToken)

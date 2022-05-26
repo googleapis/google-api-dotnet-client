@@ -120,7 +120,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, DummyUserCredentialFileContents);
 
-            var credential = await credentialProvider.GetDefaultCredentialAsync();
+            var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.FileEnvironmentVariable);
 
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
@@ -134,7 +134,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             credentialProvider.SetEnvironmentVariable("APPDATA", AppDataValue);
             credentialProvider.SetFileContents(WellKnownCredentialFilePath, DummyUserCredentialFileContents);
 
-            var credential = await credentialProvider.GetDefaultCredentialAsync();
+            var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.GCloudAuthLoginFile);
             
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
@@ -148,7 +148,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             credentialProvider.SetEnvironmentVariable("HOME", HomeValue);
             credentialProvider.SetFileContents(WellKnownCredentialFilePathUnix, DummyUserCredentialFileContents);
 
-            var credential = await credentialProvider.GetDefaultCredentialAsync();
+            var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.GCloudAuthLoginFile);
 
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
@@ -166,7 +166,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, DummyServiceAccountCredentialFileContents);
 
-            var credential = await credentialProvider.GetDefaultCredentialAsync();
+            var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.FileEnvironmentVariable);
 
             Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
             Assert.True(credential.IsCreateScopedRequired);
@@ -181,7 +181,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, DummyServiceAccountCredentialFileContents);
 
-            var credential = await credentialProvider.GetDefaultCredentialAsync();
+            var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.FileEnvironmentVariable);
 
             var scopes = new[] { "https://www.googleapis.com/auth/cloud-platform" };
             var scopedCredential = credential.CreateScoped(scopes);
@@ -203,7 +203,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
         {
             try
             {
-                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.FileEnvironmentVariable);
                 // When running on GCE expect to get a ComputeCredential
                 if (!(credential.UnderlyingCredential is ComputeCredential))
                 {
@@ -226,7 +226,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             
             try
             {
-                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.FileEnvironmentVariable);
                 Assert.True(false, "Exception expected");
             }
             catch (InvalidOperationException e)
@@ -246,7 +246,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
             try
             {
-                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.FileEnvironmentVariable);
                 Assert.True(false, "Exception expected");
             }
             catch (InvalidOperationException e)
@@ -266,7 +266,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
             try
             {
-                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                var credential = await credentialProvider.GetDefaultCredentialAsync(AdcDiscoveryMechanisms.FileEnvironmentVariable);
                 Assert.True(false, "Exception expected");
             }
             catch (InvalidOperationException e)
