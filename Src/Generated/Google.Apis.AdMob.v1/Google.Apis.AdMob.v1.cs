@@ -328,8 +328,8 @@ namespace Google.Apis.AdMob.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of ad units to return. If unspecified or 0, at most 1000 ad units will be
-                /// returned. The maximum value is 10,000; values above 10,000 will be coerced to 10,000.
+                /// The maximum number of ad units to return. If unspecified or 0, at most 10,000 ad units will be
+                /// returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -425,8 +425,8 @@ namespace Google.Apis.AdMob.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of apps to return. If unspecified or 0, at most 1000 apps will be returned. The
-                /// maximum value is 10,000; values above 10,000 will be coerced to 10,000.
+                /// The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The
+                /// maximum value is 20,000; values above 20,000 will be coerced to 20,000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }

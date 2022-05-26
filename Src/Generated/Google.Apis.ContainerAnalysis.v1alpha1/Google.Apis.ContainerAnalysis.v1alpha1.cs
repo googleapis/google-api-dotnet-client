@@ -5082,6 +5082,135 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     }
 
     /// <summary>
+    /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and
+    /// populated this provenance.
+    /// </summary>
+    public class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI indicating the builder’s identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates that the builder claims certain fields in this message to be complete.</summary>
+    public class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, the builder claims that invocation.environment is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual System.Nullable<bool> Environment { get; set; }
+
+        /// <summary>If true, the builder claims that materials is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Nullable<bool> Materials { get; set; }
+
+        /// <summary>If true, the builder claims that invocation.parameters is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Nullable<bool> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source
+    /// where buildConfig came from.
+    /// </summary>
+    public class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Collection of cryptographic digests for the contents of the artifact specified by
+        /// invocation.configSource.uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        /// <summary>String identifying the entry point into the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPoint")]
+        public virtual string EntryPoint { get; set; }
+
+        /// <summary>URI indicating the identity of the source of the config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies the event that kicked off the build.</summary>
+    public class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes where the config file that kicked off the build came from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configSource")]
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource ConfigSource { get; set; }
+
+        /// <summary>Any other builder-controlled inputs necessary for correctly evaluating the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Environment { get; set; }
+
+        /// <summary>
+        /// Collection of all external inputs that influenced the build on top of invocation.configSource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images,
+    /// and so on.
+    /// </summary>
+    public class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Collection of cryptographic digests for the contents of this artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        /// <summary>The method by which this artifact was referenced during the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Other properties of the build.</summary>
+    public class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp of when the build completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildFinishedOn")]
+        public virtual object BuildFinishedOn { get; set; }
+
+        /// <summary>
+        /// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc
+        /// analysis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildInvocationId")]
+        public virtual string BuildInvocationId { get; set; }
+
+        /// <summary>The timestamp of when the build started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStartedOn")]
+        public virtual object BuildStartedOn { get; set; }
+
+        /// <summary>Indicates that the builder claims certain fields in this message to be complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeness")]
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness Completeness { get; set; }
+
+        /// <summary>
+        /// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reproducible")]
+        public virtual System.Nullable<bool> Reproducible { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique
     /// revision of a single file or directory.
     /// </summary>
@@ -5165,13 +5294,17 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predicateType")]
         public virtual string PredicateType { get; set; }
 
-        /// <summary>provenance is a predicate of type intotoprovenance</summary>
+        /// <summary>Generic Grafeas provenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual InTotoProvenance Provenance { get; set; }
 
-        /// <summary>slsa_provenance is a predicate of type slsaProvenance</summary>
+        /// <summary>SLSA 0.1 provenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slsaProvenance")]
         public virtual SlsaProvenance SlsaProvenance { get; set; }
+
+        /// <summary>SLSA 0.2 provenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slsaProvenanceZeroTwo")]
+        public virtual SlsaProvenanceZeroTwo SlsaProvenanceZeroTwo { get; set; }
 
         /// <summary>subject is the subjects of the intoto statement</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
@@ -6354,6 +6487,46 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipe")]
         public virtual SlsaRecipe Recipe { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at
+    /// slsa.dev/provenance/v0.2.
+    /// </summary>
+    public class SlsaProvenanceZeroTwo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Lists the steps in the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
+        public virtual System.Collections.Generic.IDictionary<string, object> BuildConfig { get; set; }
+
+        /// <summary>URI indicating what type of build was performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildType")]
+        public virtual string BuildType { get; set; }
+
+        /// <summary>
+        /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation
+        /// and populated this provenance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("builder")]
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder Builder { get; set; }
+
+        /// <summary>Identifies the event that kicked off the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invocation")]
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation Invocation { get; set; }
+
+        /// <summary>
+        /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base
+        /// images, and so on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial> Materials { get; set; }
+
+        /// <summary>Other properties of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

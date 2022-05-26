@@ -3949,6 +3949,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationPercent")]
         public virtual System.Nullable<int> CpuUtilizationPercent { get; set; }
 
+        /// <summary>
+        /// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560
+        /// (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster,
+        /// otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were
+        /// set to the default value: 2560 for SSD, 8192 for HDD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUtilizationGibPerNode")]
+        public virtual System.Nullable<int> StorageUtilizationGibPerNode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -3796,7 +3796,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Immutable. The fully qualified resource name of the attribute config. Format:
-                /// "projects/*/locations/*/catalogs/*/attributesConfig"
+                /// `projects/*/locations/*/catalogs/*/attributesConfig`
                 /// </param>
                 public virtual UpdateAttributesConfigRequest UpdateAttributesConfig(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAttributesConfig body, string name)
                 {
@@ -3822,7 +3822,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Required. Immutable. The fully qualified resource name of the attribute config. Format:
-                    /// "projects/*/locations/*/catalogs/*/attributesConfig"
+                    /// `projects/*/locations/*/catalogs/*/attributesConfig`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3876,7 +3876,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <summary>Updates the CompletionConfigs.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Immutable. Fully qualified name projects/*/locations/*/catalogs/*/completionConfig
+                /// Required. Immutable. Fully qualified name `projects/*/locations/*/catalogs/*/completionConfig`
                 /// </param>
                 public virtual UpdateCompletionConfigRequest UpdateCompletionConfig(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaCompletionConfig body, string name)
                 {
@@ -3895,7 +3895,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     }
 
                     /// <summary>
-                    /// Required. Immutable. Fully qualified name projects/*/locations/*/catalogs/*/completionConfig
+                    /// Required. Immutable. Fully qualified name `projects/*/locations/*/catalogs/*/completionConfig`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5271,7 +5271,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// Required. Immutable. The fully qualified resource name of the attribute config. Format:
-        /// "projects/*/locations/*/catalogs/*/attributesConfig"
+        /// `projects/*/locations/*/catalogs/*/attributesConfig`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5615,7 +5615,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Nullable<int> MinPrefixLength { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Fully qualified name projects/*/locations/*/catalogs/*/completionConfig
+        /// Required. Immutable. Fully qualified name `projects/*/locations/*/catalogs/*/completionConfig`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7930,9 +7930,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set
         /// restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only
-        /// supported on textual fields and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: *
-        /// pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 *
-        /// customFulfillment3 * customFulfillment4 * customFulfillment5
+        /// supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be
+        /// set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery *
+        /// customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedValues")]
         public virtual System.Collections.Generic.IList<string> RestrictedValues { get; set; }

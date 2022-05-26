@@ -481,6 +481,67 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
+            /// access to the resource if another request has been made and approved. It only invalidates a single
+            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
+            public virtual InvalidateRequest Invalidate(Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name)
+            {
+                return new InvalidateRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
+            /// access to the resource if another request has been made and approved. It only invalidates a single
+            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// </summary>
+            public class InvalidateRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
+            {
+                /// <summary>Constructs a new Invalidate request.</summary>
+                public InvalidateRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Name of the ApprovalRequest to invalidate.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "invalidate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:invalidate";
+
+                /// <summary>Initializes Invalidate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/approvalRequests/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Lists approval requests associated with a project, folder, or organization. Approval requests can be
             /// filtered by state (pending, active, dismissed). The order is reverse chronological.
             /// </summary>
@@ -1029,6 +1090,67 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
+            /// access to the resource if another request has been made and approved. It only invalidates a single
+            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
+            public virtual InvalidateRequest Invalidate(Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name)
+            {
+                return new InvalidateRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
+            /// access to the resource if another request has been made and approved. It only invalidates a single
+            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// </summary>
+            public class InvalidateRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
+            {
+                /// <summary>Constructs a new Invalidate request.</summary>
+                public InvalidateRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Name of the ApprovalRequest to invalidate.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "invalidate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:invalidate";
+
+                /// <summary>Initializes Invalidate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/approvalRequests/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Lists approval requests associated with a project, folder, or organization. Approval requests can be
             /// filtered by state (pending, active, dismissed). The order is reverse chronological.
             /// </summary>
@@ -1562,6 +1684,67 @@ namespace Google.Apis.AccessApproval.v1
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/approvalRequests/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
+            /// access to the resource if another request has been made and approved. It only invalidates a single
+            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
+            public virtual InvalidateRequest Invalidate(Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name)
+            {
+                return new InvalidateRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
+            /// access to the resource if another request has been made and approved. It only invalidates a single
+            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// </summary>
+            public class InvalidateRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
+            {
+                /// <summary>Constructs a new Invalidate request.</summary>
+                public InvalidateRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Name of the ApprovalRequest to invalidate.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "invalidate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:invalidate";
+
+                /// <summary>Initializes Invalidate parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -2128,6 +2311,10 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
+        /// <summary>If set, denotes the timestamp at which the approval is invalidated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidateTime")]
+        public virtual object InvalidateTime { get; set; }
+
         /// <summary>The signature for the ApprovalRequest and details on how it was signed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureInfo")]
         public virtual SignatureInfo SignatureInfo { get; set; }
@@ -2198,6 +2385,13 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enrollmentLevel")]
         public virtual string EnrollmentLevel { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to invalidate an existing approval.</summary>
+    public class InvalidateApprovalRequestMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

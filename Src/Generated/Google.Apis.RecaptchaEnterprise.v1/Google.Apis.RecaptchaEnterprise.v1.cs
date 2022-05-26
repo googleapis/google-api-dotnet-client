@@ -1223,6 +1223,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// The private password leak verification field contains the parameters used to check for leaks privately
+        /// without sharing user credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privatePasswordLeakVerification")]
+        public virtual GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification PrivatePasswordLeakVerification { get; set; }
+
         /// <summary>Output only. The risk analysis result for the event being assessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskAnalysis")]
         public virtual GoogleCloudRecaptchaenterpriseV1RiskAnalysis RiskAnalysis { get; set; }
@@ -1458,6 +1465,41 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>The migrate key request message.</summary>
     public class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Private password leak verification info.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of prefixes of the encrypted potential password leaks that matched the given parameters.
+        /// They should be compared with the client-side decryption prefix of `reencrypted_user_credentials_hash`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedLeakMatchPrefixes")]
+        public virtual System.Collections.Generic.IList<string> EncryptedLeakMatchPrefixes { get; set; }
+
+        /// <summary>
+        /// Optional. Encrypted Scrypt hash of the canonicalized username+password. It is re-encrypted by the server and
+        /// returned through `reencrypted_user_credentials_hash`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserCredentialsHash")]
+        public virtual string EncryptedUserCredentialsHash { get; set; }
+
+        /// <summary>
+        /// Optional. Exactly 26-bit prefix of the SHA-256 hash of the canonicalized username. It is used to look up
+        /// password leaks associated with that hash prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lookupHashPrefix")]
+        public virtual string LookupHashPrefix { get; set; }
+
+        /// <summary>
+        /// Output only. Corresponds to the re-encryption of the `encrypted_user_credentials_hash` field. Used to match
+        /// potential password leaks within `encrypted_leak_match_prefixes`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reencryptedUserCredentialsHash")]
+        public virtual string ReencryptedUserCredentialsHash { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

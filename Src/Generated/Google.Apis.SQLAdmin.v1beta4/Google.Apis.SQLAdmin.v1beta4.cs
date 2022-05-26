@@ -6047,7 +6047,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Any scheduled maintenancce for this instance.</summary>
+    /// <summary>Any scheduled maintenance for this instance.</summary>
     public class SqlScheduledMaintenance : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("canDefer")]

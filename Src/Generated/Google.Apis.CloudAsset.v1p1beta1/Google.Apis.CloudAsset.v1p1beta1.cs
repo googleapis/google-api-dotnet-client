@@ -776,8 +776,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         /// IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access scope
         /// from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is
         /// the union of both the policy set on this resource and each policy set on all of the resource's ancestry
-        /// resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/docs/policies#inheritance)
-        /// for more information.
+        /// resource levels in the hierarchy. See [this
+        /// topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
         public virtual Policy IamPolicy { get; set; }

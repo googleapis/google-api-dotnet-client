@@ -4081,6 +4081,25 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
+    public class Compliance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>e.g. A.12.4.1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ids")]
+        public virtual System.Collections.Generic.IList<string> Ids { get; set; }
+
+        /// <summary>e.g. "cis", "pci", "owasp", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standard")]
+        public virtual string Standard { get; set; }
+
+        /// <summary>e.g. 1.1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of a module.</summary>
     public class Config : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4120,6 +4139,28 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Source port.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourcePort")]
         public virtual System.Nullable<int> SourcePort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representa a single contact's email address</summary>
+    public class Contact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An email address e.g. "person123@company.com"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details pertaining to specific contacts</summary>
+    public class ContactDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of contacts</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
+        public virtual System.Collections.Generic.IList<Contact> Contacts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4277,6 +4318,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>EnvironmentVariable is a name-value pair to store env variables for Process.</summary>
+    public class EnvironmentVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Environment variable name as a JSON encoded string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Environment variable value as a JSON encoded string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("val")]
+        public virtual string Val { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource capturing the settings for the Event Threat Detection service.</summary>
     public class EventThreatDetectionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4305,6 +4361,92 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Output only. The time the settings were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource that has been exfiltrated or exfiltrated_to.</summary>
+    public class ExfilResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Subcomponents of the asset that is exfiltrated - these could be URIs used during exfiltration, table names,
+        /// databases, filenames, etc. For example, multiple tables may be exfiltrated from the same CloudSQL instance,
+        /// or multiple files from the same Cloud Storage bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("components")]
+        public virtual System.Collections.Generic.IList<string> Components { get; set; }
+
+        /// <summary>Resource’s URI (https://google.aip.dev/122#full-resource-names)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Exfiltration represents a data exfiltration attempt of one or more source(s) to one or more target(s). Source(s)
+    /// represent the source of data that is exfiltrated, and Target(s) represents the destination the data was copied
+    /// to.
+    /// </summary>
+    public class Exfiltration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there are multiple sources, then the data is considered “joined” between them. For instance, BigQuery can
+        /// join multiple tables, and each table would be considered a source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<ExfilResource> Sources { get; set; }
+
+        /// <summary>
+        /// If there are multiple targets, each target would get a complete copy of the “joined” source data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<ExfilResource> Targets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// File information about the related binary/library used by an executable, or the script used by a script
+    /// interpreter
+    /// </summary>
+    public class File : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Prefix of the file contents as a JSON encoded string. (Currently only populated for Malicious Script
+        /// Executed findings.)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual string Contents { get; set; }
+
+        /// <summary>
+        /// The length in bytes of the file prefix that was hashed. If hashed_size == size, any hashes reported
+        /// represent the entire file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedSize")]
+        public virtual System.Nullable<long> HashedSize { get; set; }
+
+        /// <summary>True when the hash covers only a prefix of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partiallyHashed")]
+        public virtual System.Nullable<bool> PartiallyHashed { get; set; }
+
+        /// <summary>Absolute path of the file as a JSON encoded string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// SHA256 hash of the first hashed_size bytes of the file encoded as a hex string. If hashed_size == size,
+        /// hash_sha256 represents the SHA256 hash of the entire file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
+        public virtual string Sha256 { get; set; }
+
+        /// <summary>Size of the file in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4342,9 +4484,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>Contains compliance information for security standards associated to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliances")]
+        public virtual System.Collections.Generic.IList<Compliance> Compliances { get; set; }
+
         /// <summary>Contains information about the IP connection associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
         public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
+
+        /// <summary>
+        /// Output only. Map containing the point of contacts for the given finding. The key represents the type of
+        /// contact, while the value contains a list of all the contacts that pertain. Please refer to:
+        /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories {
+        /// “security”: {contact: {email: “person1@company.com”} contact: {email: “person2@company.com”} }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
+        public virtual System.Collections.Generic.IDictionary<string, ContactDetails> Contacts { get; set; }
 
         /// <summary>The time at which the finding was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -4363,6 +4518,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
+
+        /// <summary>Represents exfiltrations associated with the Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exfiltration")]
+        public virtual Exfiltration Exfiltration { get; set; }
 
         /// <summary>
         /// Output only. Third party SIEM/SOAR fields within SCC, contains external system information and external
@@ -4439,6 +4598,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>Represents operating system processes associated with the Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processes")]
+        public virtual System.Collections.Generic.IList<Process> Processes { get; set; }
 
         /// <summary>
         /// For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is
@@ -5097,6 +5260,52 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onboardingLevel")]
         public virtual string OnboardingLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an operating system process.</summary>
+    public class Process : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Process arguments as JSON encoded strings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>True if arguments is incomplete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("argumentsTruncated")]
+        public virtual System.Nullable<bool> ArgumentsTruncated { get; set; }
+
+        /// <summary>File information for the process executable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binary")]
+        public virtual File Binary { get; set; }
+
+        /// <summary>Process environment variables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envVariables")]
+        public virtual System.Collections.Generic.IList<EnvironmentVariable> EnvVariables { get; set; }
+
+        /// <summary>True if env_variables is incomplete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envVariablesTruncated")]
+        public virtual System.Nullable<bool> EnvVariablesTruncated { get; set; }
+
+        /// <summary>File information for libraries loaded by the process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("libraries")]
+        public virtual System.Collections.Generic.IList<File> Libraries { get; set; }
+
+        /// <summary>The parent process id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentPid")]
+        public virtual System.Nullable<long> ParentPid { get; set; }
+
+        /// <summary>The process id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pid")]
+        public virtual System.Nullable<long> Pid { get; set; }
+
+        /// <summary>
+        /// When the process represents the invocation of a script, binary provides information about the interpreter
+        /// while script provides information about the script file provided to the interpreter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual File Script { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
