@@ -3361,7 +3361,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        /// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }

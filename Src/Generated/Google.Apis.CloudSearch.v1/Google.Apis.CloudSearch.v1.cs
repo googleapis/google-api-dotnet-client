@@ -4871,7 +4871,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// Proto representation of a custom emoji. May be used in both APIs and in Spanner, but certain fields should be
-    /// restricted to one or the other. See the per-field documentation for details. NEXT_TAG: 13
+    /// restricted to one or the other. See the per-field documentation for details. NEXT_TAG: 14
     /// </summary>
     public class CustomEmoji : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4899,6 +4899,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>This field should *never* be persisted to Spanner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
         public virtual UserId CreatorUserId { get; set; }
+
+        /// <summary>
+        /// Time when the emoji was deleted, in microseconds. This field may be present in Spanner, within the server,
+        /// or in public APIs. Only present if the emoji has been deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTimeMicros")]
+        public virtual System.Nullable<long> DeleteTimeMicros { get; set; }
 
         /// <summary>
         /// Output only. A short-lived URL clients can use for directly accessing a custom emoji image. This field is
@@ -5666,7 +5673,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Source specific facet response</summary>
     public class FacetResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>FacetBuckets for values in response containing at least a single result.</summary>
+        /// <summary>
+        /// FacetBuckets for values in response containing at least a single result with the corresponding filter.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
         public virtual System.Collections.Generic.IList<FacetBucket> Buckets { get; set; }
 

@@ -2800,6 +2800,10 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// ResourcesCount represents the resource that stores aggregated project's info in the given location, e.g.: total
+    /// number of certificates assigned to the project.
+    /// </summary>
     public class ResourcesCount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The count of certificates.</summary>

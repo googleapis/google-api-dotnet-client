@@ -3391,6 +3391,23 @@ namespace Google.Apis.VMMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("forceRefresh", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ForceRefresh { get; set; }
 
+                    /// <summary>
+                    /// The maximum number of VMs to return. The service may return fewer than this value. For AWS
+                    /// source: If unspecified, at most 500 VMs will be returned. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000. For VMWare source: If unspecified, all VMs will be returned.
+                    /// There is no limit for maximum value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `FetchInventory` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `FetchInventory` must match
+                    /// the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "fetchInventory";
 
@@ -3415,6 +3432,22 @@ namespace Google.Apis.VMMigrationService.v1
                         RequestParameters.Add("forceRefresh", new Google.Apis.Discovery.Parameter
                         {
                             Name = "forceRefresh",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4736,6 +4769,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// <summary>Response message for fetchInventory.</summary>
     public class FetchInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>
         /// Output only. The timestamp when the source was last queried (if the result is from the cache).
         /// </summary>

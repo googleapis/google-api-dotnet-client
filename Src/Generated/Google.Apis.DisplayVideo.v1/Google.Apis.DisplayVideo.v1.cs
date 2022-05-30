@@ -41,6 +41,7 @@ namespace Google.Apis.DisplayVideo.v1
             FirstAndThirdPartyAudiences = new FirstAndThirdPartyAudiencesResource(this);
             FloodlightGroups = new FloodlightGroupsResource(this);
             GoogleAudiences = new GoogleAudiencesResource(this);
+            GuaranteedOrders = new GuaranteedOrdersResource(this);
             InventorySourceGroups = new InventorySourceGroupsResource(this);
             InventorySources = new InventorySourcesResource(this);
             Media = new MediaResource(this);
@@ -135,6 +136,9 @@ namespace Google.Apis.DisplayVideo.v1
 
         /// <summary>Gets the GoogleAudiences resource.</summary>
         public virtual GoogleAudiencesResource GoogleAudiences { get; }
+
+        /// <summary>Gets the GuaranteedOrders resource.</summary>
+        public virtual GuaranteedOrdersResource GuaranteedOrders { get; }
 
         /// <summary>Gets the InventorySourceGroups resource.</summary>
         public virtual InventorySourceGroupsResource InventorySourceGroups { get; }
@@ -2986,17 +2990,18 @@ namespace Google.Apis.DisplayVideo.v1
                 /// combined by `OR` for the same field. * A restriction has the form of `{field} {operator} {value}`. *
                 /// The operator must be `EQUALS (=)` for the following fields: - `entityStatus` - `creativeType`. -
                 /// `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` - `exchangeReviewStatus` - `dynamic`
-                /// - `creativeId` - `minModifiedTime` - `maxModifiedTime` * The operator must be `HAS (:)` for the
-                /// following fields: - `lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`,
-                /// `minModifiedTime`, `maxModifiedTime`, and `dynamic`, there may be at most one restriction. * For
-                /// `dimensions`, the value is in the form of `"{width}x{height}"`. * For `exchangeReviewStatus`, the
-                /// value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration` and `maxDuration`, the
-                /// value is in the form of `"{duration}s"`. Only seconds are supported with millisecond granularity. *
-                /// For `minModifiedTime` and `maxModifiedTime`, the value is a unix timestamp (GMT) in seconds. The
-                /// time filtered is against the update_time field in the creative, which includes system updates to the
-                /// creative (e.g. creative review updates). * There may be multiple `lineItemIds` restrictions in order
-                /// to search against multiple possible line item IDs. * There may be multiple `creativeId` restrictions
-                /// in order to search against multiple possible creative IDs. Examples: * All native creatives:
+                /// - `creativeId` * The operator must be `HAS (:)` for the following fields: - `lineItemIds` * The
+                /// operator must be `GREATER THAN OR EQUAL TO (&amp;gt;=)` or `LESS THAN OR EQUAL TO (&amp;lt;=)` for
+                /// the following fields: - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * For
+                /// `entityStatus`, `minDuration`, `maxDuration`, `updateTime`, `and `dynamic`, there may be at most one
+                /// restriction. * For `dimensions`, the value is in the form of `"{width}x{height}"`. * For
+                /// `exchangeReviewStatus`, the value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration`
+                /// and `maxDuration`, the value is in the form of `"{duration}s"`. Only seconds are supported with
+                /// millisecond granularity. * For `updateTime`, a creative resource's field value reflects the last
+                /// time that a creative has been updated, which includes updates made by the system (e.g. creative
+                /// review updates). * There may be multiple `lineItemIds` restrictions in order to search against
+                /// multiple possible line item IDs. * There may be multiple `creativeId` restrictions in order to
+                /// search against multiple possible creative IDs. Examples: * All native creatives:
                 /// `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100 dimensions:
                 /// `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR dimensions="50x100")` * All
                 /// dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and
@@ -3004,8 +3009,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR
                 /// exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All video creatives that are
                 /// associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR
-                /// lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` The length
-                /// of this field should be no more than 500 characters.
+                /// lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` * All
+                /// creatives with an update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+                /// `updateTime&amp;gt;="2020-11-04T18:54:47Z"` The length of this field should be no more than 500
+                /// characters.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -12571,6 +12578,444 @@ namespace Google.Apis.DisplayVideo.v1
         }
     }
 
+    /// <summary>The "guaranteedOrders" collection of methods.</summary>
+    public class GuaranteedOrdersResource
+    {
+        private const string Resource = "guaranteedOrders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GuaranteedOrdersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a new guaranteed order. Returns the newly created guaranteed order if successful.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a new guaranteed order. Returns the newly created guaranteed order if successful.</summary>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The ID of the advertiser that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/guaranteedOrders";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Edits read advertisers of a guaranteed order.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="guaranteedOrderId">
+        /// Required. The ID of the guaranteed order to edit. The ID is of the format
+        /// `{exchange}-{legacy_guaranteed_order_id}`
+        /// </param>
+        public virtual EditGuaranteedOrderReadAccessorsRequest EditGuaranteedOrderReadAccessors(Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsRequest body, string guaranteedOrderId)
+        {
+            return new EditGuaranteedOrderReadAccessorsRequest(service, body, guaranteedOrderId);
+        }
+
+        /// <summary>Edits read advertisers of a guaranteed order.</summary>
+        public class EditGuaranteedOrderReadAccessorsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsResponse>
+        {
+            /// <summary>Constructs a new EditGuaranteedOrderReadAccessors request.</summary>
+            public EditGuaranteedOrderReadAccessorsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsRequest body, string guaranteedOrderId) : base(service)
+            {
+                GuaranteedOrderId = guaranteedOrderId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the guaranteed order to edit. The ID is of the format
+            /// `{exchange}-{legacy_guaranteed_order_id}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("guaranteedOrderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GuaranteedOrderId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "editGuaranteedOrderReadAccessors";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors";
+
+            /// <summary>Initializes EditGuaranteedOrderReadAccessors parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("guaranteedOrderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "guaranteedOrderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Gets a guaranteed order.</summary>
+        /// <param name="guaranteedOrderId">
+        /// Required. The ID of the guaranteed order to fetch. The ID is of the format
+        /// `{exchange}-{legacy_guaranteed_order_id}`
+        /// </param>
+        public virtual GetRequest Get(string guaranteedOrderId)
+        {
+            return new GetRequest(service, guaranteedOrderId);
+        }
+
+        /// <summary>Gets a guaranteed order.</summary>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string guaranteedOrderId) : base(service)
+            {
+                GuaranteedOrderId = guaranteedOrderId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the guaranteed order to fetch. The ID is of the format
+            /// `{exchange}-{legacy_guaranteed_order_id}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("guaranteedOrderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GuaranteedOrderId { get; private set; }
+
+            /// <summary>The ID of the advertiser that has access to the guaranteed order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that has access to the guaranteed order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/guaranteedOrders/{+guaranteedOrderId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("guaranteedOrderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "guaranteedOrderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists guaranteed orders that are accessible to the current user. The order is defined by the order_by
+        /// parameter. If a filter by entity_status is not specified, guaranteed orders with entity status
+        /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>
+        /// Lists guaranteed orders that are accessible to the current user. The order is defined by the order_by
+        /// parameter. If a filter by entity_status is not specified, guaranteed orders with entity status
+        /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+        /// </summary>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListGuaranteedOrdersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>The ID of the advertiser that has access to the guaranteed order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>
+            /// Allows filtering by guaranteed order properties. * Filter expressions are made up of one or more
+            /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+            /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The
+            /// operator must be `EQUALS (=)`. * Supported fields: - `guaranteed_order_id` - `exchange` - `display_name`
+            /// - `status.entityStatus` Examples: * All active guaranteed orders:
+            /// `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Guaranteed orders belonging to Google Ad Manager or
+            /// Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The length of
+            /// this field should be no more than 500 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting
+            /// order is ascending. To specify descending order for a field, a suffix "desc" should be added to the
+            /// field name. For example, `displayName desc`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Requested page size. Must be between `1` and `100`. If unspecified or greater than `100` will default to
+            /// `100`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A token identifying a page of results the server should return. Typically, this is the value of
+            /// next_page_token returned from the previous call to `ListGuaranteedOrders` method. If not specified, the
+            /// first page of results will be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The ID of the partner that has access to the guaranteed order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/guaranteedOrders";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an existing guaranteed order. Returns the updated guaranteed order if successful.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="guaranteedOrderId">
+        /// Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format
+        /// `{exchange}-{legacy_guaranteed_order_id}`.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body, string guaranteedOrderId)
+        {
+            return new PatchRequest(service, body, guaranteedOrderId);
+        }
+
+        /// <summary>Updates an existing guaranteed order. Returns the updated guaranteed order if successful.</summary>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body, string guaranteedOrderId) : base(service)
+            {
+                GuaranteedOrderId = guaranteedOrderId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format
+            /// `{exchange}-{legacy_guaranteed_order_id}`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("guaranteedOrderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GuaranteedOrderId { get; private set; }
+
+            /// <summary>The ID of the advertiser that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Required. The mask to control which fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/guaranteedOrders/{+guaranteedOrderId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("guaranteedOrderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "guaranteedOrderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "inventorySourceGroups" collection of methods.</summary>
     public class InventorySourceGroupsResource
     {
@@ -13471,6 +13916,128 @@ namespace Google.Apis.DisplayVideo.v1
             this.service = service;
         }
 
+        /// <summary>Creates a new inventory source. Returns the newly created inventory source if successful.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.InventorySource body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a new inventory source. Returns the newly created inventory source if successful.</summary>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySource>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySource body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The ID of the advertiser that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.InventorySource Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/inventorySources";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Edits read/write accessors of an inventory source. Returns the updated read_write_accessors for the
+        /// inventory source.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="inventorySourceId">Required. The ID of inventory source to update.</param>
+        public virtual EditInventorySourceReadWriteAccessorsRequest EditInventorySourceReadWriteAccessors(Google.Apis.DisplayVideo.v1.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId)
+        {
+            return new EditInventorySourceReadWriteAccessorsRequest(service, body, inventorySourceId);
+        }
+
+        /// <summary>
+        /// Edits read/write accessors of an inventory source. Returns the updated read_write_accessors for the
+        /// inventory source.
+        /// </summary>
+        public class EditInventorySourceReadWriteAccessorsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceAccessors>
+        {
+            /// <summary>Constructs a new EditInventorySourceReadWriteAccessors request.</summary>
+            public EditInventorySourceReadWriteAccessorsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId) : base(service)
+            {
+                InventorySourceId = inventorySourceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of inventory source to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long InventorySourceId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.EditInventorySourceReadWriteAccessorsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "editInventorySourceReadWriteAccessors";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors";
+
+            /// <summary>Initializes EditInventorySourceReadWriteAccessors parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("inventorySourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inventorySourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Gets an inventory source.</summary>
         /// <param name="inventorySourceId">Required. The ID of the inventory source to fetch.</param>
         public virtual GetRequest Get(long inventorySourceId)
@@ -13652,6 +14219,97 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="inventorySourceId">
+        /// Output only. The unique ID of the inventory source. Assigned by the system.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.InventorySource body, long inventorySourceId)
+        {
+            return new PatchRequest(service, body, inventorySourceId);
+        }
+
+        /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful.</summary>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySource>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySource body, long inventorySourceId) : base(service)
+            {
+                InventorySourceId = inventorySourceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Output only. The unique ID of the inventory source. Assigned by the system.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long InventorySourceId { get; private set; }
+
+            /// <summary>The ID of the advertiser that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that the request is being made within.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Required. The mask to control which fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v1.Data.InventorySource Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/inventorySources/{+inventorySourceId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("inventorySourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inventorySourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -20708,7 +21366,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string EntityStatus { get; set; }
 
         /// <summary>
-        /// Output only. The custom bidding model readiness state for each advertiser who have access. This field may
+        /// Output only. The state of custom bidding model readiness for each advertiser who has access. This field may
         /// only include the state of the queried advertiser if the algorithm
         /// [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner)
         /// is a partner and is being retrieved using an advertiser
@@ -20742,7 +21400,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>The custom bidding algorithm model readiness state for a single shared advertiser.</summary>
     public class CustomBiddingModelReadinessState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The unique ID of the advertiser with access to the custom bidding algorithm.</summary>
+        /// <summary>The unique ID of the relevant advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
@@ -21232,6 +21890,88 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The ID of the updated Customer Match FirstAndThirdPartyAudience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
         public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.</summary>
+    public class EditGuaranteedOrderReadAccessorsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The advertisers to add as read accessors to the guaranteed order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedAdvertisers")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AddedAdvertisers { get; set; }
+
+        /// <summary>Required. The partner context in which the change is being made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
+        public virtual System.Nullable<long> PartnerId { get; set; }
+
+        /// <summary>
+        /// Whether to give all advertisers of the read/write accessor partner read access to the guaranteed order. Only
+        /// applicable if read_write_partner_id is set in the guaranteed order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAccessInherited")]
+        public virtual System.Nullable<bool> ReadAccessInherited { get; set; }
+
+        /// <summary>The advertisers to remove as read accessors to the guaranteed order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedAdvertisers")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> RemovedAdvertisers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EditGuaranteedOrderReadAccessorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether all advertisers of read_write_partner_id have read access to the guaranteed order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAccessInherited")]
+        public virtual System.Nullable<bool> ReadAccessInherited { get; set; }
+
+        /// <summary>The IDs of advertisers with read access to the guaranteed order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ReadAdvertiserIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for InventorySourceService.EditInventorySourceReadWriteAccessors.</summary>
+    public class EditInventorySourceReadWriteAccessorsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The advertisers to add or remove from the list of advertisers that have read/write access to the inventory
+        /// source. This change will remove an existing partner read/write accessor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisersUpdate")]
+        public virtual EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate AdvertisersUpdate { get; set; }
+
+        /// <summary>
+        /// Set the partner context as read/write accessor of the inventory source. This will remove all other current
+        /// read/write advertiser accessors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignPartner")]
+        public virtual System.Nullable<bool> AssignPartner { get; set; }
+
+        /// <summary>Required. The partner context by which the accessors change is being made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
+        public virtual System.Nullable<long> PartnerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Update to the list of advertisers with read/write access to the inventory source.</summary>
+    public class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The advertisers to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedAdvertisers")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AddedAdvertisers { get; set; }
+
+        /// <summary>The advertisers to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedAdvertisers")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> RemovedAdvertisers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21851,6 +22591,133 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }
 
     /// <summary>
+    /// A guaranteed order. Guaranteed orders are parent entity of guaranteed inventory sources. When creating a
+    /// guaranteed inventory source, a guaranteed order ID must be assigned to the inventory source.
+    /// </summary>
+    public class GuaranteedOrder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The ID of default advertiser of the guaranteed order. The default advertiser is either the
+        /// read_write_advertiser_id or, if that is not set, the first advertiser listed in read_advertiser_ids.
+        /// Otherwise, there is no default advertiser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAdvertiserId")]
+        public virtual System.Nullable<long> DefaultAdvertiserId { get; set; }
+
+        /// <summary>
+        /// The ID of the default campaign that is assigned to the guaranteed order. The default campaign must belong to
+        /// the default advertiser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultCampaignId")]
+        public virtual System.Nullable<long> DefaultCampaignId { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the guaranteed order. Must be UTF-8 encoded with a maximum size of 240 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. Immutable. The exchange where the guaranteed order originated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
+        public virtual string Exchange { get; set; }
+
+        /// <summary>
+        /// Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format
+        /// `{exchange}-{legacy_guaranteed_order_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guaranteedOrderId")]
+        public virtual string GuaranteedOrderId { get; set; }
+
+        /// <summary>
+        /// Output only. The legacy ID of the guaranteed order. Assigned by the original exchange. The legacy ID is
+        /// unique within one exchange, but is not guaranteed to be unique across all guaranteed orders. This ID is used
+        /// in SDF and UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyGuaranteedOrderId")]
+        public virtual string LegacyGuaranteedOrderId { get; set; }
+
+        /// <summary>Output only. The resource name of the guaranteed order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The publisher name of the guaranteed order. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherName")]
+        public virtual string PublisherName { get; set; }
+
+        /// <summary>
+        /// Whether all advertisers of read_write_partner_id have read access to the guaranteed order. Only applicable
+        /// if read_write_partner_id is set. If True, overrides read_advertiser_ids.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAccessInherited")]
+        public virtual System.Nullable<bool> ReadAccessInherited { get; set; }
+
+        /// <summary>
+        /// The IDs of advertisers with read access to the guaranteed order. This field must not include the advertiser
+        /// assigned to read_write_advertiser_id if it is set. All advertisers in this field must belong to
+        /// read_write_partner_id or the same partner as read_write_advertiser_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ReadAdvertiserIds { get; set; }
+
+        /// <summary>
+        /// The advertiser with read/write access to the guaranteed order. This is also the default advertiser of the
+        /// guaranteed order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readWriteAdvertiserId")]
+        public virtual System.Nullable<long> ReadWriteAdvertiserId { get; set; }
+
+        /// <summary>The partner with read/write access to the guaranteed order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readWritePartnerId")]
+        public virtual System.Nullable<long> ReadWritePartnerId { get; set; }
+
+        /// <summary>The status settings of the guaranteed order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GuaranteedOrderStatus Status { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when the guaranteed order was last updated. Assigned by the system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status settings of the guaranteed order.</summary>
+    public class GuaranteedOrderStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The configuration status of the guaranteed order. Acceptable values are `PENDING` and
+        /// `COMPLETED`. A guaranteed order must be configured (fill in the required fields, choose creatives, and
+        /// select a default campaign) before it can serve. Currently the configuration action can only be performed via
+        /// UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configStatus")]
+        public virtual string ConfigStatus { get; set; }
+
+        /// <summary>
+        /// The user-provided reason for pausing this guaranteed order. Must be UTF-8 encoded with a maximum length of
+        /// 100 bytes. Only applicable when entity_status is set to `ENTITY_STATUS_PAUSED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityPauseReason")]
+        public virtual string EntityPauseReason { get; set; }
+
+        /// <summary>
+        /// Whether or not the guaranteed order is servable. Acceptable values are `ENTITY_STATUS_ACTIVE`,
+        /// `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
+        public virtual string EntityStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Details for assigned household income targeting option. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_HOUSEHOLD_INCOME`.
     /// </summary>
@@ -22211,9 +23078,22 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
         public virtual string Exchange { get; set; }
 
+        /// <summary>
+        /// Immutable. The ID of the guaranteed order that this inventory source belongs to. Only applicable when
+        /// commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guaranteedOrderId")]
+        public virtual string GuaranteedOrderId { get; set; }
+
         /// <summary>Output only. The unique ID of the inventory source. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceId")]
         public virtual System.Nullable<long> InventorySourceId { get; set; }
+
+        /// <summary>
+        /// Output only. The product type of the inventory source, denoting the way through which it sells inventory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceProductType")]
+        public virtual string InventorySourceProductType { get; set; }
 
         /// <summary>Denotes the type of the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceType")]
@@ -22231,9 +23111,35 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rateDetails")]
         public virtual RateDetails RateDetails { get; set; }
 
+        /// <summary>Output only. The IDs of advertisers with read-only access to the inventory source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ReadAdvertiserIds { get; set; }
+
+        /// <summary>
+        /// Output only. The IDs of partners with read-only access to the inventory source. All advertisers of partners
+        /// in this field inherit read-only access to the inventory source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readPartnerIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ReadPartnerIds { get; set; }
+
+        /// <summary>
+        /// The partner or advertisers that have read/write access to the inventory source. Output only when commitment
+        /// is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`, in which case the read/write accessors are inherited from the
+        /// parent guaranteed order. Required when commitment is `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED`. If
+        /// commitment is `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED` and a partner is set in this field, all
+        /// advertisers under this partner will automatically have read-only access to the inventory source. These
+        /// advertisers will not be included in read_advertiser_ids.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readWriteAccessors")]
+        public virtual InventorySourceAccessors ReadWriteAccessors { get; set; }
+
         /// <summary>The status settings of the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual InventorySourceStatus Status { get; set; }
+
+        /// <summary>Immutable. The unique ID of the sub-site property assigned to this inventory source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subSitePropertyId")]
+        public virtual System.Nullable<long> SubSitePropertyId { get; set; }
 
         /// <summary>The time range when this inventory source starts and stops serving.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
@@ -22244,6 +23150,45 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The partner or advertisers with access to the inventory source.</summary>
+    public class InventorySourceAccessors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The advertisers with access to the inventory source. All advertisers must belong to the same partner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisers")]
+        public virtual InventorySourceAccessorsAdvertiserAccessors Advertisers { get; set; }
+
+        /// <summary>The partner with access to the inventory source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partner")]
+        public virtual InventorySourceAccessorsPartnerAccessor Partner { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The advertisers with access to the inventory source.</summary>
+    public class InventorySourceAccessorsAdvertiserAccessors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IDs of the advertisers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The partner with access to the inventory source.</summary>
+    public class InventorySourceAccessorsPartnerAccessor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23010,6 +23955,23 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>
         /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
         /// to `ListGoogleAudiences` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ListGuaranteedOrdersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of guaranteed orders. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guaranteedOrders")]
+        public virtual System.Collections.Generic.IList<GuaranteedOrder> GuaranteedOrders { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListGuaranteedOrders` method to retrieve the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -23899,7 +24861,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class ParentalStatusAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The parental status of the audience.</summary>
+        /// <summary>The parental status of the audience. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatus")]
         public virtual string ParentalStatus { get; set; }
 
@@ -24616,7 +25578,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludedTargetingOptionId")]
         public virtual string ExcludedTargetingOptionId { get; set; }
 
-        /// <summary>An enum for the DV360 Sensitive category content classifier. Output only in v1.</summary>
+        /// <summary>Output only. An enum for the DV360 Sensitive category content classifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategory")]
         public virtual string SensitiveCategory { get; set; }
 

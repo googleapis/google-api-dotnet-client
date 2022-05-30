@@ -7189,7 +7189,7 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>
         /// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the
-        /// gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+        /// gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moduleId")]
         public virtual string ModuleId { get; set; }
@@ -7307,7 +7307,7 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>
         /// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label
-        /// in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+        /// in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -7321,14 +7321,14 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>
         /// The location the service is run. Corresponds to the location resource label in the cloud_run_revision
-        /// monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        /// monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
         /// <summary>
         /// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision
-        /// monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        /// monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
@@ -7974,7 +7974,7 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>
     /// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under
-    /// a namespace (e.g. k8s_container, k8s_pod).
+    /// a namespace (for example, k8s_container or k8s_pod).
     /// </summary>
     public class GkeNamespace : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8004,7 +8004,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>
     /// GKE Service. The "service" here represents a Kubernetes service object
     /// (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource
-    /// labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+    /// labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
     /// </summary>
     public class GkeService : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8037,7 +8037,7 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>
     /// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored
-    /// resources that fall under a workload (e.g. k8s_container, k8s_pod).
+    /// resources that fall under a workload (for example, k8s_container or k8s_pod).
     /// </summary>
     public class GkeWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8064,7 +8064,7 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topLevelControllerName")]
         public virtual string TopLevelControllerName { get; set; }
 
-        /// <summary>The type of this workload (e.g. "Deployment" or "DaemonSet")</summary>
+        /// <summary>The type of this workload (for example, "Deployment" or "DaemonSet")</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLevelControllerType")]
         public virtual string TopLevelControllerType { get; set; }
 
