@@ -1047,7 +1047,7 @@ namespace Google.Apis.Baremetalsolution.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The list of fields to update. The only currently supported fields are: `labels`
+                    /// The list of fields to update. The only currently supported fields are: `labels`, `reservations`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2216,6 +2216,54 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic)
+    /// of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to
+    /// one underlying physical interface.
+    /// </summary>
+    public class GoogleCloudBaremetalsolutionV2LogicalInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network
+        /// template.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interfaceIndex")]
+        public virtual System.Nullable<int> InterfaceIndex { get; set; }
+
+        /// <summary>List of logical network interfaces within a logical interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalNetworkInterfaces")]
+        public virtual System.Collections.Generic.IList<LogicalNetworkInterface> LogicalNetworkInterfaces { get; set; }
+
+        /// <summary>Interface name. This is of syntax or and forms part of the network template name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Logical interface.</summary>
+    public class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Interface name. This is not a globally unique identifier. Name is unique only inside the
+        /// ServerNetworkTemplate. This is of syntax or and forms part of the network template name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>If true, interface must have network connected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>Interface type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A server.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2244,6 +2292,16 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>
+        /// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of
+        /// hardware bond/nic on the chosen network template. For the non-multivlan configurations (for eg, existing
+        /// servers) that use existing default network template (bondaa-bondaa), both the Instance.networks field and
+        /// the Instance.logical_interfaces fields will be filled to ensure backward compatibility. For the others, only
+        /// Instance.logical_interfaces will be filled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBaremetalsolutionV2LogicalInterface> LogicalInterfaces { get; set; }
+
         /// <summary>List of LUNs associated with this server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("luns")]
         public virtual System.Collections.Generic.IList<Lun> Luns { get; set; }
@@ -2262,6 +2320,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Instance network template name. For eg, bondaa-bondaa, bondab-nic, etc. Generally, the template name follows
+        /// the syntax of "bond" or "nic".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTemplate")]
+        public virtual string NetworkTemplate { get; set; }
 
         /// <summary>List of networks associated with this server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
@@ -2297,7 +2362,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountNetworksEnabled")]
         public virtual System.Nullable<bool> AccountNetworksEnabled { get; set; }
 
-        /// <summary>Client network address.</summary>
+        /// <summary>Client network address. Filled if InstanceConfig.multivlan_config is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientNetwork")]
         public virtual NetworkAddress ClientNetwork { get; set; }
 
@@ -2318,9 +2383,24 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
 
+        /// <summary>
+        /// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of
+        /// hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBaremetalsolutionV2LogicalInterface> LogicalInterfaces { get; set; }
+
         /// <summary>Output only. The name of the instance config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The type of network configuration on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual string NetworkConfig { get; set; }
+
+        /// <summary>Server network template name. Filled if InstanceConfig.multivlan_config is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTemplate")]
+        public virtual string NetworkTemplate { get; set; }
 
         /// <summary>
         /// OS image to initialize the instance. [Available
@@ -2329,7 +2409,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osImage")]
         public virtual string OsImage { get; set; }
 
-        /// <summary>Private network address, if any.</summary>
+        /// <summary>Private network address, if any. Filled if InstanceConfig.multivlan_config is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual NetworkAddress PrivateNetwork { get; set; }
 
@@ -2551,23 +2631,31 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Logical interface.</summary>
-    public class LogicalInterface : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Each logical network interface is effectively a network and IP pair.</summary>
+    public class LogicalNetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Interface name. This is not a globally unique identifier. Name is unique only inside the
-        /// ServerNetworkTemplate.
+        /// Whether this interface is the default gateway for the instance. Only one interface can be the default
+        /// gateway for the instance.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultGateway")]
+        public virtual System.Nullable<bool> DefaultGateway { get; set; }
 
-        /// <summary>If true, interface must have network connected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Nullable<bool> Required { get; set; }
+        /// <summary>An identifier for the `Network`, generated by the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
 
-        /// <summary>Interface type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
+        /// <summary>IP address in the network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Name of the network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Type of network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkType")]
+        public virtual string NetworkType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2778,8 +2866,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// User note field, it can be used by customers to add additional information for the BMS Ops team
-        /// (b/194021617).
+        /// User note field, it can be used by customers to add additional information for the BMS Ops team .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userNote")]
         public virtual string UserNote { get; set; }
@@ -2996,7 +3083,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>A generated buganizer id to track provisioning request.</summary>
+        /// <summary>A generated ticket id to track provisioning request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ticketId")]
         public virtual string TicketId { get; set; }
 
@@ -3082,9 +3169,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
 
         /// <summary>Logical interfaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
-        public virtual System.Collections.Generic.IList<LogicalInterface> LogicalInterfaces { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface> LogicalInterfaces { get; set; }
 
-        /// <summary>Output only. Template's unique name.</summary>
+        /// <summary>
+        /// Output only. Template's unique name. The full resource name follows the pattern:
+        /// `projects/{project}/locations/{location}/serverNetworkTemplate/{server_network_template}` Generally, the
+        /// {server_network_template} follows the syntax of "bond" or "nic".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3362,8 +3453,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// User note field, it can be used by customers to add additional information for the BMS Ops team
-        /// (b/194021617).
+        /// User note field, it can be used by customers to add additional information for the BMS Ops team .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userNote")]
         public virtual string UserNote { get; set; }

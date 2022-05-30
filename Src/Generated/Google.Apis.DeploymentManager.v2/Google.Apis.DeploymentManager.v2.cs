@@ -728,7 +728,9 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Project { get; private set; }
 
             /// <summary>
-            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field
             /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
             /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
             /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
@@ -742,7 +744,13 @@ namespace Google.Apis.DeploymentManager.v2
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```
+            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
+            /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
+            /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+            /// interpreted as a regular expression using Google RE2 library syntax. The literal value must match the
+            /// entire field. For example, to filter for instances that do not end with name "instance", you would use
+            /// `name ne .*instance`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1421,7 +1429,9 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Deployment { get; private set; }
 
             /// <summary>
-            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field
             /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
             /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
             /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
@@ -1435,7 +1445,13 @@ namespace Google.Apis.DeploymentManager.v2
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```
+            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
+            /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
+            /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+            /// interpreted as a regular expression using Google RE2 library syntax. The literal value must match the
+            /// entire field. For example, to filter for instances that do not end with name "instance", you would use
+            /// `name ne .*instance`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1625,7 +1641,9 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Project { get; private set; }
 
             /// <summary>
-            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field
             /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
             /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
             /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
@@ -1639,7 +1657,13 @@ namespace Google.Apis.DeploymentManager.v2
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```
+            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
+            /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
+            /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+            /// interpreted as a regular expression using Google RE2 library syntax. The literal value must match the
+            /// entire field. For example, to filter for instances that do not end with name "instance", you would use
+            /// `name ne .*instance`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1841,7 +1865,9 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Deployment { get; private set; }
 
             /// <summary>
-            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field
             /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
             /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
             /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
@@ -1855,7 +1881,13 @@ namespace Google.Apis.DeploymentManager.v2
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```
+            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
+            /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
+            /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+            /// interpreted as a regular expression using Google RE2 library syntax. The literal value must match the
+            /// entire field. For example, to filter for instances that do not end with name "instance", you would use
+            /// `name ne .*instance`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1986,7 +2018,9 @@ namespace Google.Apis.DeploymentManager.v2
             public virtual string Project { get; private set; }
 
             /// <summary>
-            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field
             /// name, an operator, and the value that you want to use for filtering. The value must be a string, a
             /// number, or a boolean. The operator must be either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`,
             /// `&amp;gt;=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude
@@ -2000,7 +2034,13 @@ namespace Google.Apis.DeploymentManager.v2
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```
+            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
+            /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
+            /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+            /// interpreted as a regular expression using Google RE2 library syntax. The literal value must match the
+            /// entire field. For example, to filter for instances that do not end with name "instance", you would use
+            /// `name ne .*instance`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }

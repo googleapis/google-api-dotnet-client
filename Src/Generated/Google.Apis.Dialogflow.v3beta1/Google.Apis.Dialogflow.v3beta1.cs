@@ -8996,6 +8996,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EnvironmentVersionConfig> VersionConfigs { get; set; }
 
+        /// <summary>The webhook configuration for this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookConfig")]
+        public virtual GoogleCloudDialogflowCxV3EnvironmentWebhookConfig WebhookConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9034,6 +9038,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for webhooks.</summary>
+    public class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can
+        /// override fields in `generic_web_service` and `service_directory`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookOverrides")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3Webhook> WebhookOverrides { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10384,6 +10402,83 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
+    /// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data
+    /// extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or
+    /// trigger actions on the backend.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3Webhook : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether the webhook is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Required. The human-readable name of the webhook, unique within the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Configuration for a generic web service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericWebService")]
+        public virtual GoogleCloudDialogflowCxV3WebhookGenericWebService GenericWebService { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook
+        /// populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectory")]
+        public virtual GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig ServiceDirectory { get; set; }
+
+        /// <summary>
+        /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from
+        /// webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents configuration for a generic web service.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookGenericWebService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
+        /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
+        /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
+        /// alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req
+        /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
+        /// "\nsubjectAltName='DNS:www.example.com'") ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
+        public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
+
+        /// <summary>The password for HTTP Basic authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>The HTTP request headers to send together with webhook requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
+
+        /// <summary>Required. The webhook URI for receiving POST requests. It must use https protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The user name for HTTP Basic authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The request message for a webhook call. The request is sent as a JSON object and the field names will be
     /// presented in camel cases.
     /// </summary>
@@ -10592,6 +10687,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessage> Messages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Generic Service configuration of this webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericWebService")]
+        public virtual GoogleCloudDialogflowCxV3WebhookGenericWebService GenericWebService { get; set; }
+
+        /// <summary>
+        /// Required. The name of [Service Directory](https://cloud.google.com/service-directory) service. Format:
+        /// `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the
+        /// location of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11380,6 +11496,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> VersionConfigs { get; set; }
 
+        /// <summary>The webhook configuration for this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig WebhookConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11418,6 +11538,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for webhooks.</summary>
+    public class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can
+        /// override fields in `generic_web_service` and `service_directory`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookOverrides")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Webhook> WebhookOverrides { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
