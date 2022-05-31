@@ -21,7 +21,7 @@ Supported Platforms:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.8" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
     <Reference Include="System.Web" />
 
