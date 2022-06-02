@@ -1,0 +1,34 @@
+{
+  "Google.Apis.BusinessProfilePerformance.v1.BusinessProfilePerformanceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BusinessProfilePerformance.v1.BusinessProfilePerformanceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.BusinessProfilePerformance.v1.LocationsResource+GetDailyMetricsTimeSeriesRequest.DailyMetricEnum": [
+    "DAILY_METRIC_UNKNOWN",
+    "BUSINESS_IMPRESSIONS_DESKTOP_MAPS",
+    "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH",
+    "BUSINESS_IMPRESSIONS_MOBILE_MAPS",
+    "BUSINESS_IMPRESSIONS_MOBILE_SEARCH",
+    "BUSINESS_CONVERSATIONS",
+    "BUSINESS_DIRECTION_REQUESTS",
+    "CALL_CLICKS",
+    "WEBSITE_CLICKS",
+    "BUSINESS_BOOKINGS",
+    "BUSINESS_FOOD_ORDERS"
+  ],
+  "Google.Apis.BusinessProfilePerformance.v1.LocationsResource+GetDailyMetricsTimeSeriesRequest.DailySubEntityTypeDayOfWeekEnum": [
+    "DAY_OF_WEEK_UNSPECIFIED",
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
+    "SUNDAY"
+  ]
+}

@@ -2628,6 +2628,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Enum options. To be populated if `ValueType` is `ENUM`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumOptions")]
+        public virtual System.Collections.Generic.IList<EnumOption> EnumOptions { get; set; }
+
         /// <summary>Key of the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -2927,6 +2931,21 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EnumOption definition</summary>
+    public class EnumOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name of the option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Id of the option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1690,6 +1690,37 @@ namespace Google.Apis.Games.v1
             }
         }
 
+        /// <summary>Retrieves scoped player identifiers for currently authenticated user.</summary>
+        public virtual GetScopedPlayerIdsRequest GetScopedPlayerIds()
+        {
+            return new GetScopedPlayerIdsRequest(service);
+        }
+
+        /// <summary>Retrieves scoped player identifiers for currently authenticated user.</summary>
+        public class GetScopedPlayerIdsRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.ScopedPlayerIds>
+        {
+            /// <summary>Constructs a new GetScopedPlayerIds request.</summary>
+            public GetScopedPlayerIdsRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getScopedPlayerIds";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/players/me/scopedIds";
+
+            /// <summary>Initializes GetScopedPlayerIds parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
         /// <summary>Get the collection of players for the currently authenticated user.</summary>
         /// <param name="collection">Collection of players being retrieved</param>
         public virtual ListRequest List(ListRequest.CollectionEnum collection)
@@ -4345,6 +4376,27 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>The result of the revision check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionStatus")]
         public virtual string RevisionStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Scoped player identifiers.</summary>
+    public class ScopedPlayerIds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier of the player across all games of the given developer. Every player has the same
+        /// developer_player_key in all games of one developer. Developer player key changes for the game if the game is
+        /// transferred to another developer. Note that game_player_id will stay unchanged.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerPlayerKey")]
+        public virtual string DeveloperPlayerKey { get; set; }
+
+        /// <summary>
+        /// Game-scoped player identifier. This is the same id that is returned in GetPlayer game_player_id field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gamePlayerId")]
+        public virtual string GamePlayerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

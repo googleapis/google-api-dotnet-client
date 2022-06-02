@@ -11197,11 +11197,13 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// </summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Value is `true` if this group was created by an administrator rather than a user.</summary>
+        /// <summary>
+        /// Read-only. Value is `true` if this group was created by an administrator rather than a user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminCreated")]
         public virtual System.Nullable<bool> AdminCreated { get; set; }
 
-        /// <summary>List of a group's alias email addresses.</summary>
+        /// <summary>Read-only. A list of a group's alias email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
 
@@ -11234,7 +11236,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>The unique ID of a group. A group `id` can be used as a group request URI's `groupKey`.</summary>
+        /// <summary>
+        /// Read-only. The unique ID of a group. A group `id` can be used as a group request URI's `groupKey`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -11247,10 +11251,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of the group's non-editable alias email addresses that are outside of the account's primary domain or
-        /// subdomains. These are functioning email addresses used by the group. This is a read-only property returned
-        /// in the API's response for a group. If edited in a group's POST or PUT request, the edit is ignored by the
-        /// API service.
+        /// Read-only. A list of the group's non-editable alias email addresses that are outside of the account's
+        /// primary domain or subdomains. These are functioning email addresses used by the group. This is a read-only
+        /// property returned in the API's response for a group. If edited in a group's POST or PUT request, the edit is
+        /// ignored by the API service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonEditableAliases")]
         public virtual System.Collections.Generic.IList<string> NonEditableAliases { get; set; }

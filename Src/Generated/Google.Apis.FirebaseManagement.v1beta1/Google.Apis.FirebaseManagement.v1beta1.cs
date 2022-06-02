@@ -3892,8 +3892,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ApiKeyId { get; set; }
 
         /// <summary>
-        /// Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be
-        /// treated as an opaque token, as the data format is not specified.
+        /// Output only. Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier
+        /// should be treated as an opaque token, as the data format is not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; }
@@ -3919,7 +3919,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
+        /// Output only. Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
