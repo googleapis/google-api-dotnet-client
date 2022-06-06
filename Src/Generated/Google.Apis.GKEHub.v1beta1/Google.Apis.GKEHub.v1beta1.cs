@@ -1741,6 +1741,20 @@ namespace Google.Apis.GKEHub.v1beta1
 }
 namespace Google.Apis.GKEHub.v1beta1.Data
 {
+    /// <summary>ApplianceCluster contains information specific to GDC Edge Appliance Clusters.</summary>
+    public class ApplianceCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example:
+        /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -2321,6 +2335,10 @@ namespace Google.Apis.GKEHub.v1beta1.Data
     /// </summary>
     public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specific information for a GDC Edge Appliance cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applianceCluster")]
+        public virtual ApplianceCluster ApplianceCluster { get; set; }
+
         /// <summary>Optional. Specific information for a Google Edge cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
         public virtual EdgeCluster EdgeCluster { get; set; }

@@ -697,7 +697,380 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public InstancesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Shares = new SharesResource(service);
                     Snapshots = new SnapshotsResource(service);
+                }
+
+                /// <summary>Gets the Shares resource.</summary>
+                public virtual SharesResource Shares { get; }
+
+                /// <summary>The "shares" collection of methods.</summary>
+                public class SharesResource
+                {
+                    private const string Resource = "shares";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SharesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a share.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The Filestore Instance to create the share for, in the format
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Share body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a share.</summary>
+                    public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Share body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Filestore Instance to create the share for, in the format
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the share. The ID must be unique within the specified instance.
+                        /// This value must start with a lowercase letter followed by up to 62 lowercase letters,
+                        /// numbers, or hyphens, and cannot end with a hyphen.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("shareId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ShareId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.Share Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/shares";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("shareId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "shareId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a share.</summary>
+                    /// <param name="name">
+                    /// Required. The share resource name, in the format
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}/share/{share_id}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a share.</summary>
+                    public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The share resource name, in the format
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}/share/{share_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/shares/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the details of a specific share.</summary>
+                    /// <param name="name">
+                    /// Required. The share resource name, in the format
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}/shares/{share_id}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the details of a specific share.</summary>
+                    public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Share>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The share resource name, in the format
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}/shares/{share_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/shares/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all shares for a specified instance.</summary>
+                    /// <param name="parent">
+                    /// Required. The instance for which to retrieve share information, in the format
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all shares for a specified instance.</summary>
+                    public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListSharesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The instance for which to retrieve share information, in the format
+                        /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>List filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Sort results. Supported values are "name", "name desc" or "" (unsorted).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>The maximum number of items to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The next_page_token value to use if there are additional results to retrieve for this list
+                        /// request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/shares";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the settings of a specific share.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. The resource name of the share, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/shares/{share_id}`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1beta1.Data.Share body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the settings of a specific share.</summary>
+                    public class PatchRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Share body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. The resource name of the share, in the format
+                        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/shares/{share_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. Mask of fields to update. At least one path must be supplied in this field. The
+                        /// elements of the repeated paths field may only include these fields: * "description" *
+                        /// "capacity_gb" * "labels" * "nfs_export_options"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.Share Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/shares/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Snapshots resource.</summary>
@@ -2046,6 +2419,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downloadBytes")]
         public virtual System.Nullable<long> DownloadBytes { get; set; }
 
+        /// <summary>Immutable. KMS key name used for data encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -2539,6 +2916,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>A Cloud Filestore instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to
+        /// `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
+        public virtual System.Nullable<long> CapacityGb { get; set; }
+
+        /// <summary>Output only. The increase/decrease capacity step size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityStepSizeGb")]
+        public virtual System.Nullable<long> CapacityStepSizeGb { get; set; }
+
         /// <summary>Output only. The time when the instance was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -2566,6 +2954,21 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The max capacity of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCapacityGb")]
+        public virtual System.Nullable<long> MaxCapacityGb { get; set; }
+
+        /// <summary>Output only. The max number of shares allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxShareCount")]
+        public virtual System.Nullable<long> MaxShareCount { get; set; }
+
+        /// <summary>
+        /// Indicates whether this instance uses a multi-share configuration with which it can have more than one
+        /// file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiShareEnabled")]
+        public virtual System.Nullable<bool> MultiShareEnabled { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the instance, in the format
@@ -2680,6 +3083,28 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ListSharesResponse is the result of ListSharesRequest.</summary>
+    public class ListSharesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token you can use to retrieve the next page of results. Not returned if there are no more results in the
+        /// list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of shares in the project for the specified instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shares")]
+        public virtual System.Collections.Generic.IList<Share> Shares { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3031,6 +3456,55 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Time within the window to start the operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Cloud Filestore share.</summary>
+    public class Share : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
+        public virtual System.Nullable<long> CapacityGb { get; set; }
+
+        /// <summary>Output only. The time when the share was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Resource labels to represent user provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters,
+        /// numbers, and underscores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountName")]
+        public virtual string MountName { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the share, in the format
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/shares/{share_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Nfs Export Options. There is a limit of 10 export options per file share.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfsExportOptions")]
+        public virtual System.Collections.Generic.IList<NfsExportOptions> NfsExportOptions { get; set; }
+
+        /// <summary>Output only. The share state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

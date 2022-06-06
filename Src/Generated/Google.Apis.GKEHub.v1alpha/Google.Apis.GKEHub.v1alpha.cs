@@ -2939,6 +2939,20 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ApplianceCluster contains information specific to GDC Edge Appliance Clusters.</summary>
+    public class ApplianceCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example:
+        /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -3218,6 +3232,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Git repo configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual ConfigManagementGitConfig Git { get; set; }
+
+        /// <summary>OCI repo configuration for the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oci")]
+        public virtual ConfigManagementOciConfig Oci { get; set; }
 
         /// <summary>
         /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the
@@ -3577,6 +3595,39 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>OCI repo configuration for a single cluster</summary>
+    public class ConfigManagementOciConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The GCP Service Account Email used for auth when secret_type is gcpServiceAccount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
+        public virtual string GcpServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// The absolute path of the directory that contains the local resources. Default: the root directory of the
+        /// image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyDir")]
+        public virtual string PolicyDir { get; set; }
+
+        /// <summary>Type of secret configured for access to the Git repo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
+        public virtual string SecretType { get; set; }
+
+        /// <summary>
+        /// The OCI image repository URL for the package to sync from. e.g.
+        /// `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
+        public virtual string SyncRepo { get; set; }
+
+        /// <summary>Period in seconds between consecutive syncs. Default: 15.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncWaitSecs")]
+        public virtual System.Nullable<long> SyncWaitSecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>State information for an ACM's Operator</summary>
     public class ConfigManagementOperatorState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3623,6 +3674,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logDeniesEnabled")]
         public virtual System.Nullable<bool> LogDeniesEnabled { get; set; }
 
+        /// <summary>Monitoring specifies the configuration of monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
+        public virtual ConfigManagementPolicyControllerMonitoring Monitoring { get; set; }
+
         /// <summary>Enable users to try out mutation for PolicyController.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
         public virtual System.Nullable<bool> MutationEnabled { get; set; }
@@ -3637,6 +3692,24 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Installs the default template library along with Policy Controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryInstalled")]
         public virtual System.Nullable<bool> TemplateLibraryInstalled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to
+    /// specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring",
+    /// "prometheus"]
+    /// </summary>
+    public class ConfigManagementPolicyControllerMonitoring : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable
+        /// metrics export.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backends")]
+        public virtual System.Collections.Generic.IList<string> Backends { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4508,6 +4581,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specific information for a GDC Edge Appliance cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applianceCluster")]
+        public virtual ApplianceCluster ApplianceCluster { get; set; }
+
         /// <summary>Optional. Specific information for a Google Edge cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
         public virtual EdgeCluster EdgeCluster { get; set; }

@@ -2065,6 +2065,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
         public virtual string PackageType { get; set; }
 
+        /// <summary>CVEs that this package is no longer vulnerable to go/drydock-dd-custom-binary-scanning</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchedCve")]
+        public virtual System.Collections.Generic.IList<string> PatchedCve { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("unused")]
         public virtual string Unused { get; set; }
 

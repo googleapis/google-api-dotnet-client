@@ -351,7 +351,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="attributesConfig">
                     /// Required. Full AttributesConfig resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                     /// </param>
                     public virtual AddCatalogAttributeRequest AddCatalogAttribute(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddCatalogAttributeRequest body, string attributesConfig)
                     {
@@ -374,7 +374,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full AttributesConfig resource name. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("attributesConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string AttributesConfig { get; private set; }
@@ -416,7 +416,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="attributesConfig">
                     /// Required. Full AttributesConfig resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                     /// </param>
                     public virtual RemoveCatalogAttributeRequest RemoveCatalogAttribute(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveCatalogAttributeRequest body, string attributesConfig)
                     {
@@ -439,7 +439,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full AttributesConfig resource name. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("attributesConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string AttributesConfig { get; private set; }
@@ -482,7 +482,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="attributesConfig">
                     /// Required. Full AttributesConfig resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                     /// </param>
                     public virtual ReplaceCatalogAttributeRequest ReplaceCatalogAttribute(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaReplaceCatalogAttributeRequest body, string attributesConfig)
                     {
@@ -506,7 +506,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full AttributesConfig resource name. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("attributesConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string AttributesConfig { get; private set; }
@@ -1665,7 +1665,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. Full resource name of parent catalog. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string parent)
                     {
@@ -1687,7 +1687,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full resource name of parent catalog. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1743,7 +1743,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the Control to delete. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -1764,7 +1764,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The resource name of the Control to delete. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1796,7 +1796,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <summary>Gets a Control.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Control to delete. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1815,7 +1815,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The resource name of the Control to delete. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1847,7 +1847,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <summary>Lists all Controls linked to this catalog.</summary>
                     /// <param name="parent">
                     /// Required. The catalog resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1866,7 +1866,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. The catalog resource name. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1947,7 +1947,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+                    /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string name)
                     {
@@ -1969,7 +1969,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
-                        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+                        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2207,7 +2207,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                    /// `{name=projects/*/locations/global/catalogs/default_catalog/placements/*}` The ID of the
                     /// Recommendations AI placement. Before you can request predictions from your model, you must
                     /// create at least one placement for it. For more information, see [Managing
                     /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
@@ -2232,7 +2232,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                        /// `{name=projects/*/locations/global/catalogs/default_catalog/placements/*}` The ID of the
                         /// Recommendations AI placement. Before you can request predictions from your model, you must
                         /// create at least one placement for it. For more information, see [Managing
                         /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
@@ -2437,7 +2437,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. Full resource name of parent. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string parent)
                     {
@@ -2460,7 +2460,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full resource name of parent. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2705,7 +2705,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <summary>Updates a ServingConfig.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+                    /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string name)
                     {
@@ -2724,7 +2724,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
-                        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+                        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -3389,7 +3389,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <summary>Gets an AttributesConfig.</summary>
                 /// <param name="name">
                 /// Required. Full AttributesConfig resource name. Format:
-                /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                 /// </param>
                 public virtual GetAttributesConfigRequest GetAttributesConfig(string name)
                 {
@@ -3408,7 +3408,7 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Required. Full AttributesConfig resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5753,7 +5753,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("facetSpec")]
         public virtual GoogleCloudRetailV2betaSearchRequestFacetSpec FacetSpec { get; set; }
 
-        /// <summary>Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*</summary>
+        /// <summary>Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -7025,14 +7025,15 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Promotion information.</summary>
+    /// <summary>Promotion specification.</summary>
     public class GoogleCloudRetailV2betaPromotion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit
-        /// of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise,
-        /// an INVALID_ARGUMENT error is returned. Google Merchant Center property
-        /// [promotion](https://support.google.com/merchants/answer/7050148).
+        /// Promotion identifier, which is the final component of name. For example, this field is "free_gift", if name
+        /// is `projects/*/locations/global/catalogs/default_catalog/promotions/free_gift`. The value must be a UTF-8
+        /// encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example,
+        /// id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Corresponds to Google
+        /// Merchant Center property [promotion_id](https://support.google.com/merchants/answer/7050148).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
         public virtual string PromotionId { get; set; }
@@ -8250,7 +8251,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
 
-        /// <summary>Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*</summary>
+        /// <summary>Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

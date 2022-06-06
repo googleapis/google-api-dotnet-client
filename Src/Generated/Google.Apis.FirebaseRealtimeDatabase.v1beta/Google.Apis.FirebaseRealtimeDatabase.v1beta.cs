@@ -870,7 +870,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta.Data
     /// </summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The globally unique hostname of the database.</summary>
+        /// <summary>Output only. Output Only. The globally unique hostname of the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseUrl")]
         public virtual string DatabaseUrl { get; set; }
 
@@ -882,18 +882,19 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+        /// Output only. The resource name of the project this instance belongs to. For example:
+        /// `projects/{project-number}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>The database's lifecycle state. Read-only.</summary>
+        /// <summary>Output only. The database's lifecycle state. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
         /// <summary>
-        /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when
-        /// omitted.
+        /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default
+        /// when omitted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

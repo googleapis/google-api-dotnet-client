@@ -831,6 +831,13 @@ namespace Google.Apis.Iam.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for long-running WorkloadIdentityPool operations.</summary>
+    public class GoogleIamV1betaWorkloadIdentityPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A deny rule in an IAM deny policy.</summary>
     public class GoogleIamV2betaDenyRule : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -4058,6 +4058,20 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string Encoding { get; set; }
 
         /// <summary>
+        /// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any
+        /// revision to be validated against last_revision or any revision created before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstRevisionId")]
+        public virtual string FirstRevisionId { get; set; }
+
+        /// <summary>
+        /// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any
+        /// revision to be validated against first_revision or any revision created after.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRevisionId")]
+        public virtual string LastRevisionId { get; set; }
+
+        /// <summary>
         /// Required. The name of the schema that messages published should be validated against. Format is
         /// `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has
         /// been deleted.
@@ -4172,9 +4186,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
 
         /// <summary>
-        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of
-        /// `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack
-        /// messages using API methods.
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either
+        /// `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull
+        /// and ack messages using API methods.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryConfig")]
         public virtual BigQueryConfig BigqueryConfig { get; set; }
@@ -4257,9 +4271,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. At most one of
-        /// `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack
-        /// messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or
+        /// `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages
+        /// using API methods.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; }
