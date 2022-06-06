@@ -6342,6 +6342,13 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for long-running WorkloadIdentityPool operations.</summary>
+    public class WorkloadIdentityPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A configuration for an external identity provider.</summary>
     public class WorkloadIdentityPoolProvider : Google.Apis.Requests.IDirectResponseSchema
     {

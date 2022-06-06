@@ -3104,6 +3104,46 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("selectedFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SelectedFields { get; set; }
 
+            /// <summary>
+            /// Specifies the view that determines which table information is returned. By default, basic table
+            /// information and storage statistics (STORAGE_STATS) are returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>
+            /// Specifies the view that determines which table information is returned. By default, basic table
+            /// information and storage statistics (STORAGE_STATS) are returned.
+            /// </summary>
+            public enum ViewEnum
+            {
+                /// <summary>
+                /// Includes basic table information including schema and partitioning specification. This view does not
+                /// include storage statistics such as numRows or numBytes. This view is significantly more efficient
+                /// and should be used to support high query rates.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 0,
+
+                /// <summary>
+                /// Includes all table information, including storage statistics. It returns same information as
+                /// STORAGE_STATS view, but may contain additional information in the future.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("FULL")]
+                FULL = 1,
+
+                /// <summary>
+                /// Includes all information in the BASIC view as well as storage statistics (numBytes,
+                /// numLongTermBytes, numRows and lastModifiedTime).
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("STORAGE_STATS")]
+                STORAGESTATS = 2,
+
+                /// <summary>The default value. Default to the STORAGE_STATS view.</summary>
+                [Google.Apis.Util.StringValueAttribute("TABLE_METADATA_VIEW_UNSPECIFIED")]
+                TABLEMETADATAVIEWUNSPECIFIED = 3,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -3144,6 +3184,14 @@ namespace Google.Apis.Bigquery.v2
                 RequestParameters.Add("selectedFields", new Google.Apis.Discovery.Parameter
                 {
                     Name = "selectedFields",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5917,6 +5965,34 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class IndexUnusedReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Output-only] Specifies the base table involved in the reason that no search index was used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("base_table")]
+        public virtual TableReference BaseTable { get; set; }
+
+        /// <summary>
+        /// [Output-only] Specifies the high-level reason for the scenario when no search index was used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>[Output-only] Specifies the name of the unused search index, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index_name")]
+        public virtual string IndexName { get; set; }
+
+        /// <summary>
+        /// [Output-only] Free form human-readable reason for the scenario when no search index was used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An array of int.</summary>
     public class IntArray : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6979,6 +7055,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
+
+        /// <summary>[Output-only] Search query specific statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchStatistics")]
+        public virtual SearchStatistics SearchStatistics { get; set; }
 
         /// <summary>
         /// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT":
@@ -8327,6 +8407,23 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SearchStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part
+        /// of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexUnusedReason")]
+        public virtual System.Collections.Generic.IList<IndexUnusedReason> IndexUnusedReason { get; set; }
+
+        /// <summary>Specifies index usage mode for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexUsageMode")]
+        public virtual string IndexUsageMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

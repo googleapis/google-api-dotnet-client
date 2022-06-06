@@ -13,5 +13,11 @@
     "done",
     "pending",
     "running"
+  ],
+  "Google.Apis.Bigquery.v2.TablesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "STORAGE_STATS",
+    "TABLE_METADATA_VIEW_UNSPECIFIED"
   ]
 }

@@ -16042,6 +16042,10 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceReference")]
         public virtual System.Collections.Generic.IList<SourceReference> SourceReference { get; set; }
 
+        /// <summary>Stackdriver Trace span identifier for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
+        public virtual string SpanId { get; set; }
+
         /// <summary>Time when the request started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }

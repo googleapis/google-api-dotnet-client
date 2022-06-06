@@ -1611,7 +1611,7 @@ namespace Google.Apis.CloudRetail.v2
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                    /// `{name=projects/*/locations/global/catalogs/default_catalog/placements/*}` The ID of the
                     /// Recommendations AI placement. Before you can request predictions from your model, you must
                     /// create at least one placement for it. For more information, see [Managing
                     /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
@@ -1636,7 +1636,7 @@ namespace Google.Apis.CloudRetail.v2
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                        /// `{name=projects/*/locations/global/catalogs/default_catalog/placements/*}` The ID of the
                         /// Recommendations AI placement. Before you can request predictions from your model, you must
                         /// create at least one placement for it. For more information, see [Managing
                         /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
@@ -4538,14 +4538,15 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Promotion information.</summary>
+    /// <summary>Promotion specification.</summary>
     public class GoogleCloudRetailV2Promotion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit
-        /// of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise,
-        /// an INVALID_ARGUMENT error is returned. Google Merchant Center property
-        /// [promotion](https://support.google.com/merchants/answer/7050148).
+        /// Promotion identifier, which is the final component of name. For example, this field is "free_gift", if name
+        /// is `projects/*/locations/global/catalogs/default_catalog/promotions/free_gift`. The value must be a UTF-8
+        /// encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example,
+        /// id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Corresponds to Google
+        /// Merchant Center property [promotion_id](https://support.google.com/merchants/answer/7050148).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
         public virtual string PromotionId { get; set; }

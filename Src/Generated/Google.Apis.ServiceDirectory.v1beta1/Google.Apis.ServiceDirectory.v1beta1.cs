@@ -545,22 +545,24 @@ namespace Google.Apis.ServiceDirectory.v1beta1
 
                             /// <summary>
                             /// Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can
-                            /// be `name`, `address`, `port`, or `metadata.` for map field * `` can be `&amp;lt;`,
-                            /// `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is
-                            /// roughly the same as `=` * `` must be the same data type as field * `` can be `AND`,
-                            /// `OR`, `NOT` Examples of valid filters: * `metadata.owner` returns endpoints that have a
-                            /// metadata with the key `owner`, this is the same as `metadata:owner` *
-                            /// `metadata.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` *
-                            /// `address=192.108.1.105` returns endpoints that have this address * `port&amp;gt;8080`
-                            /// returns endpoints that have port number larger than 8080 *
+                            /// be `name`, `address`, `port`, `metadata.` for map field, or `attributes.` for attributes
+                            /// field * `` can be `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, `:`. Of
+                            /// which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as
+                            /// field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `metadata.owner`
+                            /// returns endpoints that have a metadata with the key `owner`, this is the same as
+                            /// `metadata:owner` * `metadata.protocol=gRPC` returns endpoints that have key/value
+                            /// `protocol=gRPC` * `address=192.108.1.105` returns endpoints that have this address *
+                            /// `port&amp;gt;8080` returns endpoints that have port number larger than 8080 *
                             /// `name&amp;gt;projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c`
                             /// returns endpoints that have name that is alphabetically later than the string, so
                             /// "endpoint-e" is returned but "endpoint-a" is not * `metadata.owner!=sd AND
                             /// metadata.foo=bar` returns endpoints that have `owner` in metadata key but value is not
                             /// `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note
                             /// that endpoint doesn't have a field called "doesnotexist". Since the filter does not
-                            /// match any endpoints, it returns no results For more information about filtering, see
-                            /// [API Filtering](https://aip.dev/160).
+                            /// match any endpoints, it returns no results *
+                            /// `attributes.kubernetes_resource_type=KUBERNETES_RESOURCE_TYPE_CLUSTER_ IP` returns
+                            /// endpoints with the corresponding kubernetes_resource_type For more information about
+                            /// filtering, see [API Filtering](https://aip.dev/160).
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
