@@ -304,7 +304,13 @@ namespace Google.Apis.RealTimeBidding.v1
                 this.service = service;
             }
 
-            /// <summary>Lists creatives.</summary>
+            /// <summary>
+            /// Lists creatives as they are at the time of the initial request. This call may take multiple hours to
+            /// complete. For large, paginated requests, this method returns a snapshot of creatives at the time of
+            /// request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for
+            /// creatives on sequential pages. We recommend [Google Cloud
+            /// Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status.
+            /// </summary>
             /// <param name="parent">
             /// Required. Name of the parent buyer that owns the creatives. The pattern for this resource is either
             /// `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`. For `buyers/{buyerAccountId}`, the
@@ -321,7 +327,13 @@ namespace Google.Apis.RealTimeBidding.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists creatives.</summary>
+            /// <summary>
+            /// Lists creatives as they are at the time of the initial request. This call may take multiple hours to
+            /// complete. For large, paginated requests, this method returns a snapshot of creatives at the time of
+            /// request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for
+            /// creatives on sequential pages. We recommend [Google Cloud
+            /// Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status.
+            /// </summary>
             public class ListRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.ListCreativesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2150,7 +2162,13 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
             }
 
-            /// <summary>Lists creatives.</summary>
+            /// <summary>
+            /// Lists creatives as they are at the time of the initial request. This call may take multiple hours to
+            /// complete. For large, paginated requests, this method returns a snapshot of creatives at the time of
+            /// request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for
+            /// creatives on sequential pages. We recommend [Google Cloud
+            /// Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status.
+            /// </summary>
             /// <param name="parent">
             /// Required. Name of the parent buyer that owns the creatives. The pattern for this resource is either
             /// `buyers/{buyerAccountId}` or `bidders/{bidderAccountId}`. For `buyers/{buyerAccountId}`, the
@@ -2167,7 +2185,13 @@ namespace Google.Apis.RealTimeBidding.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists creatives.</summary>
+            /// <summary>
+            /// Lists creatives as they are at the time of the initial request. This call may take multiple hours to
+            /// complete. For large, paginated requests, this method returns a snapshot of creatives at the time of
+            /// request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for
+            /// creatives on sequential pages. We recommend [Google Cloud
+            /// Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status.
+            /// </summary>
             public class ListRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.ListCreativesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

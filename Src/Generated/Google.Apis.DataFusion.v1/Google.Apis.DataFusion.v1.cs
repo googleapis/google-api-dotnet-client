@@ -1908,14 +1908,12 @@ namespace Google.Apis.DataFusion.v1.Data
     public class EventPublishConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Option to enable Event Publishing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventPublishEnabled")]
-        public virtual System.Nullable<bool> EventPublishEnabled { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>Project name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; }
-
-        /// <summary>Required. Pub/Sub Topic.</summary>
+        /// <summary>
+        /// Required. The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
 

@@ -1111,6 +1111,10 @@ namespace Google.Apis.ChromeManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Required. Read mask to specify which fields to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -1131,6 +1135,14 @@ namespace Google.Apis.ChromeManagement.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^customers/[^/]+/telemetry/devices/[^/]+$",
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }

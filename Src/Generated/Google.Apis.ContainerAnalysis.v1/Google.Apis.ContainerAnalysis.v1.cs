@@ -3439,9 +3439,9 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("algo")]
         public virtual string Algo { get; set; }
 
-        /// <summary>Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("digestValue")]
-        public virtual string DigestValue { get; set; }
+        /// <summary>Value of the digest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digestBytes")]
+        public virtual string DigestBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

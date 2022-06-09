@@ -137,7 +137,10 @@
     "OBJECT_PLAYSTORE_LINK",
     "OBJECT_TARGETING_TEMPLATE",
     "OBJECT_SEARCH_LIFT_STUDY",
-    "OBJECT_FLOODLIGHT_DV360_LINK"
+    "OBJECT_FLOODLIGHT_DV360_LINK",
+    "OBJECT_ADVERTISER_CUSTOMER_LINK",
+    "OBJECT_CREATIVE_PROJECT",
+    "OBJECT_ACCOUNT_CAMPAIGN_CREATIVE_PROJECT_LINK"
   ],
   "Google.Apis.Dfareporting.v3_5.ContentCategoriesResource+ListRequest.SortFieldEnum": [
     "ID",
@@ -309,7 +312,15 @@
   "Google.Apis.Dfareporting.v3_5.MobileAppsResource+ListRequest.DirectoriesEnum": [
     "UNKNOWN",
     "APPLE_APP_STORE",
-    "GOOGLE_PLAY_STORE"
+    "GOOGLE_PLAY_STORE",
+    "ROKU_APP_STORE",
+    "AMAZON_FIRETV_APP_STORE",
+    "PLAYSTATION_APP_STORE",
+    "APPLE_TV_APP_STORE",
+    "XBOX_APP_STORE",
+    "SAMSUNG_TV_APP_STORE",
+    "ANDROID_TV_APP_STORE",
+    "GENERIC_CTV_APP_STORE"
   ],
   "Google.Apis.Dfareporting.v3_5.OrderDocumentsResource+ListRequest.SortFieldEnum": [
     "ID",

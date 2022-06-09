@@ -5050,7 +5050,9 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// <summary>Specification that applies to a table resource. Valid only for entries with the `TABLE` type.</summary>
     public class GoogleCloudDatacatalogV1DatabaseTableSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fields specific to a Dataplex table and present only in the Dataplex table entries.</summary>
+        /// <summary>
+        /// Output only. Fields specific to a Dataplex table and present only in the Dataplex table entries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexTable")]
         public virtual GoogleCloudDatacatalogV1DataplexTableSpec DataplexTable { get; set; }
 
@@ -5161,15 +5163,15 @@ namespace Google.Apis.DataCatalog.v1.Data
     public class GoogleCloudDatacatalogV1Entry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information,
-        /// see [Introduction to partitioned tables]
+        /// Output only. Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more
+        /// information, see [Introduction to partitioned tables]
         /// (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDateShardedSpec")]
         public virtual GoogleCloudDatacatalogV1BigQueryDateShardedSpec BigqueryDateShardedSpec { get; set; }
 
         /// <summary>
-        /// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
+        /// Output only. Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryTableSpec")]
         public virtual GoogleCloudDatacatalogV1BigQueryTableSpec BigqueryTableSpec { get; set; }

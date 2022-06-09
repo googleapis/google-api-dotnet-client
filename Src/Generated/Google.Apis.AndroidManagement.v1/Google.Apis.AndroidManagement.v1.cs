@@ -1029,7 +1029,12 @@ namespace Google.Apis.AndroidManagement.v1
                 this.service = service;
             }
 
-            /// <summary>Creates an enrollment token for a given enterprise.</summary>
+            /// <summary>
+            /// Creates an enrollment token for a given enterprise. It's up to the caller's responsibility to manage the
+            /// lifecycle of newly created tokens and deleting them when they're not intended to be used anymore. Once
+            /// an enrollment token has been created, it's not possible to retrieve the token's content anymore using AM
+            /// API. It is recommended for EMMs to securely store the token if it's intended to be reused.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.EnrollmentToken body, string parent)
@@ -1037,7 +1042,12 @@ namespace Google.Apis.AndroidManagement.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates an enrollment token for a given enterprise.</summary>
+            /// <summary>
+            /// Creates an enrollment token for a given enterprise. It's up to the caller's responsibility to manage the
+            /// lifecycle of newly created tokens and deleting them when they're not intended to be used anymore. Once
+            /// an enrollment token has been created, it's not possible to retrieve the token's content anymore using AM
+            /// API. It is recommended for EMMs to securely store the token if it's intended to be reused.
+            /// </summary>
             public class CreateRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.EnrollmentToken>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1133,6 +1143,151 @@ namespace Google.Apis.AndroidManagement.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^enterprises/[^/]+/enrollmentTokens/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Gets an active, unexpired enrollment token. Only a partial view of EnrollmentToken is returned: all the
+            /// fields but name and expiration_timestamp are empty. This method is meant to help manage active
+            /// enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens
+            /// as soon as they're not intended to be used anymore.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the enrollment token in the form
+            /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>
+            /// Gets an active, unexpired enrollment token. Only a partial view of EnrollmentToken is returned: all the
+            /// fields but name and expiration_timestamp are empty. This method is meant to help manage active
+            /// enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens
+            /// as soon as they're not intended to be used anymore.
+            /// </summary>
+            public class GetRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.EnrollmentToken>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the enrollment token in the form
+                /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^enterprises/[^/]+/enrollmentTokens/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists active, unexpired enrollment tokens for a given enterprise. The list items contain only a partial
+            /// view of EnrollmentToken: all the fields but name and expiration_timestamp are empty. This method is
+            /// meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to
+            /// delete active enrollment tokens as soon as they're not intended to be used anymore.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the enterprise in the form enterprises/{enterpriseId}.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists active, unexpired enrollment tokens for a given enterprise. The list items contain only a partial
+            /// view of EnrollmentToken: all the fields but name and expiration_timestamp are empty. This method is
+            /// meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to
+            /// delete active enrollment tokens as soon as they're not intended to be used anymore.
+            /// </summary>
+            public class ListRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ListEnrollmentTokensResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the enterprise in the form enterprises/{enterpriseId}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The requested page size. The service may return fewer than this value. If unspecified, at most 10
+                /// items will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A token identifying a page of results returned by the server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/enrollmentTokens";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^enterprises/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3752,6 +3907,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to a request to list enrollment tokens for a given enterprise.</summary>
+    public class ListEnrollmentTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of enrollment tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentTokens")]
+        public virtual System.Collections.Generic.IList<EnrollmentToken> EnrollmentTokens { get; set; }
+
+        /// <summary>If there are more results, a token to retrieve next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to a request to list enterprises.</summary>
     public class ListEnterprisesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4056,7 +4226,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Additional context for non-compliance related to Wi-Fi configuration.</summary>
     public class OncWifiContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The guid of non-compliant Wi-Fi configuration.</summary>
+        /// <summary>The GUID of non-compliant Wi-Fi configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiGuid")]
         public virtual string WifiGuid { get; set; }
 
@@ -5091,7 +5261,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual OncWifiContext OncWifiContext { get; set; }
 
         /// <summary>
-        /// Additional context for non-compliance related to password policies. See PASSWORD_POLICIES_PASSWORD_EXPIRED,
+        /// Additional context for non-compliance related to password policies. See PASSWORD_POLICIES_PASSWORD_EXPIRED
         /// and PASSWORD_POLICIES_PASSWORD_NOT_SUFFICIENT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordPoliciesContext")]

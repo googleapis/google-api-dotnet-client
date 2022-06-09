@@ -905,7 +905,7 @@ namespace Google.Apis.CloudIAP.v1
 
                         /// <summary>
                         /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the
-                        /// resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+                        /// resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("tunnelDestGroupId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TunnelDestGroupId { get; set; }
@@ -1144,7 +1144,8 @@ namespace Google.Apis.CloudIAP.v1
                     /// <summary>Updates a TunnelDestGroup.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+                    /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and
+                    /// contain only lower case letters (a-z) and dashes (-).
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string name)
                     {
@@ -1163,7 +1164,8 @@ namespace Google.Apis.CloudIAP.v1
                         }
 
                         /// <summary>
-                        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+                        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project
+                        /// and contain only lower case letters (a-z) and dashes (-).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1623,7 +1625,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cookieDomain")]
         public virtual string CookieDomain { get; set; }
 
-        /// <summary>Settings to configure IAP's behavior for a CSM mesh.</summary>
+        /// <summary>Settings to configure IAP's behavior for a service mesh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csmSettings")]
         public virtual CsmSettings CsmSettings { get; set; }
 
@@ -1725,9 +1727,9 @@ namespace Google.Apis.CloudIAP.v1.Data
     }
 
     /// <summary>
-    /// Configuration for RCTokens generated for CSM workloads protected by IAP. RCTokens are IAP generated JWTs that
-    /// can be verified at the application. The RCToken is primarily used for ISTIO deployments, and can be scoped to a
-    /// single mesh by configuring the audience field accordingly
+    /// Configuration for RCTokens generated for service mesh workloads protected by IAP. RCTokens are IAP generated
+    /// JWTs that can be verified at the application. The RCToken is primarily used for service mesh deployments, and
+    /// can be scoped to a single mesh by configuring the audience field accordingly
     /// </summary>
     public class CsmSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2084,7 +2086,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
         public virtual object MaxAge { get; set; }
 
-        /// <summary>Reauth method required by the policy.</summary>
+        /// <summary>Reauth method requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
@@ -2209,7 +2211,8 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only
+        /// lower case letters (a-z) and dashes (-).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

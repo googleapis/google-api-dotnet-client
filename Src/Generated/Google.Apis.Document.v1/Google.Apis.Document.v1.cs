@@ -3421,7 +3421,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentPageToken> Tokens { get; set; }
 
         /// <summary>
-        /// Transformation matrices (both already applied and not) to the original document image to produce Page.image.
+        /// Transformation matrices that were applied to the original document image to produce Page.image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentPageMatrix> Transforms { get; set; }
@@ -3664,13 +3664,6 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Has the transformation already been applied to the current Document? Needed to disambiguate pre-processing
-        /// transformations already applied vs transformations added at annotation time by HITL operators.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applied")]
-        public virtual System.Nullable<bool> Applied { get; set; }
-
         /// <summary>Number of columns in the matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cols")]
         public virtual System.Nullable<int> Cols { get; set; }
@@ -4507,7 +4500,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Request message for the set default processor version method.</summary>
     public class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The resource name of child ProcessorVersion to use as default.</summary>
+        /// <summary>
+        /// Required. The resource name of child ProcessorVersion to use as default. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{version}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultProcessorVersion")]
         public virtual string DefaultProcessorVersion { get; set; }
 
@@ -4931,7 +4927,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageToken> Tokens { get; set; }
 
         /// <summary>
-        /// Transformation matrices (both already applied and not) to the original document image to produce Page.image.
+        /// Transformation matrices that were applied to the original document image to produce Page.image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageMatrix> Transforms { get; set; }
@@ -5174,13 +5170,6 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Has the transformation already been applied to the current Document? Needed to disambiguate pre-processing
-        /// transformations already applied vs transformations added at annotation time by HITL operators.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applied")]
-        public virtual System.Nullable<bool> Applied { get; set; }
-
         /// <summary>Number of columns in the matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cols")]
         public virtual System.Nullable<int> Cols { get; set; }
@@ -6099,7 +6088,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageToken> Tokens { get; set; }
 
         /// <summary>
-        /// Transformation matrices (both already applied and not) to the original document image to produce Page.image.
+        /// Transformation matrices that were applied to the original document image to produce Page.image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageMatrix> Transforms { get; set; }
@@ -6342,13 +6331,6 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Has the transformation already been applied to the current Document? Needed to disambiguate pre-processing
-        /// transformations already applied vs transformations added at annotation time by HITL operators.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applied")]
-        public virtual System.Nullable<bool> Applied { get; set; }
-
         /// <summary>Number of columns in the matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cols")]
         public virtual System.Nullable<int> Cols { get; set; }

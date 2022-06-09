@@ -1973,8 +1973,8 @@ namespace Google.Apis.Baremetalsolution.v2
 
                     /// <summary>
                     /// The list of fields to update. The only currently supported fields are:
-                    /// `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'requested_size_gib'
-                    /// 'snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'
+                    /// `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'snapshot_enabled'
+                    /// 'snapshot_reservation_detail.reserved_space_percent'
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2013,6 +2013,59 @@ namespace Google.Apis.Baremetalsolution.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Emergency Volume resize.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="volume">Required. Volume to resize.</param>
+                public virtual ResizeRequest Resize(Google.Apis.Baremetalsolution.v2.Data.ResizeVolumeRequest body, string volume)
+                {
+                    return new ResizeRequest(service, body, volume);
+                }
+
+                /// <summary>Emergency Volume resize.</summary>
+                public class ResizeRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Resize request.</summary>
+                    public ResizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.ResizeVolumeRequest body, string volume) : base(service)
+                    {
+                        Volume = volume;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Volume to resize.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("volume", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Volume { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.ResizeVolumeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resize";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+volume}:resize";
+
+                    /// <summary>Initializes Resize parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("volume", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "volume",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
                         });
                     }
                 }
@@ -2225,7 +2278,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     {
         /// <summary>
         /// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network
-        /// template.
+        /// template. This field is deprecated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interfaceIndex")]
         public virtual System.Nullable<int> InterfaceIndex { get; set; }
@@ -2853,6 +2906,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>The JumboFramesEnabled option for customer to set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jumboFramesEnabled")]
+        public virtual System.Nullable<bool> JumboFramesEnabled { get; set; }
+
         /// <summary>Output only. The name of the network config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2957,6 +3014,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Output only. An identifier for the NFS share, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nfsShareId")]
         public virtual string NfsShareId { get; set; }
+
+        /// <summary>The requested size, in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedSizeGib")]
+        public virtual System.Nullable<long> RequestedSizeGib { get; set; }
 
         /// <summary>The state of the NFS share.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3095,6 +3156,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<VolumeConfig> Volumes { get; set; }
 
+        /// <summary>If true, VPC SC is enabled for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcScEnabled")]
+        public virtual System.Nullable<bool> VpcScEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3156,6 +3221,17 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>Message requesting to reset a server.</summary>
     public class ResetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for emergency resize Volume.</summary>
+    public class ResizeVolumeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>New Volume size, in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGib")]
+        public virtual System.Nullable<long> SizeGib { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3356,6 +3432,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Maximum size volume can be expanded to in case of evergency, in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSizeGib")]
+        public virtual System.Nullable<long> MaxSizeGib { get; set; }
+
         /// <summary>
         /// Output only. The resource name of this `Volume`. Resource names are schemeless URIs that follow the
         /// conventions in https://cloud.google.com/apis/design/resource_names. Format:
@@ -3363,6 +3443,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Originally requested size, in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originallyRequestedSizeGib")]
+        public virtual System.Nullable<long> OriginallyRequestedSizeGib { get; set; }
 
         /// <summary>Immutable. Pod name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]

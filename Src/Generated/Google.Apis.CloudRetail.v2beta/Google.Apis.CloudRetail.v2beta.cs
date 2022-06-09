@@ -7867,6 +7867,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Whether to make facet keys case insensitive when getting faceting values with prefixes or contains.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseInsensitive")]
+        public virtual System.Nullable<bool> CaseInsensitive { get; set; }
+
+        /// <summary>
         /// Only get facet values that contains the given strings. For example, suppose "categories" has three values
         /// "Women &amp;gt; Shoe", "Women &amp;gt; Dress" and "Men &amp;gt; Shoe". If set "contains" to "Shoe", the
         /// "categories" facet will give only "Women &amp;gt; Shoe" and "Men &amp;gt; Shoe". Only supported on textual

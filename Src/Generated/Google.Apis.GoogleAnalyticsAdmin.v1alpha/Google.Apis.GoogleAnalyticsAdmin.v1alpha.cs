@@ -5116,6 +5116,57 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Lookup for a AttributionSettings singleton.</summary>
+        /// <param name="name">
+        /// Required. The name of the attribution settings to retrieve. Format:
+        /// properties/{property}/attributionSettings
+        /// </param>
+        public virtual GetAttributionSettingsRequest GetAttributionSettings(string name)
+        {
+            return new GetAttributionSettingsRequest(service, name);
+        }
+
+        /// <summary>Lookup for a AttributionSettings singleton.</summary>
+        public class GetAttributionSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAttributionSettings>
+        {
+            /// <summary>Constructs a new GetAttributionSettings request.</summary>
+            public GetAttributionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the attribution settings to retrieve. Format:
+            /// properties/{property}/attributionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getAttributionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes GetAttributionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+/attributionSettings$",
+                });
+            }
+        }
+
         /// <summary>Returns the singleton data retention settings for this property.</summary>
         /// <param name="name">
         /// Required. The name of the settings to lookup. Format: properties/{property}/dataRetentionSettings Example:
@@ -5386,6 +5437,81 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^properties/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates attribution settings on a property.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. Resource name of this attribution settings resource. Format:
+        /// properties/{property_id}/attributionSettings Example: "properties/1000/attributionSettings"
+        /// </param>
+        public virtual UpdateAttributionSettingsRequest UpdateAttributionSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAttributionSettings body, string name)
+        {
+            return new UpdateAttributionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Updates attribution settings on a property.</summary>
+        public class UpdateAttributionSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAttributionSettings>
+        {
+            /// <summary>Constructs a new UpdateAttributionSettings request.</summary>
+            public UpdateAttributionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAttributionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. Resource name of this attribution settings resource. Format:
+            /// properties/{property_id}/attributionSettings Example: "properties/1000/attributionSettings"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update").
+            /// Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to
+            /// match all fields.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAttributionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateAttributionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes UpdateAttributionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+/attributionSettings$",
                 });
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {
@@ -5671,6 +5797,42 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The attribution settings used for a given property. This is a singleton resource.</summary>
+    public class GoogleAnalyticsAdminV1alphaAttributionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The lookback window configuration for acquisition conversion events. The default window size is 30
+        /// days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acquisitionConversionEventLookbackWindow")]
+        public virtual string AcquisitionConversionEventLookbackWindow { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of this attribution settings resource. Format:
+        /// properties/{property_id}/attributionSettings Example: "properties/1000/attributionSettings"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The lookback window for all other, non-acquisition conversion events. The default window size is
+        /// 90 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherConversionEventLookbackWindow")]
+        public virtual string OtherConversionEventLookbackWindow { get; set; }
+
+        /// <summary>
+        /// Required. The reporting attribution model used to calculate conversion credit in this property's reports.
+        /// Changing the attribution model will apply to both historical and future data. These changes will be
+        /// reflected in reports with conversion and revenue data. User and session data will be unaffected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingAttributionModel")]
+        public virtual string ReportingAttributionModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Read-only resource used to summarize a principal's effective roles.</summary>
     public class GoogleAnalyticsAdminV1alphaAuditUserLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5865,6 +6027,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of an Account resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual GoogleAnalyticsAdminV1alphaAccount Account { get; set; }
+
+        /// <summary>A snapshot of AttributionSettings resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionSettings")]
+        public virtual GoogleAnalyticsAdminV1alphaAttributionSettings AttributionSettings { get; set; }
 
         /// <summary>A snapshot of a ConversionEvent resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionEvent")]
