@@ -3332,9 +3332,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
-            /// all groups for a customer, fill this field instead of domain. As an account administrator, you can also
-            /// use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned
-            /// as part of the [Users](/admin-sdk/directory/v1/reference/users)
+            /// all groups for a customer, fill in this field instead of `domain`. You can also use the `my_customer`
+            /// alias to represent your account's `customerId`. The `customerId` is also returned as part of the
+            /// [Users](/admin-sdk/directory/v1/reference/users) resource. Either the `customer` or the `domain`
+            /// parameter must be provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }

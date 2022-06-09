@@ -10797,7 +10797,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
         /// <summary>
-        /// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will
+        /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will
         /// be rejected except for RestoreAgent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]

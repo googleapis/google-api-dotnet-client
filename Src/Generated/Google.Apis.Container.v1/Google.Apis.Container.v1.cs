@@ -6132,6 +6132,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gpuPartitionSize")]
         public virtual string GpuPartitionSize { get; set; }
 
+        /// <summary>The configuration for GPU sharing options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuSharingConfig")]
+        public virtual GPUSharingConfig GpuSharingConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7302,6 +7306,21 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.</summary>
+    public class GPUSharingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of GPU sharing strategy to enable on the GPU node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuSharingStrategy")]
+        public virtual string GpuSharingStrategy { get; set; }
+
+        /// <summary>The max number of containers that can share a physical GPU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSharedClientsPerGpu")]
+        public virtual System.Nullable<long> MaxSharedClientsPerGpu { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the Compute Engine PD CSI driver.</summary>
     public class GcePersistentDiskCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8109,7 +8128,7 @@ namespace Google.Apis.Container.v1.Data
     }
 
     /// <summary>
-    /// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in
+    /// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in
     /// `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     /// </summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -8134,6 +8153,12 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
         public virtual string BootDiskKmsKey { get; set; }
+
+        /// <summary>
+        /// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
+        public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
         /// <summary>
         /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
@@ -9917,6 +9942,12 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
+
+        /// <summary>
+        /// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
+        public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
         /// <summary>GCFS config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]

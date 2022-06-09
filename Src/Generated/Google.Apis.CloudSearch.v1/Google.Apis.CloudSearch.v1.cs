@@ -1004,7 +1004,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// to execute. The service account used is the one whitelisted in the corresponding data source.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Name of the item to delete. Format: datasources/{source_id}/items/{item_id}
+                /// Required. The name of the item to delete. Format: datasources/{source_id}/items/{item_id}
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1025,13 +1025,13 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the item to delete. Format: datasources/{source_id}/items/{item_id}
+                    /// Required. The name of the item to delete. Format: datasources/{source_id}/items/{item_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}
+                    /// The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ConnectorName { get; set; }
@@ -1050,8 +1050,8 @@ namespace Google.Apis.CloudSearch.v1
                     public enum ModeEnum
                     {
                         /// <summary>
-                        /// Priority is not specified in the update request. Leaving priority unspecified results in an
-                        /// update failure.
+                        /// The priority is not specified in the update request. Leaving priority unspecified results in
+                        /// an update failure.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("UNSPECIFIED")]
                         UNSPECIFIED = 0,
@@ -1142,7 +1142,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the Data Source to delete items in a queue. Format: datasources/{source_id}
+                /// The name of the Data Source to delete items in a queue. Format: datasources/{source_id}
                 /// </param>
                 public virtual DeleteQueueItemsRequest DeleteQueueItems(Google.Apis.CloudSearch.v1.Data.DeleteQueueItemsRequest body, string name)
                 {
@@ -1165,7 +1165,7 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
                     /// <summary>
-                    /// Name of the Data Source to delete items in a queue. Format: datasources/{source_id}
+                    /// The name of the Data Source to delete items in a queue. Format: datasources/{source_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1205,7 +1205,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// service account used is the one whitelisted in the corresponding data source.
                 /// </summary>
                 /// <param name="name">
-                /// Name of the item to get info. Format: datasources/{source_id}/items/{item_id}
+                /// The name of the item to get info. Format: datasources/{source_id}/items/{item_id}
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1225,12 +1225,14 @@ namespace Google.Apis.CloudSearch.v1
                         InitParameters();
                     }
 
-                    /// <summary>Name of the item to get info. Format: datasources/{source_id}/items/{item_id}</summary>
+                    /// <summary>
+                    /// The name of the item to get info. Format: datasources/{source_id}/items/{item_id}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}
+                    /// The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ConnectorName { get; set; }
@@ -1289,7 +1291,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The
+                /// The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The
                 /// maximum length is 1536 characters.
                 /// </param>
                 public virtual IndexRequest Index(Google.Apis.CloudSearch.v1.Data.IndexItemRequest body, string name)
@@ -1314,8 +1316,8 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
                     /// <summary>
-                    /// Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The
-                    /// maximum length is 1536 characters.
+                    /// The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field.
+                    /// The maximum length is 1536 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1354,7 +1356,9 @@ namespace Google.Apis.CloudSearch.v1
                 /// Lists all or a subset of Item resources. This API requires an admin or service account to execute.
                 /// The service account used is the one whitelisted in the corresponding data source.
                 /// </summary>
-                /// <param name="name">Name of the Data Source to list Items. Format: datasources/{source_id}</param>
+                /// <param name="name">
+                /// The name of the Data Source to list Items. Format: datasources/{source_id}
+                /// </param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
@@ -1373,7 +1377,7 @@ namespace Google.Apis.CloudSearch.v1
                         InitParameters();
                     }
 
-                    /// <summary>Name of the Data Source to list Items. Format: datasources/{source_id}</summary>
+                    /// <summary>The name of the Data Source to list Items. Format: datasources/{source_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1389,7 +1393,7 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual System.Nullable<bool> Brief { get; set; }
 
                     /// <summary>
-                    /// Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}
+                    /// The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ConnectorName { get; set; }
@@ -1486,7 +1490,9 @@ namespace Google.Apis.CloudSearch.v1
                 /// one whitelisted in the corresponding data source.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Name of the Data Source to poll items. Format: datasources/{source_id}</param>
+                /// <param name="name">
+                /// The name of the Data Source to poll items. Format: datasources/{source_id}
+                /// </param>
                 public virtual PollRequest Poll(Google.Apis.CloudSearch.v1.Data.PollItemsRequest body, string name)
                 {
                     return new PollRequest(service, body, name);
@@ -1512,7 +1518,7 @@ namespace Google.Apis.CloudSearch.v1
                         InitParameters();
                     }
 
-                    /// <summary>Name of the Data Source to poll items. Format: datasources/{source_id}</summary>
+                    /// <summary>The name of the Data Source to poll items. Format: datasources/{source_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1553,8 +1559,8 @@ namespace Google.Apis.CloudSearch.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID} This is
-                /// a required field. The maximum length is 1536 characters.
+                /// The name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID}
+                /// This is a required field. The maximum length is 1536 characters.
                 /// </param>
                 public virtual PushRequest Push(Google.Apis.CloudSearch.v1.Data.PushItemRequest body, string name)
                 {
@@ -1577,7 +1583,7 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
                     /// <summary>
-                    /// Name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID}
+                    /// The name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID}
                     /// This is a required field. The maximum length is 1536 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1621,7 +1627,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the Data Source to unreserve all items. Format: datasources/{source_id}
+                /// The name of the Data Source to unreserve all items. Format: datasources/{source_id}
                 /// </param>
                 public virtual UnreserveRequest Unreserve(Google.Apis.CloudSearch.v1.Data.UnreserveItemsRequest body, string name)
                 {
@@ -1645,7 +1651,7 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
                     /// <summary>
-                    /// Name of the Data Source to unreserve all items. Format: datasources/{source_id}
+                    /// The name of the Data Source to unreserve all items. Format: datasources/{source_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1687,8 +1693,8 @@ namespace Google.Apis.CloudSearch.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}. The
-                /// maximum length is 1536 bytes.
+                /// The name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}.
+                /// The maximum length is 1536 bytes.
                 /// </param>
                 public virtual UploadRequest Upload(Google.Apis.CloudSearch.v1.Data.StartUploadItemRequest body, string name)
                 {
@@ -1711,8 +1717,8 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
                     /// <summary>
-                    /// Name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}.
-                    /// The maximum length is 1536 bytes.
+                    /// The name of the Item to start a resumable upload. Format:
+                    /// datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1751,7 +1757,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>
             /// Deletes the schema of a data source. **Note:** This API requires an admin or service account to execute.
             /// </summary>
-            /// <param name="name">Name of the data source to delete Schema. Format: datasources/{source_id}</param>
+            /// <param name="name">The name of the data source to delete Schema. Format: datasources/{source_id}</param>
             public virtual DeleteSchemaRequest DeleteSchema(string name)
             {
                 return new DeleteSchemaRequest(service, name);
@@ -1769,7 +1775,7 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
-                /// <summary>Name of the data source to delete Schema. Format: datasources/{source_id}</summary>
+                /// <summary>The name of the data source to delete Schema. Format: datasources/{source_id}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1814,7 +1820,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>
             /// Gets the schema of a data source. **Note:** This API requires an admin or service account to execute.
             /// </summary>
-            /// <param name="name">Name of the data source to get Schema. Format: datasources/{source_id}</param>
+            /// <param name="name">The name of the data source to get Schema. Format: datasources/{source_id}</param>
             public virtual GetSchemaRequest GetSchema(string name)
             {
                 return new GetSchemaRequest(service, name);
@@ -1832,7 +1838,7 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
-                /// <summary>Name of the data source to get Schema. Format: datasources/{source_id}</summary>
+                /// <summary>The name of the data source to get Schema. Format: datasources/{source_id}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1880,7 +1886,7 @@ namespace Google.Apis.CloudSearch.v1
             /// admin or service account to execute.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the data source to update Schema. Format: datasources/{source_id}</param>
+            /// <param name="name">The name of the data source to update Schema. Format: datasources/{source_id}</param>
             public virtual UpdateSchemaRequest UpdateSchema(Google.Apis.CloudSearch.v1.Data.UpdateSchemaRequest body, string name)
             {
                 return new UpdateSchemaRequest(service, body, name);
@@ -1901,7 +1907,7 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
-                /// <summary>Name of the data source to update Schema. Format: datasources/{source_id}</summary>
+                /// <summary>The name of the data source to update Schema. Format: datasources/{source_id}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2693,7 +2699,7 @@ namespace Google.Apis.CloudSearch.v1
             }
 
             /// <summary>Deletes a datasource. **Note:** This API requires an admin account to execute.</summary>
-            /// <param name="name">Name of the datasource. Format: datasources/{source_id}.</param>
+            /// <param name="name">The name of the datasource. Format: datasources/{source_id}.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -2709,7 +2715,7 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
-                /// <summary>Name of the datasource. Format: datasources/{source_id}.</summary>
+                /// <summary>The name of the datasource. Format: datasources/{source_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2752,7 +2758,7 @@ namespace Google.Apis.CloudSearch.v1
             }
 
             /// <summary>Gets a datasource. **Note:** This API requires an admin account to execute.</summary>
-            /// <param name="name">Name of the datasource resource. Format: datasources/{source_id}.</param>
+            /// <param name="name">The name of the datasource resource. Format: datasources/{source_id}.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2768,7 +2774,7 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
-                /// <summary>Name of the datasource resource. Format: datasources/{source_id}.</summary>
+                /// <summary>The name of the datasource resource. Format: datasources/{source_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2885,8 +2891,8 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Updates a datasource. **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a
-            /// datasource.
+            /// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating
+            /// a datasource.
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.CloudSearch.v1.Data.UpdateDataSourceRequest body, string name)
             {
@@ -2905,8 +2911,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>
-                /// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating
-                /// a datasource.
+                /// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when
+                /// creating a datasource.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3072,7 +3078,9 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>
             /// Gets the specified search application. **Note:** This API requires an admin account to execute.
             /// </summary>
-            /// <param name="name">Name of the search application. Format: searchapplications/{application_id}.</param>
+            /// <param name="name">
+            /// The name of the search application. Format: searchapplications/{application_id}.
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -3090,7 +3098,7 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
-                /// <summary>Name of the search application. Format: searchapplications/{application_id}.</summary>
+                /// <summary>The name of the search application. Format: searchapplications/{application_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3274,7 +3282,9 @@ namespace Google.Apis.CloudSearch.v1
             /// Updates a search application. **Note:** This API requires an admin account to execute.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the Search Application. Format: searchapplications/{application_id}.</param>
+            /// <param name="name">
+            /// The name of the Search Application. Format: searchapplications/{application_id}.
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.CloudSearch.v1.Data.SearchApplication body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -3293,7 +3303,7 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
-                /// <summary>Name of the Search Application. Format: searchapplications/{application_id}.</summary>
+                /// <summary>The name of the Search Application. Format: searchapplications/{application_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -4809,7 +4819,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for boolean properties.</summary>
+    /// <summary>The options for boolean properties.</summary>
     public class BooleanPropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, describes how the boolean should be used as a search operator.</summary>
@@ -4964,7 +4974,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Aggregation of items by status code as of the specified date.</summary>
     public class CustomerIndexStats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Date for which statistics were calculated.</summary>
+        /// <summary>The date for which statistics were calculated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
 
@@ -4979,7 +4989,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class CustomerQueryStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which query stats were calculated. Stats calculated on the next day close to midnight are returned.
+        /// The date for which query stats were calculated. Stats calculated on the next day close to midnight are
+        /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -4998,7 +5009,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>Date for which search application stats were calculated.</summary>
+        /// <summary>The date for which search application stats were calculated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
 
@@ -5009,8 +5020,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class CustomerSessionStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which session stats were calculated. Stats are calculated on the following day, close to midnight
-        /// PST, and then returned.
+        /// The date for which session stats were calculated. Stats are calculated on the following day, close to
+        /// midnight PST, and then returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -5047,7 +5058,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class CustomerUserStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which session stats were calculated. Stats calculated on the next day close to midnight are
+        /// The date for which session stats were calculated. Stats calculated on the next day close to midnight are
         /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
@@ -5105,7 +5116,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Collections.Generic.IList<GSuitePrincipal> ItemsVisibility { get; set; }
 
         /// <summary>
-        /// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a
+        /// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a
         /// datasource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5138,7 +5149,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DataSourceIndexStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which index stats were calculated. If the date of request is not the current date then stats
+        /// The date for which index stats were calculated. If the date of request is not the current date then stats
         /// calculated on the next day are returned. Stats are calculated close to mid night in this case. If date of
         /// request is current date, then real time stats are returned.
         /// </summary>
@@ -5241,7 +5252,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for date properties.</summary>
+    /// <summary>The options for date properties.</summary>
     public class DatePropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, describes how the date should be used as a search operator.</summary>
@@ -5277,7 +5288,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class DeleteQueueItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
+        /// <summary>The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
         public virtual string ConnectorName { get; set; }
 
@@ -5285,7 +5296,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
         public virtual DebugOptions DebugOptions { get; set; }
 
-        /// <summary>Name of a queue to delete items from.</summary>
+        /// <summary>The name of a queue to delete items from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
         public virtual string Queue { get; set; }
 
@@ -5338,7 +5349,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for double properties.</summary>
+    /// <summary>The options for double properties.</summary>
     public class DoublePropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, describes how the double should be used as a search operator.</summary>
@@ -5510,9 +5521,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// Options for enum properties, which allow you to define a restricted set of strings to match user queries, set
-    /// rankings for those string values, and define an operator name to be paired with those strings so that users can
-    /// narrow results to only items with a specific value. For example, for items in a request tracking system with
+    /// The options for enum properties, which allow you to define a restricted set of strings to match user queries,
+    /// set rankings for those string values, and define an operator name to be paired with those strings so that users
+    /// can narrow results to only items with a specific value. For example, for items in a request tracking system with
     /// priority information, you could define *p0* as an allowable enum value and tie this enum to the operator name
     /// *priority* so that search users could add *priority:p0* to their query to restrict the set of results to only
     /// those items indexed with the value *p0*.
@@ -5656,7 +5667,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; }
 
-        /// <summary>Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions</summary>
+        /// <summary>The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; }
 
@@ -5683,7 +5694,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; }
 
-        /// <summary>Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions</summary>
+        /// <summary>The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; }
 
@@ -5697,7 +5708,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class FieldViolation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Description of the error.</summary>
+        /// <summary>The description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -6024,7 +6035,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for html properties.</summary>
+    /// <summary>The options for html properties.</summary>
     public class HtmlPropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, describes how the property should be used as a search operator.</summary>
@@ -6103,7 +6114,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class IndexItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
+        /// <summary>The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
         public virtual string ConnectorName { get; set; }
 
@@ -6114,7 +6125,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indexItemOptions")]
         public virtual IndexItemOptions IndexItemOptions { get; set; }
 
-        /// <summary>Name of the item. Format: datasources/{source_id}/items/{item_id}</summary>
+        /// <summary>The name of the item. Format: datasources/{source_id}/items/{item_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual Item Item { get; set; }
 
@@ -6175,7 +6186,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for integer properties.</summary>
+    /// <summary>The options for integer properties.</summary>
     public class IntegerPropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6252,16 +6263,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual ItemContent Content { get; set; }
 
-        /// <summary>Type for this item.</summary>
+        /// <summary>The type for this item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemType")]
         public virtual string ItemType { get; set; }
 
-        /// <summary>Metadata information.</summary>
+        /// <summary>The metadata information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ItemMetadata Metadata { get; set; }
 
         /// <summary>
-        /// Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum
+        /// The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum
         /// length is 1536 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6303,7 +6314,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// Access control list information for the item. For more information see [Map
-    /// ACLs](/cloud-search/docs/guides/acls).
+    /// ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
     /// </summary>
     public class ItemAcl : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6324,7 +6335,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Collections.Generic.IList<Principal> DeniedReaders { get; set; }
 
         /// <summary>
-        /// Name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides
+        /// The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides
         /// access permissions to child items and does not define structural relationships, nor does it provide
         /// convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the
         /// access permissions of child items that reference the parent in the inheritAclFrom field. The item is still
@@ -6733,7 +6744,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>
         /// The read-only display name formatted according to the locale specified by the viewer's account or the
-        /// Accept-Language HTTP header.
+        /// `Accept-Language` HTTP header.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -6790,7 +6801,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ObjectDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Name for the object, which then defines its type. Item indexing requests should set the objectType field
+        /// The name for the object, which then defines its type. Item indexing requests should set the objectType field
         /// equal to this value. For example, if *name* is *Document*, then indexing requests for items of type Document
         /// should set objectType equal to *Document*. Each object definition must be uniquely named within a schema.
         /// The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The maximum
@@ -6839,7 +6850,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>The options for an object.</summary>
     public class ObjectOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Options that determine how the object is displayed in the Cloud Search results page.</summary>
+        /// <summary>The options that determine how the object is displayed in the Cloud Search results page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayOptions")]
         public virtual ObjectDisplayOptions DisplayOptions { get; set; }
 
@@ -6851,7 +6862,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for object properties.</summary>
+    /// <summary>The options for object properties.</summary>
     public class ObjectPropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6938,7 +6949,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Collections.Generic.IList<EmailAddress> EmailAddresses { get; set; }
 
         /// <summary>
-        /// The resource name of the person to provide information about. See People.get from Google People API.
+        /// The resource name of the person to provide information about. See
+        /// [`People.get`](https://developers.google.com/people/api/rest/v1/people/get) from the Google People API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6975,7 +6987,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class PollItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
+        /// <summary>The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
         public virtual string ConnectorName { get; set; }
 
@@ -7046,7 +7058,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>Description of the error.</summary>
+        /// <summary>The description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
 
@@ -7070,8 +7082,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual DatePropertyOptions DatePropertyOptions { get; set; }
 
         /// <summary>
-        /// Options that determine how the property is displayed in the Cloud Search results page if it is specified to
-        /// be displayed in the object's display options .
+        /// The options that determine how the property is displayed in the Cloud Search results page if it's specified
+        /// to be displayed in the object's display options.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayOptions")]
         public virtual PropertyDisplayOptions DisplayOptions { get; set; }
@@ -7090,7 +7102,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// Indicates that the property can be used for generating facets. Cannot be true for properties whose type is
-        /// object. IsReturnable must be true to set this option. Only supported for Boolean, Enum, and Text properties.
+        /// object. IsReturnable must be true to set this option. Only supported for boolean, enum, and text properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFacetable")]
         public virtual System.Nullable<bool> IsFacetable { get; set; }
@@ -7116,7 +7128,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>
         /// Indicates that the property can be used for sorting. Cannot be true for properties that are repeatable.
         /// Cannot be true for properties whose type is object. IsReturnable must be true to set this option. Only
-        /// supported for Boolean, Date, Double, Integer, and Timestamp properties.
+        /// supported for boolean, date, double, integer, and timestamp properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSortable")]
         public virtual System.Nullable<bool> IsSortable { get; set; }
@@ -7187,9 +7199,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ContentHash { get; set; }
 
         /// <summary>
-        /// Metadata hash of the item according to the repository. If specified, this is used to determine how to modify
-        /// this item's status. Setting this field and the type field results in argument error. The maximum length is
-        /// 2048 characters.
+        /// The metadata hash of the item according to the repository. If specified, this is used to determine how to
+        /// modify this item's status. Setting this field and the type field results in argument error. The maximum
+        /// length is 2048 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataHash")]
         public virtual string MetadataHash { get; set; }
@@ -7202,7 +7214,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string Payload { get; set; }
 
         /// <summary>
-        /// Queue to which this item belongs to. The default queue is chosen if this field is not specified. The maximum
+        /// Queue to which this item belongs. The `default` queue is chosen if this field is not specified. The maximum
         /// length is 512 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
@@ -7233,7 +7245,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class PushItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
+        /// <summary>The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
         public virtual string ConnectorName { get; set; }
 
@@ -7398,8 +7410,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string LessThanOperatorName { get; set; }
 
         /// <summary>
-        /// Name of the object corresponding to the operator. This field is only filled for schema-specific operators,
-        /// and is unset for common operators.
+        /// The name of the object corresponding to the operator. This field is only filled for schema-specific
+        /// operators, and is unset for common operators.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; }
@@ -7408,7 +7420,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; }
 
-        /// <summary>Type of the operator.</summary>
+        /// <summary>The type of the operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -7431,7 +7443,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
         public virtual string ShortName { get; set; }
 
-        /// <summary>Name of the source</summary>
+        /// <summary>The name of the source</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
 
@@ -7462,7 +7474,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
         public virtual System.Nullable<int> HttpStatusCode { get; set; }
 
-        /// <summary>Type of error.</summary>
+        /// <summary>The type of error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -7698,7 +7710,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableAuditLog")]
         public virtual System.Nullable<bool> EnableAuditLog { get; set; }
 
-        /// <summary>Name of the Search Application. Format: searchapplications/{application_id}.</summary>
+        /// <summary>The name of the Search Application. Format: searchapplications/{application_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -7732,7 +7744,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SearchApplicationQueryStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which query stats were calculated. Stats calculated on the next day close to midnight are returned.
+        /// The date for which query stats were calculated. Stats calculated on the next day close to midnight are
+        /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -7747,8 +7760,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SearchApplicationSessionStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which session stats were calculated. Stats are calculated on the following day, close to midnight
-        /// PST, and then returned.
+        /// The date for which session stats were calculated. Stats are calculated on the following day, close to
+        /// midnight PST, and then returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -7764,7 +7777,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SearchApplicationUserStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Date for which session stats were calculated. Stats calculated on the next day close to midnight are
+        /// The date for which session stats were calculated. Stats calculated on the next day close to midnight are
         /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
@@ -8014,7 +8027,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SortOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as
+        /// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as
         /// sortable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
@@ -8186,7 +8199,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Start upload file request.</summary>
     public class StartUploadItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
+        /// <summary>The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
         public virtual string ConnectorName { get; set; }
 
@@ -8321,9 +8334,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>
         /// If true, the text value is tokenized as one atomic value in operator searches and facet matches. For
         /// example, if the operator name is "genre" and the value is "science-fiction" the query restrictions
-        /// "genre:science" and "genre:fiction" doesn't match the item; "genre:science-fiction" does. Value matching is
-        /// case-sensitive and does not remove special characters. If false, the text is tokenized. For example, if the
-        /// value is "science-fiction" the queries "genre:science" and "genre:fiction" matches the item.
+        /// "genre:science" and "genre:fiction" doesn't match the item; "genre:science-fiction" does. Text value
+        /// matching is case-sensitive and does not remove special characters. If false, the text is tokenized. For
+        /// example, if the value is "science-fiction" the queries "genre:science" and "genre:fiction" matches the item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exactMatchWithOperator")]
         public virtual System.Nullable<bool> ExactMatchWithOperator { get; set; }
@@ -8344,7 +8357,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for text properties.</summary>
+    /// <summary>The options for text properties.</summary>
     public class TextPropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, describes how the property should be used as a search operator.</summary>
@@ -8414,7 +8427,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for timestamp properties.</summary>
+    /// <summary>The options for timestamp properties.</summary>
     public class TimestampPropertyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, describes how the timestamp should be used as a search operator.</summary>
@@ -8462,7 +8475,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class UnreserveItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
+        /// <summary>The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
         public virtual string ConnectorName { get; set; }
 
@@ -8470,7 +8483,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
         public virtual DebugOptions DebugOptions { get; set; }
 
-        /// <summary>Name of a queue to unreserve items from.</summary>
+        /// <summary>The name of a queue to unreserve items from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
         public virtual string Queue { get; set; }
 
@@ -8518,7 +8531,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class UploadItemRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the content reference. The maximum length is 2048 characters.</summary>
+        /// <summary>The name of the content reference. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

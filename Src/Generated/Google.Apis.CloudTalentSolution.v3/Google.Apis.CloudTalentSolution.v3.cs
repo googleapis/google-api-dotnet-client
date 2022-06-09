@@ -2872,7 +2872,7 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 15</summary>
+    /// <summary>Next ID: 16</summary>
     public class NamespacedDebugInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2978,6 +2978,13 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forcedRollouts")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<bool>> ForcedRollouts { get; set; }
+
+        /// <summary>
+        /// If set to ALL_OFF, organic selection will be disabled; if set to ALL_ON, organic selection will be disabled,
+        /// and only select launch experiments will receive traffic. See go/mendel-aoao-runtime-design.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testingMode")]
+        public virtual string TestingMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

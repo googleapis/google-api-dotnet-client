@@ -6890,6 +6890,27 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents Pub/Sub messages about updates to a Channel Partner. You can retrieve updated values through the
+    /// ChannelPartnerLinks API.
+    /// </summary>
+    public class GoogleCloudChannelV1alpha1ChannelPartnerEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name for the Channel Partner Link. Channel_partner uses the format:
+        /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPartner")]
+        public virtual string ChannelPartner { get; set; }
+
+        /// <summary>Type of event performed on the Channel Partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Commitment settings for commitment-based offers.</summary>
     public class GoogleCloudChannelV1alpha1CommitmentSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7156,6 +7177,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Represents information which resellers will get as part of notification from Pub/Sub.</summary>
     public class GoogleCloudChannelV1alpha1SubscriberEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Channel Partner event sent as part of Pub/Sub event to partners.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerEvent")]
+        public virtual GoogleCloudChannelV1alpha1ChannelPartnerEvent ChannelPartnerEvent { get; set; }
+
         /// <summary>Customer event sent as part of Pub/Sub event to partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerEvent")]
         public virtual GoogleCloudChannelV1alpha1CustomerEvent CustomerEvent { get; set; }

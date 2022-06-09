@@ -317,8 +317,8 @@ namespace Google.Apis.BusinessProfilePerformance.v1
 
                     /// <summary>
                     /// Returns the search keywords used to find a business in search or maps. Each search keyword is
-                    /// accompanied by impressions which are aggregated on a monthly basis. Example request: GET
-                    /// https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&amp;amp;monthly_range.start_month.month=1&amp;amp;monthly_range.end_month.year=2022&amp;amp;monthly_range.end_month.month=3
+                    /// accompanied by impressions which are aggregated on a monthly basis. Example request: `GET
+                    /// https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&amp;amp;monthly_range.start_month.month=1&amp;amp;monthly_range.end_month.year=2022&amp;amp;monthly_range.end_month.month=3`
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The location for which the time series should be fetched. Format:
@@ -331,8 +331,8 @@ namespace Google.Apis.BusinessProfilePerformance.v1
 
                     /// <summary>
                     /// Returns the search keywords used to find a business in search or maps. Each search keyword is
-                    /// accompanied by impressions which are aggregated on a monthly basis. Example request: GET
-                    /// https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&amp;amp;monthly_range.start_month.month=1&amp;amp;monthly_range.end_month.year=2022&amp;amp;monthly_range.end_month.month=3
+                    /// accompanied by impressions which are aggregated on a monthly basis. Example request: `GET
+                    /// https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&amp;amp;monthly_range.start_month.month=1&amp;amp;monthly_range.end_month.year=2022&amp;amp;monthly_range.end_month.month=3`
                     /// </summary>
                     public class ListRequest : BusinessProfilePerformanceBaseServiceRequest<Google.Apis.BusinessProfilePerformance.v1.Data.ListSearchKeywordImpressionsMonthlyResponse>
                     {
@@ -492,8 +492,8 @@ namespace Google.Apis.BusinessProfilePerformance.v1
 
         /// <summary>
         ///  Returns the values for each date from a given time range that are associated with the specific daily
-        /// metric. Example request: GET
-        /// https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31
+        /// metric. Example request: `GET
+        /// https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
         /// </summary>
         /// <param name="name">
         /// Required. The location for which the time series should be fetched. Format: locations/{location_id} where
@@ -506,8 +506,8 @@ namespace Google.Apis.BusinessProfilePerformance.v1
 
         /// <summary>
         ///  Returns the values for each date from a given time range that are associated with the specific daily
-        /// metric. Example request: GET
-        /// https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31
+        /// metric. Example request: `GET
+        /// https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
         /// </summary>
         public class GetDailyMetricsTimeSeriesRequest : BusinessProfilePerformanceBaseServiceRequest<Google.Apis.BusinessProfilePerformance.v1.Data.GetDailyMetricsTimeSeriesResponse>
         {

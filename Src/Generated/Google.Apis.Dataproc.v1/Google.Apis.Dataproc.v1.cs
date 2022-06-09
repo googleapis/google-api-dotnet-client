@@ -6284,8 +6284,9 @@ namespace Google.Apis.Dataproc.v1.Data
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be
-        /// reused.
+        /// Required. The cluster name, which must be unique within a project. The name must start with a lowercase
+        /// letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The
+        /// name of a deleted cluster can be reused.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
@@ -6984,6 +6985,15 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<GkeNodePoolAcceleratorConfig> Accelerators { get; set; }
+
+        /// <summary>
+        /// Optional. The Customer Managed Encryption Key (CMEK)
+        /// (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk
+        /// attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID
+        /// /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
+        public virtual string BootDiskKmsKey { get; set; }
 
         /// <summary>
         /// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of
@@ -8106,6 +8116,29 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>indicating a list of workers of same type</summary>
+    public class NodePool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A unique id of the node pool. Primary and Secondary workers can be specified using special
+        /// reserved ids PRIMARY_WORKER_POOL and SECONDARY_WORKER_POOL respectively. Aux node pools can be referenced
+        /// using corresponding pool id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Name of instances to be repaired. These instances must belong to specified node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceNames")]
+        public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; }
+
+        /// <summary>Required. Repair action to take on specified resources of the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairAction")]
+        public virtual string RepairAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8552,6 +8585,13 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; }
+
+        /// <summary>
+        /// Optional. Node pools and corresponding repair action to be taken. All node pools should be unique in this
+        /// request. i.e. Multiple entries for the same node pool id are not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
+        public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; }
 
         /// <summary>
         /// Optional. A unique ID used to identify the request. If the server receives two RepairClusterRequests with

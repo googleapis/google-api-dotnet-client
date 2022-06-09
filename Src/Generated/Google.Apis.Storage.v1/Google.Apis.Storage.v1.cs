@@ -7268,7 +7268,10 @@ namespace Google.Apis.Storage.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
                     public virtual string StorageClass { get; set; }
 
-                    /// <summary>Type of the action. Currently, only Delete and SetStorageClass are supported.</summary>
+                    /// <summary>
+                    /// Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload
+                    /// are supported.
+                    /// </summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("type")]
                     public virtual string Type { get; set; }
                 }

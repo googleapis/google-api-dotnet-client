@@ -1427,7 +1427,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Subscription resource managed by 3P Partners.</summary>
+    /// <summary>LINT.IfChange A Subscription resource managed by 3P Partners.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1563,9 +1563,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Individual line item definition of a subscription. Next id: 5</summary>
+    /// <summary>Individual line item definition of a subscription. Next id: 6</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Description of this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>
         /// Output only. It is set only if the line item has its own free trial applied. End time of the line item free
         /// trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It will be set the same as

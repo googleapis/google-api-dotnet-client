@@ -2886,6 +2886,10 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2ExecutionReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Creation timestamp of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual object CompletionTime { get; set; }
+
+        /// <summary>Creation timestamp of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 

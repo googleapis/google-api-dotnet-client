@@ -35,7 +35,6 @@ namespace Google.Apis.ShoppingContent.v2_1
         public ShoppingContentService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
-            Accountsbyexternalsellerid = new AccountsbyexternalselleridResource(this);
             Accountstatuses = new AccountstatusesResource(this);
             Accountstatusesbyexternalsellerid = new AccountstatusesbyexternalselleridResource(this);
             Accounttax = new AccounttaxResource(this);
@@ -113,9 +112,6 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
-
-        /// <summary>Gets the Accountsbyexternalsellerid resource.</summary>
-        public virtual AccountsbyexternalselleridResource Accountsbyexternalsellerid { get; }
 
         /// <summary>Gets the Accountstatuses resource.</summary>
         public virtual AccountstatusesResource Accountstatuses { get; }
@@ -1993,88 +1989,6 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accountId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
-    /// <summary>The "accountsbyexternalsellerid" collection of methods.</summary>
-    public class AccountsbyexternalselleridResource
-    {
-        private const string Resource = "accountsbyexternalsellerid";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public AccountsbyexternalselleridResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>
-        /// Gets data of the account with the specified external_seller_id belonging to the MCA with the specified
-        /// merchant_id.
-        /// </summary>
-        /// <param name="merchantId">Required. The ID of the MCA containing the seller.</param>
-        /// <param name="externalSellerId">
-        /// Required. The External Seller ID of the seller account to be retrieved.
-        /// </param>
-        public virtual GetRequest Get(long merchantId, string externalSellerId)
-        {
-            return new GetRequest(service, merchantId, externalSellerId);
-        }
-
-        /// <summary>
-        /// Gets data of the account with the specified external_seller_id belonging to the MCA with the specified
-        /// merchant_id.
-        /// </summary>
-        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Account>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string externalSellerId) : base(service)
-            {
-                MerchantId = merchantId;
-                ExternalSellerId = externalSellerId;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of the MCA containing the seller.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long MerchantId { get; private set; }
-
-            /// <summary>Required. The External Seller ID of the seller account to be retrieved.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("externalSellerId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string ExternalSellerId { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "get";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{merchantId}/accountsbyexternalsellerid/{externalSellerId}";
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "merchantId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("externalSellerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "externalSellerId",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -3974,7 +3888,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than
-        /// once per day, we recommend you use the Products service to update your product data.
+        /// once per day, we recommend you use the [Products
+        /// service](https://developers.google.com/shopping-content/reference/rest/v2.1/products) to update your product
+        /// data.
         /// </summary>
         /// <param name="merchantId">
         /// The ID of the account that manages the datafeed. This account cannot be a multi-client account.
@@ -3987,7 +3903,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than
-        /// once per day, we recommend you use the Products service to update your product data.
+        /// once per day, we recommend you use the [Products
+        /// service](https://developers.google.com/shopping-content/reference/rest/v2.1/products) to update your product
+        /// data.
         /// </summary>
         public class FetchnowRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedsFetchNowResponse>
         {
@@ -9938,8 +9856,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it will update
-        /// the promotion instead.
+        /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the
+        /// promotion instead.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account that contains the collection.</param>
@@ -9949,8 +9867,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it will update
-        /// the promotion instead.
+        /// Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the
+        /// promotion instead.
         /// </summary>
         public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Promotion>
         {
@@ -10229,8 +10147,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Update the regional inventory of a product in your Merchant Center account. If a regional inventory with the
-        /// same region ID already exists, this method updates that entry.
+        /// Updates the regional inventory of a product in your Merchant Center account. If a regional inventory with
+        /// the same region ID already exists, this method updates that entry.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">
@@ -10243,8 +10161,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Update the regional inventory of a product in your Merchant Center account. If a regional inventory with the
-        /// same region ID already exists, this method updates that entry.
+        /// Updates the regional inventory of a product in your Merchant Center account. If a regional inventory with
+        /// the same region ID already exists, this method updates that entry.
         /// </summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.RegionalInventory>
         {
@@ -17795,12 +17713,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Logistics) - "`bestex`" (Best Express) - "`canada post`" (Canada Post) - "`purolator`" (Purolator) -
         /// "`canpar`" (Canpar) - "`india post`" (India Post) - "`blue dart`" (Blue Dart) - "`delhivery`" (Delhivery) -
         /// "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`lso`" (Lone Star Overnight) - "`tww`" (Team Worldwide) -
-        /// "`deliver-it`" (Deliver-IT) Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status
-        /// updates * - "`colissimo`" (Colissimo by La Poste) *automatic status updates* - "`ups`" (United Parcel
-        /// Service) *automatic status updates * - "`chronopost`" (Chronopost by La Poste) - "`gls`" (General Logistics
-        /// Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (Colis
-        /// Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) -
-        /// "`aramex`" (Aramex)
+        /// "`deliver-it`" (Deliver-IT) - "`cdl last mile`" (CDL Last Mile) Supported carriers for FR are: - "`la
+        /// poste`" (La Poste) *automatic status updates * - "`colissimo`" (Colissimo by La Poste) *automatic status
+        /// updates* - "`ups`" (United Parcel Service) *automatic status updates * - "`chronopost`" (Chronopost by La
+        /// Poste) - "`gls`" (General Logistics Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian
+        /// Post Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) -
+        /// "`db schenker`" (DB Schenker) - "`aramex`" (Aramex)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; }
@@ -21169,9 +21087,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    ///  The Promotions feature is publicly available for the US, CA, IN, GB, AU target countries (en language only) in
-    /// Content API for Shopping. Represents a promotion. See the following articles for more details. * [Promotions
-    /// feed specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed
+    /// The Promotions feature is available for `AU`, `CA`, `DE`, `FR`, `GB`, `IN` and `US` target countries, and `en`
+    /// content language. Represents a promotion. See the following articles for more details. * [Promotions feed
+    /// specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed
     /// specification](https://support.google.com/merchants/answer/10146130) * [Promotions on Buy on Google product data
     /// specification](https://support.google.com/merchants/answer/9173673)
     /// </summary>
@@ -21186,7 +21104,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> BrandExclusion { get; set; }
 
         /// <summary>
-        /// Required. The content language used as part of the unique identifier. Currently only en value is supported.
+        /// Required. The content language used as part of the unique identifier. Currently only `en` value is
+        /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; }
@@ -21199,7 +21118,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freeGiftDescription")]
         public virtual string FreeGiftDescription { get; set; }
 
-        /// <summary>Free gift item id for the promotion.</summary>
+        /// <summary>Free gift item ID for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeGiftItemId")]
         public virtual string FreeGiftItemId { get; set; }
 
@@ -21207,7 +21126,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freeGiftValue")]
         public virtual PriceAmount FreeGiftValue { get; set; }
 
-        /// <summary>Generic redemption code for the promotion. To be used with the above field.</summary>
+        /// <summary>Generic redemption code for the promotion. To be used with the `offerType` field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericRedemptionCode")]
         public virtual string GenericRedemptionCode { get; set; }
 
@@ -21216,27 +21135,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<int> GetThisQuantityDiscounted { get; set; }
 
         /// <summary>
-        /// Required. Output only. The REST promotion id to uniquely identify the promotion. Content API methods that
-        /// operate on promotions take this as their promotionId parameter. The REST ID for a promotion is of the form
-        /// [channel]:contentLanguage:targetCountry:promotionId The channel field will have a value of "online",
-        /// "in_store", or "online_in_store".
+        /// Required. Output only. The REST promotion ID to uniquely identify the promotion. Content API methods that
+        /// operate on promotions take this as their `promotionId` parameter. The REST ID for a promotion is of the form
+        /// channel:contentLanguage:targetCountry:promotionId The `channel` field has a value of `"online"`,
+        /// `"in_store"`, or `"online_in_store"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Product filter by item group id for the promotion.</summary>
+        /// <summary>Product filter by item group ID for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
         public virtual System.Collections.Generic.IList<string> ItemGroupId { get; set; }
 
-        /// <summary>Product filter by item group id exclusion for the promotion.</summary>
+        /// <summary>Product filter by item group ID exclusion for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupIdExclusion")]
         public virtual System.Collections.Generic.IList<string> ItemGroupIdExclusion { get; set; }
 
-        /// <summary>Product filter by item id for the promotion.</summary>
+        /// <summary>Product filter by item ID for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual System.Collections.Generic.IList<string> ItemId { get; set; }
 
-        /// <summary>Product filter by item id exclusion for the promotion.</summary>
+        /// <summary>Product filter by item ID exclusion for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemIdExclusion")]
         public virtual System.Collections.Generic.IList<string> ItemIdExclusion { get; set; }
 
@@ -21260,7 +21179,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPurchaseQuantity")]
         public virtual System.Nullable<int> MinimumPurchaseQuantity { get; set; }
 
-        /// <summary>Promotion cost cap of the promotion.</summary>
+        /// <summary>Cost cap for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moneyBudget")]
         public virtual PriceAmount MoneyBudget { get; set; }
 
@@ -21299,28 +21218,28 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> PromotionDestinationIds { get; set; }
 
         /// <summary>
-        /// String representation of the promotion display dates (deprecated: Use promotion_display_time_period
-        /// instead).
+        /// String representation of the promotion display dates. Deprecated. Use `promotion_display_time_period`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDisplayDates")]
         public virtual string PromotionDisplayDates { get; set; }
 
-        /// <summary>TimePeriod representation of the promotion display dates.</summary>
+        /// <summary>`TimePeriod` representation of the promotion's display dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDisplayTimePeriod")]
         public virtual TimePeriod PromotionDisplayTimePeriod { get; set; }
 
         /// <summary>
-        /// String representation of the promotion effective dates (deprecated: Use promotion_effective_time_period
-        /// instead).
+        /// String representation of the promotion effective dates. Deprecated. Use `promotion_effective_time_period`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionEffectiveDates")]
         public virtual string PromotionEffectiveDates { get; set; }
 
-        /// <summary>Required. TimePeriod representation of the promotion effective dates.</summary>
+        /// <summary>Required. `TimePeriod` representation of the promotion's effective dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionEffectiveTimePeriod")]
         public virtual TimePeriod PromotionEffectiveTimePeriod { get; set; }
 
-        /// <summary>Required. The user provided promotion id to uniquely identify the promotion.</summary>
+        /// <summary>Required. The user provided promotion ID to uniquely identify the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
         public virtual string PromotionId { get; set; }
 
@@ -21328,12 +21247,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
         public virtual System.Collections.Generic.IList<string> RedemptionChannel { get; set; }
 
-        /// <summary>Shipping service names for thse promotion.</summary>
+        /// <summary>Shipping service names for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingServiceNames")]
         public virtual System.Collections.Generic.IList<string> ShippingServiceNames { get; set; }
 
         /// <summary>
-        /// Required. The target country used as part of the unique identifier. Currently only US and CA are supported.
+        /// Required. The target country used as part of the unique identifier. Can be `AU`, `CA`, `DE`, `FR`, `GB`,
+        /// `IN` or `US`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }

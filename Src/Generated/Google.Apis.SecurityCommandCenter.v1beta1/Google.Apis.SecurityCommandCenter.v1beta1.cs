@@ -2332,15 +2332,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
     public class Compliance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>e.g. A.12.4.1</summary>
+        /// <summary>Policies within the standard/benchmark e.g. A.12.4.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
         public virtual System.Collections.Generic.IList<string> Ids { get; set; }
 
-        /// <summary>e.g. "cis", "pci", "owasp", etc.</summary>
+        /// <summary>Refers to industry wide standards or benchmarks e.g. "cis", "pci", "owasp", etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
         public virtual string Standard { get; set; }
 
-        /// <summary>e.g. 1.1</summary>
+        /// <summary>Version of the standard/benchmark e.g. 1.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -2500,7 +2500,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>EnvironmentVariable is a name-value pair to store env variables for Process.</summary>
+    /// <summary>EnvironmentVariable is a name-value pair to store environment variables for Process.</summary>
     public class EnvironmentVariable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Environment variable name as a JSON encoded string.</summary>
@@ -2526,7 +2526,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("components")]
         public virtual System.Collections.Generic.IList<string> Components { get; set; }
 
-        /// <summary>Resource’s URI (https://google.aip.dev/122#full-resource-names)</summary>
+        /// <summary>Resource's URI (https://google.aip.dev/122#full-resource-names)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2535,21 +2535,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Exfiltration represents a data exfiltration attempt of one or more source(s) to one or more target(s). Source(s)
-    /// represent the source of data that is exfiltrated, and Target(s) represents the destination the data was copied
-    /// to.
+    /// Exfiltration represents a data exfiltration attempt of one or more sources to one or more targets. Sources
+    /// represent the source of data that is exfiltrated, and Targets represents the destination the data was copied to.
     /// </summary>
     public class Exfiltration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If there are multiple sources, then the data is considered “joined” between them. For instance, BigQuery can
+        /// If there are multiple sources, then the data is considered "joined" between them. For instance, BigQuery can
         /// join multiple tables, and each table would be considered a source.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<ExfilResource> Sources { get; set; }
 
         /// <summary>
-        /// If there are multiple targets, each target would get a complete copy of the “joined” source data.
+        /// If there are multiple targets, each target would get a complete copy of the "joined" source data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targets")]
         public virtual System.Collections.Generic.IList<ExfilResource> Targets { get; set; }
@@ -2632,7 +2631,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         /// <summary>
         /// SHA256 hash of the first hashed_size bytes of the file encoded as a hex string. If hashed_size == size,
-        /// hash_sha256 represents the SHA256 hash of the entire file.
+        /// sha256 represents the SHA256 hash of the entire file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; }
@@ -2712,7 +2711,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
 
-        /// <summary>Represents exfiltrations associated with the Finding.</summary>
+        /// <summary>Represents exfiltration associated with the Finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exfiltration")]
         public virtual Exfiltration Exfiltration { get; set; }
 
@@ -3992,7 +3991,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
-        /// <summary>True if arguments is incomplete.</summary>
+        /// <summary>True if `args` is incomplete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argumentsTruncated")]
         public virtual System.Nullable<bool> ArgumentsTruncated { get; set; }
 
@@ -4004,7 +4003,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("envVariables")]
         public virtual System.Collections.Generic.IList<EnvironmentVariable> EnvVariables { get; set; }
 
-        /// <summary>True if env_variables is incomplete.</summary>
+        /// <summary>True if `env_variables` is incomplete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("envVariablesTruncated")]
         public virtual System.Nullable<bool> EnvVariablesTruncated { get; set; }
 
@@ -4021,8 +4020,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual System.Nullable<long> Pid { get; set; }
 
         /// <summary>
-        /// When the process represents the invocation of a script, binary provides information about the interpreter
-        /// while script provides information about the script file provided to the interpreter.
+        /// When the process represents the invocation of a script, `binary` provides information about the interpreter
+        /// while `script` provides information about the script file provided to the interpreter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual File Script { get; set; }

@@ -14,13 +14,13 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.Dfareporting.v3_5
+namespace Google.Apis.Dfareporting.v4
 {
     /// <summary>The Dfareporting Service.</summary>
     public class DfareportingService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v3.5";
+        public const string Version = "v4";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
@@ -41,8 +41,12 @@ namespace Google.Apis.Dfareporting.v3_5
             Accounts = new AccountsResource(this);
             Ads = new AdsResource(this);
             AdvertiserGroups = new AdvertiserGroupsResource(this);
+            AdvertiserInvoices = new AdvertiserInvoicesResource(this);
             AdvertiserLandingPages = new AdvertiserLandingPagesResource(this);
             Advertisers = new AdvertisersResource(this);
+            BillingAssignments = new BillingAssignmentsResource(this);
+            BillingProfiles = new BillingProfilesResource(this);
+            BillingRates = new BillingRatesResource(this);
             Browsers = new BrowsersResource(this);
             CampaignCreativeAssociations = new CampaignCreativeAssociationsResource(this);
             Campaigns = new CampaignsResource(this);
@@ -168,11 +172,23 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Gets the AdvertiserGroups resource.</summary>
         public virtual AdvertiserGroupsResource AdvertiserGroups { get; }
 
+        /// <summary>Gets the AdvertiserInvoices resource.</summary>
+        public virtual AdvertiserInvoicesResource AdvertiserInvoices { get; }
+
         /// <summary>Gets the AdvertiserLandingPages resource.</summary>
         public virtual AdvertiserLandingPagesResource AdvertiserLandingPages { get; }
 
         /// <summary>Gets the Advertisers resource.</summary>
         public virtual AdvertisersResource Advertisers { get; }
+
+        /// <summary>Gets the BillingAssignments resource.</summary>
+        public virtual BillingAssignmentsResource BillingAssignments { get; }
+
+        /// <summary>Gets the BillingProfiles resource.</summary>
+        public virtual BillingProfilesResource BillingProfiles { get; }
+
+        /// <summary>Gets the BillingRates resource.</summary>
+        public virtual BillingRatesResource BillingRates { get; }
 
         /// <summary>Gets the Browsers resource.</summary>
         public virtual BrowsersResource Browsers { get; }
@@ -532,7 +548,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets the account's active ad summary by account ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountActiveAdSummary>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountActiveAdSummary>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long summaryAccountId) : base(service)
@@ -557,7 +573,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -606,7 +622,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one account permission group by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountPermissionGroup>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountPermissionGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -631,7 +647,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissionGroups/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountPermissionGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -664,7 +680,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves the list of account permission groups.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountPermissionGroupsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountPermissionGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -684,7 +700,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissionGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountPermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -725,7 +741,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one account permission by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountPermission>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountPermission>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -750,7 +766,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissions/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountPermissions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -783,7 +799,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves the list of account permissions.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountPermissionsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountPermissionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -803,7 +819,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountPermissions";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountPermissions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -844,7 +860,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one account user profile by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -869,7 +885,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountUserProfiles/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -897,16 +913,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new account user profile.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new account user profile.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -918,7 +934,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.AccountUserProfile Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -930,7 +946,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -959,7 +975,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves a list of account user profiles, possibly filtered. This method supports paging.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountUserProfilesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountUserProfilesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -1045,7 +1061,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1138,16 +1154,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">AccountUserProfile ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -1164,7 +1180,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.AccountUserProfile Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1176,7 +1192,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1204,16 +1220,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing account user profile.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing account user profile.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1225,7 +1241,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.AccountUserProfile Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.AccountUserProfile Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1237,7 +1253,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1278,7 +1294,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one account by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Account>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -1303,7 +1319,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accounts/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1336,7 +1352,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves the list of accounts, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AccountsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -1416,7 +1432,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1493,16 +1509,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Account ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Account body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Account body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Account>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Account body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Account body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -1519,7 +1535,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Account Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Account Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1531,7 +1547,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1559,16 +1575,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Account body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Account body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing account.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Account>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Account body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Account body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1580,7 +1596,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Account Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Account Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1592,7 +1608,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/accounts";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1633,7 +1649,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one ad by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Ad>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Ad>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -1658,7 +1674,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/ads/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1686,16 +1702,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new ad.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Ad body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Ad body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new ad.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Ad>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Ad>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Ad body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Ad body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1707,7 +1723,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Ad Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Ad Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1719,7 +1735,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1744,7 +1760,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of ads, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -1962,7 +1978,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/ads";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2167,16 +2183,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Ad ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Ad body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Ad body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Ad>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Ad>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Ad body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Ad body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -2193,7 +2209,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Ad Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Ad Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -2205,7 +2221,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2233,16 +2249,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing ad.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Ad body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Ad body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing ad.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Ad>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Ad>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Ad body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Ad body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2254,7 +2270,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Ad Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Ad Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -2266,7 +2282,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/ads";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2332,7 +2348,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserGroups/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2366,7 +2382,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one advertiser group by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -2391,7 +2407,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2419,16 +2435,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new advertiser group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new advertiser group.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2440,7 +2456,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.AdvertiserGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -2452,7 +2468,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2477,7 +2493,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of advertiser groups, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroupsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertiserGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -2551,7 +2567,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2620,16 +2636,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">AdvertiserGroup ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser group. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -2646,7 +2662,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.AdvertiserGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -2658,7 +2674,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2686,16 +2702,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing advertiser group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing advertiser group.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2707,7 +2723,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.AdvertiserGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.AdvertiserGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -2719,7 +2735,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2730,6 +2746,122 @@ namespace Google.Apis.Dfareporting.v3_5
                     Name = "profileId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "advertiserInvoices" collection of methods.</summary>
+    public class AdvertiserInvoicesResource
+    {
+        private const string Resource = "advertiserInvoices";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AdvertiserInvoicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Retrieves a list of invoices for a particular issue month. The api only works if the billing profile invoice
+        /// level is set to either advertiser or campaign non-consolidated invoice level.
+        /// </summary>
+        /// <param name="profileId">User profile ID associated with this request.</param>
+        /// <param name="advertiserId">Advertiser ID of this invoice.</param>
+        public virtual ListRequest List(long profileId, long advertiserId)
+        {
+            return new ListRequest(service, profileId, advertiserId);
+        }
+
+        /// <summary>
+        /// Retrieves a list of invoices for a particular issue month. The api only works if the billing profile invoice
+        /// level is set to either advertiser or campaign non-consolidated invoice level.
+        /// </summary>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertiserInvoicesListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long advertiserId) : base(service)
+            {
+                ProfileId = profileId;
+                AdvertiserId = advertiserId;
+                InitParameters();
+            }
+
+            /// <summary>User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Advertiser ID of this invoice.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AdvertiserId { get; private set; }
+
+            /// <summary>Month for which invoices are needed in the format YYYYMM. Required field</summary>
+            [Google.Apis.Util.RequestParameterAttribute("issueMonth", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string IssueMonth { get; set; }
+
+            /// <summary>Maximum number of results to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>Value of the nextPageToken from the previous result page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertisers/{advertiserId}/invoices";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("issueMonth", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "issueMonth",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2760,7 +2892,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one landing page by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.LandingPage>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.LandingPage>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -2785,7 +2917,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserLandingPages/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2813,16 +2945,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new landing page.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.LandingPage body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new landing page.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.LandingPage>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.LandingPage>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.LandingPage body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2834,7 +2966,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.LandingPage Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.LandingPage Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -2846,7 +2978,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2871,7 +3003,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of landing pages.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdvertiserLandingPagesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertiserLandingPagesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -2964,7 +3096,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3065,16 +3197,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">LandingPage ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.LandingPage body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser landing page. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.LandingPage>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.LandingPage>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.LandingPage body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -3091,7 +3223,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.LandingPage Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.LandingPage Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3103,7 +3235,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3131,16 +3263,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing landing page.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.LandingPage body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing landing page.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.LandingPage>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.LandingPage>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.LandingPage body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3152,7 +3284,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.LandingPage Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.LandingPage Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3164,7 +3296,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3205,7 +3337,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one advertiser by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Advertiser>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Advertiser>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -3230,7 +3362,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertisers/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3258,16 +3390,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new advertiser.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Advertiser body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new advertiser.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Advertiser>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Advertiser>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Advertiser body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3279,7 +3411,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Advertiser Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Advertiser Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3291,7 +3423,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3316,7 +3448,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of advertisers, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.AdvertisersListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AdvertisersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -3426,7 +3558,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3543,16 +3675,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Advertiser ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Advertiser body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Advertiser>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Advertiser>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Advertiser body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -3569,7 +3701,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Advertiser Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Advertiser Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3581,7 +3713,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3609,16 +3741,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing advertiser.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Advertiser body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing advertiser.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Advertiser>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Advertiser>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Advertiser body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3630,7 +3762,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Advertiser Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Advertiser Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3642,7 +3774,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/advertisers";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3651,6 +3783,585 @@ namespace Google.Apis.Dfareporting.v3_5
                 RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "billingAssignments" collection of methods.</summary>
+    public class BillingAssignmentsResource
+    {
+        private const string Resource = "billingAssignments";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BillingAssignmentsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Inserts a new billing assignment and returns the new assignment. Only one of advertiser_id or campaign_id is
+        /// support per request. If the new assignment has no effect (assigning a campaign to the parent advertiser
+        /// billing profile or assigning an advertiser to the account billing profile), no assignment will be returned.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="profileId">User profile ID associated with this request.</param>
+        /// <param name="billingProfileId">Billing profile ID of this billing assignment.</param>
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.BillingAssignment body, long profileId, long billingProfileId)
+        {
+            return new InsertRequest(service, body, profileId, billingProfileId);
+        }
+
+        /// <summary>
+        /// Inserts a new billing assignment and returns the new assignment. Only one of advertiser_id or campaign_id is
+        /// support per request. If the new assignment has no effect (assigning a campaign to the parent advertiser
+        /// billing profile or assigning an advertiser to the account billing profile), no assignment will be returned.
+        /// </summary>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.BillingAssignment>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.BillingAssignment body, long profileId, long billingProfileId) : base(service)
+            {
+                ProfileId = profileId;
+                BillingProfileId = billingProfileId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Billing profile ID of this billing assignment.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("billingProfileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long BillingProfileId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v4.Data.BillingAssignment Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingAssignments";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("billingProfileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "billingProfileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a list of billing assignments.</summary>
+        /// <param name="profileId">User profile ID associated with this request.</param>
+        /// <param name="billingProfileId">Billing profile ID of this billing assignment.</param>
+        public virtual ListRequest List(long profileId, long billingProfileId)
+        {
+            return new ListRequest(service, profileId, billingProfileId);
+        }
+
+        /// <summary>Retrieves a list of billing assignments.</summary>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.BillingAssignmentsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long billingProfileId) : base(service)
+            {
+                ProfileId = profileId;
+                BillingProfileId = billingProfileId;
+                InitParameters();
+            }
+
+            /// <summary>User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Billing profile ID of this billing assignment.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("billingProfileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long BillingProfileId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingAssignments";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("billingProfileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "billingProfileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "billingProfiles" collection of methods.</summary>
+    public class BillingProfilesResource
+    {
+        private const string Resource = "billingProfiles";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BillingProfilesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets one billing profile by ID.</summary>
+        /// <param name="profileId">User profile ID associated with this request.</param>
+        /// <param name="id">Billing Profile ID.</param>
+        public virtual GetRequest Get(long profileId, long id)
+        {
+            return new GetRequest(service, profileId, id);
+        }
+
+        /// <summary>Gets one billing profile by ID.</summary>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.BillingProfile>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
+            {
+                ProfileId = profileId;
+                Id = id;
+                InitParameters();
+            }
+
+            /// <summary>User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Billing Profile ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long Id { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/billingProfiles/{id}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a list of billing profiles, possibly filtered. This method supports paging.</summary>
+        /// <param name="profileId">User profile ID associated with this request.</param>
+        public virtual ListRequest List(long profileId)
+        {
+            return new ListRequest(service, profileId);
+        }
+
+        /// <summary>Retrieves a list of billing profiles, possibly filtered. This method supports paging.</summary>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.BillingProfilesListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
+            {
+                ProfileId = profileId;
+                InitParameters();
+            }
+
+            /// <summary>User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Select only billing profile with currency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("currency_code", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CurrencyCode { get; set; }
+
+            /// <summary>Select only billing profile with these IDs.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
+
+            /// <summary>Maximum number of results to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>
+            /// Allows searching for billing profiles by name. Wildcards (*) are allowed. For example, "profile*2020"
+            /// will return objects with names like "profile June 2020", "profile April 2020", or simply "profile 2020".
+            /// Most of the searches also add wildcards implicitly at the start and the end of the search string. For
+            /// example, a search string of "profile" will match objects with name "my profile", "profile 2021", or
+            /// simply "profile".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>
+            /// Select only billing profile which is suggested for the currency_code &amp;amp; subaccount_id using the
+            /// Billing Suggestion API.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onlySuggestion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> OnlySuggestion { get; set; }
+
+            /// <summary>Value of the nextPageToken from the previous result page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Field by which to sort the list.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
+
+            /// <summary>Field by which to sort the list.</summary>
+            public enum SortFieldEnum
+            {
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("ID")]
+                ID = 0,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("NAME")]
+                NAME = 1,
+            }
+
+            /// <summary>Order of sorted results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+            /// <summary>Order of sorted results.</summary>
+            public enum SortOrderEnum
+            {
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("ASCENDING")]
+                ASCENDING = 0,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("DESCENDING")]
+                DESCENDING = 1,
+            }
+
+            /// <summary>Select only billing profile with the specified status.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="StatusList"/> to set multiple
+            /// values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<StatusEnum> Status { get; set; }
+
+            /// <summary>Select only billing profile with the specified status.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Status"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusEnum> StatusList { get; set; }
+
+            /// <summary>Select only billing profile with the specified status.</summary>
+            public enum StatusEnum
+            {
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("UNDER_REVIEW")]
+                UNDERREVIEW = 0,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("ACTIVE")]
+                ACTIVE = 1,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("ARCHIVED")]
+                ARCHIVED = 2,
+            }
+
+            /// <summary>
+            /// Select only billing profile with the specified subaccount.When only_suggestion is true, only a single
+            /// subaccount_id is supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("subaccountIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> SubaccountIds { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/billingProfiles";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("currency_code", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "currency_code",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onlySuggestion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onlySuggestion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subaccountIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subaccountIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an existing billing profile.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="profileId">User profile ID associated with this request.</param>
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.BillingProfile body, long profileId)
+        {
+            return new UpdateRequest(service, body, profileId);
+        }
+
+        /// <summary>Updates an existing billing profile.</summary>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.BillingProfile>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.BillingProfile body, long profileId) : base(service)
+            {
+                ProfileId = profileId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v4.Data.BillingProfile Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/billingProfiles";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "billingRates" collection of methods.</summary>
+    public class BillingRatesResource
+    {
+        private const string Resource = "billingRates";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BillingRatesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves a list of billing rates. This method supports paging.</summary>
+        /// <param name="profileId">User profile ID associated with this request.</param>
+        /// <param name="billingProfileId">Billing profile ID of this billing rate.</param>
+        public virtual ListRequest List(long profileId, long billingProfileId)
+        {
+            return new ListRequest(service, profileId, billingProfileId);
+        }
+
+        /// <summary>Retrieves a list of billing rates. This method supports paging.</summary>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.BillingRatesListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long billingProfileId) : base(service)
+            {
+                ProfileId = profileId;
+                BillingProfileId = billingProfileId;
+                InitParameters();
+            }
+
+            /// <summary>User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Billing profile ID of this billing rate.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("billingProfileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long BillingProfileId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingRates";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("billingProfileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "billingProfileId",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -3682,7 +4393,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of browsers.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.BrowsersListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.BrowsersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -3702,7 +4413,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/browsers";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/browsers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3741,7 +4452,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="campaignId">Campaign ID in this association.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.CampaignCreativeAssociation body, long profileId, long campaignId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CampaignCreativeAssociation body, long profileId, long campaignId)
         {
             return new InsertRequest(service, body, profileId, campaignId);
         }
@@ -3750,10 +4461,10 @@ namespace Google.Apis.Dfareporting.v3_5
         /// Associates a creative with the specified campaign. This method creates a default ad with dimensions matching
         /// the creative in the campaign if such a default ad does not exist already.
         /// </summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CampaignCreativeAssociation>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CampaignCreativeAssociation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CampaignCreativeAssociation body, long profileId, long campaignId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CampaignCreativeAssociation body, long profileId, long campaignId) : base(service)
             {
                 ProfileId = profileId;
                 CampaignId = campaignId;
@@ -3770,7 +4481,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long CampaignId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CampaignCreativeAssociation Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CampaignCreativeAssociation Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3782,7 +4493,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3820,7 +4531,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves the list of creative IDs associated with the specified campaign. This method supports paging.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CampaignCreativeAssociationsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CampaignCreativeAssociationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId, long campaignId) : base(service)
@@ -3869,7 +4580,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3942,7 +4653,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one campaign by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Campaign>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Campaign>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -3967,7 +4678,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/campaigns/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3995,16 +4706,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new campaign.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Campaign body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new campaign.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Campaign>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Campaign>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Campaign body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -4016,7 +4727,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Campaign Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Campaign Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -4028,7 +4739,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -4053,7 +4764,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of campaigns, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CampaignsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CampaignsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -4157,7 +4868,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4282,16 +4993,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Campaign ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Campaign body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Campaign>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Campaign>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Campaign body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -4308,7 +5019,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Campaign Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Campaign Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -4320,7 +5031,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -4348,16 +5059,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing campaign.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Campaign body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing campaign.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Campaign>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Campaign>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Campaign body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -4369,7 +5080,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Campaign Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Campaign Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -4381,7 +5092,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/campaigns";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -4422,7 +5133,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one change log by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ChangeLog>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ChangeLog>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -4447,7 +5158,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/changeLogs/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/changeLogs/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -4480,7 +5191,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of change logs. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ChangeLogsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ChangeLogsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -4800,7 +5511,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/changeLogs";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/changeLogs";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4920,7 +5631,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of cities, possibly filtered.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CitiesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CitiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -4956,7 +5667,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/cities";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/cities";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5029,7 +5740,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one connection type by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ConnectionType>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ConnectionType>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -5054,7 +5765,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/connectionTypes/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/connectionTypes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5087,7 +5798,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of connection types.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ConnectionTypesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ConnectionTypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -5107,7 +5818,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/connectionTypes";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/connectionTypes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5173,7 +5884,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/contentCategories/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -5207,7 +5918,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one content category by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ContentCategory>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ContentCategory>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -5232,7 +5943,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/contentCategories/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5260,16 +5971,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new content category.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.ContentCategory body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new content category.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ContentCategory>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ContentCategory>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.ContentCategory body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5281,7 +5992,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.ContentCategory Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.ContentCategory Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -5293,7 +6004,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -5318,7 +6029,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of content categories, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ContentCategoriesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ContentCategoriesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -5392,7 +6103,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5461,16 +6172,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">ContentCategory ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.ContentCategory body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing content category. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ContentCategory>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ContentCategory>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.ContentCategory body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -5487,7 +6198,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.ContentCategory Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.ContentCategory Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -5499,7 +6210,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -5527,16 +6238,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing content category.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.ContentCategory body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing content category.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ContentCategory>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ContentCategory>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.ContentCategory body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5548,7 +6259,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.ContentCategory Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.ContentCategory Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -5560,7 +6271,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -5595,16 +6306,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts conversions.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual BatchinsertRequest Batchinsert(Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchInsertRequest body, long profileId)
+        public virtual BatchinsertRequest Batchinsert(Google.Apis.Dfareporting.v4.Data.ConversionsBatchInsertRequest body, long profileId)
         {
             return new BatchinsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts conversions.</summary>
-        public class BatchinsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchInsertResponse>
+        public class BatchinsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ConversionsBatchInsertResponse>
         {
             /// <summary>Constructs a new Batchinsert request.</summary>
-            public BatchinsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchInsertRequest body, long profileId) : base(service)
+            public BatchinsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.ConversionsBatchInsertRequest body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5616,7 +6327,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchInsertRequest Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.ConversionsBatchInsertRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -5628,7 +6339,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/conversions/batchinsert";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/conversions/batchinsert";
 
             /// <summary>Initializes Batchinsert parameter list.</summary>
             protected override void InitParameters()
@@ -5648,16 +6359,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates existing conversions.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual BatchupdateRequest Batchupdate(Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchUpdateRequest body, long profileId)
+        public virtual BatchupdateRequest Batchupdate(Google.Apis.Dfareporting.v4.Data.ConversionsBatchUpdateRequest body, long profileId)
         {
             return new BatchupdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates existing conversions.</summary>
-        public class BatchupdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchUpdateResponse>
+        public class BatchupdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ConversionsBatchUpdateResponse>
         {
             /// <summary>Constructs a new Batchupdate request.</summary>
-            public BatchupdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchUpdateRequest body, long profileId) : base(service)
+            public BatchupdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.ConversionsBatchUpdateRequest body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5669,7 +6380,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.ConversionsBatchUpdateRequest Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.ConversionsBatchUpdateRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -5681,7 +6392,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/conversions/batchupdate";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/conversions/batchupdate";
 
             /// <summary>Initializes Batchupdate parameter list.</summary>
             protected override void InitParameters()
@@ -5722,7 +6433,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one country by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Country>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Country>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long dartId) : base(service)
@@ -5747,7 +6458,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/countries/{dartId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/countries/{dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5780,7 +6491,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of countries.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CountriesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CountriesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -5800,7 +6511,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/countries";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/countries";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5836,16 +6547,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="advertiserId">Advertiser ID of this creative. This is a required field.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata body, long profileId, long advertiserId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata body, long profileId, long advertiserId)
         {
             return new InsertRequest(service, body, profileId, advertiserId);
         }
 
         /// <summary>Inserts a new creative asset.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata body, long profileId, long advertiserId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata body, long profileId, long advertiserId) : base(service)
             {
                 ProfileId = profileId;
                 AdvertiserId = advertiserId;
@@ -5862,7 +6573,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long AdvertiserId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -5874,7 +6585,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -5922,13 +6633,13 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="advertiserId">Advertiser ID of this creative. This is a required field.</param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
-        public virtual InsertMediaUpload Insert(Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
+        public virtual InsertMediaUpload Insert(Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
         {
             return new InsertMediaUpload(service, body, profileId, advertiserId, stream, contentType);
         }
 
         /// <summary>Insert media upload which supports resumable upload.</summary>
-        public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata, Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata>
+        public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata, Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata>
         {
             /// <summary>V1 error format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
@@ -6035,8 +6746,8 @@ namespace Google.Apis.Dfareporting.v3_5
             /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
-                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "dfareporting/v3.5/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"), "POST", stream, contentType)
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "dfareporting/v4/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"), "POST", stream, contentType)
             {
                 ProfileId = profileId;
                 AdvertiserId = advertiserId;
@@ -6099,7 +6810,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6142,7 +6853,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one creative field value by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId, long id) : base(service)
@@ -6172,7 +6883,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6209,16 +6920,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="creativeFieldId">Creative field ID for this creative field value.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
         {
             return new InsertRequest(service, body, profileId, creativeFieldId);
         }
 
         /// <summary>Inserts a new creative field value.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6235,7 +6946,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long CreativeFieldId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeFieldValue Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -6247,7 +6958,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6285,7 +6996,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves a list of creative field values, possibly filtered. This method supports paging.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValuesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeFieldValuesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId) : base(service)
@@ -6360,7 +7071,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6438,16 +7149,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="creativeFieldId">CreativeField ID.</param>
         /// <param name="id">CreativeFieldValue ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id)
         {
             return new PatchRequest(service, body, profileId, creativeFieldId, id);
         }
 
         /// <summary>Updates an existing creative field value. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6469,7 +7180,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeFieldValue Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -6481,7 +7192,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -6518,16 +7229,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="creativeFieldId">Creative field ID for this creative field value.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
         {
             return new UpdateRequest(service, body, profileId, creativeFieldId);
         }
 
         /// <summary>Updates an existing creative field value.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6544,7 +7255,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long CreativeFieldId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeFieldValue Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeFieldValue Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -6556,7 +7267,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -6630,7 +7341,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6664,7 +7375,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one creative field by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeField>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeField>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -6689,7 +7400,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6717,16 +7428,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new creative field.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.CreativeField body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new creative field.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeField>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeField>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeField body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -6738,7 +7449,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeField Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeField Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -6750,7 +7461,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6775,7 +7486,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of creative fields, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeFieldsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeFieldsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -6854,7 +7565,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6931,16 +7642,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">CreativeField ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.CreativeField body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative field. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeField>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeField>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeField body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -6957,7 +7668,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeField Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeField Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -6969,7 +7680,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -6997,16 +7708,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing creative field.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.CreativeField body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing creative field.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeField>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeField>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeField body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7018,7 +7729,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeField Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeField Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7030,7 +7741,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7071,7 +7782,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one creative group by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeGroup>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -7096,7 +7807,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7124,16 +7835,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new creative group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.CreativeGroup body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new creative group.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeGroup>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeGroup body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7145,7 +7856,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7157,7 +7868,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7182,7 +7893,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of creative groups, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeGroupsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -7265,7 +7976,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7350,16 +8061,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">CreativeGroup ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.CreativeGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative group. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeGroup>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeGroup body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -7376,7 +8087,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7388,7 +8099,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7416,16 +8127,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing creative group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.CreativeGroup body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing creative group.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativeGroup>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.CreativeGroup body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7437,7 +8148,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.CreativeGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.CreativeGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7449,7 +8160,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7490,7 +8201,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one creative by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Creative>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Creative>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -7515,7 +8226,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creatives/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7543,16 +8254,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new creative.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Creative body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Creative body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new creative.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Creative>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Creative>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Creative body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Creative body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7564,7 +8275,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Creative Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Creative Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7576,7 +8287,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7601,7 +8312,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of creatives, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CreativesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CreativesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -7833,7 +8544,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7982,16 +8693,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Creative ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Creative body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Creative body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Creative>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Creative>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Creative body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Creative body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -8008,7 +8719,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Creative Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Creative Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -8020,7 +8731,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -8048,16 +8759,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing creative.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Creative body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Creative body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing creative.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Creative>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Creative>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Creative body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Creative body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8069,7 +8780,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Creative Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Creative Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -8081,7 +8792,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/creatives";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -8116,16 +8827,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Retrieves list of report dimension values for a list of filters.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
-        public virtual QueryRequest Query(Google.Apis.Dfareporting.v3_5.Data.DimensionValueRequest body, long profileId)
+        public virtual QueryRequest Query(Google.Apis.Dfareporting.v4.Data.DimensionValueRequest body, long profileId)
         {
             return new QueryRequest(service, body, profileId);
         }
 
         /// <summary>Retrieves list of report dimension values for a list of filters.</summary>
-        public class QueryRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.DimensionValueList>
+        public class QueryRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DimensionValueList>
         {
             /// <summary>Constructs a new Query request.</summary>
-            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.DimensionValueRequest body, long profileId) : base(service)
+            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.DimensionValueRequest body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8145,7 +8856,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual string PageToken { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.DimensionValueRequest Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.DimensionValueRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -8157,7 +8868,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dimensionvalues/query";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/dimensionvalues/query";
 
             /// <summary>Initializes Query parameter list.</summary>
             protected override void InitParameters()
@@ -8214,7 +8925,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one directory site by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.DirectorySite>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DirectorySite>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -8239,7 +8950,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/directorySites/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/directorySites/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8267,16 +8978,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new directory site.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.DirectorySite body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.DirectorySite body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new directory site.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.DirectorySite>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DirectorySite>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.DirectorySite body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.DirectorySite body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8288,7 +8999,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.DirectorySite Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.DirectorySite Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -8300,7 +9011,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/directorySites";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/directorySites";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8325,7 +9036,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of directory sites, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.DirectorySitesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DirectorySitesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -8427,7 +9138,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/directorySites";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/directorySites";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8619,7 +9330,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dynamicTargetingKeys/{objectId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/dynamicTargetingKeys/{objectId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -8667,7 +9378,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.DynamicTargetingKey body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.DynamicTargetingKey body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
@@ -8677,10 +9388,10 @@ namespace Google.Apis.Dfareporting.v3_5
         /// the advertiser's ads, creatives, or placements. There is a maximum of 1000 keys per advertiser, out of which
         /// a maximum of 20 keys can be assigned per ad, creative, or placement.
         /// </summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.DynamicTargetingKey>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicTargetingKey>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.DynamicTargetingKey body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.DynamicTargetingKey body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8692,7 +9403,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.DynamicTargetingKey Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.DynamicTargetingKey Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -8704,7 +9415,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dynamicTargetingKeys";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8729,7 +9440,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of dynamic targeting keys.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.DynamicTargetingKeysListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicTargetingKeysListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -8785,7 +9496,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/dynamicTargetingKeys";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8883,7 +9594,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/eventTags/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -8917,7 +9628,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one event tag by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.EventTag>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.EventTag>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -8942,7 +9653,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/eventTags/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8970,16 +9681,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new event tag.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.EventTag body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new event tag.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.EventTag>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.EventTag>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.EventTag body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8991,7 +9702,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.EventTag Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.EventTag Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -9003,7 +9714,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -9028,7 +9739,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of event tags, possibly filtered.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.EventTagsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.EventTagsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -9170,7 +9881,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9271,16 +9982,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">EventTag ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.EventTag body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.EventTag>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.EventTag>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.EventTag body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -9297,7 +10008,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.EventTag Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.EventTag Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -9309,7 +10020,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -9337,16 +10048,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing event tag.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.EventTag body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing event tag.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.EventTag>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.EventTag>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.EventTag body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -9358,7 +10069,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.EventTag Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.EventTag Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -9370,7 +10081,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/eventTags";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -9415,7 +10126,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves a report file by its report ID and file ID. This method supports media download.
         /// </summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.File>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.File>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long reportId, long fileId) : base(service)
@@ -9441,7 +10152,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/reports/{reportId}/files/{fileId}";
+            public override string RestPath => "dfareporting/v4/reports/{reportId}/files/{fileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9569,7 +10280,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Lists files for a user profile.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FileList>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FileList>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -9649,7 +10360,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/files";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/files";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9755,7 +10466,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivities/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -9788,7 +10499,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Generates a tag for a floodlight activity.</summary>
-        public class GeneratetagRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivitiesGenerateTagResponse>
+        public class GeneratetagRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivitiesGenerateTagResponse>
         {
             /// <summary>Constructs a new Generatetag request.</summary>
             public GeneratetagRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -9812,7 +10523,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities/generatetag";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivities/generatetag";
 
             /// <summary>Initializes Generatetag parameter list.</summary>
             protected override void InitParameters()
@@ -9846,7 +10557,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one floodlight activity by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -9871,7 +10582,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivities/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9899,16 +10610,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new floodlight activity.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new floodlight activity.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -9920,7 +10631,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightActivity Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -9932,7 +10643,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -9961,7 +10672,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves a list of floodlight activities, possibly filtered. This method supports paging.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivitiesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivitiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -10087,7 +10798,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10212,16 +10923,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">FloodlightActivity ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -10238,7 +10949,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightActivity Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -10250,7 +10961,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10278,16 +10989,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing floodlight activity.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight activity.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -10299,7 +11010,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightActivity Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightActivity Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -10311,7 +11022,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -10352,7 +11063,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one floodlight activity group by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -10377,7 +11088,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivityGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10405,16 +11116,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new floodlight activity group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new floodlight activity group.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -10426,7 +11137,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -10438,7 +11149,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -10467,7 +11178,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroupsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -10579,7 +11290,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10672,16 +11383,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">FloodlightActivityGroup ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -10698,7 +11409,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -10710,7 +11421,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10738,16 +11449,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing floodlight activity group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight activity group.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -10759,7 +11470,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightActivityGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -10771,7 +11482,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -10812,7 +11523,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one floodlight configuration by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -10837,7 +11548,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightConfigurations/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10870,7 +11581,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of floodlight configurations, possibly filtered.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightConfigurationsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightConfigurationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -10897,7 +11608,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10926,16 +11637,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">FloodlightConfiguration ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -10952,7 +11663,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -10964,7 +11675,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10992,16 +11703,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing floodlight configuration.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight configuration.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -11013,7 +11724,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.FloodlightConfiguration Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -11025,7 +11736,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -11067,7 +11778,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one inventory item by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.InventoryItem>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.InventoryItem>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id) : base(service)
@@ -11097,7 +11808,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11139,7 +11850,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of inventory items, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.InventoryItemsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.InventoryItemsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId) : base(service)
@@ -11236,7 +11947,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/inventoryItems";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects/{projectId}/inventoryItems";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11356,7 +12067,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of languages.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.LanguagesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.LanguagesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -11376,7 +12087,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/languages";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/languages";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11416,7 +12127,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of metros.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.MetrosListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.MetrosListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -11436,7 +12147,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/metros";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/metros";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11477,7 +12188,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one mobile app by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.MobileApp>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.MobileApp>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, string id) : base(service)
@@ -11502,7 +12213,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileApps/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/mobileApps/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11535,7 +12246,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves list of available mobile apps.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.MobileAppsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.MobileAppsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -11640,7 +12351,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileApps";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/mobileApps";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11721,7 +12432,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one mobile carrier by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.MobileCarrier>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.MobileCarrier>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -11746,7 +12457,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileCarriers/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/mobileCarriers/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11779,7 +12490,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of mobile carriers.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.MobileCarriersListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.MobileCarriersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -11799,7 +12510,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/mobileCarriers";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/mobileCarriers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11840,7 +12551,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one operating system version by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.OperatingSystemVersion>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OperatingSystemVersion>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -11865,7 +12576,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystemVersions/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/operatingSystemVersions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11898,7 +12609,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of operating system versions.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.OperatingSystemVersionsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OperatingSystemVersionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -11918,7 +12629,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystemVersions";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/operatingSystemVersions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11959,7 +12670,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one operating system by DART ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.OperatingSystem>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OperatingSystem>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long dartId) : base(service)
@@ -11984,7 +12695,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystems/{dartId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/operatingSystems/{dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12017,7 +12728,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of operating systems.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.OperatingSystemsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OperatingSystemsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -12037,7 +12748,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/operatingSystems";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/operatingSystems";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12079,7 +12790,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one order document by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.OrderDocument>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OrderDocument>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id) : base(service)
@@ -12109,7 +12820,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12151,7 +12862,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of order documents, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.OrderDocumentsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OrderDocumentsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId) : base(service)
@@ -12243,7 +12954,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orderDocuments";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects/{projectId}/orderDocuments";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12365,7 +13076,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one order by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Order>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Order>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id) : base(service)
@@ -12395,7 +13106,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orders/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects/{projectId}/orders/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12437,7 +13148,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of orders, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.OrdersListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OrdersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId) : base(service)
@@ -12519,7 +13230,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{projectId}/orders";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects/{projectId}/orders";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12624,7 +13335,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one placement group by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementGroup>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -12649,7 +13360,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12677,16 +13388,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new placement group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.PlacementGroup body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new placement group.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementGroup>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.PlacementGroup body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -12698,7 +13409,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.PlacementGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.PlacementGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -12710,7 +13421,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -12735,7 +13446,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of placement groups, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementGroupsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -12748,16 +13459,49 @@ namespace Google.Apis.Dfareporting.v3_5
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
+            /// <summary>Select only placements with these active statuses.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="ActiveStatusList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("activeStatus", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ActiveStatusEnum> ActiveStatus { get; set; }
+
+            /// <summary>Select only placements with these active statuses.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ActiveStatus"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("activeStatus", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ActiveStatusEnum> ActiveStatusList { get; set; }
+
+            /// <summary>Select only placements with these active statuses.</summary>
+            public enum ActiveStatusEnum
+            {
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_UNKNOWN")]
+                PLACEMENTSTATUSUNKNOWN = 0,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_ACTIVE")]
+                PLACEMENTSTATUSACTIVE = 1,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_INACTIVE")]
+                PLACEMENTSTATUSINACTIVE = 2,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_ARCHIVED")]
+                PLACEMENTSTATUSARCHIVED = 3,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_PERMANENTLY_ARCHIVED")]
+                PLACEMENTSTATUSPERMANENTLYARCHIVED = 4,
+            }
+
             /// <summary>Select only placement groups that belong to these advertisers.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserIds", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> AdvertiserIds { get; set; }
-
-            /// <summary>
-            /// Select only archived placements. Don't set this field to select both archived and non-archived
-            /// placements.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("archived", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Archived { get; set; }
 
             /// <summary>Select only placement groups that belong to these campaigns.</summary>
             [Google.Apis.Util.RequestParameterAttribute("campaignIds", Google.Apis.Util.RequestParameterType.Query)]
@@ -12938,7 +13682,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12952,17 +13696,17 @@ namespace Google.Apis.Dfareporting.v3_5
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("activeStatus", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "advertiserIds",
+                    Name = "activeStatus",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "archived",
+                    Name = "advertiserIds",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -13111,16 +13855,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">PlacementGroup ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.PlacementGroup body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement group. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementGroup>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.PlacementGroup body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -13137,7 +13881,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.PlacementGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.PlacementGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13149,7 +13893,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -13177,16 +13921,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing placement group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.PlacementGroup body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing placement group.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementGroup>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.PlacementGroup body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -13198,7 +13942,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.PlacementGroup Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.PlacementGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13210,7 +13954,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -13276,7 +14020,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementStrategies/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -13310,7 +14054,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one placement strategy by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -13335,7 +14079,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementStrategies/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -13363,16 +14107,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new placement strategy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new placement strategy.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -13384,7 +14128,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.PlacementStrategy Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13396,7 +14140,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -13421,7 +14165,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of placement strategies, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementStrategiesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementStrategiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -13496,7 +14240,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -13565,16 +14309,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">PlacementStrategy ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement strategy. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -13591,7 +14335,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.PlacementStrategy Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13603,7 +14347,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -13631,16 +14375,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing placement strategy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing placement strategy.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -13652,7 +14396,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.PlacementStrategy Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.PlacementStrategy Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13664,7 +14408,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -13704,7 +14448,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Generates tags for a placement.</summary>
-        public class GeneratetagsRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementsGenerateTagsResponse>
+        public class GeneratetagsRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementsGenerateTagsResponse>
         {
             /// <summary>Constructs a new Generatetags request.</summary>
             public GeneratetagsRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -13841,7 +14585,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements/generatetags";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placements/generatetags";
 
             /// <summary>Initializes Generatetags parameter list.</summary>
             protected override void InitParameters()
@@ -13891,7 +14635,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one placement by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Placement>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Placement>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -13916,7 +14660,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placements/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -13944,16 +14688,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new placement.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Placement body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Placement body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new placement.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Placement>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Placement>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Placement body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Placement body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -13965,7 +14709,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Placement Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Placement Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13977,7 +14721,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -14002,7 +14746,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of placements, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlacementsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlacementsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -14015,16 +14759,49 @@ namespace Google.Apis.Dfareporting.v3_5
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
+            /// <summary>Select only placements with these active statuses.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="ActiveStatusList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("activeStatus", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ActiveStatusEnum> ActiveStatus { get; set; }
+
+            /// <summary>Select only placements with these active statuses.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="ActiveStatus"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("activeStatus", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ActiveStatusEnum> ActiveStatusList { get; set; }
+
+            /// <summary>Select only placements with these active statuses.</summary>
+            public enum ActiveStatusEnum
+            {
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_UNKNOWN")]
+                PLACEMENTSTATUSUNKNOWN = 0,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_ACTIVE")]
+                PLACEMENTSTATUSACTIVE = 1,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_INACTIVE")]
+                PLACEMENTSTATUSINACTIVE = 2,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_ARCHIVED")]
+                PLACEMENTSTATUSARCHIVED = 3,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_STATUS_PERMANENTLY_ARCHIVED")]
+                PLACEMENTSTATUSPERMANENTLYARCHIVED = 4,
+            }
+
             /// <summary>Select only placements that belong to these advertisers.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserIds", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> AdvertiserIds { get; set; }
-
-            /// <summary>
-            /// Select only archived placements. Don't set this field to select both archived and non-archived
-            /// placements.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("archived", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Archived { get; set; }
 
             /// <summary>Select only placements that belong to these campaigns.</summary>
             [Google.Apis.Util.RequestParameterAttribute("campaignIds", Google.Apis.Util.RequestParameterType.Query)]
@@ -14262,7 +15039,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placements";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14276,17 +15053,17 @@ namespace Google.Apis.Dfareporting.v3_5
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("activeStatus", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "advertiserIds",
+                    Name = "activeStatus",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "archived",
+                    Name = "advertiserIds",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -14459,16 +15236,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Placement ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Placement body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Placement body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Placement>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Placement>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Placement body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Placement body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -14485,7 +15262,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Placement Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Placement Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -14497,7 +15274,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -14525,16 +15302,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing placement.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Placement body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Placement body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing placement.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Placement>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Placement>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Placement body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Placement body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -14546,7 +15323,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Placement Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Placement Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -14558,7 +15335,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/placements";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -14599,7 +15376,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one platform type by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlatformType>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlatformType>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -14624,7 +15401,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/platformTypes/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/platformTypes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14657,7 +15434,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of platform types.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PlatformTypesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PlatformTypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -14677,7 +15454,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/platformTypes";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/platformTypes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14718,7 +15495,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one postal code by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PostalCode>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PostalCode>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, string code) : base(service)
@@ -14743,7 +15520,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/postalCodes/{code}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/postalCodes/{code}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14776,7 +15553,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of postal codes.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.PostalCodesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.PostalCodesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -14796,7 +15573,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/postalCodes";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/postalCodes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14837,7 +15614,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one project by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Project>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -14862,7 +15639,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14895,7 +15672,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging .</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ProjectsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ProjectsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -14973,7 +15750,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/projects";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/projects";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15069,7 +15846,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of regions.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RegionsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RegionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -15089,7 +15866,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/regions";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/regions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15130,7 +15907,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one remarketing list share by remarketing list ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long remarketingListId) : base(service)
@@ -15155,7 +15932,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingListShares/{remarketingListId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingListShares/{remarketingListId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15184,16 +15961,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">RemarketingList ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.RemarketingListShare body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing remarketing list share. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.RemarketingListShare body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -15210,7 +15987,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.RemarketingListShare Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -15222,7 +15999,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingListShares";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingListShares";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -15250,16 +16027,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing remarketing list share.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.RemarketingListShare body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing remarketing list share.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.RemarketingListShare body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -15271,7 +16048,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.RemarketingListShare Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.RemarketingListShare Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -15283,7 +16060,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingListShares";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingListShares";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -15324,7 +16101,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one remarketing list by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingList>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingList>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -15349,7 +16126,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingLists/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15377,16 +16154,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new remarketing list.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.RemarketingList body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new remarketing list.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingList>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingList>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.RemarketingList body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -15398,7 +16175,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.RemarketingList Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.RemarketingList Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -15410,7 +16187,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -15436,7 +16213,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of remarketing lists, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingListsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingListsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId, long advertiserId) : base(service)
@@ -15519,7 +16296,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15604,16 +16381,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">RemarketingList ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.RemarketingList body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingList>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingList>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.RemarketingList body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -15630,7 +16407,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.RemarketingList Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.RemarketingList Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -15642,7 +16419,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -15670,16 +16447,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing remarketing list.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.RemarketingList body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing remarketing list.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.RemarketingList>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingList>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.RemarketingList body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -15691,7 +16468,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.RemarketingList Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.RemarketingList Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -15703,7 +16480,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -15760,7 +16537,7 @@ namespace Google.Apis.Dfareporting.v3_5
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
-            public virtual QueryRequest Query(Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId)
+            public virtual QueryRequest Query(Google.Apis.Dfareporting.v4.Data.Report body, long profileId)
             {
                 return new QueryRequest(service, body, profileId);
             }
@@ -15769,10 +16546,10 @@ namespace Google.Apis.Dfareporting.v3_5
             /// Returns the fields that are compatible to be selected in the respective sections of a report criteria,
             /// given the fields already selected in the input report and user permissions.
             /// </summary>
-            public class QueryRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.CompatibleFields>
+            public class QueryRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.CompatibleFields>
             {
                 /// <summary>Constructs a new Query request.</summary>
-                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId) : base(service)
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Report body, long profileId) : base(service)
                 {
                     ProfileId = profileId;
                     Body = body;
@@ -15784,7 +16561,7 @@ namespace Google.Apis.Dfareporting.v3_5
                 public virtual long ProfileId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dfareporting.v3_5.Data.Report Body { get; set; }
+                Google.Apis.Dfareporting.v4.Data.Report Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -15796,7 +16573,7 @@ namespace Google.Apis.Dfareporting.v3_5
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/compatiblefields/query";
+                public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/compatiblefields/query";
 
                 /// <summary>Initializes Query parameter list.</summary>
                 protected override void InitParameters()
@@ -15845,7 +16622,7 @@ namespace Google.Apis.Dfareporting.v3_5
             /// <summary>
             /// Retrieves a report file by its report ID and file ID. This method supports media download.
             /// </summary>
-            public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.File>
+            public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.File>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long profileId, long reportId, long fileId) : base(service)
@@ -15876,7 +16653,7 @@ namespace Google.Apis.Dfareporting.v3_5
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}/files/{fileId}";
+                public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/{reportId}/files/{fileId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -16015,7 +16792,7 @@ namespace Google.Apis.Dfareporting.v3_5
             }
 
             /// <summary>Lists files for a report.</summary>
-            public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.FileList>
+            public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FileList>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long profileId, long reportId) : base(service)
@@ -16080,7 +16857,7 @@ namespace Google.Apis.Dfareporting.v3_5
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}/files";
+                public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/{reportId}/files";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -16172,7 +16949,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -16206,7 +16983,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a report by its ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Report>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Report>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long reportId) : base(service)
@@ -16231,7 +17008,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -16259,16 +17036,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Creates a report.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Report body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Creates a report.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Report>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Report>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Report body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -16280,7 +17057,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Report Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Report Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -16292,7 +17069,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -16317,7 +17094,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves list of reports.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.ReportList>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.ReportList>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -16397,7 +17174,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -16458,16 +17235,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">The DFA user profile ID.</param>
         /// <param name="reportId">The ID of the report.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId, long reportId)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Report body, long profileId, long reportId)
         {
             return new PatchRequest(service, body, profileId, reportId);
         }
 
         /// <summary>Updates an existing report. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Report>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Report>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId, long reportId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Report body, long profileId, long reportId) : base(service)
             {
                 ProfileId = profileId;
                 ReportId = reportId;
@@ -16484,7 +17261,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ReportId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Report Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Report Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -16496,7 +17273,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -16530,7 +17307,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Runs a report.</summary>
-        public class RunRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.File>
+        public class RunRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.File>
         {
             /// <summary>Constructs a new Run request.</summary>
             public RunRequest(Google.Apis.Services.IClientService service, long profileId, long reportId) : base(service)
@@ -16559,7 +17336,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}/run";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/{reportId}/run";
 
             /// <summary>Initializes Run parameter list.</summary>
             protected override void InitParameters()
@@ -16596,16 +17373,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         /// <param name="reportId">The ID of the report.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId, long reportId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Report body, long profileId, long reportId)
         {
             return new UpdateRequest(service, body, profileId, reportId);
         }
 
         /// <summary>Updates a report.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Report>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Report>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Report body, long profileId, long reportId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Report body, long profileId, long reportId) : base(service)
             {
                 ProfileId = profileId;
                 ReportId = reportId;
@@ -16622,7 +17399,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ReportId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Report Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Report Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -16634,7 +17411,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/reports/{reportId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -16683,7 +17460,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one site by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Site>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Site>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -16708,7 +17485,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sites/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -16736,16 +17513,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new site.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Site body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Site body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new site.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Site>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Site>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Site body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Site body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -16757,7 +17534,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Site Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Site Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -16769,7 +17546,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -16794,7 +17571,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of sites, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.SitesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.SitesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -16907,7 +17684,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sites";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17048,16 +17825,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Site ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Site body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Site body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing site. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Site>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Site>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Site body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Site body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -17074,7 +17851,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Site Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Site Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -17086,7 +17863,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -17114,16 +17891,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing site.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Site body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Site body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing site.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Site>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Site>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Site body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Site body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -17135,7 +17912,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Site Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Site Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -17147,7 +17924,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sites";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -17188,7 +17965,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one size by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Size>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Size>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -17213,7 +17990,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sizes/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sizes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17241,16 +18018,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new size.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Size body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Size body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new size.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Size>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Size>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Size body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Size body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -17262,7 +18039,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Size Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Size Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -17274,7 +18051,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sizes";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sizes";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -17307,7 +18084,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// currently in use by your account. Due to this, the list of sizes returned by this method may differ from the
         /// list seen in the Trafficking UI.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.SizesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.SizesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -17343,7 +18120,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/sizes";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/sizes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17416,7 +18193,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one subaccount by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Subaccount>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Subaccount>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -17441,7 +18218,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/subaccounts/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17469,16 +18246,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new subaccount.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.Subaccount body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new subaccount.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Subaccount>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Subaccount>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Subaccount body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -17490,7 +18267,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Subaccount Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Subaccount Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -17502,7 +18279,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -17527,7 +18304,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets a list of subaccounts, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.SubaccountsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.SubaccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -17601,7 +18378,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17670,16 +18447,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Subaccount ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.Subaccount body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing subaccount. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Subaccount>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Subaccount>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Subaccount body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -17696,7 +18473,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Subaccount Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Subaccount Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -17708,7 +18485,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -17736,16 +18513,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing subaccount.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.Subaccount body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing subaccount.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.Subaccount>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Subaccount>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.Subaccount body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -17757,7 +18534,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.Subaccount Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.Subaccount Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -17769,7 +18546,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -17810,7 +18587,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one remarketing list by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.TargetableRemarketingList>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TargetableRemarketingList>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -17835,7 +18612,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetableRemarketingLists/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/targetableRemarketingLists/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17873,7 +18650,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.TargetableRemarketingListsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TargetableRemarketingListsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId, long advertiserId) : base(service)
@@ -17952,7 +18729,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetableRemarketingLists";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/targetableRemarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18049,7 +18826,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one targeting template by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -18074,7 +18851,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/targetingTemplates/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18102,16 +18879,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new targeting template.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new targeting template.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18123,7 +18900,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.TargetingTemplate Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -18135,7 +18912,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -18164,7 +18941,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>
         /// Retrieves a list of targeting templates, optionally filtered. This method supports paging.
         /// </summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.TargetingTemplatesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TargetingTemplatesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -18242,7 +19019,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18319,16 +19096,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">TargetingTemplate ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing targeting template. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -18345,7 +19122,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.TargetingTemplate Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -18357,7 +19134,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -18385,16 +19162,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing targeting template.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing targeting template.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18406,7 +19183,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.TargetingTemplate Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.TargetingTemplate Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -18418,7 +19195,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -18458,7 +19235,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one user profile by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserProfile>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserProfile>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -18478,7 +19255,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18502,7 +19279,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves list of user profiles for a user.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserProfileList>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserProfileList>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -18517,7 +19294,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles";
+            public override string RestPath => "dfareporting/v4/userprofiles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18550,7 +19327,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one user role permission group by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRolePermissionGroup>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRolePermissionGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -18575,7 +19352,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissionGroups/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRolePermissionGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18608,7 +19385,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets a list of all supported user role permission groups.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRolePermissionGroupsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRolePermissionGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -18628,7 +19405,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissionGroups";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRolePermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18669,7 +19446,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one user role permission by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRolePermission>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRolePermission>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -18694,7 +19471,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissions/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRolePermissions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18727,7 +19504,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets a list of user role permissions, possibly filtered.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRolePermissionsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRolePermissionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -18751,7 +19528,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRolePermissions";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRolePermissions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18825,7 +19602,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRoles/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -18859,7 +19636,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one user role by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRole>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRole>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
@@ -18884,7 +19661,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRoles/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18912,16 +19689,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Inserts a new user role.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_5.Data.UserRole body, long profileId)
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
         }
 
         /// <summary>Inserts a new user role.</summary>
-        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRole>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRole>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.UserRole body, long profileId) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18933,7 +19710,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.UserRole Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.UserRole Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -18945,7 +19722,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -18970,7 +19747,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Retrieves a list of user roles, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRolesListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRolesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -19052,7 +19829,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -19137,16 +19914,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">UserRole ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_5.Data.UserRole body, long profileId, long id)
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
-        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRole>
+        public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRole>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.UserRole body, long profileId, long id) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -19163,7 +19940,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long Id { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.UserRole Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.UserRole Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -19175,7 +19952,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -19203,16 +19980,16 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <summary>Updates an existing user role.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_5.Data.UserRole body, long profileId)
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId)
         {
             return new UpdateRequest(service, body, profileId);
         }
 
         /// <summary>Updates an existing user role.</summary>
-        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.UserRole>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.UserRole>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_5.Data.UserRole body, long profileId) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -19224,7 +20001,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dfareporting.v3_5.Data.UserRole Body { get; set; }
+            Google.Apis.Dfareporting.v4.Data.UserRole Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -19236,7 +20013,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/userRoles";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -19277,7 +20054,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Gets one video format by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.VideoFormat>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.VideoFormat>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long profileId, int id) : base(service)
@@ -19302,7 +20079,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/videoFormats/{id}";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/videoFormats/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -19335,7 +20112,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
 
         /// <summary>Lists available video formats.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_5.Data.VideoFormatsListResponse>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.VideoFormatsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
@@ -19355,7 +20132,7 @@ namespace Google.Apis.Dfareporting.v3_5
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "dfareporting/v3.5/userprofiles/{profileId}/videoFormats";
+            public override string RestPath => "dfareporting/v4/userprofiles/{profileId}/videoFormats";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -19373,7 +20150,7 @@ namespace Google.Apis.Dfareporting.v3_5
         }
     }
 }
-namespace Google.Apis.Dfareporting.v3_5.Data
+namespace Google.Apis.Dfareporting.v4.Data
 {
     /// <summary>Contains properties of a Campaign Manager account.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
@@ -20231,6 +21008,28 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Invoice List Response</summary>
+    public class AdvertiserInvoicesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Invoice collection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoices")]
+        public virtual System.Collections.Generic.IList<Invoice> Invoices { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "dfareporting#advertiserInvoicesListResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Pagination token to be used for the next list operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Landing Page List Response</summary>
     public class AdvertiserLandingPagesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20316,6 +21115,242 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List account, subaccount, advertiser, and campaign associated with a given Billing Profile.</summary>
+    public class BillingAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ID of the account associated with the billing assignment.This is a read-only, auto-generated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>
+        /// ID of the advertiser associated with the billing assignment.Wildcard (*) means this assignment is not
+        /// limited to a single advertiser
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual string AdvertiserId { get; set; }
+
+        /// <summary>
+        /// ID of the campaign associated with the billing assignment. Wildcard (*) means this assignment is not limited
+        /// to a single campaign
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
+        public virtual string CampaignId { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingAssignment".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// ID of the subaccount associated with the billing assignment.Wildcard (*) means this assignment is not
+        /// limited to a single subaccountThis is a read-only, auto-generated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
+        public virtual string SubaccountId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Billing assignment List Response</summary>
+    public class BillingAssignmentsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Billing assignments collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAssignments")]
+        public virtual System.Collections.Generic.IList<BillingAssignment> BillingAssignments { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "dfareporting#billingAssignmentsListResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains properties of a Campaign Manager Billing Profile.</summary>
+    public class BillingProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Consolidated invoice option for this billing profile. Used to get a single, consolidated invoice across the
+        /// chosen invoice level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consolidatedInvoice")]
+        public virtual System.Nullable<bool> ConsolidatedInvoice { get; set; }
+
+        /// <summary>Country code of this billing profile.This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>Billing currency code in ISO 4217 format.This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>ID of this billing profile. This is a read-only, auto-generated field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Invoice level for this billing profile. Used to group fees into separate invoices by account, advertiser, or
+        /// campaign.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceLevel")]
+        public virtual string InvoiceLevel { get; set; }
+
+        /// <summary>True if the billing profile is the account default profile. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingProfile".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Name of this billing profile. This is a required field and must be less than 256 characters long and must be
+        /// unique among billing profile in the same account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ID of the payment account the billing profile belongs to. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsAccountId")]
+        public virtual string PaymentsAccountId { get; set; }
+
+        /// <summary>The ID of the payment customer the billing profile belongs to. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsCustomerId")]
+        public virtual string PaymentsCustomerId { get; set; }
+
+        /// <summary>
+        /// Purchase order (PO) for this billing profile. This PO number is used in the invoices for all of the
+        /// advertisers in this billing profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrder")]
+        public virtual string PurchaseOrder { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary payment customer the billing profile belongs to. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryPaymentsCustomerId")]
+        public virtual string SecondaryPaymentsCustomerId { get; set; }
+
+        /// <summary>Status of this billing profile.This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Billing profile List Response</summary>
+    public class BillingProfilesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Billing profiles collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingProfiles")]
+        public virtual System.Collections.Generic.IList<BillingProfile> BillingProfiles { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "dfareporting#billingProfilesListResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Pagination token to be used for the next list operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BillingRate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Billing currency code in ISO 4217 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>End date of this billing rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>ID of this billing rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>Name of this billing rate. This must be less than 256 characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Flat rate in micros of this billing rate. This cannot co-exist with tiered rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateInMicros")]
+        public virtual System.Nullable<long> RateInMicros { get; set; }
+
+        /// <summary>Start date of this billing rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>Tiered rate of this billing rate. This cannot co-exist with flat rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tieredRates")]
+        public virtual System.Collections.Generic.IList<BillingRateTieredRate> TieredRates { get; set; }
+
+        /// <summary>Type of this billing rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Unit of measure for this billing rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitOfMeasure")]
+        public virtual string UnitOfMeasure { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BillingRateTieredRate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum for this tier range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highValue")]
+        public virtual System.Nullable<long> HighValue { get; set; }
+
+        /// <summary>The minimum for this tier range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowValue")]
+        public virtual System.Nullable<long> LowValue { get; set; }
+
+        /// <summary>Rate in micros for this tier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateInMicros")]
+        public virtual System.Nullable<long> RateInMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Billing Rate List Response</summary>
+    public class BillingRatesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Billing rates collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingRates")]
+        public virtual System.Collections.Generic.IList<BillingRate> BillingRates { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingRatesListResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Pagination token to be used for the next list operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20499,20 +21534,12 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Whether Nielsen reports are enabled for this campaign.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nielsenOcrEnabled")]
-        public virtual System.Nullable<bool> NielsenOcrEnabled { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; }
 
         /// <summary>Subaccount ID of this campaign. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
         public virtual System.Nullable<long> SubaccountId { get; set; }
-
-        /// <summary>Campaign trafficker contact emails.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("traffickerEmails")]
-        public virtual System.Collections.Generic.IList<string> TraffickerEmails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20553,6 +21580,33 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a summarized campaign information associated with this invoice.</summary>
+    public class CampaignSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Campaign billing invoice code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingInvoiceCode")]
+        public virtual string BillingInvoiceCode { get; set; }
+
+        /// <summary>Campaign ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
+        public virtual System.Nullable<long> CampaignId { get; set; }
+
+        /// <summary>The pre-tax amount for this campaign, in micros of the invoice's currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preTaxAmountMicros")]
+        public virtual System.Nullable<long> PreTaxAmountMicros { get; set; }
+
+        /// <summary>The tax amount for this campaign, in micros of the invoice's currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAmountMicros")]
+        public virtual System.Nullable<long> TaxAmountMicros { get; set; }
+
+        /// <summary>The total amount of charges for this campaign, in micros of the invoice's currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAmountMicros")]
+        public virtual System.Nullable<long> TotalAmountMicros { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21058,16 +22112,17 @@ namespace Google.Apis.Dfareporting.v3_5.Data
 
         /// <summary>
         /// The display click ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[],
-        /// matchId, mobileDeviceId and gclid. This or encryptedUserId or encryptedUserIdCandidates[] or matchId or
-        /// mobileDeviceId or gclid is a required field.
+        /// matchId, mobileDeviceId, gclid, and impressionId. This or encryptedUserId or encryptedUserIdCandidates[] or
+        /// matchId or mobileDeviceId or gclid or impressionId is a required field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dclid")]
         public virtual string Dclid { get; set; }
 
         /// <summary>
         /// The alphanumeric encrypted user ID. When set, encryptionInfo should also be specified. This field is
-        /// mutually exclusive with encryptedUserIdCandidates[], matchId, mobileDeviceId, gclid and dclid. This or
-        /// encryptedUserIdCandidates[] or matchId or mobileDeviceId or gclid or dclid is a required field.
+        /// mutually exclusive with encryptedUserIdCandidates[], matchId, mobileDeviceId, gclid, dclid, and
+        /// impressionId. This or encryptedUserIdCandidates[] or matchId or mobileDeviceId or gclid or dclid or
+        /// impressionId is a required field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserId")]
         public virtual string EncryptedUserId { get; set; }
@@ -21077,8 +22132,8 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         /// will be used in the inserted conversion. If no such user ID is found then the conversion will be rejected
         /// with INVALID_ARGUMENT error. When set, encryptionInfo should also be specified. This field may only be used
         /// when calling batchinsert; it is not supported by batchupdate. This field is mutually exclusive with
-        /// encryptedUserId, matchId, mobileDeviceId, gclid and dclid. This or encryptedUserId or matchId or
-        /// mobileDeviceId or gclid or dclid is a required field.
+        /// encryptedUserId, matchId, mobileDeviceId, gclid dclid, and impressionId. This or encryptedUserId or matchId
+        /// or mobileDeviceId or gclid or dclid or impressionId is a required field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserIdCandidates")]
         public virtual System.Collections.Generic.IList<string> EncryptedUserIdCandidates { get; set; }
@@ -21093,11 +22148,18 @@ namespace Google.Apis.Dfareporting.v3_5.Data
 
         /// <summary>
         /// The Google click ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[],
-        /// matchId, mobileDeviceId and dclid. This or encryptedUserId or encryptedUserIdCandidates[] or matchId or
-        /// mobileDeviceId or dclid is a required field.
+        /// matchId, mobileDeviceId, dclid, and impressionId. This or encryptedUserId or encryptedUserIdCandidates[] or
+        /// matchId or mobileDeviceId or dclid or impressionId is a required field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
         public virtual string Gclid { get; set; }
+
+        /// <summary>
+        /// The impression ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[],
+        /// matchId, mobileDeviceId, and gclid. One of these identifiers must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionId")]
+        public virtual string ImpressionId { get; set; }
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversion".
@@ -21115,16 +22177,16 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         /// <summary>
         /// The match ID field. A match ID is your own first-party identifier that has been synced with Google using the
         /// match ID feature in Floodlight. This field is mutually exclusive with encryptedUserId,
-        /// encryptedUserIdCandidates[],mobileDeviceId, gclid and dclid. This or encryptedUserId or
-        /// encryptedUserIdCandidates[] or mobileDeviceId or gclid or dclid is a required field.
+        /// encryptedUserIdCandidates[],mobileDeviceId, gclid, dclid, and impressionId. This or encryptedUserId
+        /// orencryptedUserIdCandidates[] or mobileDeviceId or gclid or dclid or impressionIdis a required field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
         public virtual string MatchId { get; set; }
 
         /// <summary>
         /// The mobile device ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[],
-        /// matchId, gclid and dclid. This or encryptedUserId or encryptedUserIdCandidates[] or matchId or gclid or
-        /// dclid is a required field.
+        /// matchId, gclid, dclid, and impressionId. This or encryptedUserId or encryptedUserIdCandidates[] or matchId
+        /// or gclid or dclid or impressionId is a required field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
         public virtual string MobileDeviceId { get; set; }
@@ -24387,6 +25449,101 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about a single invoice</summary>
+    public class Invoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of summarized campaign information associated with this invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign_summaries")]
+        public virtual System.Collections.Generic.IList<CampaignSummary> CampaignSummaries { get; set; }
+
+        /// <summary>
+        /// The originally issued invoice that is being adjusted by this invoice, if applicable. May appear on invoice
+        /// PDF as *Reference invoice number*.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedInvoiceId")]
+        public virtual string CorrectedInvoiceId { get; set; }
+
+        /// <summary>Invoice currency code in ISO 4217 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>The invoice due date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dueDate")]
+        public virtual string DueDate { get; set; }
+
+        /// <summary>ID of this invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The type of invoice document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceType")]
+        public virtual string InvoiceType { get; set; }
+
+        /// <summary>The date when the invoice was issued.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDate")]
+        public virtual string IssueDate { get; set; }
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#invoice".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The ID of the payments account the invoice belongs to. Appears on the invoice PDF as *Billing Account
+        /// Number*.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsAccountId")]
+        public virtual string PaymentsAccountId { get; set; }
+
+        /// <summary>
+        /// The ID of the payments profile the invoice belongs to. Appears on the invoice PDF as *Billing ID*.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsProfileId")]
+        public virtual string PaymentsProfileId { get; set; }
+
+        /// <summary>
+        /// The URL to download a PDF copy of the invoice. Note that this URL is user specific and requires a valid
+        /// OAuth 2.0 access token to access. The access token must be provided in an *Authorization: Bearer* HTTP
+        /// header. The URL will only be usable for 7 days from when the api is called.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdfUrl")]
+        public virtual string PdfUrl { get; set; }
+
+        /// <summary>Purchase order number associated with the invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderNumber")]
+        public virtual string PurchaseOrderNumber { get; set; }
+
+        /// <summary>
+        /// The originally issued invoice(s) that is being cancelled by this invoice, if applicable. May appear on
+        /// invoice PDF as *Replaced invoice numbers*. Note: There may be multiple replaced invoices due to
+        /// consolidation of multiple invoices into a single invoice.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacedInvoiceIds")]
+        public virtual System.Collections.Generic.IList<string> ReplacedInvoiceIds { get; set; }
+
+        /// <summary>The invoice service end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceEndDate")]
+        public virtual string ServiceEndDate { get; set; }
+
+        /// <summary>The invoice service start date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceStartDate")]
+        public virtual string ServiceStartDate { get; set; }
+
+        /// <summary>The pre-tax subtotal amount, in micros of the invoice's currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtotalAmountMicros")]
+        public virtual System.Nullable<long> SubtotalAmountMicros { get; set; }
+
+        /// <summary>The invoice total amount, in micros of the invoice's currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAmountMicros")]
+        public virtual System.Nullable<long> TotalAmountMicros { get; set; }
+
+        /// <summary>The sum of all taxes in invoice, in micros of the invoice's currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTaxAmountMicros")]
+        public virtual System.Nullable<long> TotalTaxAmountMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Key Value Targeting Expression.</summary>
     public class KeyValueTargetingExpression : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25475,6 +26632,10 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<long> AccountId { get; set; }
 
+        /// <summary>Whether this placement is active, inactive, archived or permanently archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeStatus")]
+        public virtual string ActiveStatus { get; set; }
+
         /// <summary>
         /// Whether this placement opts out of ad blocking. When true, ad blocking is disabled for this placement. When
         /// false, the campaign and site settings take effect.
@@ -25496,10 +26657,6 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
         public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
-
-        /// <summary>Whether this placement is archived.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Campaign ID of this placement. This field is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
@@ -25748,6 +26905,10 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<long> AccountId { get; set; }
 
+        /// <summary>Whether this placement group is active, inactive, archived or permanently archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeStatus")]
+        public virtual string ActiveStatus { get; set; }
+
         /// <summary>Advertiser ID of this placement group. This is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
@@ -25755,10 +26916,6 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
         public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
-
-        /// <summary>Whether this placement group is archived.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Campaign ID of this placement group. This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
@@ -27510,6 +28667,14 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         public virtual string Orientation { get; set; }
 
         /// <summary>
+        /// Publisher specification ID used to identify site-associated publisher requirements and automatically
+        /// populate transcode settings. If publisher specification ID is specified, it will take precedence over
+        /// transcode settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherSpecificationId")]
+        public virtual System.Nullable<long> PublisherSpecificationId { get; set; }
+
+        /// <summary>
         /// Settings for the skippability of video creatives served to this site. This will act as default for new
         /// placements created under this site.
         /// </summary>
@@ -28445,6 +29610,10 @@ namespace Google.Apis.Dfareporting.v3_5.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; }
+
+        /// <summary>Publisher specification ID of a video placement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherSpecificationId")]
+        public virtual System.Nullable<long> PublisherSpecificationId { get; set; }
 
         /// <summary>
         /// Settings for the skippability of video creatives served to this placement. If this object is provided, the

@@ -22723,7 +22723,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class HouseholdIncomeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The household income of the audience.</summary>
+        /// <summary>The household income of the audience. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncome")]
         public virtual string HouseholdIncome { get; set; }
 
