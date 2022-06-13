@@ -5222,6 +5222,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Status of data plane management. Only reported per-member.</summary>
+    public class ServiceMeshDataPlaneManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explanation of the status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<ServiceMeshStatusDetails> Details { get; set; }
+
+        /// <summary>Lifecycle status of data plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.</summary>
     public class ServiceMeshFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5267,6 +5282,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. Status of control plane management</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneManagement")]
         public virtual ServiceMeshControlPlaneManagement ControlPlaneManagement { get; set; }
+
+        /// <summary>Output only. Status of data plane management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPlaneManagement")]
+        public virtual ServiceMeshDataPlaneManagement DataPlaneManagement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -9743,6 +9743,227 @@ namespace Google.Apis.YouTube.v3
             public V3Resource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                LiveBroadcasts = new LiveBroadcastsResource(service);
+            }
+
+            /// <summary>Gets the LiveBroadcasts resource.</summary>
+            public virtual LiveBroadcastsResource LiveBroadcasts { get; }
+
+            /// <summary>The "liveBroadcasts" collection of methods.</summary>
+            public class LiveBroadcastsResource
+            {
+                private const string Resource = "liveBroadcasts";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LiveBroadcastsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Cuepoint = new CuepointResource(service);
+                }
+
+                /// <summary>Gets the Cuepoint resource.</summary>
+                public virtual CuepointResource Cuepoint { get; }
+
+                /// <summary>The "cuepoint" collection of methods.</summary>
+                public class CuepointResource
+                {
+                    private const string Resource = "cuepoint";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CuepointResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Insert cuepoints in a broadcast</summary>
+                    public virtual CreateRequest Create()
+                    {
+                        return new CreateRequest(service);
+                    }
+
+                    /// <summary>Insert cuepoints in a broadcast</summary>
+                    public class CreateRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.Cuepoint>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service) : base(service)
+                        {
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Broadcast to insert ads to, or equivalently `external_video_id` for internal use.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Id { get; set; }
+
+                        /// <summary>
+                        /// *Note:* This parameter is intended exclusively for YouTube content partners. The
+                        /// *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials
+                        /// identify a YouTube CMS user who is acting on behalf of the content owner specified in the
+                        /// parameter value. This parameter is intended for YouTube content partners that own and manage
+                        /// many different YouTube channels. It allows content owners to authenticate once and get
+                        /// access to all their video and channel data, without having to provide authentication
+                        /// credentials for each individual channel. The CMS account that the user authenticates with
+                        /// must be linked to the specified YouTube content owner.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OnBehalfOfContentOwner { get; set; }
+
+                        /// <summary>
+                        /// This parameter can only be used in a properly authorized request. *Note:* This parameter is
+                        /// intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel*
+                        /// parameter specifies the YouTube channel ID of the channel to which a video is being added.
+                        /// This parameter is required when a request specifies a value for the onBehalfOfContentOwner
+                        /// parameter, and it can only be used in conjunction with that parameter. In addition, the
+                        /// request must be authorized using a CMS account that is linked to the content owner that the
+                        /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+                        /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner
+                        /// that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube
+                        /// content partners that own and manage many different YouTube channels. It allows content
+                        /// owners to authenticate once and perform actions on behalf of the channel specified in the
+                        /// parameter value, without having to provide authentication credentials for each separate
+                        /// channel.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwnerChannel", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OnBehalfOfContentOwnerChannel { get; set; }
+
+                        /// <summary>
+                        /// The *part* parameter specifies a comma-separated list of one or more liveBroadcast resource
+                        /// properties that the API response will include. The part names that you can include in the
+                        /// parameter value are id, snippet, contentDetails, and status.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+                        [Google.Apis.Util.RequestParameterAttribute("resource.cueType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ResourceCueTypeEnum> ResourceCueType { get; set; }
+
+                        public enum ResourceCueTypeEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("cueTypeUnspecified")]
+                            CueTypeUnspecified = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("cueTypeAd")]
+                            CueTypeAd = 1,
+                        }
+
+                        /// <summary>The duration of this cuepoint.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource.durationSecs", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> ResourceDurationSecs { get; set; }
+
+                        /// <summary>The identifier for cuepoint resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource.id", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ResourceId { get; set; }
+
+                        /// <summary>
+                        /// The time when the cuepoint should be inserted by offset to the broadcast actual start time.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource.insertionOffsetTimeMs", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> ResourceInsertionOffsetTimeMs { get; set; }
+
+                        /// <summary>
+                        /// The wall clock time at which the cuepoint should be inserted. Only one of
+                        /// insertion_offset_time_ms and walltime_ms may be set at a time.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource.walltimeMs", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ulong> ResourceWalltimeMs { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "youtube/v3/liveBroadcasts/cuepoint";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "onBehalfOfContentOwner",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("onBehalfOfContentOwnerChannel", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "onBehalfOfContentOwnerChannel",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "part",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("resource.cueType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource.cueType",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("resource.durationSecs", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource.durationSecs",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("resource.id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource.id",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("resource.insertionOffsetTimeMs", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource.insertionOffsetTimeMs",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("resource.walltimeMs", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource.walltimeMs",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Updates an existing resource.</summary>
@@ -11792,6 +12013,40 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>A rating that YouTube uses to identify age-restricted content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ytRating")]
         public virtual string YtRating { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Note that there may be a 5-second end-point resolution issue. For instance, if a cuepoint comes in for 22:03:27,
+    /// we may stuff the cuepoint into 22:03:25 or 22:03:30, depending. This is an artifact of HLS.
+    /// </summary>
+    public class Cuepoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cueType")]
+        public virtual string CueType { get; set; }
+
+        /// <summary>The duration of this cuepoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationSecs")]
+        public virtual System.Nullable<long> DurationSecs { get; set; }
+
+        /// <summary>The identifier for cuepoint resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The time when the cuepoint should be inserted by offset to the broadcast actual start time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertionOffsetTimeMs")]
+        public virtual System.Nullable<long> InsertionOffsetTimeMs { get; set; }
+
+        /// <summary>
+        /// The wall clock time at which the cuepoint should be inserted. Only one of insertion_offset_time_ms and
+        /// walltime_ms may be set at a time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("walltimeMs")]
+        public virtual System.Nullable<ulong> WalltimeMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

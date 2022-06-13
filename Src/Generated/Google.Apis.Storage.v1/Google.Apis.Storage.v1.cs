@@ -6937,6 +6937,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cors")]
         public virtual System.Collections.Generic.IList<CorsData> Cors { get; set; }
 
+        /// <summary>The bucket's custom placement configuration for Custom Dual Regions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPlacementConfig")]
+        public virtual CustomPlacementConfigData CustomPlacementConfig { get; set; }
+
         /// <summary>
         /// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to
         /// retain objects indefinitely until an event occurs, signified by the hold's release. After being released,
@@ -7147,6 +7151,14 @@ namespace Google.Apis.Storage.v1.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("responseHeader")]
             public virtual System.Collections.Generic.IList<string> ResponseHeader { get; set; }
+        }
+
+        /// <summary>The bucket's custom placement configuration for Custom Dual Regions.</summary>
+        public class CustomPlacementConfigData
+        {
+            /// <summary>The list of regional locations in which data is placed.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dataLocations")]
+            public virtual System.Collections.Generic.IList<string> DataLocations { get; set; }
         }
 
         /// <summary>Encryption configuration for a bucket.</summary>

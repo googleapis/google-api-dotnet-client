@@ -38709,7 +38709,7 @@
    }
   }
  },
- "revision": "20220526",
+ "revision": "20220531",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -50796,14 +50796,14 @@
      "type": "string"
     },
     "listManagedInstancesResults": {
-     "description": "Pagination behavior of listManagedInstances API method for this Managed Instance Group.",
+     "description": "Pagination behavior of the listManagedInstances API method for this managed instance group.",
      "enum": [
       "PAGELESS",
       "PAGINATED"
      ],
      "enumDescriptions": [
-      "(Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.",
-      "Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected."
+      "(Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.",
+      "Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected."
      ],
      "type": "string"
     },
@@ -72610,23 +72610,14 @@
      "enum": [
       "DISABLE_GOOGLE_ACCESS",
       "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE",
-      "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE",
-      "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS"
+      "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
      ],
      "enumDescriptions": [
       "Disable private IPv6 access to/from Google services.",
       "Bidirectional private IPv6 access to/from Google services.",
-      "Outbound private IPv6 access from VMs in this subnet to Google services.",
-      "Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. Outbound private IPv6 access is enabled per VM based on Service Accounts. This applies only to VMs with primary service accounts as listed in private_ipv6_google_access_service_account."
+      "Outbound private IPv6 access from VMs in this subnet to Google services."
      ],
      "type": "string"
-    },
-    "privateIpv6GoogleAccessServiceAccounts": {
-     "description": "Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.",
-     "items": {
-      "type": "string"
-     },
-     "type": "array"
     },
     "purpose": {
      "description": "The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.",

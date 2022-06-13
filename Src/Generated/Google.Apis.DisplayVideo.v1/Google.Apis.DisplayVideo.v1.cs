@@ -2993,7 +2993,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// - `creativeId` * The operator must be `HAS (:)` for the following fields: - `lineItemIds` * The
                 /// operator must be `GREATER THAN OR EQUAL TO (&amp;gt;=)` or `LESS THAN OR EQUAL TO (&amp;lt;=)` for
                 /// the following fields: - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * For
-                /// `entityStatus`, `minDuration`, `maxDuration`, `updateTime`, `and `dynamic`, there may be at most one
+                /// `entityStatus`, `minDuration`, `maxDuration`, `updateTime`, and `dynamic`, there may be at most one
                 /// restriction. * For `dimensions`, the value is in the form of `"{width}x{height}"`. * For
                 /// `exchangeReviewStatus`, the value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration`
                 /// and `maxDuration`, the value is in the form of `"{duration}s"`. Only seconds are supported with
@@ -18852,7 +18852,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// The age range of an audience. We only support targeting a continuous age range of an audience. Thus, the age
         /// range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous age range. The
         /// reach of a continuous age range targeting can be expanded by also targeting an audience of an unknown age.
-        /// Output only in v1.
+        /// Output only in v1. Required in v2.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; }
@@ -19462,7 +19462,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class AudioContentTypeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The audio content type. Output only in v1.</summary>
+        /// <summary>The audio content type. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioContentType")]
         public virtual string AudioContentType { get; set; }
 
@@ -20723,7 +20723,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adType")]
         public virtual string AdType { get; set; }
 
-        /// <summary>The content instream position for video or audio ads. Output only in v1.</summary>
+        /// <summary>The content instream position for video or audio ads. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPosition")]
         public virtual string ContentInstreamPosition { get; set; }
 
@@ -20768,7 +20768,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adType")]
         public virtual string AdType { get; set; }
 
-        /// <summary>The content outstream position. Output only in v1.</summary>
+        /// <summary>The content outstream position. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPosition")]
         public virtual string ContentOutstreamPosition { get; set; }
 
@@ -21667,7 +21667,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class DeviceTypeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The display name of the device type. Output only in v1.</summary>
+        /// <summary>The display name of the device type. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; }
 
@@ -21994,7 +21994,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class EnvironmentAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The serving environment. Output only in v1.</summary>
+        /// <summary>The serving environment. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
@@ -22375,7 +22375,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>
         /// The maximum number of times a user may be shown the same ad during this period. Must be greater than 0.
-        /// Required when unlimited is `false`.
+        /// Required when unlimited is `false` and max_views is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxImpressions")]
         public virtual System.Nullable<int> MaxImpressions { get; set; }
@@ -22413,7 +22413,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class GenderAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The gender of the audience. Output only in v1.</summary>
+        /// <summary>The gender of the audience. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
@@ -24490,7 +24490,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class NativeContentPositionAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content position. Output only in v1.</summary>
+        /// <summary>The content position. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentPosition")]
         public virtual string ContentPosition { get; set; }
 
@@ -24639,7 +24639,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class OmidAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of Open Measurement enabled inventory. Output only in v1.</summary>
+        /// <summary>The type of Open Measurement enabled inventory. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omid")]
         public virtual string Omid { get; set; }
 
@@ -26128,7 +26128,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
         public virtual string TargetingOptionId { get; set; }
 
-        /// <summary>The video player size. Output only in v1.</summary>
+        /// <summary>The video player size. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSize")]
         public virtual string VideoPlayerSize { get; set; }
 
@@ -26163,7 +26163,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
         public virtual string TargetingOptionId { get; set; }
 
-        /// <summary>The predicted viewability percentage. Output only in v1.</summary>
+        /// <summary>The predicted viewability percentage. Output only in v1. Required in v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewability")]
         public virtual string Viewability { get; set; }
 
