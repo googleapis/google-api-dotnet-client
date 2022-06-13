@@ -271,6 +271,8 @@ namespace Google.Apis.Auth.OAuth2
                 throw new InvalidOperationException("JSON data does not represent a valid external account credential.");
             }
 
+            DirectUseExternalAccountCredential credential;
+
             // Build the external credential of the correct type.
             // The order in which these checks are performed is relevant, see https://google.aip.dev/auth/4117.
             if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.EnvironmentId))
@@ -283,12 +285,34 @@ namespace Google.Apis.Auth.OAuth2
             }
             else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.Url))
             {
-                throw new NotImplementedException("Url-sourced credentials not yet supported.");
+                var initializer = new UrlSourcedExternalAccountCredential.Initializer(
+                    parameters.TokenUrl, parameters.Audience, parameters.SubjectTokenType, parameters.CredentialSourceConfig.Url)
+                {
+                    TokenInfoUrl = parameters.TokenInfoUrl,
+                    QuotaProject = parameters.QuotaProject,
+                    ClientId = parameters.ClientId,
+                    ClientSecret = parameters.ClientSecret,
+                    Headers = parameters.CredentialSourceConfig.Headers,
+                    SubjectTokenJsonFieldName = parameters.CredentialSourceConfig.Format?.Type?.Equals("json", StringComparison.OrdinalIgnoreCase) == true
+                        ? parameters.CredentialSourceConfig.Format.SubjectTokenFieldName
+                        : null
+                };
+
+                credential = new UrlSourcedExternalAccountCredential(initializer);
             }
             else
             {
                 throw new InvalidOperationException("Unrecognized external credential configuration");
             }
+
+            // Now handle impersonation as it is the same for all credentials.
+            if (string.IsNullOrEmpty(parameters.ServiceAccountImpersonationUrl))
+            {
+                return credential;
+            }
+            var impersonatedInitializer = new ImpersonatedExternalAccountCredential.Initializer(parameters.ServiceAccountImpersonationUrl);
+            impersonatedInitializer.SetSourceCredentialFrom(credential);
+            return new ImpersonatedExternalAccountCredential(impersonatedInitializer);
         }
 
         /// <summary> 
