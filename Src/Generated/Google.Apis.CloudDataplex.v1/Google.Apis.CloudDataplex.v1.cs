@@ -442,9 +442,216 @@ namespace Google.Apis.CloudDataplex.v1
                         this.service = service;
                     }
 
+                    /// <summary>Create a content.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the parent lake:
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Create a content.</summary>
+                    public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the parent lake:
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/content";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+$",
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Delete a content.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the content:
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Delete a content.</summary>
+                    public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the content:
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Get a content resource.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the content:
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Get a content resource.</summary>
+                    public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the content:
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Specify content view to make a partial request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Optional. Specify content view to make a partial request.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// Content view not specified. Defaults to BASIC. The API will default to the BASIC view.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("CONTENT_VIEW_UNSPECIFIED")]
+                            CONTENTVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Will not return the data_text field.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Returns the complete proto.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/.*$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>
-                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
-                    /// and does not have a policy set.
+                    /// Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the
+                    /// resource.
                     /// </summary>
                     /// <param name="resource">
                     /// REQUIRED: The resource for which the policy is being requested. See Resource names
@@ -456,8 +663,10 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
-                    /// and does not have a policy set.
+                    /// Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the
+                    /// resource.
                     /// </summary>
                     public class GetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
                     {
@@ -508,7 +717,7 @@ namespace Google.Apis.CloudDataplex.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/.*$",
                             });
                             RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                             {
@@ -521,9 +730,193 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
+                    /// <summary>List content.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the parent lake:
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List content.</summary>
+                    public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListContentResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the parent lake:
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter request. Filters are case-sensitive. The following formats are
+                        /// supported:labels.key1 = "value1" labels:key1 type = "NOTEBOOK" type = "SQL_SCRIPT"These
+                        /// restrictions can be coinjoined with AND, OR and NOT conjunctions.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of content to return. The service may return fewer than this value.
+                        /// If unspecified, at most 10 content will be returned. The maximum value is 1000; values above
+                        /// 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Page token received from a previous ListContent call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to ListContent must match
+                        /// the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/content";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Update a content. Only supports full resource update.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. The relative resource name of the content, of the form:
+                    /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Update a content. Only supports full resource update.</summary>
+                    public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. The relative resource name of the content, of the form:
+                        /// projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Mask of fields to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>
+                        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/.*$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>
-                    /// Sets the access control policy on the specified resource. Replaces any existing policy.Can
-                    /// return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                    /// Sets the access control policy on the specified contentitem resource. Replaces any existing
+                    /// policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -536,8 +929,8 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Sets the access control policy on the specified resource. Replaces any existing policy.Can
-                    /// return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                    /// Sets the access control policy on the specified contentitem resource. Replaces any existing
+                    /// policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
                     /// </summary>
                     public class SetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
                     {
@@ -582,16 +975,17 @@ namespace Google.Apis.CloudDataplex.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/.*$",
                             });
                         }
                     }
 
                     /// <summary>
-                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                    /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
-                    /// designed to be used for building permission-aware UIs and command-line tools, not for
-                    /// authorization checking. This operation may "fail open" without warning.
+                    /// Returns the caller's permissions on a resource. If the resource does not exist, an empty set of
+                    /// permissions is returned (a NOT_FOUND error is not returned).A caller is not required to have
+                    /// Google IAM permission to make this request.Note: This operation is designed to be used for
+                    /// building permission-aware UIs and command-line tools, not for authorization checking. This
+                    /// operation may "fail open" without warning.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -604,10 +998,11 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                    /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
-                    /// designed to be used for building permission-aware UIs and command-line tools, not for
-                    /// authorization checking. This operation may "fail open" without warning.
+                    /// Returns the caller's permissions on a resource. If the resource does not exist, an empty set of
+                    /// permissions is returned (a NOT_FOUND error is not returned).A caller is not required to have
+                    /// Google IAM permission to make this request.Note: This operation is designed to be used for
+                    /// building permission-aware UIs and command-line tools, not for authorization checking. This
+                    /// operation may "fail open" without warning.
                     /// </summary>
                     public class TestIamPermissionsRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsResponse>
                     {
@@ -652,7 +1047,7 @@ namespace Google.Apis.CloudDataplex.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/content/.*$",
                             });
                         }
                     }
@@ -880,6 +1275,89 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the
+                    /// resource.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the
+                    /// resource.
+                    /// </summary>
+                    public class GetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                        /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                        /// field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy.Valid values are
+                        /// 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies
+                        /// with any conditional role bindings must specify version 3. Policies with no conditional role
+                        /// bindings may specify any valid value or leave the field unset.The policy in the response
+                        /// might use the policy version that you specified, or it might use a lower policy version. For
+                        /// example, if you specify version 3, but the policy has no conditional role bindings, the
+                        /// response uses version 1.To learn which resources support conditions in their IAM policies,
+                        /// see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/contentitems/.*$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>List content.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent lake:
@@ -1060,6 +1538,144 @@ namespace Google.Apis.CloudDataplex.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified contentitem resource. Replaces any existing
+                    /// policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified contentitem resource. Replaces any existing
+                    /// policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
+                    /// </summary>
+                    public class SetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                        /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                        /// field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/contentitems/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns the caller's permissions on a resource. If the resource does not exist, an empty set of
+                    /// permissions is returned (a NOT_FOUND error is not returned).A caller is not required to have
+                    /// Google IAM permission to make this request.Note: This operation is designed to be used for
+                    /// building permission-aware UIs and command-line tools, not for authorization checking. This
+                    /// operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns the caller's permissions on a resource. If the resource does not exist, an empty set of
+                    /// permissions is returned (a NOT_FOUND error is not returned).A caller is not required to have
+                    /// Google IAM permission to make this request.Note: This operation is designed to be used for
+                    /// building permission-aware UIs and command-line tools, not for authorization checking. This
+                    /// operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                        /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                        /// field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/lakes/[^/]+/contentitems/.*$",
                             });
                         }
                     }

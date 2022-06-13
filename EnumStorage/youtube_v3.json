@@ -210,5 +210,9 @@
   "Google.Apis.YouTube.v3.YouTubeBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.YouTube.v3.YoutubeResource+V3Resource+LiveBroadcastsResource+CuepointResource+CreateRequest.ResourceCueTypeEnum": [
+    "cueTypeUnspecified",
+    "cueTypeAd"
   ]
 }

@@ -1032,10 +1032,10 @@ namespace Google.Apis.Connectors.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Field mask is used to specify the fields to be overwritten in the Connection resource by the
-                    /// update. The fields specified in the update_mask are relative to the resource, not the full
-                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
-                    /// then all fields will be overwritten.
+                    /// Required. Field mask is used to specify the fields to be overwritten in the Connection resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields will be overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2510,6 +2510,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2JwtBearer")]
         public virtual Oauth2JwtBearer Oauth2JwtBearer { get; set; }
 
+        /// <summary>SSH Public Key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKey")]
+        public virtual SshPublicKey SshPublicKey { get; set; }
+
         /// <summary>UserPassword.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPassword")]
         public virtual UserPassword UserPassword { get; set; }
@@ -2685,10 +2689,6 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Description of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
-
-        /// <summary>Output only. Outbound domains/hosts needs to be allowlisted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("egressBackends")]
-        public virtual System.Collections.Generic.IList<string> EgressBackends { get; set; }
 
         /// <summary>
         /// Output only. GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -3670,6 +3670,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
+        /// <summary>Output only. Resource name of the form: `projects/*/locations/*/runtimeConfig`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>Output only. The endpoint of the connectors runtime ingress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeEndpoint")]
         public virtual string RuntimeEndpoint { get; set; }
@@ -3750,6 +3754,28 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Type of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
         public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SshPublicKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Format of SSH Client cert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certType")]
+        public virtual string CertType { get; set; }
+
+        /// <summary>This is an optional field used in case client has enabled multi-factor authentication</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual Secret Password { get; set; }
+
+        /// <summary>SSH Client Cert. It should contain both public and private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshClientCert")]
+        public virtual Secret SshClientCert { get; set; }
+
+        /// <summary>The user account used to authenticate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

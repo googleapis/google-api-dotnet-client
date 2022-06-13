@@ -1734,7 +1734,9 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubDestination")]
         public virtual PubsubDestination PubsubDestination { get; set; }
 
-        /// <summary>List of output sprite sheets.</summary>
+        /// <summary>
+        /// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spriteSheets")]
         public virtual System.Collections.Generic.IList<SpriteSheet> SpriteSheets { get; set; }
 

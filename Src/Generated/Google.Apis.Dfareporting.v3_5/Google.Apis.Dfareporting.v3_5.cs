@@ -4769,14 +4769,6 @@ namespace Google.Apis.Dfareporting.v3_5
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER_CUSTOMER_LINK")]
                 OBJECTADVERTISERCUSTOMERLINK = 40,
-
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_PROJECT")]
-                OBJECTCREATIVEPROJECT = 41,
-
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("OBJECT_ACCOUNT_CAMPAIGN_CREATIVE_PROJECT_LINK")]
-                OBJECTACCOUNTCAMPAIGNCREATIVEPROJECTLINK = 42,
             }
 
             /// <summary>Value of the nextPageToken from the previous result page.</summary>

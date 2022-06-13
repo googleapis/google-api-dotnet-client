@@ -1522,6 +1522,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         this.service = service;
                         CloneJobs = new CloneJobsResource(service);
                         CutoverJobs = new CutoverJobsResource(service);
+                        ReplicationCycles = new ReplicationCyclesResource(service);
                     }
 
                     /// <summary>Gets the CloneJobs resource.</summary>
@@ -2091,6 +2092,174 @@ namespace Google.Apis.VMMigrationService.v1alpha1
 
                             /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1alpha1/{+parent}/cutoverJobs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/migratingVms/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the ReplicationCycles resource.</summary>
+                    public virtual ReplicationCyclesResource ReplicationCycles { get; }
+
+                    /// <summary>The "replicationCycles" collection of methods.</summary>
+                    public class ReplicationCyclesResource
+                    {
+                        private const string Resource = "replicationCycles";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ReplicationCyclesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets details of a single ReplicationCycle.</summary>
+                        /// <param name="name">Required. The name of the ReplicationCycle.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details of a single ReplicationCycle.</summary>
+                        public class GetRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ReplicationCycle>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the ReplicationCycle.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/migratingVms/[^/]+/replicationCycles/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists ReplicationCycles in a given MigratingVM.</summary>
+                        /// <param name="parent">
+                        /// Required. The parent, which owns this collection of ReplicationCycles.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists ReplicationCycles in a given MigratingVM.</summary>
+                        public class ListRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ListReplicationCyclesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent, which owns this collection of ReplicationCycles.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. The filter request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Optional. the order by fields for the result.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of replication cycles to return. The service may return
+                            /// fewer than this value. If unspecified, at most 100 migrating VMs will be returned. The
+                            /// maximum value is 100; values above 100 will be coerced to 100.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Required. A page token, received from a previous `ListReplicationCycles` call. Provide
+                            /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListReplicationCycles` must match the call that provided the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha1/{+parent}/replicationCycles";
 
                             /// <summary>Initializes List parameter list.</summary>
                             protected override void InitParameters()
@@ -4269,6 +4438,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1
 }
 namespace Google.Apis.VMMigrationService.v1alpha1.Data
 {
+    /// <summary>AdaptingOSStep contains specific step details.</summary>
+    public class AdaptingOSStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'AddGroupMigration' request.</summary>
     public class AddGroupMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4398,6 +4574,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Output only. The time the clone job was ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
         /// <summary>Output only. Provides details for the errors that led to the Clone Job's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
@@ -4414,12 +4594,43 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateTime")]
         public virtual object StateTime { get; set; }
 
+        /// <summary>Output only. The clone steps list representing its progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<CloneStep> Steps { get; set; }
+
         /// <summary>
         /// Output only. Details of the VM to create as the target of this clone job. Deprecated: Use
         /// compute_engine_target_details instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDetails")]
         public virtual TargetVMDetails TargetDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CloneStep holds information about the clone step progress.</summary>
+    public class CloneStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Adapting OS step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptingOs")]
+        public virtual AdaptingOSStep AdaptingOs { get; set; }
+
+        /// <summary>The time the step has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Instantiating migrated VM step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instantiatingMigratedVm")]
+        public virtual InstantiatingMigratedVMStep InstantiatingMigratedVm { get; set; }
+
+        /// <summary>Preparing VM disks step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preparingVmDisks")]
+        public virtual PreparingVMDisksStep PreparingVmDisks { get; set; }
+
+        /// <summary>The time the step has started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4658,6 +4869,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Output only. The time the cutover job had finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
         /// <summary>Output only. Provides details for the errors that led to the Cutover Job's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
@@ -4686,12 +4901,51 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateTime")]
         public virtual object StateTime { get; set; }
 
+        /// <summary>Output only. The cutover steps list representing its progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<CutoverStep> Steps { get; set; }
+
         /// <summary>
         /// Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use
         /// compute_engine_target_details instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDetails")]
         public virtual TargetVMDetails TargetDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CutoverStep holds information about the cutover step progress.</summary>
+    public class CutoverStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the step has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Final sync step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalSync")]
+        public virtual ReplicationCycle FinalSync { get; set; }
+
+        /// <summary>Instantiating migrated VM step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instantiatingMigratedVm")]
+        public virtual InstantiatingMigratedVMStep InstantiatingMigratedVm { get; set; }
+
+        /// <summary>Preparing VM disks step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preparingVmDisks")]
+        public virtual PreparingVMDisksStep PreparingVmDisks { get; set; }
+
+        /// <summary>A replication cycle prior cutover step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousReplicationCycle")]
+        public virtual ReplicationCycle PreviousReplicationCycle { get; set; }
+
+        /// <summary>Shutting down VM step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shuttingDownSourceVm")]
+        public virtual ShuttingDownSourceVMStep ShuttingDownSourceVm { get; set; }
+
+        /// <summary>The time the step has started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4883,6 +5137,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>InstantiatingMigratedVMStep contains specific step details.</summary>
+    public class InstantiatingMigratedVMStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a URL link.</summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5033,6 +5294,28 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'ListReplicationCycles' request.</summary>
+    public class ListReplicationCyclesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. The list of replication cycles response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationCycles")]
+        public virtual System.Collections.Generic.IList<ReplicationCycle> ReplicationCycles { get; set; }
+
+        /// <summary>Output only. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5423,6 +5706,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PreparingVMDisksStep contains specific step details.</summary>
+    public class PreparingVMDisksStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'RemoveMigration' request.</summary>
     public class RemoveGroupMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5460,6 +5750,14 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>ReplicationCycle contains information about the current replication cycle status.</summary>
     public class ReplicationCycle : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The time the replication cycle has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The identifier of the ReplicationCycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The current progress in percentage of this cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; }
@@ -5538,6 +5836,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ShuttingDownSourceVMStep contains specific step details.</summary>
+    public class ShuttingDownSourceVMStep : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
