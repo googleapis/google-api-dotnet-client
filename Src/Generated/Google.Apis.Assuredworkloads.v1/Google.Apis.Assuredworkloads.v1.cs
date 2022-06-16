@@ -855,6 +855,77 @@ namespace Google.Apis.Assuredworkloads.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Restrict the list of resources allowed in the Workload environment. The current list of allowed
+                /// products can be found at https://cloud.google.com/assured-workloads/docs/supported-products In
+                /// addition to assuredworkloads.workload.update permission, the user should also have
+                /// orgpolicy.policy.set permission on the folder resource to use this functionality.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the Workload. This is the workloads's relative path in the API,
+                /// formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For
+                /// example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
+                /// </param>
+                public virtual RestrictAllowedResourcesRequest RestrictAllowedResources(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest body, string name)
+                {
+                    return new RestrictAllowedResourcesRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Restrict the list of resources allowed in the Workload environment. The current list of allowed
+                /// products can be found at https://cloud.google.com/assured-workloads/docs/supported-products In
+                /// addition to assuredworkloads.workload.update permission, the user should also have
+                /// orgpolicy.policy.set permission on the folder resource to use this functionality.
+                /// </summary>
+                public class RestrictAllowedResourcesRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse>
+                {
+                    /// <summary>Constructs a new RestrictAllowedResources request.</summary>
+                    public RestrictAllowedResourcesRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Workload. This is the workloads's relative path in the API,
+                    /// formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
+                    /// For example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restrictAllowedResources";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:restrictAllowedResources";
+
+                    /// <summary>Initializes RestrictAllowedResources parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                        });
+                    }
+                }
             }
         }
     }
@@ -897,6 +968,24 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1Workload> Workloads { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for restricting list of available resources in Workload environment.</summary>
+    public class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of restriction for using gcp products in the Workload environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictionType")]
+        public virtual string RestrictionType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for restricting the list of allowed resources.</summary>
+    public class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

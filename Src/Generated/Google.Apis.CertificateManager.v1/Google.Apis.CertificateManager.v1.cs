@@ -2487,11 +2487,17 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfigs")]
         public virtual System.Collections.Generic.IList<IpConfig> IpConfigs { get; set; }
 
-        /// <summary>A name must be in the format `projects/*/locations/*/targetHttpsProxies/*`.</summary>
+        /// <summary>
+        /// This field returns the resource name in the following format:
+        /// `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetHttpsProxy")]
         public virtual string TargetHttpsProxy { get; set; }
 
-        /// <summary>A name must be in the format `projects/*/locations/*/targetSslProxies/*`.</summary>
+        /// <summary>
+        /// This field returns the resource name in the following format:
+        /// `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSslProxy")]
         public virtual string TargetSslProxy { get; set; }
 

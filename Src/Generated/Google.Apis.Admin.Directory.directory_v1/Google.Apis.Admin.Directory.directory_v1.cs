@@ -11964,7 +11964,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>Defines an assignment of a role.</summary>
     public class RoleAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The unique ID of the user this role is assigned to.</summary>
+        /// <summary>
+        /// The unique ID of the entity this role is assigned to—either the `user_id` of a user or the `uniqueId` of a
+        /// service account, as defined in [Identity and Access Management
+        /// (IAM)](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTo")]
         public virtual string AssignedTo { get; set; }
 

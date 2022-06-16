@@ -1427,7 +1427,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange A Subscription resource managed by 3P Partners.</summary>
+    /// <summary>A Subscription resource managed by 3P Partners.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

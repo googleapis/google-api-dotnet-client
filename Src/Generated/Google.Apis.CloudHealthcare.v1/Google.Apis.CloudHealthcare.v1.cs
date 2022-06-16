@@ -8481,7 +8481,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Resource name of the Message, of the form
-                        /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
                         /// Assigned by the server.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1.Data.Message body, string name)
@@ -8507,7 +8507,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                             /// <summary>
                             /// Resource name of the Message, of the form
-                            /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
+                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
                             /// Assigned by the server.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -9081,7 +9081,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Resource name of the HL7v2 store, of the form
-                    /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store body, string name)
                     {
@@ -9101,7 +9101,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                         /// <summary>
                         /// Resource name of the HL7v2 store, of the form
-                        /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10927,7 +10927,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>
         /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for
-        /// each Deidentify operation and is used wherever crypto_key is not specified.
+        /// each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be
+        /// set if `kms_wrapped` is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
@@ -10970,7 +10971,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>
         /// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default
-        /// key is generated for each Deidentify operation and is used wherever crypto_key is not specified.
+        /// key is generated for each de-identification operation and is used when neither `crypto_key` nor
+        /// `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
@@ -11600,6 +11602,17 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class FhirStore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to
+        /// ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If
+        /// this flag has not been specified the behavior of the FHIR store will not change, references in complex data
+        /// types will not be parsed. New stores will have this value set to ENABLED after a notification period.
+        /// Warning: turning on this flag causes processing existing resources to fail if they contain references to
+        /// non-existent resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complexDataTypeReferenceParsing")]
+        public virtual string ComplexDataTypeReferenceParsing { get; set; }
+
+        /// <summary>
         /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an
         /// error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient`
         /// which ignores unrecognized search parameters. The handling can always be changed from the default on an
@@ -12128,7 +12141,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
         /// <summary>
         /// Resource name of the HL7v2 store, of the form
-        /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -12686,8 +12699,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
         /// <summary>
         /// Resource name of the Message, of the form
-        /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned
-        /// by the server.
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
+        /// Assigned by the server.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

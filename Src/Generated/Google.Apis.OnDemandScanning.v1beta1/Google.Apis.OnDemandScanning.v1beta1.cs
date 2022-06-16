@@ -1729,6 +1729,21 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Indicates a language package available between this package and the customer's resource artifact.
+    /// </summary>
+    public class LanguagePackageDependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("package")]
+        public virtual string Package { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Layer holds metadata specific to a layer of a Docker image.</summary>
     public class Layer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2028,6 +2043,13 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
+
+        /// <summary>
+        /// The dependency chain between this package and the user's artifact. List in order from the customer's package
+        /// under review first, to the current package last. Inclusive of the original package and the current package.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencyChain")]
+        public virtual System.Collections.Generic.IList<LanguagePackageDependency> DependencyChain { get; set; }
 
         /// <summary>The path to the jar file / go binary file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileLocation")]

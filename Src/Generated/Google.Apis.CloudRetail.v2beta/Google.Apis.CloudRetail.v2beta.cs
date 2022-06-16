@@ -2207,12 +2207,14 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// `{name=projects/*/locations/global/catalogs/default_catalog/placements/*}` The ID of the
-                    /// Recommendations AI placement. Before you can request predictions from your model, you must
-                    /// create at least one placement for it. For more information, see [Managing
-                    /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
-                    /// list of available placements can be seen at
-                    /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                    /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                    /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
+                    /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
+                    /// Recommendations AI serving config or placement. Before you can request predictions from your
+                    /// model, you must create at least one serving config or placement for it. For more information,
+                    /// see [Managing serving configurations] (https://cloud.google.com/retail/docs/manage-configs). The
+                    /// full list of available serving configs can be seen at
+                    /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement)
                     {
@@ -2232,12 +2234,15 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// `{name=projects/*/locations/global/catalogs/default_catalog/placements/*}` The ID of the
-                        /// Recommendations AI placement. Before you can request predictions from your model, you must
-                        /// create at least one placement for it. For more information, see [Managing
-                        /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
-                        /// full list of available placements can be seen at
-                        /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+                        /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                        /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
+                        /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
+                        /// Recommendations AI serving config or placement. Before you can request predictions from your
+                        /// model, you must create at least one serving config or placement for it. For more
+                        /// information, see [Managing serving configurations]
+                        /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
+                        /// configs can be seen at
+                        /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -2278,7 +2283,9 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
-                    /// Required. The resource name of the search engine placement, such as
+                    /// Required. The resource name of the Retail Search serving config, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
+                    /// the name of the legacy placement resource, such as
                     /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
                     /// used to identify the serving configuration name and the set of models that will be used to make
                     /// the search.
@@ -2303,7 +2310,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the search engine placement, such as
+                        /// Required. The resource name of the Retail Search serving config, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                        /// or the name of the legacy placement resource, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
                         /// is used to identify the serving configuration name and the set of models that will be used
                         /// to make the search.
@@ -2774,6 +2783,80 @@ namespace Google.Apis.CloudRetail.v2beta
                         }
                     }
 
+                    /// <summary>Makes a recommendation prediction.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="placement">
+                    /// Required. Full resource name of the format:
+                    /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                    /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
+                    /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
+                    /// Recommendations AI serving config or placement. Before you can request predictions from your
+                    /// model, you must create at least one serving config or placement for it. For more information,
+                    /// see [Managing serving configurations] (https://cloud.google.com/retail/docs/manage-configs). The
+                    /// full list of available serving configs can be seen at
+                    /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
+                    /// </param>
+                    public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement)
+                    {
+                        return new PredictRequest(service, body, placement);
+                    }
+
+                    /// <summary>Makes a recommendation prediction.</summary>
+                    public class PredictRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictResponse>
+                    {
+                        /// <summary>Constructs a new Predict request.</summary>
+                        public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement) : base(service)
+                        {
+                            Placement = placement;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of the format:
+                        /// {placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*} or
+                        /// {placement=projects/*/locations/global/catalogs/default_catalog/placements/*}. We recommend
+                        /// using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the
+                        /// Recommendations AI serving config or placement. Before you can request predictions from your
+                        /// model, you must create at least one serving config or placement for it. For more
+                        /// information, see [Managing serving configurations]
+                        /// (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving
+                        /// configs can be seen at
+                        /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Placement { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "predict";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+placement}:predict";
+
+                        /// <summary>Initializes Predict parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("placement", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "placement",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Disables a Control on the specified ServingConfig. The control is removed from the
                     /// ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for the ServingConfig.
@@ -2831,6 +2914,79 @@ namespace Google.Apis.CloudRetail.v2beta
                             RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Performs a search. This feature is only available for users who have Retail Search enabled.
+                    /// Please enable Retail Search on Cloud Console before using this feature.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="placement">
+                    /// Required. The resource name of the Retail Search serving config, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
+                    /// the name of the legacy placement resource, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
+                    /// used to identify the serving configuration name and the set of models that will be used to make
+                    /// the search.
+                    /// </param>
+                    public virtual SearchRequest Search(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchRequest body, string placement)
+                    {
+                        return new SearchRequest(service, body, placement);
+                    }
+
+                    /// <summary>
+                    /// Performs a search. This feature is only available for users who have Retail Search enabled.
+                    /// Please enable Retail Search on Cloud Console before using this feature.
+                    /// </summary>
+                    public class SearchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchResponse>
+                    {
+                        /// <summary>Constructs a new Search request.</summary>
+                        public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchRequest body, string placement) : base(service)
+                        {
+                            Placement = placement;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Retail Search serving config, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                        /// or the name of the legacy placement resource, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
+                        /// is used to identify the serving configuration name and the set of models that will be used
+                        /// to make the search.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Placement { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "search";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+placement}:search";
+
+                        /// <summary>Initializes Search parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("placement", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "placement",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -7867,7 +8023,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to make facet keys case insensitive when getting faceting values with prefixes or contains.
+        /// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false
+        /// otherwise.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caseInsensitive")]
         public virtual System.Nullable<bool> CaseInsensitive { get; set; }

@@ -9304,7 +9304,12 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count
-        /// towards this tally.
+        /// towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a
+        /// number of characters. For example, suppose you have the following values: - `masking_character` is `*` -
+        /// `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is
+        /// `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but
+        /// the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as
+        /// `1234-****-****-****`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberToMask")]
         public virtual System.Nullable<int> NumberToMask { get; set; }
@@ -11099,9 +11104,34 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Classification of infoTypes to organize them according to geographic location, industry, and data type.
+    /// </summary>
+    public class GooglePrivacyDlpV2InfoTypeCategory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The group of relevant businesses where this infoType is commonly used</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryCategory")]
+        public virtual string IndustryCategory { get; set; }
+
+        /// <summary>The region or country that issued the ID or document represented by the infoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationCategory")]
+        public virtual string LocationCategory { get; set; }
+
+        /// <summary>The class of identifiers where this infoType belongs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeCategory")]
+        public virtual string TypeCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>InfoType description.</summary>
     public class GooglePrivacyDlpV2InfoTypeDescription : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The category of the infoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeCategory> Categories { get; set; }
+
         /// <summary>Description of the infotype. Translated when language is provided in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
