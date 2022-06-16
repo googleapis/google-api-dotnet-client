@@ -2489,6 +2489,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Memory hash detection contributing to the binary family match.</summary>
+    public class Detection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the binary associated with the memory hash signature detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binary")]
+        public virtual string Binary { get; set; }
+
+        /// <summary>The percentage of memory page hashes in the signature that were matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentPagesMatched")]
+        public virtual System.Nullable<double> PercentPagesMatched { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -3713,6 +3728,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
 
+        /// <summary>
+        /// The list of matched signatures indicating that the given process is present in the environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<ProcessSignature> Signatures { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3803,6 +3824,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>Sources belonging to the requested parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A signature corresponding to memory page hashes.</summary>
+    public class MemoryHashSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The binary family.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryFamily")]
+        public virtual string BinaryFamily { get; set; }
+
+        /// <summary>The list of memory hash detections contributing to the binary family match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detections")]
+        public virtual System.Collections.Generic.IList<Detection> Detections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4011,6 +4047,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("libraries")]
         public virtual System.Collections.Generic.IList<File> Libraries { get; set; }
 
+        /// <summary>
+        /// The process name visible in utilities like top and ps; it can be accessed via /proc/[pid]/comm and changed
+        /// with prctl(PR_SET_NAME).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The parent process id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentPid")]
         public virtual System.Nullable<long> ParentPid { get; set; }
@@ -4025,6 +4068,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual File Script { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates what signature matched this process.</summary>
+    public class ProcessSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Signature indicating that a binary family was matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryHashSignature")]
+        public virtual MemoryHashSignature MemoryHashSignature { get; set; }
+
+        /// <summary>Signature indicating that a YARA rule was matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yaraRuleSignature")]
+        public virtual YaraRuleSignature YaraRuleSignature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4270,6 +4328,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cve")]
         public virtual Cve Cve { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A signature corresponding to a YARA rule.</summary>
+    public class YaraRuleSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the YARA rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yaraRule")]
+        public virtual string YaraRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

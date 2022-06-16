@@ -66,14 +66,14 @@ namespace Google.Apis.Localservices.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Local Services API.</summary>
         public class Scope
         {
-            /// <summary>Manage your AdWords campaigns</summary>
+            /// <summary>See, edit, create, and delete your Google Ads accounts and data.</summary>
             public static string Adwords = "https://www.googleapis.com/auth/adwords";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Local Services API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Manage your AdWords campaigns</summary>
+            /// <summary>See, edit, create, and delete your Google Ads accounts and data.</summary>
             public const string Adwords = "https://www.googleapis.com/auth/adwords";
         }
 

@@ -3939,6 +3939,121 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The schema defines the output of the processed document by a processor.</summary>
+    public class GoogleCloudDocumentaiV1DocumentSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name to show to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Entity types of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentSchemaEntityType> EntityTypes { get; set; }
+
+        /// <summary>Metadata of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudDocumentaiV1DocumentSchemaMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
+    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1DocumentSchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entity type that this type is derived from. For now, one and only one should be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTypes")]
+        public virtual System.Collections.Generic.IList<string> BaseTypes { get; set; }
+
+        /// <summary>User defined name for the type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// If specified, lists all the possible values for this entity. This should not be more than a handful of
+        /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
+        /// field and specify a list of all possible values in a value ontology file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
+        public virtual GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues EnumValues { get; set; }
+
+        /// <summary>
+        /// Name of the type. It must be unique within the schema file and cannot be a 'Common Type'. Besides that we
+        /// use the following naming conventions: - *use snake_casing* - name matching is case-insensitive - Maximum 64
+        /// characters. - Must start with a letter. - Allowed characters: ASCII letters [a-z0-9_-]. (For backward
+        /// compatibility internal infrastructure and tooling can handle any ascii character) - The '/' is sometimes
+        /// used to denote a property of a type. For example line_item/amount. This convention is deprecated, but will
+        /// still be honored for backward compatibility.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Describing the nested structure, or composition of an entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the a list of enum values.</summary>
+    public class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The individual values that this enum values type can include.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines properties that can be part of the entity type.</summary>
+    public class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the property. Follows the same guidelines as the EntityType name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Occurrence type limits the number of instances an entity type appears in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
+        public virtual string OccurrenceType { get; set; }
+
+        /// <summary>
+        /// A reference to the value type of the property. This type is subject to the same conventions as the
+        /// `Entity.base_types` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for global schema behavior.</summary>
+    public class GoogleCloudDocumentaiV1DocumentSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, on a given page, there can be multiple `document` annotations covering it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentAllowMultipleLabels")]
+        public virtual System.Nullable<bool> DocumentAllowMultipleLabels { get; set; }
+
+        /// <summary>
+        /// If true, a `document` entity type can be applied to subdocument ( splitting). Otherwise, it can only be
+        /// applied to the entire document (classification).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSplitter")]
+        public virtual System.Nullable<bool> DocumentSplitter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// For a large document, sharding may be performed to produce several document shards. Each document shard contains
     /// this field to detail which shard it is.
@@ -4459,6 +4574,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Request message for review document method.</summary>
     public class GoogleCloudDocumentaiV1ReviewDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The document schema of the human review task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
+        public virtual GoogleCloudDocumentaiV1DocumentSchema DocumentSchema { get; set; }
+
         /// <summary>Whether the validation should be performed on the ad-hoc review request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSchemaValidation")]
         public virtual System.Nullable<bool> EnableSchemaValidation { get; set; }
@@ -4478,9 +4597,17 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Response message for review document method.</summary>
     public class GoogleCloudDocumentaiV1ReviewDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
+        /// <summary>The Cloud Storage uri for the human reviewed document if the review is succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual string GcsDestination { get; set; }
+
+        /// <summary>The reason why the review is rejected by reviewer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
+        public virtual string RejectionReason { get; set; }
+
+        /// <summary>The state of the review operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7138,9 +7265,17 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Response message for review document method.</summary>
     public class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
+        /// <summary>The Cloud Storage uri for the human reviewed document if the review is succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual string GcsDestination { get; set; }
+
+        /// <summary>The reason why the review is rejected by reviewer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
+        public virtual string RejectionReason { get; set; }
+
+        /// <summary>The state of the review operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

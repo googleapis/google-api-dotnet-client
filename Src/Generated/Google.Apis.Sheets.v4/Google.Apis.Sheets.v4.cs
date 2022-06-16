@@ -2462,7 +2462,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// </summary>
     public class BandingProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The first color that is alternating. (Required)</summary>
+        /// <summary>The first color that is alternating. (Required) Deprecated: Use first_band_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstBandColor")]
         public virtual Color FirstBandColor { get; set; }
 
@@ -2475,7 +2475,8 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The color of the last row or column. If this field is not set, the last row or column is filled with either
-        /// first_band_color or second_band_color, depending on the color of the previous row or column.
+        /// first_band_color or second_band_color, depending on the color of the previous row or column. Deprecated: Use
+        /// footer_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footerColor")]
         public virtual Color FooterColor { get; set; }
@@ -2492,7 +2493,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// The color of the first row or column. If this field is set, the first row or column is filled with this
         /// color and the colors alternate between first_band_color and second_band_color starting from the second row
         /// or column. Otherwise, the first row or column is filled with first_band_color and the colors proceed to
-        /// alternate as they normally would.
+        /// alternate as they normally would. Deprecated: Use header_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
         public virtual Color HeaderColor { get; set; }
@@ -2506,7 +2507,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headerColorStyle")]
         public virtual ColorStyle HeaderColorStyle { get; set; }
 
-        /// <summary>The second color that is alternating. (Required)</summary>
+        /// <summary>The second color that is alternating. (Required) Deprecated: Use second_band_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondBandColor")]
         public virtual Color SecondBandColor { get; set; }
 
@@ -2534,6 +2535,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// Color to be used, in case baseline value represents a negative change for key value. This field is optional.
+        /// Deprecated: Use negative_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeColor")]
         public virtual Color NegativeColor { get; set; }
@@ -2554,6 +2556,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// Color to be used, in case baseline value represents a positive change for key value. This field is optional.
+        /// Deprecated: Use positive_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveColor")]
         public virtual Color PositiveColor { get; set; }
@@ -2633,7 +2636,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>
         /// The color for elements (such as bars, lines, and points) associated with this series. If empty, a default
-        /// color is used.
+        /// color is used. Deprecated: Use color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
@@ -2803,7 +2806,9 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Style override settings for a single series data point.</summary>
     public class BasicSeriesDataPointStyleOverride : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Color of the series data point. If empty, the series default is used.</summary>
+        /// <summary>
+        /// Color of the series data point. If empty, the series default is used. Deprecated: Use color_style.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 
@@ -3255,7 +3260,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A border along a cell.</summary>
     public class Border : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the border.</summary>
+        /// <summary>The color of the border. Deprecated: Use [color_style].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 
@@ -3303,7 +3308,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A bubble chart.</summary>
     public class BubbleChartSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The bubble border color.</summary>
+        /// <summary>The bubble border color. Deprecated: Use bubble_border_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleBorderColor")]
         public virtual Color BubbleBorderColor { get; set; }
 
@@ -3554,7 +3559,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The format of a cell.</summary>
     public class CellFormat : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The background color of the cell.</summary>
+        /// <summary>The background color of the cell. Deprecated: Use background_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; }
 
@@ -3764,7 +3769,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("altText")]
         public virtual string AltText { get; set; }
 
-        /// <summary>The background color of the entire chart. Not applicable to Org charts.</summary>
+        /// <summary>
+        /// The background color of the entire chart. Not applicable to Org charts. Deprecated: Use
+        /// background_color_style.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; }
 
@@ -5161,7 +5169,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A border along an embedded object.</summary>
     public class EmbeddedObjectBorder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the border.</summary>
+        /// <summary>The color of the border. Deprecated: Use color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 
@@ -5260,7 +5268,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The background fill color to filter by; only cells with this fill color are shown. Mutually exclusive with
-        /// visible_foreground_color.
+        /// visible_foreground_color. Deprecated: Use visible_background_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColor")]
         public virtual Color VisibleBackgroundColor { get; set; }
@@ -5275,7 +5283,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The foreground color to filter by; only cells with this foreground color are shown. Mutually exclusive with
-        /// visible_background_color.
+        /// visible_background_color. Deprecated: Use visible_foreground_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColor")]
         public virtual Color VisibleForegroundColor { get; set; }
@@ -5685,7 +5693,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A histogram series containing the series color and data.</summary>
     public class HistogramSeries : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the column representing this series in each bucket. This field is optional.</summary>
+        /// <summary>
+        /// The color of the column representing this series in each bucket. This field is optional. Deprecated: Use
+        /// bar_color_style.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("barColor")]
         public virtual Color BarColor { get; set; }
 
@@ -5751,7 +5762,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// </summary>
     public class InterpolationPoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color this interpolation point should use.</summary>
+        /// <summary>The color this interpolation point should use. Deprecated: Use color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 
@@ -6028,7 +6039,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual ChartData Labels { get; set; }
 
-        /// <summary>The color of the org chart nodes.</summary>
+        /// <summary>The color of the org chart nodes. Deprecated: Use node_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeColor")]
         public virtual Color NodeColor { get; set; }
 
@@ -6047,7 +6058,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentLabels")]
         public virtual ChartData ParentLabels { get; set; }
 
-        /// <summary>The color of the selected org chart nodes.</summary>
+        /// <summary>The color of the selected org chart nodes. Deprecated: Use selected_node_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedNodeColor")]
         public virtual Color SelectedNodeColor { get; set; }
 
@@ -7258,7 +7269,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sheetType")]
         public virtual string SheetType { get; set; }
 
-        /// <summary>The color of the tab in the UI.</summary>
+        /// <summary>The color of the tab in the UI. Deprecated: Use tab_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabColor")]
         public virtual Color TabColor { get; set; }
 
@@ -7303,7 +7314,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applyToPivotTables")]
         public virtual System.Nullable<bool> ApplyToPivotTables { get; set; }
 
-        /// <summary>The background color of the slicer.</summary>
+        /// <summary>The background color of the slicer. Deprecated: Use background_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; }
 
@@ -7364,7 +7375,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>
         /// The background fill color to sort by; cells with this fill color are sorted to the top. Mutually exclusive
-        /// with foreground_color.
+        /// with foreground_color. Deprecated: Use background_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; }
@@ -7387,7 +7398,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually exclusive
-        /// with background_color.
+        /// with background_color. Deprecated: Use foreground_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
         public virtual Color ForegroundColor { get; set; }
@@ -7547,7 +7558,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fontSize")]
         public virtual System.Nullable<int> FontSize { get; set; }
 
-        /// <summary>The foreground color of the text.</summary>
+        /// <summary>The foreground color of the text. Deprecated: Use foreground_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
         public virtual Color ForegroundColor { get; set; }
 
@@ -7705,7 +7716,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>
         /// The background color for cells with a color value greater than or equal to maxValue. Defaults to #109618 if
-        /// not specified.
+        /// not specified. Deprecated: Use max_value_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValueColor")]
         public virtual Color MaxValueColor { get; set; }
@@ -7719,7 +7730,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The background color for cells with a color value at the midpoint between minValue and maxValue. Defaults to
-        /// #efe6dc if not specified.
+        /// #efe6dc if not specified. Deprecated: Use mid_value_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("midValueColor")]
         public virtual Color MidValueColor { get; set; }
@@ -7733,7 +7744,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The background color for cells with a color value less than or equal to minValue. Defaults to #dc3912 if not
-        /// specified.
+        /// specified. Deprecated: Use min_value_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValueColor")]
         public virtual Color MinValueColor { get; set; }
@@ -7747,7 +7758,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The background color for cells that have no color data associated with them. Defaults to #000000 if not
-        /// specified.
+        /// specified. Deprecated: Use no_data_color_style.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noDataColor")]
         public virtual Color NoDataColor { get; set; }
@@ -7786,7 +7797,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("colorScale")]
         public virtual TreemapChartColorScale ColorScale { get; set; }
 
-        /// <summary>The background color for header cells.</summary>
+        /// <summary>The background color for header cells. Deprecated: Use header_color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
         public virtual Color HeaderColor { get; set; }
 
@@ -8464,7 +8475,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Styles for a waterfall chart column.</summary>
     public class WaterfallChartColumnStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the column.</summary>
+        /// <summary>The color of the column. Deprecated: Use color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 

@@ -1481,9 +1481,17 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Response message for review document method.</summary>
     public class GoogleCloudDocumentaiV1ReviewDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
+        /// <summary>The Cloud Storage uri for the human reviewed document if the review is succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual string GcsDestination { get; set; }
+
+        /// <summary>The reason why the review is rejected by reviewer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
+        public virtual string RejectionReason { get; set; }
+
+        /// <summary>The state of the review operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4316,9 +4324,17 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Response message for review document method.</summary>
     public class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
+        /// <summary>The Cloud Storage uri for the human reviewed document if the review is succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual string GcsDestination { get; set; }
+
+        /// <summary>The reason why the review is rejected by reviewer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
+        public virtual string RejectionReason { get; set; }
+
+        /// <summary>The state of the review operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

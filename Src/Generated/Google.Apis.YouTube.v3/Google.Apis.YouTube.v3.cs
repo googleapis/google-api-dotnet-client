@@ -7863,7 +7863,7 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
-        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.ThirdPartyLink>
+        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.ThirdPartyLinkListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> part) : base(service)
@@ -14888,6 +14888,22 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The status object contains information about the status of the link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ThirdPartyLinkStatus Status { get; set; }
+    }
+
+    public class ThirdPartyLinkListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ThirdPartyLink> Items { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "youtube#thirdPartyLinkListResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
     }
 
     /// <summary>
