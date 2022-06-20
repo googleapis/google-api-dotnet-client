@@ -4848,6 +4848,10 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("forwardedPorts")]
         public virtual System.Collections.Generic.IList<string> ForwardedPorts { get; set; }
 
+        /// <summary>The IP mode for instances. Only applicable in the App Engine flexible environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceIpMode")]
+        public virtual string InstanceIpMode { get; set; }
+
         /// <summary>
         /// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
         /// </summary>

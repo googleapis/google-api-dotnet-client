@@ -2550,6 +2550,90 @@ namespace Google.Apis.Firestore.v1
                 }
             }
 
+            /// <summary>Create a database.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. A parent name of the form `projects/{project_id}`</param>
+            public virtual CreateRequest Create(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Create a database.</summary>
+            public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. A parent name of the form `projects/{project_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The ID to use for the database, which will become the final component of the database's
+                /// resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first
+                /// character a letter and the last a letter or a number. Must not be UUID-like
+                /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("databaseId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DatabaseId { get; set; }
+
+                /// <summary>
+                /// If set, validate the request and preview the response, but do not actually create the database.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Database Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/databases";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("databaseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "databaseId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>
             /// Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system,
             /// such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export
@@ -3706,6 +3790,13 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// The TTL configuration for this `Field`. Setting or unsetting this will enable or disable the TTL for
+        /// documents that have this `Field`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttlConfig")]
+        public virtual GoogleFirestoreAdminV1TtlConfig TtlConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3743,6 +3834,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The state of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Describes the deltas of TTL configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttlConfigDelta")]
+        public virtual GoogleFirestoreAdminV1TtlConfigDelta TtlConfigDelta { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4021,6 +4116,32 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The TTL (time-to-live) configuration for documents that have this `Field` set. Storing a timestamp value into a
+    /// TTL-enabled field will be treated as the document's absolute expiration time. Using any other data type or
+    /// leaving the field absent will disable the TTL for the individual document.
+    /// </summary>
+    public class GoogleFirestoreAdminV1TtlConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The state of the TTL configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about an TTL configuration change.</summary>
+    public class GoogleFirestoreAdminV1TtlConfigDelta : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies how the TTL configuration is changing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata related to the update database operation.</summary>
     public class GoogleFirestoreAdminV1UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4122,6 +4243,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>A page token. Must be a value from ListCollectionIdsResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
+
+        /// <summary>Reads documents as they were at the given time. This may not be older than 270 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4316,6 +4441,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionCount")]
         public virtual System.Nullable<long> PartitionCount { get; set; }
+
+        /// <summary>Reads documents as they were at the given time. This may not be older than 270 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
 
         /// <summary>
         /// A structured query. Query must specify collection with all descendants and be ordered by name ascending.

@@ -1377,6 +1377,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.AllocateIds.</summary>
     public class AllocateIdsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
         /// <summary>
         /// Required. A list of keys with incomplete key paths for which to allocate IDs. No key may be
         /// reserved/read-only.
@@ -1419,6 +1423,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
         /// <summary>Options for a new transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionOptions")]
         public virtual TransactionOptions TransactionOptions { get; set; }
@@ -1441,6 +1449,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.Commit.</summary>
     public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
         /// <summary>The type of commit to perform. Defaults to `TRANSACTIONAL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -1490,7 +1502,7 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>A filter that merges multiple other filters using the given operator.</summary>
     public class CompositeFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of filters to combine. Must contain at least one filter.</summary>
+        /// <summary>The list of filters to combine. Requires: * At least one filter is present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<Filter> Filters { get; set; }
 
@@ -2288,6 +2300,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.Lookup.</summary>
     public class LookupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
         /// <summary>Required. Keys of entities to look up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
@@ -2424,6 +2440,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// </summary>
     public class PartitionId : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If not empty, the ID of the database to which the entities belong.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceId")]
         public virtual string NamespaceId { get; set; }
@@ -2718,6 +2738,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
         /// <summary>Required. The transaction identifier, returned by a call to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -2736,6 +2760,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The request for Datastore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
         /// <summary>The GQL query to run. This query must be a non-aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
         public virtual GqlQuery GqlQuery { get; set; }

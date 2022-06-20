@@ -687,6 +687,67 @@ namespace Google.Apis.CloudDeploy.v1
                         }
                     }
 
+                    /// <summary>Abandons a Release in the Delivery Pipeline.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Name of the Release. Format is
+                    /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                    /// releases/{release}.
+                    /// </param>
+                    public virtual AbandonRequest Abandon(Google.Apis.CloudDeploy.v1.Data.AbandonReleaseRequest body, string name)
+                    {
+                        return new AbandonRequest(service, body, name);
+                    }
+
+                    /// <summary>Abandons a Release in the Delivery Pipeline.</summary>
+                    public class AbandonRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.AbandonReleaseResponse>
+                    {
+                        /// <summary>Constructs a new Abandon request.</summary>
+                        public AbandonRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.AbandonReleaseRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the Release. Format is
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+                        /// releases/{release}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDeploy.v1.Data.AbandonReleaseRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "abandon";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:abandon";
+
+                        /// <summary>Initializes Abandon parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a new Release in a given project and location.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -2918,6 +2979,20 @@ namespace Google.Apis.CloudDeploy.v1
 }
 namespace Google.Apis.CloudDeploy.v1.Data
 {
+    /// <summary>The request object used by `AbandonRelease`.</summary>
+    public class AbandonReleaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object for `AbandonRelease`.</summary>
+    public class AbandonReleaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information specifying an Anthos Cluster.</summary>
     public class AnthosCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3200,6 +3275,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialPipeline")]
         public virtual SerialPipeline SerialPipeline { get; set; }
+
+        /// <summary>
+        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
+        public virtual System.Nullable<bool> Suspended { get; set; }
 
         /// <summary>Output only. Unique identifier of the `DeliveryPipeline`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
@@ -3730,6 +3811,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Indicates whether this is an abandoned release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abandoned")]
+        public virtual System.Nullable<bool> Abandoned { get; set; }
+
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
         /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
