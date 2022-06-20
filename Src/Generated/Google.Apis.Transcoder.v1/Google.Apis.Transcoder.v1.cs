@@ -1654,6 +1654,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; }
 
+        /// <summary>The labels associated with this job. You can use these to organize and group your jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         /// </summary>
@@ -1750,6 +1754,12 @@ namespace Google.Apis.Transcoder.v1.Data
         /// <summary>The configuration for this template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual JobConfig Config { get; set; }
+
+        /// <summary>
+        /// The labels associated with this job template. You can use these to organize and group your job templates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// The resource name of the job template. Format:

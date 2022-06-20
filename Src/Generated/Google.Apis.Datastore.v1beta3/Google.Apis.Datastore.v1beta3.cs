@@ -781,7 +781,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>A filter that merges multiple other filters using the given operator.</summary>
     public class CompositeFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of filters to combine. Must contain at least one filter.</summary>
+        /// <summary>The list of filters to combine. Requires: * At least one filter is present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<Filter> Filters { get; set; }
 

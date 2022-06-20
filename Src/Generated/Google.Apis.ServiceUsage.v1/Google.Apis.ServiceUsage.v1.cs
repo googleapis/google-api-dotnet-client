@@ -2864,14 +2864,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
     public class MetricRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is
-        /// the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased
-        /// for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicMetricCosts")]
-        public virtual System.Collections.Generic.IDictionary<string, string> DynamicMetricCosts { get; set; }
-
-        /// <summary>
         /// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The
         /// key of the map is the metric name, and the values are the amount increased for the metric against which the
         /// quota limits are defined. The value must not be negative.

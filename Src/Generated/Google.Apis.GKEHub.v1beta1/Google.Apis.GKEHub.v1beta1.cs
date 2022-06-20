@@ -2430,6 +2430,10 @@ namespace Google.Apis.GKEHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
         public virtual System.Nullable<bool> ClusterMissing { get; set; }
 
+        /// <summary>Immutable. The on prem cluster's type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterType")]
+        public virtual string ClusterType { get; set; }
+
         /// <summary>
         /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example:
         /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster

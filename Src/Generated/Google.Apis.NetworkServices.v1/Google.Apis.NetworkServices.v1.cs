@@ -301,8 +301,14 @@ namespace Google.Apis.NetworkServices.v1
                 EdgeCacheOrigins = new EdgeCacheOriginsResource(service);
                 EdgeCacheServices = new EdgeCacheServicesResource(service);
                 EndpointPolicies = new EndpointPoliciesResource(service);
+                Gateways = new GatewaysResource(service);
+                GrpcRoutes = new GrpcRoutesResource(service);
+                HttpRoutes = new HttpRoutesResource(service);
+                Meshes = new MeshesResource(service);
                 Operations = new OperationsResource(service);
                 ServiceBindings = new ServiceBindingsResource(service);
+                TcpRoutes = new TcpRoutesResource(service);
+                TlsRoutes = new TlsRoutesResource(service);
             }
 
             /// <summary>Gets the EdgeCacheKeysets resource.</summary>
@@ -1579,6 +1585,1810 @@ namespace Google.Apis.NetworkServices.v1
                 }
             }
 
+            /// <summary>Gets the Gateways resource.</summary>
+            public virtual GatewaysResource Gateways { get; }
+
+            /// <summary>The "gateways" collection of methods.</summary>
+            public class GatewaysResource
+            {
+                private const string Resource = "gateways";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GatewaysResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Gateway in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the Gateway. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.Gateway body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new Gateway in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.Gateway body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the Gateway. Must be in the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the Gateway resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gatewayId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GatewayId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.Gateway Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/gateways";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("gatewayId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "gatewayId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Gateway.</summary>
+                /// <param name="name">
+                /// Required. A name of the Gateway to delete. Must be in the format
+                /// `projects/*/locations/*/gateways/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single Gateway.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the Gateway to delete. Must be in the format
+                    /// `projects/*/locations/*/gateways/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Gateway.</summary>
+                /// <param name="name">
+                /// Required. A name of the Gateway to get. Must be in the format `projects/*/locations/*/gateways/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single Gateway.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Gateway>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the Gateway to get. Must be in the format
+                    /// `projects/*/locations/*/gateways/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists Gateways in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the Gateways should be listed, specified in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Gateways in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListGatewaysResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the Gateways should be listed, specified in the
+                    /// format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of Gateways to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListGatewaysResponse` Indicates that this is a continuation of a
+                    /// prior `ListGateways` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/gateways";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single Gateway.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.Gateway body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Gateway.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.Gateway body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Gateway resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.Gateway Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GrpcRoutes resource.</summary>
+            public virtual GrpcRoutesResource GrpcRoutes { get; }
+
+            /// <summary>The "grpcRoutes" collection of methods.</summary>
+            public class GrpcRoutesResource
+            {
+                private const string Resource = "grpcRoutes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GrpcRoutesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new GrpcRoute in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the GrpcRoute. Must be in the format `projects/*/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.GrpcRoute body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new GrpcRoute in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.GrpcRoute body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the GrpcRoute. Must be in the format
+                    /// `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the GrpcRoute resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("grpcRouteId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GrpcRouteId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.GrpcRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/grpcRoutes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("grpcRouteId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "grpcRouteId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single GrpcRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the GrpcRoute to delete. Must be in the format
+                /// `projects/*/locations/global/grpcRoutes/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single GrpcRoute.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the GrpcRoute to delete. Must be in the format
+                    /// `projects/*/locations/global/grpcRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/grpcRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single GrpcRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the GrpcRoute to get. Must be in the format
+                /// `projects/*/locations/global/grpcRoutes/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single GrpcRoute.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.GrpcRoute>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the GrpcRoute to get. Must be in the format
+                    /// `projects/*/locations/global/grpcRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/grpcRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists GrpcRoutes in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the GrpcRoutes should be listed, specified in the
+                /// format `projects/*/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists GrpcRoutes in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListGrpcRoutesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the GrpcRoutes should be listed, specified in the
+                    /// format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of GrpcRoutes to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListGrpcRoutesResponse` Indicates that this is a continuation of
+                    /// a prior `ListGrpcRoutes` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/grpcRoutes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single GrpcRoute.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the GrpcRoute resource. It matches pattern
+                /// `projects/*/locations/global/grpcRoutes/`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.GrpcRoute body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single GrpcRoute.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.GrpcRoute body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the GrpcRoute resource. It matches pattern
+                    /// `projects/*/locations/global/grpcRoutes/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the GrpcRoute resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.GrpcRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/grpcRoutes/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the HttpRoutes resource.</summary>
+            public virtual HttpRoutesResource HttpRoutes { get; }
+
+            /// <summary>The "httpRoutes" collection of methods.</summary>
+            public class HttpRoutesResource
+            {
+                private const string Resource = "httpRoutes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public HttpRoutesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new HttpRoute in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the HttpRoute. Must be in the format `projects/*/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.HttpRoute body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new HttpRoute in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.HttpRoute body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the HttpRoute. Must be in the format
+                    /// `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the HttpRoute resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("httpRouteId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string HttpRouteId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.HttpRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/httpRoutes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("httpRouteId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "httpRouteId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single HttpRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the HttpRoute to delete. Must be in the format
+                /// `projects/*/locations/global/httpRoutes/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single HttpRoute.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the HttpRoute to delete. Must be in the format
+                    /// `projects/*/locations/global/httpRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/httpRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single HttpRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the HttpRoute to get. Must be in the format
+                /// `projects/*/locations/global/httpRoutes/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single HttpRoute.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.HttpRoute>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the HttpRoute to get. Must be in the format
+                    /// `projects/*/locations/global/httpRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/httpRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists HttpRoute in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the HttpRoutes should be listed, specified in the
+                /// format `projects/*/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists HttpRoute in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListHttpRoutesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the HttpRoutes should be listed, specified in the
+                    /// format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of HttpRoutes to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListHttpRoutesResponse` Indicates that this is a continuation of
+                    /// a prior `ListRouters` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/httpRoutes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single HttpRoute.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the HttpRoute resource. It matches pattern
+                /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.HttpRoute body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single HttpRoute.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.HttpRoute body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the HttpRoute resource. It matches pattern
+                    /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the HttpRoute resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.HttpRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/httpRoutes/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Meshes resource.</summary>
+            public virtual MeshesResource Meshes { get; }
+
+            /// <summary>The "meshes" collection of methods.</summary>
+            public class MeshesResource
+            {
+                private const string Resource = "meshes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MeshesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Mesh in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the Mesh. Must be in the format `projects/*/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.Mesh body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new Mesh in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.Mesh body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the Mesh. Must be in the format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the Mesh resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("meshId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MeshId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.Mesh Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/meshes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("meshId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "meshId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Mesh.</summary>
+                /// <param name="name">
+                /// Required. A name of the Mesh to delete. Must be in the format
+                /// `projects/*/locations/global/meshes/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single Mesh.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the Mesh to delete. Must be in the format
+                    /// `projects/*/locations/global/meshes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Mesh.</summary>
+                /// <param name="name">
+                /// Required. A name of the Mesh to get. Must be in the format `projects/*/locations/global/meshes/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single Mesh.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Mesh>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the Mesh to get. Must be in the format
+                    /// `projects/*/locations/global/meshes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists Meshes in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the Meshes should be listed, specified in the format
+                /// `projects/*/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Meshes in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListMeshesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the Meshes should be listed, specified in the
+                    /// format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of Meshes to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListMeshesResponse` Indicates that this is a continuation of a
+                    /// prior `ListMeshes` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/meshes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single Mesh.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.Mesh body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Mesh.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.Mesh body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Mesh resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.Mesh Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -2353,6 +4163,698 @@ namespace Google.Apis.NetworkServices.v1
                 }
             }
 
+            /// <summary>Gets the TcpRoutes resource.</summary>
+            public virtual TcpRoutesResource TcpRoutes { get; }
+
+            /// <summary>The "tcpRoutes" collection of methods.</summary>
+            public class TcpRoutesResource
+            {
+                private const string Resource = "tcpRoutes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TcpRoutesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new TcpRoute in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the TcpRoute. Must be in the format `projects/*/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.TcpRoute body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new TcpRoute in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.TcpRoute body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the TcpRoute. Must be in the format
+                    /// `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tcpRouteId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TcpRouteId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.TcpRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tcpRoutes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("tcpRouteId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tcpRouteId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single TcpRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the TcpRoute to delete. Must be in the format
+                /// `projects/*/locations/global/tcpRoutes/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single TcpRoute.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TcpRoute to delete. Must be in the format
+                    /// `projects/*/locations/global/tcpRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tcpRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single TcpRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the TcpRoute to get. Must be in the format
+                /// `projects/*/locations/global/tcpRoutes/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single TcpRoute.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.TcpRoute>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TcpRoute to get. Must be in the format
+                    /// `projects/*/locations/global/tcpRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tcpRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists TcpRoute in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the TcpRoutes should be listed, specified in the
+                /// format `projects/*/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists TcpRoute in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListTcpRoutesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the TcpRoutes should be listed, specified in the
+                    /// format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of TcpRoutes to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListTcpRoutesResponse` Indicates that this is a continuation of
+                    /// a prior `ListRouters` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tcpRoutes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single TcpRoute.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the TcpRoute resource. It matches pattern
+                /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.TcpRoute body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single TcpRoute.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.TcpRoute body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the TcpRoute resource. It matches pattern
+                    /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the TcpRoute resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.TcpRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tcpRoutes/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the TlsRoutes resource.</summary>
+            public virtual TlsRoutesResource TlsRoutes { get; }
+
+            /// <summary>The "tlsRoutes" collection of methods.</summary>
+            public class TlsRoutesResource
+            {
+                private const string Resource = "tlsRoutes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TlsRoutesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new TlsRoute in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the TlsRoute. Must be in the format `projects/*/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.TlsRoute body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new TlsRoute in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.TlsRoute body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the TlsRoute. Must be in the format
+                    /// `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tlsRouteId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TlsRouteId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.TlsRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tlsRoutes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("tlsRouteId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tlsRouteId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single TlsRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the TlsRoute to delete. Must be in the format
+                /// `projects/*/locations/global/tlsRoutes/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single TlsRoute.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TlsRoute to delete. Must be in the format
+                    /// `projects/*/locations/global/tlsRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tlsRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single TlsRoute.</summary>
+                /// <param name="name">
+                /// Required. A name of the TlsRoute to get. Must be in the format
+                /// `projects/*/locations/global/tlsRoutes/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single TlsRoute.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.TlsRoute>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TlsRoute to get. Must be in the format
+                    /// `projects/*/locations/global/tlsRoutes/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tlsRoutes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists TlsRoute in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the TlsRoutes should be listed, specified in the
+                /// format `projects/*/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists TlsRoute in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListTlsRoutesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the TlsRoutes should be listed, specified in the
+                    /// format `projects/*/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of TlsRoutes to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListTlsRoutesResponse` Indicates that this is a continuation of
+                    /// a prior `ListRouters` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tlsRoutes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single TlsRoute.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the TlsRoute resource. It matches pattern
+                /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.TlsRoute body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single TlsRoute.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.TlsRoute body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the TlsRoute resource. It matches pattern
+                    /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the TlsRoute resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.TlsRoute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tlsRoutes/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -2787,12 +5289,1031 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Gateway represents the configuration for a proxy, typically a load balancer. It captures the ip:port over which
+    /// the services are exposed by the proxy, along with any policy configurations. Routes have reference to to
+    /// Gateways to dictate how requests should be routed by this Gateway.
+    /// </summary>
+    public class Gateway : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the Gateway resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. One or more ports that the Gateway must receive traffic on. The proxy binds to the ports
+        /// specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Ports { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Scope determines how configuration across multiple Gateway instances are merged. The
+        /// configuration for multiple Gateway instances with the same scope will be merged as presented as a single
+        /// coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can
+        /// only have letters, numbers, hyphens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Output only. Server-defined URL of this resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If
+        /// empty, TLS termination is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverTlsPolicy")]
+        public virtual string ServerTlsPolicy { get; set; }
+
+        /// <summary>Immutable. The type of the customer managed gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GrpcRoute is the resource defining how gRPC traffic routed by a Mesh or Gateway resource is routed.
+    /// </summary>
+    public class GrpcRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Gateways defines a list of gateways this GrpcRoute is attached to, as one of the routing rules to
+        /// route the requests served by the gateway. Each gateway reference should match the pattern:
+        /// `projects/*/locations/global/gateways/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
+        public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
+
+        /// <summary>
+        /// Required. Service hostnames with an optional port for which this route describes traffic. Format: [:]
+        /// Hostname is the fully qualified domain name of a network host. This matches the RFC 1123 definition of a
+        /// hostname with 2 notable exceptions: - IPs are not allowed. - A hostname may be prefixed with a wildcard
+        /// label (*.). The wildcard label must appear by itself as the first label. Hostname can be "precise" which is
+        /// a domain name without the terminating dot of a network host (e.g. "foo.example.com") or "wildcard", which is
+        /// a domain name prefixed with a single wildcard label (e.g. *.example.com). Note that as per RFC1035 and
+        /// RFC1123, a label must consist of lower case alphanumeric characters or '-', and must start and end with an
+        /// alphanumeric character. No other punctuation is allowed. The routes associated with a Mesh or Gateway must
+        /// have unique hostnames. If you attempt to attach multiple routes with conflicting hostnames, the
+        /// configuration will be rejected. For example, while it is acceptable for routes for the hostnames
+        /// "*.foo.bar.com" and "*.bar.com" to be associated with the same route, it is not possible to associate two
+        /// routes both with "*.bar.com" or both with "bar.com". If a port is specified, then gRPC clients must use the
+        /// channel URI with the port to match this rule (i.e. "xds:///service:123"), otherwise they must supply the URI
+        /// without a port (i.e. "xds:///service").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnames")]
+        public virtual System.Collections.Generic.IList<string> Hostnames { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the GrpcRoute resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as one of the routing rules to
+        /// route the requests served by the mesh. Each mesh reference should match the pattern:
+        /// `projects/*/locations/global/meshes/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
+        public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
+
+        /// <summary>
+        /// Required. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the
+        /// GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one
+        /// rule must be supplied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<GrpcRouteRouteRule> Rules { get; set; }
+
+        /// <summary>Output only. Server-defined URL of this resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The destination to which traffic will be routed.</summary>
+    public class GrpcRouteDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The URL of a destination service to which to route traffic. Must refer to either a BackendService
+        /// or ServiceDirectoryService.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+        /// This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some
+        /// epsilon from the exact proportion defined here depending on the precision an implementation supports. If
+        /// only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to
+        /// that backend. If weights are specified for any one service name, they need to be specified for all of them.
+        /// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of
+        /// them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The specification for fault injection introduced into traffic to test the resiliency of clients to destination
+    /// service failure. As part of fault injection, when clients send requests to a destination, delays can be
+    /// introduced on a percentage of requests before sending those requests to the destination service. Similarly
+    /// requests from clients can be aborted by for a percentage of requests.
+    /// </summary>
+    public class GrpcRouteFaultInjectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specification for aborting to client requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abort")]
+        public virtual GrpcRouteFaultInjectionPolicyAbort Abort { get; set; }
+
+        /// <summary>The specification for injecting delay to client requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delay")]
+        public virtual GrpcRouteFaultInjectionPolicyDelay Delay { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+    /// </summary>
+    public class GrpcRouteFaultInjectionPolicyAbort : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpStatus")]
+        public virtual System.Nullable<int> HttpStatus { get; set; }
+
+        /// <summary>The percentage of traffic which will be aborted. The value must be between [0, 100]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<int> Percentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+    /// </summary>
+    public class GrpcRouteFaultInjectionPolicyDelay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify a fixed delay before forwarding the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedDelay")]
+        public virtual object FixedDelay { get; set; }
+
+        /// <summary>
+        /// The percentage of traffic on which delay will be injected. The value must be between [0, 100]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<int> Percentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A match against a collection of headers.</summary>
+    public class GrpcRouteHeaderMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The key of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT
+        /// is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Required. The value of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a match against a method.</summary>
+    public class GrpcRouteMethodMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be
+        /// used with a type of REGULAR_EXPRESSION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
+        public virtual System.Nullable<bool> CaseSensitive { get; set; }
+
+        /// <summary>Required. Name of the method to match against. If unspecified, will match all methods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpcMethod")]
+        public virtual string GrpcMethod { get; set; }
+
+        /// <summary>Required. Name of the service to match against. If unspecified, will match all services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpcService")]
+        public virtual string GrpcService { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specifications for retries.</summary>
+    public class GrpcRouteRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the allowed number of retries. This number must be &amp;gt; 0. If not specpfied, default to 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRetries")]
+        public virtual System.Nullable<long> NumRetries { get; set; }
+
+        /// <summary>
+        /// - connect-failure: Router will retry on failures connecting to Backend Services, for example due to
+        /// connection timeouts. - refused-stream: Router will retry if the backend service resets the stream with a
+        /// REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: Router will
+        /// retry if the gRPC status code in the response header is set to cancelled - deadline-exceeded: Router will
+        /// retry if the gRPC status code in the response header is set to deadline-exceeded - resource-exhausted:
+        /// Router will retry if the gRPC status code in the response header is set to resource-exhausted - unavailable:
+        /// Router will retry if the gRPC status code in the response header is set to unavailable
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryConditions")]
+        public virtual System.Collections.Generic.IList<string> RetryConditions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how to route matched traffic.</summary>
+    public class GrpcRouteRouteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The destination services to which traffic should be forwarded. If multiple destinations are
+        /// specified, traffic will be split between Backend Service(s) according to the weight field of these
+        /// destinations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<GrpcRouteDestination> Destinations { get; set; }
+
+        /// <summary>
+        /// Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to
+        /// destination service failure. As part of fault injection, when clients send requests to a destination, delays
+        /// can be introduced on a percentage of requests before sending those requests to the destination service.
+        /// Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy
+        /// will be ignored by clients that are configured with a fault_injection_policy
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faultInjectionPolicy")]
+        public virtual GrpcRouteFaultInjectionPolicy FaultInjectionPolicy { get; set; }
+
+        /// <summary>Optional. Specifies the retry policy associated with this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
+        public virtual GrpcRouteRetryPolicy RetryPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been
+        /// fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes
+        /// all retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Criteria for matching traffic. A RouteMatch will be considered to match when all supplied fields match.
+    /// </summary>
+    public class GrpcRouteRouteMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies a collection of headers to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<GrpcRouteHeaderMatch> Headers { get; set; }
+
+        /// <summary>
+        /// Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual GrpcRouteMethodMatch Method { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes how to route traffic.</summary>
+    public class GrpcRouteRouteRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A detailed rule defining how to route traffic. This field is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual GrpcRouteRouteAction Action { get; set; }
+
+        /// <summary>
+        /// Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is
+        /// independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is
+        /// specified, this rule will unconditionally match traffic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matches")]
+        public virtual System.Collections.Generic.IList<GrpcRouteRouteMatch> Matches { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HttpRoute is the resource defining how HTTP traffic should be routed by a Mesh or Gateway resource.
+    /// </summary>
+    public class HttpRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to
+        /// route the requests served by the gateway. Each gateway reference should match the pattern:
+        /// `projects/*/locations/global/gateways/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
+        public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
+
+        /// <summary>
+        /// Required. Hostnames define a set of hosts that should match against the HTTP host header to select a
+        /// HttpRoute to process the request. Hostname is the fully qualified domain name of a network host, as defined
+        /// by RFC 1123 with the exception that: - IPs are not allowed. - A hostname may be prefixed with a wildcard
+        /// label (*.). The wildcard label must appear by itself as the first label. Hostname can be "precise" which is
+        /// a domain name without the terminating dot of a network host (e.g. "foo.example.com") or "wildcard", which is
+        /// a domain name prefixed with a single wildcard label (e.g. *.example.com). Note that as per RFC1035 and
+        /// RFC1123, a label must consist of lower case alphanumeric characters or '-', and must start and end with an
+        /// alphanumeric character. No other punctuation is allowed. The routes associated with a Mesh or Gateways must
+        /// have unique hostnames. If you attempt to attach multiple routes with conflicting hostnames, the
+        /// configuration will be rejected. For example, while it is acceptable for routes for the hostnames
+        /// "*.foo.bar.com" and "*.bar.com" to be associated with the same Mesh (or Gateways under the same scope), it
+        /// is not possible to associate two routes both with "*.bar.com" or both with "bar.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnames")]
+        public virtual System.Collections.Generic.IList<string> Hostnames { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the HttpRoute resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to
+        /// route the requests served by the mesh. Each mesh reference should match the pattern:
+        /// `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
+        public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
+
+        /// <summary>
+        /// Required. Name of the HttpRoute resource. It matches pattern
+        /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Rules that define how traffic is routed and handled. Rules will be matched sequentially based on
+        /// the RouteMatch specified for the rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<HttpRouteRouteRule> Rules { get; set; }
+
+        /// <summary>Output only. Server-defined URL of this resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Specification for allowing client side cross-origin requests.</summary>
+    public class HttpRouteCorsPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// In response to a preflight request, setting this to true indicates that the actual request can include user
+        /// credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCredentials")]
+        public virtual System.Nullable<bool> AllowCredentials { get; set; }
+
+        /// <summary>Specifies the content for Access-Control-Allow-Headers header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowHeaders")]
+        public virtual System.Collections.Generic.IList<string> AllowHeaders { get; set; }
+
+        /// <summary>Specifies the content for Access-Control-Allow-Methods header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMethods")]
+        public virtual System.Collections.Generic.IList<string> AllowMethods { get; set; }
+
+        /// <summary>
+        /// Specifies the regular expression patterns that match allowed origins. For regular expression grammar, please
+        /// see https://github.com/google/re2/wiki/Syntax.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOriginRegexes")]
+        public virtual System.Collections.Generic.IList<string> AllowOriginRegexes { get; set; }
+
+        /// <summary>
+        /// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches
+        /// either an item in allow_origins or an item in allow_origin_regexes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOrigins")]
+        public virtual System.Collections.Generic.IList<string> AllowOrigins { get; set; }
+
+        /// <summary>
+        /// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in
+        /// effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Specifies the content for Access-Control-Expose-Headers header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposeHeaders")]
+        public virtual System.Collections.Generic.IList<string> ExposeHeaders { get; set; }
+
+        /// <summary>
+        /// Specifies how long result of a preflight request can be cached in seconds. This translates to the
+        /// Access-Control-Max-Age header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
+        public virtual string MaxAge { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifications of a destination to which the request should be routed to.</summary>
+    public class HttpRouteDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL of a BackendService to route traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>
+        /// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is
+        /// computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon
+        /// from the exact proportion defined here depending on the precision an implementation supports. If only one
+        /// serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that
+        /// backend. If weights are specified for any one service name, they need to be specified for all of them. If
+        /// weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The specification for fault injection introduced into traffic to test the resiliency of clients to destination
+    /// service failure. As part of fault injection, when clients send requests to a destination, delays can be
+    /// introduced by client proxy on a percentage of requests before sending those requests to the destination service.
+    /// Similarly requests can be aborted by client proxy for a percentage of requests.
+    /// </summary>
+    public class HttpRouteFaultInjectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specification for aborting to client requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abort")]
+        public virtual HttpRouteFaultInjectionPolicyAbort Abort { get; set; }
+
+        /// <summary>The specification for injecting delay to client requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delay")]
+        public virtual HttpRouteFaultInjectionPolicyDelay Delay { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+    /// </summary>
+    public class HttpRouteFaultInjectionPolicyAbort : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpStatus")]
+        public virtual System.Nullable<int> HttpStatus { get; set; }
+
+        /// <summary>The percentage of traffic which will be aborted. The value must be between [0, 100]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<int> Percentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+    /// </summary>
+    public class HttpRouteFaultInjectionPolicyDelay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify a fixed delay before forwarding the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedDelay")]
+        public virtual object FixedDelay { get; set; }
+
+        /// <summary>
+        /// The percentage of traffic on which delay will be injected. The value must be between [0, 100]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<int> Percentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how to select a route rule based on HTTP request headers.</summary>
+    public class HttpRouteHeaderMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the header should match exactly the content of exact_match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactMatch")]
+        public virtual string ExactMatch { get; set; }
+
+        /// <summary>The name of the HTTP header to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; }
+
+        /// <summary>
+        /// If specified, the match result will be inverted before checking. Default value is set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertMatch")]
+        public virtual System.Nullable<bool> InvertMatch { get; set; }
+
+        /// <summary>The value of the header must start with the contents of prefix_match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixMatch")]
+        public virtual string PrefixMatch { get; set; }
+
+        /// <summary>
+        /// A header with header_name must exist. The match takes place whether or not the header has a value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presentMatch")]
+        public virtual System.Nullable<bool> PresentMatch { get; set; }
+
+        /// <summary>If specified, the rule will match if the request header value is within the range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeMatch")]
+        public virtual HttpRouteHeaderMatchIntegerRange RangeMatch { get; set; }
+
+        /// <summary>
+        /// The value of the header must match the regular expression specified in regex_match. For regular expression
+        /// grammar, please see: https://github.com/google/re2/wiki/Syntax
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
+        public virtual string RegexMatch { get; set; }
+
+        /// <summary>The value of the header must end with the contents of suffix_match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffixMatch")]
+        public virtual string SuffixMatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an integer value range.</summary>
+    public class HttpRouteHeaderMatchIntegerRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End of the range (exclusive)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<int> End { get; set; }
+
+        /// <summary>Start of the range (inclusive)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<int> Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for modifying HTTP header in HTTP request and HTTP response.</summary>
+    public class HttpRouteHeaderModifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Add the headers with given map where key is the name of the header, value is the value of the header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("add")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Add { get; set; }
+
+        /// <summary>Remove headers (matching by header names) specified in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remove")]
+        public virtual System.Collections.Generic.IList<string> Remove { get; set; }
+
+        /// <summary>
+        /// Completely overwrite/replace the headers with given map where key is the name of the header, value is the
+        /// value of the header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("set")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Set { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifications to match a query parameter in the request.</summary>
+    public class HttpRouteQueryParameterMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match,
+        /// regex_match, or present_match must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactMatch")]
+        public virtual string ExactMatch { get; set; }
+
+        /// <summary>
+        /// Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of
+        /// whether the parameter has a value or not. Only one of exact_match, regex_match, or present_match must be
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presentMatch")]
+        public virtual System.Nullable<bool> PresentMatch { get; set; }
+
+        /// <summary>The name of the query parameter to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameter")]
+        public virtual string QueryParameter { get; set; }
+
+        /// <summary>
+        /// The value of the query parameter must match the regular expression specified by regex_match. For regular
+        /// expression grammar, please see https://github.com/google/re2/wiki/Syntax Only one of exact_match,
+        /// regex_match, or present_match must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
+        public virtual string RegexMatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for redirecting traffic.</summary>
+    public class HttpRouteRedirect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The host that will be used in the redirect response instead of the one that was supplied in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostRedirect")]
+        public virtual string HostRedirect { get; set; }
+
+        /// <summary>
+        /// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of
+        /// the redirected request will remain the same as that of the request. The default is set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpsRedirect")]
+        public virtual System.Nullable<bool> HttpsRedirect { get; set; }
+
+        /// <summary>
+        /// The path that will be used in the redirect response instead of the one that was supplied in the request.
+        /// path_redirect can not be supplied together with prefix_redirect. Supply one alone or neither. If neither is
+        /// supplied, the path of the original request will be used for the redirect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathRedirect")]
+        public virtual string PathRedirect { get; set; }
+
+        /// <summary>
+        /// The port that will be used in the redirected request instead of the one that was supplied in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portRedirect")]
+        public virtual System.Nullable<int> PortRedirect { get; set; }
+
+        /// <summary>
+        /// Indicates that during redirection, the matched prefix (or path) should be swapped with this value. This
+        /// option allows URLs be dynamically created based on the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixRewrite")]
+        public virtual string PrefixRewrite { get; set; }
+
+        /// <summary>The HTTP Status code to use for the redirect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseCode")]
+        public virtual string ResponseCode { get; set; }
+
+        /// <summary>
+        /// if set to true, any accompanying query portion of the original URL is removed prior to redirecting the
+        /// request. If set to false, the query portion of the original URL is retained. The default is set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stripQuery")]
+        public virtual System.Nullable<bool> StripQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not
+    /// wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority
+    /// header is suffixed with -shadow.
+    /// </summary>
+    public class HttpRouteRequestMirrorPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The destination the requests will be mirrored to. The weight of the destination will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual HttpRouteDestination Destination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specifications for retries.</summary>
+    public class HttpRouteRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the allowed number of retries. This number must be &amp;gt; 0. If not specified, default to 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRetries")]
+        public virtual System.Nullable<int> NumRetries { get; set; }
+
+        /// <summary>Specifies a non-zero timeout per retry attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perTryTimeout")]
+        public virtual object PerTryTimeout { get; set; }
+
+        /// <summary>
+        /// Specifies one or more conditions when this retry policy applies. Valid values are: 5xx: Proxy will attempt a
+        /// retry if the destination service responds with any 5xx response code, of if the destination service does not
+        /// respond at all, example: disconnect, reset, read timeout, connection failure and refused streams.
+        /// gateway-error: Similar to 5xx, but only applies to response codes 502, 503, 504. reset: Proxy will attempt a
+        /// retry if the destination service does not respond at all (disconnect/reset/read timeout) connect-failure:
+        /// Proxy will retry on failures connecting to destination for example due to connection timeouts.
+        /// retriable-4xx: Proxy will retry fro retriable 4xx response codes. Currently the only retriable error
+        /// supported is 409. refused-stream: Proxy will retry if the destination resets the stream with a
+        /// REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryConditions")]
+        public virtual System.Collections.Generic.IList<string> RetryConditions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specifications for routing traffic and applying associated policies.</summary>
+    public class HttpRouteRouteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specification for allowing client side cross-origin requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corsPolicy")]
+        public virtual HttpRouteCorsPolicy CorsPolicy { get; set; }
+
+        /// <summary>The destination to which traffic should be forwarded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<HttpRouteDestination> Destinations { get; set; }
+
+        /// <summary>
+        /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend
+        /// service failure. As part of fault injection, when clients send requests to a backend service, delays can be
+        /// introduced on a percentage of requests before sending those requests to the backend service. Similarly
+        /// requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored
+        /// by clients that are configured with a fault_injection_policy
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faultInjectionPolicy")]
+        public virtual HttpRouteFaultInjectionPolicy FaultInjectionPolicy { get; set; }
+
+        /// <summary>If set, the request is directed as configured by this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirect")]
+        public virtual HttpRouteRedirect Redirect { get; set; }
+
+        /// <summary>
+        /// The specification for modifying the headers of a matching request prior to delivery of the request to the
+        /// destination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestHeaderModifier")]
+        public virtual HttpRouteHeaderModifier RequestHeaderModifier { get; set; }
+
+        /// <summary>
+        /// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored
+        /// destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior
+        /// to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestMirrorPolicy")]
+        public virtual HttpRouteRequestMirrorPolicy RequestMirrorPolicy { get; set; }
+
+        /// <summary>
+        /// The specification for modifying the headers of a response prior to sending the response back to the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseHeaderModifier")]
+        public virtual HttpRouteHeaderModifier ResponseHeaderModifier { get; set; }
+
+        /// <summary>Specifies the retry policy associated with this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
+        public virtual HttpRouteRetryPolicy RetryPolicy { get; set; }
+
+        /// <summary>
+        /// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully
+        /// processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all
+        /// retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>The specification for rewrite URL before forwarding requests to the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlRewrite")]
+        public virtual HttpRouteURLRewrite UrlRewrite { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RouteMatch defines specifications used to match requests. If multiple match types are set, this RouteMatch will
+    /// match if ALL type of matches are matched.
+    /// </summary>
+    public class HttpRouteRouteMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or
+        /// regex_match should be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullPathMatch")]
+        public virtual string FullPathMatch { get; set; }
+
+        /// <summary>
+        /// Specifies a list of HTTP request headers to match against. ALL of the supplied headers must be matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<HttpRouteHeaderMatch> Headers { get; set; }
+
+        /// <summary>
+        /// Specifies if prefix_match and full_path_match matches are case sensitive. The default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
+        public virtual System.Nullable<bool> IgnoreCase { get; set; }
+
+        /// <summary>
+        /// The HTTP request path value must begin with specified prefix_match. prefix_match must begin with a /. Only
+        /// one of full_path_match, prefix_match, or regex_match should be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixMatch")]
+        public virtual string PrefixMatch { get; set; }
+
+        /// <summary>
+        /// Specifies a list of query parameters to match against. ALL of the query parameters must be matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
+        public virtual System.Collections.Generic.IList<HttpRouteQueryParameterMatch> QueryParameters { get; set; }
+
+        /// <summary>
+        /// The HTTP request path value must satisfy the regular expression specified by regex_match after removing any
+        /// query parameters and anchor supplied with the original URL. For regular expression grammar, please see
+        /// https://github.com/google/re2/wiki/Syntax Only one of full_path_match, prefix_match, or regex_match should
+        /// be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
+        public virtual string RegexMatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how to match traffic and how to route traffic when traffic is matched.</summary>
+    public class HttpRouteRouteRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed rule defining how to route matched traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual HttpRouteRouteAction Action { get; set; }
+
+        /// <summary>
+        /// A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is
+        /// independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is
+        /// specified, this rule will unconditionally match traffic. If a default rule is desired to be configured, add
+        /// a rule with no matches specified to the end of the rules list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matches")]
+        public virtual System.Collections.Generic.IList<HttpRouteRouteMatch> Matches { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The specification for modifying the URL of the request, prior to forwarding the request to the destination.
+    /// </summary>
+    public class HttpRouteURLRewrite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Prior to forwarding the request to the selected destination, the requests host header is replaced by this
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostRewrite")]
+        public virtual string HostRewrite { get; set; }
+
+        /// <summary>
+        /// Prior to forwarding the request to the selected destination, the matching portion of the requests path is
+        /// replaced by this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathPrefixRewrite")]
+        public virtual string PathPrefixRewrite { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response returned by the ListEndpointPolicies method.</summary>
     public class ListEndpointPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of EndpointPolicy resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointPolicies")]
         public virtual System.Collections.Generic.IList<EndpointPolicy> EndpointPolicies { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListGateways method.</summary>
+    public class ListGatewaysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Gateway resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
+        public virtual System.Collections.Generic.IList<Gateway> Gateways { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListGrpcRoutes method.</summary>
+    public class ListGrpcRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of GrpcRoute resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpcRoutes")]
+        public virtual System.Collections.Generic.IList<GrpcRoute> GrpcRoutes { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListHttpRoutes method.</summary>
+    public class ListHttpRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of HttpRoute resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRoutes")]
+        public virtual System.Collections.Generic.IList<HttpRoute> HttpRoutes { get; set; }
 
         /// <summary>
         /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
@@ -2813,6 +6334,24 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListMeshes method.</summary>
+    public class ListMeshesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Mesh resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
+        public virtual System.Collections.Generic.IList<Mesh> Meshes { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2853,6 +6392,42 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the ListTcpRoutes method.</summary>
+    public class ListTcpRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of TcpRoute resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpRoutes")]
+        public virtual System.Collections.Generic.IList<TcpRoute> TcpRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListTlsRoutes method.</summary>
+    public class ListTlsRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of TlsRoute resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsRoutes")]
+        public virtual System.Collections.Generic.IList<TlsRoute> TlsRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2880,6 +6455,51 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Mesh represents a logical configuration grouping for workload to workload communication within a service mesh.
+    /// Routes that point to mesh dictate how requests are routed within this logical mesh boundary.
+    /// </summary>
+    public class Mesh : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port
+        /// of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port
+        /// regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port.
+        /// This will is applicable only for sidecar proxy deployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptionPort")]
+        public virtual System.Nullable<int> InterceptionPort { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the Mesh resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Server-defined URL of this resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3126,6 +6746,152 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// TcpRoute is the resource defining how TCP traffic should be routed by a Mesh/Gateway resource.
+    /// </summary>
+    public class TcpRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to
+        /// route the requests served by the gateway. Each gateway reference should match the pattern:
+        /// `projects/*/locations/global/gateways/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
+        public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the TcpRoute resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route
+        /// the requests served by the mesh. Each mesh reference should match the pattern:
+        /// `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
+        public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
+
+        /// <summary>
+        /// Required. Name of the TcpRoute resource. It matches pattern
+        /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If
+        /// there are multiple rules then the action taken will be the first rule to match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<TcpRouteRouteRule> Rules { get; set; }
+
+        /// <summary>Output only. Server-defined URL of this resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specifications for routing traffic and applying associated policies.</summary>
+    public class TcpRouteRouteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The destination services to which traffic should be forwarded. At least one destination service is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<TcpRouteRouteDestination> Destinations { get; set; }
+
+        /// <summary>
+        /// Optional. If true, Router will use the destination IP and port of the original connection as the destination
+        /// of the request. Default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalDestination")]
+        public virtual System.Nullable<bool> OriginalDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describe the destination for traffic to be routed to.</summary>
+    public class TcpRouteRouteDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The URL of a BackendService to route traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+        /// This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some
+        /// epsilon from the exact proportion defined here depending on the precision an implementation supports. If
+        /// only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to
+        /// that backend. If weights are specified for any one service name, they need to be specified for all of them.
+        /// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of
+        /// them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for
+    /// evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
+    /// </summary>
+    public class TcpRouteRouteMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix
+        /// length to construct the subnet mask. By default, the prefix length is 32 (i.e. matches a single IP address).
+        /// Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address.
+        /// "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0"
+        /// - matches against any IP address'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>Required. Specifies the destination port to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual string Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how to match traffic and how to route traffic when traffic is matched.</summary>
+    public class TcpRouteRouteRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The detailed rule defining how to route matched traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual TcpRouteRouteAction Action { get; set; }
+
+        /// <summary>
+        /// Optional. RouteMatch defines the predicate used to match requests to a given action. Multiple match types
+        /// are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match
+        /// traffic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matches")]
+        public virtual System.Collections.Generic.IList<TcpRouteRouteMatch> Matches { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3147,6 +6913,136 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TlsRoute defines how traffic should be routed based on SNI and other matching L3 attributes.</summary>
+    public class TlsRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to
+        /// route the requests served by the gateway. Each gateway reference should match the pattern:
+        /// `projects/*/locations/global/gateways/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
+        public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
+
+        /// <summary>
+        /// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route
+        /// the requests served by the mesh. Each mesh reference should match the pattern:
+        /// `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
+        public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
+
+        /// <summary>
+        /// Required. Name of the TlsRoute resource. It matches pattern
+        /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If
+        /// there are multiple rules then the action taken will be the first rule to match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<TlsRouteRouteRule> Rules { get; set; }
+
+        /// <summary>Output only. Server-defined URL of this resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specifications for routing traffic and applying associated policies.</summary>
+    public class TlsRouteRouteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The destination services to which traffic should be forwarded. At least one destination service is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<TlsRouteRouteDestination> Destinations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describe the destination for traffic to be routed to.</summary>
+    public class TlsRouteRouteDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The URL of a BackendService to route traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name
+        /// field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to
+        /// sum up to 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "AND"ed for
+    /// evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
+    /// </summary>
+    public class TlsRouteRouteMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At
+        /// least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alpn")]
+        public virtual System.Collections.Generic.IList<string> Alpn { get; set; }
+
+        /// <summary>
+        /// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains,
+        /// i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial
+        /// wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn
+        /// is required. Up to 5 sni hosts across all matches can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sniHost")]
+        public virtual System.Collections.Generic.IList<string> SniHost { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how to match traffic and how to route traffic when traffic is matched.</summary>
+    public class TlsRouteRouteRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The detailed rule defining how to route matched traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual TlsRouteRouteAction Action { get; set; }
+
+        /// <summary>
+        /// Required. RouteMatch defines the predicate used to match requests to a given action. Multiple match types
+        /// are "OR"ed for evaluation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matches")]
+        public virtual System.Collections.Generic.IList<TlsRouteRouteMatch> Matches { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
