@@ -6963,12 +6963,30 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("personNames")]
         public virtual System.Collections.Generic.IList<Name> PersonNames { get; set; }
 
+        /// <summary>The person's phone numbers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual System.Collections.Generic.IList<PhoneNumber> PhoneNumbers { get; set; }
+
         /// <summary>
         /// A person's read-only photo. A picture shown next to the person's name to help others recognize the person in
         /// search results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
         public virtual System.Collections.Generic.IList<Photo> Photos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A person's Phone Number</summary>
+    public class PhoneNumber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The phone number of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumberValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2033,7 +2033,9 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     public class GoogleIdentityAccesscontextmanagerV1EgressTo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of external resources that are allowed to be accessed. A request matches if it contains an external
+        /// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported.
+        /// For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is
+        /// azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external
         /// resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalResources")]

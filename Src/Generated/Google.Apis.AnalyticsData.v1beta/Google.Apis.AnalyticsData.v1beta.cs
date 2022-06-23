@@ -1307,7 +1307,11 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("betweenFilter")]
         public virtual BetweenFilter BetweenFilter { get; set; }
 
-        /// <summary>The dimension name or metric name. Must be a name defined in dimensions or metrics.</summary>
+        /// <summary>
+        /// The dimension name or metric name. In most methods, dimensions &amp;amp; metrics can be used for the first
+        /// time in this field. However in a RunPivotReportRequest, this field must be additionally specified by name in
+        /// the RunPivotReportRequest's dimensions or metrics.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
         public virtual string FieldName { get; set; }
 
@@ -2060,10 +2064,7 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
     /// <summary>The request to generate a realtime report.</summary>
     public class RunRealtimeReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The filter clause of dimensions. Dimensions must be requested to be used in this filter. Metrics cannot be
-        /// used in this filter.
-        /// </summary>
+        /// <summary>The filter clause of dimensions. Metrics cannot be used in this filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
         public virtual FilterExpression DimensionFilter { get; set; }
 
@@ -2089,8 +2090,8 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual System.Collections.Generic.IList<string> MetricAggregations { get; set; }
 
         /// <summary>
-        /// The filter clause of metrics. Applied at post aggregation phase, similar to SQL having-clause. Metrics must
-        /// be requested to be used in this filter. Dimensions cannot be used in this filter.
+        /// The filter clause of metrics. Applied at post aggregation phase, similar to SQL having-clause. Dimensions
+        /// cannot be used in this filter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricFilter")]
         public virtual FilterExpression MetricFilter { get; set; }

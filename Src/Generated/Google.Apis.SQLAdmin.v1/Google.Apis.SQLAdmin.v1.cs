@@ -1968,8 +1968,8 @@ namespace Google.Apis.SQLAdmin.v1
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// The maximum number of instances to return. The service may return fewer than this value. The maximum
-            /// value is 1000; values above 1000 are coerced to 1000.
+            /// The maximum number of instances to return. The service may return fewer than this value. If unspecified,
+            /// at most 500 instances are returned. The maximum value is 1000; values above 1000 are coerced to 1000.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }

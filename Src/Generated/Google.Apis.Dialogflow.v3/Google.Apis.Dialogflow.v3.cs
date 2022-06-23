@@ -12950,7 +12950,8 @@ namespace Google.Apis.Dialogflow.v3.Data
 
     /// <summary>
     /// The request message for a webhook call. The request is sent as a JSON object and the field names will be
-    /// presented in camel cases.
+    /// presented in camel cases. You may see undocumented fields in an actual request. These fields are used internally
+    /// by Dialogflow and should be ignored.
     /// </summary>
     public class GoogleCloudDialogflowCxV3WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14938,7 +14939,8 @@ namespace Google.Apis.Dialogflow.v3.Data
 
     /// <summary>
     /// The request message for a webhook call. The request is sent as a JSON object and the field names will be
-    /// presented in camel cases.
+    /// presented in camel cases. You may see undocumented fields in an actual request. These fields are used internally
+    /// by Dialogflow and should be ignored.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16757,7 +16759,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
-        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        /// <summary>
+        /// Indicates whether the conversational query triggers a cancellation for slot filling. For more information,
+        /// see the [cancel slot filling
+        /// documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
         public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
 
@@ -18993,7 +18999,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
-        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        /// <summary>
+        /// Indicates whether the conversational query triggers a cancellation for slot filling. For more information,
+        /// see the [cancel slot filling
+        /// documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
         public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
 
