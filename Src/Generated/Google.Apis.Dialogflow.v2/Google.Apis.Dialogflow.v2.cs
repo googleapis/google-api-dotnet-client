@@ -20633,7 +20633,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>
     /// The request message for a webhook call. The request is sent as a JSON object and the field names will be
-    /// presented in camel cases.
+    /// presented in camel cases. You may see undocumented fields in an actual request. These fields are used internally
+    /// by Dialogflow and should be ignored.
     /// </summary>
     public class GoogleCloudDialogflowCxV3WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22621,7 +22622,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>
     /// The request message for a webhook call. The request is sent as a JSON object and the field names will be
-    /// presented in camel cases.
+    /// presented in camel cases. You may see undocumented fields in an actual request. These fields are used internally
+    /// by Dialogflow and should be ignored.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26789,7 +26791,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
-        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        /// <summary>
+        /// Indicates whether the conversational query triggers a cancellation for slot filling. For more information,
+        /// see the [cancel slot filling
+        /// documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
         public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
 
@@ -27461,7 +27467,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the natural language text to be processed.</summary>
+    /// <summary>
+    /// ============================================================================ Auxiliary proto messages.
+    /// Represents the natural language text to be processed.
+    /// </summary>
     public class GoogleCloudDialogflowV2TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -29521,7 +29530,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
-        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        /// <summary>
+        /// Indicates whether the conversational query triggers a cancellation for slot filling. For more information,
+        /// see the [cancel slot filling
+        /// documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
         public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
 

@@ -2370,6 +2370,27 @@ namespace Google.Apis.AndroidManagement.v1
 }
 namespace Google.Apis.AndroidManagement.v1.Data
 {
+    /// <summary>A shell command was issued over ADB via “adb shell command”.</summary>
+    public class AdbShellCommandEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Shell command that was issued over ADB via "adb shell command". Redacted to empty string on
+        /// organization-owned managed profile devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shellCmd")]
+        public virtual string ShellCmd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An ADB interactive shell was opened via “adb shell”. Intentionally empty.</summary>
+    public class AdbShellInteractiveEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Security policies set to secure values by default. To maintain the security posture of a device, we don't
     /// recommend overriding any of the default values.
@@ -2448,6 +2469,62 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minApiLevel")]
         public virtual System.Nullable<int> MinApiLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about a process. It contains process name, start time, app Uid, app Pid, seinfo tag, hash of the
+    /// base APK.
+    /// </summary>
+    public class AppProcessInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SHA-256 hash of the base APK, in hexadecimal format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apkSha256Hash")]
+        public virtual string ApkSha256Hash { get; set; }
+
+        /// <summary>
+        /// Package names of all packages that are associated with the particular user id. In most cases, this will be a
+        /// single package name, the package that has been assigned that user id. If multiple application share a uid
+        /// then all packages sharing uid will be included.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageNames")]
+        public virtual System.Collections.Generic.IList<string> PackageNames { get; set; }
+
+        /// <summary>Process ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pid")]
+        public virtual System.Nullable<int> Pid { get; set; }
+
+        /// <summary>Process name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processName")]
+        public virtual string ProcessName { get; set; }
+
+        /// <summary>SELinux policy info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seinfo")]
+        public virtual string Seinfo { get; set; }
+
+        /// <summary>Process start time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>UID of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual System.Nullable<int> Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An app process was started. This is available device-wide on fully managed devices and within the work profile
+    /// on organization-owned devices with a work profile.
+    /// </summary>
+    public class AppProcessStartEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about a process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processInfo")]
+        public virtual AppProcessInfo ProcessInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2826,6 +2903,33 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Batched event logs of events from the device.</summary>
+    public class BatchUsageLogEvents : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the device in the form ‘enterprises/{enterpriseId}/devices/{deviceId}’</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string Device { get; set; }
+
+        /// <summary>The device timestamp when the batch of events were collected from the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalTime")]
+        public virtual object RetrievalTime { get; set; }
+
+        /// <summary>
+        /// The list of UsageLogEvent that were reported by the device, sorted chronologically by the event time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageLogEvents")]
+        public virtual System.Collections.Generic.IList<UsageLogEvent> UsageLogEvents { get; set; }
+
+        /// <summary>
+        /// The resource name of the user that owns this device in the form ‘enterprises/{enterpriseId}/users/{userId}’.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An action to block access to apps and data on a fully managed device or in a work profile. This action also
     /// triggers a device or work profile to displays a user-facing notification with information (where possible) on
@@ -2845,6 +2949,71 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockScope")]
         public virtual string BlockScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A new root certificate was installed into the system's trusted credential storage. This is available device-wide
+    /// on fully managed devices and within the work profile on organization-owned devices with a work profile.
+    /// </summary>
+    public class CertAuthorityInstalledEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subject of the certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; }
+
+        /// <summary>Whether the installation event succeeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>
+        /// The user in which the certificate install event happened. Only available for devices running Android 11 and
+        /// above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual System.Nullable<int> UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A root certificate was removed from the system's trusted credential storage. This is available device-wide on
+    /// fully managed devices and within the work profile on organization-owned devices with a work profile.
+    /// </summary>
+    public class CertAuthorityRemovedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subject of the certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; }
+
+        /// <summary>Whether the removal succeeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>
+        /// The user in which the certificate removal event occurred. Only available for devices running Android 11 and
+        /// above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual System.Nullable<int> UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An X.509v3 certificate failed to validate, currently this validation is performed on the Wi-FI access point and
+    /// failure may be due to a mismatch upon server certificate validation. However it may in the future include other
+    /// validation events of an X.509v3 certificate.
+    /// </summary>
+    public class CertValidationFailureEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason why certification validation failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3031,6 +3200,25 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A TCP connect event was initiated through the standard network stack.</summary>
+    public class ConnectEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination IP address of the connect call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationIpAddress")]
+        public virtual string DestinationIpAddress { get; set; }
+
+        /// <summary>The destination port of the connect call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPort")]
+        public virtual System.Nullable<int> DestinationPort { get; set; }
+
+        /// <summary>The package name of the UID that performed the connect call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contact details for managed Google Play enterprises.</summary>
     public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3115,6 +3303,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showWorkContactsInPersonalProfile")]
         public virtual string ShowWorkContactsInPersonalProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Validates whether Android’s built-in cryptographic library (BoringSSL) is valid. Should always succeed on device
+    /// boot, if it fails, the device should be considered untrusted.
+    /// </summary>
+    public class CryptoSelfTestCompletedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the test succeeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3435,6 +3637,34 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A DNS lookup event was initiated through the standard network stack.</summary>
+    public class DnsEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The hostname that was looked up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>
+        /// The (possibly truncated) list of the IP addresses returned for DNS lookup (max 10 IPv4 or IPv6 addresses).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
+        public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
+
+        /// <summary>The package name of the UID that performed the DNS lookup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>
+        /// The number of IP addresses returned from the DNS lookup event. May be higher than the amount of ip_addresses
+        /// if there were too many addresses to log.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalIpAddressesReturned")]
+        public virtual System.Nullable<long> TotalIpAddressesReturned { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -3648,6 +3878,28 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A file was downloaded from the device.</summary>
+    public class FilePulledEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The path of the file being pulled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A file was uploaded onto the device.</summary>
+    public class FilePushedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The path of the file being pushed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A system freeze period. When a device’s clock is within the freeze period, all incoming system updates
     /// (including security patches) are blocked and won’t be installed. When a device is outside the freeze period,
@@ -3804,6 +4056,94 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A cryptographic key including user installed, admin installed and system maintained private key is removed from
+    /// the device either by the user or management. This is available device-wide on fully managed devices and within
+    /// the work profile on organization-owned devices with a work profile.
+    /// </summary>
+    public class KeyDestructionEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>UID of the application which owns the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationUid")]
+        public virtual System.Nullable<int> ApplicationUid { get; set; }
+
+        /// <summary>Alias of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyAlias")]
+        public virtual string KeyAlias { get; set; }
+
+        /// <summary>Whether the operation was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A cryptographic key including user installed, admin installed and system maintained private key is installed on
+    /// the device either by the user or management.This is available device-wide on fully managed devices and within
+    /// the work profile on organization-owned devices with a work profile.
+    /// </summary>
+    public class KeyGeneratedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>UID of the application which generated the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationUid")]
+        public virtual System.Nullable<int> ApplicationUid { get; set; }
+
+        /// <summary>Alias of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyAlias")]
+        public virtual string KeyAlias { get; set; }
+
+        /// <summary>Whether the operation was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A cryptographic key including user installed, admin installed and system maintained private key is imported on
+    /// the device either by the user or management. This is available device-wide on fully managed devices and within
+    /// the work profile on organization-owned devices with a work profile.
+    /// </summary>
+    public class KeyImportEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>UID of the application which imported the key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationUid")]
+        public virtual System.Nullable<int> ApplicationUid { get; set; }
+
+        /// <summary>Alias of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyAlias")]
+        public virtual string KeyAlias { get; set; }
+
+        /// <summary>Whether the operation was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A cryptographic key including user installed, admin installed and system maintained private key is determined to
+    /// be corrupted due to storage corruption, hardware failure or some OS issue. This is available device-wide on
+    /// fully managed devices and within the work profile on organization-owned devices with a work profile.
+    /// </summary>
+    public class KeyIntegrityViolationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>UID of the application which owns the key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationUid")]
+        public virtual System.Nullable<int> ApplicationUid { get; set; }
+
+        /// <summary>Alias of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyAlias")]
+        public virtual string KeyAlias { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Keyed app state reported by the app.</summary>
     public class KeyedAppState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3840,6 +4180,37 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An attempt was made to unlock the device.</summary>
+    public class KeyguardDismissAuthAttemptEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether a strong form of authentication (password, PIN, or pattern) was used to unlock device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strongAuthMethodUsed")]
+        public virtual System.Nullable<bool> StrongAuthMethodUsed { get; set; }
+
+        /// <summary>Whether the unlock attempt was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The keyguard was dismissed. Intentionally empty.</summary>
+    public class KeyguardDismissedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The device was locked either by user or timeout. Intentionally empty.</summary>
+    public class KeyguardSecuredEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3983,6 +4354,30 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
+    /// The usageLog buffer on the device has reached 90% of its capacity, therefore older events may be dropped.
+    /// Intentionally empty.
+    /// </summary>
+    public class LogBufferSizeCriticalEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>usageLog policy has been enabled. Intentionally empty.</summary>
+    public class LoggingStartedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>usageLog policy has been disabled. Intentionally empty.</summary>
+    public class LoggingStoppedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The managed configurations template for the app, saved from the managed configurations iframe.
     /// </summary>
     public class ManagedConfigurationTemplate : Google.Apis.Requests.IDirectResponseSchema
@@ -4053,6 +4448,36 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Removable media was mounted.</summary>
+    public class MediaMountEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mount point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
+        public virtual string MountPoint { get; set; }
+
+        /// <summary>Volume label. Redacted to empty string on organization-owned managed profile devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeLabel")]
+        public virtual string VolumeLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Removable media was unmounted.</summary>
+    public class MediaUnmountEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mount point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
+        public virtual string MountPoint { get; set; }
+
+        /// <summary>Volume label. Redacted to empty string on organization-owned managed profile devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeLabel")]
+        public virtual string VolumeLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4272,6 +4697,28 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Device was shutdown. Intentionally empty.</summary>
+    public class OsShutdownEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Device was started.</summary>
+    public class OsStartupEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Verified Boot state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedBootState")]
+        public virtual string VerifiedBootState { get; set; }
+
+        /// <summary>dm-verity mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verityMode")]
+        public virtual string VerityMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5090,6 +5537,25 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The device or profile has been remotely locked via the LOCK command.</summary>
+    public class RemoteLockEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Package name of the admin app requesting the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminPackageName")]
+        public virtual string AdminPackageName { get; set; }
+
+        /// <summary>User ID of the admin app from the which the change was requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminUserId")]
+        public virtual System.Nullable<int> AdminUserId { get; set; }
+
+        /// <summary>User ID in which the change was requested in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetUserId")]
+        public virtual System.Nullable<int> TargetUserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The security posture of the device, as determined by the current device state and the policies applied.
     /// </summary>
@@ -5473,6 +5939,172 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An event logged on the device.</summary>
+    public class UsageLogEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A shell command was issued over ADB via “adb shell command”. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adbShellCommandEvent")]
+        public virtual AdbShellCommandEvent AdbShellCommandEvent { get; set; }
+
+        /// <summary>An ADB interactive shell was opened via “adb shell”. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adbShellInteractiveEvent")]
+        public virtual AdbShellInteractiveEvent AdbShellInteractiveEvent { get; set; }
+
+        /// <summary>An app process was started. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appProcessStartEvent")]
+        public virtual AppProcessStartEvent AppProcessStartEvent { get; set; }
+
+        /// <summary>
+        /// A new root certificate was installed into the system's trusted credential storage. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certAuthorityInstalledEvent")]
+        public virtual CertAuthorityInstalledEvent CertAuthorityInstalledEvent { get; set; }
+
+        /// <summary>
+        /// A root certificate was removed from the system's trusted credential storage. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certAuthorityRemovedEvent")]
+        public virtual CertAuthorityRemovedEvent CertAuthorityRemovedEvent { get; set; }
+
+        /// <summary>
+        /// An X.509v3 certificate failed to validate, currently this validation is performed on the Wi-FI access point
+        /// and failure may be due to a mismatch upon server certificate validation. However it may in the future
+        /// include other validation events of an X.509v3 certificate. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certValidationFailureEvent")]
+        public virtual CertValidationFailureEvent CertValidationFailureEvent { get; set; }
+
+        /// <summary>
+        /// A TCP connect event was initiated through the standard network stack. Part of NETWORK_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectEvent")]
+        public virtual ConnectEvent ConnectEvent { get; set; }
+
+        /// <summary>
+        /// Validates whether Android’s built-in cryptographic library (BoringSSL) is valid. Should always succeed on
+        /// device boot, if it fails, the device should be considered untrusted. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoSelfTestCompletedEvent")]
+        public virtual CryptoSelfTestCompletedEvent CryptoSelfTestCompletedEvent { get; set; }
+
+        /// <summary>
+        /// A DNS lookup event was initiated through the standard network stack. Part of NETWORK_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsEvent")]
+        public virtual DnsEvent DnsEvent { get; set; }
+
+        /// <summary>Unique id of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual System.Nullable<long> EventId { get; set; }
+
+        /// <summary>Device timestamp when the event was logged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; }
+
+        /// <summary>
+        /// The particular usage log event type that was reported on the device. Use this to determine which event field
+        /// to access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>A file was downloaded from the device. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePulledEvent")]
+        public virtual FilePulledEvent FilePulledEvent { get; set; }
+
+        /// <summary>A file was uploaded onto the device. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePushedEvent")]
+        public virtual FilePushedEvent FilePushedEvent { get; set; }
+
+        /// <summary>
+        /// A cryptographic key including user installed, admin installed and system maintained private key is removed
+        /// from the device either by the user or management. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyDestructionEvent")]
+        public virtual KeyDestructionEvent KeyDestructionEvent { get; set; }
+
+        /// <summary>
+        /// A cryptographic key including user installed, admin installed and system maintained private key is installed
+        /// on the device either by the user or management. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyGeneratedEvent")]
+        public virtual KeyGeneratedEvent KeyGeneratedEvent { get; set; }
+
+        /// <summary>
+        /// A cryptographic key including user installed, admin installed and system maintained private key is imported
+        /// on the device either by the user or management. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyImportEvent")]
+        public virtual KeyImportEvent KeyImportEvent { get; set; }
+
+        /// <summary>
+        /// A cryptographic key including user installed, admin installed and system maintained private key is
+        /// determined to be corrupted due to storage corruption, hardware failure or some OS issue. Part of
+        /// SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyIntegrityViolationEvent")]
+        public virtual KeyIntegrityViolationEvent KeyIntegrityViolationEvent { get; set; }
+
+        /// <summary>An attempt was made to unlock the device. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyguardDismissAuthAttemptEvent")]
+        public virtual KeyguardDismissAuthAttemptEvent KeyguardDismissAuthAttemptEvent { get; set; }
+
+        /// <summary>The keyguard was dismissed. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyguardDismissedEvent")]
+        public virtual KeyguardDismissedEvent KeyguardDismissedEvent { get; set; }
+
+        /// <summary>The device was locked either by user or timeout. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyguardSecuredEvent")]
+        public virtual KeyguardSecuredEvent KeyguardSecuredEvent { get; set; }
+
+        /// <summary>
+        /// The audit log buffer has reached 90% of its capacity, therefore older events may be dropped. Part of
+        /// SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logBufferSizeCriticalEvent")]
+        public virtual LogBufferSizeCriticalEvent LogBufferSizeCriticalEvent { get; set; }
+
+        /// <summary>usageLog policy has been enabled. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingStartedEvent")]
+        public virtual LoggingStartedEvent LoggingStartedEvent { get; set; }
+
+        /// <summary>usageLog policy has been disabled. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingStoppedEvent")]
+        public virtual LoggingStoppedEvent LoggingStoppedEvent { get; set; }
+
+        /// <summary>Removable media was mounted. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaMountEvent")]
+        public virtual MediaMountEvent MediaMountEvent { get; set; }
+
+        /// <summary>Removable media was unmounted. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaUnmountEvent")]
+        public virtual MediaUnmountEvent MediaUnmountEvent { get; set; }
+
+        /// <summary>Device was shutdown. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osShutdownEvent")]
+        public virtual OsShutdownEvent OsShutdownEvent { get; set; }
+
+        /// <summary>Device was started. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osStartupEvent")]
+        public virtual OsStartupEvent OsStartupEvent { get; set; }
+
+        /// <summary>
+        /// The device or profile has been remotely locked via the LOCK command. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteLockEvent")]
+        public virtual RemoteLockEvent RemoteLockEvent { get; set; }
+
+        /// <summary>
+        /// The work profile or company-owned device failed to wipe when when requested. This could be user initiated or
+        /// admin initiated e.g. delete was received. Part of SECURITY_LOGS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wipeFailureEvent")]
+        public virtual WipeFailureEvent WipeFailureEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A user belonging to an enterprise.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5629,6 +6261,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wipeAfterDays")]
         public virtual System.Nullable<int> WipeAfterDays { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The work profile or company-owned device failed to wipe when when requested. This could be user initiated or
+    /// admin initiated e.g. delete was received. Intentionally empty.
+    /// </summary>
+    public class WipeFailureEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

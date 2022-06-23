@@ -2955,7 +2955,7 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>
         /// Creates a new TagKey. If another request with the same parameters is sent while the original request is in
-        /// process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any
+        /// process, the second request will receive an error. A maximum of 1000 TagKeys can exist under a parent at any
         /// given time.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2966,7 +2966,7 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>
         /// Creates a new TagKey. If another request with the same parameters is sent while the original request is in
-        /// process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any
+        /// process, the second request will receive an error. A maximum of 1000 TagKeys can exist under a parent at any
         /// given time.
         /// </summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
@@ -3792,7 +3792,7 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>
         /// Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent
-        /// while the original request is in process the second request will receive an error. A maximum of 300
+        /// while the original request is in process the second request will receive an error. A maximum of 1000
         /// TagValues can exist under a TagKey at any given time.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -3803,7 +3803,7 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>
         /// Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent
-        /// while the original request is in process the second request will receive an error. A maximum of 300
+        /// while the original request is in process the second request will receive an error. A maximum of 1000
         /// TagValues can exist under a TagKey at any given time.
         /// </summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>

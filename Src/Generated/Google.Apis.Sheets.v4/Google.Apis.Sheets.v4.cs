@@ -3260,7 +3260,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A border along a cell.</summary>
     public class Border : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the border. Deprecated: Use [color_style].</summary>
+        /// <summary>The color of the border. Deprecated: Use color_style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
 
@@ -3577,7 +3577,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
         public virtual string HorizontalAlignment { get; set; }
 
-        /// <summary>How a hyperlink, if it exists, should be displayed in the cell.</summary>
+        /// <summary>If one exists, how a hyperlink should be displayed in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperlinkDisplayType")]
         public virtual string HyperlinkDisplayType { get; set; }
 
@@ -3594,14 +3594,14 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string TextDirection { get; set; }
 
         /// <summary>
-        /// The format of the text in the cell (unless overridden by a format run). Setting a cell-level link here will
-        /// clear the cell's existing links. Setting the link field in a TextFormatRun will take precedence over the
+        /// The format of the text in the cell (unless overridden by a format run). Setting a cell-level link here
+        /// clears the cell's existing links. Setting the link field in a TextFormatRun takes precedence over the
         /// cell-level link.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
 
-        /// <summary>The rotation applied to text in a cell</summary>
+        /// <summary>The rotation applied to text in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRotation")]
         public virtual TextRotation TextRotation { get; set; }
 
