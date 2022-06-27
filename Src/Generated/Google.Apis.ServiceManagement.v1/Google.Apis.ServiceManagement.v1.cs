@@ -2785,6 +2785,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation payload for EnableService method.</summary>
+    public class EnableServiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service
     /// endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service
@@ -3640,14 +3647,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// </summary>
     public class MetricRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is
-        /// the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased
-        /// for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicMetricCosts")]
-        public virtual System.Collections.Generic.IDictionary<string, string> DynamicMetricCosts { get; set; }
-
         /// <summary>
         /// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The
         /// key of the map is the metric name, and the values are the amount increased for the metric against which the

@@ -2089,6 +2089,17 @@ namespace Google.Apis.SecretManager.v1.Data
         /// <summary>Input only. The TTL for the Secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
+
+        /// <summary>
+        /// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of
+        /// 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore
+        /// ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No
+        /// more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret
+        /// and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and
+        /// AccessSecretVersion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionAliases")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> VersionAliases { get; set; }
     }
 
     /// <summary>

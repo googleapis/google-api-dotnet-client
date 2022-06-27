@@ -3,6 +3,15 @@
     "BASIC",
     "INCLUDE_DOWNLOAD_URL"
   ],
+  "Google.Apis.StreetViewPublish.v1.PhotoSequenceResource+CreateRequest.InputTypeEnum": [
+    "INPUT_TYPE_UNSPECIFIED",
+    "VIDEO",
+    "XDM"
+  ],
+  "Google.Apis.StreetViewPublish.v1.PhotoSequenceResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "INCLUDE_DOWNLOAD_URL"
+  ],
   "Google.Apis.StreetViewPublish.v1.PhotosResource+BatchGetRequest.ViewEnum": [
     "BASIC",
     "INCLUDE_DOWNLOAD_URL"

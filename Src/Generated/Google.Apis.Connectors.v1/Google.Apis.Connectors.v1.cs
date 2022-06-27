@@ -1032,10 +1032,10 @@ namespace Google.Apis.Connectors.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Connection resource
-                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
-                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
-                    /// mask then all fields will be overwritten.
+                    /// Field mask is used to specify the fields to be overwritten in the Connection resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2690,6 +2690,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Output only. Outbound domains/hosts needs to be allowlisted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressBackends")]
+        public virtual System.Collections.Generic.IList<string> EgressBackends { get; set; }
+
         /// <summary>
         /// Output only. GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         /// </summary>
@@ -3670,10 +3674,6 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
-        /// <summary>Output only. Resource name of the form: `projects/*/locations/*/runtimeConfig`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
         /// <summary>Output only. The endpoint of the connectors runtime ingress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeEndpoint")]
         public virtual string RuntimeEndpoint { get; set; }
@@ -3759,6 +3759,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Parameters to support Ssh public key Authentication.</summary>
     public class SshPublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Format of SSH Client cert.</summary>

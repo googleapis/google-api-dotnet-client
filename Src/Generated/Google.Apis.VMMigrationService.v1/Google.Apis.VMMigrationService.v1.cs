@@ -4511,6 +4511,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// <summary>Represent the source AWS VM details.</summary>
     public class AwsSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The total size of the disks being migrated in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
+        public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
+
         /// <summary>The firmware type of the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }

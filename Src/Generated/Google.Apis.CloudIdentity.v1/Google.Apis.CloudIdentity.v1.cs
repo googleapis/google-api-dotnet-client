@@ -66,6 +66,9 @@ namespace Google.Apis.CloudIdentity.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Identity API.</summary>
         public class Scope
         {
+            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity</summary>
+            public static string CloudIdentity = "https://www.googleapis.com/auth/cloud-identity";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
             public static string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
 
@@ -96,6 +99,9 @@ namespace Google.Apis.CloudIdentity.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Identity API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity</summary>
+            public const string CloudIdentity = "https://www.googleapis.com/auth/cloud-identity";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
             public const string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
 

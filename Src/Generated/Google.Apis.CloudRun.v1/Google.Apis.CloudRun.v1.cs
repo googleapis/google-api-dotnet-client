@@ -7148,8 +7148,8 @@ namespace Google.Apis.CloudRun.v1.Data
     public class Probe : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field
-        /// inlined from the Handler message.
+        /// (Optional) Not supported by Cloud Run One and only one of the following should be specified. Exec specifies
+        /// the action to take. A field inlined from the Handler message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exec")]
         public virtual ExecAction Exec { get; set; }
@@ -7174,24 +7174,24 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual HTTPGetAction HttpGet { get; set; }
 
         /// <summary>
-        /// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults
-        /// to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240.
-        /// More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// (Optional) Number of seconds after the container has started before the probe is initiated. Defaults to 0
+        /// seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is
+        /// 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
         public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
 
         /// <summary>
-        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value
-        /// for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than
+        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum
+        /// value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than
         /// timeout_seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
         public virtual System.Nullable<int> PeriodSeconds { get; set; }
 
         /// <summary>
-        /// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed.
-        /// Defaults to 1. Must be 1 for liveness and startup Probes.
+        /// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Must
+        /// be 1 if set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
         public virtual System.Nullable<int> SuccessThreshold { get; set; }

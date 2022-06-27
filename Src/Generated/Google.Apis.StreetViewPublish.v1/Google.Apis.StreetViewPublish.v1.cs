@@ -35,6 +35,8 @@ namespace Google.Apis.StreetViewPublish.v1
         public StreetViewPublishService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Photo = new PhotoResource(this);
+            PhotoSequence = new PhotoSequenceResource(this);
+            PhotoSequences = new PhotoSequencesResource(this);
             Photos = new PhotosResource(this);
         }
 
@@ -79,6 +81,12 @@ namespace Google.Apis.StreetViewPublish.v1
 
         /// <summary>Gets the Photo resource.</summary>
         public virtual PhotoResource Photo { get; }
+
+        /// <summary>Gets the PhotoSequence resource.</summary>
+        public virtual PhotoSequenceResource PhotoSequence { get; }
+
+        /// <summary>Gets the PhotoSequences resource.</summary>
+        public virtual PhotoSequencesResource PhotoSequences { get; }
 
         /// <summary>Gets the Photos resource.</summary>
         public virtual PhotosResource Photos { get; }
@@ -637,6 +645,411 @@ namespace Google.Apis.StreetViewPublish.v1
         }
     }
 
+    /// <summary>The "photoSequence" collection of methods.</summary>
+    public class PhotoSequenceResource
+    {
+        private const string Resource = "photoSequence";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PhotoSequenceResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// After the client finishes uploading the PhotoSequence with the returned UploadRef, CreatePhotoSequence
+        /// extracts a sequence of 360 photos from a video or Extensible Device Metadata (XDM, http://www.xdm.org/) to
+        /// be published to Street View on Google Maps. `CreatePhotoSequence` returns an Operation, with the
+        /// PhotoSequence Id set in the `Operation.name` field. This method returns the following error codes: *
+        /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the upload
+        /// reference does not exist.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.StreetViewPublish.v1.Data.PhotoSequence body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// After the client finishes uploading the PhotoSequence with the returned UploadRef, CreatePhotoSequence
+        /// extracts a sequence of 360 photos from a video or Extensible Device Metadata (XDM, http://www.xdm.org/) to
+        /// be published to Street View on Google Maps. `CreatePhotoSequence` returns an Operation, with the
+        /// PhotoSequence Id set in the `Operation.name` field. This method returns the following error codes: *
+        /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the upload
+        /// reference does not exist.
+        /// </summary>
+        public class CreateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.StreetViewPublish.v1.Data.PhotoSequence body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The input form of PhotoSequence.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inputType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<InputTypeEnum> InputType { get; set; }
+
+            /// <summary>Required. The input form of PhotoSequence.</summary>
+            public enum InputTypeEnum
+            {
+                /// <summary>Not specified. Server will return google.rpc.Code.INVALID_ARGUMENT.</summary>
+                [Google.Apis.Util.StringValueAttribute("INPUT_TYPE_UNSPECIFIED")]
+                INPUTTYPEUNSPECIFIED = 0,
+
+                /// <summary>360 Video.</summary>
+                [Google.Apis.Util.StringValueAttribute("VIDEO")]
+                VIDEO = 1,
+
+                /// <summary>Extensible Device Metadata, http://www.xdm.org</summary>
+                [Google.Apis.Util.StringValueAttribute("XDM")]
+                XDM = 2,
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.StreetViewPublish.v1.Data.PhotoSequence Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/photoSequence";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("inputType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inputType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Deletes a PhotoSequence and its metadata. This method returns the following error codes: *
+        /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo sequence. *
+        /// google.rpc.Code.NOT_FOUND if the photo sequence ID does not exist. * google.rpc.Code.FAILED_PRECONDITION if
+        /// the photo sequence ID is not yet finished processing.
+        /// </summary>
+        /// <param name="sequenceId">Required. ID of the PhotoSequence.</param>
+        public virtual DeleteRequest Delete(string sequenceId)
+        {
+            return new DeleteRequest(service, sequenceId);
+        }
+
+        /// <summary>
+        /// Deletes a PhotoSequence and its metadata. This method returns the following error codes: *
+        /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo sequence. *
+        /// google.rpc.Code.NOT_FOUND if the photo sequence ID does not exist. * google.rpc.Code.FAILED_PRECONDITION if
+        /// the photo sequence ID is not yet finished processing.
+        /// </summary>
+        public class DeleteRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string sequenceId) : base(service)
+            {
+                SequenceId = sequenceId;
+                InitParameters();
+            }
+
+            /// <summary>Required. ID of the PhotoSequence.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sequenceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SequenceId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/photoSequence/{sequenceId}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("sequenceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sequenceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets the metadata of the specified PhotoSequence via the Operation interface. This method returns the
+        /// following three types of responses: * `Operation.done` = false, if the processing of PhotoSequence is not
+        /// finished yet. * `Operation.done` = true and `Operation.error` is populated, if there was an error in
+        /// processing. * `Operation.done` = true and `Operation.response` is poulated, which contains a PhotoSequence
+        /// message. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the
+        /// requesting user did not create the requested PhotoSequence. * google.rpc.Code.NOT_FOUND if the requested
+        /// PhotoSequence does not exist.
+        /// </summary>
+        /// <param name="sequenceId">Required. ID of the photo sequence.</param>
+        public virtual GetRequest Get(string sequenceId)
+        {
+            return new GetRequest(service, sequenceId);
+        }
+
+        /// <summary>
+        /// Gets the metadata of the specified PhotoSequence via the Operation interface. This method returns the
+        /// following three types of responses: * `Operation.done` = false, if the processing of PhotoSequence is not
+        /// finished yet. * `Operation.done` = true and `Operation.error` is populated, if there was an error in
+        /// processing. * `Operation.done` = true and `Operation.response` is poulated, which contains a PhotoSequence
+        /// message. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the
+        /// requesting user did not create the requested PhotoSequence. * google.rpc.Code.NOT_FOUND if the requested
+        /// PhotoSequence does not exist.
+        /// </summary>
+        public class GetRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string sequenceId) : base(service)
+            {
+                SequenceId = sequenceId;
+                InitParameters();
+            }
+
+            /// <summary>Required. ID of the photo sequence.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sequenceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SequenceId { get; private set; }
+
+            /// <summary>
+            /// Optional. The filter expression. For example: `published_status=PUBLISHED`. The filters supported are:
+            /// `published_status`. See https://google.aip.dev/160 for more information.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Specifies if a download URL for the photo sequence should be returned in `download_url` of individual
+            /// photos in the PhotoSequence response. &amp;gt; Note: Currently not implemented.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>
+            /// Specifies if a download URL for the photo sequence should be returned in `download_url` of individual
+            /// photos in the PhotoSequence response. &amp;gt; Note: Currently not implemented.
+            /// </summary>
+            public enum ViewEnum
+            {
+                /// <summary>
+                /// Server responses do not include the download URL for the photo bytes. The default value.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 0,
+
+                /// <summary>Server responses include the download URL for the photo bytes.</summary>
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
+                INCLUDEDOWNLOADURL = 1,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/photoSequence/{sequenceId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("sequenceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sequenceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Creates an upload session to start uploading photo sequence data. The upload URL of the returned UploadRef
+        /// is used to upload the data for the `photoSequence`. After the upload is complete, the UploadRef is used with
+        /// CreatePhotoSequence to create the PhotoSequence object entry.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual StartUploadRequest StartUpload(Google.Apis.StreetViewPublish.v1.Data.Empty body)
+        {
+            return new StartUploadRequest(service, body);
+        }
+
+        /// <summary>
+        /// Creates an upload session to start uploading photo sequence data. The upload URL of the returned UploadRef
+        /// is used to upload the data for the `photoSequence`. After the upload is complete, the UploadRef is used with
+        /// CreatePhotoSequence to create the PhotoSequence object entry.
+        /// </summary>
+        public class StartUploadRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.UploadRef>
+        {
+            /// <summary>Constructs a new StartUpload request.</summary>
+            public StartUploadRequest(Google.Apis.Services.IClientService service, Google.Apis.StreetViewPublish.v1.Data.Empty body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.StreetViewPublish.v1.Data.Empty Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "startUpload";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/photoSequence:startUpload";
+
+            /// <summary>Initializes StartUpload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
+
+    /// <summary>The "photoSequences" collection of methods.</summary>
+    public class PhotoSequencesResource
+    {
+        private const string Resource = "photoSequences";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PhotoSequencesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Lists all the PhotoSequences that belong to the user, in descending CreatePhotoSequence timestamp order.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>
+        /// Lists all the PhotoSequences that belong to the user, in descending CreatePhotoSequence timestamp order.
+        /// </summary>
+        public class ListRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.ListPhotoSequencesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The filters supported are:
+            /// `imagery_type`, `processing_state`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`,
+            /// and `filename_query`. See https://google.aip.dev/160 for more information. Filename queries should sent
+            /// as a Phrase in order to support multple words and special characters by adding escaped quotes. Ex:
+            /// filename_query="example of a phrase.mp4"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Optional. The maximum number of photo sequences to return. `pageSize` must be non-negative. If
+            /// `pageSize` is zero or is not provided, the default page size of 100 is used. The number of photo
+            /// sequences returned in the response may be less than `pageSize` if the number of matches is less than
+            /// `pageSize`. This is currently unimplemented but is in process.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. The nextPageToken value returned from a previous ListPhotoSequences request, if any.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/photoSequences";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "photos" collection of methods.</summary>
     public class PhotosResource
     {
@@ -1073,6 +1486,28 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>IMU data from the device sensors.</summary>
+    public class Imu : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The accelerometer measurements in meters/sec^2 with increasing timestamps from devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelMpsps")]
+        public virtual System.Collections.Generic.IList<Measurement3d> AccelMpsps { get; set; }
+
+        /// <summary>The gyroscope measurements in radians/sec with increasing timestamps from devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gyroRps")]
+        public virtual System.Collections.Generic.IList<Measurement3d> GyroRps { get; set; }
+
+        /// <summary>
+        /// The magnetometer measurements of the magnetic field in microtesla (uT) with increasing timestamps from
+        /// devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("magUt")]
+        public virtual System.Collections.Generic.IList<Measurement3d> MagUt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
     /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
@@ -1087,6 +1522,21 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
         public virtual System.Nullable<double> Longitude { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A rectangle in geographical coordinates.</summary>
+    public class LatLngBounds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The northeast corner of these bounds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("northeast")]
+        public virtual LatLng Northeast { get; set; }
+
+        /// <summary>The southwest corner of these bounds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("southwest")]
+        public virtual LatLng Southwest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1113,6 +1563,29 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to list all photo sequences that belong to a user.</summary>
+    public class ListPhotoSequencesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// List of photo sequences via Operation interface. The maximum number of items returned is based on the
+        /// pageSize field in the request. Each item in the list can have three possible states, * `Operation.done` =
+        /// false, if the processing of PhotoSequence is not finished yet. * `Operation.done` = true and
+        /// `Operation.error` is populated, if there was an error in processing. * `Operation.done` = true and
+        /// `Operation.response` contains a PhotoSequence message, In each sequence, only Id is populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoSequences")]
+        public virtual System.Collections.Generic.IList<Operation> PhotoSequences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to list all photos that belong to a user.</summary>
     public class ListPhotosResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1127,6 +1600,29 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
         public virtual System.Collections.Generic.IList<Photo> Photos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Generic 3d measurement sample.</summary>
+    public class Measurement3d : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp of the IMU measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("captureTime")]
+        public virtual object CaptureTime { get; set; }
+
+        /// <summary>The sensor measurement in the x axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; }
+
+        /// <summary>The sensor measurement in the y axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; }
+
+        /// <summary>The sensor measurement in the z axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("z")]
+        public virtual System.Nullable<float> Z { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1271,6 +1767,100 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>The status for the operation to get or update a single photo in the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A sequence of 360 photos along with metadata.</summary>
+    public class PhotoSequence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Absolute time when the photo sequence starts to be captured. If the photo sequence is a video,
+        /// this is the start time of the video. If this field is populated in input, it overrides the capture time in
+        /// the video or XDM file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("captureTimeOverride")]
+        public virtual object CaptureTimeOverride { get; set; }
+
+        /// <summary>Output only. The computed distance of the photo sequence in meters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeters")]
+        public virtual System.Nullable<double> DistanceMeters { get; set; }
+
+        /// <summary>
+        /// Output only. If this sequence has processing_state = FAILED, this will contain the reason why it failed. If
+        /// the processing_state is any other value, this field will be unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
+
+        /// <summary>
+        /// Output only. The filename of the upload. Does not include the directory path. Only available if the sequence
+        /// was uploaded on a platform that provides the filename.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>
+        /// Input only. If both raw_gps_timeline and the Camera Motion Metadata Track (CAMM) contain GPS measurements,
+        /// indicate which takes precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpsSource")]
+        public virtual string GpsSource { get; set; }
+
+        /// <summary>
+        /// Output only. Unique identifier for the photo sequence. This also acts as a long running operation ID if
+        /// uploading is performed asynchronously.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Input only. Three axis IMU data for the collection. If this data is too large to put in the request, then it
+        /// should be put in the CAMM track for the video. This data always takes precedence over the equivalent CAMM
+        /// data, if it exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imu")]
+        public virtual Imu Imu { get; set; }
+
+        /// <summary>Output only. Photos with increasing timestamps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photos")]
+        public virtual System.Collections.Generic.IList<Photo> Photos { get; set; }
+
+        /// <summary>Output only. The processing state of this sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingState")]
+        public virtual string ProcessingState { get; set; }
+
+        /// <summary>
+        /// Input only. Raw GPS measurements with increasing timestamps from the device that aren't time synced with
+        /// each photo. These raw measurements will be used to infer the pose of each frame. Required in input when
+        /// InputType is VIDEO and raw GPS measurements are not in Camera Motion Metadata Track (CAMM). User can
+        /// indicate which takes precedence using gps_source if raw GPS measurements are provided in both
+        /// raw_gps_timeline and Camera Motion Metadata Track (CAMM).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawGpsTimeline")]
+        public virtual System.Collections.Generic.IList<Pose> RawGpsTimeline { get; set; }
+
+        /// <summary>Output only. A rectangular box that encapsulates every image in this photo sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sequenceBounds")]
+        public virtual LatLngBounds SequenceBounds { get; set; }
+
+        /// <summary>
+        /// Input only. Required when creating photo sequence. The resource name where the bytes of the photo sequence
+        /// (in the form of video) are uploaded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadReference")]
+        public virtual UploadRef UploadReference { get; set; }
+
+        /// <summary>Output only. The time this photo sequence was created in uSV Store service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
+        public virtual object UploadTime { get; set; }
+
+        /// <summary>
+        /// Output only. The total number of views that all the published images in this PhotoSequence have received.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
+        public virtual System.Nullable<long> ViewCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

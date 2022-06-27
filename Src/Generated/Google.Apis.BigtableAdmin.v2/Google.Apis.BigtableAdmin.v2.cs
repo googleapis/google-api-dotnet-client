@@ -3117,6 +3117,65 @@ namespace Google.Apis.BigtableAdmin.v2
                         });
                     }
                 }
+
+                /// <summary>Restores a specified table which was accidentally deleted.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The unique name of the table to be restored. Values are of the form
+                /// `projects/{project}/instances/{instance}/tables/{table}`.
+                /// </param>
+                public virtual UndeleteRequest Undelete(Google.Apis.BigtableAdmin.v2.Data.UndeleteTableRequest body, string name)
+                {
+                    return new UndeleteRequest(service, body, name);
+                }
+
+                /// <summary>Restores a specified table which was accidentally deleted.</summary>
+                public class UndeleteRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.UndeleteTableRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The unique name of the table to be restored. Values are of the form
+                    /// `projects/{project}/instances/{instance}/tables/{table}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.UndeleteTableRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "undelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:undelete";
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>
@@ -5386,6 +5445,34 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata type for the operation returned by google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable.
+    /// </summary>
+    public class UndeleteTableMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the time at which this operation finished or was cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The name of the table being restored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The time at which this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable</summary>
+    public class UndeleteTableRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -5297,6 +5297,14 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string Key { get; set; }
 
         /// <summary>
+        /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if
+        /// RECOMMENDATIONS_FILTERING_ENABLED, attribute values are filterable for recommendations. This option works
+        /// for categorical features only, does not work for numerical features, inventory filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationsFilteringOption")]
+        public virtual string RecommendationsFilteringOption { get; set; }
+
+        /// <summary>
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED,
         /// attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute
         /// type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there
@@ -5433,15 +5441,15 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual GoogleCloudRetailV2alphaCompletionDataInputConfig DenylistInputConfig { get; set; }
 
         /// <summary>
-        /// Output only. LRO corresponding to the latest allowlist import. Can use GetOperation API to retrieve the
-        /// latest state of the Long Running Operation.
+        /// Output only. Name of the LRO corresponding to the latest allowlist import. Can use GetOperation API to
+        /// retrieve the latest state of the Long Running Operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAllowlistImportOperation")]
         public virtual string LastAllowlistImportOperation { get; set; }
 
         /// <summary>
-        /// Output only. LRO corresponding to the latest denylist import. Can use GetOperation API to retrieve the
-        /// latest state of the Long Running Operation.
+        /// Output only. Name of the LRO corresponding to the latest denylist import. Can use GetOperation API to
+        /// retrieve the latest state of the Long Running Operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastDenylistImportOperation")]
         public virtual string LastDenylistImportOperation { get; set; }
@@ -6284,7 +6292,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// results, the API will return generic (unfiltered) popular products. If you only want results strictly
         /// matching the filters, set `strictFiltering` to True in `PredictRequest.params` to receive empty results
         /// instead. Note that the API will never return items with storageStatus of "EXPIRED" or "DELETED" regardless
-        /// of filter choices.
+        /// of filter choices. If `filterSyntaxV2` is set to true under the `params` field, then attribute based
+        /// expressions are expected instead of the above described tag-based syntax. Examples: * (colors: ANY("Red",
+        /// "Blue")) AND NOT (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR
+        /// categories: ANY("Phones"))
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -6328,7 +6339,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// and adjusts prediction results based on product price. * `diversityLevel`: String. Default empty. If set to
         /// be non-empty, then it needs to be one of {'no-diversity', 'low-diversity', 'medium-diversity',
         /// 'high-diversity', 'auto-diversity'}. This gives request-level control and adjusts prediction results based
-        /// on product category.
+        /// on product category. * `filterSyntaxV2`: Boolean. False by default. If set to true, the `filter` field will
+        /// be interpreteted according to the new, attribute-based syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
