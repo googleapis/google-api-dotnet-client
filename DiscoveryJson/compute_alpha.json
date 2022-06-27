@@ -550,6 +550,56 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "move": {
+     "description": "Moves the specified address resource.",
+     "flatPath": "projects/{project}/regions/{region}/addresses/{address}/move",
+     "httpMethod": "POST",
+     "id": "compute.addresses.move",
+     "parameterOrder": [
+      "project",
+      "region",
+      "address"
+     ],
+     "parameters": {
+      "address": {
+       "description": "Name of the address resource to move.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Source project ID which the Address is moved from.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/addresses/{address}/move",
+     "request": {
+      "$ref": "RegionAddressesMoveRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "setLabels": {
      "description": "Sets the labels on an Address. To learn more about labels, read the Labeling Resources documentation.",
      "flatPath": "projects/{project}/regions/{region}/addresses/{resource}/setLabels",
@@ -5358,6 +5408,48 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "move": {
+     "description": "Moves the specified address resource from one project to another project.",
+     "flatPath": "projects/{project}/global/addresses/{address}/move",
+     "httpMethod": "POST",
+     "id": "compute.globalAddresses.move",
+     "parameterOrder": [
+      "project",
+      "address"
+     ],
+     "parameters": {
+      "address": {
+       "description": "Name of the address resource to move.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Source project ID which the Address is moved from.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/addresses/{address}/move",
+     "request": {
+      "$ref": "GlobalAddressesMoveRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "setLabels": {
      "description": "Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources documentation.",
      "flatPath": "projects/{project}/global/addresses/{resource}/setLabels",
@@ -8812,7 +8904,7 @@
      ]
     },
     "listManagedInstances": {
-     "description": "Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action. The orderBy query parameter is not supported.",
+     "description": "Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action. The orderBy query parameter is not supported. The `pageToken` query parameter is supported only in the alpha and beta API and only if the group's `listManagedInstancesResults` field is set to `PAGINATED`.",
      "flatPath": "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances",
      "httpMethod": "POST",
      "id": "compute.instanceGroupManagers.listManagedInstances",
@@ -24287,7 +24379,7 @@
      ]
     },
     "listManagedInstances": {
-     "description": "Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances. The orderBy query parameter is not supported.",
+     "description": "Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances. The orderBy query parameter is not supported. The `pageToken` query parameter is supported only in the alpha and beta API and only if the group's `listManagedInstancesResults` field is set to `PAGINATED`.",
      "flatPath": "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances",
      "httpMethod": "POST",
      "id": "compute.regionInstanceGroupManagers.listManagedInstances",
@@ -25414,6 +25506,205 @@
      },
      "response": {
       "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
+  "regionInstanceTemplates": {
+   "methods": {
+    "delete": {
+     "description": "Deletes the specified instance template. Deleting an instance template is permanent and cannot be undone.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "httpMethod": "DELETE",
+     "id": "compute.regionInstanceTemplates.delete",
+     "parameterOrder": [
+      "project",
+      "region",
+      "instanceTemplate"
+     ],
+     "parameters": {
+      "instanceTemplate": {
+       "description": "The name of the instance template to delete.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "description": "Returns the specified instance template. Gets a list of available instance templates by making a list() request.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "httpMethod": "GET",
+     "id": "compute.regionInstanceTemplates.get",
+     "parameterOrder": [
+      "project",
+      "region",
+      "instanceTemplate"
+     ],
+     "parameters": {
+      "instanceTemplate": {
+       "description": "The name of the instance template.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
+     "response": {
+      "$ref": "InstanceTemplate"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "description": "Creates an instance template in the specified project and region using the global instance template whose URL is included in the request.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates",
+     "httpMethod": "POST",
+     "id": "compute.regionInstanceTemplates.insert",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates",
+     "request": {
+      "$ref": "InstanceTemplate"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "description": "Retrieves a list of instance templates that are contained within the specified project and region.",
+     "flatPath": "projects/{project}/regions/{region}/instanceTemplates",
+     "httpMethod": "GET",
+     "id": "compute.regionInstanceTemplates.list",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the regions for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instanceTemplates",
+     "response": {
+      "$ref": "InstanceTemplateList"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -38930,7 +39221,7 @@
    }
   }
  },
- "revision": "20220607",
+ "revision": "20220614",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -45189,6 +45480,28 @@
    },
    "type": "object"
   },
+  "ErrorInfo": {
+   "description": "Describes the cause of the error with structured details. Example of an error when contacting the \"pubsub.googleapis.com\" API when it is not enabled: { \"reason\": \"API_DISABLED\" \"domain\": \"googleapis.com\" \"metadata\": { \"resource\": \"projects/123\", \"service\": \"pubsub.googleapis.com\" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { \"reason\": \"STOCKOUT\" \"domain\": \"spanner.googleapis.com\", \"metadata\": { \"availableRegions\": \"us-central1,us-east2\" } }",
+   "id": "ErrorInfo",
+   "properties": {
+    "domain": {
+     "description": "The logical grouping to which the \"reason\" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: \"pubsub.googleapis.com\". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is \"googleapis.com\".",
+     "type": "string"
+    },
+    "metadatas": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "description": "Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {\"instanceLimit\": \"100/request\"}, should be returned as, {\"instanceLimitPerRequest\": \"100\"}, if the client exceeds the number of instances that can be created in a single (batch) request.",
+     "type": "object"
+    },
+    "reason": {
+     "description": "The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match /[A-Z0-9_]+/.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "ExchangedPeeringRoute": {
    "id": "ExchangedPeeringRoute",
    "properties": {
@@ -46203,6 +46516,10 @@
      "format": "int32",
      "type": "integer"
     },
+    "securityProfileGroup": {
+     "description": "A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.",
+     "type": "string"
+    },
     "targetResources": {
      "description": "A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.",
      "items": {
@@ -46447,7 +46764,7 @@
      "type": "string"
     },
     "ipVersion": {
-     "description": "The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.",
+     "description": "The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.",
      "enum": [
       "IPV4",
       "IPV6",
@@ -46559,6 +46876,7 @@
      "enum": [
       "ACCEPTED",
       "CLOSED",
+      "NEEDS_ATTENTION",
       "PENDING",
       "REJECTED",
       "STATUS_UNSPECIFIED"
@@ -46566,6 +46884,7 @@
      "enumDescriptions": [
       "The connection has been accepted by the producer.",
       "The connection has been closed by the producer and will not serve traffic going forward.",
+      "The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.",
       "The connection is pending acceptance by the producer.",
       "The connection has been rejected by the producer.",
       ""
@@ -47532,6 +47851,20 @@
    "properties": {
     "instance": {
      "description": "Full instance resource URL.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "GlobalAddressesMoveRequest": {
+   "id": "GlobalAddressesMoveRequest",
+   "properties": {
+    "description": {
+     "description": "An optional destination address description if intended to be different from the source.",
+     "type": "string"
+    },
+    "destinationAddress": {
+     "description": "The URL of the destination address to move to. This can be a full or partial URL. For example, the following are all valid URLs to a address: - https://www.googleapis.com/compute/v1/projects/project /global/addresses/address - projects/project/global/addresses/address Note that destination project must be different from the source project. So /global/addresses/address is not valid partial url.",
      "type": "string"
     }
    },
@@ -48961,6 +49294,35 @@
       "",
       ""
      ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "Help": {
+   "description": "Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.",
+   "id": "Help",
+   "properties": {
+    "links": {
+     "description": "URL(s) pointing to additional information on handling the current error.",
+     "items": {
+      "$ref": "HelpLink"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "HelpLink": {
+   "description": "Describes a URL link.",
+   "id": "HelpLink",
+   "properties": {
+    "description": {
+     "description": "Describes what the link offers.",
+     "type": "string"
+    },
+    "url": {
+     "description": "The URL of the link.",
      "type": "string"
     }
    },
@@ -53301,6 +53663,10 @@
      "$ref": "InstanceProperties",
      "description": "The instance properties for this instance template."
     },
+    "region": {
+     "description": "[Output Only] URL of the region where the instance template resides. Only applicable for regional resources.",
+     "type": "string"
+    },
     "selfLink": {
      "description": "[Output Only] The URL for this instance template. The server defines this URL.",
      "type": "string"
@@ -56583,6 +56949,21 @@
    },
    "type": "object"
   },
+  "LocalizedMessage": {
+   "description": "Provides a localized error message that is safe to return to the user which can be attached to an RPC error.",
+   "id": "LocalizedMessage",
+   "properties": {
+    "locale": {
+     "description": "The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: \"en-US\", \"fr-CH\", \"es-MX\"",
+     "type": "string"
+    },
+    "message": {
+     "description": "The localized error message in the above locale.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "LocationPolicy": {
    "description": "Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).",
    "id": "LocationPolicy",
@@ -57615,6 +57996,27 @@
          "code": {
           "description": "[Output Only] The error type identifier for this error.",
           "type": "string"
+         },
+         "errorDetails": {
+          "description": "[Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.",
+          "items": {
+           "properties": {
+            "errorInfo": {
+             "$ref": "ErrorInfo"
+            },
+            "help": {
+             "$ref": "Help"
+            },
+            "localizedMessage": {
+             "$ref": "LocalizedMessage"
+            },
+            "quotaInfo": {
+             "$ref": "QuotaExceededInfo"
+            }
+           },
+           "type": "object"
+          },
+          "type": "array"
          },
          "location": {
           "description": "[Output Only] Indicates the field in the request that caused the error. This property is optional.",
@@ -61549,6 +61951,27 @@
           "description": "[Output Only] The error type identifier for this error.",
           "type": "string"
          },
+         "errorDetails": {
+          "description": "[Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.",
+          "items": {
+           "properties": {
+            "errorInfo": {
+             "$ref": "ErrorInfo"
+            },
+            "help": {
+             "$ref": "Help"
+            },
+            "localizedMessage": {
+             "$ref": "LocalizedMessage"
+            },
+            "quotaInfo": {
+             "$ref": "QuotaExceededInfo"
+            }
+           },
+           "type": "object"
+          },
+          "type": "array"
+         },
          "location": {
           "description": "[Output Only] Indicates the field in the request that caused the error. This property is optional.",
           "type": "string"
@@ -64452,6 +64875,33 @@
    },
    "type": "object"
   },
+  "QuotaExceededInfo": {
+   "description": "Additional details for quota exceeded error for resource quota.",
+   "id": "QuotaExceededInfo",
+   "properties": {
+    "dimensions": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "description": "The map holding related quota dimensions.",
+     "type": "object"
+    },
+    "limit": {
+     "description": "Current effective quota limit. The limit's unit depends on the quota type or metric.",
+     "format": "double",
+     "type": "number"
+    },
+    "limitName": {
+     "description": "The name of the quota limit.",
+     "type": "string"
+    },
+    "metricName": {
+     "description": "The Compute Engine quota metric name.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
   "RbacPolicy": {
    "id": "RbacPolicy",
    "properties": {
@@ -64567,6 +65017,20 @@
       "type": "string"
      },
      "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "RegionAddressesMoveRequest": {
+   "id": "RegionAddressesMoveRequest",
+   "properties": {
+    "description": {
+     "description": "An optional destination address description if intended to be different from the source.",
+     "type": "string"
+    },
+    "destinationAddress": {
+     "description": "The URL of the destination address to move to. This can be a full or partial URL. For example, the following are all valid URLs to a address: - https://www.googleapis.com/compute/v1/projects/project/regions/region /addresses/address - projects/project/regions/region/addresses/address Note that destination project must be different from the source project. So /regions/region/addresses/address is not valid partial url.",
+     "type": "string"
     }
    },
    "type": "object"
@@ -70424,6 +70888,10 @@
      "description": "Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are \"deny(status)\", where valid values for status are 403, 404, 429, and 502, and \"redirect\" where the redirect parameters come from exceedRedirectOptions below.",
      "type": "string"
     },
+    "exceedActionRpcStatus": {
+     "$ref": "SecurityPolicyRuleRateLimitOptionsRpcStatus",
+     "description": "Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold"
+    },
     "exceedRedirectOptions": {
      "$ref": "SecurityPolicyRuleRedirectOptions",
      "description": "Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect."
@@ -70431,6 +70899,22 @@
     "rateLimitThreshold": {
      "$ref": "SecurityPolicyRuleRateLimitOptionsThreshold",
      "description": "Threshold at which to begin ratelimiting."
+    }
+   },
+   "type": "object"
+  },
+  "SecurityPolicyRuleRateLimitOptionsRpcStatus": {
+   "description": "Simplified google.rpc.Status type (omitting details).",
+   "id": "SecurityPolicyRuleRateLimitOptionsRpcStatus",
+   "properties": {
+    "code": {
+     "description": "The status code, which should be an enum value of google.rpc.Code.",
+     "format": "int32",
+     "type": "integer"
+    },
+    "message": {
+     "description": "A developer-facing error message, which should be in English.",
+     "type": "string"
     }
    },
    "type": "object"
@@ -70863,6 +71347,7 @@
      "enum": [
       "ACCEPTED",
       "CLOSED",
+      "NEEDS_ATTENTION",
       "PENDING",
       "REJECTED",
       "STATUS_UNSPECIFIED"
@@ -70870,6 +71355,7 @@
      "enumDescriptions": [
       "The connection has been accepted by the producer.",
       "The connection has been closed by the producer.",
+      "The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.",
       "The connection is pending acceptance by the producer.",
       "The consumer is still connected but not using the connection.",
       ""

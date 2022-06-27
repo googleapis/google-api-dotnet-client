@@ -940,6 +940,74 @@ namespace Google.Apis.CloudDomains.v1
                     }
                 }
 
+                /// <summary>
+                /// Imports a domain name from [Google Domains](https://domains.google/) for use in Cloud Domains. To
+                /// transfer a domain from another registrar, use the `TransferDomain` method instead. Since individual
+                /// users can own domains in Google Domains, the calling user must have ownership permission on the
+                /// domain.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the Registration. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual ImportRequest Import(Google.Apis.CloudDomains.v1.Data.ImportDomainRequest body, string parent)
+                {
+                    return new ImportRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Imports a domain name from [Google Domains](https://domains.google/) for use in Cloud Domains. To
+                /// transfer a domain from another registrar, use the `TransferDomain` method instead. Since individual
+                /// users can own domains in Google Domains, the calling user must have ownership permission on the
+                /// domain.
+                /// </summary>
+                public class ImportRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDomains.v1.Data.ImportDomainRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the Registration. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDomains.v1.Data.ImportDomainRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/registrations:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists the `Registration` resources in a project.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which to list `Registration`s, specified in the format
@@ -1323,6 +1391,89 @@ namespace Google.Apis.CloudDomains.v1
                 }
 
                 /// <summary>
+                /// Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud
+                /// Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains,
+                /// the list of domains returned depends on the individual user making the call. Domains supported by
+                /// Google Domains, but not supported by Cloud Domains, are not returned.
+                /// </summary>
+                /// <param name="location">
+                /// Required. The location. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual RetrieveImportableDomainsRequest RetrieveImportableDomains(string location)
+                {
+                    return new RetrieveImportableDomainsRequest(service, location);
+                }
+
+                /// <summary>
+                /// Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud
+                /// Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains,
+                /// the list of domains returned depends on the individual user making the call. Domains supported by
+                /// Google Domains, but not supported by Cloud Domains, are not returned.
+                /// </summary>
+                public class RetrieveImportableDomainsRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1.Data.RetrieveImportableDomainsResponse>
+                {
+                    /// <summary>Constructs a new RetrieveImportableDomains request.</summary>
+                    public RetrieveImportableDomainsRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                    {
+                        Location = location;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The location. Must be in the format `projects/*/locations/*`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+                    /// <summary>Maximum number of results to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// When set to the `next_page_token` from a prior response, provides the next page of results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "retrieveImportableDomains";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+location}/registrations:retrieveImportableDomains";
+
+                    /// <summary>Initializes RetrieveImportableDomains parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Gets parameters needed to register a new domain name, including price and up-to-date availability.
                 /// Use the returned values to call `RegisterDomain`.
                 /// </summary>
@@ -1391,8 +1542,8 @@ namespace Google.Apis.CloudDomains.v1
 
                 /// <summary>
                 /// Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For
-                /// domains managed by Google Domains, transferring to Cloud Domains is not supported. Use the returned
-                /// values to call `TransferDomain`.
+                /// domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead.
+                /// Use the returned values to call `TransferDomain`.
                 /// </summary>
                 /// <param name="location">
                 /// Required. The location. Must be in the format `projects/*/locations/*`.
@@ -1404,8 +1555,8 @@ namespace Google.Apis.CloudDomains.v1
 
                 /// <summary>
                 /// Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For
-                /// domains managed by Google Domains, transferring to Cloud Domains is not supported. Use the returned
-                /// values to call `TransferDomain`.
+                /// domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead.
+                /// Use the returned values to call `TransferDomain`.
                 /// </summary>
                 public class RetrieveTransferParametersRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1.Data.RetrieveTransferParametersResponse>
                 {
@@ -1664,18 +1815,18 @@ namespace Google.Apis.CloudDomains.v1
                 }
 
                 /// <summary>
-                /// Transfers a domain name from another registrar to Cloud Domains. For domains managed by Google
-                /// Domains, transferring to Cloud Domains is not supported. Before calling this method, go to the
-                /// domain's current registrar to unlock the domain for transfer and retrieve the domain's transfer
-                /// authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
-                /// and to get values needed to build a call to this method. A successful call creates a `Registration`
-                /// resource in state `TRANSFER_PENDING`. It can take several days to complete the transfer process. The
-                /// registrant can often speed up this process by approving the transfer through the current registrar,
-                /// either by clicking a link in an email from the registrar or by visiting the registrar's website. A
-                /// few minutes after transfer approval, the resource transitions to state `ACTIVE`, indicating that the
-                /// transfer was successful. If the transfer is rejected or the request expires without being approved,
-                /// the resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can safely delete the
-                /// resource and retry the transfer.
+                /// Transfers a domain name from another registrar to Cloud Domains. For domains already managed by
+                /// [Google Domains](https://domains.google/), use `ImportDomain` instead. Before calling this method,
+                /// go to the domain's current registrar to unlock the domain for transfer and retrieve the domain's
+                /// transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is
+                /// unlocked and to get values needed to build a call to this method. A successful call creates a
+                /// `Registration` resource in state `TRANSFER_PENDING`. It can take several days to complete the
+                /// transfer process. The registrant can often speed up this process by approving the transfer through
+                /// the current registrar, either by clicking a link in an email from the registrar or by visiting the
+                /// registrar's website. A few minutes after transfer approval, the resource transitions to state
+                /// `ACTIVE`, indicating that the transfer was successful. If the transfer is rejected or the request
+                /// expires without being approved, the resource can end up in state `TRANSFER_FAILED`. If transfer
+                /// fails, you can safely delete the resource and retry the transfer.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1687,18 +1838,18 @@ namespace Google.Apis.CloudDomains.v1
                 }
 
                 /// <summary>
-                /// Transfers a domain name from another registrar to Cloud Domains. For domains managed by Google
-                /// Domains, transferring to Cloud Domains is not supported. Before calling this method, go to the
-                /// domain's current registrar to unlock the domain for transfer and retrieve the domain's transfer
-                /// authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
-                /// and to get values needed to build a call to this method. A successful call creates a `Registration`
-                /// resource in state `TRANSFER_PENDING`. It can take several days to complete the transfer process. The
-                /// registrant can often speed up this process by approving the transfer through the current registrar,
-                /// either by clicking a link in an email from the registrar or by visiting the registrar's website. A
-                /// few minutes after transfer approval, the resource transitions to state `ACTIVE`, indicating that the
-                /// transfer was successful. If the transfer is rejected or the request expires without being approved,
-                /// the resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can safely delete the
-                /// resource and retry the transfer.
+                /// Transfers a domain name from another registrar to Cloud Domains. For domains already managed by
+                /// [Google Domains](https://domains.google/), use `ImportDomain` instead. Before calling this method,
+                /// go to the domain's current registrar to unlock the domain for transfer and retrieve the domain's
+                /// transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is
+                /// unlocked and to get values needed to build a call to this method. A successful call creates a
+                /// `Registration` resource in state `TRANSFER_PENDING`. It can take several days to complete the
+                /// transfer process. The registrant can often speed up this process by approving the transfer through
+                /// the current registrar, either by clicking a link in an email from the registrar or by visiting the
+                /// registrar's website. A few minutes after transfer approval, the resource transitions to state
+                /// `ACTIVE`, indicating that the transfer was successful. If the transfer is rejected or the request
+                /// expires without being approved, the resource can end up in state `TRANSFER_FAILED`. If transfer
+                /// fails, you can safely delete the resource and retry the transfer.
                 /// </summary>
                 public class TransferRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1.Data.Operation>
                 {
@@ -2170,6 +2321,25 @@ namespace Google.Apis.CloudDomains.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A domain that the calling user manages in Google Domains.</summary>
+    public class Domain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain name. Unicode domain names are expressed in Punycode format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
+        public virtual string DomainName { get; set; }
+
+        /// <summary>The state of this domain as a `Registration` resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceState")]
+        public virtual string ResourceState { get; set; }
+
+        /// <summary>Price to renew the domain for one year. Only set when `resource_state` is `IMPORTABLE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yearlyPrice")]
+        public virtual Money YearlyPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest
     /// (hash) of a DNSKEY record that must be present in the domain's DNS zone.
@@ -2304,6 +2474,21 @@ namespace Google.Apis.CloudDomains.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
         public virtual System.Collections.Generic.IList<string> NameServers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `ImportDomain` method.</summary>
+    public class ImportDomainRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The domain name. Unicode domain names must be expressed in Punycode format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
+        public virtual string DomainName { get; set; }
+
+        /// <summary>Set of labels associated with the `Registration`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2760,7 +2945,10 @@ namespace Google.Apis.CloudDomains.v1.Data
     /// needed to build a call to `RegisterDomain`. Another way to create a new `Registration` is to transfer an
     /// existing domain from another registrar. First, go to the current registrar to unlock the domain for transfer and
     /// retrieve the domain's transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the
-    /// domain is unlocked and to get values needed to build a call to `TransferDomain`.
+    /// domain is unlocked and to get values needed to build a call to `TransferDomain`. Finally, you can create a new
+    /// `Registration` by importing an existing domain managed with [Google Domains](https://domains.google/). First,
+    /// call `RetrieveImportableDomains` to list domains to which the calling user has sufficient access. Then call
+    /// `ImportDomain` on any domain names you want to use with Cloud Domains.
     /// </summary>
     public class Registration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2824,6 +3012,12 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pendingContactSettings")]
         public virtual ContactSettings PendingContactSettings { get; set; }
 
+        /// <summary>
+        /// Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registerFailureReason")]
+        public virtual string RegisterFailureReason { get; set; }
+
         /// <summary>Output only. The state of the `Registration`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2834,6 +3028,12 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportedPrivacy")]
         public virtual System.Collections.Generic.IList<string> SupportedPrivacy { get; set; }
 
+        /// <summary>
+        /// Output only. The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferFailureReason")]
+        public virtual string TransferFailureReason { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2841,6 +3041,24 @@ namespace Google.Apis.CloudDomains.v1.Data
     /// <summary>Request for the `ResetAuthorizationCode` method.</summary>
     public class ResetAuthorizationCodeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `RetrieveImportableDomains` method.</summary>
+    public class RetrieveImportableDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of domains that the calling user manages in Google Domains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<Domain> Domains { get; set; }
+
+        /// <summary>
+        /// When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get
+        /// the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3001,6 +3219,10 @@ namespace Google.Apis.CloudDomains.v1.Data
         /// <summary>The registrar that currently manages the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentRegistrar")]
         public virtual string CurrentRegistrar { get; set; }
+
+        /// <summary>The URL of registrar that currently manages the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentRegistrarUri")]
+        public virtual string CurrentRegistrarUri { get; set; }
 
         /// <summary>The domain name. Unicode domain names are expressed in Punycode format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]

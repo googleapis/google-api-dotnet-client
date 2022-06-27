@@ -4094,7 +4094,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// results, the API will return generic (unfiltered) popular products. If you only want results strictly
         /// matching the filters, set `strictFiltering` to True in `PredictRequest.params` to receive empty results
         /// instead. Note that the API will never return items with storageStatus of "EXPIRED" or "DELETED" regardless
-        /// of filter choices.
+        /// of filter choices. If `filterSyntaxV2` is set to true under the `params` field, then attribute based
+        /// expressions are expected instead of the above described tag-based syntax. Examples: * (colors: ANY("Red",
+        /// "Blue")) AND NOT (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR
+        /// categories: ANY("Phones"))
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -4138,7 +4141,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// and adjusts prediction results based on product price. * `diversityLevel`: String. Default empty. If set to
         /// be non-empty, then it needs to be one of {'no-diversity', 'low-diversity', 'medium-diversity',
         /// 'high-diversity', 'auto-diversity'}. This gives request-level control and adjusts prediction results based
-        /// on product category.
+        /// on product category. * `filterSyntaxV2`: Boolean. False by default. If set to true, the `filter` field will
+        /// be interpreteted according to the new, attribute-based syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }

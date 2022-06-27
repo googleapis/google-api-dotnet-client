@@ -1,0 +1,11 @@
+{
+  "Google.Apis.BeyondCorp.v1.BeyondCorpBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BeyondCorp.v1.BeyondCorpBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

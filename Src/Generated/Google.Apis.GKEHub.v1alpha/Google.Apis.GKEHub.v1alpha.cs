@@ -5004,6 +5004,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logDeniesEnabled")]
         public virtual System.Nullable<bool> LogDeniesEnabled { get; set; }
 
+        /// <summary>Monitoring specifies the configuration of monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
+        public virtual PolicyControllerMonitoringConfig Monitoring { get; set; }
+
         /// <summary>Enables the ability to mutate resources using Policy Controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
         public virtual System.Nullable<bool> MutationEnabled { get; set; }
@@ -5094,6 +5098,24 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>The lifecycle state Policy Controller is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify
+    /// metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring",
+    /// "prometheus"]
+    /// </summary>
+    public class PolicyControllerMonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable
+        /// metrics export.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backends")]
+        public virtual System.Collections.Generic.IList<string> Backends { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

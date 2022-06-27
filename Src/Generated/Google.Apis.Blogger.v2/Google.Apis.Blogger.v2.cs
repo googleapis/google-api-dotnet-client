@@ -66,14 +66,14 @@ namespace Google.Apis.Blogger.v2
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Blogger API v3.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Blogger API.</summary>
         public class Scope
         {
             /// <summary>Manage your Blogger account</summary>
             public static string Blogger = "https://www.googleapis.com/auth/blogger";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Blogger API v3.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Blogger API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Manage your Blogger account</summary>
