@@ -6586,6 +6586,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
+        /// <summary>Configuration for the fine-grained cost management feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costManagementConfig")]
+        public virtual CostManagementConfig CostManagementConfig { get; set; }
+
         /// <summary>
         /// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
         /// format.
@@ -7037,6 +7041,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterTelemetry")]
         public virtual ClusterTelemetry DesiredClusterTelemetry { get; set; }
 
+        /// <summary>The desired configuration for the fine-grained cost management feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredCostManagementConfig")]
+        public virtual CostManagementConfig DesiredCostManagementConfig { get; set; }
+
         /// <summary>Configuration of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
         public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; }
@@ -7298,6 +7306,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created
         /// to hold resource consumption records.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for fine-grained cost management feature.</summary>
+    public class CostManagementConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the feature is enabled or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 

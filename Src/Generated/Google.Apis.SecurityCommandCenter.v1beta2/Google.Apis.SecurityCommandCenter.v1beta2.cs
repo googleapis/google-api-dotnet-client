@@ -289,6 +289,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             this.service = service;
             ContainerThreatDetectionSettings = new ContainerThreatDetectionSettingsResource(service);
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
+            RapidVulnerabilityDetectionSettings = new RapidVulnerabilityDetectionSettingsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             VirtualMachineThreatDetectionSettings = new VirtualMachineThreatDetectionSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
@@ -446,6 +447,85 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/eventThreatDetectionSettings$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the RapidVulnerabilityDetectionSettings resource.</summary>
+        public virtual RapidVulnerabilityDetectionSettingsResource RapidVulnerabilityDetectionSettings { get; }
+
+        /// <summary>The "rapidVulnerabilityDetectionSettings" collection of methods.</summary>
+        public class RapidVulnerabilityDetectionSettingsResource
+        {
+            private const string Resource = "rapidVulnerabilityDetectionSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RapidVulnerabilityDetectionSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </param>
+            public virtual CalculateRequest Calculate(string name)
+            {
+                return new CalculateRequest(service, name);
+            }
+
+            /// <summary>
+            /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+            {
+                /// <summary>Constructs a new Calculate request.</summary>
+                public CalculateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
+                /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+                /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+                /// projects/{project}/rapidVulnerabilityDetectionSettings
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "calculate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta2/{+name}:calculate";
+
+                /// <summary>Initializes Calculate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/rapidVulnerabilityDetectionSettings$",
                     });
                 }
             }
@@ -846,6 +926,61 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+        /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+        /// projects/{project}/rapidVulnerabilityDetectionSettings
+        /// </param>
+        public virtual GetRapidVulnerabilityDetectionSettingsRequest GetRapidVulnerabilityDetectionSettings(string name)
+        {
+            return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        public class GetRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+        {
+            /// <summary>Constructs a new GetRapidVulnerabilityDetectionSettings request.</summary>
+            public GetRapidVulnerabilityDetectionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getRapidVulnerabilityDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetRapidVulnerabilityDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/rapidVulnerabilityDetectionSettings$",
+                });
+            }
+        }
+
         /// <summary>Get the SecurityCenterSettings resource.</summary>
         /// <param name="name">
         /// Required. The name of the SecurityCenterSettings to retrieve. Format:
@@ -1208,6 +1343,81 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
+        /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+        /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+        /// projects/{project}/rapidVulnerabilityDetectionSettings
+        /// </param>
+        public virtual UpdateRapidVulnerabilityDetectionSettingsRequest UpdateRapidVulnerabilityDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name)
+        {
+            return new UpdateRapidVulnerabilityDetectionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
+        public class UpdateRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+        {
+            /// <summary>Constructs a new UpdateRapidVulnerabilityDetectionSettings request.</summary>
+            public UpdateRapidVulnerabilityDetectionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateRapidVulnerabilityDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes UpdateRapidVulnerabilityDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/rapidVulnerabilityDetectionSettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -1444,6 +1654,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             this.service = service;
             ContainerThreatDetectionSettings = new ContainerThreatDetectionSettingsResource(service);
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
+            RapidVulnerabilityDetectionSettings = new RapidVulnerabilityDetectionSettingsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             VirtualMachineThreatDetectionSettings = new VirtualMachineThreatDetectionSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
@@ -1601,6 +1812,85 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the RapidVulnerabilityDetectionSettings resource.</summary>
+        public virtual RapidVulnerabilityDetectionSettingsResource RapidVulnerabilityDetectionSettings { get; }
+
+        /// <summary>The "rapidVulnerabilityDetectionSettings" collection of methods.</summary>
+        public class RapidVulnerabilityDetectionSettingsResource
+        {
+            private const string Resource = "rapidVulnerabilityDetectionSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RapidVulnerabilityDetectionSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </param>
+            public virtual CalculateRequest Calculate(string name)
+            {
+                return new CalculateRequest(service, name);
+            }
+
+            /// <summary>
+            /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+            {
+                /// <summary>Constructs a new Calculate request.</summary>
+                public CalculateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
+                /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+                /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+                /// projects/{project}/rapidVulnerabilityDetectionSettings
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "calculate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta2/{+name}:calculate";
+
+                /// <summary>Initializes Calculate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/rapidVulnerabilityDetectionSettings$",
                     });
                 }
             }
@@ -1997,6 +2287,61 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^organizations/[^/]+/onboardingState$",
+                });
+            }
+        }
+
+        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+        /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+        /// projects/{project}/rapidVulnerabilityDetectionSettings
+        /// </param>
+        public virtual GetRapidVulnerabilityDetectionSettingsRequest GetRapidVulnerabilityDetectionSettings(string name)
+        {
+            return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        public class GetRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+        {
+            /// <summary>Constructs a new GetRapidVulnerabilityDetectionSettings request.</summary>
+            public GetRapidVulnerabilityDetectionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getRapidVulnerabilityDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetRapidVulnerabilityDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/rapidVulnerabilityDetectionSettings$",
                 });
             }
         }
@@ -2412,6 +2757,81 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
+        /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+        /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+        /// projects/{project}/rapidVulnerabilityDetectionSettings
+        /// </param>
+        public virtual UpdateRapidVulnerabilityDetectionSettingsRequest UpdateRapidVulnerabilityDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name)
+        {
+            return new UpdateRapidVulnerabilityDetectionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
+        public class UpdateRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+        {
+            /// <summary>Constructs a new UpdateRapidVulnerabilityDetectionSettings request.</summary>
+            public UpdateRapidVulnerabilityDetectionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateRapidVulnerabilityDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes UpdateRapidVulnerabilityDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/rapidVulnerabilityDetectionSettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -2649,6 +3069,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             ContainerThreatDetectionSettings = new ContainerThreatDetectionSettingsResource(service);
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
             Locations = new LocationsResource(service);
+            RapidVulnerabilityDetectionSettings = new RapidVulnerabilityDetectionSettingsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             VirtualMachineThreatDetectionSettings = new VirtualMachineThreatDetectionSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
@@ -3064,6 +3485,85 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Gets the RapidVulnerabilityDetectionSettings resource.</summary>
+        public virtual RapidVulnerabilityDetectionSettingsResource RapidVulnerabilityDetectionSettings { get; }
+
+        /// <summary>The "rapidVulnerabilityDetectionSettings" collection of methods.</summary>
+        public class RapidVulnerabilityDetectionSettingsResource
+        {
+            private const string Resource = "rapidVulnerabilityDetectionSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RapidVulnerabilityDetectionSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </param>
+            public virtual CalculateRequest Calculate(string name)
+            {
+                return new CalculateRequest(service, name);
+            }
+
+            /// <summary>
+            /// Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource
+            /// hierarchy and its settings.
+            /// </summary>
+            public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+            {
+                /// <summary>Constructs a new Calculate request.</summary>
+                public CalculateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the RapidVulnerabilityDetectionSettings to calculate. Formats: *
+                /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+                /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+                /// projects/{project}/rapidVulnerabilityDetectionSettings
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "calculate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta2/{+name}:calculate";
+
+                /// <summary>Initializes Calculate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/rapidVulnerabilityDetectionSettings$",
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
         public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
 
@@ -3459,6 +3959,61 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
+        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <param name="name">
+        /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+        /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+        /// projects/{project}/rapidVulnerabilityDetectionSettings
+        /// </param>
+        public virtual GetRapidVulnerabilityDetectionSettingsRequest GetRapidVulnerabilityDetectionSettings(string name)
+        {
+            return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
+        }
+
+        /// <summary>Get the RapidVulnerabilityDetectionSettings resource.</summary>
+        public class GetRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+        {
+            /// <summary>Constructs a new GetRapidVulnerabilityDetectionSettings request.</summary>
+            public GetRapidVulnerabilityDetectionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the RapidVulnerabilityDetectionSettings to retrieve. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getRapidVulnerabilityDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes GetRapidVulnerabilityDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/rapidVulnerabilityDetectionSettings$",
+                });
+            }
+        }
+
         /// <summary>Get the SecurityCenterSettings resource.</summary>
         /// <param name="name">
         /// Required. The name of the SecurityCenterSettings to retrieve. Format:
@@ -3809,6 +4364,81 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/eventThreatDetectionSettings$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
+        /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+        /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+        /// projects/{project}/rapidVulnerabilityDetectionSettings
+        /// </param>
+        public virtual UpdateRapidVulnerabilityDetectionSettingsRequest UpdateRapidVulnerabilityDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name)
+        {
+            return new UpdateRapidVulnerabilityDetectionSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
+        public class UpdateRapidVulnerabilityDetectionSettingsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings>
+        {
+            /// <summary>Constructs a new UpdateRapidVulnerabilityDetectionSettings request.</summary>
+            public UpdateRapidVulnerabilityDetectionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
+            /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+            /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+            /// projects/{project}/rapidVulnerabilityDetectionSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateRapidVulnerabilityDetectionSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta2/{+name}";
+
+            /// <summary>Initializes UpdateRapidVulnerabilityDetectionSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/rapidVulnerabilityDetectionSettings$",
                 });
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {
@@ -5363,6 +5993,40 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Signature indicating that a YARA rule was matched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yaraRuleSignature")]
         public virtual YaraRuleSignature YaraRuleSignature { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource capturing the settings for the Rapid Vulnerability Detection service.</summary>
+    public class RapidVulnerabilityDetectionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The configurations including the state of enablement for the service's different modules. The absence of a
+        /// module in the map implies its configuration is inherited from its parent's.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modules")]
+        public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
+
+        /// <summary>
+        /// The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
+        /// organizations/{organization}/rapidVulnerabilityDetectionSettings *
+        /// folders/{folder}/rapidVulnerabilityDetectionSettings *
+        /// projects/{project}/rapidVulnerabilityDetectionSettings
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The state of enablement for the service at its level of the resource hierarchy. A DISABLED state will
+        /// override all module enablement_states to DISABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
+        public virtual string ServiceEnablementState { get; set; }
+
+        /// <summary>Output only. The time the settings were last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

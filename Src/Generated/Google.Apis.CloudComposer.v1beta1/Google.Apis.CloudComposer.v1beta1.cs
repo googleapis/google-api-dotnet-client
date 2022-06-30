@@ -768,18 +768,20 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// values. * `config.softwareConfig.schedulerCount` * Horizontally scale the number of schedulers
                     /// in Airflow. A positive integer not greater than the number of nodes must be provided in the
                     /// `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer environments in
-                    /// versions composer-1.*.*-airflow-2.*.*. * `config.databaseConfig.machineType` * Cloud SQL machine
-                    /// type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4,
-                    /// db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer environments in versions
-                    /// composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` * Machine type on which
-                    /// Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-                    /// composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud Composer environments in
-                    /// versions composer-1.*.*-airflow-*.*.*. * `config.maintenanceWindow` * Maintenance window during
-                    /// which Cloud Composer components may be under maintenance. * `config.workloadsConfig` * The
-                    /// workloads configuration settings for the GKE cluster associated with the Cloud Composer
-                    /// environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*
-                    /// and newer. * `config.environmentSize` * The size of the Cloud Composer environment. Supported
-                    /// for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+                    /// versions composer-1.*.*-airflow-2.*.*. * `config.softwareConfig.cloudDataLineageIntegration` *
+                    /// Configuration for Cloud Data Lineage integration. * `config.databaseConfig.machineType` * Cloud
+                    /// SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2,
+                    /// db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer
+                    /// environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` *
+                    /// Machine type on which Airflow web server is running. It has to be one of:
+                    /// composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud
+                    /// Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.maintenanceWindow` *
+                    /// Maintenance window during which Cloud Composer components may be under maintenance. *
+                    /// `config.workloadsConfig` * The workloads configuration settings for the GKE cluster associated
+                    /// with the Cloud Composer environment. Supported for Cloud Composer environments in versions
+                    /// composer-2.*.*-airflow-*.*.* and newer. * `config.environmentSize` * The size of the Cloud
+                    /// Composer environment. Supported for Cloud Composer environments in versions
+                    /// composer-2.*.*-airflow-*.*.* and newer.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }

@@ -53,6 +53,10 @@
     "html",
     "plainText"
   ],
+  "Google.Apis.YouTube.v3.LiveBroadcastsResource+InsertCuepointRequest.ResourceCueTypeEnum": [
+    "cueTypeUnspecified",
+    "cueTypeAd"
+  ],
   "Google.Apis.YouTube.v3.LiveBroadcastsResource+ListRequest.BroadcastStatusEnum": [
     "broadcastStatusFilterUnspecified",
     "all",
