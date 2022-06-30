@@ -1906,6 +1906,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
         public virtual System.Nullable<double> Altitude { get; set; }
 
+        /// <summary>Time of the GPS record since UTC epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpsRecordTimestampUnixEpoch")]
+        public virtual object GpsRecordTimestampUnixEpoch { get; set; }
+
         /// <summary>
         /// The following pose parameters pertain to the center of the photo. They match
         /// https://developers.google.com/streetview/spherical-metadata. Compass heading, measured at the center of the

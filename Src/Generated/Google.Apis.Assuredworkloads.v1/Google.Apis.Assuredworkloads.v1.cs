@@ -1482,6 +1482,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
         public virtual string ComplianceRegime { get; set; }
 
+        /// <summary>Output only. Count of active Violations in the Workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceStatus")]
+        public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus ComplianceStatus { get; set; }
+
         /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -1581,6 +1585,17 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings KmsSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Compliance Status of this workload</summary>
+    public class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Count of active Violations in the Workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]
+        public virtual System.Nullable<int> ActiveViolationCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

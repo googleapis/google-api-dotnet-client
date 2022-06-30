@@ -16563,7 +16563,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Average order size - the average number of items in an order. **This metric cannot be segmented by product
-        /// dimensions.**
+        /// dimensions and customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aos")]
         public virtual System.Nullable<double> Aos { get; set; }
@@ -16573,7 +16573,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// returned value is stored in the currency_code segment. If this metric is selected, 'segments.currency_code'
         /// is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the
         /// user) and the currency_code segment is populated in the response. **This metric cannot be segmented by
-        /// product dimensions.**
+        /// product dimensions and customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aovMicros")]
         public virtual System.Nullable<double> AovMicros { get; set; }
@@ -16617,7 +16617,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Average number of days between an order being placed and the order being fully shipped, reported on the last
-        /// shipment date. **This metric cannot be segmented by product dimensions.**
+        /// shipment date. **This metric cannot be segmented by product dimensions and customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysToShip")]
         public virtual System.Nullable<double> DaysToShip { get; set; }
@@ -16626,14 +16626,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
         public virtual System.Nullable<long> Impressions { get; set; }
 
-        /// <summary>Average number of days between an item being ordered and the item being</summary>
+        /// <summary>
+        /// Average number of days between an item being ordered and the item being **This metric cannot be segmented by
+        /// customer_country_code.**
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemDaysToShip")]
         public virtual System.Nullable<double> ItemDaysToShip { get; set; }
 
         /// <summary>
         /// Percentage of shipped items in relation to all finalized items (shipped or rejected by the merchant;
         /// unshipped items are not taken into account), reported on the order date. Item fill rate is lowered by
-        /// merchant rejections.
+        /// merchant rejections. **This metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemFillRate")]
         public virtual System.Nullable<double> ItemFillRate { get; set; }
@@ -16643,26 +16646,29 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// within 30 minutes of placing the order. The currency of the returned value is stored in the currency_code
         /// segment. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in
         /// the search query (unless it is explicitly selected by the user) and the currency_code segment is populated
-        /// in the response.
+        /// in the response. **This metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderedItemSalesMicros")]
         public virtual System.Nullable<long> OrderedItemSalesMicros { get; set; }
 
         /// <summary>
         /// Number of ordered items. Excludes customer cancellations that happened within 30 minutes of placing the
-        /// order.
+        /// order. **This metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderedItems")]
         public virtual System.Nullable<long> OrderedItems { get; set; }
 
         /// <summary>
         /// Number of placed orders. Excludes customer cancellations that happened within 30 minutes of placing the
-        /// order. **This metric cannot be segmented by product dimensions.**
+        /// order. **This metric cannot be segmented by product dimensions and customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orders")]
         public virtual System.Nullable<long> Orders { get; set; }
 
-        /// <summary>Number of ordered items canceled by the merchant, reported on the order date.</summary>
+        /// <summary>
+        /// Number of ordered items canceled by the merchant, reported on the order date. **This metric cannot be
+        /// segmented by customer_country_code.**
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectedItems")]
         public virtual System.Nullable<long> RejectedItems { get; set; }
 
@@ -16670,13 +16676,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Total price of returned items divided by the total price of shipped items, reported on the order date. If
         /// this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search
         /// query (unless it is explicitly selected by the user) and the currency_code segment is populated in the
-        /// response.
+        /// response. **This metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnRate")]
         public virtual System.Nullable<double> ReturnRate { get; set; }
 
         /// <summary>
         /// Number of ordered items sent back for return, reported on the date when the merchant accepted the return.
+        /// **This metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnedItems")]
         public virtual System.Nullable<long> ReturnedItems { get; set; }
@@ -16685,7 +16692,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Total price of ordered items sent back for return, reported on the date when the merchant accepted the
         /// return. The currency of the returned value is stored in the currency_code segment. If this metric is
         /// selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless
-        /// it is explicitly selected by the user) and the currency_code segment is populated in the response.
+        /// it is explicitly selected by the user) and the currency_code segment is populated in the response. **This
+        /// metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnsMicros")]
         public virtual System.Nullable<long> ReturnsMicros { get; set; }
@@ -16694,18 +16702,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Total price of shipped items, reported on the order date. Excludes shipping and taxes (US only). The
         /// currency of the returned value is stored in the currency_code segment. If this metric is selected,
         /// 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is
-        /// explicitly selected by the user) and the currency_code segment is populated in the response.
+        /// explicitly selected by the user) and the currency_code segment is populated in the response. **This metric
+        /// cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippedItemSalesMicros")]
         public virtual System.Nullable<long> ShippedItemSalesMicros { get; set; }
 
-        /// <summary>Number of shipped items, reported on the shipment date.</summary>
+        /// <summary>
+        /// Number of shipped items, reported on the shipment date. **This metric cannot be segmented by
+        /// customer_country_code.**
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippedItems")]
         public virtual System.Nullable<long> ShippedItems { get; set; }
 
         /// <summary>
         /// Number of fully shipped orders, reported on the last shipment date. **This metric cannot be segmented by
-        /// product dimensions.**
+        /// product dimensions and customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippedOrders")]
         public virtual System.Nullable<long> ShippedOrders { get; set; }
@@ -16713,7 +16725,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// Number of ordered items not shipped up until the end of the queried day. If a multi-day period is specified
         /// in the search query, the returned value is the average number of unshipped items over the days in the
-        /// queried period.
+        /// queried period. **This metric cannot be segmented by customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unshippedItems")]
         public virtual System.Nullable<double> UnshippedItems { get; set; }
@@ -16721,7 +16733,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// Number of orders not shipped or partially shipped up until the end of the queried day. If a multi-day period
         /// is specified in the search query, the returned value is the average number of unshipped orders over the days
-        /// in the queried period. **This metric cannot be segmented by product dimensions.**
+        /// in the queried period. **This metric cannot be segmented by product dimensions and customer_country_code.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unshippedOrders")]
         public virtual System.Nullable<double> UnshippedOrders { get; set; }
@@ -21087,8 +21099,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// The Promotions feature is available for `AU`, `CA`, `DE`, `FR`, `GB`, `IN` and `US` target countries, and `en`
-    /// content language. Represents a promotion. See the following articles for more details. * [Promotions feed
+    /// Represents a promotion. See the following articles for more details. * [Promotions feed
     /// specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed
     /// specification](https://support.google.com/merchants/answer/10146130) * [Promotions on Buy on Google product data
     /// specification](https://support.google.com/merchants/answer/9173673)
@@ -21104,8 +21115,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> BrandExclusion { get; set; }
 
         /// <summary>
-        /// Required. The content language used as part of the unique identifier. Currently only `en` value is
-        /// supported.
+        /// Required. The content language used as part of the unique identifier. `en` content language is available for
+        /// all target countries. `fr` content language is available for `CA` and `FR` target countries, and `de`
+        /// content language is available for `DE` target country.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; }
@@ -22816,6 +22828,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Custom label 4 for custom grouping of products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
         public virtual string CustomLabel4 { get; set; }
+
+        /// <summary>
+        /// Code of the country where the customer is located at the time of the event. Represented in the ISO 3166
+        /// format. If the customer country cannot be determined, a special 'ZZ' code is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerCountryCode")]
+        public virtual string CustomerCountryCode { get; set; }
 
         /// <summary>Date in the merchant timezone to which metrics apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]

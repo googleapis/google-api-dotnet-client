@@ -860,6 +860,63 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Returns the secret key related to the specified public key. You should use the legacy secret key only if
+            /// you are integrating with a 3rd party using the legacy reCAPTCHA instead of reCAPTCHA Enterprise.
+            /// </summary>
+            /// <param name="key">
+            /// Required. The public key name linked to the requested secret key , in the format
+            /// "projects/{project}/keys/{key}".
+            /// </param>
+            public virtual RetrieveLegacySecretKeyRequest RetrieveLegacySecretKey(string key)
+            {
+                return new RetrieveLegacySecretKeyRequest(service, key);
+            }
+
+            /// <summary>
+            /// Returns the secret key related to the specified public key. You should use the legacy secret key only if
+            /// you are integrating with a 3rd party using the legacy reCAPTCHA instead of reCAPTCHA Enterprise.
+            /// </summary>
+            public class RetrieveLegacySecretKeyRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse>
+            {
+                /// <summary>Constructs a new RetrieveLegacySecretKey request.</summary>
+                public RetrieveLegacySecretKeyRequest(Google.Apis.Services.IClientService service, string key) : base(service)
+                {
+                    Key = key;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The public key name linked to the requested secret key , in the format
+                /// "projects/{project}/keys/{key}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Key { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrieveLegacySecretKey";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+key}:retrieveLegacySecretKey";
+
+                /// <summary>Initializes RetrieveLegacySecretKey parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "key",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/keys/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Relatedaccountgroupmemberships resource.</summary>
@@ -1534,6 +1591,24 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Secret key used in legacy reCAPTCHA only. Should be used when integrating with a 3rd party which is still using
+    /// legacy reCAPTCHA.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The secret key (also known as shared secret) authorizes communication between your application backend and
+        /// the reCAPTCHA Enterprise server to create an assessment. The secret key needs to be kept safe for security
+        /// purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacySecretKey")]
+        public virtual string LegacySecretKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

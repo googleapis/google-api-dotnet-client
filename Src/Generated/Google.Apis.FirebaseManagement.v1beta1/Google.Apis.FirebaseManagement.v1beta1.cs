@@ -931,6 +931,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -963,6 +967,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1013,8 +1025,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Specifies which fields to update. Note that the fields `name`, `app_id`, `project_id`, and
-                /// `package_name` are all immutable.
+                /// Specifies which fields to update. Note that the fields `name`, `app_id`, `project_id`,
+                /// `package_name`, and `state` are all immutable.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1560,6 +1572,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -1592,6 +1608,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1640,8 +1664,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Specifies which fields to update. Note that the fields `name`, `appId`, `projectId`, and `bundleId`
-                /// are all immutable.
+                /// Specifies which fields to update. Note that the fields `name`, `appId`, `projectId`, `bundleId`, and
+                /// `state` are all immutable
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1937,6 +1961,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -1969,6 +1997,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2017,8 +2053,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Specifies which fields to update. Note that the fields `name`, `appId`, and `projectId` are all
-                /// immutable.
+                /// Specifies which fields to update. Note that the fields `name`, `appId`, `projectId` and `state` are
+                /// all immutable
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2759,6 +2795,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>Controls whether Apps in the DELETED state should be returned. Defaults to false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "searchApps";
 
@@ -2799,6 +2839,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2978,6 +3026,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
+        /// <summary>Output only. The lifecycle state of the App.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3104,6 +3156,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual string Platform { get; set; }
 
+        /// <summary>Output only. The lifecycle state of the App.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3214,6 +3270,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Output only. The lifecycle state of the App.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The Apple Developer Team ID associated with the App in the App Store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamId")]
@@ -3666,6 +3726,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Output only. The lifecycle state of the App.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>
         /// Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only

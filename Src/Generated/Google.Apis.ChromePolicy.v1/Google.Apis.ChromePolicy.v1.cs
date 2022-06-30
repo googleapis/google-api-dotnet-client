@@ -1530,7 +1530,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
         public virtual string Package { get; set; }
 
-        /// <summary>The syntax of the proto file. The supported values are "proto2" and "proto3".</summary>
+        /// <summary>
+        /// The syntax of the proto file. The supported values are "proto2", "proto3", and "editions". If `edition` is
+        /// present, this value must be "editions".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
 

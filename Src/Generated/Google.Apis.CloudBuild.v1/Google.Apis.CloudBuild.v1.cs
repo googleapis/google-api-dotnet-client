@@ -3424,7 +3424,11 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Runs a `BuildTrigger` at a particular source revision.</summary>
+                /// <summary>
+                /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the
+                /// POST request that includes the location endpoint in the path. The POST request that does not include
+                /// the location endpoint in the path can only be used when running global triggers.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The name of the `Trigger` to run. Format:
@@ -3435,7 +3439,11 @@ namespace Google.Apis.CloudBuild.v1
                     return new RunRequest(service, body, name);
                 }
 
-                /// <summary>Runs a `BuildTrigger` at a particular source revision.</summary>
+                /// <summary>
+                /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the
+                /// POST request that includes the location endpoint in the path. The POST request that does not include
+                /// the location endpoint in the path can only be used when running global triggers.
+                /// </summary>
                 public class RunRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Run request.</summary>
@@ -4391,7 +4399,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Runs a `BuildTrigger` at a particular source revision.</summary>
+            /// <summary>
+            /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST
+            /// request that includes the location endpoint in the path. The POST request that does not include the
+            /// location endpoint in the path can only be used when running global triggers.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project.</param>
             /// <param name="triggerId">Required. ID of the trigger.</param>
@@ -4400,7 +4412,11 @@ namespace Google.Apis.CloudBuild.v1
                 return new RunRequest(service, body, projectId, triggerId);
             }
 
-            /// <summary>Runs a `BuildTrigger` at a particular source revision.</summary>
+            /// <summary>
+            /// Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST
+            /// request that includes the location endpoint in the path. The POST request that does not include the
+            /// location endpoint in the path can only be used when running global triggers.
+            /// </summary>
             public class RunRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Run request.</summary>

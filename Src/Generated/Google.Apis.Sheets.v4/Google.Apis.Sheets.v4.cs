@@ -3989,7 +3989,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A color value.</summary>
     public class ColorStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>RGB color.</summary>
+        /// <summary>
+        /// RGB color. The [`alpha`](/sheets/api/reference/rest/v4/spreadsheets/other#Color.FIELDS.alpha) value in the
+        /// [`Color`](/sheets/api/reference/rest/v4/spreadsheets/other#color) object isn't generally supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rgbColor")]
         public virtual Color RgbColor { get; set; }
 
