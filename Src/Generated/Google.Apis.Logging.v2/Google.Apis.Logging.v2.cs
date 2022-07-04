@@ -347,161 +347,10 @@ namespace Google.Apis.Logging.v2
         public BillingAccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            Buckets = new BucketsResource(service);
             Exclusions = new ExclusionsResource(service);
             Locations = new LocationsResource(service);
             Logs = new LogsResource(service);
-            Operations = new OperationsResource(service);
             Sinks = new SinksResource(service);
-        }
-
-        /// <summary>Gets the Buckets resource.</summary>
-        public virtual BucketsResource Buckets { get; }
-
-        /// <summary>The "buckets" collection of methods.</summary>
-        public class BucketsResource
-        {
-            private const string Resource = "buckets";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public BucketsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-                Views = new ViewsResource(service);
-            }
-
-            /// <summary>Gets the Views resource.</summary>
-            public virtual ViewsResource Views { get; }
-
-            /// <summary>The "views" collection of methods.</summary>
-            public class ViewsResource
-            {
-                private const string Resource = "views";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public ViewsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Gets a view on a log bucket..</summary>
-                /// <param name="name">
-                /// Required. The resource name of the policy:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
-                /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets a view on a log bucket..</summary>
-                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The resource name of the policy:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
-                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/buckets/[^/]+/views/[^/]+$",
-                        });
-                    }
-                }
-            }
-
-            /// <summary>Gets a log bucket.</summary>
-            /// <param name="name">
-            /// Required. The resource name of the bucket:
-            /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-            /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
-            /// example:"projects/my-project/locations/global/buckets/my-bucket"
-            /// </param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Gets a log bucket.</summary>
-            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The resource name of the bucket:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
-                /// example:"projects/my-project/locations/global/buckets/my-bucket"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^billingAccounts/[^/]+/buckets/[^/]+$",
-                    });
-                }
-            }
         }
 
         /// <summary>Gets the Exclusions resource.</summary>
@@ -1193,6 +1042,59 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
+                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the policy:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a view on a log bucket..</summary>
+                    public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the policy:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+                        /// example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Lists views on a log bucket.</summary>
                     /// <param name="parent">
                     /// Required. The bucket whose views are to be listed:
@@ -1498,6 +1400,65 @@ namespace Google.Apis.Logging.v2
                     public override string RestPath => "v2/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a log bucket.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the bucket:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a log bucket.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the bucket:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For
+                    /// example:"projects/my-project/locations/global/buckets/my-bucket"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1844,6 +1805,57 @@ namespace Google.Apis.Logging.v2
                     public override string RestPath => "v2/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2279,75 +2291,6 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the Operations resource.</summary>
-        public virtual OperationsResource Operations { get; }
-
-        /// <summary>The "operations" collection of methods.</summary>
-        public class OperationsResource
-        {
-            private const string Resource = "operations";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public OperationsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
-            /// result at intervals as recommended by the API service.
-            /// </summary>
-            /// <param name="name">The name of the operation resource.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>
-            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
-            /// result at intervals as recommended by the API service.
-            /// </summary>
-            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Operation>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>The name of the operation resource.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^billingAccounts/[^/]+/operations/[^/]+$",
                     });
                 }
             }
@@ -16356,8 +16299,9 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>
         /// Optional. Whether a batch's valid entries should be written even if some other entry failed due to a
         /// permanent error such as INVALID_ARGUMENT or PERMISSION_DENIED. If any entry failed, then the response status
-        /// is the response status is the status of one of the failed entries. The response will include error details
-        /// keyed by the entries' zero-based index in the entries.write method.
+        /// is the response status of one of the failed entries. The response will include error details in
+        /// WriteLogEntriesPartialErrors.log_entry_errors keyed by the entries' zero-based index in the entries. Failed
+        /// requests for which no entries are written will not include per-entry errors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialSuccess")]
         public virtual System.Nullable<bool> PartialSuccess { get; set; }

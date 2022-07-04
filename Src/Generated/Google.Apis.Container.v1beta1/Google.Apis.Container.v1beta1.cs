@@ -473,6 +473,69 @@ namespace Google.Apis.Container.v1beta1
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// CompleteNodePoolUpgrade will signal an on-going node pool upgrade to complete.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name (project, location, cluster, node pool id) of the node pool to complete upgrade.
+                    /// Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+                    /// </param>
+                    public virtual CompleteUpgradeRequest CompleteUpgrade(Google.Apis.Container.v1beta1.Data.CompleteNodePoolUpgradeRequest body, string name)
+                    {
+                        return new CompleteUpgradeRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// CompleteNodePoolUpgrade will signal an on-going node pool upgrade to complete.
+                    /// </summary>
+                    public class CompleteUpgradeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new CompleteUpgrade request.</summary>
+                        public CompleteUpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1beta1.Data.CompleteNodePoolUpgradeRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name (project, location, cluster, node pool id) of the node pool to complete upgrade.
+                        /// Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Container.v1beta1.Data.CompleteNodePoolUpgradeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "completeUpgrade";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:completeUpgrade";
+
+                        /// <summary>Initializes CompleteUpgrade parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a node pool for a cluster.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -6463,6 +6526,59 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information relevant to blue-green upgrade.</summary>
+    public class BlueGreenInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource URLs of the [managed instance groups]
+        /// (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blueInstanceGroupUrls")]
+        public virtual System.Collections.Generic.IList<string> BlueInstanceGroupUrls { get; set; }
+
+        /// <summary>
+        /// Time to start deleting blue pool to complete blue-green upgrade, in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bluePoolDeletionStartTime")]
+        public virtual string BluePoolDeletionStartTime { get; set; }
+
+        /// <summary>
+        /// The resource URLs of the [managed instance groups]
+        /// (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("greenInstanceGroupUrls")]
+        public virtual System.Collections.Generic.IList<string> GreenInstanceGroupUrls { get; set; }
+
+        /// <summary>Version of green pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("greenPoolVersion")]
+        public virtual string GreenPoolVersion { get; set; }
+
+        /// <summary>Current blue-green upgrade phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for blue-green upgrade.</summary>
+    public class BlueGreenSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolSoakDuration")]
+        public virtual object NodePoolSoakDuration { get; set; }
+
+        /// <summary>Standard policy for the blue-green upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardRolloutPolicy")]
+        public virtual StandardRolloutPolicy StandardRolloutPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CancelOperationRequest cancels a single operation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7274,6 +7390,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CompleteNodePoolUpgradeRequest sets the name of target node pool to complete upgrade.</summary>
+    public class CompleteNodePoolUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential
     /// VMs.
@@ -7818,6 +7941,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
         public virtual string ServicesIpv4CidrBlock { get; set; }
 
+        /// <summary>Output only. [Output only] The services IPv6 CIDR block for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv6CidrBlock")]
+        public virtual string ServicesIpv6CidrBlock { get; set; }
+
         /// <summary>
         /// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used
         /// for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork.
@@ -7829,6 +7956,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>IP stack type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
         public virtual string StackType { get; set; }
+
+        /// <summary>Output only. [Output only] The subnet's IPv6 CIDR block used by nodes and pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetIpv6CidrBlock")]
+        public virtual string SubnetIpv6CidrBlock { get; set; }
 
         /// <summary>
         /// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an
@@ -7993,6 +8124,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Parameters that can be configured on Linux nodes.</summary>
     public class LinuxNodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>cgroup_mode specifies the cgroup mode to be used on the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cgroupMode")]
+        public virtual string CgroupMode { get; set; }
+
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
         /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
@@ -8690,7 +8825,7 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Subset of NodeConfig message that has defaults.</summary>
     public class NodeConfigDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GCFS (Google Container File System, a.k.a Riptide) options.</summary>
+        /// <summary>GCFS (Google Container File System, a.k.a. Riptide) options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
 
@@ -8857,7 +8992,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>
         /// [Output only] The resource URLs of the [managed instance
         /// groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
-        /// associated with this node pool.
+        /// associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both
+        /// blue and green resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; }
@@ -8915,6 +9051,12 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
 
+        /// <summary>
+        /// Output only. [Output only] Update info contains relevant information during a node pool update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateInfo")]
+        public virtual UpdateInfo UpdateInfo { get; set; }
+
         /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; }
@@ -8959,6 +9101,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Location policy used when scaling up a nodepool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationPolicy")]
+        public virtual string LocationPolicy { get; set; }
+
         /// <summary>
         /// Maximum number of nodes for one location in the NodePool. Must be &amp;gt;= min_node_count. There has to be
         /// enough quota to scale up the cluster.
@@ -8971,6 +9117,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>
+        /// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough
+        /// quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count
+        /// fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalMaxNodeCount")]
+        public virtual System.Nullable<int> TotalMaxNodeCount { get; set; }
+
+        /// <summary>
+        /// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The
+        /// total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalMinNodeCount")]
+        public virtual System.Nullable<int> TotalMinNodeCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9433,6 +9594,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Option for rollback to ignore the PodDisruptionBudget. Default value is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("respectPdb")]
+        public virtual System.Nullable<bool> RespectPdb { get; set; }
 
         /// <summary>
         /// Required. Deprecated. The name of the Google Compute Engine
@@ -10153,6 +10318,27 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Standard rollout policy is the default policy for blue-green.</summary>
+    public class StandardRolloutPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of blue nodes to drain in a batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchNodeCount")]
+        public virtual System.Nullable<int> BatchNodeCount { get; set; }
+
+        /// <summary>
+        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchPercentage")]
+        public virtual System.Nullable<float> BatchPercentage { get; set; }
+
+        /// <summary>Soak time after each batch gets drained. Default to zero.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSoakDuration")]
+        public virtual object BatchSoakDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// StartIPRotationRequest creates a new IP for the cluster and then performs a node upgrade on each node pool to
     /// point to the new IP.
@@ -10326,6 +10512,20 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// UpdateInfo contains resource (instance groups, etc), status and other intermediate information relevant to a
+    /// node pool upgrade.
+    /// </summary>
+    public class UpdateInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information of a blue-green upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blueGreenInfo")]
+        public virtual BlueGreenInfo BlueGreenInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>UpdateMasterRequest updates the master of the cluster.</summary>
     public class UpdateMasterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10431,6 +10631,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Node network config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeNetworkConfig")]
+        public virtual NodeNetworkConfig NodeNetworkConfig { get; set; }
 
         /// <summary>
         /// Required. Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by
@@ -10556,8 +10760,26 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the
+    /// strategies applied to the node pool. If the strategy is SURGE, use max_surge and max_unavailable to control the
+    /// level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of
+    /// additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the
+    /// number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously
+    /// unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being
+    /// upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green
+    /// upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the
+    /// way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as
+    /// either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each
+    /// batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this
+    /// period, the blue pool nodes will be deleted.
+    /// </summary>
     public class UpgradeSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Settings for blue-green upgrade strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blueGreenSettings")]
+        public virtual BlueGreenSettings BlueGreenSettings { get; set; }
+
         /// <summary>
         /// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade
         /// process.
@@ -10571,6 +10793,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
         public virtual System.Nullable<int> MaxUnavailable { get; set; }
+
+        /// <summary>Update strategy of the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strategy")]
+        public virtual string Strategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

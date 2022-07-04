@@ -1337,8 +1337,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be
-        /// created.
+        /// Required. Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to
+        /// be created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesetName")]
         public virtual string RulesetName { get; set; }

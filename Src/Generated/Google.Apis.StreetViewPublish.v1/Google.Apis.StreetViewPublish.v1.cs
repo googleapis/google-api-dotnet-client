@@ -1486,6 +1486,21 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details related to ProcessingFailureReason#GPS_DATA_GAP.</summary>
+    public class GpsDataGapFailureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration of the gap in GPS data that was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gapDuration")]
+        public virtual object GapDuration { get; set; }
+
+        /// <summary>Relative time (from the start of the video stream) when the gap started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gapTime")]
+        public virtual object GapTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>IMU data from the device sensors.</summary>
     public class Imu : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1503,6 +1518,32 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("magUt")]
         public virtual System.Collections.Generic.IList<Measurement3d> MagUt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details related to ProcessingFailureReason#IMU_DATA_GAP.</summary>
+    public class ImuDataGapFailureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration of the gap in IMU data that was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gapDuration")]
+        public virtual object GapDuration { get; set; }
+
+        /// <summary>Relative time (from the start of the video stream) when the gap started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gapTime")]
+        public virtual object GapTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details related to ProcessingFailureReason#INSUFFICIENT_GPS.</summary>
+    public class InsufficientGpsFailureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of GPS points that were found in the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpsPointsFound")]
+        public virtual System.Nullable<int> GpsPointsFound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1623,6 +1664,17 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>The sensor measurement in the z axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("z")]
         public virtual System.Nullable<float> Z { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details related to ProcessingFailureReason#NOT_OUTDOORS.</summary>
+    public class NotOutdoorsFailureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Relative time (from the start of the video stream) when an indoor frame was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual object Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1788,6 +1840,13 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual System.Nullable<double> DistanceMeters { get; set; }
 
         /// <summary>
+        /// Output only. If this sequence has `failure_reason` set, this may contain additional details about the
+        /// failure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureDetails")]
+        public virtual ProcessingFailureDetails FailureDetails { get; set; }
+
+        /// <summary>
         /// Output only. If this sequence has processing_state = FAILED, this will contain the reason why it failed. If
         /// the processing_state is any other value, this field will be unset.
         /// </summary>
@@ -1946,6 +2005,33 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roll")]
         public virtual System.Nullable<double> Roll { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Additional details to accompany the ProcessingFailureReason enum. This message is always expected to be used in
+    /// conjunction with ProcessingFailureReason, and the oneof value set in this message should match the
+    /// FailureReason.
+    /// </summary>
+    public class ProcessingFailureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>See GpsDataGapFailureDetails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpsDataGapDetails")]
+        public virtual GpsDataGapFailureDetails GpsDataGapDetails { get; set; }
+
+        /// <summary>See ImuDataGapFailureDetails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imuDataGapDetails")]
+        public virtual ImuDataGapFailureDetails ImuDataGapDetails { get; set; }
+
+        /// <summary>See InsufficientGpsFailureDetails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insufficientGpsDetails")]
+        public virtual InsufficientGpsFailureDetails InsufficientGpsDetails { get; set; }
+
+        /// <summary>See NotOutdoorsFailureDetails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notOutdoorsDetails")]
+        public virtual NotOutdoorsFailureDetails NotOutdoorsDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

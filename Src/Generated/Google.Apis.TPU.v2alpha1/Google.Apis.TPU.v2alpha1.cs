@@ -845,6 +845,59 @@ namespace Google.Apis.TPU.v2alpha1
                     }
                 }
 
+                /// <summary>Simulates a maintenance event.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The resource name.</param>
+                public virtual SimulateMaintenanceEventRequest SimulateMaintenanceEvent(Google.Apis.TPU.v2alpha1.Data.SimulateMaintenanceEventRequest body, string name)
+                {
+                    return new SimulateMaintenanceEventRequest(service, body, name);
+                }
+
+                /// <summary>Simulates a maintenance event.</summary>
+                public class SimulateMaintenanceEventRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new SimulateMaintenanceEvent request.</summary>
+                    public SimulateMaintenanceEventRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v2alpha1.Data.SimulateMaintenanceEventRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v2alpha1.Data.SimulateMaintenanceEventRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "simulateMaintenanceEvent";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha1/{+name}:simulateMaintenanceEvent";
+
+                    /// <summary>Initializes SimulateMaintenanceEvent parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Starts a node.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
@@ -2137,6 +2190,21 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>The email address of the service identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for SimulateMaintenanceEvent.</summary>
+    public class SimulateMaintenanceEventRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The 0-based worker ID. If it is empty, worker ID 0 will be selected for maintenance event simulation. A
+        /// maintenance event will only be fired on the first specified worker ID. Future implementations may support
+        /// firing on multiple workers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerIds")]
+        public virtual System.Collections.Generic.IList<string> WorkerIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

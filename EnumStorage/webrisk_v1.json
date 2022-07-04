@@ -3,7 +3,8 @@
     "THREAT_TYPE_UNSPECIFIED",
     "MALWARE",
     "SOCIAL_ENGINEERING",
-    "UNWANTED_SOFTWARE"
+    "UNWANTED_SOFTWARE",
+    "HIGH_RECALL"
   ],
   "Google.Apis.WebRisk.v1.ThreatListsResource+ComputeDiffRequest.ConstraintsSupportedCompressionsEnum": [
     "COMPRESSION_TYPE_UNSPECIFIED",
@@ -14,13 +15,15 @@
     "THREAT_TYPE_UNSPECIFIED",
     "MALWARE",
     "SOCIAL_ENGINEERING",
-    "UNWANTED_SOFTWARE"
+    "UNWANTED_SOFTWARE",
+    "HIGH_RECALL"
   ],
   "Google.Apis.WebRisk.v1.UrisResource+SearchRequest.ThreatTypesEnum": [
     "THREAT_TYPE_UNSPECIFIED",
     "MALWARE",
     "SOCIAL_ENGINEERING",
-    "UNWANTED_SOFTWARE"
+    "UNWANTED_SOFTWARE",
+    "HIGH_RECALL"
   ],
   "Google.Apis.WebRisk.v1.WebRiskBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",

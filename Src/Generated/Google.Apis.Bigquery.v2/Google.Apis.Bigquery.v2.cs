@@ -8019,6 +8019,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedMs")]
         public virtual System.Nullable<long> ElapsedMs { get; set; }
 
+        /// <summary>
+        /// Units of work that can be scheduled immediately. Providing additional slots for these units of work will
+        /// speed up the query, provided no other query in the reservation needs additional slots.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedRunnableUnits")]
+        public virtual System.Nullable<long> EstimatedRunnableUnits { get; set; }
+
         /// <summary>Total parallel units of work remaining for the active stages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingUnits")]
         public virtual System.Nullable<long> PendingUnits { get; set; }
@@ -8676,6 +8683,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] Materialized view definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materializedView")]
         public virtual MaterializedViewDefinition MaterializedView { get; set; }
+
+        /// <summary>
+        /// [Optional] Max staleness of data that could be returned when table or materialized view is queried
+        /// (formatted as Google SQL Interval type).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxStaleness")]
+        public virtual string MaxStaleness { get; set; }
 
         /// <summary>
         /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the
@@ -9416,6 +9430,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxParallelTrials")]
         public virtual System.Nullable<long> MaxParallelTrials { get; set; }
 
+        /// <summary>
+        /// Get truncated length by last n points in time series. Use separately from time_series_length_fraction and
+        /// min_time_series_length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTimeSeriesLength")]
+        public virtual System.Nullable<long> MaxTimeSeriesLength { get; set; }
+
         /// <summary>Maximum depth of a tree for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTreeDepth")]
         public virtual System.Nullable<long> MaxTreeDepth { get; set; }
@@ -9430,6 +9451,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Minimum split loss for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSplitLoss")]
         public virtual System.Nullable<double> MinSplitLoss { get; set; }
+
+        /// <summary>
+        /// Set fast trend ARIMA_PLUS model minimum training length. Use in pair with time_series_length_fraction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTimeSeriesLength")]
+        public virtual System.Nullable<long> MinTimeSeriesLength { get; set; }
 
         /// <summary>Minimum sum of instance weight needed in a child for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTreeChildWeight")]
@@ -9497,6 +9524,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumns")]
         public virtual System.Collections.Generic.IList<string> TimeSeriesIdColumns { get; set; }
 
+        /// <summary>Get truncated length by fraction in time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesLengthFraction")]
+        public virtual System.Nullable<double> TimeSeriesLengthFraction { get; set; }
+
         /// <summary>Column to be designated as time series timestamp for ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesTimestampColumn")]
         public virtual string TimeSeriesTimestampColumn { get; set; }
@@ -9504,6 +9535,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Tree construction algorithm for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("treeMethod")]
         public virtual string TreeMethod { get; set; }
+
+        /// <summary>The smoothing window size for the trend component of the time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trendSmoothingWindowSize")]
+        public virtual System.Nullable<long> TrendSmoothingWindowSize { get; set; }
 
         /// <summary>User column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userColumn")]

@@ -1696,8 +1696,8 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
     }
 
     /// <summary>
-    /// Describes a Cloud Function that contains user computation executed in response to an event. It encapsulate
-    /// function and triggers configurations.
+    /// Describes a Cloud Function that contains user computation executed in response to an event. It encapsulates
+    /// function and trigger configurations.
     /// </summary>
     public class Function : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -2527,6 +2527,51 @@ namespace Google.Apis.Eventarc.v1
                 }
             }
 
+            /// <summary>Get a GoogleChannelConfig</summary>
+            /// <param name="name">Required. The name of the config to get.</param>
+            public virtual GetGoogleChannelConfigRequest GetGoogleChannelConfig(string name)
+            {
+                return new GetGoogleChannelConfigRequest(service, name);
+            }
+
+            /// <summary>Get a GoogleChannelConfig</summary>
+            public class GetGoogleChannelConfigRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleChannelConfig>
+            {
+                /// <summary>Constructs a new GetGoogleChannelConfig request.</summary>
+                public GetGoogleChannelConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the config to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getGoogleChannelConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetGoogleChannelConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/googleChannelConfig$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -2608,6 +2653,80 @@ namespace Google.Apis.Eventarc.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Update a single GoogleChannelConfig</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the config. Must be in the format of,
+            /// `projects/{project}/locations/{location}/googleChannelConfig`.
+            /// </param>
+            public virtual UpdateGoogleChannelConfigRequest UpdateGoogleChannelConfig(Google.Apis.Eventarc.v1.Data.GoogleChannelConfig body, string name)
+            {
+                return new UpdateGoogleChannelConfigRequest(service, body, name);
+            }
+
+            /// <summary>Update a single GoogleChannelConfig</summary>
+            public class UpdateGoogleChannelConfigRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleChannelConfig>
+            {
+                /// <summary>Constructs a new UpdateGoogleChannelConfig request.</summary>
+                public UpdateGoogleChannelConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.GoogleChannelConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the config. Must be in the format of,
+                /// `projects/{project}/locations/{location}/googleChannelConfig`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// The fields to be updated; only fields explicitly provided are updated. If no field mask is provided,
+                /// all provided fields in the request are updated. To update all fields, provide a field mask of "*".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Eventarc.v1.Data.GoogleChannelConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateGoogleChannelConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateGoogleChannelConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/googleChannelConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2739,6 +2858,13 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
+        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data.
+        /// It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>
         /// Required. The resource name of the channel. Must be unique within the location on the project and must be in
         /// `projects/{project}/locations/{location}/channels/{channel_id}` format.
         /// </summary>
@@ -2810,8 +2936,8 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. / Output only. Server assigned ID of the resource. The server guarantees uniqueness and
-        /// immutability until deleted.
+        /// Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until
+        /// deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -3066,6 +3192,35 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A GoogleChannelConfig is a resource that stores the custom settings respected by Eventarc first-party triggers
+    /// in the matching region. Once configured, first-party event data will be protected using the specified custom
+    /// managed encryption key instead of Google-managed encryption keys.
+    /// </summary>
+    public class GoogleChannelConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data.
+        /// It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the config. Must be in the format of,
+        /// `projects/{project}/locations/{location}/googleChannelConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class GoogleLongrunningCancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3168,7 +3323,7 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual System.Collections.Generic.IList<ChannelConnection> ChannelConnections { get; set; }
 
         /// <summary>
-        /// A page token that can be sent to ListChannelConnections to request the next page. If this is empty, then
+        /// A page token that can be sent to `ListChannelConnections` to request the next page. If this is empty, then
         /// there are no more pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -3190,8 +3345,8 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual System.Collections.Generic.IList<Channel> Channels { get; set; }
 
         /// <summary>
-        /// A page token that can be sent to ListChannels to request the next page. If this is empty, then there are no
-        /// more pages.
+        /// A page token that can be sent to `ListChannels` to request the next page. If this is empty, then there are
+        /// no more pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -3223,8 +3378,8 @@ namespace Google.Apis.Eventarc.v1.Data
     public class ListProvidersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A page token that can be sent to ListProviders to request the next page. If this is empty, then there are no
-        /// more pages.
+        /// A page token that can be sent to `ListProviders` to request the next page. If this is empty, then there are
+        /// no more pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -3245,8 +3400,8 @@ namespace Google.Apis.Eventarc.v1.Data
     public class ListTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A page token that can be sent to ListTriggers to request the next page. If this is empty, then there are no
-        /// more pages.
+        /// A page token that can be sent to `ListTriggers` to request the next page. If this is empty, then there are
+        /// no more pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
