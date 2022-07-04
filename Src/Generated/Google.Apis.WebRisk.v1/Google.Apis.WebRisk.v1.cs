@@ -358,6 +358,10 @@ namespace Google.Apis.WebRisk.v1
                 /// <summary>Unwanted software targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
+
+                /// <summary>High Recall Social Engineering list targeting any platform.</summary>
+                [Google.Apis.Util.StringValueAttribute("HIGH_RECALL")]
+                HIGHRECALL = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -990,6 +994,10 @@ namespace Google.Apis.WebRisk.v1
                 /// <summary>Unwanted software targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
+
+                /// <summary>High Recall Social Engineering list targeting any platform.</summary>
+                [Google.Apis.Util.StringValueAttribute("HIGH_RECALL")]
+                HIGHRECALL = 4,
             }
 
             /// <summary>
@@ -1128,6 +1136,10 @@ namespace Google.Apis.WebRisk.v1
                 /// <summary>Unwanted software targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
                 UNWANTEDSOFTWARE = 3,
+
+                /// <summary>High Recall Social Engineering list targeting any platform.</summary>
+                [Google.Apis.Util.StringValueAttribute("HIGH_RECALL")]
+                HIGHRECALL = 4,
             }
 
             /// <summary>Required. The URI to be checked for matches.</summary>

@@ -1737,6 +1737,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
         public virtual string Architecture { get; set; }
 
+        /// <summary>
+        /// Output only. Whether keylocker is configured.`TRUE` = Enabled; `FALSE` = disabled. Only reported if
+        /// keylockerSupported = `TRUE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keylockerConfigured")]
+        public virtual System.Nullable<bool> KeylockerConfigured { get; set; }
+
+        /// <summary>Output only. Whether keylocker is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keylockerSupported")]
+        public virtual System.Nullable<bool> KeylockerSupported { get; set; }
+
         /// <summary>Output only. The max CPU clock speed in kHz.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxClockSpeed")]
         public virtual System.Nullable<int> MaxClockSpeed { get; set; }
@@ -1963,6 +1974,26 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Data that describes the result of the HTTPS latency diagnostics routine, with the HTTPS requests issued to
+    /// Google websites.
+    /// </summary>
+    public class GoogleChromeManagementV1HttpsLatencyRoutineData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. HTTPS latency if routine succeeded or failed because of HIGH_LATENCY or VERY_HIGH_LATENCY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latency")]
+        public virtual object Latency { get; set; }
+
+        /// <summary>Output only. HTTPS latency routine problem if a problem occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("problem")]
+        public virtual string Problem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes an installed app.</summary>
     public class GoogleChromeManagementV1InstalledApp : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2038,6 +2069,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableRamBytes")]
         public virtual System.Nullable<long> AvailableRamBytes { get; set; }
 
+        /// <summary>Output only. Total memory encryption info for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalMemoryEncryption")]
+        public virtual GoogleChromeManagementV1TotalMemoryEncryptionInfo TotalMemoryEncryption { get; set; }
+
         /// <summary>Output only. Total RAM in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRamBytes")]
         public virtual System.Nullable<long> TotalRamBytes { get; set; }
@@ -2071,16 +2106,96 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Network device.</summary>
+    public class GoogleChromeManagementV1NetworkDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The integrated circuit card ID associated with the device's sim card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iccid")]
+        public virtual string Iccid { get; set; }
+
+        /// <summary>Output only. IMEI (if applicable) of the corresponding network device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imei")]
+        public virtual string Imei { get; set; }
+
+        /// <summary>Output only. MAC address (if applicable) of the corresponding network device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
+        public virtual string MacAddress { get; set; }
+
+        /// <summary>Output only. The mobile directory number associated with the device's sim card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mdn")]
+        public virtual string Mdn { get; set; }
+
+        /// <summary>Output only. MEID (if applicable) of the corresponding network device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meid")]
+        public virtual string Meid { get; set; }
+
+        /// <summary>Output only. Network device type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Network testing results to determine the health of the device's network connection, for example whether the
+    /// HTTPS latency is high or normal.
+    /// </summary>
+    public class GoogleChromeManagementV1NetworkDiagnosticsReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. HTTPS latency test data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpsLatencyData")]
+        public virtual GoogleChromeManagementV1HttpsLatencyRoutineData HttpsLatencyData { get; set; }
+
+        /// <summary>Output only. Timestamp of when the diagnostics were collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network devices info.</summary>
+    public class GoogleChromeManagementV1NetworkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of network devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkDevices")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1NetworkDevice> NetworkDevices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>State of visible/configured networks.</summary>
     public class GoogleChromeManagementV1NetworkStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Current connection state of the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionState")]
+        public virtual string ConnectionState { get; set; }
+
+        /// <summary>Output only. Network connection type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>Output only. Whether the wifi encryption key is turned off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionOn")]
+        public virtual System.Nullable<bool> EncryptionOn { get; set; }
+
         /// <summary>Output only. Gateway IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayIpAddress")]
         public virtual string GatewayIpAddress { get; set; }
 
+        /// <summary>Output only. Network connection guid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guid")]
+        public virtual string Guid { get; set; }
+
         /// <summary>Output only. LAN IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lanIpAddress")]
         public virtual string LanIpAddress { get; set; }
+
+        /// <summary>Output only. Receiving bit rate measured in megabytes per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("receivingBitRateMbps")]
+        public virtual System.Nullable<long> ReceivingBitRateMbps { get; set; }
 
         /// <summary>Output only. Time at which the network state was reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
@@ -2093,6 +2208,25 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Signal strength for wireless networks measured in decibels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalStrengthDbm")]
         public virtual System.Nullable<int> SignalStrengthDbm { get; set; }
+
+        /// <summary>Output only. Transmission bit rate measured in megabytes per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transmissionBitRateMbps")]
+        public virtual System.Nullable<long> TransmissionBitRateMbps { get; set; }
+
+        /// <summary>Output only. Transmission power measured in decibels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transmissionPowerDbm")]
+        public virtual System.Nullable<int> TransmissionPowerDbm { get; set; }
+
+        /// <summary>
+        /// Output only. Wifi link quality. Value ranges from [0, 70]. 0 indicates no signal and 70 indicates a strong
+        /// signal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiLinkQuality")]
+        public virtual System.Nullable<long> WifiLinkQuality { get; set; }
+
+        /// <summary>Output only. Wifi power management enabled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiPowerManagementEnabled")]
+        public virtual System.Nullable<bool> WifiPowerManagementEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2246,6 +2380,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Network diagnostics collected periodically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkDiagnosticsReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1NetworkDiagnosticsReport> NetworkDiagnosticsReport { get; set; }
+
+        /// <summary>Output only. Network devices information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInfo")]
+        public virtual GoogleChromeManagementV1NetworkInfo NetworkInfo { get; set; }
+
         /// <summary>Output only. Network specs collected periodically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1NetworkStatusReport> NetworkStatusReport { get; set; }
@@ -2272,6 +2414,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Storage reports collected periodically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1StorageStatusReport> StorageStatusReport { get; set; }
+
+        /// <summary>Output only. Information on Thunderbolt bus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thunderboltInfo")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1ThunderboltInfo> ThunderboltInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Thunderbolt bus info.</summary>
+    public class GoogleChromeManagementV1ThunderboltInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Security level of the Thunderbolt bus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityLevel")]
+        public virtual string SecurityLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Memory encryption information of a device.</summary>
+    public class GoogleChromeManagementV1TotalMemoryEncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Memory encryption algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionAlgorithm")]
+        public virtual string EncryptionAlgorithm { get; set; }
+
+        /// <summary>The state of memory encryption on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
+        public virtual string EncryptionState { get; set; }
+
+        /// <summary>The length of the encryption keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
+        public virtual System.Nullable<long> KeyLength { get; set; }
+
+        /// <summary>The maximum number of keys that can be used for encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxKeys")]
+        public virtual System.Nullable<long> MaxKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

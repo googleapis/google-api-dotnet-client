@@ -565,7 +565,7 @@ namespace Google.Apis.CloudProfiler.v2.Data
         /// <summary>
         /// Target is the service name used to group related deployments: * Service name for App Engine Flex / Standard.
         /// * Cluster and container name for GKE. * User-specified string for direct Compute Engine profiling (e.g.
-        /// Java). * Job name for Dataflow. Validation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
+        /// Java). * Job name for Dataflow. Validation regex: `^[a-z0-9]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
