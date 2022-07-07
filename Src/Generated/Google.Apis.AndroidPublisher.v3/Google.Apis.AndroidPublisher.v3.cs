@@ -9899,8 +9899,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string GracePeriodDuration { get; set; }
 
         /// <summary>
-        /// Whether the renewing base plan is compatible with legacy version of the Play Billing Library (prior to
-        /// version 3) or not. Only one renewing base plan can be marked as legacy compatible for a given subscription.
+        /// Whether the renewing base plan is backward compatible. The backward compatible base plan is returned by the
+        /// Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one renewing base plan can be
+        /// marked as legacy compatible for a given subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyCompatible")]
         public virtual System.Nullable<bool> LegacyCompatible { get; set; }

@@ -6488,6 +6488,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Metadata describing the operation.</summary>
     public class ClusterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Child operation ids</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childOperationIds")]
+        public virtual System.Collections.Generic.IList<string> ChildOperationIds { get; set; }
+
         /// <summary>Output only. Name of the cluster for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
@@ -6608,7 +6612,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Dataproc metric config.</summary>
     public class DataprocMetricConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Metrics to enable.</summary>
+        /// <summary>Required. Metrics sources to enable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
@@ -6661,10 +6665,11 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string LocalSsdInterface { get; set; }
 
         /// <summary>
-        /// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is
+        /// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is
         /// used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
         /// one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only
-        /// basic config and installed binaries.
+        /// basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs
+        /// selected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLocalSsds")]
         public virtual System.Nullable<int> NumLocalSsds { get; set; }
@@ -6988,9 +6993,9 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. The Customer Managed Encryption Key (CMEK)
-        /// (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk
-        /// attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID
-        /// /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        /// (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached
+        /// to each node in the node pool. Specify the key using the following format:
+        /// projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
         public virtual string BootDiskKmsKey { get; set; }
@@ -8039,16 +8044,31 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metric source to enable, with any optional metrics, to override Dataproc default metrics.</summary>
+    /// <summary>A Dataproc OSS metric.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
+        /// Optional. Specify one or more available OSS metrics
+        /// (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric
+        /// course (for the SPARK metric source, any Spark metric
+        /// (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the
+        /// following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples:
+        /// yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs
+        /// sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used
+        /// Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or
+        /// more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The
+        /// collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK
+        /// andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN
+        /// metrics will be collected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricOverrides")]
         public virtual System.Collections.Generic.IList<string> MetricOverrides { get; set; }
 
-        /// <summary>Required. MetricSource to enable.</summary>
+        /// <summary>
+        /// Required. Default metrics are collected unless metricOverrides are specified for the metric source (see
+        /// Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for
+        /// more information).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricSource")]
         public virtual string MetricSource { get; set; }
 

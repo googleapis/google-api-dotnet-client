@@ -13281,6 +13281,24 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains configuration for streaming de-identified FHIR export.</summary>
+    public class DeidentifiedStoreDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration to use when de-identifying resources that are added to this store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual DeidentifyConfig Config { get; set; }
+
+        /// <summary>
+        /// The full resource name of a Cloud Healthcare FHIR store, for example,
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("store")]
+        public virtual string Store { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configures de-id options specific to different types of content. Each submessage customizes the handling of an
     /// https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
@@ -13415,6 +13433,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
         public virtual FhirFilter ResourceFilter { get; set; }
+
+        /// <summary>
+        /// If true, skips resources that are created or modified after the de-identify operation is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipModifiedResources")]
+        public virtual System.Nullable<bool> SkipModifiedResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16211,6 +16235,23 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1beta1FhirBigQueryDestination BigqueryDestination { get; set; }
+
+        /// <summary>
+        /// The destination FHIR store for de-identified resources. After this field is added, all subsequent
+        /// creates/updates/patches to the source store will be de-identified using the provided configuration and
+        /// applied to the destination store. Importing resources to the source store will not trigger the streaming. If
+        /// the source store already contains resources when this option is enabled, those resources will not be copied
+        /// to the destination store unless they are subsequently updated. This may result in invalid references in the
+        /// destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission
+        /// on the destination store to your project's **Cloud Healthcare Service Agent** [service
+        /// account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent).
+        /// The destination store must set enable_update_create to true. The destination store must have
+        /// disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to
+        /// Cloud Logging (see [Viewing error logs in Cloud
+        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifiedStoreDestination")]
+        public virtual DeidentifiedStoreDestination DeidentifiedStoreDestination { get; set; }
 
         /// <summary>
         /// Supply a FHIR resource type (such as "Patient" or "Observation"). See

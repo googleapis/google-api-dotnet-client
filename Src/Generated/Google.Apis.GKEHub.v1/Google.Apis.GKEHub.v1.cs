@@ -2951,6 +2951,13 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual ConfigManagementPolicyControllerMonitoring Monitoring { get; set; }
 
         /// <summary>
+        /// Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment
+        /// will be deployed to the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
+        public virtual System.Nullable<bool> MutationEnabled { get; set; }
+
+        /// <summary>
         /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
         /// being evaluated.
         /// </summary>
